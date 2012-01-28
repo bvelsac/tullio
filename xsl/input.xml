@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="test.xsl"?>
+<container>
+	<div id="text">
+	<p class="proc" title="new"/>
+				<p class="placeholder" title="1.0"></p>
+		<p class="proc" title="2.9"/>
+		<p class="proc" title="2.0"/>
+		
+		<p class="proc" title="2.0"/>
+		<p class="proc" title="new"/>
+		<p>
+			<span class="proc" title="2.0"/>
+			<span class="proc" title="2.4"/>
+		</p>
+		
+		<p class="placeholder" title="3.0"></p>
+	</div>
+	<div id="events">
+		
+		<e n="1.0">
+			<md>Metadata for event 1 - clip start</md>
+		</e>
+		<e n="1.8">
+			<md>Metadata for event 2 </md>
+		</e>	
+		<e n="1.9">
+			<md>Metadata for event 2 </md>
+		</e>	
+		<e n="2.0">
+			<md>Metadata for event 2 </md>
+		</e>	
+		<e n="2.1">
+			<md>Metadata for event 2 </md>
+		</e>	
+		<e n="2.2">
+			<md>Metadata for event 2 </md>
+		</e>	
+		
+		<e n="2.4">
+			<md>Metadata for event 2 </md>
+		</e>
+		<e n="2.9">
+			<md>Metadata for event 2 </md>
+		</e>
+		<e n="3.0">
+			<md>Metadata for event 3 - clip end</md>
+		</e>
+	</div>
+</container>
