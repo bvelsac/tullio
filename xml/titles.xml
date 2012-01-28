@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<reference name="titles">
+    <p code="Grouwels ">
+      <gender>F</gender>
+      <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Openbare Werken en Vervoer</ti>
+      <ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée des Travaux publics et des Transports</ti>
+      <ti l="N" meeting-type="VVGGC">lid van het Verenigd College, bevoegd voor het Beleid inzake Bijstand aan Personen en Openbaar Ambt</ti>
+      <ti l="F" meeting-type="VVGGC">membre du Collège réuni, compétente pour la Politique d'Aide aux Personnes et la Fonction publique</ti>
+      
+      <name>Brigitte Grouwels</name>
+    </p>
+    <p code="DE WOLF Vincent">
+      <gender>M</gender>
+      <name>Vincent De Wolf</name>
+      <ti l="N" meeting-type="COM-ECO">voorzitter</ti>
+      <ti l="F" meeting-type="COM-ECO">eerste ondervoorzitter</ti>
+    </p>
+    <p code="Huytebroeck ">
+      <gender>F</gender>
+      <name>Evelyne Huytebroeck</name>
+      
+			<ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Leefmilieu, Energie en Waterbeleid, Stadsvernieuwing, Brandbestrijding en Dringende Medische Hulp en Huisvesting</ti>
+ 
+			<ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée de l'Environnement, de l'Energie et de la Politique de l'Eau, de la Rénovation urbaine, de la Lutte contre l'Incendie et l'Aide médicale urgente et du Logement</ti>
+      <ti l="N" meeting-type="VVGGC"></ti>
+      <ti l="F" meeting-type="VVGGC"></ti>
+    </p>
+  </reference>
+  
