@@ -65,13 +65,13 @@ CKEDITOR.plugins.add('transform',
 				{    
 					
 					var titles;
+					
 				  editor.insertHtml("<p>insert before transform</p>");
-					var content = '<container><div id="text">' + editor.getData() + '</div><div id="events">' + eventsList + '</div>' + titles + '</container>';
+					var content = '<container><div id="text">' + editor.getData() + '</div><div id="events">' + $('#' + rowId + ' div.structured-events').html() + '</div>' + titlesAsString + '</container>';
 					
 					// hier eenvoudig ook de content van de structured events en de titles toeveogen, ook als string en via html extractie in jquery
 					
-					console.log(content);
-					console.log(editor.id);
+					console.log(titlesDoc);
 					
 //					$(editor).find("iframe").find("body").html("<p>cou cou</p>");
 					
@@ -89,9 +89,10 @@ CKEDITOR.plugins.add('transform',
 					
 					$.transform({
 							el : "#resultpane",
-							xmlstr: content,
+							xmlobj: titlesDoc,
 							xsl: pathToXSL +  "reconcile.xsl",
-							async: false
+							async: false,
+							error: function(html,xsl,xml,object,e) {alert(e);}
 					});
 					
 					

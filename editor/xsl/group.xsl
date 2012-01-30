@@ -36,23 +36,24 @@
 								<events>
 								<xsl:copy-of select="//events/e" />
 								</events>
-                <li>
-                  <xsl:if test="position()=1">
-                    <xsl:attribute name="id">
-                      <xsl:text>startevent-</xsl:text>
-                      <xsl:value-of select="@n"/>
-                    </xsl:attribute>
-                  </xsl:if>
-                  <xsl:if test="position()=last()">
-                    <xsl:attribute name="id">
-                      <xsl:text>stopevent-</xsl:text>
-                      <xsl:value-of select="$top"/>
-                    </xsl:attribute>
-                  </xsl:if>
-                  <xsl:value-of select="@n"/>
-                </li>
+
               </div>
               <xsl:apply-templates mode="events-table" select="."/>
+              <li class="startstop">
+                <xsl:if test="position()=1">
+                  <xsl:attribute name="id">
+                    <xsl:text>startevent-</xsl:text>
+                    <xsl:value-of select="@n"/>
+                  </xsl:attribute>
+                </xsl:if>
+                <xsl:if test="position()=last()">
+                  <xsl:attribute name="id">
+                    <xsl:text>stopevent-</xsl:text>
+                    <xsl:value-of select="$top"/>
+                  </xsl:attribute>
+                </xsl:if>
+                <xsl:value-of select="@n"/>
+              </li>
             </xsl:for-each>
           </table>
         </td>
