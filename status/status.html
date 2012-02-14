@@ -1,0 +1,234 @@
+<html>
+<head>
+<title>Status Page</title>
+<style>
+
+
+body {background: none repeat scroll 0 0 #CCCCFF;}
+body * {font-family: arial; 
+font-size: 12px; 
+color: #555555;
+}
+
+#statusTable {background: silver; border: thin solid black;}
+
+#statusTable tr {border: thin solid black;}
+#statusTable td {
+	border-left: thin dotted black;
+	border-top: thin dotted black;
+	/*
+		border-color: transparent silver silver transparent;
+    border-style: solid dotted solid solid;
+    border-width: 0px 1px 0px 0px;
+    margin: 0px;
+/*    padding: 1px 2px 2px 1px; */
+    vertical-align: middle;
+		border-width:  0px ;
+		padding: 3px;
+}
+td.length {width: 60px;}
+td.spacer {width: 40px;}
+
+td.status-orig, td.status-trans, td.lang-orig, td.lang-trans {background: white;}
+
+td.status-orig, td.status-trans, td.lang-orig, td.lang-trans, td.lock-orig, td.lock-trans, td.icon-trans, td.icon-orig {  width: 20px;}
+
+.icon-orig.locked, .icon-trans.locked {background-image:url('padlock-smalls.png'); background-repeat: no-repeat;}
+
+.locked {background: #01bbe2; color: silver;}
+.status-orig.ECF   {background: #ff6666;}
+.status-orig.ECN  {background: #ff6666;}
+.status-orig.NN
+.status-orig.NF
+.status-orig.RF
+.status-orig.RN
+
+
+
+
+
+
+
+
+
+
+</style>
+<script language="javascript" src="../js-lib/jquerytransform/js/jquery-1.6.4.js"></script>
+<script language="javascript" src="../js-lib/jquerytransform/js/jquery.transform.js"></script>
+<script>
+	(function($) {
+    $.QueryString = (function(a) {
+        if (a == "") return {};
+        var b = {};
+        for (var i = 0; i < a.length; ++i)
+        {
+            var p=a[i].split('=');
+            if (p.length != 2) continue;
+            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+        }
+        return b;
+    })(window.location.search.substr(1).split('&'))
+})(jQuery);
+
+
+	function jq(myid) {
+
+
+   return '#' + myid.replace(/(:|\.)/g,'\\$1');
+ }
+
+
+// --------------------------------------
+// current implementation is very simple: no use of labels
+
+var labels = null;
+var dbUrl = "/exist/rest//db/tullio/";
+var meeting = $.QueryString["m"];
+var building = false;
+
+
+// 2012-02-08-PM_COMM-INFRA/events.xml
+
+// http://localhost:8080/exist/rest//db/tullio/2012-02-08-PM_COMM-INFRA/events.xml
+
+function quickUpdate(meeting, force) {
+	
+	if (building && !force) {
+		return true;
+	}
+	
+	var request = dbUrl + meeting + "/locks.xml";
+	jQuery.ajax({
+
+         url:    request,
+         success: function(result) {
+					 //console.log(result);
+					 
+					 
+					 			//clear locks
+								
+								$(".lock-orig").text('...');
+								$(".lock-trans").text('...');
+								$(".lock-orig").removeClass('locked');
+								$(".lock-trans").removeClass('locked');
+								$(".icon-orig").removeClass('locked');
+								$(".icon-trans").removeClass('locked');
+
+								
+					 // recreate lock
+					 						var locks = result.getElementsByTagName("lock");
+                      var nL = locks.length;
+											for (i=0; i<nL; i++) 
+												
+											{
+												if (locks[i].getAttribute('n'))
+													{
+														
+														$(jq(locks[i].getAttribute('n')) + ' td.lock-' + locks[i].getAttribute('v')).text(locks[i].getAttribute('id'));
+														$(jq(locks[i].getAttribute('n')) + ' td.lock-' + locks[i].getAttribute('v')).addClass('locked');
+														$(jq(locks[i].getAttribute('n')) + ' td.icon-' + locks[i].getAttribute('v')).addClass('locked');
+	
+													}
+												//console.log(locks[i].getAttribute('id'));
+											}
+											
+											// repeat similar code for status-elements
+											
+											var locks = result.getElementsByTagName("s");
+                      var nL = locks.length;
+											for (i=0; i<nL; i++) 
+												
+											{
+												if (locks[i].getAttribute('n'))
+													{
+														$(jq(locks[i].getAttribute('n')) + ' td.status-orig').text(locks[i].getAttribute('o'));
+														var lang = $(jq(locks[i].getAttribute('n')) + ' td.lang-orig').text();
+														// console.log("lang " + lang);
+														$(jq(locks[i].getAttribute('n')) + ' td.status-orig').attr("class", "status-orig " + locks[i].getAttribute('o') + lang);
+														
+														$(jq(locks[i].getAttribute('n')) + ' td.status-trans').text(locks[i].getAttribute('t'));
+														var lang = $(jq(locks[i].getAttribute('n')) + ' td.lang-trans').text();
+														$(jq(locks[i].getAttribute('n')) + ' td.status-trans').attr("class", "status-trans " + locks[i].getAttribute('t') + lang);
+														
+													}
+												//console.log(locks[i].getAttribute('id'));
+											}
+											
+											
+											
+											/*
+											[0].appendChild(titles);
+					 						testeee = (new XMLSerializer()).serializeToString(result); 
+											console.log(testeee);
+											titlesAsString = testeee;
+											titlesDoc = result;
+											*/
+                  },
+         async:   true,
+				 contentType: "text/xml"
+    });	
+	
+	
+	
+	
+}
+
+
+
+function buildTable(meeting) {
+	$("#loading").css("background", "red");
+building = true;
+// This function will fetch the events.xml file for the meeting and transform it into an HTML table
+var request = dbUrl + meeting + "/events.xml";
+$("#tablePlaceholder").transform({async:false, xml:request, xsl:"status.xsl"});
+// $.transform({dataType:"xml", success:createTable, xml:request, xsl: "xsl/addclipref.xsl"});
+// calculate the length of the clips
+var rows = $("#statusTable tr");
+	for (i=0; i<rows.length; i++) {
+		start = $("#statusTable  tr:eq(" + i + ") > td.start").text();
+		
+		end = $("#statusTable  tr:eq(" + (i+1) + ") > td.start").text();
+		//console.log("ù" + start + " " + end);
+	
+	
+	}
+ 
+quickUpdate(meeting, true);
+	
+	
+$("#loading").css("background", "green");
+building = false;
+}
+
+function runUpdates(timeout) {
+	quickUpdate(meeting, false);
+	setTimeout("runUpdates("+timeout+")", timeout);
+}
+
+function runTableBuilder(timeout) {
+	console.log('table');
+	buildTable(meeting);
+	setTimeout("runTableBuilder("+timeout+")", timeout);
+}
+
+
+$().ready(function() {
+		$("#meeting").text(meeting);
+		runTableBuilder(60000);
+		setTimeout("runUpdates(5000)", 5000);
+});
+
+</script>
+
+
+</head>
+<body>
+<div id="#canvas">
+<!-- <p>Select a meeting: </p> -->
+	<p>Meeting: <span id="meeting"></span></p>
+	<p>Loading: <span id="loading">&nbsp;&nbsp;&nbsp;</span></p>
+	<div id="tableWrapper">
+		<div id="tablePlaceholder"></div>
+	</div>
+	</div>
+</body>

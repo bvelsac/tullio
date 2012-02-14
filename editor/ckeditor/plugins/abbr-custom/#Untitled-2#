@@ -1,0 +1,36 @@
+,
+							{
+								// Dialog window UI element: a text input field for the abbreviation text.
+								// http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.ui.dialog.textInput.html
+								type : 'text',
+								id : 'abbr',
+								// Text that labels the field.
+								// http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.ui.dialog.labeledElement.html#constructor
+								label : 'Abbreviation',
+								// Validation checking whether the field is not empty.
+								validate : CKEDITOR.dialog.validate.notEmpty( "Abbreviation field cannot be empty" )
+							},
+							{
+								// Another text input field for the explanation text with a label and validation.
+								type : 'text',
+								id : 'title',
+								label : 'Explanation',
+								validate : CKEDITOR.dialog.validate.notEmpty( "Explanation field cannot be empty" )
+							}	 
+						]
+					},
+					{
+						// Definition of the Advanced Settings dialog window tab with its id, label and contents.
+						id : 'tab2',
+						label : 'Advanced Settings',
+						elements :
+						[
+							{
+								// Yet another text input field for the abbreviation ID.
+								// No validation added since this field is optional.
+								type : 'text',
+								id : 'id',
+								label : 'Id'
+							}
+						]
+					}

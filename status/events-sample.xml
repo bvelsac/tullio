@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<events>
+  <e n="1" time="14:35:07" speaker="" type="OUV-OPE" notes="" c="y" length="00:04" lang="F" committed="X" status-orig="" status-trans=""/>
+  <e n="2" time="14:35:12" speaker="MANDAILA Gisèle" type="INT" props="Grouwels " notes="gehandicapten" c="y" length="00:10" lang="F" committed="X"/>
+  <e n="3" time="14:35:22" speaker="MANDAILA Gisèle" type="new FR" lang="F" c="y" length="04:04" committed="X"/>
+  <e n="4" time="14:39:27" speaker="DELFORGE Céline" type="new FR" lang="F" c="y" length="02:02" committed="X"/>
+  <e n="5" time="14:41:29" c="y" lang="F" type="newFR" speaker="Grouwels, Brigitte" length="03:38" committed="X"/>
+  <e n="6" time="14:45:08" c="y" type="new clip" length="03:25" committed="X"/>
+  <e n="7" time="14:48:33" speaker="MANDAILA Gisèle" type="new FR" lang="F" c="y" length="02:57" committed="X"/>
+  <e n="8" time="14:51:31" c="y" lang="F" type="newFR" speaker="Grouwels, Brigitte" length="02:56" committed="X"/>
+  <e n="9" time="14:54:28" speaker="MANDAILA Gisèle" type="new FR" lang="F" c="y" length="01:30" committed="X"/>
+  <e n="10" time="14:55:58" speaker="SCHEPMANS Françoise" type="QO-MV" props="Grouwels " notes="biljetverdelers" c="y" length="00:12" committed="X"/>
+  <e n="11" time="14:56:10" speaker="SCHEPMANS Françoise" type="new FR" lang="F" c="y" length="02:38" committed="X"/>
+  <e n="12" time="14:58:49" speaker="DELFORGE Céline" type="new FR" lang="F" c="y" length="03:42" committed="X"/>
+  <e n="13" time="15:02:32" c="n" type="new clip" length="00:29" committed="X"/>
+  <e n="14" time="15:03:01" c="y" lang="F" type="new FR" length="00:03" notes="opm vz" committed="X"/>
+  <e n="15" time="15:03:05" speaker="DELFORGE Céline" type="new FR" lang="F" c="n" length="00:15" committed="X"/>
+  <e n="16" time="15:03:20" c="n" lang="F" type="new FR" length="00:02" notes="opm vz" committed="X"/>
+  <e n="17" time="15:03:23" speaker="DELFORGE Céline" type="new FR" lang="F" c="n" length="00:52" committed="X"/>
+  <e n="18" time="15:04:15" c="y" lang="F" type="newFR" speaker="Grouwels, Brigitte" length="02:12" committed="X"/>
+  <e n="19" time="15:10:15" c="y" lang="" type="END" speaker="" length="" committed="X"/>
+</events>

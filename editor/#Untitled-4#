@@ -1,0 +1,66 @@
+body {
+    font: 75% normal verdana,arial,tahoma,"sans serif";
+}
+.hidden {
+    display: none;
+}
+.check {
+    color: red;
+}
+.alert {
+    color: red;
+}
+#controls ul li {
+    background: none repeat scroll 0 0 gray;
+    border: thin solid black;
+    color: white;
+    display: inline;
+    font-size: 12px;
+    padding: 2px 4px;
+}
+#controls ul li {
+    background: none repeat scroll 0 0 gray;
+    border: medium none white;
+    color: silver;
+    display: inline;
+}
+#controls * {
+    display: table-cell;
+    margin-top:  0px;
+    vertical-align: top;
+}
+#recording {
+    height:  150px;
+    background: gold;
+}
+#player {
+    float:  right;
+    height:  170px;
+    width:  66%;
+    background:  red;
+}
+
+
+.playlist li.sm2_playing {
+    background: red !important;
+    height: 100px !important;
+}
+.playlist li {
+    background:  purple !important;
+    height: 100px !important;
+}
+
+
+page-player css:
+
+
+ul.playlist li a {
+    color: #000000;
+    display: block;
+    font-size: 120%;
+    font-weight: normal;
+    outline: medium none;
+    position: relative;
+    text-decoration: none;
+    z-index: 2;
+}

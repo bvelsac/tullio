@@ -1,0 +1,59 @@
+					{
+						// Definition of the Basic Settings dialog window tab (page) with its id, label, and contents.
+						// http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.dialog.contentDefinition.html
+						id : 'eventInfo',
+						label : 'Enter Event',
+						elements :
+						[						
+							{
+							type: 'hbox',
+							widths: ['25%', '25%', '25%', '25%'],
+							children:
+								[
+									{
+										type: 'select',
+										label: 'Type',
+										id : 'type',
+										multiple : 'false',
+										// items : [['Agenda', 'A'], ['Sprekers', 'S'], ['Zaal', 'Z']],
+										items : eventTypes[langChoice],
+										'default' : 'QO-MV',
+										onChange : function (api) {
+											alert('Current value: ' + this.getValue() );
+										}
+									},
+									{
+										type: 'select',
+										label: 'Type',
+										id : 'type2',
+										multiple : 'false',
+										// items : [['Agenda', 'A'], ['Sprekers', 'S'], ['Zaal', 'Z']],
+										items : eventTypes[langChoice],
+										'default' : 'QO-MV',
+										onChange : function (api) {
+											alert('Current value: ' + this.getValue() );
+										}
+									},
+									{
+										type: 'select',
+										id : 'speaker',
+										multiple : 'false',
+										// items : [['Agenda', 'A'], ['Sprekers', 'S'], ['Zaal', 'Z']],
+										items : speakers,
+										'default' : '',
+										onChange : function (api) {
+											alert('Current value: ' + this.getValue() );
+										}
+									},
+									{
+										type: 'checkbox',
+										id : 'agree',
+										label : 'Nieuwe clip ?',
+										onClick : function() {
+											alert( 'Checked: ' + this.getValue() );
+										}
+									}
+								]
+						}
+				]
+			}

@@ -1,0 +1,71 @@
+		.cell-title {
+			font-weight: bold;
+		}
+
+		.cell-effort-driven {
+			text-align: center;
+		}
+		
+		
+		div.buttons, div.more {
+			display:block;
+			clear:left;
+			//padding-top:10px;
+		}
+		
+            div.buttons *, div#clock1 *, div.commit *, div.agenda * {
+                font-family: Helvetica, Verdana, Arial;
+                font-size: 1em
+            }
+            
+            div.buttons div, div.buttons span, div.commit *  {
+                width: 100px;
+                float: left;
+                border: solid 1px #333333;
+                padding: 4px;
+                background-color: white;
+                margin: 5px
+            }
+						
+						div.commit * {
+							background-color: #99ff33;
+							
+						}
+						
+						div.buttons span  {
+						border: none;
+						background-color: none;
+						font-weight:bold;
+						
+						}
+						
+						div.inner {
+							 width: 100px;
+                color: #333333;
+                border: solid 1px #333333;
+                padding: 4px;
+                background-color: white;
+                margin: 3px
+							
+							
+						}
+						
+						div.more, div.moreCont {
+                float: left;
+                color: #333333;
+                border: solid 1px #333333;
+                padding: 4px;
+                background-color: white;
+                margin: 3px
+            
+						}
+		
+		
+						div#basic * {color:#0000cc;}
+						div#events * {color:green;}
+						div#govNL * {color:purple;}
+						div#govFR * {color:red;}
+		
+		
+		
+

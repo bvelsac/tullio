@@ -8,6 +8,8 @@
   <xsl:variable name="conf" select="document('/exist/tullio/xml/titles.xml')" >
   </xsl:variable>
   -->
+  <xsl:variable name="soundURL" select="'../soundmanager/recordings/'"></xsl:variable>
+  <xsl:variable name="soundExt" select="'.mp3'"></xsl:variable>
   <xsl:variable name="conf" select="//reference"/>
   <xsl:variable name="meeting-type">
     <xsl:choose>
@@ -20,10 +22,65 @@
     
   </xsl:variable>
   
+  <xsl:variable name="datestring-current" select="'20110323'"></xsl:variable>
+  <xsl:variable name="datestring-next" select="'20110425'"></xsl:variable>
+  
   
   <xsl:template match="/">
     <xsl:for-each select="//e[@c='y']">
       <tr id="{concat('R', @n)}">
+        <td class="sound">
+          
+          <!-- create a list of events for the sound markers -->
+        <!--  time="15:53:07"
+        if the clip has a start time before 8AM, the link will point to the sound file of the day after the meeting (nightly meeting) 
+        *** day of meeting AND next day need to be specified when creating the agenda ! ***
+        and also
+        - meeting type
+        - AM / PM
+        as separate fields
+        -->
+          <a>
+            <xsl:attribute name="href">
+              
+            </xsl:attribute>
+            <xsl:text>Play</xsl:text>
+          </a>
+          
+          <xsl:for-each select="key('clip', @n)">
+            
+            
+            
+            <xsl:for-each select="key('clip', @n)">
+            
+            
+            
+            
+            </xsl:for-each>  
+            <!--
+            yyyymmddhhmm.mp3
+            <li>
+              <a href="http://freshly-ground.com/data/audio/binaural/Rubber%20Chicken%20Launch%20%28office%29.mp3">Rubber Chicken Launch (Office)</a>
+              <div class="metadata">
+                <div class="duration">0:47</div>
+                <ul>
+                  <li>
+                    <p>First attempt</p>
+                    <span>0:00</span>
+                  </li>
+                  <li>
+                    <p>Fire!</p>
+                    <span>0:02</span>
+                  </li>
+                  <li>
+          -->
+          </xsl:for-each>
+          
+          
+        </td>
+        
+        
+        
         <td class="events">
           <!--<div class="meta-xml">
 										<xsl:copy-of select="."/>
@@ -92,7 +149,16 @@
         <xsl:value-of select="@type"/>
       </td>
       <td class="e-speaker">
-        <xsl:value-of select="@speaker"/>
+        <xsl:choose>
+          <xsl:when test="string(@speaker)">
+            <xsl:value-of select="@speaker"/>    
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="@notes"/>
+          </xsl:otherwise>
+        </xsl:choose>
+        
+        
       </td>
     </tr>
   </xsl:template>
@@ -112,10 +178,42 @@
       </xsl:when>
     </xsl:choose>
   </xsl:template>
-  <xsl:template match="e[@type='QA-AV']" mode="initialize-text">
+  
+  
+  
+  
+  
+  
+  
+  
+  <xsl:template match="e[@type='QA-AV'] | e[@type='QO-MV'] | e[@type='INT']" mode="initialize-text">
     <xsl:variable name="speaker" select="@speaker"/>
     <xsl:variable name="gov" select="@props"/>
     <xsl:variable name="lang" select="@lang"></xsl:variable>
+    <xsl:variable name="type-NL">
+      <xsl:choose>
+        <xsl:when test="@type='INT'">Interpellatie van </xsl:when>
+        <xsl:when test="@type='QO-MV'">
+          <xsl:text>Dringende vraag van</xsl:text>
+        </xsl:when>
+        <xsl:otherwise>Mondelinge vraag van</xsl:otherwise>
+      </xsl:choose>
+      </xsl:variable>
+       
+    <xsl:variable name="type-FR">
+      <xsl:choose>
+        <xsl:when test="@type='INT'">Interpellation de </xsl:when>
+        <xsl:when test="@type='QO-MV'">
+          <xsl:text>Question orale de</xsl:text>
+        </xsl:when>
+        <xsl:otherwise>Question d'actualité de </xsl:otherwise>
+      </xsl:choose>
+      
+      
+    </xsl:variable>
+    
+       
+
     <xsl:variable name="meeting-type">
       <xsl:choose>
         <xsl:when test="contains(preceding-sibling::*[contains(@type, 'VVGGC') or contains(@type, 'BHP')][1]/@type, 'BHP')">BHP</xsl:when>
@@ -127,7 +225,7 @@
     <xsl:choose>
       <xsl:when test="@lang='N'">
         <p c="{@clip}">
-          <xsl:text>Dringende vraag van </xsl:text>
+          <xsl:value-of select="$type-NL"/>
           <xsl:choose>
             <!--  test="$conf//p[@code=$speaker]/gender='M'" -->
             <xsl:when test="$conf//p[@code=$speaker]/gender='M'"> de heer </xsl:when>
@@ -156,7 +254,8 @@
       </xsl:when>
       <xsl:otherwise>
         <p c="{@clip}">
-          <xsl:text>Question d'actualité de </xsl:text>
+          <xsl:value-of select="$type-FR"/>
+          
           <xsl:choose>
             <!--  test="$conf//p[@code=$speaker]/gender='M'" -->
             <xsl:when test="true()">M. </xsl:when>

@@ -1,0 +1,79 @@
+<html>
+
+
+	<head>
+	</head>
+	
+	
+	<body>
+	<h1>Tullio Transcription System: Technical documentation</h1>
+	<h2>Overview</h2>
+	<p>There are three main applications:</p>
+	<ul>
+	<li>List of Meetings (includes creating a new meeting)</li>
+	<li>Agenda Definition</li>
+	<li>Logger</li>
+	<li>Editor</li>
+	<h2>List of Meetings</h2>
+	<p>Files involved:</p>
+list-collections.xql
+=> lists the collections defined  as child collections of the tullio collection
+
+checks if a logfile exists, if not, displays a link to the meeting logger application page with the meeting id as query parameter
+if there is already a log file, displays a link to the editor application page with the meeting id as a query parameter
+
+contains a link to the Agenda application where the user can define a new meeting and agenda
+
+TODO: create a link to edit existing agendas and logfiles, create a new application page to display an overview of the clip status
+
+Editor
+
+editor3.html
+
+initialization
+
+Each time the editor page is loaded, the browser calls the script initialize.xql that checks if the text file for this meeting exists and if not, creates one. 
+
+It creates this file by running 
+
+=> is verkeerd , moet gebeuren bij het doorsturen van de logger info (dus door receiver.xql)
+receiver.xql moet controleren of er al een textfile bestaat, zo niet ŽŽn aanmaken
+als er wel al een is, nakijken welke de laatste event is en textblokken aanmaken voor *nieuwe* events
+
+Standaard mechanisme voor updates:
+
+- lijst van events en van tekstblokken wordt opgevraagd via return-combined
+- over resultaat wordt addclipref.xsl uitgevoerd
+- over resultaat daarvan wordt group.xsl uitgevoerd
+- het resultaat daarvan wordt opgeslagen in #hidden en gebruikt om de zichtbare blokken te vervangen
+
+
+
+
+daarna is er nog de stylesheet group.xsl, die ook de formattering van de events bevat, en die als er geen tekst wordt gevonden voor een event, automatisch tekst genereert voor het event
+
+hiervoor haalt de functie initialization, die alleen maar bij het laden van de pagina wordt uitgevoerd, het bestand titles.xml op
+implicatie is dat, wanneer er nieuwe events bijkomen, deze niet client side kunnen worden omgezet tot tekst aangezien titles.xml enkel de eerste keer beschikbaar is... 	
+maar die nieuwe events zullen wel automatisch worden geladen, en automatisch verwerkt tot tekstblokken
+dus titles.xml moet altijd worden toegevoegd aan de dataset voor de transformatie
+
+proberen op te slaan in een globale variabele...
+
+invoer-agenda2.html doet POST naar hello2.xql met dump van ingevoerde tabelinfo
+
+Meeting-recorder-nv2.html toont tabel met agenda-events voorgedefinieerd (uit hello3.xql)
+stuurt dump van tabel door naar receiver.xql
+	
+	
+	
+	
+	</body>
+
+
+
+
+
+
+
+
+</html>

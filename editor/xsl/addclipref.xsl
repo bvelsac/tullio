@@ -3,7 +3,9 @@
     version="1.0">
   <xsl:output encoding="UTF-8" method="xml"/>
     <xsl:template match="/">
-        
+      
+      
+      
         <all>
             <events>
                 <xsl:apply-templates select="/all/events/e"></xsl:apply-templates>
