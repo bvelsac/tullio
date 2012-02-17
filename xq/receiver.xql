@@ -47,6 +47,12 @@ let $events := transform:transform($nodes, "../xsl/logger2events.xsl", ())
 
 
 let $stored := xdb:store(concat("/db/tullio/", $meeting), "events.xml", $events)
+
+
+let $locks := <locks meeting="{$meeting}"></locks>
+
+let $stored2 := xdb:store(concat("/db/tullio/", $meeting), "locks.xml", $locks)
+
 (:
 
 let $point := doc($text-doc)//p[@c='0']

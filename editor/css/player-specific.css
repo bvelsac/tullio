@@ -1,4 +1,5 @@
 #soundmanager-debug {
+	display: none !important;
  /* SM2 debug container (optional, makes debug more useable) */
  position:absolute;position:fixed;*position:absolute;bottom:10px;right:10px;width:50em;height:18em;overflow:auto;background:#fff;margin:1em;padding:1em;border:1px solid #999;font-family:"lucida console",verdana,tahoma,"sans serif";font-size:x-small;line-height:1.5em;opacity:0.9;filter:alpha(opacity=90);z-index:99;
 }
@@ -11,7 +12,7 @@ body {
 .check {color:red;}
 .alert {color: red;}
 
-
+/*
 #controls ul li {
     background: none repeat scroll 0 0 gray;
     border: thin solid black;
@@ -30,4 +31,78 @@ body {
 	color: silver;
 	border: white;
 }
+
+*/
+
+body {
+    font: 75% normal verdana,arial,tahoma,"sans serif";
+}
+.hidden {
+    display: none;
+}
+.check {
+    color: red;
+}
+.alert {
+    color: red;
+}
+.offset {font-size: 12px;}
+#controls {
+	margin-top: 22px;
+	horizontal-align: middle;
+}
+
+#controls ul li {
+    background: none repeat scroll 0 0 #5588BB;
+    border: solid thin silver;
+    color: silver;
+    display: inline;
+		margin-top: 0px;
+		vertical-align: top;
+		padding-top: 2px;
+		padding-bottom: 2px;
+		padding-left: 4px;
+		padding-right: 4px;
+		font-size: 12px;
+}
+
+#recording {
+    height:  100px;
+    background: #5588BB;
+}
+#player {
+    float:  right;
+    height:  150px;
+    width:  66%;
+    background:  #5588BB;
+}
+
+
+.playlist li.sm2_playing {
+    background: #5588BB !important;
+    height: 100px !important;
+}
+.playlist li {
+    background:  purple !important;
+    height: 100px !important;
+		font-size: 1.5em !important; 
+}
+
+
+
+ul.playlist li a {
+    color: #000000;
+    display: block;
+    /*font-size: 100% !important;*/
+    font-weight: normal;
+    outline: medium none;
+    position: relative;
+    text-decoration: none;
+    z-index: 2;
+}
+
+
+
+
+
 

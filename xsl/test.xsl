@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:output method="xml" indent="yes" encoding="UTF-8"/>
-	<xsl:key name="events" match="//e" use=" @n"/>
+	<xsl:key name="events" match="//events/e" use=" @n"/>
 	<xsl:template match="p">
 		<xsl:param name="processed"/>
 		<xsl:param name="refIndexStart"/>
@@ -12,7 +12,7 @@
 			<xsl:with-param name="offset" select="$offset"/>
 		</xsl:apply-templates>
 	</xsl:template>
-	<xsl:template match="p[@class] | span[@class]">
+	<xsl:template match="p[@title] | span[@title]">
 		<xsl:param name="processed"/>
 		<xsl:param name="refIndexStart" select="'0'"/>
 		<xsl:param name="refIndexStop" select="'1'"/>
@@ -29,6 +29,7 @@
 				</xsl:variable>
 				<e type="new" title="{$n-value}"/>
 				<xsl:copy>
+				  <xsl:copy-of select="@class"/>
 					<xsl:attribute name="title"><xsl:value-of select="$n-value"></xsl:value-of></xsl:attribute>
 				</xsl:copy>
 				<xsl:apply-templates select="following-sibling::p[1]">
@@ -93,9 +94,29 @@
 		</xsl:choose>
 	</xsl:template>
 	<xsl:template match="/">
-		<xsl:apply-templates select="container/div/p[1]">
+	  
+	  <reconciled>
+	    <xsl:copy-of select="//div[@id='events']//e[@active='c']"/>
+	  <xsl:choose>
+	    <xsl:when test="//container/div[@id='text']/p[@title]">
+	      <xsl:apply-templates select="//container/div[@id='text']/p[1]" />
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <xsl:copy-of select="//div[@id='text']/p"/>
+	      <deactivate>
+	        <xsl:copy-of select="//div[@id='events']//e"/>
+	        
+	        
+	      </deactivate>
+	      <!-- deactivate all events -->
+	      
+	    </xsl:otherwise>
+	  </xsl:choose>
+	  
+	  <xsl:apply-templates select="//container/div[@id='text']/p[1]">
   
-  </xsl:apply-templates>
+	  </xsl:apply-templates>
+	  </reconciled>
 	</xsl:template>
 	<xsl:template name="increment">
 		<xsl:param name="preceding" select="1000" />

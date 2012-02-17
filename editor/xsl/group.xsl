@@ -46,17 +46,55 @@
             </xsl:attribute>
             <xsl:text>Play</xsl:text>
           </a>
+          <xsl:variable name="hours" select="substring-before(@time,':')"></xsl:variable>
+          <xsl:variable name="minutes" select="substring-before(substring-after(@time, ':'), ':')"></xsl:variable>
+          <xsl:variable name="seconds" select="substring-after(substring-after(@time, ':'), ':')"></xsl:variable>
+          <xsl:comment>
+            <xsl:value-of select="$hours"/>,
+            <xsl:value-of select="$minutes"/>,
+            <xsl:value-of select="$seconds"/>,
+          </xsl:comment>
           
-          <xsl:for-each select="key('clip', @n)">
+          <xsl:variable name="recording">
+            <xsl:choose>
+              <xsl:when test="$minutes &lt; 15">
+                <xsl:value-of select="concat($datestring-current, $hours, '00', $soundExt)"/>
+              </xsl:when>
+              <xsl:when test="$minutes &lt; 30">
+                <xsl:value-of select="concat($datestring-current, $hours, '15', $soundExt)"/>
+              </xsl:when>
+              <xsl:when test="$minutes &lt; 45">
+                <xsl:value-of select="concat($datestring-current, $hours, '30', $soundExt)"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="concat($datestring-current, $hours, '45', $soundExt)"/>
+              </xsl:otherwise>
+            
+            </xsl:choose>
             
             
+          </xsl:variable>
+          
+          <ul class="playlist hidden">
             
-            <xsl:for-each select="key('clip', @n)">
-            
-            
-            
-            
-            </xsl:for-each>  
+            <li ><a id='play-{@n}' href="{concat('','')}">
+  
+              <!-- time calculations inc. offset in js -->
+            </a> <span class="offset">start: 00:07</span>
+              <div class="metadata">
+                <div class="duration">15:00</div> <!-- total track time (for positioning while loading, until determined -->
+                <ul>
+                  
+                  <xsl:for-each select="key('clip', @n)">
+                    <!-- must be updated using js before loading the track -->
+                    <li><p><xsl:value-of select="@speaker"/></p><span>0:00</span></li> <!-- first scene -->
+                      
+                  </xsl:for-each>
+                  
+                </ul>
+              </div>
+            </li>
+          </ul>
             <!--
             yyyymmddhhmm.mp3
             <li>
@@ -74,7 +112,6 @@
                   </li>
                   <li>
           -->
-          </xsl:for-each>
           
           
         </td>
@@ -87,14 +124,15 @@
 										</div>
 										-->
           <xsl:variable name="top" select="@n"/>
+          <div class="structured-events">
+            <events>
+              <xsl:copy-of select="key('clip', @n)" />
+            </events>
+            
+          </div>
           <table class="events-table">
             <xsl:for-each select="key('clip', @n)">
-              <div class="structured-events">
-								<events>
-								<xsl:copy-of select="//events/e" />
-								</events>
-
-              </div>
+              
               <xsl:apply-templates mode="events-table" select="."/>
               <li class="startstop">
                 <xsl:if test="position()=1">
@@ -137,6 +175,10 @@
       </tr>
     </xsl:for-each>
   </xsl:template>
+  
+  
+  
+  
   <xsl:template match="e" mode="events-table">
     <tr>
       <td class="e-n">

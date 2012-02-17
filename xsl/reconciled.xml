@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reconciled><e title="1.1" type="new"/>
+  <p title="1.1"/>
+  <e n="1.0">
+    <md>Metadata for event 1 - clip start</md>
+  </e>
+  <leftovers><cutoff>0</cutoff>
+    <e n="1.8">
+      <md>Metadata for event 2 </md>
+    </e>
+    <e n="1.9">
+      <md>Metadata for event 2 </md>
+    </e>
+    <e n="2.0">
+      <md>Metadata for event 2 </md>
+    </e>
+    <e n="2.1">
+      <md>Metadata for event 2 </md>
+    </e>
+    <e n="2.2">
+      <md>Metadata for event 2 </md>
+    </e>
+    <e n="2.4">
+      <md>Metadata for event 2 </md>
+    </e>
+  </leftovers>
+  <e n="2.9">
+    <md>Metadata for event 2 </md>
+  </e>
+  <moved><e n="2.0">
+    <md>Metadata for event 2 </md>
+  </e>
+    <new-nr>2.91</new-nr>
+    <p class="proc" title="2.0"/>
+  </moved>
+  <p class="proc" title="2.0"/>
+  <e title="2.92" type="new"/>
+  <p title="2.92"/>
+  <e n="3.0">
+    <md>Metadata for event 3 - clip end</md>
+  </e>
+  <e title="1.1" type="new"/>
+  <p title="1.1"/>
+  <e n="1.0">
+    <md>Metadata for event 1 - clip start</md>
+  </e>
+  <leftovers><cutoff>0</cutoff>
+    <e n="1.8">
+      <md>Metadata for event 2 </md>
+    </e>
+    <e n="1.9">
+      <md>Metadata for event 2 </md>
+    </e>
+    <e n="2.0">
+      <md>Metadata for event 2 </md>
+    </e>
+    <e n="2.1">
+      <md>Metadata for event 2 </md>
+    </e>
+    <e n="2.2">
+      <md>Metadata for event 2 </md>
+    </e>
+    <e n="2.4">
+      <md>Metadata for event 2 </md>
+    </e>
+  </leftovers>
+  <e n="2.9">
+    <md>Metadata for event 2 </md>
+  </e>
+  <moved><e n="2.0">
+    <md>Metadata for event 2 </md>
+  </e>
+    <new-nr>2.91</new-nr>
+    <p class="proc" title="2.0"/>
+  </moved>
+  <p class="proc" title="2.0"/>
+  <e title="2.92" type="new"/>
+  <p title="2.92"/>
+  <e n="3.0">
+    <md>Metadata for event 3 - clip end</md>
+  </e>
+</reconciled>

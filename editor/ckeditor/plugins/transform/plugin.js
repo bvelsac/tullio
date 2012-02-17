@@ -1,6 +1,12 @@
 var global = "test";
 var pathToXSL = "/exist/tullio/editor/xsl/";
 
+function jq(myid) {
+
+
+   return '#' + myid.replace(/(:|\.)/g,'\\$1');
+ }
+	
 
 
 function helper(xml,xsl,xmlorig) {
@@ -64,14 +70,24 @@ CKEDITOR.plugins.add('transform',
 				exec : function( editor )
 				{    
 					
-					var titles;
+					//var titles;
 					
 				  editor.insertHtml("<p>insert before transform</p>");
-					var content = '<container><div id="text">' + editor.getData() + '</div><div id="events">' + $('#' + rowId + ' div.structured-events').html() + '</div>' + titlesAsString + '</container>';
+					// console.log(jq(rowId + ' div.structured-events'));
+
+					
+					var content = '<container><div id="text">' + editor.getData() + '</div><div id="events">' + $(jq(rowId) + ' div.structured-events').html() + '</div>'  + '</container>';
+					
+					// console.log('titles; ' + titles);
+					
+					var contentDoc = $.parseXML(content);
+					contentDoc.getElementsByTagName("container")[0].appendChild(titles);					
+					
+//					#R1 div\.structured-events
 					
 					// hier eenvoudig ook de content van de structured events en de titles toeveogen, ook als string en via html extractie in jquery
 					
-					console.log(titlesDoc);
+					// console.log(titlesDoc);
 					
 //					$(editor).find("iframe").find("body").html("<p>cou cou</p>");
 					
@@ -89,7 +105,7 @@ CKEDITOR.plugins.add('transform',
 					
 					$.transform({
 							el : "#resultpane",
-							xmlobj: titlesDoc,
+							xmlobj: contentDoc,
 							xsl: pathToXSL +  "reconcile.xsl",
 							async: false,
 							error: function(html,xsl,xml,object,e) {alert(e);}

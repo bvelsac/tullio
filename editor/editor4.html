@@ -9,9 +9,8 @@
 	table {font-size: 12px; }
 	#remove {width: 100%;}
 	#header {width: 100%;}
-	#header {clear:both};
-	#header div {background-color: white;  margin: 0.5%; float: left; }
-	#meeting {width: 25%; float: right;}
+	/* #header div {background-color: white;  margin: 0.5%; float: left; } */
+	/* #meeting {width: 25%; float: right;} */
 	#free {width: 19%;}
 	#navigation ul {padding: 0px;}
 	#navigation ul li {list-style-type: none; display: inline; margin-right: 20px;}
@@ -50,7 +49,26 @@
 	</style>
 
 	<style id="styles" type="text/css">
-
+	.ui-layout-north {position: fixed;
+	left: 0px;
+	top: 0px;
+	height: 150px;
+	width: 100%;
+	}
+	#spacer {clear: both;}
+	
+	#header > div {float: left !important;
+	width: 10%;}
+	
+	#header > div#player {width: 600px !important;}
+	.ui-layout-north {
+		background-color: #00cc99 !important;
+	}
+	#centerpane {margin-top: 150px !important;
+	background-color: white;}
+	/* #sm2-container {display: none;} */
+	
+	
 		div.editable
 		{
 			border: solid 2px Transparent;
@@ -67,11 +85,12 @@
 	</style>
 	
 	
-	<link href="css/player-specific.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" type="text/css" href="../soundmanager/demo/page-player/css/page-player.css" />
 	<link rel="stylesheet" type="text/css" href="../soundmanager/demo/page-player/flashblock/flashblock.css" />
 	<link href="../soundmanager/demo/page-player/css/optional-annotations.css" type="text/css" rel="stylesheet">
-
+<link href="css/player-specific.css" rel="stylesheet" type="text/css" />
+	<link href="ckeditor/_samples/sample.css" rel="stylesheet" type="text/css" />
+	<link href="jquery.layout.css" rel="stylesheet" type="text/css" />
 	
 	
 	<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
@@ -79,7 +98,7 @@
 	
 	<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 <!--	<script src="ckeditor/_samples/sample.js" type="text/javascript"></script> --> 
-	<link href="ckeditor/_samples/sample.css" rel="stylesheet" type="text/css" />
+	
 
 	
 	<script language="javascript" src="../js-lib/jquerytransform/js/jquery-1.6.4.js"></script>
@@ -101,7 +120,6 @@
 	<script type="text/javascript" src="jquery.layout.js"></script>
 	
 	<script type="text/javascript" src="jsxml.js"></script>-->
-	<link href="jquery.layout.css" rel="stylesheet" type="text/css" />
 
 	
 	<script>
@@ -136,6 +154,10 @@
 	var languages;
 	var statusCodes;
 	
+	// variable containing list of team members
+	
+	
+	var team = ["Bienne", "Céliné", "Laurence", "Veerle", "Anne", "Johan", "Anita", "Nathalie", "Carine", "Sophie", "Alain", "Jean-Pierre", "Thierry", "Vincent", "Bert", "Michel", "Bérénice", "Isabelle"];
 	
 	
 	
@@ -450,6 +472,15 @@ $().ready(function(){
 		var asString = "";
 		// variable titles does get defined although it cannot be logged
 		
+		
+	      $.each(team, function(val, text) {
+						console.log(team);
+            $('#person').append(
+                $('<option></option>').val(val).html(text)
+            );
+				});
+		
+		
 		setUpPlayer();
 		
 		jQuery.get( "/exist/tullio/xml/titles.xml", 
@@ -458,7 +489,7 @@ $().ready(function(){
 				console.log('assigned var');
 			
 				
-				titles = data.documentElement;
+				// titles = data.documentElement;
 				
 			},
 			"xml" );
@@ -470,6 +501,7 @@ $().ready(function(){
 											console.log(testeee);
 											titlesAsString = testeee;
 											titlesDoc = result;
+											titles = result.documentElement;
                   },
          async:   false,
 				 contentType: "text/xml"
@@ -539,8 +571,48 @@ $("#overview").text(mmm);
 		});
 						
 
-		$("#text-table td").live("dblclick", function(){
+		$("#text-table td").live("dblclick", 
+			function(){
+				
+				var locked = false;		
+// editReqCat = this.id.slice(-1,1) == 'o' ? 'orig' : 'trans';
+editReqId = this.id.slice(1,-2);
+author = $("#person option:selected").text();
+				
+var request = $.ajax({
+  url: "../xq/lock.xql",
+  type: "POST",
+  data: {
+							"v": $(this).hasClass("orig") ? "orig" : "trans",
+							"n": editReqId,
+							"id": author,
+							"m": mmm
+					},
+  async: false
+});
+
+request.done(function(msg) {
+  msgString =  (new XMLSerializer()).serializeToString(msg);
+		console.log( msgString);
+		if (msgString.indexOf('success')=='-1') {
+			locked = true;
+		}
+});
+
+request.fail(function(jqXHR, textStatus) {
+  alert( "Request failed: " + textStatus );
+			locked = true;
+});
+				
+
+
+
+
 				console.log("clicked: " + this.id);
+				// try to acquire a lock
+				
+				if ( locked ) {alert("locked"); locked= false; return false;}
+				
 				// check if another clip is being edited, store text and clean up
 				if ( edited != '' ) {
 					$("#cke").attr('id', '');
@@ -632,10 +704,33 @@ $("#overview").text(mmm);
 					
 				
 					console.log(status + cat + clipid + stop + meeting);
-					
 					var old = $(this).offset().top;
 					
+					$.post("../xq/unlock.xql", {
+							"v": cat,
+							"n": clipid,
+							"id": author,
+							"m": mmm
+					}, function(data) {
+							// alert("Data Loaded: " + data);
+					});
+					
+					
+				
+
+					
+					
+					
+					
+					
+					
+					
 					editor.destroy();
+					
+					
+					
+					
+					
 					// scroll yr text into view
 					
 					var newe = $(this).offset().top;
@@ -644,6 +739,10 @@ $("#overview").text(mmm);
 					$("body").scrollTop(newe + z - 100);
 					console.log("oud:" + old + " nieuw:" + newe + " scrolltop:" + z + " scrolltop-nieuw:" + diff + z);
 				}
+				
+				
+					
+				
 				
 				
 				
@@ -662,18 +761,20 @@ $("#overview").text(mmm);
 					// make editor same size as replaced div
 					
 					
+					function testSave() {
+					console.log("save");
 					
+					}
 					
 	editor = CKEDITOR.replace( 'cke', {
-					toolbar: [['Source', 'Transform', 'Maximize', 'Templates', 'Abbr', 'Status']],
-					extraPlugins : 'transform,abbr,status',
+					toolbar: [['Ajaxsave','Source', 'Transform', 'Maximize', 'Templates', 'Abbr', 'Status']],
+					extraPlugins : 'ajaxsave,transform,abbr,status',
 					disableNativeSpellChecker: false,
 					startupFocus: true,
 					templates_files : [ 'ckeditor/plugins/templates/templates/default.js' ],
-					entities_processNumerical: 'force'
+					entities_processNumerical: 'force',
+					saveFunction : testSave()
 			});
-
-
 
 
 editor.on( 'contentDom', function( evt )
@@ -708,7 +809,11 @@ console.log('save key');
 				
 	//			updateVisibleTextsWhenEdit(rowId);
 			
-		});
+	
+				}
+				
+		
+		);
 		
 });
 
@@ -720,7 +825,9 @@ console.log('save key');
 <div  class="ui-layout-north">
   <div id="resultpane"></div>
   <div id="header">
-    <div id="meeting"><span id="overview"></span></div>
+    <div id="meeting"><span id="overview"></span>
+			<p>Je suis: <select id="person"></select></p>
+		</div>
 	  <div id="logo"></div>
 	  <div id="navigation">
 	    <ul>
@@ -729,17 +836,14 @@ console.log('save key');
 	    </ul>
     </div>
 	  <div id="player">
-	    <div id="recording">
-	    </div>
+	    <div id="recording">Audioplayer</div>
 	    <div id='controls'>
 		    <ul>
-			    <li id='toStart'>TO START OF CLIP<span>F1</span></li>
-			    <li id='toEnd'>TO END OF CLIP</li>
-			    <li id='play'>PLAY</li>
-			    <li id='pause'>PAUSE</li>
-			    <li id='forward'>FORWARD</li>
+			    <li id='toStart'>PLAY FROM START</li>
+			    <li id='startStop'>PLAY / PAUSE</li>
+			    
 			    <li id="rewind">REWIND</li>
-			    <li id="reload">RELOAD</li>
+					<li id='forward'>FORWARD</li>
 		    </ul>
 	    </div>
 	    <div id="alerts">
@@ -751,7 +855,7 @@ console.log('save key');
 	  </div>
   </div>
 </div>
-
+<div id="spacer">&#160;</div>
 <div id="centerpane" class="ui-layout-center">
 <div id="tempPlayerLinks">
 <div id="clip1">
@@ -759,7 +863,7 @@ console.log('save key');
 <div id="playlistWrapper">
 <ul class="playlist hidden">
 
-  <li class="last"><a id='mpl' href="../../recordings/201112250915.mp3">09:15</a><span class="offset">00:07</span>
+  <li class="last"><a id='mpl' href="../../recordings/201112250915.mp3">09:15</a><span class="offset">start: 00:07</span>
 	<div class="metadata">
     <div class="duration">4:43</div> <!-- total track time (for positioning while loading, until determined -->
     <ul>
