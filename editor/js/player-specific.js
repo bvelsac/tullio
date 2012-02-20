@@ -258,7 +258,7 @@ function setUpPlayer(){
 		}
 		*/
 		$(document).bind('keyup', 'alt+=', function() {
-				
+				console.log('hotkey pressed');		
 				lastSound = pagePlayer.lastSound.sID;
 				if (!lastSound) {
 					console.log('no sound');
@@ -266,10 +266,17 @@ function setUpPlayer(){
 				}
 				
 				var s = soundManager.getSoundById(lastSound);
-				if (!s || !s.playState || !s.duration) {
-					console.log("something wrong");
-					return false;
+				if ( !s ) {
+					console.log('no sound'); return false;
 				}
+				else if ( !s.playState )
+				{
+					console.log('playstate null'); return false;
+				}
+				else if ( !s.duration ) {
+					console.log('duration issue'); return false;
+				}
+				
 				console.log(s.position);
 				s.setPosition(s.position + 5000);	
 				
@@ -294,23 +301,6 @@ function setUpPlayer(){
 				
 		});
 				
-						$(document).bind('keyup', 'alt+=', function() {
-				
-				lastSound = pagePlayer.lastSound.sID;
-				if (!lastSound) {
-					console.log('no sound');
-					return false;
-				}
-				
-				var s = soundManager.getSoundById(lastSound);
-				if (!s || !s.playState || !s.duration) {
-					console.log("something wrong");
-					return false;
-				}
-				console.log(s.position);
-				s.setPosition(s.position + 5000);	
-				
-		});
 	
 						
 						$(document).bind('keyup', 'alt+:', function() {
@@ -322,11 +312,17 @@ function setUpPlayer(){
 				}
 				
 				var s = soundManager.getSoundById(lastSound);
-				if (!s || !s.playState || !s.duration) {
-					console.log("something wrong");
-					return false;
+				if ( !s ) {
+					console.log('no sound');
 				}
-				console.log(s.position);
+				else if ( !!s.playState )
+				{
+					console.log('playstate null');
+				}
+				else if ( !s.duration ) {
+					console.log('duration issue');
+				}
+				
 				lastSound = pagePlayer.lastSound.sID;
 			soundManager.togglePause(lastSound);	
 				

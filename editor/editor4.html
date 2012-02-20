@@ -88,7 +88,7 @@
 	<link rel="stylesheet" type="text/css" href="../soundmanager/demo/page-player/css/page-player.css" />
 	<link rel="stylesheet" type="text/css" href="../soundmanager/demo/page-player/flashblock/flashblock.css" />
 	<link href="../soundmanager/demo/page-player/css/optional-annotations.css" type="text/css" rel="stylesheet">
-<link href="css/player-specific.css" rel="stylesheet" type="text/css" />
+	<link href="css/player-specific.css" rel="stylesheet" type="text/css" />
 	<link href="ckeditor/_samples/sample.css" rel="stylesheet" type="text/css" />
 	<link href="jquery.layout.css" rel="stylesheet" type="text/css" />
 	
@@ -123,7 +123,7 @@
 
 	
 	<script>
-	
+	var newe;
 	var noUpdate = false;
 	var updateCounter = 0;
 	var scrollState = 0;
@@ -251,8 +251,12 @@ for (i=0; i<rows.length; i++) {
 	//alert(rows[i]);
 	console.log("0replace: " + origrowIds[i] + ":" + visibleRows[i] + ":" +edited);
 	if (visibleRows[i] != edited.slice(0,-2)) {
-		// alert("about to replace, it. " + updateCounter + "." + i);
+		// alert("about to replace, it. " + updateCounter + "." + i)
+		// keep editor in place
+		
+		
 		$("#result > tr" + origrowIds[i]).replaceWith($("#hidden > tr:eq(" + 0 + ")"));
+		
 		
 		// alert("done");
 	}
@@ -260,6 +264,15 @@ for (i=0; i<rows.length; i++) {
 		$("#hidden > tr:eq(0)").remove();
 	}
 }
+
+		newPosition = $(jq(edited)).offset().top;
+		
+		if (newe != '') {
+			console.log('scrollback');
+			$("body").scrollTop($("body").scrollTop() + newPosition - newe);
+			newe = $(jq(edited)).offset().top;
+		}
+
 
 
 
@@ -628,6 +641,8 @@ request.fail(function(jqXHR, textStatus) {
 				
 				if ( locked ) {alert("locked"); locked= false; return false;}
 				
+					newe = $(this).offset().top;
+				
 				// check if another clip is being edited, store text and clean up
 				if ( edited != '' ) {
 					$("#cke").attr('id', '');
@@ -746,12 +761,15 @@ request.fail(function(jqXHR, textStatus) {
 					
 					
 					
-					// scroll yr text into view
-					
-					var newe = $(this).offset().top;
+					// scroll yr text into view when doubleclicking a clip to edit
+					// feature to be dropped as the users don't like it
+				
 					var z = $("body").scrollTop();
-					var diff = newe - old;
-					$("body").scrollTop(newe + z - 100);
+					var diff = newe - 160;
+					
+					
+					
+					$("body").scrollTop(diff);
 					console.log("oud:" + old + " nieuw:" + newe + " scrolltop:" + z + " scrolltop-nieuw:" + diff + z);
 				}
 				
