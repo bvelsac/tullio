@@ -1,8 +1,10 @@
 var noReload = true;
-
+var pagePlayer;
 
 soundManager.url = '/exist/tullio/soundmanager/swf/';
 // soundManager.url = '../../swf/';
+
+
 
 // demo only..
 function setTheme(sTheme) {
@@ -40,6 +42,63 @@ function setUpPlayer(){
 		});
 		
 	
+		
+				$("td.sound > a").live("click", function() {
+					 	noReload = false;
+			var playlist = $(this).next().html();
+			console.log(playlist);
+			
+			$("#recording").empty();
+			
+			$("#recording").html(playlist);
+			pagePlayer.init();
+			$("#recording ul").removeClass('hidden');
+	//		$("#recording a").addClass('check');
+	
+	
+			var playId = $(this).next().find("a").attr('id');
+			var thelink = document.getElementById(playId);
+			$("#alerts").addClass('alert');
+			
+			pagePlayer.handleClick({target: thelink});
+			soundManager.togglePause(playId);
+			playFromOffset(playId, 5000);
+			
+			
+		//	lastSound = pagePlayer.lastSound.sID;
+		//	console.log(lastSound);
+		//	var s = soundManager.getSoundById(lastSound);
+		//	console.log(s.readyState);
+		//	s.pause();
+    //  s.setPosition(s.position + 1000);
+	//		setTimeout("startAtOffset('" + lastSound +"')", 1000);			
+
+// pagePlayer.handleClick({target: thelink});
+			
+//			soundManager.togglePause('mpl');
+			//soundManager.togglePause(lastSound);
+			//console.log('playing again?');
+			
+//			$("#recording a").trigger('click');
+			/*var mySoundObject = soundManager.createSound({
+					id: 'pagePlayerMP3Sound0',
+					url: '../../recordings/201112250915.mp3'
+			});
+
+			soundManager.play('pagePlayerMP3Sound0');
+			*/
+			
+			$(".note:contains('Start')").css({	display : 'inline-block',
+																					background : '#ff9999'});
+			
+			noReload = true;
+				
+				
+				
+				
+		}
+		)
+
 		
 		
 		$(".load").bind("click", function(){
@@ -114,10 +173,10 @@ function setUpPlayer(){
 		});
 		
 		
-		$("#play").live("click", function(){
+		$("#startStop").live("click", function(){
 			lastSound = pagePlayer.lastSound.sID;
 			console.log(lastSound);
-			soundManager.play(lastSound);
+			soundManager.togglePause(lastSound);
 			//$('<li><a href="../_mp3/office_lcobby.mp3">Nog eentjen</a></li>').insertBefore('.last');
 		
 		
@@ -125,11 +184,46 @@ function setUpPlayer(){
 		});
 		$("#forward").live("click", function(){
 			lastSound = pagePlayer.lastSound.sID;
-			console.log(lastSound);
-			soundManager.pause(lastSound);
-			$("#recording").html(playlist);
-			$('<li><a href="../../recordings/201112250915.mp3">Nog eentjen</a></li>').insertBefore('.last');
+				if (!lastSound) {
+					console.log('no sound');
+					return false;
+				}
+				
+				var s = soundManager.getSoundById(lastSound);
+				if (!s || !s.playState || !s.duration) {
+					console.log("something wrong");
+					return false;
+				}
+				console.log(s.position);
+				s.setPosition(s.position + 5000);	
+				
 		});
+		
+		
+	$("#rewind").live("click", function(){
+			lastSound = pagePlayer.lastSound.sID;
+				if (!lastSound) {
+					console.log('no sound');
+					return false;
+				}
+				
+				var s = soundManager.getSoundById(lastSound);
+				if (!s || !s.playState || !s.duration) {
+					console.log("something wrong");
+					return false;
+				}
+				console.log(s.position);
+				s.setPosition(s.position - 5000);	
+				
+		});
+		
+		
+		
+		
+		
+		
+		
+		
 		/*
 		$(document).jkey('alt+=',function(){
 				lastSound = pagePlayer.lastSound.sID;
@@ -143,9 +237,11 @@ function setUpPlayer(){
 				
 				console.log('You pressed a key.');
 		});
-		*/
-		$(document).bind('keyup', 'alt+=', function(){
-				lastSound = pagePlayer.lastSound.sID;
+		
+		
+		
+		function forward() {
+			lastSound = pagePlayer.lastSound.sID;
 				if (!lastSound) {
 					console.log('no sound');
 					return false;
@@ -158,9 +254,85 @@ function setUpPlayer(){
 				}
 				console.log(s.position);
 				s.setPosition(s.position + 5000);
-				console.log('You pressed a key.');
+			//	console.log('You pressed a key.');
+		}
+		*/
+		$(document).bind('keyup', 'alt+=', function() {
+				
+				lastSound = pagePlayer.lastSound.sID;
+				if (!lastSound) {
+					console.log('no sound');
+					return false;
+				}
+				
+				var s = soundManager.getSoundById(lastSound);
+				if (!s || !s.playState || !s.duration) {
+					console.log("something wrong");
+					return false;
+				}
+				console.log(s.position);
+				s.setPosition(s.position + 5000);	
+				
 		});
 		
 		
+				$(document).bind('keyup', 'alt+;', function() {
+				
+				lastSound = pagePlayer.lastSound.sID;
+				if (!lastSound) {
+					console.log('no sound');
+					return false;
+				}
+				
+				var s = soundManager.getSoundById(lastSound);
+				if (!s || !s.playState || !s.duration) {
+					console.log("something wrong");
+					return false;
+				}
+				console.log(s.position);
+				s.setPosition(s.position - 5000);	
+				
+		});
+				
+						$(document).bind('keyup', 'alt+=', function() {
+				
+				lastSound = pagePlayer.lastSound.sID;
+				if (!lastSound) {
+					console.log('no sound');
+					return false;
+				}
+				
+				var s = soundManager.getSoundById(lastSound);
+				if (!s || !s.playState || !s.duration) {
+					console.log("something wrong");
+					return false;
+				}
+				console.log(s.position);
+				s.setPosition(s.position + 5000);	
+				
+		});
+	
+						
+						$(document).bind('keyup', 'alt+:', function() {
+				console.log('playpause key');
+				lastSound = pagePlayer.lastSound.sID;
+				if (!lastSound) {
+					console.log('no sound');
+					return false;
+				}
+				
+				var s = soundManager.getSoundById(lastSound);
+				if (!s || !s.playState || !s.duration) {
+					console.log("something wrong");
+					return false;
+				}
+				console.log(s.position);
+				lastSound = pagePlayer.lastSound.sID;
+			soundManager.togglePause(lastSound);	
+				
+		});
+	
+						
+						
 		
 }

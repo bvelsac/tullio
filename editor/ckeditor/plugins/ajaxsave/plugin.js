@@ -7,6 +7,7 @@ CKEDITOR.plugins.add('ajaxsave',
             {
                 exec : function( editor )
                 {
+									noUpdate = true;
 									
 									console.log("plugin " + edited);
 														var clipid = edited.slice(1,-2);
@@ -34,7 +35,7 @@ var editedcontent = "<wrapper n='" + clipid + "'>" + editor.getData().replace(/[
 					});
 					
 				setTimeout( function() { edited=''; editor.destroy() }, 50);					
-									
+									noUpdate = false;
                 },
                 canUndo : true
             });

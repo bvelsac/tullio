@@ -124,6 +124,7 @@
 	
 	<script>
 	
+	var noUpdate = false;
 	var updateCounter = 0;
 	var scrollState = 0;
 	var lastVisible = -1;
@@ -304,6 +305,11 @@ function updateVisibleTextsWhenEdit(rowId, colType) {
 
 function updateVisibleTexts() {
 	
+	if ( noUpdate ) {
+		return true;
+	}
+	
+	
 	
 	$('#text-table tr').removeClass('ruby');
 
@@ -464,6 +470,9 @@ function addTitles(doc) {
 
 $().ready(function(){
 		
+		
+		
+		
 		eventTypes = {
 			'N' : [['Mondelinge vraag','QO-MV'], ['Interpellatie','INT'], ['Dringende vraag','QA-DV'], ['Zaal: rumoer','NOISE'], ['Zaal: samenspraak','JUMBLE'], ['Verandering van voorzitter','PRES'], ['Onverstaanbaar','INC'], ['Motie','MOT']],
 			'F' : [['',''], ['',''], ['',''], ['',''], ['',''], ['',''], ['',''], ['',''], ]
@@ -569,6 +578,12 @@ $("#overview").text(mmm);
 		$(window).scroll(function(){
 			scrollState = 1;
 		});
+		
+		
+	
+		
+		
+		
 						
 
 		$("#text-table td").live("dblclick", 

@@ -53,6 +53,10 @@ let $locks := <locks meeting="{$meeting}"></locks>
 
 let $stored2 := xdb:store(concat("/db/tullio/", $meeting), "locks.xml", $locks)
 
+let $descr := <meeting>{concat(substring-before($meeting, '-'), substring-before(substring-after($meeting, '-'), '-'), substring-before(substring-after(substring-after($meeting, '-'), '-'), '-'))}</meeting>
+
+let $addDescr := update insert $descr into doc(concat("/db/tullio/", $meeting, '/', "events.xml"))/events
+
 (:
 
 let $point := doc($text-doc)//p[@c='0']

@@ -22,8 +22,7 @@
     
   </xsl:variable>
   
-  <xsl:variable name="datestring-current" select="'20110323'"></xsl:variable>
-  <xsl:variable name="datestring-next" select="'20110425'"></xsl:variable>
+  <xsl:variable name="datestringCurrent" select="//events/meeting"></xsl:variable>
   
   
   <xsl:template match="/">
@@ -40,12 +39,7 @@
         - AM / PM
         as separate fields
         -->
-          <a>
-            <xsl:attribute name="href">
-              
-            </xsl:attribute>
-            <xsl:text>Play</xsl:text>
-          </a>
+
           <xsl:variable name="hours" select="substring-before(@time,':')"></xsl:variable>
           <xsl:variable name="minutes" select="substring-before(substring-after(@time, ':'), ':')"></xsl:variable>
           <xsl:variable name="seconds" select="substring-after(substring-after(@time, ':'), ':')"></xsl:variable>
@@ -58,16 +52,16 @@
           <xsl:variable name="recording">
             <xsl:choose>
               <xsl:when test="$minutes &lt; 15">
-                <xsl:value-of select="concat($datestring-current, $hours, '00', $soundExt)"/>
+                <xsl:value-of select="concat($datestringCurrent, $hours, '00', $soundExt)"/>
               </xsl:when>
               <xsl:when test="$minutes &lt; 30">
-                <xsl:value-of select="concat($datestring-current, $hours, '15', $soundExt)"/>
+                <xsl:value-of select="concat($datestringCurrent, $hours, '15', $soundExt)"/>
               </xsl:when>
               <xsl:when test="$minutes &lt; 45">
-                <xsl:value-of select="concat($datestring-current, $hours, '30', $soundExt)"/>
+                <xsl:value-of select="concat($datestringCurrent, $hours, '30', $soundExt)"/>
               </xsl:when>
               <xsl:otherwise>
-                <xsl:value-of select="concat($datestring-current, $hours, '45', $soundExt)"/>
+                <xsl:value-of select="concat($datestringCurrent, $hours, '45', $soundExt)"/>
               </xsl:otherwise>
             
             </xsl:choose>
@@ -75,9 +69,14 @@
             
           </xsl:variable>
           
+          <a class='startRec' href='#'>
+            
+            <xsl:text>Play</xsl:text>
+          </a>
+          <div calss="playlistWrapper">
           <ul class="playlist hidden">
             
-            <li ><a id='play-{@n}' href="{concat('','')}">
+            <li ><a id='play-{@n}' href="{concat($soundURL,$recording)}">
   
               <!-- time calculations inc. offset in js -->
             </a> <span class="offset">start: 00:07</span>
@@ -95,6 +94,7 @@
               </div>
             </li>
           </ul>
+					</div>
             <!--
             yyyymmddhhmm.mp3
             <li>

@@ -8,6 +8,7 @@
       
         <all>
             <events>
+              <xsl:copy-of select="//meeting"/>
                 <xsl:apply-templates select="/all/events/e"></xsl:apply-templates>
                 
             </events>
