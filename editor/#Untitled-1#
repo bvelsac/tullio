@@ -1,0 +1,770 @@
+<div id="tablewrapper">
+		<table id="text-table">
+			<tbody id="result"><tr id="R1"><td class="sound"><!--23,
+            45,
+            39,
+          --><a class="startRec" href="#">Play</a><div calss="playlistWrapper"><ul class="playlist hidden"><li><a id="play-1" href="../soundmanager/recordings/201204262345.mp3"></a><span class="offset">start: 00:07</span><div class="metadata"><div class="duration">15:00</div><ul><li><p></p><span>0:00</span></li></ul></div></li></ul></div></td><td class="events"><div class="structured-events"><events><e clip="1" committed="X" length="00:00" type="open BHP" c="y" time="23:45:39" n="1"></e></events></div><li class="startstop" id="stopevent-1">1</li><table class="events-table"><tbody><tr><td class="e-n">1</td><td class="e-time">23:45:39</td><td class="e-type">open BHP</td><td class="e-speaker"></td></tr></tbody></table></td><td class="orig" id="R1-o" rel="test"><div class="editable"><p class="debug">Existing text</p><p c="1"></p><p c="1"></p><p c="1">
+	Existing text</p><p c="1">
+	yyyyyyyy</p><p c="1"></p><p c="1">
+	Existing text</p><p c="1"></p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	everv</p><p c="1"></p><p c="1">
+	Existing text</p><p c="1">
+	yyyyyyyy</p><p c="1"></p><p c="1">
+	Existing text</p><p c="1"></p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	evervExisting text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text zrvzevzerv ezververv</p><p c="1">
+	Existing text</p><p c="1">
+	Existing texthawaii</p><p c="1">
+	Existing text</p><p c="1">
+	Existing text</p><p c="1">
+	Updated text 5</p><p c="1"></p><p c="1">
+	everv</p><p c="1"></p><p c="1"></p><p c="1">
+	again</p><p c="1"></p><p c="1">
+	zwanezang</p></div></td></tr><tr id="R2"><td class="sound"><!--23,
+            45,
+            40,
+          --><a class="startRec" href="#">Play</a><div calss="playlistWrapper"><ul class="playlist hidden"><li><a id="play-2" href="../soundmanager/recordings/201204262345.mp3"></a><span class="offset">start: 00:07</span><div class="metadata"><div class="duration">15:00</div><ul><li><p></p><span>0:00</span></li></ul></div></li></ul></div></td><td class="events"><div class="structured-events"><events><e clip="2" committed="X" length="00:03" type="open VVGGC" c="y" time="23:45:40" n="2"></e></events></div><li class="startstop" id="stopevent-2">2</li><table class="events-table"><tbody><tr><td class="e-n">2</td><td class="e-time">23:45:40</td><td class="e-type">open VVGGC</td><td class="e-speaker"></td></tr></tbody></table></td><td class="orig" id="R2-o" rel="test"><div class="editable"><p class="debug">Existing text</p><p c="2">
+	yyyyyyyy</p></div></td></tr></tbody>
+		</table>
+	</div>

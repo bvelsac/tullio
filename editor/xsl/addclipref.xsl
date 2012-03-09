@@ -6,7 +6,7 @@
       
       
       
-        <all>
+        <all type="{/all/type}" next="{/all/next}">
             <events>
               <xsl:copy-of select="//meeting"/>
                 <xsl:apply-templates select="/all/events/e"></xsl:apply-templates>

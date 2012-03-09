@@ -63,6 +63,22 @@ CKEDITOR.plugins.add('transform',
 	{
 		init: function(editor)
 		{
+			// DIALOG DEFINITION
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			// COMMAND DEFINITION, INCLUDES DIALOG
 			editor.addCommand( 'transform',
 			{
 				// Define a function that will be fired when the command is executed.
@@ -126,6 +142,8 @@ CKEDITOR.plugins.add('transform',
 					// editor.insertHtml( 'The current date and time is: <em>' + timestamp.toString() + '</em>' );
 				}
 			});
+			
+	  // TOOLBAR BUTTON
 		// Create a toolbar button that executes the plugin command. 
 		// http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.ui.html#addButton
 		editor.ui.addButton( 'Transform',

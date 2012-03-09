@@ -113,7 +113,7 @@
 	
 	
 	<script type="text/javascript" src="js/player-specific.js"></script>
-	
+	<script type="text/javascript" src="/exist/tullio/js-lib/xdate.js"></script>
 	<!--
 	<script type="text/javascript" src="jquery-ui-1.8.16.custom.min.js"></script>
 	
@@ -149,18 +149,17 @@
 	
 	// variables containing editorial content
 	
-	var eventTypes;
+	var eventTypes = {N: 	[ [ 'Nederlands' ,  'N' ], [ 'Frans' ,  'F' ] ],
+	F: [ [ 'néerlandais' ,  'N' ], [ 'français' , 'F' ] ]};
 	var speakers = ["Ampe", "Albissahri"];
-	var government;
-	var languages;
+	var government = ["Picqué", "Grouwels", "De Lille", "Cerexhe"];
+	var languages = {N: 	[ [ 'Nederlands' ,  'N' ], [ 'Frans' ,  'F' ] ],
+	F: [ [ 'néerlandais' ,  'N' ], [ 'français' ,  'F' ] ]};
 	var statusCodes;
 	
 	// variable containing list of team members
 	
-	
 	var team = ["Bienne", "C√©lin√©", "Laurence", "Veerle", "Anne", "Johan", "Anita", "Nathalie", "Carine", "Sophie", "Alain", "Jean-Pierre", "Thierry", "Vincent", "Bert", "Michel", "B√©r√©nice", "Isabelle"];
-	
-	
 	
 	/* Utility function : get query parameters */
 	
@@ -183,6 +182,9 @@
 
 var mmm = $.QueryString["m"];
 var langChoice = "N";
+var meetingDate = mmm.substr(0,10);
+
+
 // var langChoice = $.QueryString["l"];
 var user = $.QueryString["u"];
 
@@ -265,9 +267,13 @@ for (i=0; i<rows.length; i++) {
 	}
 }
 
+
+if (edited) {
 		newPosition = $(jq(edited)).offset().top;
+}
+	
 		
-		if (newe != '') {
+		if (newe && edited) {
 			console.log('scrollback');
 			$("body").scrollTop($("body").scrollTop() + newPosition - newe);
 			newe = $(jq(edited)).offset().top;
@@ -316,7 +322,7 @@ function updateVisibleTextsWhenEdit(rowId, colType) {
 
 
 
-function updateVisibleTexts() {
+function updateVisibleTexts(once) {
 	
 	if ( noUpdate ) {
 		return true;
@@ -388,14 +394,16 @@ function updateVisibleTexts() {
 	
 	// refresh the visible rows
 	// query the DB for event and text data
-	$.transform({dataType:"xml", success:secondstep, xml:request, xsl: "xsl/addclipref.xsl"});
+	$.transform({async:false, dataType:"xml", success:secondstep, xml:request, xsl: "xsl/addclipref.xsl"});
 		
 	// wrap the rows in a div
 	
 	
 	}
-	 setTimeout("updateVisibleTexts()", 10000);
-
+	if (!once) {
+		//console.log('in function repeat, par. once :' +  once);
+	 setTimeout("updateVisibleTexts(false)", 10000);
+	}
 }  
 
 function initialize(xml, xsl, xmlorig) {
@@ -586,7 +594,7 @@ $("#overview").text(mmm);
 		
 /*		$.transform({dataType:"xml", success:initialize, xml: "http://localhost:8080/exist/xquery/return-combined.xq?m=2011-07-24-COMENVLEEF", xsl: "xsl/addclipref.xsl"});
 	*/	
-	 setTimeout("updateVisibleTexts()", 5000);
+	 setTimeout("updateVisibleTexts(false)", 5000);
 		
 		$(window).scroll(function(){
 			scrollState = 1;
@@ -756,7 +764,7 @@ request.fail(function(jqXHR, textStatus) {
 					
 					
 					editor.destroy();
-					
+					}
 					
 					
 					
@@ -764,6 +772,8 @@ request.fail(function(jqXHR, textStatus) {
 					// scroll yr text into view when doubleclicking a clip to edit
 					// feature to be dropped as the users don't like it
 				
+						/*
+					
 					var z = $("body").scrollTop();
 					var diff = newe - 160;
 					
@@ -771,18 +781,23 @@ request.fail(function(jqXHR, textStatus) {
 					
 					$("body").scrollTop(diff);
 					console.log("oud:" + old + " nieuw:" + newe + " scrolltop:" + z + " scrolltop-nieuw:" + diff + z);
-				}
 				
 				
+				*/
 					
 				
 				
 				
 				
 				
+					
+					// first update the row to be sure we don't loose edits...
+
+		
 				
 				edited = this.id;
-				
+						updateVisibleTexts(true);		
+				console.log('start editing ' + edited);
 				//$(this).children("div").children().wrapAll('<div id="cke">');
 				
 				rowId = this.parentNode.id;
@@ -791,22 +806,17 @@ request.fail(function(jqXHR, textStatus) {
 				
 					if ( editor ) editor.destroy();
 
-					// make editor same size as replaced div
 					
 					
-					function testSave() {
-					console.log("save");
-					
-					}
+			
 					
 	editor = CKEDITOR.replace( 'cke', {
 					toolbar: [['Ajaxsave','Source', 'Transform', 'Maximize', 'Templates', 'Abbr', 'Status']],
-					extraPlugins : 'ajaxsave,transform,abbr,status',
+					extraPlugins : 'ajaxsave,transform,abbr-custom,status',
 					disableNativeSpellChecker: false,
 					startupFocus: true,
 					templates_files : [ 'ckeditor/plugins/templates/templates/default.js' ],
-					entities_processNumerical: 'force',
-					saveFunction : testSave()
+					entities_processNumerical: 'force'
 			});
 
 
@@ -890,6 +900,7 @@ console.log('save key');
 </div>
 <div id="spacer">&#160;</div>
 <div id="centerpane" class="ui-layout-center">
+
 <div id="tempPlayerLinks">
 <div id="clip1">
 <p class='load'>LOAD AUDIO 1</p>
@@ -913,29 +924,22 @@ console.log('save key');
 </div>
 
 <div id="clip2">
-<p class='load'>LOAD AUDIO 2</p>
-<div class="playlistWrapper">
-<ul class="playlist hidden">
-
-  <li class="last"><a id='someId' href="../../recordings/201112250915.mp3">09:30</a><span class="offset">00:07</span>
-	<div class="metadata">
-    <div class="duration">3:20</div> <!-- total track time (for positioning while loading, until determined -->
-    <ul>
-     <li><p>Start</p><span>0:30</span></li> <!-- first scene -->
-     <li><p>Needle</p><span>0:45</span></li> <!-- start time of second scene -->
-     <li><p>Haystack</p><span>2:00</span></li>
-    </ul>
-  </div>
-	</li>
-</ul>
-
-
-
-</div>
-
-
-
-</div>
+  <p class='load'>LOAD AUDIO 2</p>
+  <div class="playlistWrapper">
+     <ul class="playlist hidden">
+        <li class="last"><a id='someId' href="../../recordings/201112250915.mp3">09:30</a><span class="offset">00:07</span>
+					<div class="metadata">
+						<div class="duration">3:20</div> <!-- total track time (for positioning while loading, until determined -->
+						<ul>
+							<li><p>Start</p><span>0:30</span></li> <!-- first scene -->
+							<li><p>Needle</p><span>0:45</span></li> <!-- start time of second scene -->
+							<li><p>Haystack</p><span>2:00</span></li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
 
 	<div id="tablewrapper">
 		<table id="text-table">
@@ -943,7 +947,7 @@ console.log('save key');
 		</table>
 	</div>
 </div>
-
+</div>
 
 
 <div id="titles"></div>

@@ -8,8 +8,8 @@
   <xsl:variable name="conf" select="document('/exist/tullio/xml/titles.xml')" >
   </xsl:variable>
   -->
-  <xsl:variable name="soundURL" select="'../soundmanager/recordings/'"></xsl:variable>
-  <xsl:variable name="soundExt" select="'.mp3'"></xsl:variable>
+  <xsl:variable name="soundURL" select="'../soundmanager/recordings/'"/>
+  <xsl:variable name="soundExt" select="'.mp3'"/>
   <xsl:variable name="conf" select="//reference"/>
   <xsl:variable name="meeting-type">
     <xsl:choose>
@@ -18,20 +18,62 @@
       </xsl:when>
       <xsl:otherwise>BHP</xsl:otherwise>
     </xsl:choose>
-    
-    
   </xsl:variable>
-  
-  <xsl:variable name="datestringCurrent" select="//events/meeting"></xsl:variable>
-  
-  
+  <xsl:variable name="datestringCurrent" select="//events/meeting"/>
   <xsl:template match="/">
+    <xsl:choose>
+      <xsl:when test="container/div[@id='integratedEvents']">
+        <!-- we're working on the result of a user edit -->
+        <div id="consolidated">
+          <div id="rawEvents">
+            <!-- this one can be sent to the server, is a copy of the integratedResults -->
+          </div>
+          <div id="structuredEvents">
+            <!-- this one replaces the overview in the UI -->
+            <xsl:apply-templates mode="events-table" select="."/>
+          </div>
+          <div id="text">
+          <!-- this one is our text content -->
+          
+          
+          
+          
+          
+          
+          
+          </div>
+          
+          
+          
+          
+          
+        </div>
+        
+        
+        
+      </xsl:when>
+      <xsl:otherwise>
+        <!-- just do the usual -->
+        <xsl:call-template name="default"></xsl:call-template>
+        </xsl:otherwise>
+    </xsl:choose>
+    
+    
+    
+    
+  </xsl:template>
+  
+  
+  
+  <xsl:template name="default" match="/">
+    
+    
+    
     <xsl:for-each select="//e[@c='y']">
       <tr id="{concat('R', @n)}">
         <td class="sound">
-          
           <!-- create a list of events for the sound markers -->
-        <!--  time="15:53:07"
+          <!--  time="15:53:07"
         if the clip has a start time before 8AM, the link will point to the sound file of the day after the meeting (nightly meeting) 
         *** day of meeting AND next day need to be specified when creating the agenda ! ***
         and also
@@ -39,16 +81,12 @@
         - AM / PM
         as separate fields
         -->
-
-          <xsl:variable name="hours" select="substring-before(@time,':')"></xsl:variable>
-          <xsl:variable name="minutes" select="substring-before(substring-after(@time, ':'), ':')"></xsl:variable>
-          <xsl:variable name="seconds" select="substring-after(substring-after(@time, ':'), ':')"></xsl:variable>
+          <xsl:variable name="hours" select="substring-before(@time,':')"/>
+          <xsl:variable name="minutes" select="substring-before(substring-after(@time, ':'), ':')"/>
+          <xsl:variable name="seconds" select="substring-after(substring-after(@time, ':'), ':')"/>
           <xsl:comment>
-            <xsl:value-of select="$hours"/>,
-            <xsl:value-of select="$minutes"/>,
-            <xsl:value-of select="$seconds"/>,
-          </xsl:comment>
-          
+            <xsl:value-of select="$hours"/>, <xsl:value-of select="$minutes"/>, <xsl:value-of
+              select="$seconds"/>, </xsl:comment>
           <xsl:variable name="recording">
             <xsl:choose>
               <xsl:when test="$minutes &lt; 15">
@@ -63,39 +101,38 @@
               <xsl:otherwise>
                 <xsl:value-of select="concat($datestringCurrent, $hours, '45', $soundExt)"/>
               </xsl:otherwise>
-            
             </xsl:choose>
-            
-            
           </xsl:variable>
-          
-          <a class='startRec' href='#'>
-            
+          <a class="startRec" href="#">
             <xsl:text>Play</xsl:text>
           </a>
           <div calss="playlistWrapper">
-          <ul class="playlist hidden">
-            
-            <li ><a id='play-{@n}' href="{concat($soundURL,$recording)}">
-  
-              <!-- time calculations inc. offset in js -->
-            </a> <span class="offset">start: 00:07</span>
-              <div class="metadata">
-                <div class="duration">15:00</div> <!-- total track time (for positioning while loading, until determined -->
-                <ul>
-                  
-                  <xsl:for-each select="key('clip', @n)">
-                    <!-- must be updated using js before loading the track -->
-                    <li><p><xsl:value-of select="@speaker"/></p><span>0:00</span></li> <!-- first scene -->
-                      
-                  </xsl:for-each>
-                  
-                </ul>
-              </div>
-            </li>
-          </ul>
-					</div>
-            <!--
+            <ul class="playlist hidden">
+              <li>
+                <a href="{concat($soundURL,$recording)}" id="play-{@n}">
+                  <!-- time calculations inc. offset in js -->
+                </a>
+                <span class="offset">start: 00:07</span>
+                <div class="metadata">
+                  <div class="duration">15:00</div>
+                  <!-- total track time (for positioning while loading, until determined -->
+                  <ul>
+                    <xsl:for-each select="key('clip', @n)">
+                      <!-- must be updated using js before loading the track -->
+                      <li>
+                        <p>
+                          <xsl:value-of select="@speaker"/>
+                        </p>
+                        <span>0:00</span>
+                      </li>
+                      <!-- first scene -->
+                    </xsl:for-each>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!--
             yyyymmddhhmm.mp3
             <li>
               <a href="http://freshly-ground.com/data/audio/binaural/Rubber%20Chicken%20Launch%20%28office%29.mp3">Rubber Chicken Launch (Office)</a>
@@ -112,12 +149,7 @@
                   </li>
                   <li>
           -->
-          
-          
         </td>
-        
-        
-        
         <td class="events">
           <!--<div class="meta-xml">
 										<xsl:copy-of select="."/>
@@ -126,13 +158,21 @@
           <xsl:variable name="top" select="@n"/>
           <div class="structured-events">
             <events>
-              <xsl:copy-of select="key('clip', @n)" />
+              <xsl:attribute name="next">
+                <xsl:choose>
+                  <xsl:when test="following-sibling::e[@c='y']">
+                    <xsl:value-of select="following-sibling::e[@c='y'][1]/@n"/>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:value-of select="/all/@next"/>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </xsl:attribute>
+              <xsl:copy-of select="key('clip', @n)"/>
             </events>
-            
           </div>
           <table class="events-table">
             <xsl:for-each select="key('clip', @n)">
-              
               <xsl:apply-templates mode="events-table" select="."/>
               <li class="startstop">
                 <xsl:if test="position()=1">
@@ -157,11 +197,11 @@
             <!-- de eerste keer bestaat er nog geen tekst, die moet dan worden aangemaakt op basis van de events -->
             <xsl:choose>
               <xsl:when test="key('text', @n)">
-							<p class="debug">Existing text</p>
+                <p class="debug">Existing text</p>
                 <xsl:copy-of select="key('text', @n)"/>
               </xsl:when>
               <xsl:when test="key('clip', @n)">
-							<p class="debug">New text</p>
+                <p class="debug">New text</p>
                 <xsl:apply-templates mode="initialize-text" select="key('clip', @n)"/>
               </xsl:when>
               <xsl:otherwise>
@@ -175,10 +215,6 @@
       </tr>
     </xsl:for-each>
   </xsl:template>
-  
-  
-  
-  
   <xsl:template match="e" mode="events-table">
     <tr>
       <td class="e-n">
@@ -193,14 +229,12 @@
       <td class="e-speaker">
         <xsl:choose>
           <xsl:when test="string(@speaker)">
-            <xsl:value-of select="@speaker"/>    
+            <xsl:value-of select="@speaker"/>
           </xsl:when>
           <xsl:otherwise>
             <xsl:value-of select="@notes"/>
           </xsl:otherwise>
         </xsl:choose>
-        
-        
       </td>
     </tr>
   </xsl:template>
@@ -220,18 +254,10 @@
       </xsl:when>
     </xsl:choose>
   </xsl:template>
-  
-  
-  
-  
-  
-  
-  
-  
   <xsl:template match="e[@type='QA-AV'] | e[@type='QO-MV'] | e[@type='INT']" mode="initialize-text">
     <xsl:variable name="speaker" select="@speaker"/>
     <xsl:variable name="gov" select="@props"/>
-    <xsl:variable name="lang" select="@lang"></xsl:variable>
+    <xsl:variable name="lang" select="@lang"/>
     <xsl:variable name="type-NL">
       <xsl:choose>
         <xsl:when test="@type='INT'">Interpellatie van </xsl:when>
@@ -240,8 +266,7 @@
         </xsl:when>
         <xsl:otherwise>Mondelinge vraag van</xsl:otherwise>
       </xsl:choose>
-      </xsl:variable>
-       
+    </xsl:variable>
     <xsl:variable name="type-FR">
       <xsl:choose>
         <xsl:when test="@type='INT'">Interpellation de </xsl:when>
@@ -250,20 +275,15 @@
         </xsl:when>
         <xsl:otherwise>Question d'actualité de </xsl:otherwise>
       </xsl:choose>
-      
-      
     </xsl:variable>
-    
-       
-
     <xsl:variable name="meeting-type">
       <xsl:choose>
-        <xsl:when test="contains(preceding-sibling::*[contains(@type, 'VVGGC') or contains(@type, 'BHP')][1]/@type, 'BHP')">BHP</xsl:when>
+        <xsl:when
+          test="contains(preceding-sibling::*[contains(@type, 'VVGGC') or contains(@type, 'BHP')][1]/@type, 'BHP')"
+          >BHP</xsl:when>
         <xsl:otherwise>VVGGC</xsl:otherwise>
       </xsl:choose>
-      
     </xsl:variable>
-
     <xsl:choose>
       <xsl:when test="@lang='N'">
         <p c="{@clip}">
@@ -297,7 +317,6 @@
       <xsl:otherwise>
         <p c="{@clip}">
           <xsl:value-of select="$type-FR"/>
-          
           <xsl:choose>
             <!--  test="$conf//p[@code=$speaker]/gender='M'" -->
             <xsl:when test="true()">M. </xsl:when>
@@ -305,7 +324,6 @@
           </xsl:choose>
           <xsl:text> </xsl:text>
           <xsl:value-of select="$conf//p[@code=$speaker]/name"/>
-          
         </p>
         <p c="{@clip}">
           <xsl:text> à </xsl:text>
@@ -324,8 +342,6 @@
           <xsl:value-of select="@notes"/>
           <xsl:text>".</xsl:text>
         </p>
-        
-        
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
@@ -349,7 +365,6 @@
   <xsl:template match="e[@type='']" mode="initialize-text"> </xsl:template>
   <xsl:template match="e" mode="initialize-text">
     <p c="{@clip}">Unsupported event
-		
       <!-- 
       <xsl:text>[</xsl:text><xsl:value-of select="@clip"/><xsl:text>]</xsl:text>
       -->

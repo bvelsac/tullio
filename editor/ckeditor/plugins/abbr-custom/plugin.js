@@ -2,9 +2,32 @@
  * Basic sample plugin inserting abbreviation elements into CKEditor editing area.
  */
 
+ // define functions for content processing  chain
+ 
+function reconcile(xml, xsl, xmlorig) {
+	var asString = (new XMLSerializer()).serializeToString(xml);
+	console.log("reconcile -- xml:");
+	console.log(asString);
+	// this step implements the actual event comparison logic
+	$("#hidden").transform({
+			async:false, 
+			xmlobj:xml, 
+			xsl: pathToXSL +  "reconcile.xsl",
+			error: function(html,xsl,xml,object,e) {console.log('transformation failed, ' + e);},
+			success:function(result,xsl,xml,object,e) {
+				var debug = (new XMLSerializer()).serializeToString(result);
+				console.log('transformation successful, result:'+ debug);
+			}
+	});
+} 
+ 
+ 
+ 
+ 
+ 
 // Register the plugin with the editor.
 // http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.plugins.html
-CKEDITOR.plugins.add( 'abbr',
+CKEDITOR.plugins.add( 'abbr-custom',
 {
 	// The plugin initialization logic goes inside this method.
 	// http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.pluginDefinition.html#init
@@ -31,7 +54,7 @@ CKEDITOR.plugins.add( 'abbr',
 			return {
 				// Basic properties of the dialog window: title, minimum size.
 				// http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.dialog.dialogDefinition.html
-				title : 'Abbreviation Properties',
+				title : 'Event Properties',
 				minWidth : 400,
 				minHeight : 200,
 				// Dialog window contents.
@@ -39,6 +62,11 @@ CKEDITOR.plugins.add( 'abbr',
 				contents :
 				[
 					{
+						// invulwaarden
+						
+						
+						// <e n="1" time="23:45:39" c="y" type="open BHP" length="00:00" committed="X"/>
+						
 						// Definition of the Basic Settings dialog window tab (page) with its id, label, and contents.
 						// http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.dialog.contentDefinition.html
 						id : 'eventInfo',
@@ -57,25 +85,25 @@ CKEDITOR.plugins.add( 'abbr',
 										multiple : 'false',
 										// items : [['Agenda', 'A'], ['Sprekers', 'S'], ['Zaal', 'Z']],
 										items : eventTypes[langChoice],
-										'default' : 'QO-MV',
+										'default' : 'AGENDA',
 										onChange : function (api) {
 											alert('Current value: ' + this.getValue() );
 										}
 									},
 									{
 										type: 'select',
-										label: 'Type',
-										id : 'type2',
-										multiple : 'false',
+										label: 'Langue',
+										id : 'lang',
 										// items : [['Agenda', 'A'], ['Sprekers', 'S'], ['Zaal', 'Z']],
-										items : eventTypes[langChoice],
-										'default' : 'QO-MV',
+										items : languages[langChoice],
+										'default' : '',
 										onChange : function (api) {
 											alert('Current value: ' + this.getValue() );
 										}
 									},
 									{
 										type: 'select',
+										label: 'Orateur',
 										id : 'speaker',
 										multiple : 'false',
 										// items : [['Agenda', 'A'], ['Sprekers', 'S'], ['Zaal', 'Z']],
@@ -86,13 +114,67 @@ CKEDITOR.plugins.add( 'abbr',
 										}
 									},
 									{
+										type: 'select',
+										label: 'À:',
+										id : 'gov',
+										multiple : 'true',
+										// items : [['Agenda', 'A'], ['Sprekers', 'S'], ['Zaal', 'Z']],
+										items : government,
+										'default' : '',
+										onChange : function (api) {
+											alert('Current value: ' + this.getValue() );
+										}
+									},
+									{
+										type: 'text',
+										label: 'Heure (hh:mm:ss)',
+										id : 'time',
+										// items : [['Agenda', 'A'], ['Sprekers', 'S'], ['Zaal', 'Z']],
+										'default' : '',
+										validate : function() {
+											var timepattern =  /^([0-1][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$/;
+											var time = this.getValue();
+											if ( time != '' && !timepattern.test(this.getValue()) ) {
+												console.log('time validation failed');
+												alert("L'heure n'est pas valide (hh:mm:ss).");												
+											  return false;
+											}
+											else if ( CKEDITOR.dialog.getCurrent().getValueOf('eventInfo', 'clip') && time=='' ) {
+												console.log('no time indiciation for clip');
+												alert("Svp spécifier une indication de temps quand vous crééz un nouveau clip.");												
+											  return false;
+											}
+										}
+										/* CKEDITOR.dialog.validate.regex(/^([0-1][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$/, "Start time is not valid (hh:mm:ss)") */
+									},
+									{
+										type: 'text',
+										label: 'Description courte (optionnel)',
+										id : 'short',
+										// items : [['Agenda', 'A'], ['Sprekers', 'S'], ['Zaal', 'Z']],
+										'default' : ''
+									},
+									{
+										type: 'checkbox',
+										id : 'clip',
+										label : 'Nouveau clip ?',
+										onClick : function() {
+											alert( 'Checked: ' + this.getValue() );
+										}
+									}
+									/*
+									,
+									
+									{
 										type: 'checkbox',
 										id : 'agree',
 										label : 'Nieuwe clip ?',
 										onClick : function() {
 											alert( 'Checked: ' + this.getValue() );
 										}
-									}
+									},
+									
+									*/
 								]
 						}
 				]
@@ -106,7 +188,16 @@ CKEDITOR.plugins.add( 'abbr',
 					var dialog = this;
 					// Create a new abbreviation element and an object that will hold the data entered in the dialog window.
 					// http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.dom.document.html#createElement
-					var abbr = editor.document.createElement( 'abbr' );
+					var newEvent = editor.document.createElement( 'event' );
+					var clip = dialog.getValueOf('eventInfo', 'clip') ? 'y' : 'n';
+					
+					newEvent.setAttribute( 'clip', clip );
+					newEvent.setAttribute( 'type', dialog.getValueOf( 'eventInfo', 'type' ) );
+					newEvent.setAttribute( 'speaker', dialog.getValueOf( 'eventInfo', 'speaker' ) );
+					newEvent.setAttribute( 'props', dialog.getValueOf( 'eventInfo', 'gov' ) );
+					newEvent.setAttribute( 'time', dialog.getValueOf( 'eventInfo', 'time' ) );
+					newEvent.setAttribute( 'notes', dialog.getValueOf( 'eventInfo', 'short' ) );
+					newEvent.setAttribute( 'lang', dialog.getValueOf( 'eventInfo', 'lang' ) );
 
 					// Retrieve the value of the "title" field from the "tab1" dialog window tab.
 					// Send it to the created element as the "title" attribute.
@@ -125,7 +216,43 @@ CKEDITOR.plugins.add( 'abbr',
 
 					// Insert the newly created abbreviation into the cursor position in the document.					
 					// http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.editor.html#insertElement
-					editor.insertElement( abbr );
+					editor.insertElement( newEvent );
+					
+					// transform the updated contents of the editor
+					var content = '<container><div id="text">' + editor.getData() + '</div><div id="events">' + $(jq(rowId) + ' div.structured-events').html() + '</div>'  + '</container>';
+					
+					// console.log('titles; ' + titles);
+					
+					var contentDoc = $.parseXML(content);
+					contentDoc.getElementsByTagName("container")[0].appendChild(titles);		
+					// start the content processing chain
+					// first step is extracting the series of events from the edited content
+					/*
+								
+		$.transform({ dataType:"xml", success:initialize, xml: "../xq/return-combined.xql?m=" + mmm, xsl: "xsl/addclipref.xsl"});
+
+					
+					*/
+					// 
+					
+					$.transform({
+							xmlobj: contentDoc,
+							xsl: pathToXSL +  "flatten.xsl",
+							async: false,
+							error: function(html,xsl,xml,object,e) {alert(e);},
+							success:reconcile
+					});
+//					newContent = $("#resultpane").html();
+//					console.log("result: " + newContent);
+					
+//					editor.setData(newContent);
+					
+					console.log('exit main ');
+					
+					
+					
+					
+					
 				}
 			};
 		} );

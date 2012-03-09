@@ -33,7 +33,7 @@ var editedcontent = "<wrapper n='" + clipid + "'>" + editor.getData().replace(/[
 					}, function(data) {
 							// alert("Data Loaded: " + data);
 					});
-					
+						$("#cke").attr('id', '');
 				setTimeout( function() { edited=''; editor.destroy() }, 50);					
 									noUpdate = false;
                 },
