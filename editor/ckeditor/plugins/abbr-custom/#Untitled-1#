@@ -1,0 +1,34 @@
+
+	
+	var asString = (new XMLSerializer()).serializeToString(xml);
+	// console.log("input: " + asString);
+	/*
+	xsltProcessor=new XSLTProcessor();
+	jQuery.ajax({
+         url:    pathToXSL +  "group.xsl",
+         success: function(result) {
+					 				xsltProcessor.importStylesheet(result);		
+									resultDocument = xsltProcessor.transformToFragment(xml,document);
+									document.getElementById("hidden").appendChild(resultDocument);					 
+					 
+                  },
+         async:   false,
+				 contentType: "text/xml"
+    }); 
+	*/
+		console.log('enter finalize');
+		$.transform({
+				async: false,
+				el:"#hidden",
+				xmlobj:xml, 
+				xsl: pathToXSL +  "group.xsl",
+				error: function(html,xsl,xml,object,e) {
+								console.log('fi transformation failed, ' + e);
+								console.log("***" + html );
+				},
+				success: function(html,xsl,xml,object,e) {
+								var asString = (new XMLSerializer()).serializeToString(xml);
+								console.log("**" + html + xml);
+								console.log("**" + asString);
+				}
+		});

@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE stylesheet [
+<!ENTITY nbsp "&#160;">
+]>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:output indent="yes"/>
   <xsl:key match="//e" name="clip" use="@clip"/>
   <xsl:key match="//p" name="text" use="@c"/>
+  <xsl:key name="moved" match="//moved" use="e/@n"/>
+  <xsl:key name="new" match="container/div[@id='integratedEvents']/events/e" use="@id"/>
   <!-- Chrome heeft een issue waardoor de document() functie niet werkt, dus alles moet worden toegevoegd aan het input-document -->
   <!-- Volgende declaratie werkt dus NIET:
   <xsl:variable name="conf" select="document('/exist/tullio/xml/titles.xml')" >
@@ -27,45 +32,68 @@
         <div id="consolidated">
           <div id="rawEvents">
             <!-- this one can be sent to the server, is a copy of the integratedResults -->
+            <content/>
           </div>
           <div id="structuredEvents">
             <!-- this one replaces the overview in the UI -->
-            <xsl:apply-templates mode="events-table" select="."/>
+            <xsl:apply-templates mode="events-table" select="container/div[@id='integratedEvents']"/>
           </div>
           <div id="text">
           <!-- this one is our text content -->
-          
-          
-          
-          
-          
-          
-          
+            <xsl:apply-templates mode="write" select="container/div[@id='text']"></xsl:apply-templates>          
           </div>
-          
-          
-          
-          
-          
-        </div>
-        
-        
-        
-      </xsl:when>
+          </div>
+        </xsl:when>
       <xsl:otherwise>
         <!-- just do the usual -->
         <xsl:call-template name="default"></xsl:call-template>
         </xsl:otherwise>
     </xsl:choose>
+    </xsl:template>
+  
+  <xsl:template match="*[@title]" mode="write">
+    <!-- match any element with a title attribute, we need to update the reference
+    <moved><e n="2.5"/>
+      <new-nr>2.7</new-nr>
+      <p title="2.5"/>
+    </moved>
+    -->
+     <xsl:variable name="eventRef">
+       <xsl:choose>
+         <xsl:when test="key('moved', @title)">
+           <xsl:value-of select="key('moved', @title)/new-nr"/>
+         </xsl:when>
+         <xsl:otherwise>
+           <xsl:value-of select="@title"/>
+         </xsl:otherwise>
+       </xsl:choose>
+     </xsl:variable>
     
-    
-    
+    <xsl:copy>
+      <xsl:attribute name="title"><xsl:value-of select="$eventRef"/>
+      </xsl:attribute>
+      
+      <xsl:apply-templates mode="write"></xsl:apply-templates>    
+    </xsl:copy>
     
   </xsl:template>
+  <xsl:template mode="write" match="*">
+    
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+      <xsl:apply-templates mode="write"></xsl:apply-templates>
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template mode="write" match="text()">
+    <xsl:copy-of select="."/>
+  </xsl:template>
+  
+  <xsl:template match="event" mode="write">
+    <xsl:apply-templates select="key('new', @id)" mode="initialize-text"></xsl:apply-templates>
+    </xsl:template>
   
   
-  
-  <xsl:template name="default" match="/">
+  <xsl:template name="default">
     
     
     
@@ -215,10 +243,21 @@
       </tr>
     </xsl:for-each>
   </xsl:template>
-  <xsl:template match="e" mode="events-table">
+  <xsl:template match="events/e" mode="events-table">
     <tr>
       <td class="e-n">
-        <xsl:value-of select="@n"/>
+        <xsl:choose>
+          <xsl:when test="parent::moved">
+            <xsl:value-of select="following-sibling::new-nr"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="@n"/>
+            
+          </xsl:otherwise>
+        </xsl:choose>
+        
+        
+        
       </td>
       <td class="e-time">
         <xsl:value-of select="@time"/>
@@ -238,6 +277,7 @@
       </td>
     </tr>
   </xsl:template>
+  <xsl:template mode="events-table" match="text()"></xsl:template>
   <!--
     <xsl:template mode="initialize-text" match="*">
       <p>Default template, n=<xsl:value-of select="@n"/></p>
@@ -362,7 +402,13 @@
       <span class="incomplete">Lijst van afwezigen</span>
     </p>
   </xsl:template>
-  <xsl:template match="e[@type='']" mode="initialize-text"> </xsl:template>
+  <xsl:template match="e[@type='']" mode="initialize-text"><p title="{@n}" class="debug">Event type missing</p></xsl:template>
+  
+  <xsl:template match="e[@type='marker']" mode="initialize-text">
+    <p title="{@n}" class="clipmarker">Start clip <xsl:value-of select="@n"/>
+    </p>
+  </xsl:template>
+  
   <xsl:template match="e" mode="initialize-text">
     <p c="{@clip}">Unsupported event
       <!-- 

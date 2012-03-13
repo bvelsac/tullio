@@ -14,7 +14,17 @@ body
 
 	/* Remove the background color to make it transparent */
 	background-color: #fff;
+	
+		
 }
+
+.debug {
+	font-family: monospace;
+	color: silver;
+
+}
+
+
 
 ol,ul,dl
 {

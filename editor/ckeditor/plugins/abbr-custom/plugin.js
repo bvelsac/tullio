@@ -4,20 +4,44 @@
 
  // define functions for content processing  chain
  
+ 
+function finish(xml2, xsl, object, e) {
+	
+	console.log('enter finish');
+	console.log(xml2);
+	var asString = (new XMLSerializer()).serializeToString(xml2);
+	console.log('+' + asString);
+		console.log('exit finish');
+ } 
+ 
+ 
+ 
+function finalize(xml, xsl, object, e) {
+		console.log('enter finalize');
+		console.log(xml);
+		var asString = (new XMLSerializer()).serializeToString(xml);
+		console.log(asString);
+	$.transform({
+			async:false, 
+			xmlobj:xml, 
+			xsl: pathToXSL +  "group.xsl",
+			error: function(html,xsl,xml,object,e) {console.log('transformation failed, ' + e);},
+			success:finish
+	});
+	console.log('exit finalize');
+ }
+ 
 function reconcile(xml, xsl, xmlorig) {
-	var asString = (new XMLSerializer()).serializeToString(xml);
-	console.log("reconcile -- xml:");
-	console.log(asString);
+	// var asString = (new XMLSerializer()).serializeToString(xml);
+	// console.log("reconcile -- xml:");
+	// console.log(asString);
 	// this step implements the actual event comparison logic
-	$("#hidden").transform({
+	$.transform({
 			async:false, 
 			xmlobj:xml, 
 			xsl: pathToXSL +  "reconcile.xsl",
 			error: function(html,xsl,xml,object,e) {console.log('transformation failed, ' + e);},
-			success:function(result,xsl,xml,object,e) {
-				var debug = (new XMLSerializer()).serializeToString(result);
-				console.log('transformation successful, result:'+ debug);
-			}
+			success:finalize
 	});
 } 
  
@@ -45,7 +69,7 @@ CKEDITOR.plugins.add( 'abbr-custom',
 			// Reference to the plugin command name.
 			command: 'abbrDialog',
 			// Button's icon file path.
-			icon: this.path + 'images/icon.png'
+			icon: this.path + 'images/wand.png'
 		} );
 		// Add a dialog window definition containing all UI elements and listeners.
 		// http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.dialog.html#.add
@@ -105,7 +129,6 @@ CKEDITOR.plugins.add( 'abbr-custom',
 										type: 'select',
 										label: 'Orateur',
 										id : 'speaker',
-										multiple : 'false',
 										// items : [['Agenda', 'A'], ['Sprekers', 'S'], ['Zaal', 'Z']],
 										items : speakers,
 										'default' : '',
@@ -176,7 +199,30 @@ CKEDITOR.plugins.add( 'abbr-custom',
 									
 									*/
 								]
+						},
+						{
+							type: 'hbox',
+							widths: ['25%', '25%'],
+							children:
+								[
+									{
+										type: 'text',
+										label: 'Sujet (F)',
+										id : 'subjectF',
+										// items : [['Agenda', 'A'], ['Sprekers', 'S'], ['Zaal', 'Z']],
+										'default' : ''
+									},
+										{
+										type: 'text',
+										label: 'Sujet N',
+										id : 'subjectN',
+										// items : [['Agenda', 'A'], ['Sprekers', 'S'], ['Zaal', 'Z']],
+										'default' : ''
+									},
+								]
 						}
+						
+						
 				]
 					} ],
 				// This method is invoked once a user closes the dialog window, accepting the changes.
@@ -217,13 +263,18 @@ CKEDITOR.plugins.add( 'abbr-custom',
 					// Insert the newly created abbreviation into the cursor position in the document.					
 					// http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.editor.html#insertElement
 					editor.insertElement( newEvent );
-					
 					// transform the updated contents of the editor
-					var content = '<container><div id="text">' + editor.getData() + '</div><div id="events">' + $(jq(rowId) + ' div.structured-events').html() + '</div>'  + '</container>';
 					
-					// console.log('titles; ' + titles);
 					
+					
+					// console.log('titles; ' + titles); .replace(/[&][#]160[;]/gi," ")
+					
+					var doctype = '<?xml version="1.0"?>\n<!DOCTYPE container [<!ENTITY nbsp "&#160;">]>';
+					
+					var content = doctype + '<container><div id="text">' + editor.getData().replace(/[&][#]160[;]/gi," ") + '</div><div id="events">' + $(jq(rowId) + ' div.structured-events').html() + '</div>'  + '</container>';
+	
 					var contentDoc = $.parseXML(content);
+					console.log(contentDoc);
 					contentDoc.getElementsByTagName("container")[0].appendChild(titles);		
 					// start the content processing chain
 					// first step is extracting the series of events from the edited content

@@ -1,4 +1,7 @@
 <?xml version="1.0"?>
+<!DOCTYPE stylesheet [
+<!ENTITY nbsp "&#160;">
+]>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:output method="xml" indent="yes" encoding="UTF-8"/>
 	<xsl:key name="events" match="//div[@id='events']//e" use=" @n"/>
@@ -92,7 +95,7 @@
 						</new-nr>
 						<xsl:copy-of select="."/>
 						</moved>
-						<xsl:apply-templates select="following-sibling::p[1]">
+						<xsl:apply-templates select="following-sibling::*[1]">
 							<xsl:with-param name="offset" select="$n-value - //e[count(preceding-sibling::e) = $refIndexStart]/@n"/>
 							<xsl:with-param name="refIndexStart" select="$refIndexStart"/>
 							<xsl:with-param name="processed" select="@title"/>
@@ -108,7 +111,7 @@
 							</leftovers>
 						</xsl:if>
 						<xsl:copy-of select="//e[@n=current()/@title]"/>
-						<xsl:apply-templates select="following-sibling::p[1]">
+						<xsl:apply-templates select="following-sibling::*[1]">
 							<xsl:with-param name="refIndexStart" select="count(//e[@n=current()/@title]/preceding-sibling::e) "/>
 							<xsl:with-param name="processed" select="@title"/>
 							<xsl:with-param name="offset" select="'0'"/>
