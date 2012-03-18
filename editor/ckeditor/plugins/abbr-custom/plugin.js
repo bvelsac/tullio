@@ -2,16 +2,49 @@
  * Basic sample plugin inserting abbreviation elements into CKEditor editing area.
  */
 
+ 
+ 
+ function jq(myid) {
+
+
+   return '#' + myid.replace(/(:|\.)/g,'\\$1');
+ }
+ 
+ 
+ 
+ 
+ 
  // define functions for content processing  chain
  
  
 function finish(xml2, xsl, object, e) {
-	
-	console.log('enter finish');
-	console.log(xml2);
 	var asString = (new XMLSerializer()).serializeToString(xml2);
-	console.log('+' + asString);
-		console.log('exit finish');
+	console.log('enter finish ' + rowId);
+	
+	console.log(xml2);
+	// replace existing content and event list
+	
+	// store the new event list in the database
+	//$("#newEvents")
+	console.log('old table');
+	console.log($(jq(rowId) + " table.events-table"));
+	console.log('new table');
+	console.log($("#hidden div#text").html());
+	
+	$(jq(rowId) + " table.events-table").replaceWith($("#hidden table.events-table"));
+	// $('div.second').replaceWith('<h2>New heading</h2>');
+	$(jq(rowId) + " table.events-table").addClass('edited');
+	
+	$(jq(rowId) + " events").replaceWith($("#hidden events"));
+	
+	var newContent = $("#hidden div#text").html();
+	editor.setData(newContent);
+	
+	
+	
+	
+	console.log('exit finish');
+	
  } 
  
  
@@ -20,8 +53,9 @@ function finalize(xml, xsl, object, e) {
 		console.log('enter finalize');
 		console.log(xml);
 		var asString = (new XMLSerializer()).serializeToString(xml);
-		console.log(asString);
+		console.log('finalize----' + asString);
 	$.transform({
+			el: "#hidden",
 			async:false, 
 			xmlobj:xml, 
 			xsl: pathToXSL +  "group.xsl",
@@ -32,9 +66,9 @@ function finalize(xml, xsl, object, e) {
  }
  
 function reconcile(xml, xsl, xmlorig) {
-	// var asString = (new XMLSerializer()).serializeToString(xml);
-	// console.log("reconcile -- xml:");
-	// console.log(asString);
+	var asString = (new XMLSerializer()).serializeToString(xml);
+	console.log("reconcile -- xml:");
+	console.log(asString);
 	// this step implements the actual event comparison logic
 	$.transform({
 			async:false, 
@@ -138,7 +172,7 @@ CKEDITOR.plugins.add( 'abbr-custom',
 									},
 									{
 										type: 'select',
-										label: 'Ë:',
+										label: 'ï¿½:',
 										id : 'gov',
 										multiple : 'true',
 										// items : [['Agenda', 'A'], ['Sprekers', 'S'], ['Zaal', 'Z']],
@@ -164,7 +198,7 @@ CKEDITOR.plugins.add( 'abbr-custom',
 											}
 											else if ( CKEDITOR.dialog.getCurrent().getValueOf('eventInfo', 'clip') && time=='' ) {
 												console.log('no time indiciation for clip');
-												alert("Svp spŽcifier une indication de temps quand vous crŽŽz un nouveau clip.");												
+												alert("Svp spï¿½cifier une indication de temps quand vous crï¿½ï¿½z un nouveau clip.");												
 											  return false;
 											}
 										}
@@ -267,14 +301,16 @@ CKEDITOR.plugins.add( 'abbr-custom',
 					
 					
 					
-					// console.log('titles; ' + titles); .replace(/[&][#]160[;]/gi," ")
+					// console.log('titles; ' + titles); .replace(/[&][#]160[;]/gi," ")    .replace(/[&][#]160[;]/gi," ")
 					
-					var doctype = '<?xml version="1.0"?>\n<!DOCTYPE container [<!ENTITY nbsp "&#160;">]>';
+					var doctype = "<?xml version='1.0'?>\n<!DOCTYPE container [\n<!ENTITY nbsp '&#160;'>\n]>";
 					
 					var content = doctype + '<container><div id="text">' + editor.getData().replace(/[&][#]160[;]/gi," ") + '</div><div id="events">' + $(jq(rowId) + ' div.structured-events').html() + '</div>'  + '</container>';
-	
+					console.log(content);
 					var contentDoc = $.parseXML(content);
 					console.log(contentDoc);
+					var asString = (new XMLSerializer()).serializeToString(contentDoc);
+					console.log("sring" + asString);
 					contentDoc.getElementsByTagName("container")[0].appendChild(titles);		
 					// start the content processing chain
 					// first step is extracting the series of events from the edited content

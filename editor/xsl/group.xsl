@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE stylesheet [
+<!DOCTYPE xsl:stylesheet [
 <!ENTITY nbsp "&#160;">
 ]>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:output indent="yes"/>
   <xsl:key match="//e" name="clip" use="@clip"/>
+  <xsl:key match="//l" name="snippets" use="@id"/>
   <xsl:key match="//p" name="text" use="@c"/>
-  <xsl:key name="moved" match="//moved" use="e/@n"/>
-  <xsl:key name="new" match="container/div[@id='integratedEvents']/events/e" use="@id"/>
-  <!-- Chrome heeft een issue waardoor de document() functie niet werkt, dus alles moet worden toegevoegd aan het input-document -->
+  <xsl:key match="//moved" name="moved" use="e/@n"/>
+  <xsl:key match="container/div[@id='integratedEvents']/events/e" name="new" use="@id"/>
+  <!-- Chrome heeft een issue waardoor de document() functie niet werkt, dus alles moet worden toegevoegd aan het input-document
+    Google Chrome currently has limited support for XSL. If your XSL refers to any external resources (document() function, xsl:import, xsl:include or external entities), the XSL will run but the result will either be empty or invalid.
+  
+  -->
   <!-- Volgende declaratie werkt dus NIET:
   <xsl:variable name="conf" select="document('/exist/tullio/xml/titles.xml')" >
   </xsl:variable>
   -->
+  <!--<xsl:variable name="testLoad" select="document('http://localhost:8080/exist/tullio/xq/list-collections.xql')"></xsl:variable>-->
   <xsl:variable name="soundURL" select="'../soundmanager/recordings/'"/>
   <xsl:variable name="soundExt" select="'.mp3'"/>
   <xsl:variable name="conf" select="//reference"/>
@@ -31,26 +36,52 @@
         <!-- we're working on the result of a user edit -->
         <div id="consolidated">
           <div id="rawEvents">
+            <events>
+              <xsl:copy-of select="@next"/>
+              <xsl:for-each select="container/div[@id='integratedEvents']//e">
+                <xsl:choose>
+                  <xsl:when test="parent::moved">
+                    <e>
+                      <xsl:copy-of select="@*"/>
+                      <xsl:attribute name="n">
+                        <xsl:value-of select="following-sibling::new-nr"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="history">moved</xsl:attribute>
+                      <xsl:copy-of select="*"/>
+                    </e>
+                  </xsl:when>
+                  <xsl:when test="parent::leftovers">
+                    <xsl:copy>
+                      <xsl:copy-of select="@*"/>
+                      <xsl:attribute name="active">no</xsl:attribute>
+                      <xsl:copy-of select="*"/>
+                    </xsl:copy>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:copy-of select="."/>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </xsl:for-each>
+            </events>
             <!-- this one can be sent to the server, is a copy of the integratedResults -->
-            <content/>
           </div>
           <div id="structuredEvents">
             <!-- this one replaces the overview in the UI -->
-            <xsl:apply-templates mode="events-table" select="container/div[@id='integratedEvents']"/>
+            <table class="events-table">
+              <xsl:apply-templates mode="events-table"
+                select="container/div[@id='integratedEvents']/events//e"/>
+            </table>
           </div>
-          <div id="text">
           <!-- this one is our text content -->
-            <xsl:apply-templates mode="write" select="container/div[@id='text']"></xsl:apply-templates>          
-          </div>
-          </div>
-        </xsl:when>
+          <xsl:apply-templates mode="write" select="container/div[@id='text']"/>
+        </div>
+      </xsl:when>
       <xsl:otherwise>
         <!-- just do the usual -->
-        <xsl:call-template name="default"></xsl:call-template>
-        </xsl:otherwise>
+        <xsl:call-template name="default"/>
+      </xsl:otherwise>
     </xsl:choose>
-    </xsl:template>
-  
+  </xsl:template>
   <xsl:template match="*[@title]" mode="write">
     <!-- match any element with a title attribute, we need to update the reference
     <moved><e n="2.5"/>
@@ -58,45 +89,36 @@
       <p title="2.5"/>
     </moved>
     -->
-     <xsl:variable name="eventRef">
-       <xsl:choose>
-         <xsl:when test="key('moved', @title)">
-           <xsl:value-of select="key('moved', @title)/new-nr"/>
-         </xsl:when>
-         <xsl:otherwise>
-           <xsl:value-of select="@title"/>
-         </xsl:otherwise>
-       </xsl:choose>
-     </xsl:variable>
-    
+    <xsl:variable name="eventRef">
+      <xsl:choose>
+        <xsl:when test="key('moved', @title)">
+          <xsl:value-of select="key('moved', @title)/new-nr"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="@title"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
     <xsl:copy>
-      <xsl:attribute name="title"><xsl:value-of select="$eventRef"/>
+      <xsl:attribute name="title">
+        <xsl:value-of select="$eventRef"/>
       </xsl:attribute>
-      
-      <xsl:apply-templates mode="write"></xsl:apply-templates>    
+      <xsl:apply-templates mode="write"/>
     </xsl:copy>
-    
   </xsl:template>
-  <xsl:template mode="write" match="*">
-    
+  <xsl:template match="*" mode="write">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
-      <xsl:apply-templates mode="write"></xsl:apply-templates>
+      <xsl:apply-templates mode="write"/>
     </xsl:copy>
   </xsl:template>
-  <xsl:template mode="write" match="text()">
+  <xsl:template match="text()" mode="write">
     <xsl:copy-of select="."/>
   </xsl:template>
-  
   <xsl:template match="event" mode="write">
-    <xsl:apply-templates select="key('new', @id)" mode="initialize-text"></xsl:apply-templates>
-    </xsl:template>
-  
-  
+    <xsl:apply-templates mode="initialize-text" select="key('new', @id)"/>
+  </xsl:template>
   <xsl:template name="default">
-    
-    
-    
     <xsl:for-each select="//e[@c='y']">
       <tr id="{concat('R', @n)}">
         <td class="sound">
@@ -202,7 +224,7 @@
           <table class="events-table">
             <xsl:for-each select="key('clip', @n)">
               <xsl:apply-templates mode="events-table" select="."/>
-              <li class="startstop">
+              <!--<li class="startstop">
                 <xsl:if test="position()=1">
                   <xsl:attribute name="id">
                     <xsl:text>startevent-</xsl:text>
@@ -216,7 +238,7 @@
                   </xsl:attribute>
                 </xsl:if>
                 <xsl:value-of select="@n"/>
-              </li>
+              </li>-->
             </xsl:for-each>
           </table>
         </td>
@@ -225,15 +247,14 @@
             <!-- de eerste keer bestaat er nog geen tekst, die moet dan worden aangemaakt op basis van de events -->
             <xsl:choose>
               <xsl:when test="key('text', @n)">
-                <p class="debug">Existing text</p>
                 <xsl:copy-of select="key('text', @n)"/>
               </xsl:when>
               <xsl:when test="key('clip', @n)">
-                <p class="debug">New text</p>
+                <p class="debug">Generated text</p>
                 <xsl:apply-templates mode="initialize-text" select="key('clip', @n)"/>
               </xsl:when>
               <xsl:otherwise>
-                <p class="placeholder">
+                <p class="placeholder" title="{@n}">
                   <xsl:text>...</xsl:text>
                 </p>
               </xsl:otherwise>
@@ -243,8 +264,8 @@
       </tr>
     </xsl:for-each>
   </xsl:template>
-  <xsl:template match="events/e" mode="events-table">
-    <tr>
+  <xsl:template match="events//e" mode="events-table">
+    <tr class="{name(parent::*)}">
       <td class="e-n">
         <xsl:choose>
           <xsl:when test="parent::moved">
@@ -252,12 +273,8 @@
           </xsl:when>
           <xsl:otherwise>
             <xsl:value-of select="@n"/>
-            
           </xsl:otherwise>
         </xsl:choose>
-        
-        
-        
       </td>
       <td class="e-time">
         <xsl:value-of select="@time"/>
@@ -277,7 +294,7 @@
       </td>
     </tr>
   </xsl:template>
-  <xsl:template mode="events-table" match="text()"></xsl:template>
+  <xsl:template match="text()" mode="events-table"/>
   <!--
     <xsl:template mode="initialize-text" match="*">
       <p>Default template, n=<xsl:value-of select="@n"/></p>
@@ -286,10 +303,10 @@
   <xsl:template match="e[@type='OUV-OPE']" mode="initialize-text">
     <xsl:choose>
       <xsl:when test="@lang='N'">
-        <p c="{@clip}">Integraal verslag</p>
-        <p c="{@clip}">Plenaire vergadering van <span class="incomplete">DATUM</span></p>
-        <p c="{@clip}">
-          <span class="incomplete">(Ochtendvergadering/Namiddagvergadering)</span>
+        <p c="{@clip}" title="{@n}">Integraal verslag</p>
+        <p c="{@clip}" title="{@n}">Plenaire vergadering van <span class="incomplete">DATUM</span></p>
+        <p c="{@clip}" title="{@n}">
+          <span class="incomplete" title="{@n}">(Ochtendvergadering/Namiddagvergadering)</span>
         </p>
       </xsl:when>
     </xsl:choose>
@@ -326,7 +343,7 @@
     </xsl:variable>
     <xsl:choose>
       <xsl:when test="@lang='N'">
-        <p c="{@clip}">
+        <p c="{@clip}" title="{@n}">
           <xsl:value-of select="$type-NL"/>
           <xsl:choose>
             <!--  test="$conf//p[@code=$speaker]/gender='M'" -->
@@ -337,7 +354,7 @@
           <xsl:value-of select="$conf//p[@code=$speaker]/name"/>
           <xsl:text> aan </xsl:text>
         </p>
-        <p c="{@clip}">
+        <p c="{@clip}" title="{@n}">
           <xsl:choose>
             <xsl:when test="$conf//p[@code=$gov]/gender='M'"> de heer </xsl:when>
             <xsl:otherwise>mevrouw</xsl:otherwise>
@@ -348,14 +365,14 @@
           <xsl:value-of select="$conf//p[@code=$gov]/ti[@l=$lang][@meeting-type=$meeting-type]"/>
           <xsl:text>,</xsl:text>
         </p>
-        <p c="{@clip}">
+        <p c="{@clip}" title="{@n}">
           <xsl:text>betreffende "</xsl:text>
           <xsl:value-of select="@notes"/>
           <xsl:text>".</xsl:text>
         </p>
       </xsl:when>
       <xsl:otherwise>
-        <p c="{@clip}">
+        <p c="{@clip}" title="{@n}">
           <xsl:value-of select="$type-FR"/>
           <xsl:choose>
             <!--  test="$conf//p[@code=$speaker]/gender='M'" -->
@@ -365,7 +382,7 @@
           <xsl:text> </xsl:text>
           <xsl:value-of select="$conf//p[@code=$speaker]/name"/>
         </p>
-        <p c="{@clip}">
+        <p c="{@clip}" title="{@n}">
           <xsl:text> à </xsl:text>
           <xsl:choose>
             <xsl:when test="$conf//p[@code=$gov]/gender='M'">M. </xsl:when>
@@ -377,7 +394,7 @@
           <xsl:value-of select="$conf//p[@code=$gov]/ti[@l=$lang][@meeting-type=$meeting-type]"/>
           <xsl:text>,</xsl:text>
         </p>
-        <p c="{@clip}">
+        <p c="{@clip}" title="{@n}">
           <xsl:text>concernant "</xsl:text>
           <xsl:value-of select="@notes"/>
           <xsl:text>".</xsl:text>
@@ -385,30 +402,41 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
+  <xsl:template name="president">
+    <xsl:param name="class" select="'pres'"/>
+    <xsl:param name="segment"/>
+    <!--<xsl:comment>
+      <xsl:value-of
+        select="concat('pres-', preceding-sibling::e[pres][1]/pres/person/@gender, '-', @lang)"/>
+    </xsl:comment>-->
+    <span class="{@class}">
+      <xsl:if test="string($segment)">
+        <xsl:attribute name="segment">
+          <xsl:value-of select="$segment"/>
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:value-of
+        select="key('snippets', concat('pres-', preceding-sibling::e[pres][1]/pres/person/@gender, '-', @lang))"
+      />
+    </span>
+  </xsl:template>
   <xsl:template match="e[@type='EXC-AFW']" mode="initialize-text">
-    <p c="{@clip}">VERONTSCHULDIGD</p>
-    <p c="{@clip}">
-      <xsl:choose>
-        <xsl:when test="preceding-sibling::row[col_type='GEN-ALG'][1]/col_speaker='M'">
-          <xsl:text>De voorzitter.- </xsl:text>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:text>Mevrouw de voorzitter.- </xsl:text>
-        </xsl:otherwise>
-      </xsl:choose>
-      <xsl:text>Verontschuldigen zich voor hun afwezigheid:</xsl:text>
+    <p c="{@clip}" title="{@n}">VERONTSCHULDIGD</p>
+    <p c="{@clip}" title="{@n}">
+      <xsl:call-template name="president"/>
+      <xsl:value-of select="concat('snippets', concat('exc-', @lang))"/>
     </p>
     <p c="{@clip}">
       <span class="incomplete">Lijst van afwezigen</span>
     </p>
   </xsl:template>
-  <xsl:template match="e[@type='']" mode="initialize-text"><p title="{@n}" class="debug">Event type missing</p></xsl:template>
-  
+  <xsl:template match="e[@type='']" mode="initialize-text">
+    <p class="debug" title="{@n}">Event type missing</p>
+  </xsl:template>
   <xsl:template match="e[@type='marker']" mode="initialize-text">
-    <p title="{@n}" class="clipmarker">Start clip <xsl:value-of select="@n"/>
+    <p class="clipmarker" title="{@n}">Start clip <xsl:value-of select="@n"/>
     </p>
   </xsl:template>
-  
   <xsl:template match="e" mode="initialize-text">
     <p c="{@clip}">Unsupported event
       <!-- 

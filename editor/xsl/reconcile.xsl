@@ -1,13 +1,17 @@
 <?xml version="1.0"?>
-<!DOCTYPE stylesheet [
+<!DOCTYPE xsl:stylesheet [
 <!ENTITY nbsp "&#160;">
 ]>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:output method="xml" indent="yes" encoding="UTF-8"/>
 	<xsl:key name="events" match="//div[@id='events']//e" use=" @n"/>
+  <xsl:key name="people" match="//reference/person" use=" @id"/>
 <!-- Sample formats
 
-
+<person id="CARTHE_Michèle" gov="no" group="PS" lang="fr" gender="f">
+<first>Michèle</first>
+<last>Carthe </last>
+</person>
 
 -->	
 	
@@ -51,6 +55,11 @@
 			  
 			  <e n="{$n-value}">
 			    <xsl:copy-of select="@*"/>
+			    <xsl:if test="@type='PRES'">
+			      <pres>
+			        <xsl:copy-of select="key('people', @speaker)"/>   
+			      </pres>
+			       </xsl:if>
 			    <xsl:copy-of select="*"/>
 			  </e>
 
@@ -66,11 +75,12 @@
 				<xsl:choose>
 				<!-- the p representation is in the same order as the event reference -->
 					<xsl:when test="@title = $processed">
-						<xsl:copy-of select="."/>
+						<!-- <xsl:copy-of select="."/> 
 					  <normal>
 					    <xsl:copy-of select="//e[@n=current()/@title]"/>
 					  </normal>
-						<xsl:apply-templates select="following-sibling::p[1]">
+						-->
+						<xsl:apply-templates select="following-sibling::*[1]">
 							<xsl:with-param name="refIndexStart" select="$refIndexStart"/>
 							<xsl:with-param name="processed" select="$processed"/>
 							<xsl:with-param name="offset" select="$offset"/>
@@ -171,7 +181,7 @@
 		
 		
 		<xsl:choose>
-			<xsl:when test="($product - 1) &gt; 0.00000000000000001">
+			<xsl:when test="($product - 1) &gt; 0.00000001">
 				<xsl:value-of select="format-number($preceding + (1 div $factor), concat('#.', substring-after($factor, '1')))"/>
 			
 			</xsl:when>

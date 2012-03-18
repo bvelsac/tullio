@@ -2,7 +2,9 @@
 <head>
 	<title>Full Text</title>
 	<style>
-	
+	table.edited {background-color: bisque;}
+	.leftovers {color: #bfbebe};
+	.moved {color: #5121b3};
 	.startstop  {display: none;}
 	.structured-events {display: none;}
 	body {font-family: sans-serif;}
@@ -149,17 +151,17 @@
 	
 	// variables containing editorial content
 	
-	var eventTypes = {N: 	[ [ 'Nederlands' ,  'N' ], [ 'Frans' ,  'F' ] ],
-	F: [ [ 'n�erlandais' ,  'N' ], [ 'fran�ais' , 'F' ] ]};
-	var speakers = ["Ampe", "Albissahri"];
-	var government = ["Picqu�", "Grouwels", "De Lille", "Cerexhe"];
+	var eventTypes = {N: 	[ [ 'Agenda' ,  'agenda' ], [ 'Afwezigen' ,  'EXC-AFW' ] ],
+	F: [ [ 'néerlandais' ,  'N' ], [ 'français' , 'F' ] ]};
+	var speakers = [["Sfia Bouarfa","BOUARFA_Sfia"], "Ampe", "Albissahri"];
+	var government = ["Picqué", "Grouwels", "De Lille", "Cerexhe"];
 	var languages = {N: 	[ [ 'Nederlands' ,  'N' ], [ 'Frans' ,  'F' ] ],
-	F: [ [ 'n�erlandais' ,  'N' ], [ 'fran�ais' ,  'F' ] ]};
+	F: [ [ 'néerlandais' ,  'N' ], [ 'français' ,  'F' ] ]};
 	var statusCodes;
 	
 	// variable containing list of team members
 	
-	var team = ["Bienne", "Céliné", "Laurence", "Veerle", "Anne", "Johan", "Anita", "Nathalie", "Carine", "Sophie", "Alain", "Jean-Pierre", "Thierry", "Vincent", "Bert", "Michel", "Bérénice", "Isabelle"];
+	var team = ["Bienne", "C√©lin√©", "Laurence", "Veerle", "Anne", "Johan", "Anita", "Nathalie", "Carine", "Sophie", "Alain", "Jean-Pierre", "Thierry", "Vincent", "Bert", "Michel", "B√©r√©nice", "Isabelle"];
 	
 	/* Utility function : get query parameters */
 	
@@ -495,7 +497,7 @@ $().ready(function(){
 		
 		
 		eventTypes = {
-			'N' : [['Mondelinge vraag','QO-MV'], ['Interpellatie','INT'], ['Dringende vraag','QA-DV'], ['Zaal: rumoer','NOISE'], ['Zaal: samenspraak','JUMBLE'], ['Verandering van voorzitter','PRES'], ['Onverstaanbaar','INC'], ['Motie','MOT']],
+			'N' : [['Voorzitter','PRES'], ['Afwezigheden','EXC-AFW'],['Mondelinge vraag','QO-MV'], ['Interpellatie','INT'], ['Dringende vraag','QA-DV'], ['Zaal: rumoer','NOISE'], ['Zaal: samenspraak','JUMBLE'], ['Verandering van voorzitter','PRES'], ['Onverstaanbaar','INC'], ['Motie','MOT']],
 			'F' : [['',''], ['',''], ['',''], ['',''], ['',''], ['',''], ['',''], ['',''], ]
 		};
 		
@@ -902,32 +904,32 @@ console.log('save key');
 <div id="centerpane" class="ui-layout-center">
 
 <div id="tempPlayerLinks">
-<div id="clip1">
-<p class='load'>LOAD AUDIO 1</p>
-<div id="playlistWrapper">
-<ul class="playlist hidden">
-
-  <li class="last"><a id='mpl' href="../../recordings/201112250915.mp3">09:15</a><span class="offset">start: 00:07</span>
-	<div class="metadata">
-    <div class="duration">4:43</div> <!-- total track time (for positioning while loading, until determined -->
-    <ul>
-     <li><p>Electric razor</p><span>0:00</span></li> <!-- first scene -->
-     <li><p>Water, scissors</p><span>2:41</span></li> <!-- start time of second scene -->
-     <li><p>More razor work</p><span>4:00</span></li>
-    </ul>
-  </div>
-	</li>
-</ul>
-
-
-
-</div>
-
-<div id="clip2">
-  <p class='load'>LOAD AUDIO 2</p>
-  <div class="playlistWrapper">
-     <ul class="playlist hidden">
-        <li class="last"><a id='someId' href="../../recordings/201112250915.mp3">09:30</a><span class="offset">00:07</span>
+	<div id="clip1">
+		<p class='load'>LOAD AUDIO 1</p>
+		<div id="playlistWrapper">
+			<ul class="playlist hidden">
+				<li class="last">
+					<a id='mpl' href="../../recordings/201112250915.mp3">09:15</a>
+					<span class="offset">start: 00:07</span>
+					<div class="metadata">
+						<div class="duration">4:43</div> <!-- total track time (for positioning while loading, until determined -->
+						<ul>
+							<li><p>Electric razor</p><span>0:00</span></li> <!-- first scene -->
+							<li><p>Water, scissors</p><span>2:41</span></li> <!-- start time of second scene -->
+							<li><p>More razor work</p><span>4:00</span></li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="clip2">
+  	<p class='load'>LOAD AUDIO 2</p>
+		<div class="playlistWrapper">
+    	<ul class="playlist hidden">
+      	<li class="last">
+					<a id='someId' href="../../recordings/201112250915.mp3">09:30</a>
+					<span class="offset">00:07</span>
 					<div class="metadata">
 						<div class="duration">3:20</div> <!-- total track time (for positioning while loading, until determined -->
 						<ul>
@@ -940,15 +942,13 @@ console.log('save key');
 			</ul>
 		</div>
 	</div>
-
+</div>
 	<div id="tablewrapper">
 		<table id="text-table">
 			<tbody id ="result"></tbody>
 		</table>
 	</div>
 </div>
-</div>
-
 
 <div id="titles"></div>
 <div id="hidden"></div>

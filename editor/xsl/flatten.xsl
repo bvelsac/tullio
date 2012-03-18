@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE stylesheet [
+<!DOCTYPE xsl:stylesheet [
 <!ENTITY nbsp "&#160;">
 ]>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
@@ -13,13 +13,13 @@
       <div id="events">
         <events>
           <xsl:copy-of select="container/div[@id='events']/events/@next"/>
-          <xsl:copy-of select="container/div[@id='events']/events/*"/>
+          <xsl:copy-of select="container/div[@id='events']/events/*[not(@active='no')]"/>
           <xsl:choose>
             <xsl:when test="string(container/div[@id='events']/events/@next)">
               <e n="{container/div[@id='events']/events/@next}"/>
             </xsl:when>
             <xsl:otherwise>
-              <e n="{container/div[@id='events']/events/*[position()=last()]/@n+1}"/>
+              <e n="{container/div[@id='events']/events/*[not(@active='no')][position()=last()]/@n+1}"/>
             </xsl:otherwise>
           </xsl:choose>
         </events>

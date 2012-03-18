@@ -22,3 +22,21 @@
         </events>
     </all>
 </events>
+
+
+event eigenschappen
+
+
+nummer: n
+begintijd: time
+spreker: speaker
+type: type
+korte omschrijving: notes
+lengte: length
+taal: lang
+start van clip: clip
+eventeigenschappen: props (gebruikt voor aanduiding van aangesprokene)
+commentaar: comments
+statuut
+onderwerp - NL: child element <subject lang="N">
+onderwerp - FR <subject lang="F">
