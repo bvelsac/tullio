@@ -5,82 +5,39 @@ declare namespace request="http://exist-db.org/xquery/request";
 import module namespace xdb="http://exist-db.org/xquery/xmldb";
 import module namespace util="http://exist-db.org/xquery/util";
 
-
-
-(:
-
-let $setuser := xdb:login("/db", "admin", "paris305")
-        let $confCol := (
-            xdb:create-collection("/db/test", "lookspaghetti")
-        )
-
-:)
-				
-
-
 let $meeting := request:get-parameter("meeting", ())      (:string:)
-let $text := request:get-parameter("text", ())            (:elements:)
+let $text := request:get-parameter("doc", ())            (:elements:)
 let $category := request:get-parameter("cat", ())         (:string -- original or translation :)
 let $start := request:get-parameter("start", ())          (: number -- id of start event -- included :)
 let $stop := request:get-parameter("stop", ())            (: number -- id of stop event -- included :)
 
+let $nodes :=  if ($text) then util:eval( $text ) else () 
+		let $startAsDec := if ($start) then xs:decimal(normalize-space($start)) else ()
+		let $stopAsDec := xs:decimal($nodes//events/@next)
+		let $doc := "/text.xml"
+		let $text-doc := concat("/db/tullio/", $meeting, $doc)
+		let $op := concat('op', util:random())
+		let $clumsy := <e marker='invalid' op='{$op}'/>
+		let $atts := $clumsy/@* 
+		let $touch := doc($text-doc)//p[@c = $startAsDec]
+		let $setuser := xdb:login("/db", "admin", "paris305")
+		let $nice := transform:transform($nodes, "../xsl/cleanEdit.xsl", ())
+		
+		let $update := if ($nice) then (update insert $atts into $touch, update insert $nice//p preceding $touch[1], update delete doc($text-doc)//p[@op=$op][@marker='invalid']) else ("something went wrong")
 
-(: This script processes data sent after a clip edit -- the system can assume that the meeting and the clip id does already exist, otherwise the user would not have been able to edit the clip text
-=> not true...
-:)
+let $events-doc := concat("/db/tullio/", $meeting, '/events.xml')
+		
+		
+let $touch2 := doc($events-doc)//e[@n < $stopAsDec and @n >=$startAsDec]
+let $list := for $x in $touch2 return $x/@n cast as xs:string
 
-(: status update will be passed as a part of the text body :)
-
-let $nodes := util:eval( $text ) 
-
-(: update the correct document... :)
-
-(: simply replace all text nodes with id between or equal to start and stop :) 
-
-let $setuser := xdb:login("/db", "admin", "paris305")
-
-(:
-let $style := <!DOCTYPE stylesheet [
-<!ENTITY ntilde  "&#241;" ><!-- small n, tilde -->
-]><xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:output method="xml"/><xsl:variable name="number" select="wrapper/@n"/><xsl:template match="/"> <wrapper>     <xsl:apply-templates select="wrapper/*"/>   </wrapper> </xsl:template> <xsl:template match="*">   <xsl:copy><xsl:attribute name="c">        <xsl:value-of select="$number"/>      </xsl:attribute>   <xsl:copy-of select="text()"/>  </xsl:copy> </xsl:template></xsl:stylesheet>
-:)
-      				
-				
-(: select the correct document :)
-
-(: let $doc := if ($category="orig") then "/text.xml" else "/translations.xml" :)
-
-let $doc := "/text.xml"
-let $text-doc := concat("/db/tullio/", $meeting, $doc)
-
-let $nice := transform:transform($nodes, "../xsl/cleanEdit.xsl", ())
-let $point := doc($text-doc)//p[@c='0']
-
-
-let $sec := if ($point is $point) then update insert $nice/p preceding $point else ()
+let $update2 := if ($nodes//events) then (update insert $atts into $touch2, update insert $nodes//events/e preceding $touch2[1], update delete doc($events-doc)//e[@op=$op][@marker='invalid']) else ()
+		
 
 
 
-
-let $first := doc($text-doc)//p[@c <= $stop and @c >=$start][1]
-
-
-
-  
-
-for $p in doc($text-doc)//p[@c <= $stop and @c >=$start]
-  let $update := if ($p is $first) then update insert $nice/p preceding $p else ()
-	let $delete := update delete $p
-
-
-(: return a success message :)
-
-return 
-<html>
-<head></head>
-
-<body>{$text-doc, $start, $stop}</body>
-
-</html>
- 
+return
+<update>{
+($update, $update2, $list)
+}</update>
 

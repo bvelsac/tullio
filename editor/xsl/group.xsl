@@ -37,7 +37,7 @@
         <div id="consolidated">
           <div id="rawEvents">
             <events>
-              <xsl:copy-of select="@next"/>
+              <xsl:copy-of select="container/div[@id='integratedEvents']/events/@next"/>
               <xsl:for-each select="container/div[@id='integratedEvents']//e">
                 <xsl:choose>
                   <xsl:when test="parent::moved">

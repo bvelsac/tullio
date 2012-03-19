@@ -813,8 +813,8 @@ request.fail(function(jqXHR, textStatus) {
 			
 					
 	editor = CKEDITOR.replace( 'cke', {
-					toolbar: [['Ajaxsave','Source', 'Transform', 'Maximize', 'Templates', 'Abbr', 'Status']],
-					extraPlugins : 'ajaxsave,transform,abbr-custom,status',
+					toolbar: [['internalSync', 'Ajaxsave','Source', 'Transform', 'Maximize', 'Templates', 'Abbr', 'Status']],
+					extraPlugins : 'internalSync,ajaxsave,transform,abbr-custom,status',
 					disableNativeSpellChecker: false,
 					startupFocus: true,
 					templates_files : [ 'ckeditor/plugins/templates/templates/default.js' ],
@@ -891,9 +891,7 @@ console.log('save key');
 					<li id='forward'>FORWARD</li>
 		    </ul>
 	    </div>
-	    <div id="alerts">
-	      <p>LOADING</p>
-	    </div>
+
 	  </div>
 	  <div id="settings">
       <input type="checkbox" id="syncCheck" name="syncing">Keep Syncing</input>
@@ -903,46 +901,6 @@ console.log('save key');
 <div id="spacer">&#160;</div>
 <div id="centerpane" class="ui-layout-center">
 
-<div id="tempPlayerLinks">
-	<div id="clip1">
-		<p class='load'>LOAD AUDIO 1</p>
-		<div id="playlistWrapper">
-			<ul class="playlist hidden">
-				<li class="last">
-					<a id='mpl' href="../../recordings/201112250915.mp3">09:15</a>
-					<span class="offset">start: 00:07</span>
-					<div class="metadata">
-						<div class="duration">4:43</div> <!-- total track time (for positioning while loading, until determined -->
-						<ul>
-							<li><p>Electric razor</p><span>0:00</span></li> <!-- first scene -->
-							<li><p>Water, scissors</p><span>2:41</span></li> <!-- start time of second scene -->
-							<li><p>More razor work</p><span>4:00</span></li>
-						</ul>
-					</div>
-				</li>
-			</ul>
-		</div>
-	</div>
-	<div id="clip2">
-  	<p class='load'>LOAD AUDIO 2</p>
-		<div class="playlistWrapper">
-    	<ul class="playlist hidden">
-      	<li class="last">
-					<a id='someId' href="../../recordings/201112250915.mp3">09:30</a>
-					<span class="offset">00:07</span>
-					<div class="metadata">
-						<div class="duration">3:20</div> <!-- total track time (for positioning while loading, until determined -->
-						<ul>
-							<li><p>Start</p><span>0:30</span></li> <!-- first scene -->
-							<li><p>Needle</p><span>0:45</span></li> <!-- start time of second scene -->
-							<li><p>Haystack</p><span>2:00</span></li>
-						</ul>
-					</div>
-				</li>
-			</ul>
-		</div>
-	</div>
-</div>
 	<div id="tablewrapper">
 		<table id="text-table">
 			<tbody id ="result"></tbody>

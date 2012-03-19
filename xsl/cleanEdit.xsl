@@ -5,10 +5,10 @@
 ]>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:output method="xml"/>
-  <xsl:variable name="number" select="wrapper/@n"/>
+  <xsl:variable name="number" select="//events/e[1]/@n"/>
   <xsl:template match="/">
     <wrapper>
-      <xsl:apply-templates select="wrapper/*"/>
+      <xsl:apply-templates select="//div[@id='text']/*"/>
     </wrapper>
   </xsl:template>
   <xsl:template match="*">

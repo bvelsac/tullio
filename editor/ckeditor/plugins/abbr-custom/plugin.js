@@ -28,20 +28,22 @@ function finish(xml2, xsl, object, e) {
 	//$("#newEvents")
 	console.log('old table');
 	console.log($(jq(rowId) + " table.events-table"));
-	console.log('new table');
-	console.log($("#hidden div#text").html());
+	console.log('added event -- new table');
+	console.log($("#hidden table.events-table"));
 	
 	$(jq(rowId) + " table.events-table").replaceWith($("#hidden table.events-table"));
 	// $('div.second').replaceWith('<h2>New heading</h2>');
+	console.log("replaced events table");
+	
 	$(jq(rowId) + " table.events-table").addClass('edited');
 	
 	$(jq(rowId) + " events").replaceWith($("#hidden events"));
+	console.log("replaced events list");
+	
 	
 	var newContent = $("#hidden div#text").html();
 	editor.setData(newContent);
-	
-	
-	
+	console.log("replaced editor content");
 	
 	console.log('exit finish');
 	
