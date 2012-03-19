@@ -21,7 +21,7 @@ function finish(xml2, xsl, object, e) {
 	//var asString = (new XMLSerializer()).serializeToString(xml2);
 	console.log('enter finish ' + rowId);
 	
-	//console.log(xml2);
+	console.log(xml2);
 	// replace existing content and event list
 	
 	// store the new event list in the database
@@ -52,8 +52,8 @@ function finish(xml2, xsl, object, e) {
 function finalize(xml, xsl, object, e) {
 	//	console.log('enter finalize');
 	//	console.log(xml);
-	//	var asString = (new XMLSerializer()).serializeToString(xml);
-	//	console.log('finalize----' + asString);
+	var asString = (new XMLSerializer()).serializeToString(xml);
+	console.log('finalize----' + asString);
 	$.transform({
 			el: "#hidden",
 			async:false, 
@@ -98,7 +98,36 @@ CKEDITOR.plugins.add( 'internalSync',
 					var doctype = "<?xml version='1.0'?>\n<!DOCTYPE container [\n<!ENTITY nbsp '&#160;'>\n]>";
 					var content = doctype + '<container><div id="text">' + editor.getData().replace(/[&][#]160[;]/gi," ") + '</div><div id="events">' + $(jq(rowId) + ' div.structured-events').html() + '</div>'  + '</container>';
 					var contentDoc = $.parseXML(content);
-					contentDoc.getElementsByTagName("container")[0].appendChild(titles);		
+					contentDoc.getElementsByTagName("container")[0].appendChild(titles);
+					
+					// get latest macro variables
+					var clipid = edited.slice(1,-2);
+									
+					var request = $.ajax({
+							url: "../xq/return-variables.xql",
+							type: "GET",
+							data: {
+								"start": clipid,  
+								"m": mmm
+							},
+							async: false,
+							contentType: "text/xml"
+					});
+
+					request.done(function(result) {
+							testeee = (new XMLSerializer()).serializeToString(result); 
+							console.log(testeee);
+							contentDoc.getElementsByTagName("container")[0].appendChild(result.documentElement);
+					});
+
+					request.fail(function(jqXHR, textStatus) {
+							alert( "Request failed: " + textStatus );
+					});
+					
+						testeee = (new XMLSerializer()).serializeToString(contentDoc); 
+							console.log("init //////" + testeee);
+					
+					
 					$.transform({
 							xmlobj: contentDoc,
 							xsl: pathToXSL +  "flatten.xsl",

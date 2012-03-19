@@ -174,7 +174,7 @@ CKEDITOR.plugins.add( 'abbr-custom',
 									},
 									{
 										type: 'select',
-										label: '�:',
+										label: 'A:',
 										id : 'gov',
 										multiple : 'true',
 										// items : [['Agenda', 'A'], ['Sprekers', 'S'], ['Zaal', 'Z']],
@@ -273,7 +273,7 @@ CKEDITOR.plugins.add( 'abbr-custom',
 					var newEvent = editor.document.createElement( 'event' );
 					var clip = dialog.getValueOf('eventInfo', 'clip') ? 'y' : 'n';
 					
-					newEvent.setAttribute( 'clip', clip );
+					newEvent.setAttribute( 'c', clip );
 					newEvent.setAttribute( 'type', dialog.getValueOf( 'eventInfo', 'type' ) );
 					newEvent.setAttribute( 'speaker', dialog.getValueOf( 'eventInfo', 'speaker' ) );
 					newEvent.setAttribute( 'props', dialog.getValueOf( 'eventInfo', 'gov' ) );
@@ -313,7 +313,33 @@ CKEDITOR.plugins.add( 'abbr-custom',
 					console.log(contentDoc);
 					var asString = (new XMLSerializer()).serializeToString(contentDoc);
 					console.log("sring" + asString);
-					contentDoc.getElementsByTagName("container")[0].appendChild(titles);		
+					contentDoc.getElementsByTagName("container")[0].appendChild(titles);	
+					
+						// get latest macro variables
+					var clipid = edited.slice(1,-2);
+									
+					var request = $.ajax({
+							url: "../xq/return-variables.xql",
+							type: "GET",
+							data: {
+								"start": clipid,  
+								"m": mmm
+							},
+							async: false,
+							contentType: "text/xml"
+					});
+
+					request.done(function(result) {
+							testeee = (new XMLSerializer()).serializeToString(result); 
+							console.log(testeee);
+							contentDoc.getElementsByTagName("container")[0].appendChild(result.documentElement);
+					});
+
+					request.fail(function(jqXHR, textStatus) {
+							alert( "Request failed: " + textStatus );
+					});
+					
+					
 					// start the content processing chain
 					// first step is extracting the series of events from the edited content
 					/*

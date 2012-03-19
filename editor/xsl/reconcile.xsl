@@ -55,7 +55,7 @@
 			  
 			  <e n="{$n-value}">
 			    <xsl:copy-of select="@*"/>
-			    <xsl:if test="@type='PRES'">
+			    <xsl:if test="@type='PRES' or @type='pres'">
 			      <pres>
 			        <xsl:copy-of select="key('people', @speaker)"/>   
 			      </pres>
@@ -120,7 +120,8 @@
 								<xsl:copy-of select="//e[@n=current()/@title]/preceding-sibling::e[count(preceding-sibling::e) &gt;= $refIndexStart+1]"/>
 							</leftovers>
 						</xsl:if>
-						<xsl:copy-of select="//e[@n=current()/@title]"/>
+					  <!-- next line: the first event in the list should not be copied because it has a matching p, it is copied because it is the clipmarker (hard coded elswehere) -->
+						<xsl:copy-of select="//e[not(position()=1)][@n=current()/@title]"/>
 						<xsl:apply-templates select="following-sibling::*[1]">
 							<xsl:with-param name="refIndexStart" select="count(//e[@n=current()/@title]/preceding-sibling::e) "/>
 							<xsl:with-param name="processed" select="@title"/>
@@ -141,7 +142,7 @@
 	      
 	      <xsl:choose>
 	        <xsl:when test="not(/container/div[@id='flattened']/p[@title][not(@title='new')])">
-	          <!-- all events deleted -->
+	          <!-- all events deleted (or clip without events) -->
 	          <leftovers>
 	            <xsl:copy-of select="container/div[@id='events']//e[not(position()=1)][not(position()=last())]"/>
 	          

@@ -10,6 +10,7 @@
         <xsl:apply-templates mode="text" select="container/div[@id='text']"/>
     
       <xsl:copy-of select="container/reference"/>
+      <xsl:copy-of select="container/info"/>
       <div id="events">
         <events>
           <xsl:copy-of select="container/div[@id='events']/events/@next"/>
@@ -35,21 +36,28 @@
   </xsl:template>
   <xsl:template match="text()"/>
   <xsl:template match="event">
-    <xsl:if test="@clip='y'">
+    <xsl:if test="@c='y'">
       <!-- insert clipmarker for new clip -->
-      <event id="{concat('marker:', generate-id())}" type="marker"/>
+      <event c="y" id="{concat('marker:', generate-id())}" type="marker"/>
     </xsl:if>
     <xsl:copy>
       <xsl:attribute name="id">
         <xsl:value-of select="generate-id()"/>
       </xsl:attribute>
       <xsl:copy-of select="@*"/>
+      <xsl:if test="@c='y'">
+        <xsl:attribute name="c">n</xsl:attribute>
+      </xsl:if>
       <xsl:copy-of select="*"/>
+     
     </xsl:copy>
   </xsl:template>
   <xsl:template match="*[@title]">
-    <!-- this will match any existing element with a reference to a title -->
-    <p title="{@title}"/>
+    <!-- this will match any first occurrence with a reference to a title -->
+    <xsl:if test="not(preceding::*[@title=current()/@title])">
+      <p title="{@title}"/>  
+    </xsl:if>
+    
     <xsl:apply-templates/>
   </xsl:template>
   <!-- text mode will copy everything and add ids to elements representing new events -->
@@ -58,11 +66,15 @@
   only the template for p-elements will retrieve them and start standard processing on them
   -->
   <xsl:template match="p" mode="text">
-    <xsl:copy>
-      <xsl:copy-of select="@*"/>
-      <xsl:apply-templates mode="text"/>
-    </xsl:copy>
+
+    <xsl:if test="normalize-space()">
+      <xsl:copy>
+        <xsl:copy-of select="@*"/>
+        <xsl:apply-templates mode="text"/>
+      </xsl:copy>  
+    </xsl:if>
     <xsl:apply-templates select="descendant::event"/>
+    
   </xsl:template>
   <xsl:template match="*" mode="text">
     <xsl:copy>

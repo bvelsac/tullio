@@ -10,7 +10,15 @@
   <person id="BOUARFA_Sfia" gov="no" group="PS" lang="fr" gender="f">
     <first>Sfia</first>
     <last>Bouarfa </last>
-  </person>  
+  </person>
+  <person id="CLOSE_Philippe" gov="no" group="PS" lang="fr" gender="m">
+    <first>Philippe</first>
+    <last>Close </last>
+  </person>
+  <person id="DAÏF_Mohamed" gov="no" group="PS" lang="fr" gender="m">
+    <first>Mohamed</first>
+    <last>Daïf </last>
+  </person>
   
   <p code="Grouwels ">
       <gender>F</gender>

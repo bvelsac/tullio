@@ -44,9 +44,10 @@ let $setuser := xdb:login("/db", "admin", "paris305")
 (: let $events-doc := concat("/db/tullio/", $meeting, '/events.xml') :)
 
 let $events := transform:transform($nodes, "../xsl/logger2events.xsl", ())
-
-
 let $stored := xdb:store(concat("/db/tullio/", $meeting), "events.xml", $events)
+
+let $emptyClips := transform:transform(doc(concat("/db/tullio/", $meeting, "/events.xml")), "../xsl/initClips.xsl", ())
+let $storedClips := xdb:store(concat("/db/tullio/", $meeting), "text.xml", $emptyClips)
 
 
 let $locks := <locks meeting="{$meeting}"></locks>

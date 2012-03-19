@@ -7,6 +7,7 @@ var stop;
  
 function asfinish(xml2, xsl, object, e) {
 	var asString = (new XMLSerializer()).serializeToString(xml2);
+	clipid = edited.slice(1,-2);
 	console.log('AJAX SAVE');
 	console.log(asString);
 	console.log(author);
@@ -15,6 +16,7 @@ function asfinish(xml2, xsl, object, e) {
 	console.log(stop);
 	console.log(mmm);
 	console.log("***");
+	
 	//console.log("doc " + asString + "\ncat: " + cat + "\nstart: " + clipid + "\nstop: " + stop  + "\nmeeting: " + mmm  + "\nid: " + author);
 		$.ajax({
 			url: "/exist/tullio/xq/storeClipEdit.xql",
@@ -80,9 +82,9 @@ function asfinalize(xml, xsl, object, e) {
  }
  
 function asreconcile(xml, xsl, xmlorig) {
-	// var asString = (new XMLSerializer()).serializeToString(xml);
-	// console.log("reconcile -- xml:");
-	// console.log(asString);
+	var asString = (new XMLSerializer()).serializeToString(xml);
+	console.log("reconcile -- xml:");
+	console.log(asString);
 	// this step implements the actual event comparison logic
 	$.transform({
 			async:false, 
@@ -105,13 +107,11 @@ CKEDITOR.plugins.add('ajaxsave',
                 exec : function( editor )
                 {
 									noUpdate = true;
-									
 									console.log("plugin " + edited);
-														clipid = edited.slice(1,-2);
-					stop = $(jq("stopevent-" + clipid)).text();
-cat = $(jq(edited)).hasClass("orig") ? "orig" : "trans";
-
-	console.log("doc " + asString + "\ncat: " + cat + "\nstart: " + clipid + "\nstop: " + stop  + "\nmeeting: " + mmm  + "\nid: " + author);
+									clipid = edited.slice(1,-2);
+									stop = $(jq("stopevent-" + clipid)).text();
+									cat = $(jq(edited)).hasClass("orig") ? "orig" : "trans";
+									console.log("doc " + asString + "\ncat: " + cat + "\nstart: " + clipid + "\nstop: " + stop  + "\nmeeting: " + mmm  + "\nid: " + author);
 
 
 // refresh content first .replace(/[&][#]160[;]/gi," ")
@@ -119,7 +119,33 @@ cat = $(jq(edited)).hasClass("orig") ? "orig" : "trans";
 					var doctype = "<?xml version='1.0'?>\n<!DOCTYPE container [\n<!ENTITY nbsp '&#160;'>\n]>";
 					var content = doctype + '<container><div id="text">' + editor.getData().replace(/[&][#]160[;]/gi," ") + '</div><div id="events">' + $(jq(rowId) + ' div.structured-events').html() + '</div>'  + '</container>';
 					var contentDoc = $.parseXML(content);
-					contentDoc.getElementsByTagName("container")[0].appendChild(titles);		
+					contentDoc.getElementsByTagName("container")[0].appendChild(titles);
+					
+											// get latest macro variables
+									
+					var request = $.ajax({
+							url: "../xq/return-variables.xql",
+							type: "GET",
+							data: {
+								"start": clipid,  
+								"m": mmm
+							},
+							async: false,
+							contentType: "text/xml"
+					});
+
+					request.done(function(result) {
+							testeee = (new XMLSerializer()).serializeToString(result); 
+							console.log(testeee);
+							contentDoc.getElementsByTagName("container")[0].appendChild(result.documentElement);
+					});
+
+					request.fail(function(jqXHR, textStatus) {
+							console.log('request fails -----');
+							alert( "Request failed: " + textStatus );
+					});
+					
+					
 					$.transform({
 							xmlobj: contentDoc,
 							xsl: pathToXSL +  "flatten.xsl",

@@ -11,6 +11,9 @@
 
 
 <xsl:template match="*">
+  <xsl:if test="@clip='true'">
+    <e type="marker" n="{@nr * 2 - 1}" c="y"></e>
+  </xsl:if>
   <e>
     <xsl:apply-templates select="@*"></xsl:apply-templates>
     </e>
@@ -18,7 +21,7 @@
 
 <xsl:template match="@nr">
   <xsl:attribute name="n">
-    <xsl:value-of select="."/>
+    <xsl:value-of select=". * 2"/>
   </xsl:attribute>
 </xsl:template>
   
@@ -29,12 +32,7 @@
   </xsl:template>
 
   <xsl:template match="@clip">
-    <xsl:attribute name="c">
-      <xsl:choose>
-        <xsl:when test="'true'">y</xsl:when>
-        <xsl:otherwise>n</xsl:otherwise>
-      </xsl:choose>
-    </xsl:attribute>
+    <xsl:attribute name="c">n</xsl:attribute>
   </xsl:template>
   
   <xsl:template match="@*">

@@ -18,6 +18,13 @@ body
 		
 }
 
+
+[title]:before {
+	content: attr(title);
+	font-family: monospace;
+	color: navy;
+}
+
 .debug {
 	font-family: monospace;
 	color: silver;
