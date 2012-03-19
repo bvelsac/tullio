@@ -263,6 +263,7 @@
             </xsl:for-each>
           </table>
         </td>
+        <td class='status' id="{concat('status-', @n, '-orig')}">&#160;</td>
         <td class="orig" id="{concat('R', @n, '-o')}" rel="test">
           <div class="editable">
             <!-- de eerste keer bestaat er nog geen tekst, die moet dan worden aangemaakt op basis van de events -->
@@ -282,6 +283,7 @@
             </xsl:choose>
           </div>
         </td>
+        <td class='status' id="{concat('status-', @n, '-trans')}">&#160;</td>
       </tr>
     </xsl:for-each>
   </xsl:template>

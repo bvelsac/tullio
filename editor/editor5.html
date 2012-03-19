@@ -2,6 +2,8 @@
 <head>
 	<title>Full Text</title>
 	<style>
+	td.status {width: 100px;}
+	td.locked {background-color: #f5a5a5;}
 	table.edited {background-color: bisque;}
 	.leftovers {color: #bfbebe};
 	.moved {color: #5121b3};
@@ -125,6 +127,7 @@
 
 	
 	<script>
+	var dbUrl = "/exist/rest//db/tullio/";
 	var newe;
 	var noUpdate = false;
 	var updateCounter = 0;
@@ -197,6 +200,48 @@ var user = $.QueryString["u"];
    return '#' + myid.replace(/(:|\.)/g,'\\$1');
  }
 	
+ 
+ 
+ function displayStatus() {
+//	 var requestLocks = dbUrl + mmm + "/locks.xml";
+	var requestLocks = "/exist/tullio/xq/return-locks.xql?m=" + mmm; 
+	 function updateLocks(result) {
+		 console.log('update clipstatus');
+		 var statusTD;
+		 var cell;
+		 $(".status").removeClass('locked');
+		 $(".status").text(' ');
+		 var locks = result.getElementsByTagName("lock");
+     var nL = locks.length;
+		 console.log("l" + nL);
+		 for (i=0; i<nL; i++) {
+			 if (locks[i].getAttribute('n')) {
+				 statusTD = "status-" + locks[i].getAttribute('n') + "-" + locks[i].getAttribute('v');
+				 console.log(statusTD);
+				 cell = $(jq(statusTD));
+				 console.log(cell);
+				 cell.text(locks[i].getAttribute('id'));
+				 cell.addClass('locked');
+			}
+		}
+		 
+	 }
+	 
+	 jQuery.ajax({
+			 	type: "GET",
+        url:    requestLocks,
+        success: updateLocks,
+				dataType: "xml" 
+	 });
+	 
+ }
+ 
+ function loopDisplayStatus() {
+	 displayStatus();
+   setTimeout(loopDisplayStatus, 4000);
+ }
+ 
+ 
 	
 	function loadPopup() {
 	//loading popup with jQuery magic!
@@ -281,7 +326,7 @@ if (edited) {
 			newe = $(jq(edited)).offset().top;
 		}
 
-
+displayStatus();
 
 
 	$("#" + edited.replace(/\./g,"\\.")).addClass('edited');
@@ -602,7 +647,8 @@ $("#overview").text(mmm);
 			scrollState = 1;
 		});
 		
-		
+		// start displaying status codes
+		loopDisplayStatus();
 	
 		
 		
@@ -771,22 +817,7 @@ request.fail(function(jqXHR, textStatus) {
 					
 					
 					
-					// scroll yr text into view when doubleclicking a clip to edit
-					// feature to be dropped as the users don't like it
 				
-						/*
-					
-					var z = $("body").scrollTop();
-					var diff = newe - 160;
-					
-					
-					
-					$("body").scrollTop(diff);
-					console.log("oud:" + old + " nieuw:" + newe + " scrolltop:" + z + " scrolltop-nieuw:" + diff + z);
-				
-				
-				*/
-					
 				
 				
 				
