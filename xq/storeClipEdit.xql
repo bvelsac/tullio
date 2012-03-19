@@ -31,9 +31,7 @@ let $events-doc := concat("/db/tullio/", $meeting, '/events.xml')
 let $touch2 := doc($events-doc)//e[@n < $stopAsDec and @n >=$startAsDec]
 let $list := for $x in $touch2 return $x/@n cast as xs:string
 
-let $update2 := if ($nodes//events) then (update insert $atts into $touch2, update insert $nodes//events/e preceding $touch2[1], update delete doc($events-doc)//e[@op=$op][@marker='invalid']) else ()
-		
-
+let $update2 := if ($nodes//events) then (update insert $atts into $touch2, update insert $nodes//events/e[not(@active='no')] preceding $touch2[1], update delete doc($events-doc)//e[@op=$op][@marker='invalid']) else ()
 
 
 return

@@ -9,6 +9,9 @@
   <xsl:template match="/">
     <wrapper>
       <xsl:apply-templates select="//div[@id='text']/*"/>
+      <xsl:if test="not(//div[@id='text']/*)">
+        <p c="{$number}"></p>
+      </xsl:if>
     </wrapper>
   </xsl:template>
   <xsl:template match="*">
