@@ -3,7 +3,7 @@
 <!ENTITY nbsp "&#160;">
 ]>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:output indent="yes"/>
+  <xsl:output method="xml" indent="yes"/>
   <xsl:key match="//e" name="clip" use="@clip"/>
   <xsl:key match="//l" name="snippets" use="@id"/>
   <xsl:key match="//p[not(@class='init')]" name="text" use="@c"/>
@@ -177,7 +177,7 @@
               </xsl:otherwise>
             </xsl:choose>
           </xsl:variable>
-          <a class="startRec" href="#">
+          <a class="startRec" href="javascript:('return false;')">
             <xsl:text>Play</xsl:text>
           </a>
           <div calss="playlistWrapper">
@@ -427,7 +427,7 @@
         </p>
       </xsl:otherwise>
     </xsl:choose>
-    <p class="write"> </p>
+    <p class="write">...</p>
   </xsl:template>
   <xsl:template name="president">
     <xsl:param name="class" select="'pres'"/>
@@ -487,7 +487,7 @@
   <xsl:template match="e[@type='marker']" mode="initialize-text">
     <p class="marker" title="{@n}">Start clip <xsl:value-of select="@n"/>
     </p>
-    <p class="write"> </p>
+    <p class="write">...</p>
   </xsl:template>
   <xsl:template match="e" mode="initialize-text">
     <p c="{@clip}" title="{@n}">Unsupported event
@@ -495,7 +495,7 @@
       <xsl:text>[</xsl:text><xsl:value-of select="@clip"/><xsl:text>]</xsl:text>
       -->
     </p>
-    <p class="write"> </p>
+    <p class="write">...</p>
     <!-- 
       <xsl:copy-of select="preceding-sibling::*[1]"/>
     -->

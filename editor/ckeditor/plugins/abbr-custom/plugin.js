@@ -144,7 +144,7 @@ CKEDITOR.plugins.add( 'abbr-custom',
 										id : 'type',
 										multiple : 'false',
 										// items : [['Agenda', 'A'], ['Sprekers', 'S'], ['Zaal', 'Z']],
-										items : eventTypes[langChoice],
+										items :  [['Agenda', 'A'], ['Sprekers', 'S'], ['Zaal', 'Z']],
 										'default' : 'AGENDA',
 										onChange : function (api) {
 											alert('Current value: ' + this.getValue() );
@@ -165,7 +165,6 @@ CKEDITOR.plugins.add( 'abbr-custom',
 										type: 'select',
 										label: 'Orateur',
 										id : 'speaker',
-										// items : [['Agenda', 'A'], ['Sprekers', 'S'], ['Zaal', 'Z']],
 										items : speakers,
 										'default' : '',
 										onChange : function (api) {
@@ -178,7 +177,7 @@ CKEDITOR.plugins.add( 'abbr-custom',
 										id : 'gov',
 										multiple : 'true',
 										// items : [['Agenda', 'A'], ['Sprekers', 'S'], ['Zaal', 'Z']],
-										items : government,
+										items : [['Agenda', 'A'], ['Sprekers', 'S'], ['Zaal', 'Z']],
 										'default' : '',
 										onChange : function (api) {
 											alert('Current value: ' + this.getValue() );
