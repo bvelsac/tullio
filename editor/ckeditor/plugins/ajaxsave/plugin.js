@@ -21,6 +21,7 @@ function asfinish(xml2, xsl, object, e) {
 		$.ajax({
 			url: "/exist/tullio/xq/storeClipEdit.xql",
 			type: "POST",
+			contentType: "application/x-www-form-urlencoded;charset=UTF-8",
 			data: {
 				"doc": asString,
 				"cat": cat,
@@ -116,7 +117,7 @@ CKEDITOR.plugins.add('ajaxsave',
 
 // refresh content first .replace(/[&][#]160[;]/gi," ")
 
-					var doctype = "<?xml version='1.0'?>\n<!DOCTYPE container [\n<!ENTITY nbsp '&#160;'>\n]>";
+					var doctype = "<?xml version='1.0' encoding='UTF-8'?>\n<!DOCTYPE container [\n<!ENTITY nbsp '&#160;'>\n]>";
 					var content = doctype + '<container><div id="text">' + editor.getData().replace(/[&][#]160[;]/gi," ") + '</div><div id="events">' + $(jq(rowId) + ' div.structured-events').html() + '</div>'  + '</container>';
 					var contentDoc = $.parseXML(content);
 					contentDoc.getElementsByTagName("container")[0].appendChild(titles);

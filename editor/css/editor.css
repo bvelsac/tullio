@@ -1,0 +1,63 @@
+	td.status {width: 100px;}
+	td.locked {background-color: #f5a5a5;}
+	table.edited {background-color: bisque;}
+	.leftovers {color: #bfbebe};
+	.moved {color: #5121b3};
+	.startstop  {display: none;}
+	.structured-events {display: none;}
+	body {font-family: sans-serif;}
+	table {font-size: 12px; }
+	#remove {width: 100%;}
+	#header {width: 100%;}
+	/* #header div {background-color: white;  margin: 0.5%; float: left; } */
+	/* #meeting {width: 25%; float: right;} */
+	#free {width: 19%;}
+	#navigation ul {padding: 0px;}
+	#navigation ul li {list-style-type: none; display: inline; margin-right: 20px;}
+	#texts {background-color: silver;}
+	#hidden {background-color: yellow;}
+	#titles {display: none;};
+	#logo {margin-left: 10px; height: 65px; background-image:url('../img/logo.png'); background-repeat:no-repeat;}
+	td {border: thin dotted navy;}
+	.ruby td {border-color: #ff3333; border-style: solid;}
+	/*.edited {background-color: #66ff66;} */
+	.startevent {background-color: #66ff00}
+	.stopevent {background-color: #00ffcc}
+	div.editable
+		{
+			border: solid 2px Transparent;
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+
+		div.editable:hover
+		{
+			border-color: blue;
+		}
+	
+		#hidden, #debug, #island {display: none;}
+		td.events {vertical-align: top;}
+		table.events-table * {font-size: 10px;}
+		table.events-table td {border: thin dotted #006666; };
+		td.e-n {width: 20px; }
+		td.e-time {width: 50px;}
+		td.e-type  {width: 50px;}
+		td.e-speaker {width: 70px;}
+		
+		.ui-layout-north {position: fixed;
+	left: 0px;
+	top: 0px;
+	height: 150px;
+	width: 100%;
+	}
+	#spacer {clear: both;}
+	
+	#header > div {float: left !important;
+	width: 10%;}
+	
+	#header > div#player {width: 600px !important;}
+	.ui-layout-north {
+		background-color: #00cc99 !important;
+	}
+	#centerpane {margin-top: 150px !important;
+	background-color: white;}

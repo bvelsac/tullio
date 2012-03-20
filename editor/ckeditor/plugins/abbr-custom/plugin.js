@@ -142,9 +142,8 @@ CKEDITOR.plugins.add( 'abbr-custom',
 										type: 'select',
 										label: 'Type',
 										id : 'type',
-										multiple : 'false',
 										// items : [['Agenda', 'A'], ['Sprekers', 'S'], ['Zaal', 'Z']],
-										items :  [['Agenda', 'A'], ['Sprekers', 'S'], ['Zaal', 'Z']],
+										items :  eventTypes[langChoice],
 										'default' : 'AGENDA',
 										onChange : function (api) {
 											alert('Current value: ' + this.getValue() );
@@ -166,7 +165,7 @@ CKEDITOR.plugins.add( 'abbr-custom',
 										label: 'Orateur',
 										id : 'speaker',
 										items : speakers,
-										'default' : '',
+										'default' : '----',
 										onChange : function (api) {
 											alert('Current value: ' + this.getValue() );
 										}
@@ -177,7 +176,7 @@ CKEDITOR.plugins.add( 'abbr-custom',
 										id : 'gov',
 										multiple : 'true',
 										// items : [['Agenda', 'A'], ['Sprekers', 'S'], ['Zaal', 'Z']],
-										items : [['Agenda', 'A'], ['Sprekers', 'S'], ['Zaal', 'Z']],
+										items : government,
 										'default' : '',
 										onChange : function (api) {
 											alert('Current value: ' + this.getValue() );
@@ -194,7 +193,7 @@ CKEDITOR.plugins.add( 'abbr-custom',
 											var time = this.getValue();
 											if ( time != '' && !timepattern.test(this.getValue()) ) {
 												console.log('time validation failed');
-												alert("L'heure n'est pas valide (hh:mm:ss).");												
+												alert("L'heure n'est pas correct (hh:mm:ss).");												
 											  return false;
 											}
 											else if ( CKEDITOR.dialog.getCurrent().getValueOf('eventInfo', 'clip') && time=='' ) {

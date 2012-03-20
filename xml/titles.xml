@@ -366,6 +366,11 @@
       <last>Vervoort</last>
    </person>
   
+  <person id="GROUWELS_Brigitte" gov="yes" gender="f" lang="nl" group="CD&amp;V">
+    <first>Brigitte</first>
+    <last>Grouwels</last>
+  </person>
+  
   <p code="Grouwels ">
       <gender>F</gender>
       <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Openbare Werken en Vervoer</ti>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reference name="eventTypes">
+  <event id="PRES" order="gen-pres" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Voorzitter</name>
+    <name lang="fr">Président</name>
+    <description lang="nl">Bedoeld om de voorzitter aan te duiden, in het begin van de vergadering of bij verandering van voorzitter.</description>
+    <description lang="fr"></description>
+    <properties>
+      <prop id="speaker">
+        <description lang="nl">Dit veld gebruiken om de naam van de nieuwe voorzitter in te vullen.</description>
+      </prop>
+    </properties>
+  </event>
+  
+  <event id="QA-AV"  order="questions-av" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Dringende Vraag</name>
+    <name lang="fr">Question d'actualité</name>
+    <description lang="nl">Titel voor dringende vraag.</description>
+  </event>
+  <event id="QO-MV"  order="questions-mv" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Mondelinge Vraag</name>
+    <name lang="fr">Question orale</name>
+    <description lang="nl">Titel voor mondelinge vraag</description>
+  </event>
+  
+  
+  <event id="OUV-OPE"  order="gen-01" active="y" use-for-editor="n" use-for-agenda="y" >
+    <name lang="nl">Opening</name>
+    <name lang="fr">Ouverture</name>
+    <description lang="nl">Om vast te leggen wanneer de vergadering is begonnen en de bijbehorende titels aan te maken.</description>
+  </event>
+  <event id="EXC-AFW"  order="gen-02" active="y" use-for-editor="y" use-for-agenda="y" >
+    <name lang="nl">Afwezigheden</name>
+    <name lang="fr">Excusés</name>
+  </event>
+  <event id="COMM-MED"   order="gen-03" active="y" use-for-editor="n" use-for-agenda="y" >
+    <name lang="nl">Mededelingen</name>
+    <name lang="fr">Communications</name>
+  </event>
+  <event id="GEN-ALG" order="gen-00"  active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Agenda - algemeen</name>
+    <name lang="fr">Agenda - en général</name>
+  </event>
+  <event id="P.E.CONS-INOVERW" order="gen-04"  active="y" use-for-editor="n" use-for-agenda="y" >
+    <name lang="nl">Voorzitter</name>
+    <name lang="fr">Président</name>
+  </event>
+</reference>
