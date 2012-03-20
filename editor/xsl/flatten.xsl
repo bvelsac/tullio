@@ -54,7 +54,7 @@
   </xsl:template>
   <xsl:template match="*[@title]">
     <!-- this will match any first occurrence with a reference to a title -->
-    <xsl:if test="not(preceding::*[@title=current()/@title])">
+    <xsl:if test="normalize-space() and not(preceding::*[@title=current()/@title])">
       <p title="{@title}"/>  
     </xsl:if>
     
@@ -67,7 +67,7 @@
   -->
   <xsl:template match="p" mode="text">
 
-    <xsl:if test="normalize-space()">
+    <xsl:if test="normalize-space() or * or @class='write'">
       <xsl:copy>
         <xsl:copy-of select="@*"/>
         <xsl:apply-templates mode="text"/>

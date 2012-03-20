@@ -19,10 +19,18 @@ body
 }
 
 
-[title]:before {
+p[title]:before {
 	content: attr(title);
+	font-family: sans-serif;
+	font-size: 9px;
+	color: white;
+	margin-right: 2px;
+	margin-left: 2px;
+}
+
+[title] {
 	font-family: monospace;
-	color: navy;
+	background-color: silver;
 }
 
 .debug {
@@ -30,7 +38,10 @@ body
 	color: silver;
 
 }
+not:([title]) .write {background-color: #ccffcc;}
+.write, .incomplete {background-color: #ccffcc;}
 
+not:p {color: red;}
 
 
 ol,ul,dl

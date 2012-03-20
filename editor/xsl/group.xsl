@@ -127,6 +127,9 @@
     
     
   </xsl:template>
+  <xsl:template match="br" mode="write">
+    <xsl:text> </xsl:text>
+  </xsl:template>
   <xsl:template match="*" mode="write">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
@@ -424,6 +427,7 @@
         </p>
       </xsl:otherwise>
     </xsl:choose>
+    <p class="write"> </p>
   </xsl:template>
   <xsl:template name="president">
     <xsl:param name="class" select="'pres'"/>
@@ -451,9 +455,16 @@
           <xsl:value-of select="$segment"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:value-of
-        select="key('snippets', concat('pres-', $pres-gender, '-', $event/@lang))"
-      />
+      <xsl:choose>
+        <xsl:when test="key('snippets', concat('pres-', $pres-gender, '-', $event/@lang))">
+          <xsl:value-of
+            select="key('snippets', concat('pres-', $pres-gender, '-', $event/@lang))"
+          />    
+        </xsl:when>
+        <xsl:otherwise><xsl:text>&#160;</xsl:text></xsl:otherwise>
+      </xsl:choose>
+      
+      
     </span>
   </xsl:template>
   <xsl:template match="e[@type='EXC-AFW']" mode="initialize-text">
@@ -468,6 +479,7 @@
       <span class="incomplete">Lijst van afwezigen</span>
     </p>
     <p c="{@clip}" class="incomplete"></p>
+    <p class="write"> </p>
   </xsl:template>
   <xsl:template match="e[@type='']" mode="initialize-text">
     <p class="debug" title="{@n}">Event type missing</p>
@@ -475,6 +487,7 @@
   <xsl:template match="e[@type='marker']" mode="initialize-text">
     <p class="marker" title="{@n}">Start clip <xsl:value-of select="@n"/>
     </p>
+    <p class="write"> </p>
   </xsl:template>
   <xsl:template match="e" mode="initialize-text">
     <p c="{@clip}" title="{@n}">Unsupported event
@@ -482,6 +495,7 @@
       <xsl:text>[</xsl:text><xsl:value-of select="@clip"/><xsl:text>]</xsl:text>
       -->
     </p>
+    <p class="write"> </p>
     <!-- 
       <xsl:copy-of select="preceding-sibling::*[1]"/>
     -->
