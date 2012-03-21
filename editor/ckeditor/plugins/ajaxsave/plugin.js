@@ -55,11 +55,8 @@ function asfinish(xml2, xsl, object, e) {
 					
 	$("#cke").attr('id', '');
 
-	setTimeout( function() { edited=''; editor.destroy() }, 200);					
+	setTimeout( function() {$(jq(edited)).addClass("content"); edited=''; editor.destroy(); }, 200);					
 	noUpdate = false;
-	
-	
-	
 	
 	console.log('exit finish');
 } 
@@ -155,7 +152,7 @@ CKEDITOR.plugins.add('ajaxsave',
 							success:asreconcile
 					});
 
-
+					
 
                 },
                 canUndo : false

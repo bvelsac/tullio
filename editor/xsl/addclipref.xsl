@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xsl:stylesheet [
+<!ENTITY nbsp "&#160;">
+]>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     version="1.0">
   <xsl:output encoding="UTF-8" method="xml"/>
+  <xsl:param name="translation"></xsl:param>
     <xsl:template match="/">
       
       
@@ -11,8 +15,9 @@
               <xsl:copy-of select="//meeting"/>
                 <xsl:apply-templates select="/all/events/e"></xsl:apply-templates>
                 
+              
             </events>
-            <xsl:copy-of select="all/doc"/>
+            <xsl:copy-of select="all/*[not(self::events)]"/>
         </all>
         
         

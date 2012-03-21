@@ -2,14 +2,19 @@
 <!DOCTYPE xsl:stylesheet [
 <!ENTITY nbsp "&#160;">
 ]>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:exsl="http://exslt.org/common" exclude-result-prefixes="exsl"
+  
+  >
   <xsl:output method="xml" indent="yes"/>
   <xsl:key match="//e" name="clip" use="@clip"/>
   <xsl:key match="//l" name="snippets" use="@id"/>
-  <xsl:key match="//p[not(@class='init')]" name="text" use="@c"/>
+  <xsl:key match="//doc/p[not(@class='init')]" name="text" use="@c"/>
+  <xsl:key match="//trans/p[not(@class='init')]" name="trans" use="@c"/>
   <xsl:key match="//moved" name="moved" use="e/@n"/>
   <xsl:key match="container/div[@id='integratedEvents']/events/e" name="new" use="@id"/>
   <xsl:key match="container/div[@id='integratedEvents']/events/e" name="all" use="@n"/>
+  <xsl:param name="mode"></xsl:param>
   <!-- Chrome heeft een issue waardoor de document() functie niet werkt, dus alles moet worden toegevoegd aan het input-document
     Google Chrome currently has limited support for XSL. If your XSL refers to any external resources (document() function, xsl:import, xsl:include or external entities), the XSL will run but the result will either be empty or invalid.
   
@@ -145,6 +150,7 @@
   <xsl:template name="default">
     <xsl:for-each select="//e[@c='y']">
       <tr id="{concat('R', @n)}">
+        
         <td class="sound">
           <!-- create a list of events for the sound markers -->
           <!--  time="15:53:07"
@@ -267,7 +273,7 @@
           </table>
         </td>
         <td class='status' id="{concat('status-', @n, '-orig')}">&#160;</td>
-        <td class="orig" id="{concat('R', @n, '-o')}" rel="test">
+        <td class="orig content {concat(generate-id(), 'R', @n, '-o')}" id="{concat('R', @n, '-o')}">
           <div class="editable">
             <!-- de eerste keer bestaat er nog geen tekst, die moet dan worden aangemaakt op basis van de events -->
             <xsl:choose>
@@ -275,21 +281,72 @@
                 <xsl:copy-of select="key('text', @n)"/>
               </xsl:when>
               <xsl:when test="key('clip', @n)">
-                <p class="debug">Generated text</p>
+                <p class="debug">(Generated text)</p>
                 <xsl:apply-templates mode="initialize-text" select="key('clip', @n)"/>
               </xsl:when>
               <xsl:otherwise>
-                <p class="placeholder" title="{@n}">
+                <p class="write" title="{@n}">
                   <xsl:text>...</xsl:text>
                 </p>
               </xsl:otherwise>
             </xsl:choose>
           </div>
         </td>
-        <td class='status' id="{concat('status-', @n, '-trans')}">&#160;</td>
+        <xsl:choose>
+          <xsl:when test="$mode = 'yes'">
+            <xsl:call-template name="addTranslation"></xsl:call-template>
+          </xsl:when>
+        </xsl:choose>
       </tr>
     </xsl:for-each>
   </xsl:template>
+  
+  <xsl:template name="addTranslation" >
+    <td class='status' id="{concat('status-', @n, '-trans')}">&#160;</td>
+    <td class="trans content" id="{concat('R', @n, '-t')}">
+      <div class="editable">
+        <!-- de eerste keer bestaat er nog geen tekst, die moet dan worden aangemaakt op basis van de events -->
+        <xsl:choose>
+          <xsl:when test="key('trans', @n)">
+            <xsl:copy-of select="key('trans', @n)"/>
+          </xsl:when>
+          <xsl:when test="key('clip', @n)">
+            <p class="debug">(Generated text)</p>
+            <xsl:variable name="inversion">
+              <transEvent>
+                <xsl:apply-templates mode="invert" select="key('clip', @n)"/>
+              </transEvent>
+            </xsl:variable>
+            <xsl:apply-templates mode="initialize-text" select="exsl:node-set($inversion)//e"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <!-- deze optie is in principe niet mogelijk, de clipmarker heeft ook @c -->
+            <p class="write" title="{@n}">
+              <xsl:text>...</xsl:text>
+            </p>
+          </xsl:otherwise>
+        </xsl:choose>
+      </div>
+    </td>
+  </xsl:template>
+  
+  <xsl:template mode="invert" match="e">
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+      <xsl:attribute name="lang">
+        <xsl:choose>
+          <xsl:when test="@lang='N'">F</xsl:when>
+          <xsl:when test="@lang='F'">N</xsl:when>
+          <xsl:when test="@lang=''"></xsl:when>
+          <xsl:when test="@lang='M'">M</xsl:when>
+        </xsl:choose>
+      </xsl:attribute>
+      <xsl:copy-of select="*"/>
+    </xsl:copy>
+  </xsl:template>
+  
+  
+  
   <xsl:template match="events//e" mode="events-table">
     <tr class="{name(parent::*)}">
       <td class="e-n">
@@ -461,7 +518,7 @@
             select="key('snippets', concat('pres-', $pres-gender, '-', $event/@lang))"
           />    
         </xsl:when>
-        <xsl:otherwise><xsl:text>&#160;</xsl:text></xsl:otherwise>
+        <xsl:otherwise><xsl:text>.-</xsl:text></xsl:otherwise>
       </xsl:choose>
       
       
