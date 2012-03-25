@@ -9,16 +9,28 @@
     <xsl:template match="/">
       
       
-      
-        <all type="{/all/type}" next="{/all/next}">
+      <xsl:choose>
+        <xsl:when test="all">
+          <all type="{/all/type}" next="{/all/next}">
             <events>
               <xsl:copy-of select="//meeting"/>
-                <xsl:apply-templates select="/all/events/e"></xsl:apply-templates>
-                
+              <xsl:apply-templates select="/all/events/e"></xsl:apply-templates>
+              
               
             </events>
             <xsl:copy-of select="all/*[not(self::events)]"/>
-        </all>
+          </all>
+          
+          
+        </xsl:when>
+        <xsl:otherwise>
+          <events>
+             <xsl:apply-templates select="//e"></xsl:apply-templates>     
+          </events>
+        </xsl:otherwise>
+      </xsl:choose>
+      
+
         
         
         

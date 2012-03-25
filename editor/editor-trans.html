@@ -59,6 +59,7 @@ function jq(myid) {
 	var pause = 0;
 	var rowId;
 	var asString = "";
+	var bottom;
 	
 	var titles = null;
 	var titlesDoc;
@@ -164,21 +165,49 @@ function displayStatus() {
 		 console.log('update clipstatus');
 		 var statusTD;
 		 var cell;
-		 $(".status").removeClass('locked');
-		 $(".status").text(' ');
-		 var locks = result.getElementsByTagName("lock");
-     var nL = locks.length;
-		 console.log("l" + nL);
-		 for (i=0; i<nL; i++) {
-			 if (locks[i].getAttribute('n')) {
-				 statusTD = "status-" + locks[i].getAttribute('n') + "-" + locks[i].getAttribute('v');
-				 console.log(statusTD);
+		 $("td.status").removeClass('locked');
+		 $("p.lock-id").text(' ');
+
+		 var items = result.getElementsByTagName("lock");
+     var nI = items.length;
+		 console.log("l" + nI);
+		 for (i=0; i<nI; i++) {
+			 if (items[i].getAttribute('n')) {
+				 statusTD = "status-" + items[i].getAttribute('n') + "-" + items[i].getAttribute('v');
+				 //console.log(statusTD);
 				 cell = $(jq(statusTD));
-				 console.log(cell);
-				 cell.text(locks[i].getAttribute('id'));
+				 //console.log(cell);
+				 cell.text("qsvqvqdvq" + items[i].getAttribute('id'));
 				 cell.addClass('locked');
 			}
 		}
+		
+		items = result.getElementsByTagName("s");
+		$("span.status-code").text(' ');
+		nI = items.length;
+		for (i=0; i<nI; i++) {
+			if (items[i].getAttribute('n')) {
+				statusTD = "status-" + items[i].getAttribute('n') + "-" + items[i].getAttribute('v');
+				cell = $(jq(statusTD));
+				
+				
+				
+				$(jq(locks[i].getAttribute('n')) + ' td.status-orig').text(locks[i].getAttribute('o'));
+														var lang = $(jq(locks[i].getAttribute('n')) + ' td.lang-orig').text();
+														// console.log("lang " + lang);
+														$(jq(locks[i].getAttribute('n')) + ' td.status-orig').attr("class", "status-orig " + locks[i].getAttribute('o') + lang);
+														
+														$(jq(locks[i].getAttribute('n')) + ' td.status-trans').text(locks[i].getAttribute('t'));
+														var lang = $(jq(locks[i].getAttribute('n')) + ' td.lang-trans').text();
+														$(jq(locks[i].getAttribute('n')) + ' td.status-trans').attr("class", "status-trans " + locks[i].getAttribute('t') + lang);
+														
+													}
+												//console.log(locks[i].getAttribute('id'));
+											}
+		
+		
+		
+		
 		 
 	 }
 	 
@@ -216,11 +245,17 @@ for (i=0; i<rows.length; i++) {
 	if (visibleRows[i] != edited.slice(0,-2)) {
 		// alert("about to replace, it. " + updateCounter + "." + i)
 		// keep editor in place
-		
-		
-		$("#result > tr" + origrowIds[i]).replaceWith($("#hidden > tr:eq(" + 0 + ")"));
-		
-		
+		if (origrowIds[i] == undefined && bottom != "") {
+			console.log("!!! found extra rows");
+			// table is scrolled to the bottom so the server returned all clips to the end and we have extra rows
+			$("#result > tr").filter(":last").after($("#hidden > tr"));
+			console.log("!!! replaced extra rows");
+			bottom = "";
+			break;
+		}
+		else {
+			$("#result > tr" + origrowIds[i]).replaceWith($("#hidden > tr:eq(" + 0 + ")"));
+		}
 		// alert("done");
 	}
 	else {
@@ -281,6 +316,8 @@ function updateVisibleTexts(once) {
 	var cutoffBottom =  $(window).scrollTop() + $(window).height();
 	var switchFirst = 0;	
 	var switchStop = 0;
+	bottom = "";
+	
     $('#text-table > tbody > tr').each(function() {
 				var currTop = $(this).offset().top;
 				var currBottom = $(this).offset().top + $(this).height();
@@ -310,6 +347,7 @@ function updateVisibleTexts(once) {
 			// all rows are visible
 			// take the id of the last row in the table as stop id
 			stop = $('#text-table > tbody > tr:last').attr("id");
+			bottom = "&bottom=yes";
 			console.log("using last row id: " + stop);
 		};
 	
@@ -323,7 +361,7 @@ function updateVisibleTexts(once) {
 	// highlight refreshed rows
 	$(ids).addClass('ruby');
 	// create request
-	var request = "../xq/return-combined.xql?m=" + mmm + "&start=" + start.substring(1) + "&stop=" + stop.substring(1) + "&include=" + runTrans;
+	var request = "../xq/return-combined.xql?m=" + mmm + "&start=" + start.substring(1) + "&stop=" + stop.substring(1) + "&include=" + runTrans + bottom;
 	console.log(request);
 	
 	// refresh the visible rows

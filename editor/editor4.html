@@ -347,6 +347,7 @@ function updateVisibleTexts(once) {
 	var cutoffBottom =  $(window).scrollTop() + $(window).height();
 	var switchFirst = 0;	
 	var switchStop = 0;
+	var switchBottom = '';
     $('#text-table > tbody > tr').each(function() {
 				var currTop = $(this).offset().top;
 				var currBottom = $(this).offset().top + $(this).height();
@@ -376,6 +377,7 @@ function updateVisibleTexts(once) {
 			// all rows are visible
 			// take the id of the last row in the table as stop id
 			stop = $('#text-table > tbody > tr:last').attr("id");
+			switchBottom = "&bottom=yes";
 			console.log("using last row id: " + stop);
 		};
 	
@@ -389,10 +391,9 @@ function updateVisibleTexts(once) {
 	// highlight refreshed rows
 	$(ids).addClass('ruby');
 	// create request
-	var request = "../xq/return-combined.xql?m=" + mmm + "&start=" + start.substring(1) + "&stop=" + stop.substring(1);
+	var request = "../xq/return-combined.xql?m=" + mmm + "&start=" + start.substring(1) + "&stop=" + stop.substring(1) + switchBottom;
+	
 	console.log(request);
-	
-	
 	
 	// refresh the visible rows
 	// query the DB for event and text data

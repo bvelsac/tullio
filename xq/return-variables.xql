@@ -13,7 +13,7 @@ let $start :=   request:get-parameter("start", ())
 
 let $startAsDec := if ($start) then xs:decimal(normalize-space($start)) else ()
 
-let $presEvent := doc($events-doc)//e[@n=$start]/preceding-sibling::e[@type='pres'][1]
+let $presEvent := doc($events-doc)//e[@n=$start]/preceding-sibling::e[@type='PRES'][1]
 let $pres := doc(concat($serverAddress, "/exist/tullio/xml/titles.xml"))//person[@id=$presEvent/@speaker]
 
 

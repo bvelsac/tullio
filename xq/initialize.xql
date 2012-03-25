@@ -30,6 +30,7 @@ let $setuser := xdb:login("/db", "admin", "paris305")
 let $coll := concat("/db/tullio/", $meeting)
 
 let $textfile := concat("/db/tullio/", $meeting, "/text.xml")
+let $transfile := concat("/db/tullio/", $meeting, "/trans1.xml")
 let $id := util:document-id($textfile)
 
 return if (string($id) = "") then 
@@ -46,6 +47,12 @@ return if (string($id) = "") then
 
 	let $confStored := xdb:store($coll, "text.xml", $nice)
 
+	let $some := <trans n="1">{
+		for $e in $events//e[@c='y'] return 
+			<p c="{$e/@n}"  class="init">vertaling</p>
+			}
+			</trans>
+	let $confStored2 := xdb:store($coll, "trans1.xml", $some)
 
 	(: return a success message :)
 

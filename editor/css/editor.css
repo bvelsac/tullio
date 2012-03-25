@@ -1,5 +1,6 @@
-	td.status {width: 100px;}
-	td.locked {background-color: #f5a5a5;}
+.hide: {display: none;}
+	td.status {width: 50px; font-size: 8px;}
+	td.locked {border: solid #f5a5a5 4px;}
 	table.edited {background-color: bisque;}
 	.leftovers {color: #bfbebe};
 	.moved {color: #5121b3};
@@ -43,7 +44,7 @@
 		td.e-time {width: 50px;}
 		td.e-type  {width: 50px;}
 		td.e-speaker {width: 70px;}
-		
+		td.orig {width: 700px;}
 		.ui-layout-north {position: fixed;
 	left: 0px;
 	top: 0px;

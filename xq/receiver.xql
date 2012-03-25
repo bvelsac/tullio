@@ -43,41 +43,34 @@ let $setuser := xdb:login("/db", "admin", "paris305")
 
 (: let $events-doc := concat("/db/tullio/", $meeting, '/events.xml') :)
 
-let $events := transform:transform($nodes, "../xsl/logger2events.xsl", ())
-let $stored := xdb:store(concat("/db/tullio/", $meeting), "events.xml", $events)
-
-let $emptyClips := transform:transform(doc(concat("/db/tullio/", $meeting, "/events.xml")), "../xsl/initClips.xsl", ())
-let $storedClips := xdb:store(concat("/db/tullio/", $meeting), "text.xml", $emptyClips)
 
 
-let $locks := <locks meeting="{$meeting}"></locks>
+(: do not overwrite existing events, new clips may have been created :)
 
-let $stored2 := xdb:store(concat("/db/tullio/", $meeting), "locks.xml", $locks)
+let $eventfile := concat("/db/tullio/", $meeting, "/events.xml")
+let $textfile := concat("/db/tullio/", $meeting, "/text.xml")
+let $id := util:document-id($eventfile)
 
-let $descr := <meeting>{concat(substring-before($meeting, '-'), substring-before(substring-after($meeting, '-'), '-'), substring-before(substring-after(substring-after($meeting, '-'), '-'), '-'))}</meeting>
+let $max := if (string($id) = "") then 0 else xs:decimal(doc($eventfile)//e[position()=last()]/@n)
 
-let $addDescr := update insert $descr into doc(concat("/db/tullio/", $meeting, '/', "events.xml"))/events
+(: do not overwrite existing text :)
 
-(:
+let $events := transform:transform($nodes, "../xsl/logger2events.xsl", <parameters><param name="lower" value="{$max div 2}"/></parameters>)
 
-let $point := doc($text-doc)//p[@c='0']
+let $descr := <meeting>{concat(substring-before($meeting, '-'), substring-before(substring-after($meeting, '-'), '-'), substring-before(substring-after(substring-after($meeting, '-'), '-'), '-'))}</meeting> 
 
+let $stored := if ($max = 0) then (xdb:store(concat("/db/tullio/", $meeting), "events.xml", $events), update insert $descr into doc($eventfile)/events) else if ($events//e) then update insert $events//e into doc($eventfile)/events else ()
 
-let $sec := if ($point is $point) then update insert $nice/p preceding $point else ()
-
-
-
-
-let $first := doc($text-doc)//p[@c <= $stop and @c >=$start][1]
-
+let $intermediate := transform:transform($events, "../editor/xsl/addclipref.xsl", ())
+let $initClips := transform:transform($intermediate, "../editor/xsl/group.xsl", <parameters><param name="server" value="yes"/></parameters>)
 
 
-  
+let $storedClips := if ($max = 0) then xdb:store(concat("/db/tullio/", $meeting), "text.xml", <doc>{$initClips//original/p}</doc>) else if ($initClips//original/p) then update insert $initClips//original/p into doc($textfile)/doc else()
 
-for $p in doc($text-doc)//p[@c <= $stop and @c >=$start]
-  let $update := if ($p is $first) then update insert $nice/p preceding $p else ()
-	let $delete := update delete $p
-:)
+let $storedTrans := if ($max = 0) then xdb:store(concat("/db/tullio/", $meeting), "trans1.xml", <doc>{$initClips//translation/p}</doc>) else if ($initClips//translation/p) then update insert $initClips//translation/p into doc($textfile)/doc else()
+
+
+let $locks := if ($max = 0) then xdb:store(concat("/db/tullio/", $meeting), "locks.xml", <locks meeting="{$meeting}"></locks>) else ()
 
 (: return a success message :)
 
@@ -85,7 +78,7 @@ return
 <html>
 <head></head>
 
-<body>{$events}</body>
+<body>{$events,$max}</body>
 
 </html>
  

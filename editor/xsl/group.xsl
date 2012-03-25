@@ -15,6 +15,8 @@
   <xsl:key match="container/div[@id='integratedEvents']/events/e" name="new" use="@id"/>
   <xsl:key match="container/div[@id='integratedEvents']/events/e" name="all" use="@n"/>
   <xsl:param name="mode"></xsl:param>
+  <xsl:param name="server" select="'no'"></xsl:param>
+  
   <!-- Chrome heeft een issue waardoor de document() functie niet werkt, dus alles moet worden toegevoegd aan het input-document
     Google Chrome currently has limited support for XSL. If your XSL refers to any external resources (document() function, xsl:import, xsl:include or external entities), the XSL will run but the result will either be empty or invalid.
   
@@ -36,6 +38,8 @@
     </xsl:choose>
   </xsl:variable>
   <xsl:variable name="datestringCurrent" select="//events/meeting"/>
+  
+  
   <xsl:template match="/">
     <xsl:choose>
       <xsl:when test="container/div[@id='integratedEvents']">
@@ -81,6 +85,21 @@
           <!-- this one is our text content -->
           <xsl:apply-templates mode="write" select="container/div[@id='text']"/>
         </div>
+      </xsl:when>
+      <xsl:when test="$server='yes'">
+        <original>
+          <xsl:apply-templates select="//e" mode="initialize-text"></xsl:apply-templates></original>
+        <translation>
+          <xsl:variable name="inversion">
+            <transEvent>
+              <xsl:apply-templates mode="invert" select="//e"/>
+            </transEvent>
+          </xsl:variable>
+          <xsl:apply-templates mode="initialize-text" select="exsl:node-set($inversion)//e"/>
+          
+          
+        </translation>
+        
       </xsl:when>
       <xsl:otherwise>
         <!-- just do the usual -->
@@ -272,7 +291,11 @@
             </xsl:for-each>
           </table>
         </td>
-        <td class='status' id="{concat('status-', @n, '-orig')}">&#160;</td>
+        <td class='status' id="{concat('status-', @n, '-orig')}">
+          <p class="status-wrapper">
+            <span class="status-lang" id="{concat('status-', @n, '-orig-lang')}"><xsl:value-of select="@lang"/></span>
+            <span class="status-code" id="{concat('status-', @n, '-orig-code')}"></span></p>          
+        </td>
         <td class="orig content {concat(generate-id(), 'R', @n, '-o')}" id="{concat('R', @n, '-o')}">
           <div class="editable">
             <!-- de eerste keer bestaat er nog geen tekst, die moet dan worden aangemaakt op basis van de events -->
@@ -542,7 +565,7 @@
     <p class="debug" title="{@n}">Event type missing</p>
   </xsl:template>
   <xsl:template match="e[@type='marker']" mode="initialize-text">
-    <p class="marker" title="{@n}">Start clip <xsl:value-of select="@n"/>
+    <p c="{@clip}" class="marker" title="{@n}">Start clip <xsl:value-of select="@n"/>
     </p>
     <p class="write">...</p>
   </xsl:template>
