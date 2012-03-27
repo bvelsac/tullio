@@ -68,7 +68,7 @@
 		
 		
 						.agenda {background-color: whitesmoke;}
-
+						#spacer {clear: both; width: 100%;}
 
 .agenda td {
 border-left: thin solid gray;
