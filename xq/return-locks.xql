@@ -13,7 +13,9 @@ let $locks-doc := concat("/db/tullio/", $meeting-id, "/locks.xml")
 
 let $locks := doc($locks-doc)//lock
 
+let $s := doc($locks-doc)//s[@a='y']
+
 return
-<locks>{$locks}</locks>
+<locks>{$locks,$s}</locks>
 		
 

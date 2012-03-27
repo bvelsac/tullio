@@ -1,6 +1,25 @@
 .hide: {display: none;}
-	td.status {width: 50px; font-size: 8px;}
-	td.locked {border: solid #f5a5a5 4px;}
+.status-EC {background: #ff00ff;}
+.status-N {background: #ff8000;}
+.status-T {background: #ffff00;}
+.status-R {background: #80ff80;}
+.status-V {background: #008000;}
+.status-A {background: #800000;}
+
+.status-TT {background: #00ffff;}
+.status-RT {background: #0000ff;}
+.status-VT {background: #8000ff;}
+.status-AT {background: #ff0000;}
+
+.status-code {margin-right: -3px;}
+.status-code, .status-lang {font-family: monospace;}
+td.status {border-left: solid 3px transparent;}
+
+
+
+
+	td.status {width: 50px;}
+	td.locked {border-left: solid #f5a5a5 4px;}
 	table.edited {background-color: bisque;}
 	.leftovers {color: #bfbebe};
 	.moved {color: #5121b3};

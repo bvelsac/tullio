@@ -38,7 +38,9 @@
   <xsl:template match="event">
     <xsl:if test="@c='y'">
       <!-- insert clipmarker for new clip -->
-      <event c="y" id="{concat('marker:', generate-id())}" type="marker"/>
+      <event c="y" id="{concat('marker:', generate-id())}" type="marker">
+        <xsl:copy-of select="@lang"/>
+      </event>
     </xsl:if>
     <xsl:copy>
       <xsl:attribute name="id">

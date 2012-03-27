@@ -14,13 +14,8 @@
 
 // $.QueryString["param"]
 
-
 var mmm = $.QueryString["m"];
 $("#meeting-id").text("Meeting: " + mmm);
-
-
-			
-
 
 function entries2server(){
                   console.log('sending...');  
@@ -132,6 +127,42 @@ function entries2server(){
 			
 			// Configuration of the autcomplete functionality, will be read from server in the next edition
 				
+			
+			
+			var members = [];
+
+function setSpeakers(response) {
+		var people = response.getElementsByTagName("person");
+    var nP = people.length;
+		var j =0;
+		var k =0;
+		console.log("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨p" + nP);
+		 for (i=0; i<nP; i++) {
+			 if (people[i].getAttribute('id')) {
+				 // console.log(people[i].getAttribute('id'));
+				 // console.log(people[i].getElementsByTagName('first')[0].firstChild.nodeValue);
+				 members[j] = people[i].getAttribute('id');
+				 j++;
+			}
+			 
+			
+		}
+	}
+
+	var requestConfig = "/exist/tullio/xml/titles.xml";
+	
+	jQuery.ajax({
+				async: false,
+			 	type: "GET",
+        url:    requestConfig,
+        success: setSpeakers,
+				dataType: "xml" 
+	 });
+
+console.log(members);
+console.log('test');
+
+			
 			var availableTags = [
 			"BERTIEAUX Françoise",
 "AMPE Els",
@@ -224,7 +255,11 @@ function entries2server(){
 "RIGUELLE Joël "
 		];
 		$( ".tags" ).autocomplete({
-			source: availableTags
+									source: function(req, response) {
+        var re = $.ui.autocomplete.escapeRegex(req.term);
+        var matcher = new RegExp( "^" + re, "i" );
+        response($.grep(members, function(item){return matcher.test(item); }) );
+        }
 		});
 
 			
@@ -297,7 +332,9 @@ return resultString;
 			{id:"lang", name:"Taal", field:"lang", width:30, resizable:false, editor:LangSelectCellEditor},
 			{id:"type", name:"Type", field:"type", width:100, editor:TextCellEditor},
 			{id:"speaker", name:"Spreker", field:"speaker", width:150, editor:TextCellEditor},
-			{id:"props", name:"Kenmerken", field:"props", width:120},
+			{id:"gov", name:"Regering", field:"gov", width:120},
+			{id:"textN", name:"Onderwerp", field:"textN", width:120},
+			{id:"textF", name:"Sujet", field:"gov", width:120},
 			{id:"notes", name:"Opmerkingen", field:"notes", width:150, editor:TextCellEditor},
 			{id:"committed", name:"Verzonden", field:"committed", width:30}
 		];
@@ -341,6 +378,14 @@ return resultString;
                 livegrid.updateRowCount();
                 livegrid.render();
             });
+						
+			
+						
+				
+
+						
+						
+						
 		})
 		
 		
@@ -718,7 +763,11 @@ return resultString;
 												 // speaker:$('#' + but + 'tags').val(),
 												 type: $(this).siblings().andSelf().filter(".type").text(),
 												 // type:'new ' + langSel,
-												 props: $(this).siblings().andSelf().filter(".props").text(),
+												 textN: $(this).siblings().andSelf().filter(".subject-N").text(),
+												 textF: $(this).siblings().andSelf().filter(".subject-F").text(),
+												 lang: $(this).siblings().andSelf().filter(".lang").text(),
+												 gov: $(this).siblings().andSelf().filter(".gov").text(),
+												 
 												 notes: $(this).siblings().andSelf().filter(".short").text(),
 												 // lang:$('input[name=' + lookup + ']:checked').val(),
 												 clip:'true'
@@ -749,13 +798,4 @@ return resultString;
 					
 					
 			});
-			
-			
-			
-			
-
-
-
-			
-			
 			

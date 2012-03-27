@@ -9,12 +9,13 @@
   <xsl:output method="xml" indent="yes"/>
   <xsl:key match="//e" name="clip" use="@clip"/>
   <xsl:key match="//l" name="snippets" use="@id"/>
-  <xsl:key match="//doc/p[not(@class='init')]" name="text" use="@c"/>
-  <xsl:key match="//trans/p[not(@class='init')]" name="trans" use="@c"/>
+  <xsl:key match="//doc/p[not(@d='init')]" name="text" use="@c"/>
+  <xsl:key match="//trans/p[not(@d='init')]" name="trans" use="@c"/>
   <xsl:key match="//moved" name="moved" use="e/@n"/>
   <xsl:key match="container/div[@id='integratedEvents']/events/e" name="new" use="@id"/>
   <xsl:key match="container/div[@id='integratedEvents']/events/e" name="all" use="@n"/>
-  <xsl:param name="mode"></xsl:param>
+  <xsl:key match="//s" name="statusCodes" use="@n"/>
+    <xsl:param name="mode"></xsl:param>
   <xsl:param name="server" select="'no'"></xsl:param>
   
   <!-- Chrome heeft een issue waardoor de document() functie niet werkt, dus alles moet worden toegevoegd aan het input-document
@@ -159,6 +160,33 @@
       <xsl:copy-of select="@*"/>
       <xsl:apply-templates mode="write"/>
     </xsl:copy>
+  </xsl:template><xsl:template name="addTranslation" >
+    <td class='status' id="{concat('status-', @n, '-trans')}">&#160;</td>
+    <td class="trans content" id="{concat('R', @n, '-t')}">
+      <div class="editable">
+        <!-- de eerste keer bestaat er nog geen tekst, die moet dan worden aangemaakt op basis van de events -->
+        <xsl:choose>
+          <xsl:when test="key('trans', @n)">
+            <xsl:copy-of select="key('trans', @n)"/>
+          </xsl:when>
+          <xsl:when test="key('clip', @n)">
+            <p class="debug">(Generated text)</p>
+            <xsl:variable name="inversion">
+              <transEvent>
+                <xsl:apply-templates mode="invert" select="key('clip', @n)"/>
+              </transEvent>
+            </xsl:variable>
+            <xsl:apply-templates mode="initialize-text" select="exsl:node-set($inversion)//e"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <!-- deze optie is in principe niet mogelijk, de clipmarker heeft ook @c -->
+            <p class="write" title="{@n}">
+              <xsl:text>...</xsl:text>
+            </p>
+          </xsl:otherwise>
+        </xsl:choose>
+      </div>
+    </td>
   </xsl:template>
   <xsl:template match="text()" mode="write">
     <xsl:copy-of select="."/>
@@ -291,10 +319,17 @@
             </xsl:for-each>
           </table>
         </td>
-        <td class='status' id="{concat('status-', @n, '-orig')}">
+        
+        <td class="status status-{key('statusCodes', @n)/@val}" id="{concat('status-', @n, '-orig')}">
           <p class="status-wrapper">
+            
+            <span class="status-code" id="{concat('status-', @n, '-orig-code')}">
+              <xsl:value-of select="key('statusCodes', @n)/@val"/>
+            </span>
             <span class="status-lang" id="{concat('status-', @n, '-orig-lang')}"><xsl:value-of select="@lang"/></span>
-            <span class="status-code" id="{concat('status-', @n, '-orig-code')}"></span></p>          
+          
+          </p>
+          <p class="lockid"></p>
         </td>
         <td class="orig content {concat(generate-id(), 'R', @n, '-o')}" id="{concat('R', @n, '-o')}">
           <div class="editable">
@@ -324,34 +359,7 @@
     </xsl:for-each>
   </xsl:template>
   
-  <xsl:template name="addTranslation" >
-    <td class='status' id="{concat('status-', @n, '-trans')}">&#160;</td>
-    <td class="trans content" id="{concat('R', @n, '-t')}">
-      <div class="editable">
-        <!-- de eerste keer bestaat er nog geen tekst, die moet dan worden aangemaakt op basis van de events -->
-        <xsl:choose>
-          <xsl:when test="key('trans', @n)">
-            <xsl:copy-of select="key('trans', @n)"/>
-          </xsl:when>
-          <xsl:when test="key('clip', @n)">
-            <p class="debug">(Generated text)</p>
-            <xsl:variable name="inversion">
-              <transEvent>
-                <xsl:apply-templates mode="invert" select="key('clip', @n)"/>
-              </transEvent>
-            </xsl:variable>
-            <xsl:apply-templates mode="initialize-text" select="exsl:node-set($inversion)//e"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <!-- deze optie is in principe niet mogelijk, de clipmarker heeft ook @c -->
-            <p class="write" title="{@n}">
-              <xsl:text>...</xsl:text>
-            </p>
-          </xsl:otherwise>
-        </xsl:choose>
-      </div>
-    </td>
-  </xsl:template>
+  
   
   <xsl:template mode="invert" match="e">
     <xsl:copy>

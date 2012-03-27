@@ -64,6 +64,9 @@ let $stored := if ($max = 0) then (xdb:store(concat("/db/tullio/", $meeting), "e
 let $intermediate := transform:transform($events, "../editor/xsl/addclipref.xsl", ())
 let $initClips := transform:transform($intermediate, "../editor/xsl/group.xsl", <parameters><param name="server" value="yes"/></parameters>)
 
+(: let $initClips := transform:transform(<wrapper>{$preClips}</wrapper>, "../editor/xsl/addInit.xsl", ()) :)
+
+(: let $debug := xdb:store(concat("/db/tullio/", $meeting), "debug.xml", <wrapper>{$preClips}</wrapper>) :)
 
 let $storedClips := if ($max = 0) then xdb:store(concat("/db/tullio/", $meeting), "text.xml", <doc>{$initClips//original/p}</doc>) else if ($initClips//original/p) then update insert $initClips//original/p into doc($textfile)/doc else()
 

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<codes>
+  <code id="N">
+    <label lang="nl">Nieuwe clip</label>
+    <label lang="fr">Nouveau clip</label>
+  </code>  
+  <code id="EC">
+    <label lang="nl">Redactie bezig</label>
+    <label lang="fr">En cours de rédaction</label>
+  </code>  
+  <code id="T">
+    <label lang="nl">Redactie klaar</label>
+    <label lang="fr">Texte transcrit</label>
+  </code>  
+  <code id="R">
+    <label lang="nl">Revisie klaar</label>
+    <label lang="fr">Texte révisé</label>
+  </code>  
+  <code id="V">
+    <label lang="nl">Validatie (continuversie nagelezen)</label>
+    <label lang="fr">Validation (texte continu relu)</label>
+  </code>  
+  <code id="A">
+    <label lang="nl">Verslag afgewerkt</label>
+    <label lang="fr">Compte rendu finalisé</label>
+  </code>  
+  <code id="O">
+    <label lang="nl">Opmerkingen sprekers verwerkt</label>
+    <label lang="fr">Remarques des orateurs verifiées</label>
+  </code>
+</codes>
+<!-- 
+EC #ff00ff
+N #ff8000
+T #ffff00
+R #80ff80
+V #008000
+A #800000
+
+TT #00ffff
+RT #0000ff
+VT #8000ff
+AT #ff0000
+-->

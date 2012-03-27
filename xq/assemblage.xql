@@ -57,8 +57,16 @@ let $s := if ($startAsDec and $stopAsDec) then <locks>{doc($locks-doc)//s[@a='y'
 		
 (: doc(concat("/db/tullio/", $meeting-id, "/text.xml")) :)
 
-return
+let $intermediate := <all><type>{$type}</type><meta>{$startAsDec, $stop}</meta><next>{string($nextAlways)}</next>{$events,$texts, $trans1}</all>
 
-<all><type>{$type}</type><meta>{$startAsDec, $stop}</meta><next>{string($nextAlways)}</next>{$events,$texts, $trans1,$s}</all>
-		
+
+let $nice := transform:transform($intermediate, "../editor/xsl/addclipref.xsl", ())   
+let $supernice := transform:transform($intermediate, "../editor/xsl/group.xsl", ())  
+
+return 
+
+$nice
+
+
+
 

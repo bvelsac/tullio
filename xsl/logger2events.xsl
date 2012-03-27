@@ -13,7 +13,9 @@
 
 <xsl:template match="*">
   <xsl:if test="@clip='true'">
-    <e type="marker" n="{@nr * 2 - 1}" c="y"></e>
+    <e type="marker" n="{@nr * 2 - 1}" c="y">
+      <xsl:copy-of select="@lang"/>
+    </e>
   </xsl:if>
   <e>
     <xsl:apply-templates select="@*"></xsl:apply-templates>

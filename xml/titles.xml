@@ -371,6 +371,44 @@
     <last>Grouwels</last>
   </person>
   
+  <person id="DOULKERIDIS_Christos" gov="yes" gender="m" lang="fr" group="Ecolo">
+    <first>Christos</first>
+    <last>Doulkeridis</last>
+  </person>
+  
+  <person id="VANHENGEL_Guy" gov="yes" gender="m" lang="nl" group="Open VLD">
+    <first>Brigitte</first>
+    <last>Grouwels</last>
+  </person>
+ 
+ 
+  <person id="PICQUE_Charles" gov="yes" gender="m" lang="fr" group="PS">
+    <first>Charles</first>
+    <last>Picqué</last>
+  </person>
+  
+  
+  <person id="DE_LILLE_Bruno" gov="yes" gender="m" lang="nl" group="Groen">
+    <first>Bruno</first>
+    <last>De Lille</last>
+  </person>
+  
+  
+  <person id="CEREXHE_Benoît" gov="yes" gender="m" lang="fr" group="cdH">
+    <first>Benoît</first>
+    <last>Cerexhe</last>
+  </person>
+  
+  <person id="HUYTEBROECK_Evelyne" gov="yes" gender="f" lang="fr" group="Ecolo">
+    <first>Evelyne</first>
+    <last>Huytebroeck</last>
+  </person>
+  
+  
+  
+  
+  
+  
   <p code="Grouwels ">
       <gender>F</gender>
       <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Openbare Werken en Vervoer</ti>

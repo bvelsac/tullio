@@ -74,7 +74,7 @@ function jq(myid) {
 	var speakers = [];
 	var government = [];
 	var languages;
-	var statusCodes;
+	var statusCodes = {};
 	var team;
 	
 	// define simple configuration for use in CKEditor plugin
@@ -148,6 +148,35 @@ function jq(myid) {
 				dataType: "xml" 
 	 });
 	
+	var requestConfig = "/exist/tullio/xml/statusCodes.xml";
+	
+		function setStatusCodes(response) {
+		var nlList = [];
+		var frList = [];
+		
+		var counter = 0;
+		$(response).find('code').each(function(){
+				var id = $(this).attr('id');
+				var labelN = $(this).find("label[lang='nl']").text();
+				var labelF = $(this).find("label[lang='fr']").text();
+				nlList[counter] = [labelN, id];
+				frList[counter] = [labelF, id];
+				counter++;
+		});
+		// console.log(nlList);
+		statusCodes.N = nlList;
+		statusCodes.F = frList;
+		console.log(statusCodes);
+	}
+
+	
+	jQuery.ajax({
+			 	type: "GET",
+        url:    requestConfig,
+        success: setStatusCodes,
+				dataType: "xml" 
+	 });
+	
 	
 	
 	/* Utility function : get query parameters */
@@ -182,19 +211,28 @@ function displayStatus() {
 			}
 		}
 		
+		// now loop over the rows to add the status code
+		
+		
+		
 		items = result.getElementsByTagName("s");
 		$("span.status-code").text(' ');
 		nI = items.length;
 		for (i=0; i<nI; i++) {
 			if (items[i].getAttribute('n')) {
+				var col ='';
 				statusTD = "status-" + items[i].getAttribute('n') + "-" + items[i].getAttribute('v');
+				if (items[i].getAttribute('v')=="trans") {col = 'T'};
 				cell = $(jq(statusTD));
+				var lang = $('#status-' + items[i].getAttribute('n') + '-' + items[i].getAttribute('v') + '-lang').text();
+				$('#status-' + items[i].getAttribute('n') + '-' + items[i].getAttribute('v') + '-code').text(items[i].getAttribute('val') + col);
+				cell.addClass('status-' + items[i].getAttribute('val') + col);
 				
 				
-				
+				/*
 				$(jq(locks[i].getAttribute('n')) + ' td.status-orig').text(locks[i].getAttribute('o'));
-														var lang = $(jq(locks[i].getAttribute('n')) + ' td.lang-orig').text();
-														// console.log("lang " + lang);
+				var lang = $(jq(locks[i].getAttribute('n')) + ' td.lang-orig').text();
+				// console.log("lang " + lang);
 														$(jq(locks[i].getAttribute('n')) + ' td.status-orig').attr("class", "status-orig " + locks[i].getAttribute('o') + lang);
 														
 														$(jq(locks[i].getAttribute('n')) + ' td.status-trans').text(locks[i].getAttribute('t'));
@@ -202,14 +240,14 @@ function displayStatus() {
 														$(jq(locks[i].getAttribute('n')) + ' td.status-trans').attr("class", "status-trans " + locks[i].getAttribute('t') + lang);
 														
 													}
-												//console.log(locks[i].getAttribute('id'));
-											}
+												//console.log(locks[i].getAttribute('id')); */
+		}
 		
 		
+		}
 		
-		
-		 
 	 }
+	 
 	 
 	 jQuery.ajax({
 			 	type: "GET",
@@ -239,6 +277,11 @@ function secondstep(xml, xsl, xmlorig) {
 
 	var origrowIds = ids.split(',');
 
+	
+	
+	
+	
+	
 for (i=0; i<rows.length; i++) {
 	//alert(rows[i]);
 	console.log("0replace: " + origrowIds[i] + ":" + visibleRows[i] + ":" +edited);
@@ -466,11 +509,12 @@ $("#overview").text(mmm);
 		
 		$.transform({  success:initialize, xml: "../xq/return-combined.xql?m=" + mmm + "&include=" + runTrans, xsl: "xsl/addclipref.xsl", xslParams:{translation:"1"}});
 		
-
+displayStatus();
 	 setTimeout("updateVisibleTexts(false)", 5000);
 		
 		// start displaying status codes
-		// loopDisplayStatus();
+		
+		loopDisplayStatus();
 		
 						
 
@@ -549,7 +593,7 @@ $("#overview").text(mmm);
 					$.post("../xq/storeClipEdit.xql", {
 							"status": status, 
 							"text": editedcontent,
-							"cat": cat,
+							"cat": oldcat,
 							"start": clipid,
 							"stop": stop,
 							"meeting": mmm
@@ -562,7 +606,7 @@ $("#overview").text(mmm);
 					var old = $(this).offset().top;
 					
 					$.post("../xq/unlock.xql", {
-							"v": cat,
+							"v": oldcat,
 							"n": clipid,
 							"id": author,
 							"m": mmm
@@ -574,6 +618,7 @@ $("#overview").text(mmm);
 					}
 					// first update the row to be sure we don't loose edits...
 				edited = this.id;
+				oldcat = textversion;
 				updateVisibleTexts(true);		
 				
 				console.log('start editing ' + edited);
@@ -654,7 +699,7 @@ console.log('save key');
 	  <div id="navigation">
 	    <ul>
 		    <li><a href="../xq/list-collections.xql">Meetings Overview</a></li>
-		    <li><a href="../xq/collection-status.xql">Status Page</a></li>
+		    <li><a href="/exist/tullio/status/status.html">Status Page</a></li>
 	    </ul>
     </div>
 	  <div id="player">

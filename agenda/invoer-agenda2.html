@@ -1,0 +1,552 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Agenda</title>
+<!--CSS file (default YUI Sam Skin) -->
+
+
+
+<link rel="stylesheet" href="css/smoothness/jquery-ui-1.8.5.custom.css" type="text/css" media="screen" charset="utf-8" />
+<link type="text/css" rel="stylesheet" href="scripts/bhr/yui/build/datatable/assets/skins/sam/datatable.css">
+
+<script src="/exist/tullio/js-lib/jquerytransform/js/jquery-1.6.4.js"></script>
+<script src="/exist/tullio/js-lib/jquery-ui-1.8.5.custom.min.js"></script>
+
+<script src="/exist/tullio/js-lib/yui/yahoo-min.js"></script>
+<script src="/exist/tullio/js-lib/yui/event-min.js"></script>
+<script src="/exist/tullio/js-lib/yui/yahoo-dom-event.js"></script>
+<script src="/exist/tullio/js-lib/yui/element-min.js"></script>
+<script src="/exist/tullio/js-lib/yui/button-min.js"></script>
+
+<script src="/exist/tullio/js-lib/yui/datasource-min.js"></script>
+<script src="/exist/tullio/js-lib/yui/json-min.js"></script>
+<script src="/exist/tullio/js-lib/yui/connection-min.js"></script>
+<script src="/exist/tullio/js-lib/yui/get-min.js"></script>
+<script src="/exist/tullio/js-lib/yui/datatable-min.js"></script>
+
+
+
+</head>
+<body  class="yui-skin-sam">
+
+<p>Datum: <input id="datepicker" type="text"></input></p>
+<p>AM/PM: <select id="time"> <option value="AM">AM</option>
+ <option value="PM">PM</option></select>
+<p>Vergadering: <select id="meeting-type">
+ <option value="PLEN">Plenaire - plénière</option>
+ <option value="COMM-ECO">ECO</option>
+ <option value="COMM-INFRA">INFRA</option>
+</select>
+</p>
+<p><a href="../xq/list-collections.xql">Terug naar overzicht</a></p>
+
+<div id="container"></div>
+
+<div id="basic"></div>
+
+<span id="add10" class="yui-button yui-push-button"> 
+	        <span class="first-child"> 
+	            <button type="button">+ 10</button> 
+	        </span> 
+	    </span> 
+			
+		
+
+			<span id="save" class="yui-button yui-push-button"> 
+	        <span class="first-child"> 
+	            <button type="button">Save</button> 
+	        </span> 
+	    </span> 
+
+			<div style="margin: 20px;"></div>
+			
+<div id="cellediting"></div>
+
+
+
+			
+<script>
+
+var members = [];
+
+function setSpeakers(response) {
+		var people = response.getElementsByTagName("person");
+    var nP = people.length;
+		var j =0;
+		var k =0;
+		console.log("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨p" + nP);
+		 for (i=0; i<nP; i++) {
+			 if (people[i].getAttribute('id')) {
+				 // console.log(people[i].getAttribute('id'));
+				 // console.log(people[i].getElementsByTagName('first')[0].firstChild.nodeValue);
+				 members[j] = people[i].getAttribute('id');
+				 j++;
+			}
+			 
+			
+		}
+	}
+
+var requestConfig = "/exist/tullio/xml/titles.xml";
+	
+	jQuery.ajax({
+			 	type: "GET",
+        url:    requestConfig,
+        success: setSpeakers,
+				dataType: "xml" 
+	 });
+
+
+
+
+
+
+YAHOO.example.Data = {
+	agenda: [{}]
+};
+
+$( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
+	
+
+
+
+
+
+YAHOO.util.Event.addListener(window, "load", function() {
+		
+var types = ['---', 'OUV-OPE', 'EXC-AFW', 'COMM-MED', 'GEN-ALG', 'P.E.CONS-INOVERW', 'PROP ORD', 'PROJ ORD', 'PROP RES' , 'QO-MV', 'QA-AV', 'INT', 'VOT-STEM'];		
+		
+
+var types = ['---', 'OUV-OPE', 'PRES', 'QO-MV', 'QA-AV', 'INT', 'ORA-SPR FORM', 'MOT'];		
+
+
+
+
+
+
+
+
+
+
+
+    YAHOO.example.InlineCellEditing = function() {
+        
+			
+				// Custom formatter for "address" column to preserve line breaks
+        var formatAddress = function(elCell, oRecord, oColumn, oData) {
+            elCell.innerHTML = "<pre class=\"address\">" + oData + "</pre>";
+        };
+				
+				
+				YAHOO.widget.DataTable.Formatter['my_chk_mod'] = function(elCell, oRecord, oColumn, oData) {
+					var gov = ['PICQUE_Charles', 'DOULKERIDIS_Christos', 'GROUWELS_Brigitte', 'DE_LILLE_Bruno', 'HUYTEBROECK_Evelyne', 'CEREXHE_Benoît', 'VANHENGEL_Guy'];
+					var inner = '';
+					for (var i=0;i<gov.length;i++) {
+						inner += gov[i] + ": <input type='checkbox' value='" + gov[i] + "'  />";
+					}	
+					elCell.innerHTML = inner;
+				};
+
+        var myColumnDefs = [
+						 {key:"type", formatter:"dropdown", dropdownOptions:types},
+						 {key:"lang", label:'Langue', formatter: 'dropdown', dropdownOptions: ['N', 'F']},
+            {key:"textN", label:'Sujet (N)', editor: new YAHOO.widget.TextareaCellEditor()},
+						{key:"textF", label:'Sujet (F)', editor: new YAHOO.widget.TextareaCellEditor()},
+						{key:"short", label:'Identifiant', formatter: 'textbox'},
+						{key:"speaker", label:'Orateur', formatter: 'textbox', class: 'autocomplete'},
+						
+						 {key:"gov", formatter:"my_chk_mod", checkboxOptions:['Picqué', 'Vanraes', 'Doulkeridis', 'Grouwels']}
+						 /*
+						 ,
+            
+            {key:"city", editor: new YAHOO.widget.TextboxCellEditor({disableBtns:true})},
+            {key:"state", editor: new YAHOO.widget.DropdownCellEditor({dropdownOptions:YAHOO.example.Data.stateAbbrs,disableBtns:true})},
+            {key:"amount", editor: new YAHOO.widget.TextboxCellEditor({validator:YAHOO.widget.DataTable.validateNumber})},
+            {key:"active", editor: new YAHOO.widget.RadioCellEditor({radioOptions:["yes","no","maybe"],disableBtns:true})},
+            {key:"colors", editor: new YAHOO.widget.CheckboxCellEditor({checkboxOptions:["red","yellow","blue"]})},
+            {key:"fruit", editor: new YAHOO.widget.DropdownCellEditor({multiple:true,dropdownOptions:["apple","banana","cherry"]})},
+            {key:"last_login", formatter:YAHOO.widget.DataTable.formatDate, editor: new YAHOO.widget.DateCellEditor()}
+						*/
+        ];
+
+        var myDataSource = new YAHOO.util.DataSource(YAHOO.example.Data.agenda);
+        myDataSource.responseType = YAHOO.util.DataSource.TYPE_JSARRAY;
+        myDataSource.responseSchema = {
+            fields: ["type", "lang", "textN","textF","short","speaker","gov"]
+        };
+
+        var myDataTable = new YAHOO.widget.DataTable("cellediting", myColumnDefs, myDataSource, {});
+
+        // Set up editing flow
+        var highlightEditableCell = function(oArgs) {
+            var elCell = oArgs.target;
+            if(YAHOO.util.Dom.hasClass(elCell, "yui-dt-editable")) {
+                this.highlightCell(elCell);
+            }
+        };
+        myDataTable.subscribe("cellMouseoverEvent", highlightEditableCell);
+        myDataTable.subscribe("cellMouseoutEvent", myDataTable.onEventUnhighlightCell);
+        myDataTable.subscribe("cellClickEvent", myDataTable.onEventShowCellEditor);
+				
+				
+				
+				
+				function dataTableAsXML (myDataTable) {
+
+    var i, j, oData, 
+        aRecs = myDataTable.getRecordSet().getRecords(),
+        aCols = myDataTable.getColumnSet().keys;
+
+result = "<data>";
+		result += "<meeting>" + $("#datepicker").val() + "-" + $("#time option:selected").val() + "_" + $("#meeting-type option:selected").val() + "</meeting>" + "<mt>" + $("#meeting-type option:selected").val() + "</mt>";
+		 
+    for (i=0; i<aRecs.length; i++) {
+        oData = aRecs[i].getData();
+				result += "<row>";
+				result += "<id>" + i + "</id>";
+        for (j=0; j<aCols.length; j++) {
+					 
+					result += "<col_" + aCols[j].key + ">" + oData[aCols[j].key] + "</col_" + aCols[j].key + ">"
+
+        }
+				result += "</row>";
+
+    }
+		result += "</data>";
+		
+		// post it to the server
+		var div = document.getElementById('container');
+
+		var handleSuccess = function(o){
+
+			//var div = $('#response');
+			
+	if(o.responseText !== undefined){
+		//div.innerHTML = "Transaction id: " + o.tId;
+		//div.innerHTML += "HTTP status: " + o.status;
+		//div.innerHTML += "Status code message: " + o.statusText;
+		//div.innerHTML += "<li>HTTP headers: <ul>" + o.getAllResponseHeaders + "</ul></li>";
+		div.innerHTML += "Server response: " + o.responseText;
+		//div.innerHTML += "Argument object: " + o.argument;
+	}
+}
+		
+
+var handleFailure = function(o) {console.log(o);}
+
+
+
+		
+		
+		var sURL = "hello2.xql";
+	
+
+		var postData = 'test=' + result;
+		
+		var callbackeee = 
+	{ 
+	  success:handleSuccess, 
+	  failure:handleFailure, 
+	  argument: ['foo','bar'] 
+	}; 
+		
+	// alert(result);
+			console.log('voor post');
+		console.log(postData);
+	var request = YAHOO.util.Connect.asyncRequest('POST', sURL, callbackeee, postData); 
+		console.log('na post');	
+	
+		
+			
+
+		
+}
+				
+				
+				
+				
+				
+				
+				 var globalDataCount = -1,
+            makeData = function(count) {
+                if(count) {
+                    var allData = [];
+                    for(var i=0; i<count; i++) {
+                        globalDataCount++;
+												allData.push({type:"", lang:"", textN:"", textF:"", short:"", speaker:"", gov:""});
+                    }
+                    return allData;
+                }
+                else {
+                    globalDataCount++;
+                    return {type:"", lang:"", textN:"", textF:"", short:"", speaker:"", gov:""};
+                }
+            };
+				
+						
+						function saveAll() {
+						console.log('save');	
+							
+						// First loop over the table and save the data in the textboxes to the js array
+						
+						var tr = myDataTable.getFirstTrEl();
+						
+						//var oRecord = myDataTable.getRecord( tr );
+						//alert(oRecord);
+
+						c=0;
+						
+            while (tr) {
+								console.log("R" + c);
+                c++;
+								var oRecord  = myDataTable.getRecord(tr);
+								var oData = oRecord.getData();
+							 	
+                var list1 = Dom.getElementsByClassName('yui-dt-col-speaker', null, tr);
+								for (var i=0; i<list1.length; i++) {
+									
+									list2 = list1[i].getElementsByTagName('input');
+									
+									for (var j=0; j<list2.length; j++) {
+										console.log(list2[j].value);
+										oData['speaker'] = list2[j].value;
+										
+									}
+								}
+								
+								
+
+								var list1 = Dom.getElementsByClassName('yui-dt-col-short', null, tr);
+								for (var i=0; i<list1.length; i++) {
+									
+									
+									list2 = list1[i].getElementsByTagName('input');
+									
+									for (var j=0; j<list2.length; j++) {
+										console.log(list2[j].value);
+										oData['short'] = list2[j].value;
+										
+									}
+								}
+								
+								
+                tr = myDataTable.getNextTrEl(tr);
+            	}	
+											//alert(jsonStr);
+											
+											console.log('xml');
+											
+											dataTableAsXML(myDataTable);
+											
+//dataTableAsCSV(myDataTable);							
+
+						}
+						
+						
+				
+				// Add/update/delete rows as indicated
+        var handleClickAdd = function(e) {
+					myDataTable.addRows(makeData('10'), '0');
+        }
+
+				var handleClickSave = function(e) {
+					alert("Agenda is geregistreerd");
+					saveAll();
+        }
+
+				
+				
+				
+				
+				var btn1 = new YAHOO.widget.Button("add10");
+				btn1.on("click", handleClickAdd);
+				
+				var btn = new YAHOO.widget.Button("addDefault");
+	//			btn.on("click", handleClick);
+				
+				var btn2 = new YAHOO.widget.Button("save");
+				btn2.on("click", handleClickSave);
+				
+				
+				myDataTable.addRows(makeData('10'), '0');
+						
+				// Putting autocomplete on the input field		
+				
+				var availableTags = [		"BERTIEAUX Françoise",
+"AMPE Els",
+"BROTCHI Jacques.",
+"COPPENS René",
+"COLSON Michel",
+"DEJONGHE Carla",
+"d'URSEL Anne-Charlotte",
+"MENNEKENS Herman",
+"DE BOCK Emmanuel",
+"de CLIPPELE Olivier",
+"de PATOUL Serge",
+"DE WOLF Vincent",
+"AHIDAR Fouad",
+"DESTEXHE Alain",
+"BROUHON Sophie",
+"DRAPS Willem",
+"ROEX Elke",
+"FRAITEUR B√©atrice",
+"VAN DAMME Jef",
+"GOSUIN Didier",
+"JODOGNE Cécile",
+"LEMESRE Marion",
+"MANDAILA Gisèle",
+"DEBAETS Bianca",
+"MOLENBERG Isabelle",
+"DE PAUW Brigitte",
+"PAYFA Martine",
+"VANDENBOSSCHE Walter",
+"PERSOONS Caroline",
+"PIVIN Philippe",
+"ROUSSEAUX Jacqueline",
+"SCHEPMANS Françoise",
+"LOOTENS-STAEL Dominiek",
+"SIDIBE Fatoumata",
+"TEITELBAUM Viviane",
+"VAN GOIDSENHOVEN Gaëtan",
+"MAES Annemie",
+"AZZOUZI Mohamed",
+"VAN DEN BRANDT Elke",
+"BOUARFA Sfia",
+"CARTHE Michèle",
+"CHAHID Mohammadi",
+"CLOSE Philippe",
+"DE RIDDER Paul",
+"DAÏF Mohamed",
+"DESIR Caroline",
+"DIALLO Bea",
+"DUPUIS Françoise",
+"DEMOL Johan",
+"EL KTIBI Ahmed",
+"VAN LINTER Greet",
+"EL YOUSFI Nadia",
+"HUTCHINSON Alain",
+"IKAZBAN Jamal",
+"MOUREAUX Catherine",
+"MOUZON Anne Sylvie",
+"OURIAGHLI Mohamed",
+"ÖZKARA Emin",
+"P'TITO Olivia",
+"THIELEMANS Freddy",
+"TOMAS Eric",
+"VERVOORT Rudi",
+"ALBISHARI Aziz",
+"BRAECKMAN Dominique",
+"DEFOSSE Jean-Claude",
+"DELFORGE Céline",
+"DIRIX Anne",
+"HERSCOVICI Anne",
+"KHATTABI Zakia",
+"LURQUIN Vincent",
+"MARON Alain",
+"MOREL Jacques",
+"MOUHSSIN Ahmed",
+"NAGY Marie",
+"PESZTAT Yaron",
+"PINXTEREN Arnaud",
+"TRACHTE Barbara",
+"VANHALEWYN Vincent",
+"CARON Danielle",
+"de GROOTE Julie",
+"DOYEN Hervé",
+"du BUS de WARNAFFE André",
+"EL KHANNOUSS Ahmed",
+"FASSI-FIHRI Hamza",
+"FREMAULT Céline",
+"MAMPAKA MANKAMBA Bertin",
+"MIGISHA Pierre",
+"OZDEMIR Mahinur",
+"RIGUELLE Joël "
+		];
+
+				
+				$( ".yui-dt-col-speaker div input" ).autocomplete({
+						
+						
+						source: function(req, response) {
+        var re = $.ui.autocomplete.escapeRegex(req.term);
+        var matcher = new RegExp( "^" + re, "i" );
+        response($.grep(members, function(item){return matcher.test(item); }) );
+        }
+				});
+
+				
+				
+				
+				
+				myDataTable.subscribe("checkboxClickEvent", function(oArgs){
+						
+						// update data record with checkbox settings
+						
+    var elCheckbox = oArgs.target;
+		var oRecord = myDataTable.getRecord(elCheckbox);
+    var oData = oRecord.getData();
+		
+		contentGov = '';
+		var checkboxList = elCheckbox.parentNode.getElementsByTagName('input');
+		for (item in checkboxList) {
+			if (checkboxList[item].checked) {contentGov += checkboxList[item].value + '+';}
+		}
+		oData['gov'] = contentGov;
+		console.log(oData);
+});  
+				
+				
+				myDataTable.subscribe('dropdownChangeEvent', function(oArgs) {
+        var tar = oArgs.target;
+				console.log(tar);
+				
+        var oRecord = this.getRecord( tar );
+        var oData = oRecord.getData();
+        var oCol = this.getColumn( tar );
+         
+        oldValue = oData[ oCol.key ];
+        oData[ oCol.key ] = tar.value;
+				
+
+      //  this.updateRow( oRecord, oData );
+         
+//        appendStatus("dropdownChange! column key=" + oCol.key + " record id=" + oData['item_id'] + " : oldValue=" + oldValue + " newValue=" + oData[oCol.key] );
+				console.log(oData.gov + oData.short + oData.speaker + oData.textN);
+    });
+						
+        
+        return {
+            oDS: myDataSource,
+            oDT: myDataTable
+        };
+    }();
+
+});
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+</html>
+
+
+

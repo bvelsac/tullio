@@ -7,7 +7,7 @@ import module namespace util="http://exist-db.org/xquery/util";
 (: create the new collection for this meeting :)
 
 let $logger := "../logger/html/Meeting-recorder-nv2.html"
-let $editor := "../editor/editor-trans.html"
+let $editor := "../editor/editor-trans2.html"
 let $status := "../status/status.html"
 
 

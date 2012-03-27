@@ -1,0 +1,78 @@
+<html>
+<head>
+	<script language="javascript" src="/exist/tullio/js-lib/jquerytransform/js/jquery-1.6.4.js"></script>
+
+
+
+</head>
+
+
+<body>
+
+
+
+
+
+
+<div id="tableContainer">
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+<script>
+// fetch the data
+var requestBase = "/exist/tullio/xq/assemblage.xql?";
+
+var meeting = "2012-03-01-AM_PLEN";
+var start = "0";
+var stop; // if this one is empty the script will return events and text untill the end
+var joinTrans = "yes"; // true if there is a value
+var toFinish = "true"; // true if there is a string value, not necessary for this functionality
+
+var request = $.ajax({
+						url: requestBase,
+						type: "GET",
+						data: {
+							"include": joinTrans,
+							"bottom": toFinish,
+							"stop": stop,
+							"start": start,
+							"m": meeting
+						},
+						async: true
+					});
+
+request.done(function(msg) {
+						msgString =  (new XMLSerializer()).serializeToString(msg);
+						console.log( msgString);
+						$("#tableContainer").html(msg);
+				});
+
+request.fail(function(jqXHR, textStatus) {
+						alert( "Request failed");
+				});
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>
