@@ -13,7 +13,7 @@
     
   </xsl:template>
   
-  <xsl:template match="row[string()]">
+  <xsl:template match="row[string(col_type)]">
     <tr class="agenda">
       
       <xsl:apply-templates></xsl:apply-templates>
@@ -23,46 +23,63 @@
   
   <xsl:template match="col_type">
     <td class="type">
-      <xsl:value-of select="."/>
+      <xsl:if test="not(normalize-space()='null')">
+        <xsl:value-of select="."/>  
+      </xsl:if>
+      
     </td>
   </xsl:template>
   
   <xsl:template match="col_short">
     <td class="short">
-      <xsl:value-of select="."/>
+      <xsl:if test="not(normalize-space()='null')">
+        <xsl:value-of select="."/>  
+      </xsl:if>
     </td>
   </xsl:template>
   
   <xsl:template match="id">
     <td class="ref">
-      <xsl:value-of select="."/>
+      <xsl:if test="not(normalize-space()='null')">
+        <xsl:value-of select="."/>  
+      </xsl:if>
     </td>
   </xsl:template>
   <xsl:template match="col_speaker">
     <td class="speaker">
-      <xsl:value-of select="."/>
+      <xsl:if test="not(normalize-space()='null')">
+        <xsl:value-of select="."/>  
+      </xsl:if>
     </td>
   </xsl:template>
   
   <xsl:template match="col_gov">
     <td class="gov">
-      <xsl:value-of select="."/>
+      <xsl:if test="not(normalize-space()='null')">
+        <xsl:value-of select="."/>  
+      </xsl:if>
     </td>
   </xsl:template>
   
   <xsl:template match="col_lang">
     <td class="lang">
-      <xsl:value-of select="."/>
+      <xsl:if test="not(normalize-space()='null')">
+        <xsl:value-of select="."/>  
+      </xsl:if>
     </td>
   </xsl:template>
   <xsl:template match="col_textN">
-    <td class="subject-N">
-      <xsl:value-of select="."/>
+    <td class="subjectN">
+      <xsl:if test="not(normalize-space()='null')">
+        <xsl:value-of select="."/>  
+      </xsl:if>
     </td>
   </xsl:template>
   <xsl:template match="col_textF">
-    <td class="subject-F">
-      <xsl:value-of select="."/>
+    <td class="subjectF">
+      <xsl:if test="not(normalize-space()='null')">
+        <xsl:value-of select="."/>  
+      </xsl:if>
     </td>
   </xsl:template>
   

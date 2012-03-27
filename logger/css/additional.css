@@ -67,5 +67,16 @@
 						div#govFR * {color:red;}
 		
 		
+						.agenda {background-color: whitesmoke;}
+
+
+.agenda td {
+border-left: thin solid gray;
+border-bottom: thin solid gray;
+
+margin-right: 0px;
+padding: 4px;
+}
+
 		
 

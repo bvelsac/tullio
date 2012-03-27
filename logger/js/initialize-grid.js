@@ -334,7 +334,7 @@ return resultString;
 			{id:"speaker", name:"Spreker", field:"speaker", width:150, editor:TextCellEditor},
 			{id:"gov", name:"Regering", field:"gov", width:120},
 			{id:"textN", name:"Onderwerp", field:"textN", width:120},
-			{id:"textF", name:"Sujet", field:"gov", width:120},
+			{id:"textF", name:"Sujet", field:"textF", width:120},
 			{id:"notes", name:"Opmerkingen", field:"notes", width:150, editor:TextCellEditor},
 			{id:"committed", name:"Verzonden", field:"committed", width:30}
 		];
@@ -399,8 +399,7 @@ return resultString;
 				
 				for (var i = 0; i < livedata.length; i++) {
 					console.log(livedata[i].time + " " + livedata[i].nr);
-					
-					if (livedata[i].clip && c1 == '' ) {
+					if (livedata[i].clip  && livedata[i].lang != undefined && c1 == '' ) {
 						c1 = "o";
 					}
 					else if (c1 == "o") {
@@ -524,7 +523,7 @@ return resultString;
 					{
 					               nr:sequencecounter,
 												 time:dateFormat('isoTime'),
-												 type:event.target.id
+												 type:"PRES"
 					},"app":
 					{
 					               nr:sequencecounter,
@@ -564,7 +563,7 @@ return resultString;
 												 clip:'true',
 												 lang:'N',
 												 type:'newNL',
-												 speaker:'Huytebroeck, Evelyne'
+												 speaker:'HUYTEBROECK_Evelyne'
 					},
 					"cerexNL":
 					{
@@ -573,7 +572,7 @@ return resultString;
 												 clip:'true',
 												 lang:'N',
 												 type:'newNL',
-												 speaker:'Cerexhe, Benoît'
+												 speaker:'CEREXHE_Benoît'
 					},
 					"grouwNL":
 					{
@@ -582,7 +581,7 @@ return resultString;
 												 clip:'true',
 												 lang:'N',
 												 type:'newNL',
-												 speaker:'Grouwels, Brigitte'
+												 speaker:'GROUWELS_Brigitte'
 					},
 					"vraesNL":
 					{
@@ -591,7 +590,7 @@ return resultString;
 												 clip:'true',
 												 lang:'N',
 												 type:'newNL',
-												 speaker:'Vanraes, Jean-Luc'
+												 speaker:'VANHENGEL_Guy'
 					},
 					"kirNL":
 					{
@@ -600,7 +599,7 @@ return resultString;
 												 clip:'true',
 												 lang:'N',
 												 type:'newNL',
-												 speaker:'Kir, Emir'
+												 speaker:'KIR_Emir'
 					},
 					"lilleNL":
 					{
@@ -609,7 +608,7 @@ return resultString;
 												 clip:'true',
 												 lang:'N',
 												 type:'newNL',
-												 speaker:'De Lille, Bruno'
+												 speaker:'DE_LILLE_Bruno'
 					},
 					"doulkNL":
 					{
@@ -618,7 +617,7 @@ return resultString;
 												 clip:'true',
 												 lang:'N',
 												 type:'newNL',
-												 speaker:'Doulkeridis, Christos'
+												 speaker:'DOULKERIDIS_Christos'
 					},
 					"picqueNL":
 					{
@@ -627,7 +626,7 @@ return resultString;
 												 clip:'true',
 												 lang:'N',
 												 type:'newNL',
-												 speaker:'Picqué, Charles'
+												 speaker:'PICQUE_Charles'
 					},
 					"huytFR":
 					{
@@ -636,7 +635,7 @@ return resultString;
 												 clip:'true',
 												 lang:'F',
 												 type:'newFR',
-												 speaker:'Huytebroeck, Evelyne'
+												 speaker:'HUYTEBROECK_Evelyne'
 					},
 					"cerexFR":
 					{
@@ -645,7 +644,7 @@ return resultString;
 												 clip:'true',
 												 lang:'F',
 												 type:'newFR',
-												 speaker:'Cerexhe, Benoît'
+												 speaker:'CEREXHE_Benoît'
 					},
 					"grouwFR":
 					{
@@ -654,7 +653,7 @@ return resultString;
 												 clip:'true',
 												 lang:'F',
 												 type:'newFR',
-												 speaker:'Grouwels, Brigitte'
+												 speaker:'GROUWELS_Brigitte'
 					},
 					"vraesFR":
 					{
@@ -663,7 +662,7 @@ return resultString;
 												 clip:'true',
 												 lang:'F',
 												 type:'newFR',
-												 speaker:'Vanraes, Jean-Luc'
+												 speaker:'VANHENGEL_Guy'
 					},
 					"kirFR":
 					{
@@ -672,7 +671,7 @@ return resultString;
 												 clip:'true',
 												 lang:'F',
 												 type:'newFR',
-												 speaker:'Kir, Emir'
+												 speaker:'KIR_Emir'
 					},
 					"lilleFR":
 					{
@@ -681,7 +680,7 @@ return resultString;
 												 clip:'true',
 												 lang:'F',
 												 type:'newFR',
-												 speaker:'De Lille, Bruno'
+												 speaker:'DE_LILLE_Bruno'
 					},
 					"doulkFR":
 					{
@@ -690,7 +689,7 @@ return resultString;
 												 clip:'true',
 												 lang:'F',
 												 type:'newFR',
-												 speaker:'Doulkeridis, Christos'
+												 speaker:'DOULKERIDIS_Christos'
 					},
 					"picqueFR":
 					{
@@ -699,7 +698,7 @@ return resultString;
 												 clip:'true',
 												 lang:'F',
 												 type:'newFR',
-												 speaker:'Picqué, Charles'
+												 speaker:'PICQUE_Charles'
 					}
 					
 			};
@@ -762,14 +761,11 @@ return resultString;
 												 speaker:$(this).siblings().andSelf().filter(".speaker").text(),
 												 // speaker:$('#' + but + 'tags').val(),
 												 type: $(this).siblings().andSelf().filter(".type").text(),
-												 // type:'new ' + langSel,
-												 textN: $(this).siblings().andSelf().filter(".subject-N").text(),
-												 textF: $(this).siblings().andSelf().filter(".subject-F").text(),
-												 lang: $(this).siblings().andSelf().filter(".lang").text(),
+												  lang: $(this).siblings().andSelf().filter(".lang").text(),
 												 gov: $(this).siblings().andSelf().filter(".gov").text(),
-												 
+												 textN: $(this).siblings().andSelf().filter(".subjectN").text(),
+												 textF: $(this).siblings().andSelf().filter(".subjectF").text(),
 												 notes: $(this).siblings().andSelf().filter(".short").text(),
-												 // lang:$('input[name=' + lookup + ']:checked').val(),
 												 clip:'true'
 					}
 					console.log(submission);	

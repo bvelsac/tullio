@@ -149,7 +149,7 @@ var types = ['---', 'OUV-OPE', 'PRES', 'QO-MV', 'QA-AV', 'INT', 'ORA-SPR FORM', 
 
         var myColumnDefs = [
 						 {key:"type", formatter:"dropdown", dropdownOptions:types},
-						 {key:"lang", label:'Langue', formatter: 'dropdown', dropdownOptions: ['N', 'F']},
+						 {key:"lang", label:'Langue', formatter: 'dropdown', dropdownOptions: ['---', 'N', 'F']},
             {key:"textN", label:'Sujet (N)', editor: new YAHOO.widget.TextareaCellEditor()},
 						{key:"textF", label:'Sujet (F)', editor: new YAHOO.widget.TextareaCellEditor()},
 						{key:"short", label:'Identifiant', formatter: 'textbox'},
