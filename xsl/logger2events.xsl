@@ -15,6 +15,7 @@
   <xsl:if test="@clip='true'">
     <e type="marker" n="{@nr * 2 - 1}" c="y">
       <xsl:copy-of select="@lang"/>
+      <xsl:copy-of select="@time"/>
     </e>
   </xsl:if>
   <e>

@@ -19,7 +19,7 @@ td.status {border-left: solid 3px transparent;}
 
 
 	td.status {width: 50px;}
-	td.locked {border-left: solid #f5a5a5 4px;}
+	td.locked {border-left: solid #f5a5a5 3px;}
 	table.edited {background-color: bisque;}
 	.leftovers {color: #bfbebe};
 	.moved {color: #5121b3};
@@ -39,7 +39,7 @@ td.status {border-left: solid 3px transparent;}
 	#titles {display: none;};
 	#logo {margin-left: 10px; height: 65px; background-image:url('../img/logo.png'); background-repeat:no-repeat;}
 	td {border: thin dotted navy;}
-	.ruby td {border-color: #ff3333; border-style: solid;}
+/*	.ruby td {border-color: #ff3333; border-style: solid;} */
 	/*.edited {background-color: #66ff66;} */
 	.startevent {background-color: #66ff00}
 	.stopevent {background-color: #00ffcc}

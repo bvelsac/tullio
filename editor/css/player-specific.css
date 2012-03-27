@@ -34,6 +34,8 @@ body {
 
 */
 
+p.timecodes {display: none;}
+
 body {
     font: 75% normal verdana,arial,tahoma,"sans serif";
 }

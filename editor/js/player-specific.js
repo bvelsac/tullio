@@ -1,5 +1,43 @@
+		function toHumanTime(x) {
+			milliSecs = x;
+
+msSecs = (1000);
+msMins = (msSecs * 60);
+msHours = (msMins * 60);
+numHours = Math.floor(milliSecs/msHours);
+numMins = Math.floor((milliSecs - (numHours * msHours)) / msMins);
+numSecs = Math.floor((milliSecs - (numHours * msHours) - (numMins * msMins))/ msSecs);
+
+
+if (numSecs < 10){
+  numSecs = "0" + numSecs;
+};
+if (numMins < 10){
+  numMins = "0" + numMins;
+};
+
+/*if (numHours < 10) {
+	numHours = "0" + numHours;
+}
+*/
+
+resultString = numMins + ":" + numSecs;
+
+return resultString;
+
+		}
+
+
+
+
+
+
+
+
 var noReload = true;
 var pagePlayer;
+var offset;
+var playId;
 
 soundManager.url = '/exist/tullio/soundmanager/swf/';
 // soundManager.url = '../../swf/';
@@ -14,9 +52,10 @@ function setTheme(sTheme) {
 }
 
 function playFromOffset(id, position) {
-					console.log(id + position);
-					var offset = 2 * 60000 + 44000; 
+					console.log("offset " + offset);
 					var s = soundManager.getSoundById(id);
+					var tries = 0;
+					
 					console.log(s.readyState);
 					if (s.readyState == 3) {
 						console.log("ready");
@@ -28,7 +67,10 @@ function playFromOffset(id, position) {
 					}
 					else {
 						$('#alerts').addClass('alert');
-						setTimeout("playFromOffset('" + id + "'," + offset + ")", 500);
+						if (tries < 10) {
+							setTimeout("playFromOffset('" + id + "'," + offset + ")", 500);
+							tries++;
+						}
 					}
 				}
 
@@ -44,7 +86,27 @@ function setUpPlayer(){
 	
 		
 				$("td.sound > a").live("click", function() {
+						offset = 0;
+						var timeswitch = 0;
 					 	noReload = false;
+						
+						var reference = new XDate("2011-09-05T" + $(this).children().text());
+						//alert(reference);
+						
+						
+						$(this).next().children('p.timecodes').children("span").each(function() {
+								var start = new XDate("2011-09-05T" + $(this).text());
+								var diff = start - reference;
+								if (timeswitch == 0) {offset = diff;}
+								var code = $(this).attr('id').substring(2);
+								$("#offset" + code).text(toHumanTime(diff));
+								timeswitch = 1;
+						});
+						
+						
+						
+						
+						
 			var playlist = $(this).next().html();
 			console.log(playlist);
 			
@@ -56,7 +118,7 @@ function setUpPlayer(){
 	//		$("#recording a").addClass('check');
 	
 	
-			var playId = $(this).next().find("a").attr('id');
+			playId = $(this).next().find("a").attr('id');
 			var thelink = document.getElementById(playId);
 			$("#alerts").addClass('alert');
 			
@@ -87,15 +149,15 @@ function setUpPlayer(){
 
 			soundManager.play('pagePlayerMP3Sound0');
 			*/
-			
+			/*
 			$(".note:contains('Start')").css({	display : 'inline-block',
 																					background : '#ff9999'});
 			
-			noReload = true;
+	
 				
+				*/
 				
-				
-				
+			noReload = true;			
 		}
 		)
 
@@ -165,12 +227,27 @@ function setUpPlayer(){
 
 			soundManager.play('pagePlayerMP3Sound0');
 			*/
-			
+			/*
 			$(".note:contains('Start')").css({	display : 'inline-block',
 																					background : '#ff9999'});
-			
+			*/
 			noReload = true;
 		});
+		
+		
+				$("#toStart").live("click", function(){
+			playFromOffset(playId);
+			
+			
+			//soundManager.togglePause(lastSound);
+			//$('<li><a href="../_mp3/office_lcobby.mp3">Nog eentjen</a></li>').insertBefore('.last');
+		
+		
+		
+		});
+		
+		
+		
 		
 		
 		$("#startStop").live("click", function(){
@@ -257,8 +334,10 @@ function setUpPlayer(){
 			//	console.log('You pressed a key.');
 		}
 		*/
-		$(document).bind('keyup', 'alt+=', function() {
-				console.log('hotkey pressed');		
+		
+		/*
+		$(document).bind('keyup', 'alt+B', function() {
+				console.log('hotkey pressed ');		
 				lastSound = pagePlayer.lastSound.sID;
 				if (!lastSound) {
 					console.log('no sound');
@@ -328,7 +407,7 @@ function setUpPlayer(){
 				
 		});
 	
-						
+			*/			
 						
 		
 }

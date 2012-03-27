@@ -642,7 +642,7 @@ displayStatus();
 					forcePasteAsPlainText: true
 			});
 
-
+var isCtrl = false;
 	// code for keyboard shortcuts
 editor.on( 'contentDom', function( evt )
     {
@@ -654,20 +654,89 @@ editor.on( 'contentDom', function( evt )
         editor.document.on( 'keydown', function(event)
         {
             if(event.data.$.keyCode == 17) isCtrl=true;
-            if(event.data.$.keyCode == 83 && isCtrl == true)
-            {
+            if(event.data.$.keyCode == 68 && isCtrl == true)
+            {		// TOGGLE = D
                 //The preventDefault() call prevents the browser's save popup to appear.
                 //The try statement fixes a weird IE error.
                 try {
                     event.data.$.preventDefault();
                 } catch(err) {}
-console.log('save key');
+								console.log('save key');
+
                 //Call to your save function
-			lastSound = pagePlayer.lastSound.sID;
-			console.log(lastSound);
-			soundManager.pause(lastSound);
-                return false;
+								lastSound = pagePlayer.lastSound.sID;
+								if (lastSound != undefined) {
+									console.log(lastSound);
+									soundManager.togglePause(lastSound);
+                	return false;}
             }
+						
+						
+						if(event.data.$.keyCode == 83 && isCtrl == true)
+            {
+								// REWIND= S
+                //The preventDefault() call prevents the browser's save popup to appear.
+                //The try statement fixes a weird IE error.
+                try {
+                    event.data.$.preventDefault();
+                } catch(err) {}
+								console.log('save key');
+
+                //Call to your save function
+								lastSound = pagePlayer.lastSound.sID;
+								lastSound = pagePlayer.lastSound.sID;
+								if (!lastSound) {
+									console.log('no sound');
+									return false;
+								}
+				
+								var s = soundManager.getSoundById(lastSound);
+								if (!s || !s.playState || !s.duration) {
+									console.log("something wrong");
+									return false;
+								}
+								console.log(s.position);
+								s.setPosition(s.position - 5000);	
+			
+            }
+						
+												if(event.data.$.keyCode == 70 && isCtrl == true)
+            {
+								// REWIND= S
+                //The preventDefault() call prevents the browser's save popup to appear.
+                //The try statement fixes a weird IE error.
+                try {
+                    event.data.$.preventDefault();
+                } catch(err) {}
+								console.log('save key');
+
+                //Call to your save function
+								lastSound = pagePlayer.lastSound.sID;
+								lastSound = pagePlayer.lastSound.sID;
+								if (!lastSound) {
+									console.log('no sound');
+									return false;
+								}
+				
+								var s = soundManager.getSoundById(lastSound);
+								if (!s || !s.playState || !s.duration) {
+									console.log("something wrong");
+									return false;
+								}
+								console.log(s.position);
+								s.setPosition(s.position + 5000);	
+			
+            }
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
         });
 
     }, editor.element.$);	

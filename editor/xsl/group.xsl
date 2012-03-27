@@ -28,7 +28,9 @@
   -->
   <!--<xsl:variable name="testLoad" select="document('http://localhost:8080/exist/tullio/xq/list-collections.xql')"></xsl:variable>-->
   <xsl:variable name="soundURL" select="'../soundmanager/recordings/'"/>
-  <xsl:variable name="soundExt" select="'.mp3'"/>
+  <xsl:variable name="soundURL2" select="'/exist/sound/canal3/'"/>
+<!--  http://localhost:8080/exist/sound/canal3/201203211040.mp3
+-->  <xsl:variable name="soundExt" select="'.mp3'"/>
   <xsl:variable name="conf" select="//reference"/>
   <xsl:variable name="meeting-type">
     <xsl:choose>
@@ -214,44 +216,56 @@
           <xsl:comment>
             <xsl:value-of select="$hours"/>, <xsl:value-of select="$minutes"/>, <xsl:value-of
               select="$seconds"/>, </xsl:comment>
-          <xsl:variable name="recording">
+          <xsl:variable name="recordingStart">
             <xsl:choose>
-              <xsl:when test="$minutes &lt; 15">
-                <xsl:value-of select="concat($datestringCurrent, $hours, '00', $soundExt)"/>
-              </xsl:when>
-              <xsl:when test="$minutes &lt; 30">
-                <xsl:value-of select="concat($datestringCurrent, $hours, '15', $soundExt)"/>
-              </xsl:when>
-              <xsl:when test="$minutes &lt; 45">
-                <xsl:value-of select="concat($datestringCurrent, $hours, '30', $soundExt)"/>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:value-of select="concat($datestringCurrent, $hours, '45', $soundExt)"/>
-              </xsl:otherwise>
+              <xsl:when test="$minutes &gt; 50">50</xsl:when>
+              <xsl:when test="$minutes &lt; 10">00</xsl:when>
+              <xsl:when test="$minutes &lt; 20">10</xsl:when>
+              <xsl:when test="$minutes &lt; 30">20</xsl:when>
+              <xsl:when test="$minutes &lt; 40">30</xsl:when>
+              <xsl:when test="$minutes &lt; 50">40</xsl:when>
             </xsl:choose>
           </xsl:variable>
+          <xsl:variable name="audioRef" select="concat($datestringCurrent, $hours, $recordingStart, $soundExt)"></xsl:variable>
+<xsl:comment><xsl:value-of select="$audioRef"/></xsl:comment>
           <a class="startRec" href="javascript:('return false;')">
-            <xsl:text>Play</xsl:text>
+            <xsl:text>Play </xsl:text>
+            <p><xsl:value-of select="concat($hours, ':', $recordingStart, ':00')"/></p>
           </a>
-          <div calss="playlistWrapper">
+          <div class="playlistWrapper">
+            <p class="timecodes">
+              <xsl:for-each select="key('clip', @n)">
+                <xsl:if test="string(@time)">
+                  <span id="tc{generate-id()}"><xsl:value-of select="@time"/></span>  
+                </xsl:if>
+                
+              </xsl:for-each>
+            </p>
             <ul class="playlist hidden">
               <li>
-                <a href="{concat($soundURL,$recording)}" id="play-{@n}">
-                  <!-- time calculations inc. offset in js -->
+                <a href="{concat($soundURL2,'201203211040.mp3')}" id="play-{@n}">
+                  <xsl:value-of select="concat('Clip ', key('clip', @n)[position()=2]/@n)"/>
                 </a>
-                <span class="offset">start: 00:07</span>
+<!--                <span class="offset">00:07</span>-->
                 <div class="metadata">
-                  <div class="duration">15:00</div>
+                  <div class="duration">20:00</div>
                   <!-- total track time (for positioning while loading, until determined -->
                   <ul>
                     <xsl:for-each select="key('clip', @n)">
                       <!-- must be updated using js before loading the track -->
-                      <li>
-                        <p>
-                          <xsl:value-of select="@speaker"/>
-                        </p>
-                        <span>0:00</span>
-                      </li>
+                      <xsl:if test="string(@time)">
+                        <li>
+                          <p>
+                            <xsl:value-of select="@n"/>
+                            <xsl:text>: </xsl:text>
+                            <xsl:value-of select="@type"/>
+                            <xsl:if test="string(@speaker)"><xsl:value-of select="concat(' ', @speaker)"/></xsl:if>
+                            
+                          </p>
+                          <span id="offset{generate-id()}">0:00</span>
+                        </li>  
+                      </xsl:if>
+                      
                       <!-- first scene -->
                     </xsl:for-each>
                   </ul>
@@ -378,7 +392,7 @@
   
   
   
-  <xsl:template match="events//e" mode="events-table">
+  <xsl:template match="events//e[not(@type='marker')]" mode="events-table">
     <tr class="{name(parent::*)}">
       <td class="e-n">
         <xsl:choose>
@@ -406,6 +420,18 @@
           </xsl:otherwise>
         </xsl:choose>
       </td>
+      <td>
+      <xsl:attribute name="class">
+        <xsl:text>offset</xsl:text>
+        <xsl:choose>
+          <xsl:when test="parent::moved">
+            <xsl:value-of select="following-sibling::new-nr"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="@n"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:attribute></td>
     </tr>
   </xsl:template>
   <xsl:template match="text()" mode="events-table"/>

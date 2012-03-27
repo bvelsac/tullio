@@ -40,6 +40,7 @@
       <!-- insert clipmarker for new clip -->
       <event c="y" id="{concat('marker:', generate-id())}" type="marker">
         <xsl:copy-of select="@lang"/>
+        <xsl:copy-of select="@time"/>
       </event>
     </xsl:if>
     <xsl:copy>
