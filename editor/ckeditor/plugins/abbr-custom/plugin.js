@@ -101,7 +101,7 @@ CKEDITOR.plugins.add( 'abbr-custom',
 		editor.ui.addButton( 'Abbr',
 		{
 			// Toolbar button tooltip.
-			label: 'Insert Abbreviation',
+			label: 'Insert Macro Text',
 			// Reference to the plugin command name.
 			command: 'abbrDialog',
 			// Button's icon file path.
@@ -146,7 +146,7 @@ CKEDITOR.plugins.add( 'abbr-custom',
 										items :  eventTypes[langChoice],
 										'default' : 'AGENDA',
 										onChange : function (api) {
-											alert('Current value: ' + this.getValue() );
+											//alert('Current value: ' + this.getValue() );
 										}
 									},
 									{
@@ -157,7 +157,7 @@ CKEDITOR.plugins.add( 'abbr-custom',
 										items : languages[langChoice],
 										'default' : '',
 										onChange : function (api) {
-											alert('Current value: ' + this.getValue() );
+											//alert('Current value: ' + this.getValue() );
 										}
 									},
 									{
@@ -167,7 +167,7 @@ CKEDITOR.plugins.add( 'abbr-custom',
 										items : speakers,
 										'default' : '----',
 										onChange : function (api) {
-											alert('Current value: ' + this.getValue() );
+											//alert('Current value: ' + this.getValue() );
 										}
 									},
 									{
@@ -179,7 +179,7 @@ CKEDITOR.plugins.add( 'abbr-custom',
 										items : government,
 										'default' : '',
 										onChange : function (api) {
-											alert('Current value: ' + this.getValue() );
+											//alert('Current value: ' + this.getValue() );
 										}
 									},
 									{
@@ -198,7 +198,7 @@ CKEDITOR.plugins.add( 'abbr-custom',
 											}
 											else if ( CKEDITOR.dialog.getCurrent().getValueOf('eventInfo', 'clip') && time=='' ) {
 												console.log('no time indiciation for clip');
-												alert("Svp sp�cifier une indication de temps quand vous cr��z un nouveau clip.");												
+												alert("Svp spécifier une indication de temps quand vous crééz un nouveau clip.");												
 											  return false;
 											}
 										}
@@ -216,7 +216,7 @@ CKEDITOR.plugins.add( 'abbr-custom',
 										id : 'clip',
 										label : 'Nouveau clip ?',
 										onClick : function() {
-											alert( 'Checked: ' + this.getValue() );
+											//alert( 'Checked: ' + this.getValue() );
 										}
 									}
 									/*
