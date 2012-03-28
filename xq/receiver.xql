@@ -16,7 +16,7 @@ let $setuser := xdb:login("/db", "admin", "paris305")
 
 :)
 				
-
+let $serverAddress:= "http://localhost:8080"
 
 let $meeting := request:get-parameter("meeting", ())      (:string:)
 let $entries := request:get-parameter("entries", ())            (: number -- id of stop event -- included :)
@@ -61,8 +61,13 @@ let $descr := <meeting>{concat(substring-before($meeting, '-'), substring-before
 
 let $stored := if ($max = 0) then (xdb:store(concat("/db/tullio/", $meeting), "events.xml", $events), update insert $descr into doc($eventfile)/events) else if ($events//e) then update insert $events//e into doc($eventfile)/events else ()
 
+
+let $titles := doc(concat($serverAddress, "/exist/tullio/xml/titles.xml"))
 let $intermediate := transform:transform($events, "../editor/xsl/addclipref.xsl", ())
-let $initClips := transform:transform($intermediate, "../editor/xsl/group.xsl", <parameters><param name="server" value="yes"/></parameters>)
+
+let $debug := xdb:store(concat("/db/tullio/", $meeting), "test.xml", $intermediate)
+
+let $initClips := transform:transform(<container>{$intermediate,$titles}</container>, "../editor/xsl/group.xsl", <parameters><param name="server" value="yes"/></parameters>)
 
 (: let $initClips := transform:transform(<wrapper>{$preClips}</wrapper>, "../editor/xsl/addInit.xsl", ()) :)
 
