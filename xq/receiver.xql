@@ -16,7 +16,7 @@ let $setuser := xdb:login("/db", "admin", "paris305")
 
 :)
 				
-let $serverAddress:= "http://localhost:8080"
+let $serverAddress:= "http://192.168.25.253"
 
 let $meeting := request:get-parameter("meeting", ())      (:string:)
 let $entries := request:get-parameter("entries", ())            (: number -- id of stop event -- included :)
