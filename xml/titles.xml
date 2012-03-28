@@ -7,7 +7,12 @@
   <l id="exc-F">Mme la présidente.- </l>
   <l id="exc-N"><span class="incomplete">Verontschuldigen/Verontschuldigt zich voor hun/zijn/haar afwezigheid:</span></l>
   <l id="exc-N"><span class="incomplete">Ont / A prié d'excuser leur / son absence :</span></l>
-  
+  <l id="title-m-N">De heer </l>
+	<l id="title-m-F">M. </l>
+	<l id="title-f-N">Mevrouw </l>
+	<l id="title-f-F">Mme. </l>
+	<l id="parole-N"> heeft het woord.</l>
+	<l id="parole-F">La parole est à </l>
   <person id="none" gov="no" group="" lang="nl" gender="m">
     <first>----</first>
     <last>----</last>
