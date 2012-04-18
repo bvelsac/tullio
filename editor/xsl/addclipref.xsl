@@ -41,11 +41,11 @@
             <xsl:copy-of select="@*"/>
             <xsl:attribute name="clip">
                 <xsl:choose>
-                    <xsl:when test="@c='y'">
+                    <xsl:when test="@c='true'">
                         <xsl:value-of select="@n"/>
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:value-of select="preceding-sibling::e[@c='y'][1]/@n"/>
+                        <xsl:value-of select="preceding-sibling::e[@c='true'][1]/@n"/>
                     </xsl:otherwise>
                 </xsl:choose>
                 

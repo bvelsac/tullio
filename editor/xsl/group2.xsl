@@ -15,7 +15,7 @@
   <xsl:key match="//s" name="statusCodes" use="@n"/>
   <xsl:key match="//person" name="people" use="@id"/>
   <xsl:param name="mode"/>
-  <xsl:param name="server" select="'no'"/>
+  <xsl:param name="server" select="'yes'"/>
   <!-- Chrome heeft een issue waardoor de document() functie niet werkt, dus alles moet worden toegevoegd aan het input-document
     Google Chrome currently has limited support for XSL. If your XSL refers to any external resources (document() function, xsl:import, xsl:include or external entities), the XSL will run but the result will either be empty or invalid.
   
@@ -30,7 +30,6 @@
   <!--  http://localhost:8080/exist/sound/canal3/201203211040.mp3
 -->
   <xsl:variable name="soundExt" select="'.mp3'"/>
-<xsl:variable name="audioLength" select="'20'" />
   <xsl:variable name="conf" select="//reference"/>
   <xsl:variable name="meeting-type">
     <xsl:choose>
@@ -190,7 +189,7 @@
     <xsl:apply-templates mode="initialize-text" select="key('new', @id)"/>
   </xsl:template>
   <xsl:template name="default">
-    <xsl:for-each select="//e[@c='true']">
+    <xsl:for-each select="//e[@c='y']">
       <tr id="{concat('R', @n)}">
         <td class="sound">
           <!-- create a list of events for the sound markers -->
@@ -241,13 +240,12 @@
             </p>
             <ul class="playlist hidden">
               <li>
-		<!-- <a href="{concat($soundURL2,$recordingStart)}" id="play-{@n}"> -->
-                <a href="{$audioRef}" id="play-{@n}">
+                <a href="{concat($soundURL2,'201203211040.mp3')}" id="play-{@n}">
                   <xsl:value-of select="concat('Clip ', @n)"/>
                 </a>
                 <!--                <span class="offset">00:07</span>-->
                 <div class="metadata">
-                  <div class="duration"><xsl:value-of select="$audioLength"/>:00</div>
+                  <div class="duration">20:00</div>
                   <!-- total track time (for positioning while loading, until determined -->
                   <ul>
                     <xsl:for-each select="key('clip', @n)">
@@ -300,8 +298,8 @@
             <events>
               <xsl:attribute name="next">
                 <xsl:choose>
-                  <xsl:when test="following-sibling::e[@c='true']">
-                    <xsl:value-of select="following-sibling::e[@c='true'][1]/@n"/>
+                  <xsl:when test="following-sibling::e[@c='y']">
+                    <xsl:value-of select="following-sibling::e[@c='y'][1]/@n"/>
                   </xsl:when>
                   <xsl:otherwise>
                     <xsl:value-of select="/all/@next"/>

@@ -15,11 +15,11 @@
 		
             div.buttons *, div#clock1 *, div.commit *, div.agenda * {
                 font-family: Helvetica, Verdana, Arial;
-                font-size: 1em
+                font-size: 10.5px;
             }
             
             div.buttons div, div.buttons span, div.commit *  {
-                width: 100px;
+                width: 110px;
                 float: left;
                 border: solid 1px #333333;
                 padding: 4px;

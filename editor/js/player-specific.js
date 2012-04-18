@@ -1,37 +1,25 @@
-		function toHumanTime(x) {
-			milliSecs = x;
+function toHumanTime(x) {
+	milliSecs = x;
+	msSecs = (1000);
+	msMins = (msSecs * 60);
+	msHours = (msMins * 60);
+	numHours = Math.floor(milliSecs/msHours);
+	numMins = Math.floor((milliSecs - (numHours * msHours)) / msMins);
+	numSecs = Math.floor((milliSecs - (numHours * msHours) - (numMins * msMins))/ msSecs);
 
-msSecs = (1000);
-msMins = (msSecs * 60);
-msHours = (msMins * 60);
-numHours = Math.floor(milliSecs/msHours);
-numMins = Math.floor((milliSecs - (numHours * msHours)) / msMins);
-numSecs = Math.floor((milliSecs - (numHours * msHours) - (numMins * msMins))/ msSecs);
-
-
-if (numSecs < 10){
-  numSecs = "0" + numSecs;
-};
-if (numMins < 10){
-  numMins = "0" + numMins;
-};
-
-/*if (numHours < 10) {
-	numHours = "0" + numHours;
+	if (numSecs < 10){
+		numSecs = "0" + numSecs;
+	};
+	if (numMins < 10){
+		numMins = "0" + numMins;
+	};
+	/*if (numHours < 10) {
+		numHours = "0" + numHours;
+	}
+	*/
+	resultString = numMins + ":" + numSecs;
+	return resultString;
 }
-*/
-
-resultString = numMins + ":" + numSecs;
-
-return resultString;
-
-		}
-
-
-
-
-
-
 
 
 var noReload = true;

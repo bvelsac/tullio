@@ -23,7 +23,7 @@
     <description lang="nl">Titel voor mondelinge vraag</description>
   </event>
 	
-	<event id="new"  order="00speakers00" active="y" use-for-editor="y" use-for-agenda="y">
+	<event id="new"  order="00speakers00" active="y" use-for-editor="y" use-for-agenda="n">
     <name lang="nl">Nieuwe spreker (simpel)</name>
     <name lang="fr">Nouvel orateur (simple)</name>
     <description lang="nl"></description>
@@ -43,6 +43,14 @@
     <name lang="fr">Ouverture</name>
     <description lang="nl">Om vast te leggen wanneer de vergadering is begonnen en de bijbehorende titels aan te maken.</description>
   </event>
+	
+	<event id="O-BHR"  order="gen-01" active="y" use-for-editor="n" use-for-agenda="y" >
+    <name lang="nl">Opening plenaire BHR</name>
+    <name lang="fr">Ouverture</name>
+    <description lang="nl">Om vast te leggen wanneer de vergadering is begonnen en de bijbehorende titels aan te maken.</description>
+  </event>
+	
+	
   <event id="EXC-AFW"  order="gen-02" active="y" use-for-editor="y" use-for-agenda="y" >
     <name lang="nl">Afwezigheden</name>
     <name lang="fr">Excusés</name>

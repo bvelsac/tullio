@@ -7,7 +7,7 @@ import module namespace util="http://exist-db.org/xquery/util";
 
 (: let $serverAddress:= "http://192.168.25.253:8080" :)
 
-let $serverAddress:= "http://localhost:8080"
+let $serverAddress:= concat("http://", doc('/db/tullioconfig/config.xml')/config/serverAddress)
 
 
 let $target := request:get-parameter("target", ())

@@ -5,7 +5,8 @@ declare namespace request="http://exist-db.org/xquery/request";
 import module namespace xdb="http://exist-db.org/xquery/xmldb";
 import module namespace util="http://exist-db.org/xquery/util";
 
-let $serverAddress:= "http://http://192.168.25.253:8080"
+let $serverAddress:= concat("http://", doc('/db/tullioconfig/config.xml')/config/serverAddress)
+
 
 let $meeting-id := request:get-parameter("m", ())
 let $events-doc := concat("/db/tullio/", $meeting-id, "/events.xml")

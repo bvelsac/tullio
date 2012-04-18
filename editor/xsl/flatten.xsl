@@ -36,7 +36,7 @@
   </xsl:template>
   <xsl:template match="text()"/>
   <xsl:template match="event">
-    <xsl:if test="@c='y'">
+    <xsl:if test="@c='true'">
       <!-- insert clipmarker for new clip -->
       <event c="y" id="{concat('marker:', generate-id())}" type="marker">
         <xsl:copy-of select="@lang"/>
@@ -48,8 +48,8 @@
         <xsl:value-of select="generate-id()"/>
       </xsl:attribute>
       <xsl:copy-of select="@*"/>
-      <xsl:if test="@c='y'">
-        <xsl:attribute name="c">n</xsl:attribute>
+      <xsl:if test="@c='true'">
+        <xsl:attribute name="c">false</xsl:attribute>
       </xsl:if>
       <xsl:copy-of select="*"/>
      

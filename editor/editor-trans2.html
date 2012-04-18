@@ -420,7 +420,7 @@ function updateVisibleTexts(once) {
 
 function initialize(xml, xsl, xmlorig) {
 	
-	console.log('i');
+	console.log('************ init');
 	console.log(xml);
 	
 	jQuery.get( "/exist/tullio/xml/titles.xml", 
@@ -431,8 +431,7 @@ function initialize(xml, xsl, xmlorig) {
 			x = data.documentElement;
 			xml.getElementsByTagName("all")[0].appendChild(titles);
 			
-			// console.log(xml);
-			
+			console.log(new XMLSerializer().serializeToString(xml));
 			$("#result").transform({cache:false, async:false, dataType:"xml", xmlobj:xml, xsl:"xsl/group.xsl", xslParams:{mode:runTrans}});
 			// $("#result").transform({xml:"xml/catalog.xml", xsl:"xsl/cds.xsl",xslParams:{test:"Value is set"}});
 			
@@ -502,7 +501,7 @@ $("#overview").text(mmm);
 			$.get("../xq/initialize.xql", {
 							"meeting": mmm
 					}, function(data) {
-							// alert("Data Loaded: " + data);
+							alert("Data Loaded: " + data);
 					});
 			
 		// functie initialize zorgt voor de aanmaak van de tabel aan client side, blijkbaar noodzakelijk	

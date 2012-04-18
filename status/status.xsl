@@ -4,7 +4,7 @@
   <!-- Events should be ordered -->
   
     <table id="statusTable"> 
-      <xsl:for-each select="events/e[@c='y']">
+      <xsl:for-each select="events/e[@c='true']">
         
         <xsl:variable name="status-orig">
           <xsl:choose>

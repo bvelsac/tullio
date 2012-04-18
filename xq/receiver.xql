@@ -16,7 +16,9 @@ let $setuser := xdb:login("/db", "admin", "paris305")
 
 :)
 				
-let $serverAddress:= "http://192.168.25.253"
+
+let $serverAddress:= concat("http://", doc('/db/tullioconfig/config.xml')/config/serverAddress)
+
 
 let $meeting := request:get-parameter("meeting", ())      (:string:)
 let $entries := request:get-parameter("entries", ())            (: number -- id of stop event -- included :)
