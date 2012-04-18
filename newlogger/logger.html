@@ -1,0 +1,277 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Logger</title>
+    <link rel="stylesheet" type="text/css" href="/exist/tullio/js-lib/ext/resources/css/ext-all.css" />
+    <link rel="stylesheet" type="text/css" href="/exist/tullio/js-lib/ext/examples/shared/example.css" />
+		<link rel="stylesheet" type="text/css" href="/exist/tullio/js-lib/ext/examples/ux/css/CheckHeader.css" />
+		
+		<link rel="stylesheet" href="/exist/tullio/newlogger/css/smoothness/jquery-ui-1.8.5.custom.css" type="text/css" media="screen" charset="utf-8" />
+  
+		<link rel="stylesheet" type="text/css" href="/exist/tullio/newlogger/css/grid.css" />
+		<link rel="stylesheet" type="text/css" href="/exist/tullio/newlogger/css/additional.css" />
+    <script language="javascript" src="/exist/tullio/js-lib/jquerytransform/js/jquery-1.6.4.js"></script>
+			<script src="/exist/tullio/js-lib/jquery-ui-1.8.5.custom.min.js"></script>
+		
+			<script type="text/javascript" src="/exist/tullio/js-lib/ext/ext-all-debug.js"></script>
+	 	
+			<script type="text/javascript" src="/exist/tullio/js-lib/xdate.js"></script>
+		<script language="javascript">var target = 'agenda';</script>    
+		<script language="javascript" src="/exist/tullio/js-shared/common.js"></script>
+		<!-- page specific --> 
+    <script type="text/javascript" src="logger-grid2.js"></script>
+</head>
+<body>
+<div class='container_18'>
+<div class='grid_3'>
+    <h1>Meeting Logger</h1>
+</div>
+		<div class="clear">&nbsp;</div>
+		<div class='grid_2'>F9: Language Switch</div>
+		<div class='grid_2'>F10: Repeat Previous</div>
+		<div class='grid_2'>F11: New Event</div>
+		<div class='grid_2'>F12: New Clip</div>
+		
+		<div class="clear">&nbsp;</div>
+		<div class="clear">&nbsp;</div>
+		<div class="grid_13">
+    <!-- a place holder for the grid. requires the unique id to be passed in the javascript function, and width and height ! -->
+    	<div id="example-grid"></div>
+		<div>
+		<div class="grid_5">
+			<p>&nbsp;</p>
+		</div>
+		<div class="clear">&nbsp;</div>
+		<div class="grid_15">
+			<div class="buttons" id="openClose">
+				<!-- This div contains the buttons, there are five rows of normal buttons and then two rows of configurable buttons -->
+				<span>Opening</span>
+            <div id="open BHP" class="eventNotifier">
+                Opening BHP
+            </div>
+						 <div id="open VVGGC">
+                Opening VVGGC
+            </div>
+				    <div id="suspend BHP">
+                Schorsing BHP
+            </div>
+						<div id="suspend VVGGC">
+                Schorsing VVGGC
+            </div>
+						<div id="close BHP">
+                Sluiting BHP
+            </div>
+						<div id="close BHP">
+                Sluiting VVGGC
+            </div>
+				
+				</div>
+				
+				<div class="buttons" id="basic">
+								<span>Basis</span>
+            <div id="new clip" class="eventNotifier">
+                Clip
+            </div>
+						 <div id="in NL">
+                Zelfde spreker NL
+            </div>
+				    <div id="in FR">
+                Zelfde spreker FR
+            </div>
+						<div id="new NL">
+                Nieuwe spreker NL
+            </div>
+						<div id="new FR">
+                Nieuwe spreker FR
+            </div>
+						<div id="agenda">
+                Nieuw agendapunt
+            </div>
+				
+				
+				</div>
+				
+				<div class="buttons" id="events">
+								<span>Zaal</span>
+            <div id="pres" class="eventNotifier">
+                Voorzitterswissel
+            </div>
+						 <div id="app">
+                Applaus
+            </div>
+						<div id="remarks">
+                Opmerkingen
+            </div>
+				    <div id="jumble">
+                Samenspraak
+            </div>
+						<div id="noise">
+                Rumoer
+            </div>
+						<div id="laughter">
+                Gelach
+            </div>
+
+				
+				
+				</div>
+				<div class="buttons" id="govNL">
+								<span>Regering NL</span>
+            <div id="picqueNL" class="eventNotifier">
+                Picqué NL
+            </div>
+						 <div id="huytNL">
+                Huytebroeck NL
+            </div>
+						<div id="cerexNL">
+                Cerexhe NL
+            </div>
+				    <div id="grouwNL">
+                Grouwels NL
+            </div>
+						<div id="vraesNL">
+                Vanhengel NL
+            </div>
+						<div id="kirNL">
+                Kir NL
+            </div>
+						
+						<div id="lilleNL">
+                De Lille NL
+            </div>
+						
+						<div id="doulkNL">
+                Doulkeridis NL
+            </div>
+
+
+				
+				
+				</div>
+				<div class="buttons" id="govFR">
+								<span>Regering FR</span>
+            <div id="picqueFR" class="eventNotifier">
+                Picqué FR
+            </div>
+						 <div id="huytFR">
+                Huytebroeck FR
+            </div>
+						<div id="cerexFR">
+                Cerexhe FR
+            </div>
+				    <div id="grouwFR">
+                Grouwels FR
+            </div>
+						<div id="vraesFR">
+                Vanhengel FR
+            </div>
+						<div id="kirFR">
+                Kir FR
+            </div>
+						
+						<div id="lilleFR">
+                De Lille FR
+            </div>
+						
+						<div id="doulkFR">
+                Doulkeridis FR
+            </div>
+
+
+				
+				
+				</div>
+		</div>
+		<div class="clear">&nbsp;</div>
+		<div class="grid_15">
+		<!-- space for configurable speaker buttons -->
+		<div class="more">
+				<form name="myform" id='newSpeaker' method='post'>
+					
+						<div style='display:inline; margin-right: 10px'>Andere spreker:   <input class="tags" id="b1tags"></input></div>
+					
+					<a href='#' id='first' class="send" style='color:black; text-decoration:none;'>
+						<div class="b1" style='display:inline; border: thin solid black; margin: 2px; padding:5px; font-size: 9px; ' >OK</div>
+					</a>
+				</form>				
+		</div>
+<div class="more">
+				<form name="myform" id='newSpeaker' method='post'>
+					
+						<div style='display:inline; margin-right: 10px'>Andere spreker:   <input class="tags" id="b1tags"></input></div>
+					
+					<a href='#' id='first' class="send" style='color:black; text-decoration:none;'>
+						<div class="b1" style='display:inline; border: thin solid black; margin: 2px; padding:5px; font-size: 9px; ' >OK</div>
+					</a>
+				</form>				
+		</div>
+<div class="more">
+				<form name="myform" id='newSpeaker' method='post'>
+					
+						<div style='display:inline; margin-right: 10px'>Andere spreker:   <input class="tags" id="b1tags"></input></div>
+					
+					<a href='#' id='first' class="send" style='color:black; text-decoration:none;'>
+						<div class="b1" style='display:inline; border: thin solid black; margin: 2px; padding:5px; font-size: 9px; ' >OK</div>
+					</a>
+				</form>				
+		</div>
+<div class="more">
+				<form name="myform" id='newSpeaker' method='post'>
+					
+						<div style='display:inline; margin-right: 10px'>Andere spreker:   <input class="tags" id="b1tags"></input></div>
+					
+					<a href='#' id='first' class="send" style='color:black; text-decoration:none;'>
+						<div class="b1" style='display:inline; border: thin solid black; margin: 2px; padding:5px; font-size: 9px; ' >OK</div>
+					</a>
+				</form>				
+		</div>
+				<div class="moreCont">
+				<form name="myform" id='newSpeaker' method='post'>
+<div style='align:bottom'>
+
+				<div style='display:inline; margin-right: 10px'>Andere spreker:   <input  id="b2tags" class="tags"/></div>
+				<div style='display:inline; margin-right: 10px;'> Begin clip: <INPUT id='b2newClipInd' TYPE=CHECKBOX NAME="clip" style='vertical-align:bottom;'> </div>
+				<div style='display:inline; margin-right: 10px'><input type="radio" name="b2group2" value="N"  style='vertical-align:text-bottom;'> NL
+<input type="radio" name="b2group2" value="F"  style='vertical-align:text-bottom;'>FR</div>
+<a href='#' id='second' class="send" style='color:black; text-decoration:none;'><div id="b2" style='display:inline; border: thin solid black; margin-right: 10px; padding:5px; ' >OK</div></a>
+				
+				</div>
+</form>				
+				</div>
+							<div class="more">
+				<form name="myform" id='newSpeaker' method='post'>
+<div style='align:bottom'>
+
+				<div style='display:inline; margin-right: 10px'>Andere spreker:   <input class="tags" id="b3tags" /></div>
+				<div style='display:inline; margin-right: 10px;'> Begin clip: <INPUT id='b3newClipInd' TYPE=CHECKBOX NAME="clip" style='vertical-align:bottom;'> </div>
+				<div style='display:inline; margin-right: 10px'><input type="radio" name="b3group2" value="N"  style='vertical-align:text-bottom;'> NL
+<input type="radio" name="b3group2" value="F"  style='vertical-align:text-bottom;'>FR</div>
+<a href='#' id="test" class="send" style='color:black; text-decoration:none;'><div id="b3" style='display:inline; border: thin solid black; margin-right: 10px; padding:5px; ' >OK</div></a>
+				
+				</div>
+</form>				
+				</div>
+				<div class="moreCont">
+				<form name="myform" id='newSpeaker' method='post'>
+<div style='align:bottom'>
+
+				<div style='display:inline; margin-right: 10px'>Andere spreker:   <input class="tags" id="b4tags"/></div>
+				<div style='display:inline; margin-right: 10px;'> Begin clip: <INPUT id='b4newClipInd' TYPE=CHECKBOX NAME="clip" style='vertical-align:bottom;'> </div>
+				<div style='display:inline; margin-right: 10px'><input type="radio" name="b4group2" value="N"  style='vertical-align:text-bottom;'> NL
+<input type="radio" name="b4group2" value="F"  style='vertical-align:text-bottom;'>FR</div>
+<a href='#' class="send" style='color:black; text-decoration:none;'><div id="b4" style='display:inline; border: thin solid black; margin-right: 10px; padding:5px; ' >OK</div></a>
+				
+				</div>
+</form>				
+				</div>
+				
+		
+		
+		
+		
+		
+		</div>
+		
+</div>
+</body>
+</html>

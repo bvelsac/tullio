@@ -48,7 +48,7 @@ return if (string($id) = "") then
 	let $confStored := xdb:store($coll, "text.xml", $nice)
 
 	let $some := <trans n="1">{
-		for $e in $events//e[@c='y'] return 
+		for $e in $events//e[@c='true'] return 
 			<p c="{$e/@n}"  class="init">vertaling</p>
 			}
 			</trans>

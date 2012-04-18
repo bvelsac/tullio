@@ -5,7 +5,10 @@ declare namespace request="http://exist-db.org/xquery/request";
 import module namespace xdb="http://exist-db.org/xquery/xmldb";
 import module namespace util="http://exist-db.org/xquery/util";
 
-let $serverAddress:= "http://192.168.25.253:8080"
+(: let $serverAddress:= "http://192.168.25.253:8080" :)
+
+let $serverAddress:= "http://localhost:8080"
+
 
 let $target := request:get-parameter("target", ())
 

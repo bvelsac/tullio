@@ -25,7 +25,7 @@ let $stopAsDec := if (string($toFinish)) then xs:decimal(doc($events-doc)//e[pos
 :)
 		
 let $stopRow := doc($events-doc)//e[@n = $stopAsDec]
-let $next := $stopRow/following-sibling::*[@c='y'][1]
+let $next := $stopRow/following-sibling::*[@c='true'][1]
 
 let $nextAlways := if ($next) then xs:decimal($next/@n) else if (string($stop)) then xs:decimal($stopAsDec + 1) else xs:decimal(doc($events-doc)//e[position()=last()]/@n +1)
 

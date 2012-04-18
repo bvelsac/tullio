@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:template match="/">
     <doc>
-      <xsl:for-each select="events/e[@c='y']">
+      <xsl:for-each select="events/e[@c='true']">
         <p c="{@n}" class="init"></p>
       </xsl:for-each>
     </doc>
