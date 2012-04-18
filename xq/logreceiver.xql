@@ -20,6 +20,14 @@ let $eventfile := concat("/db/tullio/", $meeting, "/events.xml")
 let $textfile := concat("/db/tullio/", $meeting, "/text.xml")
 let $id := util:document-id($eventfile)
 
+(: create the new collection for this meeting :)
+
+let $collection := concat("/db/tullio/", string($meeting))
+
+let $check := if ( not( xmldb:collection-exists($collection) ) )
+   then xmldb:create-collection("/", $collection)
+   else ()
+
 (: look up the highest number of existing events :)
 let $max := if (string($id) = "") then 102 else xs:decimal(doc($eventfile)//e[position()=last()]/@n) + 2
 
