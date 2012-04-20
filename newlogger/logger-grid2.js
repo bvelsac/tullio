@@ -235,8 +235,8 @@ Ext.onReady(function(){
         store: store,
         columns: [
 	
-						{header: "N.", width: 30, dataIndex: 'n'},
-						{header: "Tijd", width: 60, dataIndex: 'time', editor: {
+						{header: "N.", width: 30, dataIndex: 'n', sortable: false},
+						{header: "Tijd", width: 70, dataIndex: 'time', sortable: false, editor: {
                 allowBlank: false
             }},
 						{header: "Lengte", width: 50, dataIndex: 'length', sortable: false},
@@ -248,7 +248,7 @@ Ext.onReady(function(){
 							renderer: function(v) { return v ? 'C' : '';}
 						},
 						{header: "P", width: 30, dataIndex: 'commit', sortable: false},
-						{header: "Taal", width: 40, dataIndex: 'lang', sortable: true,
+						{header: "Taal", width: 50, dataIndex: 'lang', sortable: true,
 							editor: new Ext.form.field.ComboBox({
                 typeAhead: true,
                 triggerAction: 'all',
@@ -263,7 +263,7 @@ Ext.onReady(function(){
 								else if (v=='M') return "<span style='color:green'>" + v + "</span>";
 							}
 						},
-            {header: "Type",  flex:1, dataIndex: 'type', 
+            {header: "Type", flex: 1, dataIndex: 'type', 
 							renderer:  function(value) {
 								return eventTypesLookup[value] ;
 							},
@@ -372,12 +372,6 @@ Ext.onReady(function(){
                     var selection = grid.getView().getSelectionModel().getSelection();
                     if (selection[0].data.commit != 'P') store.insert(store.indexOf(selection[0]), r);
                 }
-            }, '-', {
-                itemId: 'publish',
-                text: 'Publish',
-                iconCls: 'icon-insert',
-                disabled: false,
-                handler: handleOption1
             }]
         }],
 			
