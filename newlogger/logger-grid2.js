@@ -102,11 +102,27 @@ Ext.onReady(function(){
 		*/
 		
 		function updateClipLength(store) {
-			if (store.getCount() < 2) return false;
+			if (store.getCount() < 2) return;
 			
 			var size = store.getCount();
 			var moreRecent = "";
 			var record;
+			var langMem;
+			// set language for all events
+			console.log(store.getAt(size-1).data.lang);
+			if (store.getAt(size-1).data.lang == "" || store.getAt(size-1).data.lang == undefined) {
+				alert("Set language for first record"); return "stop";
+			}
+			
+			for (i=size-1; i >= 0; i--) {
+				record = store.getAt(i);
+				
+				if (record.data.lang == "" || record.data.lang == undefined) {
+					record.set('lang', langMem);
+				}
+				else {langMem = record.data.lang;}
+			}
+			
 			// loop through the records, starting with most recent record
 			for (i=0; i < size; i++) {
 				record = store.getAt(i);
@@ -392,7 +408,7 @@ Ext.onReady(function(){
 			updateClipLength(store);
 			setTimeout(update, 3000);
 		}
-		// update();
+		update();
 		
 		var map = new Ext.util.KeyMap({
     target: grid,
@@ -430,8 +446,9 @@ Ext.onReady(function(){
 		
 		var handleOption1 = function() {
 			alert('Sync');
-			updateClipLength(store);
-			store.sync({callback: checkUpdate});
+			var fb = '';
+			fb = updateClipLength(store);
+			if (fb != 'stop') store.sync({callback: checkUpdate});
 		};
 
 		var mapggg = new Ext.util.KeyMap(Ext.getDoc(), {
