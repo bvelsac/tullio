@@ -223,13 +223,20 @@ Ext.onReady(function(){
     
     });
 
+		var handleOption1 = function() {
+			alert('Sync');
+			updateClipLength(store);
+			store.sync({callback: checkUpdate});
+		};
+		
+		
     // create the grid
     var grid = Ext.create('Ext.grid.Panel', {
         store: store,
         columns: [
 	
-						{header: "N.", width: 30, dataIndex: 'n', sortable: false},
-						{header: "Tijd", width: 70, dataIndex: 'time', sortable: false, editor: {
+						{header: "N.", width: 30, dataIndex: 'n'},
+						{header: "Tijd", width: 60, dataIndex: 'time', editor: {
                 allowBlank: false
             }},
 						{header: "Lengte", width: 50, dataIndex: 'length', sortable: false},
@@ -241,7 +248,7 @@ Ext.onReady(function(){
 							renderer: function(v) { return v ? 'C' : '';}
 						},
 						{header: "P", width: 30, dataIndex: 'commit', sortable: false},
-						{header: "Taal", width: 50, dataIndex: 'lang', sortable: true,
+						{header: "Taal", width: 40, dataIndex: 'lang', sortable: true,
 							editor: new Ext.form.field.ComboBox({
                 typeAhead: true,
                 triggerAction: 'all',
@@ -249,9 +256,14 @@ Ext.onReady(function(){
                 store: ['N', 'F', 'M'],
                 lazyRender: true,
                 listClass: 'x-combo-list-small'
-							})
+							}),
+							renderer: function(v) {
+								if (v=='N') return "<span style='color:red'>" + v + "</span>";
+								else if (v=='F') return "<span style='color:blue'>" + v + "</span>";
+								else if (v=='M') return "<span style='color:green'>" + v + "</span>";
+							}
 						},
-            {header: "Type", flex: 1, dataIndex: 'type', 
+            {header: "Type",  flex:1, dataIndex: 'type', 
 							renderer:  function(value) {
 								return eventTypesLookup[value] ;
 							},
@@ -360,6 +372,12 @@ Ext.onReady(function(){
                     var selection = grid.getView().getSelectionModel().getSelection();
                     if (selection[0].data.commit != 'P') store.insert(store.indexOf(selection[0]), r);
                 }
+            }, '-', {
+                itemId: 'publish',
+                text: 'Publish',
+                iconCls: 'icon-insert',
+                disabled: false,
+                handler: handleOption1
             }]
         }],
 			
@@ -419,6 +437,25 @@ Ext.onReady(function(){
 			
 		}
 		
+		Ext.create('Ext.Button', {
+    text    : 'Dynamic Handler Button',
+    renderTo: grid,
+    handler : function() {
+        // this button will spit out a different number every time you click it.
+        // so firstly we must check if that number is already set:
+        if (this.clickCount) {
+            // looks like the property is already set, so lets just add 1 to that number and alert the user
+            this.clickCount++;
+            alert('You have clicked the button "' + this.clickCount + '" times.\n\nTry clicking it again..');
+        } else {
+            // if the clickCount property is not set, we will set it and alert the user
+            this.clickCount = 1;
+            alert('You just clicked the button for the first time!\n\nTry pressing it again..');
+        }
+    	}
+		});
+		
+		
 		var handleOption1 = function() {
 			alert('Sync');
 			updateClipLength(store);
@@ -436,266 +473,8 @@ Ext.onReady(function(){
 		
 		
 		
-		
-		// set up buttons etc.
-		var propsRegister = {
-						"new clip":
-					{
-												 c:'true'
-					},
-						"open BHP":
-					{
-												 c:'true',
-												 type:'OUV-OPE'
-					},
-						"open VVGGC":
-					{
-					              
-												
-											        c:'true',
-												 type:event.target.id
-					},
-						"suspend BHP":
-					{
-					              
-												
-												 clip:'',
-												 type:event.target.id
-					},
-						"suspend VVGGC":
-					{
-					              
-												
-												 type:event.target.id
-					},
-						"close BHP":
-					{
-					              
-												
-												 type:event.target.id
-					},
-						"close VVGGC":
-					{
-					              
-												
-												 type:event.target.id
-					},
-						"in NL":
-					{
-					              
-												
-											        c:'true',
-												 lang:'N',
-												 type:event.target.id
-					},
-						"in FR":
-					{
-					              
-												
-											        c:'true',
-												 lang:'F',
-												 type:event.target.id
-					},
-						"new NL":
-					{
-					              
-												
-											        c:'true',
-												 lang:'N',
-												 type:event.target.id
-					},
-						"new FR":
-					{
-					              
-												
-											        c:'true',
-												 lang:'F',
-												 type:event.target.id
-					},
-					"pres":
-					{
-					              
-												
-												 type:"PRES"
-					},"app":
-					{
-					              
-												
-												 type:event.target.id
-					},"remarks":
-					{
-					              
-												
-												 type:event.target.id
-					},"jumble":
-					{
-					              
-												
-												 type:event.target.id
-					},"noise":
-					{
-					              
-												
-												 type:event.target.id
-					},"laughter":
-					{
-					              
-												
-												 type:event.target.id
-					},
-					"agenda":
-					{
-					              
-												
-												 type:event.target.id
-					},
-					"huytNL":
-					{
-												
-												
-											        c:'true',
-												 lang:'N',
-												 type:'newNL',
-												 speaker:'HUYTEBROECK_Evelyne'
-					},
-					"cerexNL":
-					{
-												
-												
-											        c:'true',
-												 lang:'N',
-												 type:'newNL',
-												 speaker:'CEREXHE_Benoît'
-					},
-					"grouwNL":
-					{
-												
-												
-											        c:'true',
-												 lang:'N',
-												 type:'newNL',
-												 speaker:'GROUWELS_Brigitte'
-					},
-					"vraesNL":
-					{
-												
-												
-											        c:'true',
-												 lang:'N',
-												 type:'newNL',
-												 speaker:'VANHENGEL_Guy'
-					},
-					"kirNL":
-					{
-												
-												
-											        c:'true',
-												 lang:'N',
-												 type:'newNL',
-												 speaker:'KIR_Emir'
-					},
-					"lilleNL":
-					{
-												
-												
-											        c:'true',
-												 lang:'N',
-												 type:'newNL',
-												 speaker:'DE_LILLE_Bruno'
-					},
-					"doulkNL":
-					{
-												
-												
-											        c:'true',
-												 lang:'N',
-												 type:'newNL',
-												 speaker:'DOULKERIDIS_Christos'
-					},
-					"picqueNL":
-					{
-												
-												
-											        c:'true',
-												 lang:'N',
-												 type:'newNL',
-												 speaker:'PICQUE_Charles'
-					},
-					"huytFR":
-					{
-												
-												
-											        c:'true',
-												 lang:'F',
-												 type:'newFR',
-												 speaker:'HUYTEBROECK_Evelyne'
-					},
-					"cerexFR":
-					{
-												
-												
-											        c:'true',
-												 lang:'F',
-												 type:'newFR',
-												 speaker:'CEREXHE_Benoît'
-					},
-					"grouwFR":
-					{
-												
-												
-											        c:'true',
-												 lang:'F',
-												 type:'newFR',
-												 speaker:'GROUWELS_Brigitte'
-					},
-					"vraesFR":
-					{
-												
-												
-											        c:'true',
-												 lang:'F',
-												 type:'newFR',
-												 speaker:'VANHENGEL_Guy'
-					},
-					"kirFR":
-					{
-												
-												
-											        c:'true',
-												 lang:'F',
-												 type:'newFR',
-												 speaker:'KIR_Emir'
-					},
-					"lilleFR":
-					{
-												
-												
-											        c:'true',
-												 lang:'F',
-												 type:'newFR',
-												 speaker:'DE_LILLE_Bruno'
-					},
-					"doulkFR":
-					{
-												
-												
-											        c:'true',
-												 lang:'F',
-												 type:'newFR',
-												 speaker:'DOULKERIDIS_Christos'
-					},
-					"picqueFR":
-					{
-												
-												
-											        c:'true',
-												 lang:'F',
-												 type:'newFR',
-												 speaker:'PICQUE_Charles'
-					}
-					
-			};
-			
+		var event;
+
 			
 			function addToStore(event) {
 				console.log('button clicked by ');
