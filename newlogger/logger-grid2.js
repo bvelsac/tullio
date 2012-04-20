@@ -1,5 +1,5 @@
 /*
-
+  
 Tullio
 
 JS for Logger 
@@ -215,40 +215,37 @@ Ext.onReady(function(){
 				listeners: {
 					beforesync: setCommitStatus
 				}
-    });
+    }); 
 
 		var cellEditing = Ext.create('Ext.grid.plugin.CellEditing', {
         clicksToEdit: 1,
 				pluginId: 'cellplugin'
     
     });
-
-		var handleOption1 = function() {
-			alert('Sync');
-			updateClipLength(store);
-			store.sync({callback: checkUpdate});
-		};
-		
-		
-    // create the grid
+   
+    
+    /* 
+    create the grid
+    */
     var grid = Ext.create('Ext.grid.Panel', {
         store: store,
+        sortableColumns: false,
         columns: [
 	
-						{header: "N.", width: 30, dataIndex: 'n', sortable: false},
-						{header: "Tijd", width: 70, dataIndex: 'time', sortable: false, editor: {
+						{header: "N.", width: 30, dataIndex: 'n'},
+						{header: "Tijd", width: 70, dataIndex: 'time', editor: {
                 allowBlank: false
             }},
-						{header: "Lengte", width: 50, dataIndex: 'length', sortable: false},
-						{header: "Clip", width: 30, dataIndex: 'c', sortable: false, 
+						{header: "Lengte", width: 50, dataIndex: 'length'},
+						{header: "Clip", width: 30, dataIndex: 'c',  
 							editor: {
 								xtype: 'checkbox',
 								cls: 'x-grid-checkheader-editor'
 							},
 							renderer: function(v) { return v ? 'C' : '';}
 						},
-						{header: "P", width: 30, dataIndex: 'commit', sortable: false},
-						{header: "Taal", width: 50, dataIndex: 'lang', sortable: true,
+						{header: "P", width: 30, dataIndex: 'commit'},
+						{header: "Taal", width: 50, dataIndex: 'lang',
 							editor: new Ext.form.field.ComboBox({
                 typeAhead: true,
                 triggerAction: 'all',
@@ -267,7 +264,6 @@ Ext.onReady(function(){
 							renderer:  function(value) {
 								return eventTypesLookup[value] ;
 							},
-							sortable: true, 
 							field: {
                 xtype: 'combobox',
                 typeAhead: true,
@@ -276,10 +272,11 @@ Ext.onReady(function(){
                 selectOnTab: true,
                 store: eventTypesDict,
                 lazyRender: false,
-                listClass: 'x-combo-list-small'
+                listClass: 'x-combo-list-small',
+                minWidth: 150
 							}
 						},
-            {header: "Spreker", width: 140, dataIndex: 'speaker', sortable: true, field: {
+            {header: "Spreker", width: 140, dataIndex: 'speaker', field: {
                 xtype: 'combobox',
                 typeAhead: true,
 								forceSelection: true,
@@ -291,19 +288,19 @@ Ext.onReady(function(){
                 listClass: 'x-combo-list-small'
 							
 							}},
-							{header: "Onderwerp N", width: 180, dataIndex: 'textN', sortable: false, editor: {
+							{header: "Onderwerp N", width: 180, dataIndex: 'textN', editor: {
 								xtype     : 'textareafield',
 								grow      : true,
 								anchor    : '100%'
 								}
 							},
-            {header: "Onderwerp F", width: 180, dataIndex: 'textF', sortable: false, editor: {
+            {header: "Onderwerp F", width: 180, dataIndex: 'textF', editor: {
 								xtype     : 'textareafield',
 								grow      : true,
 								anchor    : '100%'
 								}
 							},
-						{header: "Opmerkingen", width: 115, dataIndex: 'notes', sortable: false, editor: {
+						{header: "Opmerkingen", width: 115, dataIndex: 'notes', editor: {
 								xtype     : 'textareafield',
 								grow      : true,
 								anchor    : '100%'
@@ -316,7 +313,7 @@ Ext.onReady(function(){
         },
         renderTo:'example-grid',
 				width: 960,
-        height: 500,
+        height: 400,
 				plugins: [cellEditing],
 				dockedItems: [{
             xtype: 'toolbar',
@@ -431,25 +428,6 @@ Ext.onReady(function(){
 			
 		}
 		
-		Ext.create('Ext.Button', {
-    text    : 'Dynamic Handler Button',
-    renderTo: grid,
-    handler : function() {
-        // this button will spit out a different number every time you click it.
-        // so firstly we must check if that number is already set:
-        if (this.clickCount) {
-            // looks like the property is already set, so lets just add 1 to that number and alert the user
-            this.clickCount++;
-            alert('You have clicked the button "' + this.clickCount + '" times.\n\nTry clicking it again..');
-        } else {
-            // if the clickCount property is not set, we will set it and alert the user
-            this.clickCount = 1;
-            alert('You just clicked the button for the first time!\n\nTry pressing it again..');
-        }
-    	}
-		});
-		
-		
 		var handleOption1 = function() {
 			alert('Sync');
 			updateClipLength(store);
@@ -463,12 +441,7 @@ Ext.onReady(function(){
 		});
 		
 		
-		
-		
-		
-		
-		var event;
-
+			
 			
 			function addToStore(event) {
 				console.log('button clicked by ');
@@ -506,6 +479,29 @@ Ext.onReady(function(){
         }
 			});
 			
+			$(document).delegate('.b1','click', function(e) {
+					
+					console.log('confbutton clicked ');
+					var conf = $(this).closest('form').find('input').val();
+				
+					var timestamp = Ext.Date.format(new Date(), 'H:i:s');
+					
+					var event = new Event();
+					
+					cellEditing.cancelEdit();
+					event.set('time', timestamp);
+					event.set('type', 'new');
+					event.set('speaker', conf);
+					event.set('lang', langMap[conf]);
+					event.set('c', 'true');
+					event.setDirty();
+					store.insert(0, event);
+					cellEditing.startEditByPosition({
+							row: 0,
+							column: 1
+					});
+			});
+			/*
 			$(".b1").bind('click', function(e) {
 					
 					console.log('confbutton clicked ');
@@ -527,12 +523,26 @@ Ext.onReady(function(){
 							row: 0,
 							column: 1
 					});
-			}); 
+			});
+			*/
+			// create add / remove functionality for buttons
 			
+			$(document).delegate("#actionMore", "click", function(){ 
+					var lastbutton = $(this).nextAll().last();
+					console.log(lastbutton);
+					lastbutton.clone().insertAfter(lastbutton);
+					$( ".tags" ).autocomplete({
+										source: function(req, response) {
+											var re = $.ui.autocomplete.escapeRegex(req.term);
+											var matcher = new RegExp( "^" + re, "i" );
+											response($.grep(members, function(item){return matcher.test(item); }) );
+										}	
+					});
+			});
 			
-			
-			
-			
+			$(document).delegate("#actionLess", "click", function(){
+					if ($(this).nextAll("form").length > 1) $(this).nextAll("form").last().remove();
+			});
 			
 });
 

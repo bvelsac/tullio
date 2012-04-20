@@ -3,7 +3,19 @@
   <event id="PRES" order="gen-pres" active="y" use-for-editor="y" use-for-agenda="y">
     <name lang="nl">Voorzitter</name>
     <name lang="fr">Président</name>
-    <description lang="nl">Bedoeld om de voorzitter aan te duiden, in het begin van de vergadering of bij verandering van voorzitter.</description>
+    <description lang="nl">Bedoeld om de voorzitter aan te duiden in het begin van de vergadering.</description>
+    <description lang="fr"></description>
+    <properties>
+      <prop id="speaker">
+        <description lang="nl">Dit veld gebruiken om de naam van de voorzitter in te vullen.</description>
+      </prop>
+    </properties>
+  </event>
+  
+  <event id="CH-PRES" order="gen-pres2" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Voorzitterswissel</name>
+    <name lang="fr">Changement de président</name>
+    <description lang="nl">Bedoeld om de voorzitter aan te duiden bij verandering van voorzitter.</description>
     <description lang="fr"></description>
     <properties>
       <prop id="speaker">
@@ -12,15 +24,21 @@
     </properties>
   </event>
   
+  
   <event id="QA-AV"  order="questions-av" active="y" use-for-editor="y" use-for-agenda="y">
     <name lang="nl">Dringende Vraag</name>
     <name lang="fr">Question d'actualité</name>
-    <description lang="nl">Titel voor dringende vraag.</description>
+    <description lang="nl">Gegevens van een dringende vraag.</description>
   </event>
   <event id="QO-MV"  order="questions-mv" active="y" use-for-editor="y" use-for-agenda="y">
     <name lang="nl">Mondelinge Vraag</name>
     <name lang="fr">Question orale</name>
-    <description lang="nl">Titel voor mondelinge vraag</description>
+    <description lang="nl">Gegevens van een mondelinge vraag</description>
+  </event>
+  <event id="INT"  order="questions-mv" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Interpellatie</name>
+    <name lang="fr">Interpellation</name>
+    <description lang="nl">Gegevens van een interpellatie</description>
   </event>
 	
 	<event id="new"  order="00speakers00" active="y" use-for-editor="y" use-for-agenda="y">
@@ -56,7 +74,7 @@
     <name lang="fr">Agenda - en général</name>
   </event>
   <event id="P.E.CONS-INOVERW" order="gen-04"  active="y" use-for-editor="n" use-for-agenda="y" >
-    <name lang="nl">Voorzitter</name>
+    <name lang="nl">Inoverwegingnemingen</name>
     <name lang="fr">Président</name>
   </event>
 </reference>

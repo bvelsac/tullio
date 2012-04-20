@@ -392,6 +392,10 @@
     <last>Picqué</last>
   </person>
   
+  <person id="KIR_Emir" gov="yes" gender="m" lang="fr" group="PS">
+    <first>Emir</first>
+    <last>Kir</last>
+  </person>
   
   <person id="DE_LILLE_Bruno" gov="yes" gender="m" lang="nl" group="Groen">
     <first>Bruno</first>

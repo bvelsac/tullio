@@ -34,8 +34,18 @@
  <option value="PM">PM</option></select>
 <p>Vergadering: <select id="meeting-type">
  <option value="PLEN">Plenaire - plénière</option>
- <option value="COMM-ECO">ECO</option>
- <option value="COMM-INFRA">INFRA</option>
+ <option value="COM-AEZ">COM AEZ</option>
+ <option value="COM-AIBZ">COM AIBZ</option>
+<option value="COM-ATRO">COM ATRO</option>
+<option value="COM-ENVMIL">COM ENVMIL</option>
+<option value="COM-FIN">COM FIN</option>
+<option value="COM-INFRA">COM INFRA</option>
+<option value="COM-LOGHUIS">COM LOGHUIS</option>
+<option value="COM-ASSZ">COM ASSZ</option>
+<option value="COM-SANGEZ">COM SANGEZ</option>
+<option value="COM-SANGEZ">COM ASSZSANGEZ</option>
+<option value="PFB">PFB</option>
+ 
 </select>
 </p>
 <p><a href="../xq/list-collections.xql">Terug naar overzicht</a></p>
@@ -116,8 +126,11 @@ YAHOO.util.Event.addListener(window, "load", function() {
 /*		
 var types = ['---', 'OUV-OPE', 'EXC-AFW', 'COMM-MED', 'GEN-ALG', 'P.E.CONS-INOVERW', 'PROP ORD', 'PROJ ORD', 'PROP RES' , 'QO-MV', 'QA-AV', 'INT', 'VOT-STEM'];		
 	*/	
+/*
+Types voor commissievergaderingen
 
-var types = ['---', 'OUV-OPE', 'PRES', 'QO-MV', 'QA-AV', 'INT', 'ORA-SPR', 'MOT'];		
+*/
+var types = ['---', 'OUV-OPE', 'PRES', 'START MV', 'START INT', 'QO-MV', 'QO-MV JOINTE', 'INT', 'INT JOINTE', 'FIN-EINDE'];		
 
 
 

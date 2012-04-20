@@ -7,24 +7,52 @@
 		}
 		
 		
-		div.buttons, div.more {
+		div.buttons, div.more, div.extraButtons {
 			display:block;
 			clear:left;
 			//padding-top:10px;
 		}
 		
-            div.buttons *, div#clock1 *, div.commit *, div.agenda * {
+            div.buttons *, div#clock1 *, div.commit *, div.agenda *, div.extraButtons * {
                 font-family: Helvetica, Verdana, Arial;
                 font-size: 10.5px;
             }
             
-            div.buttons div, div.buttons span, div.commit *  {
+            div.buttons div, div.buttons span, div.commit *, div.extraButtons > *  {
                 width: 110px;
                 float: left;
                 border: solid 1px #333333;
                 padding: 4px;
                 background-color: white;
                 margin: 5px
+            }
+            
+            div.extraButtons form {
+            	width: 230px;
+            }
+            
+            
+            div.inputwrapper {
+            	display: inline;
+            }
+            
+            div.inputwrapper input {
+            	width: 180px;
+            	
+            }
+            .speakerbutton a {
+            	text-decoration: none;
+            	font-size: 9px;
+            	color: purple;
+            	font-weight: bold;
+            	padding-left: 10px;
+            }
+            .speakerbutton a:hover {
+            	text-decoration: none;
+            	font-size: 9px;
+            	color: red;
+            	font-weight: bold;
+            	padding-left: 10px;
             }
 						
 						div.commit * {
