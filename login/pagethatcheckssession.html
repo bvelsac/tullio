@@ -1,0 +1,39 @@
+<html>
+<head>
+ <script language="javascript" src="/exist/tullio/js-lib/jquerytransform/js/jquery-1.6.4.js"></script>
+<script>
+var checkSession = function(){
+		console.log('check');
+    $.ajax({
+        url : '/exist/tullio/xq/checksession.xql',
+        dataType : 'xml',
+        async : false,
+        success : function(data) {
+					console.log(data);
+					console.log($(data).find('success'));
+					if ($(data).find('success')[0] != null) {
+                return true;
+            }
+						else redirectLogin();
+        }
+    });
+		console.log('finished');
+}
+
+function redirectLogin(){
+    alert("Oops... Your session has expired, please re-login...");
+    window.location = '/exist/tullio/xq/login.xql';
+}
+
+$(document).ready(checkSession);
+
+
+
+
+</script>
+</head>
+<body>
+Hello
+
+<body>
+</html>

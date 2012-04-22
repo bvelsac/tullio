@@ -1,0 +1,63 @@
+<html>
+<head>
+ <script language="javascript" src="/exist/tullio/js-lib/jquerytransform/js/jquery-1.6.4.js"></script>
+<script>
+var user;
+var userLang;
+
+
+var checkSession = function(){
+		console.log('check');
+    $.ajax({
+        url : '/exist/tullio/xq/checksession.xql',
+        dataType : 'xml',
+        async : false,
+        success : function(data) {
+					console.log(data);
+					console.log($(data).find('success'));
+					if ($(data).find('success')[0] != null) {
+								user = data.getElementsByTagName("user")[0].getAttribute('id');
+								userLang = data.getElementsByTagName("user")[0].getAttribute('lang');
+								console.log(user + userLang);
+                return true;
+            }
+						else redirectLogin();
+        }
+    });
+		console.log('finished');
+}
+
+function redirectLogin(){
+    alert("Oops... Your session has expired, please re-login...");
+    window.location = '/exist/tullio/xq/login.xql';
+}
+
+$(document).ready(function() {
+	checkSession();
+	coucou = (userLang == 'N') ? 'Hallo ' : 'Bonjours ';
+	$('#user').text(user);
+	$('#welcome').text(coucou);
+	
+});
+
+
+
+
+</script>
+</head>
+<body>
+<span id='welcome'></span> <span id='user'></span>
+<!-- 
+per meeting    agenda  log  dashboard  edit   translate   assemblage        
+
+maak nieuwe vergadering aan
+
+
+
+-->
+
+
+
+
+<body>
+</html>
