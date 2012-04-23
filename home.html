@@ -4,8 +4,6 @@
 <script>
 var user;
 var userLang;
-
-
 var checkSession = function(){
 		console.log('check');
     $.ajax({
@@ -26,17 +24,31 @@ var checkSession = function(){
     });
 		console.log('finished');
 }
-
 function redirectLogin(){
-    alert("Oops... Your session has expired, please re-login...");
+    alert("Please log in");
     window.location = '/exist/tullio/xq/login.xql';
 }
+checkSession();
+
 
 $(document).ready(function() {
-	checkSession();
-	coucou = (userLang == 'N') ? 'Hallo ' : 'Bonjours ';
+	
+	coucou = (userLang == 'N') ? 'Hallo ' : 'Bonjour ';
 	$('#user').text(user);
 	$('#welcome').text(coucou);
+	
+	// load meetings overview
+	
+			jQuery.ajax({
+         url:    "/exist/tullio/xq/list-collections.xql",
+         success: function(result) {
+					 $('#dashboard').html((new XMLSerializer()).serializeToString(result)); 
+
+                  },
+         async:   true
+    });
+	
+	
 	
 });
 
@@ -47,6 +59,9 @@ $(document).ready(function() {
 </head>
 <body>
 <span id='welcome'></span> <span id='user'></span>
+<div id='dashboard'></div>
+
+
 <!-- 
 per meeting    agenda  log  dashboard  edit   translate   assemblage        
 

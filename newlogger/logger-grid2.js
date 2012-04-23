@@ -65,6 +65,10 @@ Ext.onReady(function(){
 		console.log(eventTypes[lang]);
 		var counter;
 		
+		
+		$('#agendaplaceholder').load('/exist/tullio/newlogger/hello3.xql?m=' + m, function() {});
+		
+		
 		// reverse labels and values for eventTypes
 		var eventTypesDict = [];
 		var eventTypesLookup = {};
@@ -137,6 +141,9 @@ Ext.onReady(function(){
 						console.log('length set' + toHumanTime(diff));
 					}
 					moreRecent = current;
+				}
+				else {
+					record.set('length', ' ');
 				}
 			}
 		}
@@ -409,6 +416,35 @@ Ext.onReady(function(){
 			setTimeout(update, 3000);
 		}
 		update();
+		
+		
+		$(document).delegate('#agendaplaceholder td','click', function(e) {
+					mtype = $(this).siblings().andSelf().filter(".type").text();
+					but=e.target.id;
+					var submission = {
+												 speaker:$(this).siblings().andSelf().filter(".speaker").text(),
+												 type: $(this).siblings().andSelf().filter(".type").text(),
+												 lang: $(this).siblings().andSelf().filter(".lang").text(),
+												 props: $(this).siblings().andSelf().filter(".gov").text(),
+												 textN: $(this).siblings().andSelf().filter(".subjectN").text(),
+												 textF: $(this).siblings().andSelf().filter(".subjectF").text(),
+												 notes: $(this).siblings().andSelf().filter(".short").text(),
+												 clip:'true'
+					}
+					var timestamp = Ext.Date.format(new Date(), 'H:i:s');
+					var event = new Event(submission);
+					cellEditing.cancelEdit();
+					event.set('time', timestamp);
+					event.setDirty();
+					store.insert(0, event);
+					
+					$(this).parent().css('background-color', 'silver');
+					return true;
+		
+		})
+
+		
+		
 		
 		var map = new Ext.util.KeyMap({
     target: grid,
