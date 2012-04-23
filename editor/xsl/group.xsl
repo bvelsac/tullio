@@ -159,23 +159,34 @@
     <td class="status" id="{concat('status-', @n, '-trans')}">&#160;</td>
     <td class="trans content" id="{concat('R', @n, '-t')}">
       <div class="editable">
-        <!-- de eerste keer bestaat er nog geen tekst, die moet dan worden aangemaakt op basis van de events -->
+        <!-- als er nog geen save is gebeurd, bestaat er nog geen tekst, die moet dan worden aangemaakt op basis van de events -->
         <xsl:choose>
+          <!-- er is wel vertaalde tekst beschikbaar -->
           <xsl:when test="key('trans', @n)">
             <xsl:copy-of select="key('trans', @n)"/>
           </xsl:when>
+          <!-- er is nog geen vertaalde tekst beschikbaar -->
           <xsl:when test="key('clip', @n)">
-            <p class="debug">(Generated text)</p>
-            <xsl:variable name="inversion">
-              <transEvent>
-                <xsl:apply-templates mode="invert" select="key('clip', @n)"/>
-              </transEvent>
-            </xsl:variable>
-            <xsl:apply-templates mode="initialize-text" select="exsl:node-set($inversion)//e"/>
+            <p class="debug"  title="{@n}" clip="{@c}">(Generated text)</p>
+            <xsl:for-each select="key('clip', @n)">
+              <xsl:apply-templates select=".">
+                <xsl:with-param name="lang">
+                  <xsl:choose>
+                    <xsl:when test="@lang='N'">F</xsl:when>
+                    <xsl:when test="@lang='F'">N</xsl:when>
+                    <xsl:when test="@lang='M'">M</xsl:when>
+                  </xsl:choose>
+                  
+                </xsl:with-param>
+              </xsl:apply-templates>
+              
+            </xsl:for-each>
+
           </xsl:when>
           <xsl:otherwise>
+            <!-- er zijn helemaal geen events bekend voor deze clip -->
             <!-- deze optie is in principe niet mogelijk, de clipmarker heeft ook @c -->
-            <p class="write" title="{@n}">
+            <p class="write" title="{@n}" clip="{@c}">
               <xsl:text>...</xsl:text>
             </p>
           </xsl:otherwise>
@@ -435,20 +446,25 @@
     </xsl:template>
     -->
   <xsl:template match="e[@type='OUV-OPE']" mode="initialize-text">
+    <xsl:param name="lang" select="@lang"></xsl:param>
     <xsl:choose>
-      <xsl:when test="@lang='N'">
+      <xsl:when test="$lang='N'">
         <p c="{@clip}" title="{@n}">Integraal verslag</p>
         <p c="{@clip}" title="{@n}">Plenaire vergadering van <span class="incomplete">DATUM</span></p>
         <p c="{@clip}" title="{@n}">
           <span class="incomplete" title="{@n}">(Ochtendvergadering/Namiddagvergadering)</span>
         </p>
       </xsl:when>
+      <xsl:otherwise>
+        opening (fr)
+      </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
   <xsl:template match="e[@type='QA-AV'] | e[@type='QO-MV'] | e[@type='INT']" mode="initialize-text">
+    <xsl:param name="lang" select="@lang"></xsl:param>
     <xsl:variable name="speaker" select="@speaker"/>
     <xsl:variable name="gov" select="@props"/>
-    <xsl:variable name="lang" select="@lang"/>
+    
     <xsl:variable name="type-NL">
       <xsl:choose>
         <xsl:when test="@type='INT'">Interpellatie van </xsl:when>
@@ -476,7 +492,7 @@
       </xsl:choose>
     </xsl:variable>
     <xsl:choose>
-      <xsl:when test="@lang='N'">
+      <xsl:when test="$lang='N'">
         <p c="{@clip}" title="{@n}">
           <xsl:value-of select="$type-NL"/>
           <xsl:choose>
@@ -535,12 +551,15 @@
         </p>
       </xsl:otherwise>
     </xsl:choose>
-    <p class="write">...</p>
+    <p  c="{@clip}" title="{@n}"  class="write">...</p>
   </xsl:template>
   <xsl:template name="president">
+    <xsl:param name="lang" select="@lang"></xsl:param>
     <xsl:param name="class" select="'pres'"/>
     <xsl:param name="segment"/>
     <xsl:param name="event"/>
+   
+    
     <!--<xsl:comment>
       <xsl:value-of
         select="concat('pres-', preceding-sibling::e[pres][1]/pres/person/@gender, '-', @lang)"/>
@@ -562,8 +581,8 @@
         </xsl:attribute>
       </xsl:if>
       <xsl:choose>
-        <xsl:when test="key('snippets', concat('pres-', $pres-gender, '-', $event/@lang))">
-          <xsl:value-of select="key('snippets', concat('pres-', $pres-gender, '-', $event/@lang))"/>
+        <xsl:when test="key('snippets', concat('pres-', $pres-gender, '-', $lang))">
+          <xsl:value-of select="key('snippets', concat('pres-', $pres-gender, '-', $lang))"/>
         </xsl:when>
         <xsl:otherwise>
           <xsl:text>.-</xsl:text>
@@ -572,6 +591,7 @@
     </span>
   </xsl:template>
   <xsl:template match="e[@type='ORA-SPR']" mode="initialize-text">
+    <xsl:param name="lang" select="@lang"></xsl:param>
     <xsl:variable name="person" select="key('people', @speaker)"/>
     
     <p c="{@clip}" title="{@n}">
@@ -580,11 +600,11 @@
       </xsl:call-template>
       
       <xsl:choose>
-        <xsl:when test="@lang='F'">
-          <xsl:value-of select="key('snippets', concat('parole-', @lang))"/>
+        <xsl:when test="$lang='F'">
+          <xsl:value-of select="key('snippets', concat('parole-', $lang))"/>
           
           <xsl:value-of
-            select="key('snippets', concat('title-', $person/@gender, '-',  @lang))"/><xsl:value-of
+            select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/><xsl:value-of
               select="$person/first"/>
           <xsl:text> </xsl:text>
           <xsl:value-of select="$person/last"/>
@@ -592,13 +612,13 @@
         </xsl:when>
         <xsl:otherwise>
           <xsl:value-of
-            select="key('snippets', concat('title-', $person/@gender, '-',  @lang))"/><xsl:value-of
+            select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/><xsl:value-of
               select="$person/first"/>
           <xsl:text> </xsl:text>
           <xsl:value-of select="$person/last"/>
         
         
-          <xsl:value-of select="key('snippets', concat('parole-', @lang))"/>   
+          <xsl:value-of select="key('snippets', concat('parole-', $lang))"/>   
         </xsl:otherwise>
          
       </xsl:choose>
@@ -609,7 +629,7 @@
     </p>
     <p c="{@clip}">
       <span class="speaker" title="{@n}"><xsl:value-of
-          select="key('snippets', concat('title-', $person/@gender, '-',  @lang))"/><xsl:value-of
+          select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/><xsl:value-of
           select="$person/first"/>
         <xsl:text> </xsl:text>
         <xsl:value-of select="$person/last"/>.- </span>
@@ -618,29 +638,30 @@
       <span class="incomplete">Lijst van afwezigen</span>
     </p>
     <p c="{@clip}" class="incomplete"/>
-    <p class="write"> </p>
+    <p c="{@clip}" class="write"> </p>
   </xsl:template>
   <xsl:template match="e[@type='EXC-AFW']" mode="initialize-text">
+    <xsl:param name="lang" select="@lang"></xsl:param>
     <p c="{@clip}" title="{@n}">VERONTSCHULDIGD</p>
     <p c="{@clip}" title="{@n}">
       <xsl:call-template name="president">
         <xsl:with-param name="event" select="."/>
       </xsl:call-template>
-      <xsl:value-of select="key('snippets', concat('exc-', @lang))"/>
+      <xsl:value-of select="key('snippets', concat('exc-', $lang))"/>
     </p>
     <p c="{@clip}">
       <span class="incomplete">Lijst van afwezigen</span>
     </p>
     <p c="{@clip}" class="incomplete"/>
-    <p class="write"> </p>
+    <p c="{@clip}"  class="write"> </p>
   </xsl:template>
   <xsl:template match="e[@type='']" mode="initialize-text">
-    <p class="debug" title="{@n}">Event type missing</p>
+    <p c="{@clip}"  class="debug" title="{@n}">Event type missing</p>
   </xsl:template>
   <xsl:template match="e[@type='marker']" mode="initialize-text">
     <p c="{@clip}" class="marker" title="{@n}">Start clip <xsl:value-of select="@n"/>
     </p>
-    <p class="write">...</p>
+    <p c="{@clip}"  class="write">...</p>
   </xsl:template>
   <xsl:template match="e" mode="initialize-text">
     <p c="{@clip}" title="{@n}">Unsupported event
@@ -648,7 +669,7 @@
       <xsl:text>[</xsl:text><xsl:value-of select="@clip"/><xsl:text>]</xsl:text>
       -->
     </p>
-    <p class="write">...</p>
+    <p c="{@clip}"  class="write">...</p>
     <!-- 
       <xsl:copy-of select="preceding-sibling::*[1]"/>
     -->

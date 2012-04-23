@@ -285,9 +285,10 @@ function secondstep(xml, xsl, xmlorig) {
 for (i=0; i<rows.length; i++) {
 	//alert(rows[i]);
 	console.log("0replace: " + origrowIds[i] + ":" + visibleRows[i] + ":" +edited);
+	// do not replace the currently edited row
 	if (visibleRows[i] != edited.slice(0,-2)) {
 		// alert("about to replace, it. " + updateCounter + "." + i)
-		// keep editor in place
+		// keep editor in place								
 		if (origrowIds[i] == undefined && bottom != "") {
 			console.log("!!! found extra rows");
 			// table is scrolled to the bottom so the server returned all clips to the end and we have extra rows
