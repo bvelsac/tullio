@@ -31,7 +31,9 @@
 
 <p>Datum: <input id="datepicker" type="text"></input></p>
 <p>AM/PM: <select id="time"> <option value="AM">AM</option>
- <option value="PM">PM</option></select>
+ <option value="PM">PM</option>
+ <option value="--" selected='true'>--</option>
+ </select>
 <p>Vergadering: <select id="meeting-type">
  <option value="PLEN">Plenaire - plénière</option>
  <option value="COM-AEZ">COM AEZ</option>
@@ -48,6 +50,7 @@
  
 </select>
 </p>
+<p>Toevoeging: <input id="addText" type="text"></input></p>
 <p><a href="../xq/list-collections.xql">Terug naar overzicht</a></p>
 
 <div id="container"></div>
@@ -211,7 +214,7 @@ var types = ['---', 'OUV-OPE', 'PRES', 'START MV', 'START INT', 'QO-MV', 'QO-MV 
         aCols = myDataTable.getColumnSet().keys;
 
 result = "<data>";
-		result += "<meeting>" + $("#datepicker").val() + "-" + $("#time option:selected").val() + "_" + $("#meeting-type option:selected").val() + "</meeting>" + "<mt>" + $("#meeting-type option:selected").val() + "</mt>";
+result += "<meeting>" + $("#datepicker").val() + "-" + $("#time option:selected").val() + "_" + $("#meeting-type option:selected").val() + "_" + $("#addText").val() + "</meeting>" + "<mt>" + $("#meeting-type option:selected").val() + "</mt>";
 		 
     for (i=0; i<aRecs.length; i++) {
         oData = aRecs[i].getData();
@@ -239,7 +242,7 @@ result = "<data>";
 		//div.innerHTML += "HTTP status: " + o.status;
 		//div.innerHTML += "Status code message: " + o.statusText;
 		//div.innerHTML += "<li>HTTP headers: <ul>" + o.getAllResponseHeaders + "</ul></li>";
-		div.innerHTML += "Server response: " + o.responseText;
+		div.innerHTML = "Save result: " + o.responseText;
 		//div.innerHTML += "Argument object: " + o.argument;
 	}
 }

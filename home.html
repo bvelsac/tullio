@@ -33,9 +33,12 @@ checkSession();
 
 $(document).ready(function() {
 	
-	coucou = (userLang == 'N') ? 'Hallo ' : 'Bonjour ';
+	var coucou = (userLang == 'N') ? 'Hallo ' : 'Bonjour ';
 	$('#user').text(user);
 	$('#welcome').text(coucou);
+	
+	var more = (userLang == 'N') ? 'Of maak een nieuwe agenda aan.' : 'Ou introduisez un nouvel agenda.';
+	$('#new').text(more);
 	
 	// load meetings overview
 	
@@ -60,7 +63,7 @@ $(document).ready(function() {
 <body>
 <span id='welcome'></span> <span id='user'></span>
 <div id='dashboard'></div>
-
+<div><a id='new' href="/exist/tullio/agenda/invoer-agenda2.html"></a></div>
 
 <!-- 
 per meeting    agenda  log  dashboard  edit   translate   assemblage        

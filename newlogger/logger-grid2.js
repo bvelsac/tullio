@@ -382,16 +382,22 @@ Ext.onReady(function(){
                 iconCls: 'icon-insert',
                 disabled: false,
                 handler: function(){
-										var r = Ext.ModelManager.create({
-												Type: 'NEW RECORD',
-												Number: 1000,
-												Speaker: 'ahoy',
-												//availDate: Ext.Date.clearTime(new Date()),
-												Language: "F"
-										}, 'Event');
+									var r = Ext.ModelManager.create({}, 'Event');
                     var selection = grid.getView().getSelectionModel().getSelection();
                     if (selection[0].data.commit != 'P') store.insert(store.indexOf(selection[0]), r);
                 }
+            }, '-', {
+                itemId: 'publish',
+                text: 'Publish',
+                iconCls: 'icon-publish',
+                disabled: false,
+                handler: function(){
+									var fb = '';
+									fb = updateClipLength(store);
+									if (fb != 'stop') {
+										if (confirm('Publish clips ?')) store.sync( {callback: checkUpdate} )
+									}
+								}
             }]
         }],
 			
@@ -413,7 +419,7 @@ Ext.onReady(function(){
 		function update() {
 			console.log('looping');
 			updateClipLength(store);
-			setTimeout(update, 3000);
+			setTimeout(update, 5000);
 		}
 		update();
 		
@@ -481,10 +487,10 @@ Ext.onReady(function(){
 		}
 		
 		var handleOption1 = function() {
-			alert('Sync');
+			
 			var fb = '';
 			fb = updateClipLength(store);
-			if (fb != 'stop') store.sync({callback: checkUpdate});
+			if (fb != 'stop') {alert('Sync'); store.sync({callback: checkUpdate});}
 		};
 
 		var mapggg = new Ext.util.KeyMap(Ext.getDoc(), {

@@ -25,13 +25,5 @@ let $confStored := xdb:store($collection, "agenda.xml", $test)
 
 
 return 
-<html>
- <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <title>XQuery Form Example</title>
- </head>
-<body>  
-<p>Data saved to collection {$collection}.</p>
-</body>
-</html>
+<span>Data saved to collection {$collection}.</span>
 
