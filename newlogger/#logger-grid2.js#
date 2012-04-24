@@ -58,6 +58,8 @@ Ext.require([
 
 Ext.onReady(function(){
 		
+		// align with server time
+		
 		
 		var m = $.QueryString["m"];
 		var lang = $.QueryString["lang"];
