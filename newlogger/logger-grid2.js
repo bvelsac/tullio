@@ -38,6 +38,9 @@ function toHumanTime(x) {
 }
 
 
+var offset = 0;
+		
+
 Ext.Loader.setConfig({
     enabled: true
 });
@@ -52,12 +55,43 @@ Ext.require([
     'Ext.ux.CheckColumn'
 ]);
 
+function setOffset() {
+			var dateStr;
+			var random = new Date().getTime();
+			$.ajax({
+					type: 'GET',
+					url:'/exist/tullio/newlogger/time.html?request=' + random,
+					success: function(data, textStatus, XMLHttpRequest){
+						dateStr = XMLHttpRequest.getResponseHeader('Date');
+					},
+					error: function (XMLHttpRequest, textStatus, errorThrown) {
+					},
+					async: false
+			});
+			var serverTimeMillisGMT = Date.parse(new Date(Date.parse(dateStr)).toUTCString());
+			var localMillisUTC = Date.parse(new Date().toUTCString());
+			offset = serverTimeMillisGMT -  localMillisUTC;
+
+			
+			return offset;
+		
+		}		
+
+
+
+function runAdjust() {
+			setOffset();
+			t = setTimeout("runAdjust()", 5000);
+					console.log('OFFSET: '+ offset);
+		}
+
+
+
 
 
 // http://localhost:8080/exist/rest//db/tullio/2012-03-29-AM_COMM-ECO/events.xml
 
 Ext.onReady(function(){
-		
 		
 		var m = $.QueryString["m"];
 		var lang = $.QueryString["lang"];
@@ -65,9 +99,13 @@ Ext.onReady(function(){
 		console.log(eventTypes[lang]);
 		var counter;
 		
+		// align with server time
 		
+		console.log('OFFSET: '+ offset);
+		runAdjust();
+		
+		// load agenda
 		$('#agendaplaceholder').load('/exist/tullio/newlogger/hello3.xql?m=' + m, function() {});
-		
 		
 		// reverse labels and values for eventTypes
 		var eventTypesDict = [];
@@ -86,10 +124,9 @@ Ext.onReady(function(){
 		}
 
 		document.title += ' ' + m;
-		// first query the server for the clipstart number (to make sure the user doesn't overwrite existing data)
-		// logger grid shows only uncommitted log entries
-		// or should prevent inserting, deleting committed entries
-		// numbers of committed entries cannot be updated
+		
+		// logger grid prevents inserting, deleting committed entries
+		// numbering of committed entries cannot be updated
 		
 		
 		function makeTime(v, record){
@@ -113,7 +150,7 @@ Ext.onReady(function(){
 			var record;
 			var langMem;
 			// set language for all events
-			console.log(store.getAt(size-1).data.lang);
+			// console.log(store.getAt(size-1).data.lang);
 			if (store.getAt(size-1).data.lang == "" || store.getAt(size-1).data.lang == undefined) {
 				alert("Set language for first record"); return "stop";
 			}
@@ -130,15 +167,15 @@ Ext.onReady(function(){
 			// loop through the records, starting with most recent record
 			for (i=0; i < size; i++) {
 				record = store.getAt(i);
-				console.log(record.data.time + 'L::' + record.data.length);
+				// console.log(record.data.time + 'L::' + record.data.length);
 				
 				if (record.data.c) {
-					console.log('clip');
+					// console.log('clip');
 					var current = new XDate("2011-09-05T" + record.data.time);
 					if (moreRecent != '') {
 						var diff = moreRecent - current;
 						record.set('length', toHumanTime(diff));
-						console.log('length set' + toHumanTime(diff));
+						// console.log('length set' + toHumanTime(diff));
 					}
 					moreRecent = current;
 				}
@@ -345,7 +382,11 @@ Ext.onReady(function(){
                 iconCls: 'icon-add',
                 handler: function(){
                     // Create a record instance through the ModelManager
-										var timestamp = Ext.Date.format(new Date(), 'H:i:s');
+										
+										var timestamp = new Date();
+										timestamp.setTime(timestamp.getTime() + offset);
+										timestamp = Ext.Date.format(timestamp, 'H:i:s');
+										
 										var event = new Event({
 											time: timestamp
 										});
@@ -357,7 +398,7 @@ Ext.onReady(function(){
 										
 										cellEditing.startEditByPosition({
 												row: 0,
-												column: 1
+												column: 5
 										});
 										
 										//event.commit();
@@ -417,7 +458,7 @@ Ext.onReady(function(){
 		
 		
 		function update() {
-			console.log('looping');
+			// console.log('looping');
 			updateClipLength(store);
 			setTimeout(update, 5000);
 		}
@@ -437,7 +478,9 @@ Ext.onReady(function(){
 												 notes: $(this).siblings().andSelf().filter(".short").text(),
 												 clip:'true'
 					}
-					var timestamp = Ext.Date.format(new Date(), 'H:i:s');
+					var timestamp = new Date();
+					timestamp.setTime(timestamp.getTime() + offset);
+					timestamp = Ext.Date.format(timestamp, 'H:i:s');
 					var event = new Event(submission);
 					cellEditing.cancelEdit();
 					event.set('time', timestamp);
@@ -458,9 +501,10 @@ Ext.onReady(function(){
 		var mapF11 = new Ext.util.KeyMap(Ext.getDoc(), {
 				// F11 voegt een nieuwe regel toe, is geen clip
 				key: 122,
-				ctrl: true,
 				fn: function() {
-					var timestamp = Ext.Date.format(new Date(), 'H:i:s');
+					var timestamp = new Date();
+					timestamp.setTime(timestamp.getTime() + offset);
+					timestamp = Ext.Date.format(timestamp, 'H:i:s');
 					var event = new Event();
 					cellEditing.cancelEdit();
 					event.set('time', timestamp);
@@ -478,9 +522,10 @@ Ext.onReady(function(){
 		var mapF12 = new Ext.util.KeyMap(Ext.getDoc(), {
 				// F11 voegt een nieuwe regel toe, is geen clip
 				key: 123,
-				ctrl: true,
 				fn: function() {
-					var timestamp = Ext.Date.format(new Date(), 'H:i:s');
+					var timestamp = new Date();
+					timestamp.setTime(timestamp.getTime() + offset);
+					timestamp = Ext.Date.format(timestamp, 'H:i:s');
 					var event = new Event();
 					cellEditing.cancelEdit();
 					event.set('time', timestamp);
@@ -553,7 +598,9 @@ Ext.onReady(function(){
 			function addToStore(event) {
 				console.log('button clicked by ');
 				console.log(event.target);
-				var timestamp = Ext.Date.format(new Date(), 'H:i:s');
+				var timestamp = new Date();
+				timestamp.setTime(timestamp.getTime() + offset);
+				timestamp = Ext.Date.format(timestamp, 'H:i:s');
 				var event = new Event(propsRegister[event.target.id]);
 										cellEditing.cancelEdit();
 										event.set('time', timestamp);
@@ -590,8 +637,9 @@ Ext.onReady(function(){
 					
 					console.log('confbutton clicked ');
 					var conf = $(this).closest('form').find('input').val();
-				
-					var timestamp = Ext.Date.format(new Date(), 'H:i:s');
+					var timestamp = new Date();
+					timestamp.setTime(timestamp.getTime() + offset);
+					timestamp = Ext.Date.format(timestamp, 'H:i:s');
 					
 					var event = new Event();
 					
@@ -614,7 +662,7 @@ Ext.onReady(function(){
 					console.log('confbutton clicked ');
 					var conf = $(this).closest('form').find('input').val();
 				
-					var timestamp = Ext.Date.format(new Date(), 'H:i:s');
+					var timestamp = Ext.Date.format(timestamp, 'H:i:s');
 					
 					var event = new Event();
 					

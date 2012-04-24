@@ -94,6 +94,14 @@
 						div#govNL * {color:purple;}
 						div#govFR * {color:red;}
 		
+						
+						table.agenda {
+							width: 360px;
+							max-height: 400px;
+							font-size: 10px;
+							
+						}
+						.subjectN, .subjectF {display: none;}
 		
 						.agenda {background-color: whitesmoke;}
 						#spacer {clear: both; width: 100%;}
