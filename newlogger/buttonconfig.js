@@ -7,39 +7,39 @@ c:'true'
 "open BHP":
 {
 c:'true',
-type:'OUV-OPE'
+type:'O-BXL'
 },
 "open VVGGC":
 {
 
 
 c:'true',
-type:"OPE-VVGGC"
+type:"O-ARVV"
 },
 "suspend BHP":
 {
 
 
 clip:'',
-type:"SCH-BHP"
+type:"SCH-BXL"
 },
 "suspend VVGGC":
 {
 
 
-type:"SCH-VVGGC"
+type:"SCH-ARVV"
 },
 "close BHP":
 {
 
 
-type:"EINDE-BHP"
+type:"EINDE-BXL"
 },
 "close VVGGC":
 {
 
 
-type:"EINDE-VVGGC"
+type:"EINDE-ARVV"
 },
 "in NL":
 {
@@ -61,7 +61,7 @@ lang:'F'
 
 c:'true',
 lang:'N',
-type:"NEW"
+type:"new"
 },
 "new FR":
 {
@@ -69,13 +69,13 @@ type:"NEW"
 
 c:'true',
 lang:'F',
-type:"NEW"
+type:"new"
 },
 "pres":
 {
 
 
-type:"PRES"
+type:"PRES-CH"
 },"app":
 {
 
@@ -114,7 +114,7 @@ type:"GEN-ALG"
 
 c:'true',
 lang:'N',
-type:'newNL',
+type:'new',
 speaker:'HUYTEBROECK_Evelyne'
 },
 "cerexNL":
@@ -123,8 +123,8 @@ speaker:'HUYTEBROECK_Evelyne'
 
 c:'true',
 lang:'N',
-type:'newNL',
-speaker:'CEREXHE_Benoît'
+type:'new',
+speaker:'CEREXHE_BenoÃ®t'
 },
 "grouwNL":
 {
@@ -132,7 +132,7 @@ speaker:'CEREXHE_Benoît'
 
 c:'true',
 lang:'N',
-type:'newNL',
+type:'new',
 speaker:'GROUWELS_Brigitte'
 },
 "vraesNL":
@@ -141,7 +141,7 @@ speaker:'GROUWELS_Brigitte'
 
 c:'true',
 lang:'N',
-type:'newNL',
+type:'new',
 speaker:'VANHENGEL_Guy'
 },
 "kirNL":
@@ -150,7 +150,7 @@ speaker:'VANHENGEL_Guy'
 
 c:'true',
 lang:'N',
-type:'newNL',
+type:'new',
 speaker:'KIR_Emir'
 },
 "lilleNL":
@@ -159,7 +159,7 @@ speaker:'KIR_Emir'
 
 c:'true',
 lang:'N',
-type:'newNL',
+type:'new',
 speaker:'DE_LILLE_Bruno'
 },
 "doulkNL":
@@ -168,7 +168,7 @@ speaker:'DE_LILLE_Bruno'
 
 c:'true',
 lang:'N',
-type:'newNL',
+type:'new',
 speaker:'DOULKERIDIS_Christos'
 },
 "picqueNL":
@@ -177,7 +177,7 @@ speaker:'DOULKERIDIS_Christos'
 
 c:'true',
 lang:'N',
-type:'newNL',
+type:'new',
 speaker:'PICQUE_Charles'
 },
 "huytFR":
@@ -186,7 +186,7 @@ speaker:'PICQUE_Charles'
 
 c:'true',
 lang:'F',
-type:'newFR',
+type:'new',
 speaker:'HUYTEBROECK_Evelyne'
 },
 "cerexFR":
@@ -195,8 +195,8 @@ speaker:'HUYTEBROECK_Evelyne'
 
 c:'true',
 lang:'F',
-type:'newFR',
-speaker:'CEREXHE_Benoît'
+type:'new',
+speaker:'CEREXHE_BenoÃ®t'
 },
 "grouwFR":
 {
@@ -204,7 +204,7 @@ speaker:'CEREXHE_Benoît'
 
 c:'true',
 lang:'F',
-type:'newFR',
+type:'new',
 speaker:'GROUWELS_Brigitte'
 },
 "vraesFR":
@@ -213,7 +213,7 @@ speaker:'GROUWELS_Brigitte'
 
 c:'true',
 lang:'F',
-type:'newFR',
+type:'new',
 speaker:'VANHENGEL_Guy'
 },
 "kirFR":
@@ -222,7 +222,7 @@ speaker:'VANHENGEL_Guy'
 
 c:'true',
 lang:'F',
-type:'newFR',
+type:'new',
 speaker:'KIR_Emir'
 },
 "lilleFR":
@@ -231,7 +231,7 @@ speaker:'KIR_Emir'
 
 c:'true',
 lang:'F',
-type:'newFR',
+type:'new',
 speaker:'DE_LILLE_Bruno'
 },
 "doulkFR":
@@ -240,7 +240,7 @@ speaker:'DE_LILLE_Bruno'
 
 c:'true',
 lang:'F',
-type:'newFR',
+type:'new',
 speaker:'DOULKERIDIS_Christos'
 },
 "picqueFR":
@@ -249,7 +249,7 @@ speaker:'DOULKERIDIS_Christos'
 
 c:'true',
 lang:'F',
-type:'newFR',
+type:'new',
 speaker:'PICQUE_Charles'
 }
 

@@ -3,19 +3,7 @@
   <event id="PRES" order="gen-pres" active="y" use-for-editor="y" use-for-agenda="y">
     <name lang="nl">Voorzitter</name>
     <name lang="fr">Président</name>
-    <description lang="nl">Bedoeld om de voorzitter aan te duiden in het begin van de vergadering.</description>
-    <description lang="fr"></description>
-    <properties>
-      <prop id="speaker">
-        <description lang="nl">Dit veld gebruiken om de naam van de voorzitter in te vullen.</description>
-      </prop>
-    </properties>
-  </event>
-  
-  <event id="CH-PRES" order="gen-pres2" active="y" use-for-editor="y" use-for-agenda="y">
-    <name lang="nl">Voorzitterswissel</name>
-    <name lang="fr">Changement de président</name>
-    <description lang="nl">Bedoeld om de voorzitter aan te duiden bij verandering van voorzitter.</description>
+    <description lang="nl">Bedoeld om de voorzitter aan te duiden, in het begin van de vergadering.</description>
     <description lang="fr"></description>
     <properties>
       <prop id="speaker">
@@ -23,23 +11,90 @@
       </prop>
     </properties>
   </event>
+  <event id="PRES-CH"  order="gen-pres2" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Voorzitterswissel</name>
+    <name lang="fr">Changement de président</name>
+    <description lang="nl"></description>
+  </event>
+  
+  <event id="START-MV"  order="01questions-00" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Begin van de mondelinge vragen</name>
+    <name lang="fr">Début des questions orales</name>
+    <description lang="nl"></description>
+  </event>
+  
+  <event id="START-INT"  order="01questions-01" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Begin van de interpellaties</name>
+    <name lang="fr">Début des interpellations</name>
+    <description lang="nl"></description>
+  </event>
   
   
-  <event id="QA-AV"  order="questions-av" active="y" use-for-editor="y" use-for-agenda="y">
+  <event id="QA-AV"  order="01questions-av" active="y" use-for-editor="y" use-for-agenda="y">
     <name lang="nl">Dringende Vraag</name>
     <name lang="fr">Question d'actualité</name>
-    <description lang="nl">Gegevens van een dringende vraag.</description>
+    <description lang="nl">Titel voor dringende vraag.</description>
   </event>
-  <event id="QO-MV"  order="questions-mv" active="y" use-for-editor="y" use-for-agenda="y">
+  <event id="QO-MV"  order="01questions-mv" active="y" use-for-editor="y" use-for-agenda="y">
     <name lang="nl">Mondelinge Vraag</name>
     <name lang="fr">Question orale</name>
-    <description lang="nl">Gegevens van een mondelinge vraag</description>
+    <description lang="nl">Titel voor mondelinge vraag</description>
   </event>
-  <event id="INT"  order="questions-mv" active="y" use-for-editor="y" use-for-agenda="y">
+	
+  <event id="QO-MV JOINTE"  order="01questions-mvj" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Toeg. mond. vraag</name>
+    <name lang="fr">Quest. orale jointe</name>
+    <description lang="nl">Titel voor toegevoegde mondelinge vraag</description>
+    <description lang="fr">Titel voor toegevoegde mondelinge vraag</description>
+  </event>
+	
+  <event id="INT"  order="01questions-int" active="y" use-for-editor="y" use-for-agenda="y">
     <name lang="nl">Interpellatie</name>
     <name lang="fr">Interpellation</name>
-    <description lang="nl">Gegevens van een interpellatie</description>
+    <description lang="nl">Titel voor interpellatie</description>
   </event>
+  
+  <event id="FIN-EINDE"  order="gen-01" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Einde (commissies)</name>
+    <name lang="fr">Fin (commissies)</name>
+    <description lang="nl"></description>
+  </event>
+  
+  <event id="ZAAL-APP"  order="02-zaal-01" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Applaus</name>
+    <name lang="fr">Applaudissements</name>
+    <description lang="nl"></description>
+  </event>
+  <event id="ZAAL-OPM"  order="02-zaal-01" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Opmerkingen</name>
+    <name lang="fr">Opmerkingen</name>
+    <description lang="nl"></description>
+  </event>
+  <event id="ZAAL-SS"  order="02-zaal-01" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Samenspraak</name>
+    <name lang="fr">Colloques</name>
+    <description lang="nl"></description>
+  </event>
+  <event id="ZAAL-RUM"  order="02-zaal-01" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Rumoer</name>
+    <name lang="fr">Rumeurs</name>
+    <description lang="nl"></description>
+  </event>
+  <event id="ZAAL-GLIM"  order="02-zaal-01" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Vrolijkheid</name>
+    <name lang="fr">Sourires</name>
+    <description lang="nl"></description>
+  </event>
+  
+  
+  
+  <event id="INT JOINTE"  order="01questions-intj" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Toeg. interp.</name>
+    <name lang="fr">Int. jointe</name>
+    <description lang="nl">Titel voor toegevoegde interpellatie</description>
+    <description lang="fr">Titel voor toegevoegde interpellatie</description>
+  </event>
+  
 	
 	<event id="new"  order="00speakers00" active="y" use-for-editor="y" use-for-agenda="y">
     <name lang="nl">Nieuwe spreker (simpel)</name>
@@ -47,20 +102,57 @@
     <description lang="nl"></description>
   </event>
 
-	<event id="ORA-SPR"  order="00speakers01" active="y" use-for-editor="y" use-for-agenda="n">
-    <name lang="nl">Nieuwe spreker (vz geeft het woord)</name>
-    <name lang="fr">Nouvel orateur (pres donne la parole)</name>
+	<event id="ORA-SPR"  order="00speakers01" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Nieuwe spreker (vz. geeft het woord)</name>
+    <name lang="fr">Nouvel orateur (prés. donne la parole)</name>
     <description lang="nl"></description>
   </event>
 	
 	
   
   
-  <event id="OUV-OPE"  order="gen-01" active="y" use-for-editor="n" use-for-agenda="y" >
-    <name lang="nl">Opening</name>
+  <event id="OUV-OPE"  order="gen-00" active="y" use-for-editor="n" use-for-agenda="y" >
+    <name lang="nl">Opening (commissies)</name>
+    <name lang="fr">Ouverture (commissions)</name>
+    <description lang="nl">Om vast te leggen wanneer de vergadering is begonnen en de bijbehorende titels aan te maken.</description>
+  </event>
+	
+	<event id="O-BXL"  order="gen-010" active="y" use-for-editor="n" use-for-agenda="y" >
+    <name lang="nl">Opening plenaire BHR</name>
     <name lang="fr">Ouverture</name>
     <description lang="nl">Om vast te leggen wanneer de vergadering is begonnen en de bijbehorende titels aan te maken.</description>
   </event>
+	
+  <event id="O-ARVV"  order="gen-011" active="y" use-for-editor="n" use-for-agenda="y" >
+    <name lang="nl">Opening VV</name>
+    <name lang="fr">Ouverture AR</name>
+    <description lang="nl"></description>
+  </event>
+  
+  <event id="SCH-BXL"  order="gen-012" active="y" use-for-editor="n" use-for-agenda="y" >
+    <name lang="nl">Schorsing plenaire BHR</name>
+    <name lang="fr">Suspension plénière PRB</name>
+    <description lang="nl">Om vast te leggen wanneer de vergadering is begonnen en de bijbehorende titels aan te maken.</description>
+  </event>
+  
+  <event id="SCH-ARVV"  order="gen-013" active="y" use-for-editor="n" use-for-agenda="y" >
+    <name lang="nl">Schorsing plenaire VV</name>
+    <name lang="fr">Suspension plénière AR</name>
+    <description lang="nl"></description>
+  </event>
+  
+  <event id="EINDE-BXL"  order="gen-014" active="y" use-for-editor="n" use-for-agenda="y" >
+    <name lang="nl">Einde plenaire BHR</name>
+    <name lang="fr">Fin plénière PRB</name>
+    <description lang="nl">Om vast te leggen wanneer de vergadering is begonnen en de bijbehorende titels aan te maken.</description>
+  </event>
+  
+  <event id="EINDE-ARVV"  order="gen-015" active="y" use-for-editor="n" use-for-agenda="y" >
+    <name lang="nl">Einde VV</name>
+    <name lang="fr">Fin plénière PRB</name>
+    <description lang="nl"></description>
+  </event>
+	
   <event id="EXC-AFW"  order="gen-02" active="y" use-for-editor="y" use-for-agenda="y" >
     <name lang="nl">Afwezigheden</name>
     <name lang="fr">Excusés</name>
@@ -75,6 +167,6 @@
   </event>
   <event id="P.E.CONS-INOVERW" order="gen-04"  active="y" use-for-editor="n" use-for-agenda="y" >
     <name lang="nl">Inoverwegingnemingen</name>
-    <name lang="fr">Président</name>
+    <name lang="fr">Prises en considération</name>
   </event>
 </reference>

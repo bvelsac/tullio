@@ -189,7 +189,7 @@
     <xsl:apply-templates mode="initialize-text" select="key('new', @id)"/>
   </xsl:template>
   <xsl:template name="default">
-    <xsl:for-each select="//e[@c='y']">
+    <xsl:for-each select="//e[@c='true']">
       <tr id="{concat('R', @n)}">
         <td class="sound">
           <!-- create a list of events for the sound markers -->
@@ -298,8 +298,8 @@
             <events>
               <xsl:attribute name="next">
                 <xsl:choose>
-                  <xsl:when test="following-sibling::e[@c='y']">
-                    <xsl:value-of select="following-sibling::e[@c='y'][1]/@n"/>
+                  <xsl:when test="following-sibling::e[@c='true']">
+                    <xsl:value-of select="following-sibling::e[@c='true'][1]/@n"/>
                   </xsl:when>
                   <xsl:otherwise>
                     <xsl:value-of select="/all/@next"/>

@@ -16,7 +16,7 @@
   <xsl:template match="/">
       <doc>
 			<p c="0">Begin tekst</p>
-            <xsl:for-each select="//e[@c='y']">
+            <xsl:for-each select="//e[@c='true']">
               
               <xsl:apply-templates select="key('clip', @n)" mode="initialize-text"></xsl:apply-templates>
               </xsl:for-each>

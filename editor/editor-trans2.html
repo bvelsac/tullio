@@ -266,6 +266,10 @@ function displayStatus() {
 	
 
 function secondstep(xml, xsl, xmlorig) {
+	console.log("***** UPDATE ****");
+
+	xml.getElementsByTagName("all")[0].appendChild(titles);
+		console.log(new XMLSerializer().serializeToString(xml));
 	$("#hidden").transform({async:false, xmlobj:xml, xsl:"xsl/group.xsl", xslParams:{mode:runTrans}});
 	// replace
 	var rows = $("#hidden > tr");

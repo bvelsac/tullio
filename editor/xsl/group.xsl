@@ -45,6 +45,7 @@
     <xsl:choose>
       <xsl:when test="container/div[@id='integratedEvents']">
         <!-- we're working on the result of a user edit -->
+        <!-- what happens for translations ? -->
         <div id="consolidated">
           <div id="rawEvents">
             <events>
@@ -107,12 +108,14 @@
     </xsl:choose>
   </xsl:template>
   <xsl:template match="*[@title]" mode="write">
+   
     <!-- match any element with a title attribute, we need to update the reference
     <moved><e n="2.5"/>
       <new-nr>2.7</new-nr>
       <p title="2.5"/>
     </moved>
     -->
+    <!-- This template also takes care of reformatting so some language handling is necessary for translations -->
     <xsl:variable name="eventRef">
       <xsl:choose>
         <xsl:when test="key('moved', @title)">
@@ -127,6 +130,7 @@
       <xsl:when test="self::span[@class='pres reformat']">
         <xsl:call-template name="president">
           <xsl:with-param name="event" select="key('all', $eventRef)"/>
+          <xsl:with-param name="lang" select="key('all', $eventRef)/@lang"/>
         </xsl:call-template>
       </xsl:when>
       <!--
@@ -169,7 +173,8 @@
           <xsl:when test="key('clip', @n)">
             <p class="debug"  title="{@n}" clip="{@c}">(Generated text)</p>
             <xsl:for-each select="key('clip', @n)">
-              <xsl:apply-templates select=".">
+             
+              <xsl:apply-templates select="." mode="initialize-text">
                 <xsl:with-param name="lang">
                   <xsl:choose>
                     <xsl:when test="@lang='N'">F</xsl:when>
@@ -201,6 +206,7 @@
     <xsl:apply-templates mode="initialize-text" select="key('new', @id)"/>
   </xsl:template>
   <xsl:template name="default">
+    <!-- this is the template that processes updated clip info from the server -->
     <xsl:for-each select="//e[@c='true']">
       <tr id="{concat('R', @n)}">
         <td class="sound">
@@ -363,7 +369,7 @@
                 <xsl:copy-of select="key('text', @n)"/>
               </xsl:when>
               <xsl:when test="key('clip', @n)">
-                <p class="debug">(Generated text)</p>
+                <p class="debug">(Generated text 2)</p>
                 <xsl:apply-templates mode="initialize-text" select="key('clip', @n)"/>
               </xsl:when>
               <xsl:otherwise>
@@ -554,12 +560,12 @@
     <p  c="{@clip}" title="{@n}"  class="write">...</p>
   </xsl:template>
   <xsl:template name="president">
-    <xsl:param name="lang" select="@lang"></xsl:param>
+    <xsl:param name="lang" select="$event/@lang"></xsl:param>
     <xsl:param name="class" select="'pres'"/>
     <xsl:param name="segment"/>
     <xsl:param name="event"/>
+    <xsl:text>debug</xsl:text><xsl:value-of select="$lang"/>
    
-    
     <!--<xsl:comment>
       <xsl:value-of
         select="concat('pres-', preceding-sibling::e[pres][1]/pres/person/@gender, '-', @lang)"/>
@@ -597,6 +603,7 @@
     <p c="{@clip}" title="{@n}">
       <xsl:call-template name="president">
         <xsl:with-param name="event" select="."/>
+        <xsl:with-param name="lang" select="$lang"></xsl:with-param>
       </xsl:call-template>
       
       <xsl:choose>
@@ -634,11 +641,8 @@
         <xsl:text> </xsl:text>
         <xsl:value-of select="$person/last"/>.- </span>
     </p>
-    <p c="{@clip}">
-      <span class="incomplete">Lijst van afwezigen</span>
-    </p>
-    <p c="{@clip}" class="incomplete"/>
-    <p c="{@clip}" class="write"> </p>
+   
+    <p c="{@clip}" class="write">...</p>
   </xsl:template>
   <xsl:template match="e[@type='EXC-AFW']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"></xsl:param>
@@ -646,6 +650,7 @@
     <p c="{@clip}" title="{@n}">
       <xsl:call-template name="president">
         <xsl:with-param name="event" select="."/>
+        <xsl:with-param name="lang" select="$lang"></xsl:with-param>
       </xsl:call-template>
       <xsl:value-of select="key('snippets', concat('exc-', $lang))"/>
     </p>

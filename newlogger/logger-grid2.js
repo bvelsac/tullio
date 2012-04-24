@@ -81,7 +81,7 @@ function setOffset() {
 
 function runAdjust() {
 			setOffset();
-			t = setTimeout("runAdjust()", 5000);
+			t = setTimeout("runAdjust()", 60000);
 					console.log('OFFSET: '+ offset);
 		}
 
@@ -253,7 +253,7 @@ Ext.onReady(function(){
             // load using HTTP
             type: 'ajax',
 						api: {
-                read: '/exist/rest//db/tullio/' + m + '/events.xml',
+                read: '/exist/rest/tullio/xq/reverseEvents.xql?m=' + m,
                 create: '/exist/tullio/xq/logreceiver.xql?o=create&m=' + m,
                 update: '/exist/tullio/xq/logreceiver.xql?o=update&m=' + m,
                 destroy: '/exist/tullio/xq/logreceiver.xql?o=delete&m=' + m,

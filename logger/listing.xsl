@@ -17,7 +17,59 @@
     <tr class="agenda">
       
       <xsl:apply-templates></xsl:apply-templates>
-          </tr>    
+    </tr>
+    
+    <xsl:if test="string(col_type)='QO-MV' or string(col_type)='INT'">
+      
+      <tr class="agenda">
+        <td class="ref"></td>
+        <td class="type">ORA-SPR</td>
+        <td class="lang"><xsl:value-of select="col_lang"/></td>
+        <td class="subjectN"></td>
+        <td class="subjectF"></td>
+        <td class="short"></td>
+        <td class="speaker"><xsl:value-of select="col_speaker"/></td>
+        <td class="gov"></td>
+      </tr>
+    </xsl:if>
+    
+    <xsl:if test="string(col_type)='QO-MV JOINTE'">
+      <tr class="agenda">
+        <td class="ref"></td>
+        <td class="type">ORA-SPR QJ</td>
+        <td class="lang"><xsl:value-of select="col_lang"/></td>
+        <td class="subjectN"></td>
+        <td class="subjectF"></td>
+        <td class="short"></td>
+        <td class="speaker"><xsl:value-of select="col_speaker"/></td>
+        <td class="gov"></td>
+      </tr>
+    </xsl:if>
+    
+    <xsl:if test="string(col_type)='INT JOINTE'">
+      <tr class="agenda">
+        <td class="ref"></td>
+        <td class="type">ORA-SPR INT J</td>
+        <td class="lang"><xsl:value-of select="col_lang"/></td>
+        <td class="subjectN"></td>
+        <td class="subjectF"></td>
+        <td class="short"></td>
+        <td class="speaker"><xsl:value-of select="col_speaker"/></td>
+        <td class="gov"></td>
+      </tr>
+    </xsl:if>
+    <xsl:if test="contains(col_type, 'INT') or contains(col_type, 'QO-MV')">
+      <tr class="agenda">
+        <td class="ref"></td>
+        <td class="type">ORA-SPR</td>
+        <td class="lang"><xsl:value-of select="col_lang"/></td>
+        <td class="subjectN"></td>
+        <td class="subjectF"></td>
+        <td class="short"></td>
+        <td class="speaker"></td>
+        <td class="gov"><xsl:value-of select="col_gov"/></td>
+      </tr>
+    </xsl:if>
     
   </xsl:template>
   
