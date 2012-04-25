@@ -227,7 +227,7 @@
               select="$seconds"/>, </xsl:comment>
           <xsl:variable name="recordingStart">
             <xsl:choose>
-              <xsl:when test="$minutes &gt; 50">50</xsl:when>
+              <xsl:when test="$minutes &gt;= 50">50</xsl:when>
               <xsl:when test="$minutes &lt; 10">00</xsl:when>
               <xsl:when test="$minutes &lt; 20">10</xsl:when>
               <xsl:when test="$minutes &lt; 30">20</xsl:when>

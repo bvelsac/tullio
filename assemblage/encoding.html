@@ -55,17 +55,14 @@
 
 </head>
 <body>
-<div id="header">
-	<h2>Assemblage</h2>
-
-	<p>start:<input type="text" id="start"></input> stop:<input type="text" id="stop"></input></p>
-	<!-- minimum status:<select id="minStatus"></select> -->
-	<p>type:<select id="type">
-    <option>1C</option>
-    <option>2C</option>
-  </select> 
-	numbering:<input id="numbering" type="checkbox"></input><span id="actionGo">go</span><span id="downloadlink"></span></p>
-
+<div id="header"><h2>Assemblage</h2>
+start:<input type="text" id="start"></input>
+stop:<input type="text" id="stop"></input>
+<!-- minimum status:<select id="minStatus"></select> -->
+type:<select id="type"><option value="1C">1C</option><option value="2C">2C</option></select>
+numbering:<input id="numbering" type="checkbox"></input>
+<span id="actionGo">go</span>
+<span id="downloadlink"></span>
 	<p>header content</p>
 </div>
 		
@@ -90,25 +87,21 @@ $().ready(function() {
 // http://localhost:8080/exist/tullio/xq/assemblage.xql?m=2012-09-03---_COM-AEZ_&stop=114
 
 
-var requestBase = "/exist/tullio/xq/assemblage.xql";
+var requestBase = "/exist/tullio/xq/assemblage.xql?";
 
-var meeting = $.QueryString["m"];
-
+var meeting = $.QueryString["m"];;
+var start = $("#start").val();
+var stop = $("#stop").val();
+var type = $("#type").val();
+var numbering = $("#numbering").val();
 
 /* parameters:
-numbering: 'on' or undefined
-type: '1C' or '2C'
+numbering: true
+type: 1C or 2C
 
 */
 
 $("body").delegate( "#actionGo", "click", function() {
-		var start = $("#start").val();
-		var stop = $("#stop").val();
-		var type = $("#type").val();
-		var numbering =  $("#numbering:checked").val();
-		
-		
-		
 		var request = $.ajax({
 						url: requestBase,
 						type: "GET",
@@ -116,21 +109,16 @@ $("body").delegate( "#actionGo", "click", function() {
 							"stop": stop,
 							"start": start,
 							"m": meeting,
-							"type" : type,
-							"numbering": numbering
+							"numbering": numbering,
+							"type" : type
 						},
 						async: true
 					});
 
 		request.done(function(msg) {
-				var link = "<a href='" + requestBase + '?start=' + start + '&stop=' + stop + '&m=' + meeting + '&type=' + type + '&numbering=' + numbering + "'>download " + meeting + "</a>";
-				$("#downloadlink").html(link);
-				
-				
-				
-				
-				
-				
+						msgString =  (new XMLSerializer()).serializeToString(msg);
+						console.log( msgString);
+						$("#tableContainer").html(msg);
 				});
 
 		request.fail(function(jqXHR, textStatus) {
