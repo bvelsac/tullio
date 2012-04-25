@@ -29,12 +29,21 @@ for $meet in xmldb:get-child-collections("/db/tullio/")
 	<tr class='{$status}'>
 		<td class="meeting-id ">{$meet}</td>
 		<td class="meeting-id "><a href="{concat($agenda, '?m=', $meet)}">agenda</a></td>
+		<!--
 		<td class="meeting-id "><a href="{concat($logger, '?m=', $meet, '&amp;lang=', $lang)}">log</a></td>
+		-->
+		<td class="meeting-id ">
+		{
+			if (string($id) = "") then <td class="meeting-id "><a href="{concat($logger, '?m=', $meet, '&amp;lang=', $lang)}">log</a></td> else ()
+		}
+		</td>
+		<!--
 		<td class="meeting-id ">
 		{
 			if (string($id) = "") then () else <a href="{concat($status, '?m=', $meet, '&amp;lang=', $lang)}">statuspage</a>
 		}	
 		</td>
+		-->
 		<td class="meeting-id ">
 		{
 			if (string($id) = "") then () else <a href="{concat($editor, '?m=', $meet, '&amp;lang=', $lang)}">edit</a>

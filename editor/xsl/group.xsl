@@ -14,7 +14,7 @@
   <xsl:key match="container/div[@id='integratedEvents']/events/e" name="all" use="@n"/>
   <xsl:key match="//s" name="statusCodes" use="@n"/>
   <xsl:key match="//person" name="people" use="@id"/>
-  <xsl:param name="mode">yes</xsl:param>
+  <xsl:param name="mode"></xsl:param>
   <xsl:param name="server" select="'no'"/>
   <!-- Chrome heeft een issue waardoor de document() functie niet werkt, dus alles moet worden toegevoegd aan het input-document
     Google Chrome currently has limited support for XSL. If your XSL refers to any external resources (document() function, xsl:import, xsl:include or external entities), the XSL will run but the result will either be empty or invalid.
