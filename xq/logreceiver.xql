@@ -18,6 +18,7 @@ let $descr := <meeting>{concat(substring-before($meeting, '-'), substring-before
 
 let $eventfile := concat("/db/tullio/", $meeting, "/events.xml")
 let $textfile := concat("/db/tullio/", $meeting, "/text.xml")
+let $translations := concat("/db/tullio/", $meeting, "/trans1.xml")
 let $id := util:document-id($eventfile)
 
 (: create the new collection for this meeting :)
@@ -42,7 +43,7 @@ let $events := transform:transform($nodes, "../xsl/logreceiver.xsl", <parameters
 
 let $stored := if ($max = 102) then (xdb:store(concat("/db/tullio/", $meeting), "events.xml", $events//events), update insert $descr into doc($eventfile)/events) else if ($events//events/e) then update insert $events//events/e into doc($eventfile)/events else ()
 
-(:  run transformation to store formatted events in db :)
+(:  run transformation to store formatted events in db
 
 let $titles := doc(concat($serverAddress, "/exist/tullio/xml/titles.xml"))
 let $intermediate := transform:transform($events//events, "../editor/xsl/addclipref.xsl", ())
@@ -52,13 +53,23 @@ let $debug := xdb:store(concat("/db/tullio/", $meeting), "test.xml", <h>{$interm
 let $initClips := transform:transform(<container>{$intermediate,$titles}</container>, "../editor/xsl/group.xsl", <parameters><param name="server" value="yes"/></parameters>)
 
 let $storedClips := if ($max = 102) then xdb:store(concat("/db/tullio/", $meeting), "text.xml", <doc>{$initClips//original/p}</doc>) else if ($initClips//original/p) then update insert $initClips//original/p into doc($textfile)/doc else()
-
-(: store simple placeholders for translations :)
+ :)
+(: store simple placeholders for translations
 
 let $trans := for $e in $events/xmlData/events/e return <p title='{$e/@n}' class='init' />
 
 let $storedTrans := if ($max = 102) then xdb:store(concat("/db/tullio/", $meeting), "trans1.xml", <doc>{$trans}</doc>) else if ($trans/p) then update insert $trans/p into doc($textfile)/doc else()
+ :)
+ 
+let $initClips := for $e in $events//e[@c='true'] return <p c="{$e/@n}"  class="init">(clip {string($e/@n)})</p>
+			
 
+let $storedClips := if ($max = 102) then xdb:store(concat("/db/tullio/", $meeting), "text.xml", <doc>{$initClips}</doc>) else if ($initClips) then update insert $initClips into doc($textfile)/doc else()
+ 
+
+let $storedClips := if ($max = 102) then xdb:store(concat("/db/tullio/", $meeting), "trans1.xml", <trans n="1">{$initClips}</trans>) else if ($initClips) then update insert $initClips into doc($translations)/trans else()
+ 
+ 
 let $locks := if ($max = 102) then xdb:store(concat("/db/tullio/", $meeting), "locks.xml", <locks meeting="{$meeting}"></locks>) else ()
 
 

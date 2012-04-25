@@ -9,12 +9,12 @@
   <xsl:template match="/">
     <wrapper>
       <xsl:apply-templates select="//div[@id='text']/*"/>
-      <xsl:if test="not(//div[@id='text']/*[not(@class='init' or @class='marker')])">
+      <xsl:if test="not(//div[@id='text']/*[not(@class='marker')])">
         <p c="{$number}" class="init"></p>
       </xsl:if>
     </wrapper>
   </xsl:template>
-  <xsl:template match="*[not(@class='init' or @class='marker')]">
+  <xsl:template match="*[not(@class='marker')]">
     <xsl:copy>
       <xsl:attribute name="c">
         <xsl:choose>
@@ -26,7 +26,10 @@
         
       </xsl:attribute>
       <xsl:copy-of select="@title"/>
-      <xsl:copy-of select="@class"/>
+			<xsl:if test="not(@class='init')">
+				<xsl:copy-of select="@class"/>
+			</xsl:if>
+      
       <xsl:apply-templates></xsl:apply-templates>
      
     </xsl:copy>

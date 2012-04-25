@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<all type="" next="113"><events><e c="true" n="101" type="marker" lang="N" time="04:25:50" length="00:02" commit="P" clip="101"/><e n="101.01" id="idm64912" c="n" lang="" notes="" props="" speaker="AZZOUZI_Mohamed" time="" type="PRES" clip="101"/><e n="102" lang="N" time="04:25:50" length="00:02" c="false" type="ORA-SPR" speaker="PICQUE_Charles" props="" textn="" textf="" notes="" commit="P" id="M2012-09-03---_COM-AEZ_/100" clip="101"/><e n="104" lang="N" time="04:25:51" length=" " c="false" type="START MV" speaker="" props="" textn="" textf="" notes="" commit="P" id="M2012-09-03---_COM-AEZ_/101" clip="101"/><e c="true" n="105" type="marker" lang="N" time="04:25:52" length="00:02" commit="P" clip="105"/><e n="106" lang="N" time="04:25:52" length="00:02" c="false" type="START MV" speaker="" props="" textN="" textF="" notes="" commit="P" id="M2012-09-03---_COM-AEZ_/102" clip="105"/><e n="108" lang="N" time="04:25:53" length=" " c="false" type="OUV-OPE" speaker="" props="" textN="" textF="" notes="" commit="P" id="M2012-09-03---_COM-AEZ_/103" clip="105"/><e c="true" n="109" type="marker" lang="N" time="04:25:54" length="00:07" commit="P" clip="109"/><e n="110" lang="N" time="04:25:54" length="00:07" c="false" type="PRES" speaker="" props="" textN="" textF="" notes="" commit="P" id="M2012-09-03---_COM-AEZ_/104" clip="109"/><e n="112" lang="N" time="04:26:00" length=" " c="false" type="" speaker="" props="" textN="" textF="" notes="" commit="P" id="M2012-09-03---_COM-AEZ_/105" clip="109"/></events><type/><pres/><meta>101 109</meta><next>113</next><doc/><trans n="1"/><locks/><reference name="titles">
+  <l id="pres-m-N">De voorzitter.- </l>
+  <l id="pres-f-N">Mevrouw de voorzitter.- </l>
+  <l id="pres-m-F">M. le président.- </l>
+  <l id="pres-f-F">Mme la présidente.- </l>
+  <l id="exc-F">Mme la présidente.- </l>
+  <l id="exc-N"><span class="incomplete">Verontschuldigen/Verontschuldigt zich voor hun/zijn/haar afwezigheid:</span></l>
+  <l id="exc-N"><span class="incomplete">Ont / A prié d'excuser leur / son absence :</span></l>
+  <l id="title-m-N">De heer </l>
+	<l id="titleSmall-m-N">de heer </l>
+	<l id="title-m-F">M. </l>
+	<l id="titleSmall-m-F">M. </l>
+	<l id="title-f-N">Mevrouw </l>
+	<l id="titleSmall-f-N">Mevrouw </l>
+	<l id="title-f-F">Mme </l>
+	<l id="titleSmall-f-F">Mme </l>
+	<l id="parole-N"> heeft het woord.</l>
+	<l id="parole-F">La parole est à </l>
+	<l id="to-N"> aan </l>
+	<l id="to-F"> à </l>
+		<l id="concerning-F"> concernant </l>
+				<l id="concerning-N"> betreffende </l>
+  <person id="none" gov="no" group="" lang="nl" gender="m">
+    <first>----</first>
+    <last>----</last>
+  </person>
+  
+  <person id="AHIDAR_Fouad" gov="no" group="sp.a" lang="nl" gender="m">
+      <first>Fouad</first>
+      <last>Ahidar</last>
+   </person>
+   <person id="ALBISHARI_Aziz" gov="no" group="Ecolo" lang="fr" gender="m">
+      <first>Aziz</first>
+      <last>Albishari</last>
+   </person>
+   <person id="AMPE_Els" gov="no" group="Open VLD" lang="nl" gender="f">
+      <first>Els</first>
+      <last>Ampe</last>
+   </person>
+   <person id="AZZOUZI_Mohamed" gov="no" group="PS" lang="fr" gender="m">
+      <first>Mohamed</first>
+      <last>Azzouzi</last>
+   </person>
+   <person id="BERTIEAUX_Françoise" gov="no" group="MR" lang="f" gender="f">
+      <first>Françoise</first>
+      <last>Bertieaux</last>
+   </person>
+   <person id="BOUARFA_Sfia" gov="no" group="PS" lang="fr" gender="f">
+      <first>Sfia</first>
+      <last>Bouarfa</last>
+   </person>
+   <person id="BRAECKMAN_Dominique" gov="no" group="Ecolo" lang="fr" gender="f">
+      <first>Dominique</first>
+      <last>Braeckman</last>
+   </person>
+   <person id="BROTCHI_Jacques" gov="no" group="MR" lang="f" gender="m">
+      <first>Jacques</first>
+      <last>Brotchi</last>
+   </person>
+   <person id="BROUHON_Sophie" gov="no" group="sp.a" lang="nl" gender="f">
+      <first>Sophie</first>
+      <last>Brouhon</last>
+   </person>
+   <person id="CARON_Danielle" gov="no" group="cdH" lang="fr" gender="f">
+      <first>Danielle</first>
+      <last>Caron</last>
+   </person>
+   <person id="CARTHE_Michèle" gov="no" group="PS" lang="fr" gender="f">
+      <first>Michèle</first>
+      <last>Carthe</last>
+   </person>
+   <person id="CHAHID_Mohammadi" gov="no" group="PS" lang="fr" gender="m">
+      <first>Mohammadi</first>
+      <last>Chahid</last>
+   </person>
+   <person id="CLOSE_Philippe" gov="no" group="PS" lang="fr" gender="m">
+      <first>Philippe</first>
+      <last>Close</last>
+   </person>
+   <person id="COLSON_Michel" gov="no" group="FDF" lang="fr" gender="m">
+      <first>Michel</first>
+      <last>Colson</last>
+   </person>
+   <person id="COPPENS_René" gov="no" group="Open VLD" lang="nl" gender="m">
+      <first>René</first>
+      <last>Coppens</last>
+   </person>
+   <person id="d'Ursel_Anne-Charlotte" gov="no" group="MR" lang="f" gender="f">
+      <first>Anne-Charlotte</first>
+      <last>d'Ursel</last>
+   </person>
+   <person id="DAÏF_Mohamed" gov="no" group="PS" lang="fr" gender="m">
+      <first>Mohamed</first>
+      <last>Daïf</last>
+   </person>
+   <person id="DE BOCK_Emmanuel" gov="no" group="FDF" lang="fr" gender="m">
+      <first>Emmanuel</first>
+      <last>De Bock</last>
+   </person>
+   <person id="de Clippele_Olivier" gov="no" group="MR" lang="f" gender="m">
+      <first>Olivier</first>
+      <last>de Clippele</last>
+   </person>
+   <person id="DE PAUW_Brigitte" gov="no" group="CD&amp;V" lang="nl" gender="f">
+      <first>Brigitte</first>
+      <last>De Pauw</last>
+   </person>
+   <person id="DE RIDDER_Paul" gov="no" group="N-VA" lang="fr" gender="m">
+      <first>Paul</first>
+      <last>De Ridder</last>
+   </person>
+   <person id="De Wolf_Vincent" gov="no" group="MR" lang="f" gender="m">
+      <first>Vincent</first>
+      <last>De Wolf</last>
+   </person>
+   <person id="de_GROOTE Julie" gov="no" group="cdH" lang="fr" gender="f">
+      <first>Julie</first>
+      <last>de Groote</last>
+   </person>
+   <person id="de_PATOUL Serge" gov="no" group="FDF" lang="fr" gender="m">
+      <first>Serge</first>
+      <last>de Patoul</last>
+   </person>
+   <person id="DEBAETS_Bianca" gov="no" group="CD&amp;V" lang="nl" gender="f">
+      <first>Bianca</first>
+      <last>Debaets</last>
+   </person>
+   <person id="DEFOSSE_Jean-Claude" gov="no" group="Ecolo" lang="fr" gender="m">
+      <first>Jean-Claude</first>
+      <last>Defosse</last>
+   </person>
+   <person id="DEJONGHE_Carla" gov="no" group="Open VLD" lang="nl" gender="f">
+      <first>Carla</first>
+      <last>Dejonghe</last>
+   </person>
+   <person id="DELFORGE_Céline" gov="no" group="Ecolo" lang="fr" gender="f">
+      <first>Céline</first>
+      <last>Delforge</last>
+   </person>
+   <person id="DEMOL_Johan" gov="no" group="Ind" lang="nl" gender="m">
+      <first>Johan</first>
+      <last>Demol</last>
+   </person>
+   <person id="DESIR_Caroline" gov="no" group="PS" lang="fr" gender="f">
+      <first>Caroline</first>
+      <last>Desir</last>
+   </person>
+   <person id="DESTEXHE_Alain" gov="no" group="MR" lang="f" gender="m">
+      <first>Alain</first>
+      <last>Destexhe</last>
+   </person>
+   <person id="DIALLO_Bea" gov="no" group="PS" lang="fr" gender="m">
+      <first>Bea</first>
+      <last>Diallo</last>
+   </person>
+   <person id="DIRIX_Anne" gov="no" group="Ecolo" lang="fr" gender="f">
+      <first>Anne</first>
+      <last>Dirix</last>
+   </person>
+   <person id="DOYEN_Hervé" gov="no" group="cdH" lang="fr" gender="m">
+      <first>Hervé</first>
+      <last>Doyen</last>
+   </person>
+   <person id="DRAPS_Willem" gov="no" group="MR" lang="f" gender="m">
+      <first>Willem</first>
+      <last>Draps</last>
+   </person>
+   <person id="du BUS de WARNAFFE_André" gov="no" group="cdH" lang="fr" gender="m">
+      <first>André</first>
+      <last>du Bus de Warnaffe</last>
+   </person>
+   <person id="DUPUIS_Françoise" gov="no" group="PS" lang="fr" gender="f">
+      <first>Françoise</first>
+      <last>Dupuis</last>
+   </person>
+   <person id="EL KHANNOUSS_Ahmed" gov="no" group="cdH" lang="fr" gender="m">
+      <first>Ahmed</first>
+      <last>El Khannouss</last>
+   </person>
+   <person id="EL KTIBI_Ahmed" gov="no" group="PS" lang="fr" gender="m">
+      <first>Ahmed</first>
+      <last>El Ktibi</last>
+   </person>
+   <person id="EL YOUSFI_Nadia" gov="no" group="PS" lang="fr" gender="f">
+      <first>Nadia</first>
+      <last>El Yousfi</last>
+   </person>
+   <person id="FASSI-FIHRI_Hamza" gov="no" group="cdH" lang="fr" gender="m">
+      <first>Hamza</first>
+      <last>Fassi-Fihri</last>
+   </person>
+   <person id="FRAITEUR_Béatrice" gov="no" group="FDF" lang="fr" gender="f">
+      <first>Béatrice</first>
+      <last>Fraiteur</last>
+   </person>
+   <person id="FREMAULT_Céline" gov="no" group="cdH" lang="fr" gender="f">
+      <first>Céline</first>
+      <last>Fremault</last>
+   </person>
+   <person id="GOSUIN_Didier" gov="no" group="FDF" lang="fr" gender="m">
+      <first>Didier</first>
+      <last>Gosuin</last>
+   </person>
+   <person id="HERSCOVICI_Anne" gov="no" group="Ecolo" lang="fr" gender="f">
+      <first>Anne</first>
+      <last>Herscovici</last>
+   </person>
+   <person id="HUTCHINSON_Alain" gov="no" group="PS" lang="fr" gender="m">
+      <first>Alain</first>
+      <last>Hutchinson</last>
+   </person>
+   <person id="IKAZBAN_Jamal" gov="no" group="PS" lang="fr" gender="m">
+      <first>Jamal</first>
+      <last>Ikazban</last>
+   </person>
+   <person id="JODOGNE_Cécile" gov="no" group="FDF" lang="fr" gender="f">
+      <first>Cécile</first>
+      <last>Jodogne</last>
+   </person>
+   <person id="KHATTABI_Zakia" gov="no" group="Ecolo" lang="fr" gender="f">
+      <first>Zakia</first>
+      <last>Khattabi</last>
+   </person>
+   <person id="LEMESRE_Marion" gov="no" group="MR" lang="f" gender="f">
+      <first>Marion</first>
+      <last>Lemesre</last>
+   </person>
+   <person id="LURQUIN_Vincent" gov="no" group="Ecolo" lang="fr" gender="m">
+      <first>Vincent</first>
+      <last>Lurquin</last>
+   </person>
+   <person id="MAES_Annemie" gov="no" group="Groen!" lang="nl" gender="f">
+      <first>Annemie</first>
+      <last>Maes</last>
+   </person>
+   <person id="MAMPAKA_MANKAMBA Bertin" gov="no" group="cdH" lang="fr" gender="m">
+      <first>Bertin</first>
+      <last>Mampaka Mankamba</last>
+   </person>
+   <person id="MANDAILA_Gisèle" gov="no" group="FDF" lang="fr" gender="f">
+      <first>Gisèle</first>
+      <last>Mandaila</last>
+   </person>
+   <person id="MARON_Alain" gov="no" group="Ecolo" lang="fr" gender="m">
+      <first>Alain</first>
+      <last>Maron</last>
+   </person>
+   <person id="MENNEKENS_Herman" gov="no" group="Open VLD" lang="nl" gender="m">
+      <first>Herman</first>
+      <last>Mennekens</last>
+   </person>
+   <person id="MIGISHA_Pierre" gov="no" group="cdH" lang="fr" gender="m">
+      <first>Pierre</first>
+      <last>Migisha</last>
+   </person>
+   <person id="MOLENBERG_Isabelle" gov="no" group="FDF" lang="fr" gender="f">
+      <first>Isabelle</first>
+      <last>Molenberg</last>
+   </person>
+   <person id="MOREL_Jacques" gov="no" group="Ecolo" lang="fr" gender="m">
+      <first>Jacques</first>
+      <last>Morel</last>
+   </person>
+   <person id="MOUHSSIN_Ahmed" gov="no" group="Ecolo" lang="fr" gender="m">
+      <first>Ahmed</first>
+      <last>Mouhssin</last>
+   </person>
+   <person id="MOUREAUX_Catherine" gov="no" group="PS" lang="fr" gender="f">
+      <first>Catherine</first>
+      <last>Moureaux</last>
+   </person>
+   <person id="MOUZON_Anne Sylvie" gov="no" group="PS" lang="fr" gender="f">
+      <first>Anne Sylvie</first>
+      <last>Mouzon</last>
+   </person>
+   <person id="NAGY_Marie" gov="no" group="Ecolo" lang="fr" gender="f">
+      <first>Marie</first>
+      <last>Nagy</last>
+   </person>
+   <person id="OURIAGHLI_Mohamed" gov="no" group="PS" lang="fr" gender="m">
+      <first>Mohamed</first>
+      <last>Ouriaghli</last>
+   </person>
+   <person id="OZDEMIR_Mahinur" gov="no" group="cdH" lang="fr" gender="f">
+      <first>Mahinur</first>
+      <last>Ozdemir</last>
+   </person>
+   <person id="ÖZKARA_Emin" gov="no" group="PS" lang="fr" gender="m">
+      <first>Emin</first>
+      <last>Özkara</last>
+   </person>
+   <person id="P'tito_Olivia" gov="no" group="PS" lang="fr" gender="f">
+      <first>Olivia</first>
+      <last>P'tito</last>
+   </person>
+   <person id="PAYFA_Martine" gov="no" group="FDF" lang="fr" gender="f">
+      <first>Martine</first>
+      <last>Payfa</last>
+   </person>
+   <person id="PERSOONS_Caroline" gov="no" group="FDF" lang="fr" gender="f">
+      <first>Caroline</first>
+      <last>Persoons</last>
+   </person>
+   <person id="PESZTAT_Yaron" gov="no" group="Ecolo" lang="fr" gender="m">
+      <first>Yaron</first>
+      <last>Pesztat</last>
+   </person>
+   <person id="PINXTEREN_Arnaud" gov="no" group="Ecolo" lang="fr" gender="m">
+      <first>Arnaud</first>
+      <last>Pinxteren</last>
+   </person>
+   <person id="PIVIN_Philippe" gov="no" group="MR" lang="f" gender="m">
+      <first>Philippe</first>
+      <last>Pivin</last>
+   </person>
+   <person id="RIGUELLE_Joël" gov="no" group="cdH" lang="fr" gender="m">
+      <first>Joël</first>
+      <last>Riguelle</last>
+   </person>
+   <person id="ROEX_Elke" gov="no" group="sp.a" lang="nl" gender="f">
+      <first>Elke</first>
+      <last>Roex</last>
+   </person>
+   <person id="ROUSSEAUX_Jacqueline" gov="no" group="MR" lang="f" gender="f">
+      <first>Jacqueline</first>
+      <last>Rousseaux</last>
+   </person>
+   <person id="SCHEPMANS_Françoise" gov="no" group="MR" lang="f" gender="f">
+      <first>Françoise</first>
+      <last>Schepmans</last>
+   </person>
+   <person id="SIDIBE_Fatoumata" gov="no" group="FDF" lang="fr" gender="f">
+      <first>Fatoumata</first>
+      <last>Sidibe</last>
+   </person>
+   <person id="TEITELBAUM_Viviane" gov="no" group="MR" lang="f" gender="f">
+      <first>Viviane</first>
+      <last>Teitelbaum</last>
+   </person>
+   <person id="THIELEMANS_Freddy" gov="no" group="PS" lang="fr" gender="m">
+      <first>Freddy</first>
+      <last>Thielemans</last>
+   </person>
+   <person id="TOMAS_Eric" gov="no" group="PS" lang="fr" gender="m">
+      <first>Eric</first>
+      <last>Tomas</last>
+   </person>
+   <person id="TRACHTE_Barbara" gov="no" group="Ecolo" lang="fr" gender="f">
+      <first>Barbara</first>
+      <last>Trachte</last>
+   </person>
+   <person id="VAN DAMME_Jef" gov="no" group="sp.a" lang="nl" gender="m">
+      <first>Jef</first>
+      <last>Van Damme</last>
+   </person>
+   <person id="VAN DEN BRANDT_Elke" gov="no" group="Groen!" lang="nl" gender="f">
+      <first>Elke</first>
+      <last>Van Den Brandt</last>
+   </person>
+   <person id="VAN GOIDSENHOVEN_Gaëtan" gov="no" group="MR" lang="f" gender="m">
+      <first>Gaëtan</first>
+      <last>Van Goidsenhoven</last>
+   </person>
+   <person id="VAN LINTER_Greet" gov="no" group="Ind" lang="nl" gender="f">
+      <first>Greet</first>
+      <last>Van Linter</last>
+   </person>
+   <person id="VANDENBOSSCHE_Walter" gov="no" group="CD&amp;V" lang="nl" gender="m">
+      <first>Walter</first>
+      <last>Vandenbossche</last>
+   </person>
+   <person id="VANHALEWYN_Vincent" gov="no" group="Ecolo" lang="fr" gender="m">
+      <first>Vincent</first>
+      <last>Vanhalewyn</last>
+   </person>
+   <person id="VERVOORT_Rudi" gov="no" group="PS" lang="fr" gender="m">
+      <first>Rudi</first>
+      <last>Vervoort</last>
+   </person>
+  
+  <person id="GROUWELS_Brigitte" gov="yes" gender="f" lang="nl" group="CD&amp;V">
+    <first>Brigitte</first>
+    <last>Grouwels</last>
+		 <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Openbare Werken en Vervoer</ti>
+      <ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée des Travaux publics et des Transports</ti>
+      <ti l="N" meeting-type="VVGGC">lid van het Verenigd College, bevoegd voor het Beleid inzake Bijstand aan Personen en Openbaar Ambt</ti>
+      <ti l="F" meeting-type="VVGGC">membre du Collège réuni, compétente pour la Politique d'Aide aux Personnes et la Fonction publique</ti>
+  </person>
+  
+  <person id="DOULKERIDIS_Christos" gov="yes" gender="m" lang="fr" group="Ecolo">
+    <first>Christos</first>
+    <last>Doulkeridis</last>
+  </person>
+  
+  <person id="VANHENGEL_Guy" gov="yes" gender="m" lang="nl" group="Open VLD">
+    <first>Brigitte</first>
+    <last>Grouwels</last>
+  </person>
+ 
+ 
+  <person id="PICQUE_Charles" gov="yes" gender="m" lang="fr" group="PS">
+    <first>Charles</first>
+    <last>Picqué</last>
+		<ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Leefmilieu, Energie en Waterbeleid, Stadsvernieuwing, Brandbestrijding en Dringende Medische Hulp en Huisvesting</ti>
+ 
+			<ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée de l'Environnement, de l'Energie et de la Politique de l'Eau, de la Rénovation urbaine, de la Lutte contre l'Incendie et l'Aide médicale urgente et du Logement</ti>
+      <ti l="N" meeting-type="VVGGC"/>
+      <ti l="F" meeting-type="VVGGC"/>
+  </person>
+  
+  <person id="KIR_Emir" gov="yes" gender="m" lang="fr" group="PS">
+    <first>Emir</first>
+    <last>Kir</last>
+  </person>
+  
+  <person id="DE_LILLE_Bruno" gov="yes" gender="m" lang="nl" group="Groen">
+    <first>Bruno</first>
+    <last>De Lille</last>
+  </person>
+  
+  
+  <person id="CEREXHE_Benoît" gov="yes" gender="m" lang="fr" group="cdH">
+    <first>Benoît</first>
+    <last>Cerexhe</last>
+  </person>
+  
+  <person id="HUYTEBROECK_Evelyne" gov="yes" gender="f" lang="fr" group="Ecolo">
+    <first>Evelyne</first>
+    <last>Huytebroeck</last>
+		<ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Leefmilieu, Energie en Waterbeleid, Stadsvernieuwing, Brandbestrijding en Dringende Medische Hulp en Huisvesting</ti>
+ 
+			<ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée de l'Environnement, de l'Energie et de la Politique de l'Eau, de la Rénovation urbaine, de la Lutte contre l'Incendie et l'Aide médicale urgente et du Logement</ti>
+      <ti l="N" meeting-type="VVGGC"/>
+      <ti l="F" meeting-type="VVGGC"/>
+  </person>
+  
+  
+  
+  
+  
+  
+  <p code="Grouwels ">
+      <gender>F</gender>
+      <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Openbare Werken en Vervoer</ti>
+      <ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée des Travaux publics et des Transports</ti>
+      <ti l="N" meeting-type="VVGGC">lid van het Verenigd College, bevoegd voor het Beleid inzake Bijstand aan Personen en Openbaar Ambt</ti>
+      <ti l="F" meeting-type="VVGGC">membre du Collège réuni, compétente pour la Politique d'Aide aux Personnes et la Fonction publique</ti>
+      
+      <name>Brigitte Grouwels</name>
+    </p>
+    <p code="DE WOLF Vincent">
+      <gender>M</gender>
+      <name>Vincent De Wolf</name>
+      <ti l="N" meeting-type="COM-ECO">voorzitter</ti>
+      <ti l="F" meeting-type="COM-ECO">eerste ondervoorzitter</ti>
+    </p>
+    <p code="Huytebroeck ">
+      <gender>F</gender>
+      <name>Evelyne Huytebroeck</name>
+      
+			<ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Leefmilieu, Energie en Waterbeleid, Stadsvernieuwing, Brandbestrijding en Dringende Medische Hulp en Huisvesting</ti>
+ 
+			<ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée de l'Environnement, de l'Energie et de la Politique de l'Eau, de la Rénovation urbaine, de la Lutte contre l'Incendie et l'Aide médicale urgente et du Logement</ti>
+      <ti l="N" meeting-type="VVGGC"/>
+      <ti l="F" meeting-type="VVGGC"/>
+    </p>
+  </reference></all>

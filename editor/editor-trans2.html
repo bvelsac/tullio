@@ -185,7 +185,39 @@ var mmm = $.QueryString["m"];
 var langChoice = "N";
 var meetingDate = mmm.substr(0,10);
 
-var user = $.QueryString["u"];
+// var user = $.QueryString["u"];
+
+
+/* load user data */
+var user;
+var userLang;
+var checkSession = function(){
+		console.log('check');
+    $.ajax({
+        url : '/exist/tullio/xq/checksession.xql',
+        dataType : 'xml',
+        async : false,
+        success : function(data) {
+					console.log(data);
+					console.log($(data).find('success'));
+					if ($(data).find('success')[0] != null) {
+								user = data.getElementsByTagName("user")[0].getAttribute('id');
+								userLang = data.getElementsByTagName("user")[0].getAttribute('lang');
+								console.log(user + userLang);
+                return true;
+            }
+						else redirectLogin();
+        }
+    });
+		console.log('finished');
+}
+function redirectLogin(){
+    alert("Please log in");
+    window.location = '/exist/tullio/xq/login.xql';
+}
+checkSession();
+
+console.log("user: " + user);
  
 function displayStatus() {
 //	 var requestLocks = dbUrl + mmm + "/locks.xml";
@@ -491,7 +523,7 @@ $().ready(function(){
 		
 
 		$('#titles').html(titlesAsString);
-		
+		$('#username').text(user);
 		
 		
 		
@@ -503,16 +535,18 @@ $().ready(function(){
 $("#overview").text(mmm);
 
 			// initialize maakt events en text files aan, en vult de text file met procedure tekst
+			
+			/*
 			$.get("../xq/initialize.xql", {
 							"meeting": mmm
 					}, function(data) {
 						//	alert("Data Loaded: " + data);
 					});
-			
+		*/			
 		// functie initialize zorgt voor de aanmaak van de tabel aan client side, blijkbaar noodzakelijk	
 		
 		$.transform({  success:initialize, xml: "../xq/return-combined.xql?m=" + mmm + "&include=" + runTrans, xsl: "xsl/addclipref.xsl", xslParams:{translation:"1"}});
-		
+
 displayStatus();
 	 setTimeout("updateVisibleTexts(false)", 5000);
 		
@@ -533,7 +567,9 @@ displayStatus();
 				// clickmemory = this.id;
 				var locked = false;		
 				editReqId = this.id.slice(1,-2);
-				author = $("#person option:selected").text();
+				author = user;
+				
+				// author = $("#person option:selected").text();
 				var textversion = $(this).hasClass("orig") ? "orig" : "trans";
 				
 
@@ -767,12 +803,12 @@ editor.on( 'contentDom', function( evt )
   <div id="resultpane"></div>
   <div id="header">
     <div id="meeting"><span id="overview"></span>
-			<p>Je suis: <select id="person"></select></p>
+			<p id="username">Je suis: <select id="person"></select></p>
 		</div>
 	  <div id="logo"></div>
 	  <div id="navigation">
 	    <ul>
-		    <li><a href="../xq/list-collections.xql">Meetings Overview</a></li>
+		    <li><a href="/exist/tullio/home.html">Meetings Overview</a></li>
 		    <li><a href="/exist/tullio/status/status.html">Status Page</a></li>
 	    </ul>
     </div>

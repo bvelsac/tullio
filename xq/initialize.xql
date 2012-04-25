@@ -42,14 +42,20 @@ return if (string($id) = "") then
 	
 	
 	let $nice := transform:transform($completed, "../editor/xsl/initialize.xsl", ())      		
-				
+	let $first := <doc>{
+		for $e in $events//e[@c='true'] return 
+			<p c="{$e/@n}"  class="init">(clip {string($e/@n)})</p>
+			}
+			</doc>
+	
+	
 	(: select the correct document :)
 
-	let $confStored := xdb:store($coll, "text.xml", $nice)
+	let $confStored := xdb:store($coll, "text.xml", $first)
 
 	let $some := <trans n="1">{
 		for $e in $events//e[@c='true'] return 
-			<p c="{$e/@n}"  class="init">vertaling</p>
+			<p c="{$e/@n}"  class="init">(clip {string($e/@n)})</p>
 			}
 			</trans>
 	let $confStored2 := xdb:store($coll, "trans1.xml", $some)
@@ -58,7 +64,7 @@ return if (string($id) = "") then
 
 	return <html>
 		<head></head>
-		<body>{$nice, $completed}</body>
+		<body>{$first}</body>
 		</html>
  
 else 	<html>

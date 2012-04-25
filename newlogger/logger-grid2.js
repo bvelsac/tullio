@@ -372,7 +372,7 @@ Ext.onReady(function(){
             selType: 'cellmodel'
         },
         renderTo:'example-grid',
-				width: 960,
+				width: 1060,
         height: 400,
 				plugins: [cellEditing],
 				dockedItems: [{

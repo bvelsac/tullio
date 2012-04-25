@@ -365,7 +365,7 @@
           <div class="editable">
             <!-- de eerste keer bestaat er nog geen tekst, die moet dan worden aangemaakt op basis van de events -->
             <xsl:choose>
-              <xsl:when test="key('text', @n)">
+              <xsl:when test="key('text', @n)[not(@class='init')]">
                 <xsl:copy-of select="key('text', @n)"/>
               </xsl:when>
               <xsl:when test="key('clip', @n)">
@@ -608,10 +608,10 @@
           <xsl:value-of select="$event/preceding-sibling::e[pres][1]/pres/person/@gender"/>
         </xsl:when>
         <xsl:when test="$event/preceding-sibling::e[@type='PRES']">
-          <xsl:value-of select="key('people', $event/preceding-sibling::e[@type='PRES'][1]/@speaker)/person/@gender"/>
+          <xsl:value-of select="key('people', $event/preceding-sibling::e[@type='PRES'][1]/@speaker)/@gender"/>
         </xsl:when>
         <xsl:when test="/all/pres">
-          <xsl:value-of select="key('people', /all/pres/e /@speaker)/@gender"/>
+          <xsl:value-of select="key('people', /all/pres/e/@speaker)/@gender"/>
         </xsl:when>
         
         <xsl:otherwise>
@@ -680,6 +680,7 @@
           select="$person/first"/>
         <xsl:text> </xsl:text>
         <xsl:value-of select="$person/last"/>.- </span>
+      <span> </span>
     </p>
    
     <p c="{@clip}" class="write">...</p>
