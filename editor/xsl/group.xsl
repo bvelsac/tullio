@@ -26,7 +26,7 @@
   -->
   <!--<xsl:variable name="testLoad" select="document('http://localhost:8080/exist/tullio/xq/list-collections.xql')"></xsl:variable>-->
   <xsl:variable name="soundURL" select="'../soundmanager/recordings/'"/>
-  <xsl:variable name="soundURL2" select="'/exist/sound/canal3/'"/>
+  <xsl:variable name="soundURL2" select="'/exist/sound/canal4/'"/>
   <!--  http://localhost:8080/exist/sound/canal3/201203211040.mp3
 -->
   <xsl:variable name="soundExt" select="'.mp3'"/>
