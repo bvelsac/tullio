@@ -259,7 +259,7 @@
             <ul class="playlist hidden">
               <li>
 		<!-- <a href="{concat($soundURL2,$recordingStart)}" id="play-{@n}"> -->
-                <a href="{$audioRef}" id="play-{@n}">
+                <a href="{concat('/exist/sound/canal4/', $audioRef)}" id="play-{@n}">
                   <xsl:value-of select="concat('Clip ', @n)"/>
                 </a>
                 <!--                <span class="offset">00:07</span>-->
