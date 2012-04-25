@@ -8,11 +8,19 @@
   <l id="exc-N"><span class="incomplete">Verontschuldigen/Verontschuldigt zich voor hun/zijn/haar afwezigheid:</span></l>
   <l id="exc-N"><span class="incomplete">Ont / A prié d'excuser leur / son absence :</span></l>
   <l id="title-m-N">De heer </l>
+	<l id="titleSmall-m-N">de heer </l>
 	<l id="title-m-F">M. </l>
+	<l id="titleSmall-m-F">M. </l>
 	<l id="title-f-N">Mevrouw </l>
-	<l id="title-f-F">Mme. </l>
+	<l id="titleSmall-f-N">Mevrouw </l>
+	<l id="title-f-F">Mme </l>
+	<l id="titleSmall-f-F">Mme </l>
 	<l id="parole-N"> heeft het woord.</l>
 	<l id="parole-F">La parole est à </l>
+	<l id="to-N"> aan </l>
+	<l id="to-F"> à </l>
+		<l id="concerning-F"> concernant </l>
+				<l id="concerning-N"> betreffende </l>
   <person id="none" gov="no" group="" lang="nl" gender="m">
     <first>----</first>
     <last>----</last>
@@ -374,6 +382,10 @@
   <person id="GROUWELS_Brigitte" gov="yes" gender="f" lang="nl" group="CD&amp;V">
     <first>Brigitte</first>
     <last>Grouwels</last>
+		 <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Openbare Werken en Vervoer</ti>
+      <ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée des Travaux publics et des Transports</ti>
+      <ti l="N" meeting-type="VVGGC">lid van het Verenigd College, bevoegd voor het Beleid inzake Bijstand aan Personen en Openbaar Ambt</ti>
+      <ti l="F" meeting-type="VVGGC">membre du Collège réuni, compétente pour la Politique d'Aide aux Personnes et la Fonction publique</ti>
   </person>
   
   <person id="DOULKERIDIS_Christos" gov="yes" gender="m" lang="fr" group="Ecolo">
@@ -390,6 +402,11 @@
   <person id="PICQUE_Charles" gov="yes" gender="m" lang="fr" group="PS">
     <first>Charles</first>
     <last>Picqué</last>
+		<ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Leefmilieu, Energie en Waterbeleid, Stadsvernieuwing, Brandbestrijding en Dringende Medische Hulp en Huisvesting</ti>
+ 
+			<ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée de l'Environnement, de l'Energie et de la Politique de l'Eau, de la Rénovation urbaine, de la Lutte contre l'Incendie et l'Aide médicale urgente et du Logement</ti>
+      <ti l="N" meeting-type="VVGGC"></ti>
+      <ti l="F" meeting-type="VVGGC"></ti>
   </person>
   
   <person id="KIR_Emir" gov="yes" gender="m" lang="fr" group="PS">
@@ -411,6 +428,11 @@
   <person id="HUYTEBROECK_Evelyne" gov="yes" gender="f" lang="fr" group="Ecolo">
     <first>Evelyne</first>
     <last>Huytebroeck</last>
+		<ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Leefmilieu, Energie en Waterbeleid, Stadsvernieuwing, Brandbestrijding en Dringende Medische Hulp en Huisvesting</ti>
+ 
+			<ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée de l'Environnement, de l'Energie et de la Politique de l'Eau, de la Rénovation urbaine, de la Lutte contre l'Incendie et l'Aide médicale urgente et du Logement</ti>
+      <ti l="N" meeting-type="VVGGC"></ti>
+      <ti l="F" meeting-type="VVGGC"></ti>
   </person>
   
   

@@ -35,7 +35,9 @@ let $nextAlways := if ($next) then xs:decimal($next/@n) else if (string($stop)) 
 let $events := if ($startAsDec and $stopAsDec) then <events>{doc($events-doc)//e[@n < $nextAlways and @n >= $startAsDec]}</events>
 	else doc($events-doc)
 
-let $type := $events//e[string(@n)=$start]/preceding-sibling::*[contains(@type, 'VVGGC') or contains(@type, 'BHP')][1]
+let $type := doc($events-doc)//e[string(@n)=$start]/preceding-sibling::*[contains(@type, 'VVGGC') or contains(@type, 'BHP')][1]
+
+let $pres := doc($events-doc)//e[string(@n)=$start]/preceding-sibling::*[@type='PRES'][1]
 (: let $completed :=  transform:transform($events, "addclipref.xsl", ()) 
 
 :)
@@ -59,6 +61,6 @@ let $s := if ($startAsDec and $stopAsDec) then <locks>{doc($locks-doc)//s[@a='y'
 
 return
 
-<all><type>{$type}</type><meta>{$startAsDec, $stop}</meta><next>{string($nextAlways)}</next>{$events,$texts, $trans1,$s}</all>
+<all><type>{$type}</type><pres>{$pres}</pres><meta>{$startAsDec, $stop}</meta><next>{string($nextAlways)}</next>{$events,$texts, $trans1,$s}</all>
 		
 

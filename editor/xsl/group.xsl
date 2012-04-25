@@ -14,7 +14,7 @@
   <xsl:key match="container/div[@id='integratedEvents']/events/e" name="all" use="@n"/>
   <xsl:key match="//s" name="statusCodes" use="@n"/>
   <xsl:key match="//person" name="people" use="@id"/>
-  <xsl:param name="mode"/>
+  <xsl:param name="mode">yes</xsl:param>
   <xsl:param name="server" select="'no'"/>
   <!-- Chrome heeft een issue waardoor de document() functie niet werkt, dus alles moet worden toegevoegd aan het input-document
     Google Chrome currently has limited support for XSL. If your XSL refers to any external resources (document() function, xsl:import, xsl:include or external entities), the XSL will run but the result will either be empty or invalid.
@@ -468,41 +468,72 @@
   </xsl:template>
   <xsl:template match="e[@type='QA-AV'] | e[@type='QO-MV'] | e[@type='INT']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"></xsl:param>
-    <xsl:variable name="speaker" select="@speaker"/>
-    <xsl:variable name="gov" select="@props"/>
+    <xsl:variable name="person" select="key('people', @speaker)"/>
+    <xsl:variable name="gov" select="key('people', normalize-space(@props))"/>
     
-    <xsl:variable name="type-NL">
-      <xsl:choose>
-        <xsl:when test="@type='INT'">Interpellatie van </xsl:when>
-        <xsl:when test="@type='QO-MV'">
-          <xsl:text>Dringende vraag van</xsl:text>
-        </xsl:when>
-        <xsl:otherwise>Mondelinge vraag van</xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-    <xsl:variable name="type-FR">
-      <xsl:choose>
-        <xsl:when test="@type='INT'">Interpellation de </xsl:when>
-        <xsl:when test="@type='QO-MV'">
-          <xsl:text>Question orale de</xsl:text>
-        </xsl:when>
-        <xsl:otherwise>Question d'actualité de </xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-    <xsl:variable name="meeting-type">
-      <xsl:choose>
+    <xsl:choose >
+      <xsl:when test="$lang='N'">
+        <xsl:choose>
+          <xsl:when test="@type='INT'">Interpellatie van </xsl:when>
+          <xsl:when test="@type='QO-MV'">
+            <xsl:text>Mondelinge vraag van </xsl:text>
+          </xsl:when>
+          <xsl:otherwise>Dringende vraag van </xsl:otherwise>
+        </xsl:choose>  
+      </xsl:when>
+      <xsl:when test="$lang='F'">
+        <xsl:choose>
+          <xsl:when test="@type='INT'">Interpellation de </xsl:when>
+          <xsl:when test="@type='QO-MV'">
+            <xsl:text>Question orale de </xsl:text>
+          </xsl:when>
+          <xsl:otherwise>Question d'actualité de </xsl:otherwise>
+        </xsl:choose>  
+        
+      </xsl:when>
+    </xsl:choose>
+    
+    <xsl:variable name="meeting-type" select="'BHP'" />
+      <!--<xsl:choose>
         <xsl:when
           test="contains(preceding-sibling::*[contains(@type, 'VVGGC') or contains(@type, 'BHP')][1]/@type, 'BHP')"
           >BHP</xsl:when>
         <xsl:otherwise>VVGGC</xsl:otherwise>
+      </xsl:choose>-->
+    
+    <xsl:value-of
+      select="key('snippets', concat('titleSmall-', $person/@gender, '-',  $lang))"/><xsl:value-of
+        select="$person/first"/>
+    <xsl:text> </xsl:text>
+    <xsl:value-of select="$person/last"/>
+    
+    <xsl:value-of select="key('snippets', concat('to-', $lang))"/>   
+    
+    <xsl:value-of
+      select="key('snippets', concat('titleSmall-', $gov/@gender, '-',  $lang))"/><xsl:value-of
+        select="$gov/first"/>
+    <xsl:text> </xsl:text>
+    <xsl:value-of select="$gov/last"/>
+    <xsl:text>, </xsl:text>
+    <xsl:value-of select="$gov/ti[@l=$lang][@meeting-type=$meeting-type]"/>
+    <xsl:text>,</xsl:text>
+    <p c="{@clip}" title="{@n}">
+      <xsl:value-of select="key('snippets', concat('concerning-', $lang))"/>
+      <xsl:text> "</xsl:text>
+      <xsl:choose>
+        <xsl:when test="$lang='N'"><xsl:value-of select="@textn"/></xsl:when>
+        <xsl:when test="$lang='F'"><xsl:value-of select="@textf"/></xsl:when>
       </xsl:choose>
-    </xsl:variable>
-    <xsl:choose>
+      <xsl:text>".</xsl:text>
+    </p>
+    
+    
+    
+    <!--<xsl:choose>
       <xsl:when test="$lang='N'">
         <p c="{@clip}" title="{@n}">
           <xsl:value-of select="$type-NL"/>
           <xsl:choose>
-            <!--  test="$conf//p[@code=$speaker]/gender='M'" -->
             <xsl:when test="$conf//p[@code=$speaker]/gender='M'"> de heer </xsl:when>
             <xsl:otherwise>mevrouw</xsl:otherwise>
           </xsl:choose>
@@ -531,7 +562,7 @@
         <p c="{@clip}" title="{@n}">
           <xsl:value-of select="$type-FR"/>
           <xsl:choose>
-            <!--  test="$conf//p[@code=$speaker]/gender='M'" -->
+          
             <xsl:when test="true()">M. </xsl:when>
             <xsl:otherwise>Mme</xsl:otherwise>
           </xsl:choose>
@@ -556,15 +587,16 @@
           <xsl:text>".</xsl:text>
         </p>
       </xsl:otherwise>
-    </xsl:choose>
+    </xsl:choose>-->
     <p  c="{@clip}" title="{@n}"  class="write">...</p>
   </xsl:template>
   <xsl:template name="president">
-    <xsl:param name="lang" select="$event/@lang"></xsl:param>
+   
     <xsl:param name="class" select="'pres'"/>
     <xsl:param name="segment"/>
     <xsl:param name="event"/>
-    <xsl:text>debug</xsl:text><xsl:value-of select="$lang"/>
+    <xsl:param name="lang" select="$event/@lang"></xsl:param>
+    <!--<xsl:text>debug</xsl:text><xsl:value-of select="$lang"/>-->
    
     <!--<xsl:comment>
       <xsl:value-of
@@ -575,11 +607,19 @@
         <xsl:when test="$event/preceding-sibling::e[pres]">
           <xsl:value-of select="$event/preceding-sibling::e[pres][1]/pres/person/@gender"/>
         </xsl:when>
+        <xsl:when test="$event/preceding-sibling::e[@type='PRES']">
+          <xsl:value-of select="key('people', $event/preceding-sibling::e[@type='PRES'][1]/@speaker)/person/@gender"/>
+        </xsl:when>
+        <xsl:when test="/all/pres">
+          <xsl:value-of select="key('people', /all/pres/e /@speaker)/@gender"/>
+        </xsl:when>
+        
         <xsl:otherwise>
           <xsl:value-of select="/container/info/pres/person/@gender"/>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
+     
     <span class="{$class} reformat" title="{$event/@n}">
       <xsl:if test="string($segment)">
         <xsl:attribute name="segment">
