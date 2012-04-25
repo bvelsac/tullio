@@ -95,10 +95,8 @@ let $output :=
 	</resultSet>
 </response>
 
-(: 
-transform:transform($output, "../xsl/assemblage.xsl", <parameters><param name="numbering" value="{$numbering}"/><param name="type" value="{$type}"/></parameters>)
-:)
 
 
-return $output 
+return transform:transform($output, "../xsl/assemblage.xsl", <parameters><param name="numbering" value="{$numbering}"/><param name="type" value="{$type}"/></parameters>)
+ 
 
