@@ -32,7 +32,7 @@ let $nextAlways := if ($next) then xs:decimal($next/@n) else if (string($stop)) 
 (: let $corrStop :=  if doc($events-doc)//e[@n = $stop][@c='y']/following-sibling::e[@c='y'] then  :)
 
 
-let $events := if ($startAsDec and $stopAsDec) then <events>{doc($events-doc)//e[@n < $nextAlways and @n >= $startAsDec]}</events>
+let $events := if ($startAsDec and $stopAsDec) then <events>{doc($events-doc)//e[@n < $nextAlways and @n >= $startAsDec], doc($events-doc)//meeting}</events>
 	else doc($events-doc)
 
 let $type := doc($events-doc)//e[string(@n)=$start]/preceding-sibling::*[contains(@type, 'VVGGC') or contains(@type, 'BHP')][1]
