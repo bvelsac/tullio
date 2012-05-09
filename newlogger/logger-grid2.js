@@ -12,7 +12,7 @@ GNU General Public License Usage
 This file may be used under the terms of the GNU General Public License version 3.0 as published by the Free Software Foundation and appearing in the file LICENSE included in the packaging of this file.  Please review the following information to ensure the GNU General Public License version 3.0 requirements will be met: http://www.gnu.org/copyleft/gpl.html.
 
 */
-// 900 voor logger 400 voor agenda
+// pixelbreedte 900 voor logger 400 voor agenda
 
 function toHumanTime(x) {
 	milliSecs = x;
@@ -149,19 +149,46 @@ Ext.onReady(function(){
 			var moreRecent = "";
 			var record;
 			var langMem;
+			var rowType = 'odd';
+			
+			// addRowCls( HTMLElement/String/Number/Ext.data.Model rowInfo, String cls )
+			// removeRowCls
 			// set language for all events
 			// console.log(store.getAt(size-1).data.lang);
 			if (store.getAt(size-1).data.lang == "" || store.getAt(size-1).data.lang == undefined) {
 				alert("Set language for first record"); return "stop";
 			}
 			
+			if (store.getAt(size-1).data.c == "" || store.getAt(size-1).data.c == undefined) {
+				alert("First record is not a clip"); return "stop";
+			}
+			/*
+			.x-grid-row td {
+    background: white !important;
+    	.x-grid-row.odd td
+    	
+    .x-grid-row-alt .x-grid-cell, .x-grid-row-alt .x-grid-rowwrap-div {
+    background-color: #FAFAFA;
+}
+}
+*/
+				// loop through the records, starting with oldest record
 			for (i=size-1; i >= 0; i--) {
 				record = store.getAt(i);
+				if ( record.data.c ) {
+					rowType = (rowType=='odd') ? 'even' : 'odd' ; 
+				}
+				grid.getView().removeRowCls( record, 'odd' )
+				grid.getView().removeRowCls( record, 'even' )
+				grid.getView().addRowCls( record, rowType )
 				
 				if (record.data.lang == "" || record.data.lang == undefined) {
 					record.set('lang', langMem);
 				}
 				else {langMem = record.data.lang;}
+				
+				
+				
 			}
 			
 			// loop through the records, starting with most recent record
@@ -476,7 +503,7 @@ Ext.onReady(function(){
 												 textN: $(this).siblings().andSelf().filter(".subjectN").text(),
 												 textF: $(this).siblings().andSelf().filter(".subjectF").text(),
 												 notes: $(this).siblings().andSelf().filter(".short").text(),
-												 clip:'true'
+												 c:'true'
 					}
 					var timestamp = new Date();
 					timestamp.setTime(timestamp.getTime() + offset);
@@ -501,7 +528,7 @@ Ext.onReady(function(){
 		var mapF11 = new Ext.util.KeyMap(Ext.getDoc(), {
 				// F11 voegt een nieuwe regel toe, is geen clip
 				key: 122,
-				fn: function() {
+				fn: function(key, e) {
 					var timestamp = new Date();
 					timestamp.setTime(timestamp.getTime() + offset);
 					timestamp = Ext.Date.format(timestamp, 'H:i:s');
@@ -514,6 +541,8 @@ Ext.onReady(function(){
 						row: 0,
 						column: 5
 					});
+					// prevent event propagation
+					e.stopPropagation();
 															
 					return true;
 				}
@@ -648,7 +677,7 @@ Ext.onReady(function(){
 					event.set('type', 'new');
 					event.set('speaker', conf);
 					event.set('lang', langMap[conf]);
-					event.set('c', 'true');
+					event.set('c', 'false');
 					event.setDirty();
 					store.insert(0, event);
 					cellEditing.startEditByPosition({
@@ -667,6 +696,7 @@ Ext.onReady(function(){
 					var event = new Event();
 					
 					cellEditing.cancelEdit();
+
 					event.set('time', timestamp);
 					event.set('type', 'new');
 					event.set('speaker', conf);

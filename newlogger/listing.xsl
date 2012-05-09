@@ -19,11 +19,24 @@
       <xsl:apply-templates></xsl:apply-templates>
     </tr>
     
-    <xsl:if test="string(col_type)='QO-MV' or string(col_type)='INT'">
+    <xsl:if test="string(col_type)='QO-MV' or string(col_type)='INT' or string(col_type)='QA-DV'">
       
       <tr class="agenda">
         <td class="ref"></td>
         <td class="type">ORA-SPR</td>
+        <td class="lang"><xsl:value-of select="col_lang"/></td>
+        <td class="subjectN"></td>
+        <td class="subjectF"></td>
+        <td class="short"></td>
+        <td class="speaker"><xsl:value-of select="col_speaker"/></td>
+        <td class="gov"></td>
+      </tr>
+    </xsl:if>
+    
+    <xsl:if test="string(col_type)='QO-MV JOINTE' or string(col_type)='QA-DV JOINTE'">
+      <tr class="agenda">
+        <td class="ref"></td>
+        <td class="type">ORA-SPR QJ</td>
         <td class="lang"><xsl:value-of select="col_lang"/></td>
         <td class="subjectN"></td>
         <td class="subjectF"></td>

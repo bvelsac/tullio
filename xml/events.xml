@@ -35,6 +35,15 @@
     <name lang="fr">Question d'actualité</name>
     <description lang="nl">Titel voor dringende vraag.</description>
   </event>
+
+ <event id="QA-DV JOINTE"  order="01questions-avj" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Toeg. dr. vraag</name>
+    <name lang="fr">Quest. act. jointe</name>
+    <description lang="nl">Titel voor toegevoegde dringende vraag</description>
+    <description lang="fr">Titel voor toegevoegde dringende vraag</description>
+  </event>
+	
+
   <event id="QO-MV"  order="01questions-mv" active="y" use-for-editor="y" use-for-agenda="y">
     <name lang="nl">Mondelinge Vraag</name>
     <name lang="fr">Question orale</name>
@@ -108,6 +117,14 @@
     <description lang="nl"></description>
   </event>
 	
+<event id="ORA-SPR QAJ"  order="00speakers99" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Nieuwe spreker toeg. DV</name>
+    <name lang="fr">Nouvel orateur QA jointe</name>
+    <description lang="nl"></description>
+  </event>
+	
+	
+
 	
   
   

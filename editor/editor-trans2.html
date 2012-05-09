@@ -46,7 +46,6 @@ function jq(myid) {
 	var noUpdate = false;
 	var updateCounter = 0;
 	var scrollState = 0;
-	var lastVisible = -1;
 	var start = "";
 	var stop = "";
 	var visibleRows = [];
@@ -55,18 +54,49 @@ function jq(myid) {
 	var ids = "";
 	var edited = "";
 	var editor;	
-	var popupStatus = 0;
-	var pause = 0;
 	var rowId;
-	var asString = "";
 	var bottom;
 	
 	var titles = null;
 	var titlesDoc;
 	
-	var xval = "bert";
-	
+
 	var runTrans = $.QueryString["t"];
+	
+	//****** check session ********
+	
+	var user;
+var userLang;
+var checkSession = function(){
+		console.log('check');
+    $.ajax({
+        url : '/exist/tullio/xq/checksession.xql',
+        dataType : 'xml',
+        async : false,
+        success : function(data) {
+					console.log(data);
+					console.log($(data).find('success'));
+					if ($(data).find('success')[0] != null) {
+								user = data.getElementsByTagName("user")[0].getAttribute('id');
+								userLang = data.getElementsByTagName("user")[0].getAttribute('lang');
+								console.log(user + userLang);
+                return true;
+            }
+						else redirectLogin();
+        }
+    });
+		console.log('finished');
+}
+function redirectLogin(){
+    alert("Please log in");
+    window.location = '/exist/tullio/xq/login.xql';
+}
+checkSession();
+	
+	
+	
+	
+	var langChoice = userLang;
 	
 	//************** CONFIGURATION *******
 	
@@ -120,7 +150,7 @@ function jq(myid) {
 				dataType: "xml" 
 	 });
 	
-	var requestConfig = "/exist/tullio/xq/return-eventTypes.xql?target=editor";
+	requestConfig = "/exist/tullio/xq/return-eventTypes.xql?target=editor";
 	
 	function setEventTypes(response) {
 		var nlList = [];
@@ -148,7 +178,7 @@ function jq(myid) {
 				dataType: "xml" 
 	 });
 	
-	var requestConfig = "/exist/tullio/xml/statusCodes.xml";
+	requestConfig = "/exist/tullio/xml/statusCodes.xml";
 	
 		function setStatusCodes(response) {
 		var nlList = [];
@@ -182,10 +212,9 @@ function jq(myid) {
 	/* Utility function : get query parameters */
 	
 var mmm = $.QueryString["m"];
-var langChoice = "N";
-var meetingDate = mmm.substr(0,10);
+        var meetingDate = mmm.substr(0,10);
 
-// var user = $.QueryString["u"];
+        // var user = $.QueryString["u"];
 
 
 /* load user data */
@@ -232,7 +261,7 @@ function displayStatus() {
 		 var items = result.getElementsByTagName("lock");
      var nI = items.length;
 		 console.log("l" + nI);
-		 for (i=0; i<nI; i++) {
+		 for (var i=0; i<nI; i++) {
 			 if (items[i].getAttribute('n')) {
 				 statusTD = "status-" + items[i].getAttribute('n') + "-" + items[i].getAttribute('v');
 				 //console.log(statusTD);
@@ -254,8 +283,10 @@ function displayStatus() {
 			if (items[i].getAttribute('n')) {
 				var col ='';
 				statusTD = "status-" + items[i].getAttribute('n') + "-" + items[i].getAttribute('v');
-				if (items[i].getAttribute('v')=="trans") {col = 'T'};
-				cell = $(jq(statusTD));
+                if (items[i].getAttribute('v') == "trans") {
+                    col = 'T'
+                }
+                cell = $(jq(statusTD));
 				var lang = $('#status-' + items[i].getAttribute('n') + '-' + items[i].getAttribute('v') + '-lang').text();
 				$('#status-' + items[i].getAttribute('n') + '-' + items[i].getAttribute('v') + '-code').text(items[i].getAttribute('val') + col);
 				cell.addClass('status-' + items[i].getAttribute('val') + col);
@@ -307,7 +338,7 @@ function secondstep(xml, xsl, xmlorig) {
 	var rows = $("#hidden > tr");
 	console.log("*****");
 	console.log("rows: " + rows);
-	console.log("rows-lenght: " + rows.length);
+	console.log("rows-length: " + rows.length);
 	console.log("edited: " + edited);
 	console.log("ids: " + ids);
 
@@ -318,7 +349,7 @@ function secondstep(xml, xsl, xmlorig) {
 	
 	
 	
-for (i=0; i<rows.length; i++) {
+for (var i=0; i<rows.length; i++) {
 	//alert(rows[i]);
 	console.log("0replace: " + origrowIds[i] + ":" + visibleRows[i] + ":" +edited);
 	// do not replace the currently edited row
@@ -371,11 +402,7 @@ function isVisible(id) {
 	var currBottom = $("#" + id).offset().top + $("#" + id).height();
 
 
-	if ( currTop > cutoffTop || currBottom  > cutoffTop || (currTop < cutoffTop && currBottom  > cutoffBottom) ) {
-		return true;
-		
-	}
-	else return false;
+	return currTop > cutoffTop || currBottom > cutoffTop || (currTop < cutoffTop && currBottom > cutoffBottom);
 	
 }
 
@@ -429,9 +456,8 @@ function updateVisibleTexts(once) {
 			stop = $('#text-table > tbody > tr:last').attr("id");
 			bottom = "&bottom=yes";
 			console.log("using last row id: " + stop);
-		};
-	
-	updateCounter++;
+        }
+        updateCounter++;
 	console.log("start: " + start + " stop: " + stop);
 //	console.log(visibleRows);
 	ids = "#" + visibleRows.toString().replace(/,/g, ',#');
@@ -853,3 +879,4 @@ editor.on( 'contentDom', function( evt )
 </script>
 
 </body>
+</html>
