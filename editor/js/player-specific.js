@@ -39,10 +39,11 @@ function setTheme(sTheme) {
   return false;
 }
 
-function playFromOffset(id, position) {
+function playFromOffset(id, position, tries) {
+					var repeats = (tries) ? tries : 0; 
 					console.log("offset " + offset);
 					var s = soundManager.getSoundById(id);
-					var tries = 0;
+					
 					
 					console.log(s.readyState);
 					if (s.readyState == 3) {
@@ -54,10 +55,10 @@ function playFromOffset(id, position) {
 						s.setPosition(offset);
 					}
 					else {
+						repeats++;
 						$('#alerts').addClass('alert');
-						if (tries < 10) {
-							setTimeout("playFromOffset('" + id + "'," + offset + ")", 500);
-							tries++;
+						if (repeats <= 5) {
+							setTimeout("playFromOffset('" + id + "'," + offset + "," + repeats + ")", 1000);
 						}
 					}
 				}
