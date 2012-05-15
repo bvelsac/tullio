@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  
+  <xsl:template match="e" mode="initialize-text">
+    <p c="{@clip}" title="{@n}" >Unsupported event: <xsl:value-of select="@type"/></p>
+  </xsl:template>
+  
   <xsl:template match="e[@type='PRES']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"/>
     <xsl:variable name="person" select="key('people', @speaker)"></xsl:variable>
@@ -247,18 +252,15 @@
     <p c="{@clip}" class="incomplete"/>
     <p c="{@clip}" class="write"> </p>
   </xsl:template>
-  <xsl:template match="e[@type='']" mode="initialize-text">
+<!--  <xsl:template match="e[@type='']" mode="initialize-text">
     <p c="{@clip}" class="debug" title="{@n}">Event type missing</p>
-  </xsl:template>
+  </xsl:template>-->
   <xsl:template match="e[@type='marker']" mode="initialize-text">
     <p c="{@clip}" class="marker" title="{@n}">Start clip <xsl:value-of select="@n"/>
     </p>
     <p c="{@clip}" class="write">...</p>
   </xsl:template>
-  <xsl:template match="e" mode="initialize-text">
-    <p c="{@clip}" title="{@n}" class="placeholder">Unsupported event: <xsl:value-of select="@type"/></p>
 
-  </xsl:template>
   
   
   <!-- Code for formatted events overview table -->
