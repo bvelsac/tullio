@@ -46,7 +46,7 @@ let $style := <!DOCTYPE stylesheet [
 let $doc := "/locks.xml"
 let $locks-doc := concat("/db/tullio/", $meeting, $doc)
 let $point := doc($locks-doc)/locks
-let $result := if (doc($locks-doc)//lock[@n=$clip][@v=$version]) then <p>taken</p> else (update insert $lock into $point, <p>success</p>)
+let $result := if (doc($locks-doc)//lock[@n=$clip][@v=$version][not(@id=$person)]) then <p>taken</p> else (update insert $lock into $point, <p>success</p>)
 
 
 

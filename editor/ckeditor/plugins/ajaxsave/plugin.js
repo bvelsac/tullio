@@ -10,6 +10,7 @@ function asfinish(xml2, xsl, object, e) {
 	clipid = edited.slice(1,-2);
 	console.log('AJAX SAVE');
 	console.log(asString);
+	console.log(xml2);
 	console.log(author);
 	console.log(cat);
 	console.log(clipid);
@@ -72,7 +73,7 @@ function asfinalize(xml, xsl, object, e) {
 			el: "#hidden",
 			async:false, 
 			xmlobj:xml, 
-			xsl: pathToXSL +  "group.xsl",
+			xsl: pathToXSL +  "processEditorContent.xsl",
 			error: function(html,xsl,xml,object,e) {console.log('transformation failed, ' + e);},
 			success:asfinish
 	});
@@ -109,7 +110,7 @@ CKEDITOR.plugins.add('ajaxsave',
 									clipid = edited.slice(1,-2);
 									stop = $(jq("stopevent-" + clipid)).text();
 									cat = $(jq(edited)).hasClass("orig") ? "orig" : "trans";
-									console.log("doc " + asString + "\ncat: " + cat + "\nstart: " + clipid + "\nstop: " + stop  + "\nmeeting: " + mmm  + "\nid: " + author);
+									//console.log("doc " + asString + "\ncat: " + cat + "\nstart: " + clipid + "\nstop: " + stop  + "\nmeeting: " + mmm  + "\nid: " + author);
 
 
 // refresh content first .replace(/[&][#]160[;]/gi," ")

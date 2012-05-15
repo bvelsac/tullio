@@ -252,7 +252,7 @@ function displayStatus() {
 //	 var requestLocks = dbUrl + mmm + "/locks.xml";
 	var requestLocks = "/exist/tullio/xq/return-locks.xql?m=" + mmm; 
 	 function updateLocks(result) {
-		 console.log('update clipstatus');
+		 //console.log('update clipstatus');
 		 var statusTD;
 		 var cell;
 		 $("td.status").removeClass('locked');
@@ -260,7 +260,7 @@ function displayStatus() {
 
 		 var items = result.getElementsByTagName("lock");
      var nI = items.length;
-		 console.log("l" + nI);
+		 //console.log("l" + nI);
 		 for (var i=0; i<nI; i++) {
 			 if (items[i].getAttribute('n')) {
 				 statusTD = "status-" + items[i].getAttribute('n') + "-" + items[i].getAttribute('v');
@@ -616,7 +616,7 @@ displayStatus();
 
 				request.done(function(msg) {
 						msgString =  (new XMLSerializer()).serializeToString(msg);
-						console.log( msgString);
+						//console.log( msgString);
 						if (msgString.indexOf('success')=='-1') {
 							locked = true;
 						}

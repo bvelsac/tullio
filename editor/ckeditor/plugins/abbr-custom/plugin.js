@@ -60,7 +60,7 @@ function finalize(xml, xsl, object, e) {
 			el: "#hidden",
 			async:false, 
 			xmlobj:xml, 
-			xsl: pathToXSL +  "group.xsl",
+			xsl: pathToXSL +  "processEditorContent.xsl",
 			error: function(html,xsl,xml,object,e) {console.log('transformation failed, ' + e);},
 			success:finish
 	});

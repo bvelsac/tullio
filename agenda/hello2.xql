@@ -10,7 +10,7 @@ let $test := <xml>{$nodes}</xml>
 
 (: create the new collection for this meeting :)
 
-let $collection := concat("/db/tullio/", string($test/data/meeting))
+let $collection := concat("/db/tullio/", string($test/data/info/meeting))
 
 
 let $check := if ( not( xmldb:collection-exists($collection) ) )

@@ -2,12 +2,20 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   
   <xsl:template match="/">
+	<html >
+	
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Agenda <xsl:value-of select="/xml/data/info/meeting"/></title>
+	</head>
+	<body>
+	<h2>Agenda <xsl:value-of select="/xml/data/info/meeting"/></h2>
     <table class="agenda" border="1">
       
       <xsl:apply-templates  select="//row"></xsl:apply-templates>
     </table>
-    
-    
+    </body>
+    </html>
     
     
     
@@ -46,18 +54,7 @@
       </tr>
     </xsl:if>
     
-    <xsl:if test="string(col_type)='QO-MV JOINTE'">
-      <tr class="agenda">
-        <td class="ref"></td>
-        <td class="type">ORA-SPR QJ</td>
-        <td class="lang"><xsl:value-of select="col_lang"/></td>
-        <td class="subjectN"></td>
-        <td class="subjectF"></td>
-        <td class="short"></td>
-        <td class="speaker"><xsl:value-of select="col_speaker"/></td>
-        <td class="gov"></td>
-      </tr>
-    </xsl:if>
+    
     
     <xsl:if test="string(col_type)='INT JOINTE'">
       <tr class="agenda">

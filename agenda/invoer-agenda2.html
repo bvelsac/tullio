@@ -133,7 +133,7 @@ var types = ['---', 'OUV-OPE', 'EXC-AFW', 'COMM-MED', 'GEN-ALG', 'P.E.CONS-INOVE
 Types voor commissievergaderingen
 
 */
-var types = ['---', 'OUV-OPE', 'PRES', 'START MV', 'START INT', 'QO-MV', 'QO-MV JOINTE',  'QA-DV', 'QA-DV JOINTE', 'INT', 'INT JOINTE', 'FIN-EINDE'];		
+var types = ['---', 'OUV-OPE', 'PRES', 'START-MV', 'START-INT', 'QO-MV', 'QO-MV JOINTE',  'QA-DV', 'QA-DV JOINTE', 'INT', 'INT JOINTE', 'FIN-EINDE'];		
 
 
 
@@ -155,7 +155,7 @@ var types = ['---', 'OUV-OPE', 'PRES', 'START MV', 'START INT', 'QO-MV', 'QO-MV 
 				
 				
 				YAHOO.widget.DataTable.Formatter['my_chk_mod'] = function(elCell, oRecord, oColumn, oData) {
-					var gov = ['PICQUE_Charles', 'DOULKERIDIS_Christos', 'GROUWELS_Brigitte', 'DE_LILLE_Bruno', 'HUYTEBROECK_Evelyne', 'CEREXHE_Benoît', 'VANHENGEL_Guy'];
+					var gov = ['PICQUE_Charles', 'KIR_Emir', 'DOULKERIDIS_Christos', 'GROUWELS_Brigitte', 'DE_LILLE_Bruno', 'HUYTEBROECK_Evelyne', 'CEREXHE_Benoît', 'VANHENGEL_Guy'];
 					var inner = '';
 					for (var i=0;i<gov.length;i++) {
 						inner += gov[i] + ": <input type='checkbox' value='" + gov[i] + "'  />";
@@ -214,7 +214,11 @@ var types = ['---', 'OUV-OPE', 'PRES', 'START MV', 'START INT', 'QO-MV', 'QO-MV 
         aCols = myDataTable.getColumnSet().keys;
 
 result = "<data>";
-result += "<meeting>" + $("#datepicker").val() + "-" + $("#time option:selected").val() + "_" + $("#meeting-type option:selected").val() + "_" + $("#addText").val() + "</meeting>" + "<mt>" + $("#meeting-type option:selected").val() + "</mt>";
+
+
+
+
+result += "<info><meeting>" + $("#datepicker").val() + "-" + $("#time option:selected").val() + "_" + $("#meeting-type option:selected").val() + "_" + $("#addText").val() + "</meeting>" + "<name>" + $("#meeting-type option:selected").val() + "</name>" + "<date>" + $("#datepicker").val() + "</date></info>";
 		 
     for (i=0; i<aRecs.length; i++) {
         oData = aRecs[i].getData();

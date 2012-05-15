@@ -8,6 +8,7 @@ import module namespace util="http://exist-db.org/xquery/util";
 
 let $meeting-id := request:get-parameter("m", ())
 let $events-doc := concat("/db/tullio/", $meeting-id, "/events.xml")
+let $agenda-doc := concat("/db/tullio/", $meeting-id, "/agenda.xml")
 let $text-doc := concat("/db/tullio/", $meeting-id, "/text.xml")
 let $trans1-doc := concat("/db/tullio/", $meeting-id, "/trans1.xml")
 let $start :=   request:get-parameter("start", ()) 
@@ -27,7 +28,7 @@ let $stopAsDec := if (string($toFinish)) then xs:decimal(doc($events-doc)//e[pos
 let $stopRow := doc($events-doc)//e[@n = $stopAsDec]
 let $next := $stopRow/following-sibling::*[@c='true'][1]
 
-let $nextAlways := if ($next) then xs:decimal($next/@n) else if (string($stop)) then xs:decimal($stopAsDec + 1) else xs:decimal(doc($events-doc)//e[position()=last()]/@n +1)
+let $nextAlways := if ($next) then xs:decimal($next/@n) else if (string($stop)) then xs:decimal($stopAsDec + 2) else xs:decimal(doc($events-doc)//e[position()=last()]/@n +2)
 
 (: let $corrStop :=  if doc($events-doc)//e[@n = $stop][@c='y']/following-sibling::e[@c='y'] then  :)
 
@@ -35,9 +36,11 @@ let $nextAlways := if ($next) then xs:decimal($next/@n) else if (string($stop)) 
 let $events := if ($startAsDec and $stopAsDec) then <events>{doc($events-doc)//e[@n < $nextAlways and @n >= $startAsDec], doc($events-doc)//meeting}</events>
 	else doc($events-doc)
 
-let $type := doc($events-doc)//e[string(@n)=$start]/preceding-sibling::*[contains(@type, 'VVGGC') or contains(@type, 'BHP')][1]
+let $type := if (doc($agenda-doc)/xml/type = 'PLEN') then doc($events-doc)//e[string(@n)=$start]/preceding-sibling::*[@type='O-BXL' or @type='O-ARVV' or @type='HERV-ARVV' or @type='HERV-BXL'][1] else doc($agenda-doc)/xml/type
 
-let $pres := doc($events-doc)//e[string(@n)=$start]/preceding-sibling::*[@type='PRES'][1]
+let $info := doc($agenda-doc)/xml/info
+
+let $pres := doc($events-doc)//e[string(@n)=$start]/preceding-sibling::*[@type='PRES' or @type='PRES-CH'][1]
 (: let $completed :=  transform:transform($events, "addclipref.xsl", ()) 
 
 :)
@@ -61,6 +64,7 @@ let $s := if ($startAsDec and $stopAsDec) then <locks>{doc($locks-doc)//s[@a='y'
 
 return
 
-<all><type>{$type}</type><pres>{$pres}</pres><meta>{$startAsDec, $stop}</meta><next>{string($nextAlways)}</next>{$events,$texts, $trans1,$s}</all>
-		
+<all>{$info, <variables><type>{$type}</type><pres>{$pres}</pres><next>{string($nextAlways)}</next></variables>, <meta>{$startAsDec, $stop}</meta>,
+$events,$texts, $trans1,$s}
+</all>
 

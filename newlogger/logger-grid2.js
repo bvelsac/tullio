@@ -107,6 +107,33 @@ Ext.onReady(function(){
 		// load agenda
 		$('#agendaplaceholder').load('/exist/tullio/newlogger/hello3.xql?m=' + m, function() {});
 		
+		// code for meeting room selection
+		
+		var channels = {1: 'S 201', 2: 'S 206', 3: 'Hemicycle / halfrond'};
+		
+		var audioMap = {'Hemicycle / halfrond':'canal1', 'S 201':'canal3', 'S 206':'canal4'};
+		
+		
+		$('#channel').editable({
+                    type:'select',
+                    options: channels,
+                    submit:'save',
+                    cancel:'cancel',
+                    editClass:'resultItem',
+                    onSubmit: function(content) {
+											console.log(this);
+											console.log(content);
+											$.ajax({url: "/exist/tullio/xq/setChannel.xql",
+													data: { m: m, channel: audioMap[content.current] }
+											}).done(function( msg ) {
+												
+											});
+										}
+                   });
+		
+		
+		
+		
 		// reverse labels and values for eventTypes
 		var eventTypesDict = [];
 		var eventTypesLookup = {};
@@ -297,7 +324,7 @@ Ext.onReady(function(){
                 root: 'events',
 								record: 'e',
                 idProperty: 'id'
-            } 
+            }
         },
 				listeners: {
 					beforesync: setCommitStatus

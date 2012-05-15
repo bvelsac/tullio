@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Logger</title>
     <link rel="stylesheet" type="text/css" href="/exist/tullio/js-lib/ext/resources/css/ext-all.css" />
-    <link rel="stylesheet" type="text/css" href="/exist/tullio/js-lib/ext/examples/shared/example.css" />
+    <!--link rel="stylesheet" type="text/css" href="/exist/tullio/js-lib/ext/examples/shared/example.css" /-->
 		<link rel="stylesheet" type="text/css" href="/exist/tullio/js-lib/ext/examples/ux/css/CheckHeader.css" />
 		
 		<link rel="stylesheet" href="/exist/tullio/newlogger/css/smoothness/jquery-ui-1.8.5.custom.css" type="text/css" media="screen" charset="utf-8" />
@@ -11,15 +11,17 @@
 		<link rel="stylesheet" type="text/css" href="/exist/tullio/newlogger/css/grid.css" />
 		<link rel="stylesheet" type="text/css" href="/exist/tullio/newlogger/css/additional.css" />
     <script language="javascript" src="/exist/tullio/js-lib/jquerytransform/js/jquery-1.6.4.js"></script>
-			<script src="/exist/tullio/js-lib/jquery-ui-1.8.5.custom.min.js"></script>
+		<script src="/exist/tullio/js-lib/jquery-ui-1.8.5.custom.min.js"></script>
+		<script src="/exist/tullio/js-lib/jquery.editable-1.3.3.js"></script>
 		
-			<script type="text/javascript" src="/exist/tullio/js-lib/ext/ext-all-debug.js"></script>
+		<script type="text/javascript" src="/exist/tullio/js-lib/ext/ext-all-debug.js"></script>
 	 	
-			<script type="text/javascript" src="/exist/tullio/js-lib/xdate.js"></script>
+		<script type="text/javascript" src="/exist/tullio/js-lib/xdate.js"></script>
+		
 		<script language="javascript">var target = 'agenda';</script>    
 		<script language="javascript" src="/exist/tullio/js-shared/common.js"></script>
 		<!-- page specific --> 
-<script type="text/javascript" src="buttonconfig.js"></script>
+		<script type="text/javascript" src="buttonconfig.js"></script>
     <script type="text/javascript" src="logger-grid2.js"></script>
     <script type="text/javascript">
 
@@ -29,9 +31,8 @@
 </head>
 <body>
 <div class='container_18'>
-<div class='grid_3'>
-    <h1>Meeting Logger</h1>
-</div>
+<div class='grid_3'><h3>Meeting Logger</h3></div>
+<div class='grid_6'><span>Salle / zaal: </span><span id="channel">???</span></div>
 <div class='push_15'>
     <h3><a href="/exist/tullio/home.html">Home</a></h3>
 </div>

@@ -61,7 +61,7 @@ lang:'F'
 
 c:'true',
 lang:'N',
-type:"new"
+type:"NEW"
 },
 "new FR":
 {
@@ -69,7 +69,7 @@ type:"new"
 
 c:'true',
 lang:'F',
-type:"new"
+type:"NEW"
 },
 "pres":
 {
@@ -114,7 +114,7 @@ type:"GEN-ALG"
 
 c:'true',
 lang:'N',
-type:'new',
+type:'NEW',
 speaker:'HUYTEBROECK_Evelyne'
 },
 "cerexNL":
@@ -123,7 +123,7 @@ speaker:'HUYTEBROECK_Evelyne'
 
 c:'true',
 lang:'N',
-type:'new',
+type:'NEW',
 speaker:'CEREXHE_Benoît'
 },
 "grouwNL":
@@ -132,7 +132,7 @@ speaker:'CEREXHE_Benoît'
 
 c:'true',
 lang:'N',
-type:'new',
+type:'NEW',
 speaker:'GROUWELS_Brigitte'
 },
 "vraesNL":
@@ -141,7 +141,7 @@ speaker:'GROUWELS_Brigitte'
 
 c:'true',
 lang:'N',
-type:'new',
+type:'NEW',
 speaker:'VANHENGEL_Guy'
 },
 "kirNL":
@@ -150,7 +150,7 @@ speaker:'VANHENGEL_Guy'
 
 c:'true',
 lang:'N',
-type:'new',
+type:'NEW',
 speaker:'KIR_Emir'
 },
 "lilleNL":
@@ -159,7 +159,7 @@ speaker:'KIR_Emir'
 
 c:'true',
 lang:'N',
-type:'new',
+type:'NEW',
 speaker:'DE_LILLE_Bruno'
 },
 "doulkNL":
@@ -168,7 +168,7 @@ speaker:'DE_LILLE_Bruno'
 
 c:'true',
 lang:'N',
-type:'new',
+type:'NEW',
 speaker:'DOULKERIDIS_Christos'
 },
 "picqueNL":
@@ -177,7 +177,7 @@ speaker:'DOULKERIDIS_Christos'
 
 c:'true',
 lang:'N',
-type:'new',
+type:'NEW',
 speaker:'PICQUE_Charles'
 },
 "huytFR":
@@ -186,7 +186,7 @@ speaker:'PICQUE_Charles'
 
 c:'true',
 lang:'F',
-type:'new',
+type:'NEW',
 speaker:'HUYTEBROECK_Evelyne'
 },
 "cerexFR":
@@ -195,7 +195,7 @@ speaker:'HUYTEBROECK_Evelyne'
 
 c:'true',
 lang:'F',
-type:'new',
+type:'NEW',
 speaker:'CEREXHE_Benoît'
 },
 "grouwFR":
@@ -204,7 +204,7 @@ speaker:'CEREXHE_Benoît'
 
 c:'true',
 lang:'F',
-type:'new',
+type:'NEW',
 speaker:'GROUWELS_Brigitte'
 },
 "vraesFR":
@@ -213,7 +213,7 @@ speaker:'GROUWELS_Brigitte'
 
 c:'true',
 lang:'F',
-type:'new',
+type:'NEW',
 speaker:'VANHENGEL_Guy'
 },
 "kirFR":
@@ -222,7 +222,7 @@ speaker:'VANHENGEL_Guy'
 
 c:'true',
 lang:'F',
-type:'new',
+type:'NEW',
 speaker:'KIR_Emir'
 },
 "lilleFR":
@@ -231,7 +231,7 @@ speaker:'KIR_Emir'
 
 c:'true',
 lang:'F',
-type:'new',
+type:'NEW',
 speaker:'DE_LILLE_Bruno'
 },
 "doulkFR":
@@ -240,7 +240,7 @@ speaker:'DE_LILLE_Bruno'
 
 c:'true',
 lang:'F',
-type:'new',
+type:'NEW',
 speaker:'DOULKERIDIS_Christos'
 },
 "picqueFR":
@@ -249,7 +249,7 @@ speaker:'DOULKERIDIS_Christos'
 
 c:'true',
 lang:'F',
-type:'new',
+type:'NEW',
 speaker:'PICQUE_Charles'
 }
 

@@ -105,7 +105,7 @@
   </event>
   
 	
-	<event id="new"  order="00speakers00" active="y" use-for-editor="y" use-for-agenda="y">
+	<event id="NEW"  order="00speakers00" active="y" use-for-editor="y" use-for-agenda="y">
     <name lang="nl">Nieuwe spreker (simpel)</name>
     <name lang="fr">Nouvel orateur (simple)</name>
     <description lang="nl"></description>
@@ -128,7 +128,7 @@
 	
   
   
-  <event id="OUV-OPE"  order="gen-00" active="y" use-for-editor="n" use-for-agenda="y" >
+  <event id="OUV-OPE"  order="gen-00" active="y" use-for-editor="y" use-for-agenda="y" >
     <name lang="nl">Opening (commissies)</name>
     <name lang="fr">Ouverture (commissions)</name>
     <description lang="nl">Om vast te leggen wanneer de vergadering is begonnen en de bijbehorende titels aan te maken.</description>
@@ -157,6 +157,19 @@
     <name lang="fr">Suspension plénière AR</name>
     <description lang="nl"></description>
   </event>
+  
+  <event id="HERV-BXL"  order="gen-0131" active="y" use-for-editor="n" use-for-agenda="y" >
+    <name lang="nl">Hervatting plenaire BHR</name>
+    <name lang="fr">Reprise plénière PRB</name>
+    <description lang="nl"></description>
+  </event>
+  
+  <event id="SCH-ARVV"  order="gen-0132" active="y" use-for-editor="n" use-for-agenda="y" >
+    <name lang="nl">Hervatting plenaire VV</name>
+    <name lang="fr">Reprise plénière AR</name>
+    <description lang="nl"></description>
+  </event>
+  
   
   <event id="EINDE-BXL"  order="gen-014" active="y" use-for-editor="n" use-for-agenda="y" >
     <name lang="nl">Einde plenaire BHR</name>
