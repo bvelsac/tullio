@@ -1,5 +1,12 @@
 <?xml version="1.0"?>
 <reference name="titles">
+  <l id="presi-N">Voorzitterschap: </l>
+  <l id="presi-F">Présidence: </l>
+  
+  
+  
+  
+  
   <l id="pres-m-N">De voorzitter.- </l>
   <l id="pres-f-N">Mevrouw de voorzitter.- </l>
   <l id="pres-m-F">M. le président.- </l>

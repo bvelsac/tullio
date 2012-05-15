@@ -40,10 +40,11 @@ let $type := if (doc($agenda-doc)/xml/type = 'PLEN') then doc($events-doc)//e[st
 
 let $info := doc($agenda-doc)/xml/info
 
-let $pres := doc($events-doc)//e[string(@n)=$start]/preceding-sibling::*[@type='PRES' or @type='PRES-CH'][1]
+let $presEvent := doc($events-doc)//e[string(@n)=$start]/preceding-sibling::*[@type='PRES' or @type='PRES-CH'][1]
 (: let $completed :=  transform:transform($events, "addclipref.xsl", ()) 
 
 :)
+
 
 (: for $clip in $completed//e[@c='y'] :)
 
@@ -64,7 +65,7 @@ let $s := if ($startAsDec and $stopAsDec) then <locks>{doc($locks-doc)//s[@a='y'
 
 return
 
-<all>{$info, <variables><type>{$type}</type><pres>{$pres}</pres><next>{string($nextAlways)}</next></variables>, <meta>{$startAsDec, $stop}</meta>,
+<all>{$info, <variables><type>{$type}</type><pres>{string($presEvent/@speaker)}</pres><next>{string($nextAlways)}</next></variables>, <meta>{$startAsDec, $stop}</meta>,
 $events,$texts, $trans1,$s}
 </all>
 

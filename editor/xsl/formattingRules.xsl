@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:template match="e[type='PRES']" mode="initialize-text">
-    Fallback template
-    
+  <xsl:template match="e[@type='PRES']" mode="initialize-text">
+    <xsl:param name="lang" select="@lang"/>
+    <xsl:variable name="person" select="key('people', @speaker)"></xsl:variable>
+    <p c="{@clip}" title="{@n}">
+    <xsl:value-of select="key('snippets', concat('presi-', $lang))"/>
+    <xsl:value-of select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/>
+    <xsl:value-of select="$person/first"/>
+    <xsl:text> </xsl:text>
+      <xsl:value-of select="$person/last"/>,  <span class="incomplete">TITRE / TITEL</span>.
+    </p>
   </xsl:template>
   
   
@@ -149,20 +156,24 @@
       </xsl:comment>-->
     <xsl:variable name="pres-gender">
       <xsl:choose>
-        <xsl:when test="$event/preceding-sibling::e[pres]">
+<!--        <xsl:when test="$event/preceding-sibling::e[pres]">
           <xsl:value-of select="$event/preceding-sibling::e[pres][1]/pres/person/@gender"/>
         </xsl:when>
-        <xsl:when test="$event/preceding-sibling::e[@type='PRES']">
+-->        <xsl:when test="$event/preceding-sibling::e[@type='PRES' or @type='PRES-CH']">
           <xsl:value-of
-            select="key('people', $event/preceding-sibling::e[@type='PRES'][1]/@speaker)/@gender"/>
+            select="key('people', $event/preceding-sibling::e[@type='PRES' or @type='PRES-CH'][1]/@speaker)/@gender"/>
         </xsl:when>
         <!--
           <xsl:when test="/all/pres">
           <xsl:value-of select="key('people', /all/info/pres/@id)/@gender"/>
           </xsl:when>
         -->
+        <xsl:when test="/container/info/pres/person">
+          <xsl:value-of select="/container/info/pres/person/@gender"/>
+        </xsl:when>
+        
         <xsl:otherwise>
-          <xsl:value-of select="key('people', /all/info/pres/@id)/@gender"/>
+          <xsl:value-of select="key('people', /all/variables/pres)/@gender"/>
           <!--
             <xsl:value-of select="/container/info/pres/person/@gender"/>
           -->
