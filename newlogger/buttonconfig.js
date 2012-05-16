@@ -43,6 +43,7 @@ type:"EINDE-ARVV"
 },
 "in NL":
 {
+type:'CONT-N',
 
 
 c:'true',
@@ -53,6 +54,7 @@ lang:'N'
 
 
 c:'true',
+type:'CONT-F',
 lang:'F'
 },
 "new NL":

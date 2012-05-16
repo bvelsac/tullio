@@ -20,7 +20,7 @@
 {
 	label: 'Make Simple Text',
 	command: 'remove',
-	icon: this.path + 'remove.png'
+	icon: this.path + 'plain_text_icon.png'
 } );
 		
 		

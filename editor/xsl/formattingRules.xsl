@@ -17,19 +17,59 @@
     </p>
   </xsl:template>
   
+  <xsl:template match="e[@type='CONT-N']" mode="initialize-text">
+    <xsl:param name="lang" select="@lang"/>    
+    <p c="{@clip}" title="{@n}">
+      <xsl:value-of select="key('snippets', concat('contN-', $lang))"/>
+    </p>
+  </xsl:template>
+  <xsl:template match="e[@type='CONT-F']" mode="initialize-text">
+    <xsl:param name="lang" select="@lang"/>    
+    <p c="{@clip}" title="{@n}">
+      <xsl:value-of select="key('snippets', concat('contF-', $lang))"/>
+    </p>
+  </xsl:template>
+  
+  
+  <xsl:template match="e[@type='START-INT']" mode="initialize-text">
+    <xsl:param name="lang" select="@lang"/>
+    <p c="{@clip}" title="{@n}">
+      <xsl:value-of select="key('snippets', concat('startInt-', $lang))"/>
+    </p>
+    <p c="{@clip}" title="{@n}" class="incomplete">
+      <xsl:call-template name="president">
+      <xsl:with-param name="event" select="."/>
+      <xsl:with-param name="lang" select="$lang"/>
+      </xsl:call-template>
+      <xsl:value-of select="key('snippets', concat('startIntOrd-', $lang))"/>
+    </p>
+    
+  </xsl:template>
+  
   
   <xsl:template match="e[@type='OUV-OPE']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"/>
     <xsl:choose>
       <xsl:when test="$lang='N'">
-        <p c="{@clip}" title="{@n}">Integraal verslag</p>
+        <p c="{@clip}" title="{@n}">BRUSSELS HOOFDSTEDELIJK PARLEMENT</p>
+        <p c="{@clip}" title="{@n}">VERENIGDE VERGADERING VAN DE GEMEENSCHAPPELIJKE GEMEENSCHAPSCOMMISSIE</p>
+        <p c="{@clip}" title="{@n}">Integraal verslag van de interpellaties en mondelinge vragen</p>
+        <p c="{@clip}" title="{@n}" class="incomplete">NAAM COMMISSIE</p>
+        <p c="{@clip}" title="{@n}" class="incomplete">VERGADERING VAN DAG XX MAAND 2012</p>
+        <!-- 
         <p c="{@clip}" title="{@n}">Plenaire vergadering van <span class="incomplete">DATUM</span></p>
         <p c="{@clip}" title="{@n}">
           <span class="incomplete" title="{@n}">(Ochtendvergadering/Namiddagvergadering)</span>
         </p>
+        -->
       </xsl:when>
       <xsl:otherwise>
-        <p c="{@clip}" title="{@n}">opening (fr) </p></xsl:otherwise>
+        <p c="{@clip}" title="{@n}">PARLEMENT DE LA RÉGION DE BRUXELLES-CAPITALE</p>
+        <p c="{@clip}" title="{@n}">ASSEMBLÉE RÉUNIE DE LA COMMISSION COMMUNAUTAIRE COMMUNE</p>
+        <p c="{@clip}" title="{@n}">Compte rendu intégral des interpellations et des questions orales</p>
+        <p c="{@clip}" title="{@n}" class="incomplete">NOM DE LA COMMISSION</p>
+        <p c="{@clip}" title="{@n}" class="incomplete">RÉUNION DU JOUR XX MOIS 2011</p>
+    </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
   <xsl:template match="e[@type='QA-AV'] | e[@type='QO-MV'] | e[@type='INT']" mode="initialize-text">
@@ -80,10 +120,10 @@
       <xsl:text> "</xsl:text>
       <xsl:choose>
         <xsl:when test="$lang='N'">
-          <xsl:value-of select="@textn"/>
+          <xsl:value-of select="@textN"/>
         </xsl:when>
         <xsl:when test="$lang='F'">
-          <xsl:value-of select="@textf"/>
+          <xsl:value-of select="@textF"/>
         </xsl:when>
       </xsl:choose>
       <xsl:text>".</xsl:text>
@@ -201,6 +241,25 @@
       </xsl:choose>
     </span>
   </xsl:template>
+  <xsl:template match="e[@type='NEW']" mode="initialize-text">
+    <xsl:param name="lang" select="@lang"/>
+    <xsl:variable name="person" select="key('people', @speaker)"/>
+    
+    <p c="{@clip}">
+      <span class="speaker" title="{@n}"><xsl:value-of
+        select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/><xsl:value-of
+          select="$person/first"/>
+        <xsl:text> </xsl:text>
+        <xsl:value-of select="$person/last"/>.- </span>
+      <span>&#160;&#160;</span>
+    </p>
+  </xsl:template>
+  
+  
+  
+  
+  
+  
   <xsl:template match="e[@type='ORA-SPR']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"/>
     <xsl:variable name="person" select="key('people', @speaker)"/>
@@ -226,6 +285,7 @@
         </xsl:otherwise>
       </xsl:choose>
     </p>
+    
     <p c="{@clip}">
       <span class="speaker" title="{@n}"><xsl:value-of
           select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/><xsl:value-of

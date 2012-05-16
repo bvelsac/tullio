@@ -11,6 +11,19 @@
       </prop>
     </properties>
   </event>
+  <event id="CONT-N"  order="00speakers02" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Verder in het Nederlands</name>
+    <name lang="fr">Poursuivant en néerlandais</name>
+    <description lang="nl"></description>
+  </event>
+  <event id="CONT-F"  order="00speakers03" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Verder in het Frans</name>
+    <name lang="fr">Poursuivant en français</name>
+    <description lang="nl"></description>
+  </event>
+  
+  
+  
   <event id="PRES-CH"  order="gen-pres2" active="y" use-for-editor="y" use-for-agenda="y">
     <name lang="nl">Voorzitterswissel</name>
     <name lang="fr">Changement de président</name>
