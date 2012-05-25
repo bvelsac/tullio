@@ -33,6 +33,7 @@
 <div class='container_18'>
 <div class='grid_3'><h3>Meeting Logger</h3></div>
 <div class='grid_6'><span>Salle / zaal: </span><span id="channel">???</span></div>
+<div class="grid_9"><span>Agenda 2: </span><span id="agenda2">--</span></div>
 <div class='push_15'>
     <h3><a href="/exist/tullio/home.html">Home</a></h3>
 </div>
@@ -48,9 +49,16 @@
     <!-- a place holder for the grid. requires the unique id to be passed in the javascript function, and width and height ! -->
     	<div id="example-grid"></div>
 		</div>
-		<div id='agendaplaceholder' class="grid_3">
+		<div id="agendawrapper" class="grid_3">
+		<div id='agendaplaceholder' class="grid_3 agendafunc">
 			<p>&nbsp;</p>
 		</div>
+		<div id='agendaplaceholder2' class="grid_3 agendafunc">
+			<p>&nbsp;</p>
+		</div>
+		
+		</div>
+		
 		<div class="clear">&nbsp;</div>
 		<div class="grid_15">
 			<div class="buttons" id="openClose">

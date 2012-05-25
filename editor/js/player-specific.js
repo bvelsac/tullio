@@ -73,7 +73,7 @@ function setUpPlayer(){
 		});
 		
 	
-		
+				// bind the logic to set time codes and start playing to the "Play" link
 				$("td.sound > a").live("click", function() {
 						offset = 0;
 						var timeswitch = 0;
@@ -83,6 +83,7 @@ function setUpPlayer(){
 						//alert(reference);
 						
 						
+						// offset is used for the "play from start of clip" functionality
 						$(this).next().children('p.timecodes').children("span").each(function() {
 								var start = new XDate("2011-09-05T" + $(this).text());
 								var diff = start - reference;
@@ -92,7 +93,19 @@ function setUpPlayer(){
 								timeswitch = 1;
 						});
 						
+						// create an extra item in the playlist that shows where the clip ends:
+						// retrieve to the item that contains the time code we need
+						// it's in the next row
 						
+						var nextTC = $(this).parent().parent().next().find("p.timecodes").children().first().text();
+						alert(nextTC);
+						start = new XDate("2011-09-05T" + nextTC);
+						diff = start - reference;
+						
+						$(this).parent().find("div.metadata").children("ul").append("<li><p>STOP</p><span>" + toHumanTime(diff) + "</span></li>");
+						
+						
+						// create a new item and insert it into the playlist
 						
 						
 						

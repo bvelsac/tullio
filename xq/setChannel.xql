@@ -12,7 +12,7 @@ let $channel := request:get-parameter("channel", ())
 let $setuser := xdb:login("/db", "admin", "paris305")
 let $agenda := concat("/db/tullio/", $meeting, "/agenda.xml")
 
-let $setChannel := if (doc($agenda)/xml/channel) then update insert <info>{$channel}</info> into doc($agenda)/xml
+let $setChannel := if (doc($agenda)/xml/channel) then update insert <info>{$channel}</info> into doc($agenda)/xml else ()
 
 return ()
  

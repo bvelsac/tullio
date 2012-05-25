@@ -98,6 +98,10 @@
         - AM / PM
         as separate fields
       -->
+      <xsl:comment>
+        next tc :  <xsl:value-of select="/all/variables/nextTimeCode"/>
+      </xsl:comment>
+      
       <xsl:variable name="hours" select="substring-before(@time,':')"/>
       <xsl:variable name="minutes" select="substring-before(substring-after(@time, ':'), ':')"/>
       <xsl:variable name="seconds" select="substring-after(substring-after(@time, ':'), ':')"/>

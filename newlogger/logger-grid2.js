@@ -112,6 +112,33 @@ Ext.onReady(function(){
 		var channels = {1: 'S 201', 2: 'S 206', 3: 'Hemicycle / halfrond'};
 		
 		var audioMap = {'Hemicycle / halfrond':'canal1', 'S 201':'canal3', 'S 206':'canal4'};
+		var meetingList = {};
+		
+		
+		$.ajax({
+					type: 'GET',
+					url:'/exist/tullio/xq/meetinglist.xql',
+					success: function(data, textStatus, XMLHttpRequest){
+						var list = data.getElementsByTagName("item");
+						var nI = list.length;
+						for (i=0; i<nI; i++) {
+							meetingList[i]=list[i].firstChild.nodeValue;
+						}
+						console.log(nI);
+						console.log(data);
+						console.log(meetingList);
+						console.log(channels);
+					},
+					error: function (XMLHttpRequest, textStatus, errorThrown) {
+					},
+					async: false
+			});
+		
+		
+		
+		
+		
+		
 		
 		
 		$('#channel').editable({
@@ -131,7 +158,17 @@ Ext.onReady(function(){
 										}
                    });
 		
-		
+		$('#agenda2').editable({
+                    type:'select',
+                    options: meetingList,
+                    submit:'save',
+                    cancel:'cancel',
+                    editClass:'resultItem',
+                    onSubmit: function(content) {
+												$('#agendaplaceholder2').load('/exist/tullio/newlogger/hello3.xql?m=' + content.current, function() {});
+											console.log(content);
+										}
+                   });
 		
 		
 		// reverse labels and values for eventTypes
@@ -519,7 +556,7 @@ Ext.onReady(function(){
 		update();
 		
 		
-		$(document).delegate('#agendaplaceholder td','click', function(e) {
+		$(document).delegate('.agendafunc td','click', function(e) {
 					mtype = $(this).siblings().andSelf().filter(".type").text();
 					but=e.target.id;
 					var submission = {
@@ -556,6 +593,7 @@ Ext.onReady(function(){
 				// F11 voegt een nieuwe regel toe, is geen clip
 				key: 122,
 				fn: function(key, e) {
+					e.preventDefault();
 					var timestamp = new Date();
 					timestamp.setTime(timestamp.getTime() + offset);
 					timestamp = Ext.Date.format(timestamp, 'H:i:s');
@@ -571,7 +609,7 @@ Ext.onReady(function(){
 					// prevent event propagation
 					e.stopPropagation();
 															
-					return true;
+					return false;
 				}
 		});
 		

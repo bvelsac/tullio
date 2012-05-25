@@ -65,7 +65,7 @@ let $s := if ($startAsDec and $stopAsDec) then <locks>{doc($locks-doc)//s[@a='y'
 
 return
 
-<all>{$info, <variables><type>{$type}</type><pres>{string($presEvent/@speaker)}</pres><next>{string($nextAlways)}</next></variables>, <meta>{$startAsDec, $stop}</meta>,
+<all>{$info, <variables><type>{$type}</type><pres>{string($presEvent/@speaker)}</pres><next>{string($nextAlways)}</next><nextTimeCode>{$next/@time}</nextTimeCode></variables>, <meta>{$startAsDec, $stop}</meta>,
 $events,$texts, $trans1,$s}
 </all>
 
