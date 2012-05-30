@@ -225,7 +225,7 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <span class="{$class} reformat" title="{$event/@n}">
+    <a class="{$class} reformat" title="{$event/@n}" href="#">
       <xsl:if test="string($segment)">
         <xsl:attribute name="segment">
           <xsl:value-of select="$segment"/>
@@ -239,19 +239,19 @@
           <xsl:text>.-</xsl:text>
         </xsl:otherwise>
       </xsl:choose>
-    </span>
+    </a>
   </xsl:template>
   <xsl:template match="e[@type='NEW']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"/>
     <xsl:variable name="person" select="key('people', @speaker)"/>
     
     <p c="{@clip}">
-      <span class="speaker" title="{@n}"><xsl:value-of
+      <a class="speaker" title="{@n}" href="#"><xsl:value-of
         select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/><xsl:value-of
           select="$person/first"/>
         <xsl:text> </xsl:text>
-        <xsl:value-of select="$person/last"/>.- </span>
-      <span>&#160;&#160;</span>
+        <xsl:value-of select="$person/last"/>.- </a>
+      
     </p>
   </xsl:template>
   
@@ -287,12 +287,12 @@
     </p>
     
     <p c="{@clip}">
-      <span class="speaker" title="{@n}"><xsl:value-of
+      <a class="speaker" title="{@n}" href="#"><xsl:value-of
           select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/><xsl:value-of
           select="$person/first"/>
         <xsl:text> </xsl:text>
-        <xsl:value-of select="$person/last"/>.- </span>
-      <span> </span>
+        <xsl:value-of select="$person/last"/>.- </a>
+      
     </p>
     <p c="{@clip}" class="write">...</p>
   </xsl:template>

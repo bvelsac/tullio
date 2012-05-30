@@ -26,12 +26,13 @@
         
       </xsl:attribute>
       <xsl:copy-of select="@title"/>
+      <xsl:copy-of select="@*[local-name() != 'class' and local-name() != 'c']"/>
 			<xsl:if test="not(@class='init')">
 				<xsl:copy-of select="@class"/>
 			</xsl:if>
-      
       <xsl:apply-templates></xsl:apply-templates>
      
     </xsl:copy>
   </xsl:template>
+  <xsl:template match="p[@class='marker']"></xsl:template>
 </xsl:stylesheet>

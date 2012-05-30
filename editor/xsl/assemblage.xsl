@@ -57,7 +57,7 @@
   title: alle tekst die rechtstreeks een event representeert, komt in principe nooit in cursief
   -->
   
-  <xsl:template match="p | span">
+  <xsl:template match="p | span | a">
     <xsl:copy>
       <xsl:attribute name="style">
         <xsl:choose>
@@ -75,6 +75,9 @@
     </xsl:template>
   
   <xsl:template match="span/text()">
+    <xsl:copy-of select="."/>
+  </xsl:template>
+  <xsl:template match="a/text()">
     <xsl:copy-of select="."/>
   </xsl:template>
   
@@ -96,11 +99,11 @@
   </xsl:template>
   
   
-  <xsl:template match="span[@class='langInd']">
-    <xsl:copy>
+  <xsl:template match="*[@class='langInd']">
+    <p>
       <xsl:attribute name="style">font-style: italic</xsl:attribute>
       <xsl:copy-of select="text()"/>
-    </xsl:copy>
+    </p>
   </xsl:template>
   
 </xsl:stylesheet>

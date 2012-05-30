@@ -18,6 +18,8 @@ function asfinish(xml2, xsl, object, e) {
 	console.log(mmm);
 	console.log("***");
 	
+	var continueSaveHandler = false;
+	
 	//console.log("doc " + asString + "\ncat: " + cat + "\nstart: " + clipid + "\nstop: " + stop  + "\nmeeting: " + mmm  + "\nid: " + author);
 		$.ajax({
 			url: "/exist/tullio/xq/storeClipEdit.xql",
@@ -31,8 +33,12 @@ function asfinish(xml2, xsl, object, e) {
 				"meeting": mmm,
 				"id": author
 			},
-			async: false
+			async: false,
+			success: function() {continueSaveHandler = true;}
 	});
+		
+		if (continueSaveHandler) {
+		
 		$.ajax({
 							url: "/exist/tullio/xq/unlock.xql",
 							type: "POST",
@@ -58,7 +64,10 @@ function asfinish(xml2, xsl, object, e) {
 
 	setTimeout( function() {$(jq(edited)).addClass("content"); edited=''; editor.destroy(); }, 200);					
 	noUpdate = false;
-	
+		
+		}
+		
+		else {alert('Save action failed, the server could not be reached. Please try again.');}
 	console.log('exit finish');
 } 
  
@@ -141,7 +150,7 @@ CKEDITOR.plugins.add('ajaxsave',
 
 					request.fail(function(jqXHR, textStatus) {
 							console.log('request fails -----');
-							alert( "Request failed: " + textStatus );
+							alert( "Save action failed, please try again." );
 					});
 					
 					

@@ -76,8 +76,14 @@ td.status {border-left: solid 3px transparent;}
 	width: 10%;}
 	
 	#header > div#player {width: 600px !important;}
-	.ui-layout-north {
-		background-color: #00cc99 !important;
+	.ui-layout-north.networkOK {
+		background-color: #A1D8CA !important;
 	}
 	#centerpane {margin-top: 150px !important;
 	background-color: white;}
+	
+	
+	.ui-layout-north.networkDown {
+		background-color: #ff6666;
+	
+	}

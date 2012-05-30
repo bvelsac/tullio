@@ -12,7 +12,6 @@ body
 	/* Text color */
 	color: #222;
 
-	/* Remove the background color to make it transparent */
 	background-color: #fff;
 	
 		
@@ -28,9 +27,9 @@ p[title]:before {
 }
 
 [title] {
-	font-family: monospace;
-	/*background-color: #b9bac1;*/
-	background-color: white;
+	/*font-family: monospace;*/
+	background-color: #b9bac1;
+	/*background-color: white;*/
 }
 
 .debug {
@@ -39,11 +38,16 @@ p[title]:before {
 
 }
 not:([title]) .write {background-color: #ccffcc;}
-p, .write, .incomplete {background-color: #ccffcc;}
+p, .write, .incomplete {background-color: white;}
+
+span.text:before {
+	content: "&160;";
+	
+}
 
 
-not:p {color: red;}
 
+.init {display: none;}
 
 ol,ul,dl
 {

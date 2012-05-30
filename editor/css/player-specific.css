@@ -68,6 +68,24 @@ body {
 		font-size: 12px;
 }
 
+#controls li.spacer {
+	border: none;
+	width: 20px;
+}
+
+#controls #startPosition, #controls  #stopPosition {
+	border: none;
+	
+}
+#controls #stopPosition {
+	color: red;
+	font-weight: bold;
+}
+
+#controls #stopPosition.big {
+	font-size: 400%;
+}
+
 #recording {
     height:  100px;
     background: #5588BB;
@@ -79,6 +97,9 @@ body {
     background:  #5588BB;
 }
 
+#player.tooFarGone {
+	background: #ff0000 !important;
+}
 
 .playlist li.sm2_playing {
     background: #5588BB !important;

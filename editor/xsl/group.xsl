@@ -10,7 +10,7 @@
   
   <xsl:key match="//e" name="clip" use="@clip"/>
   <xsl:key match="//l" name="snippets" use="@id"/>
-  <xsl:key match="//doc/p[not(@d='init')]" name="text" use="@c"/>
+  <xsl:key match="//doc/p[not(@class='init')]" name="text" use="@c"/>
   <xsl:key match="//trans/p[not(@d='init')]" name="trans" use="@c"/>
   <xsl:key match="//moved" name="moved" use="e/@n"/>
   <xsl:key match="container/div[@id='integratedEvents']/events/e" name="new" use="@id"/>
@@ -227,22 +227,11 @@
             <!-- de eerste keer bestaat er nog geen tekst, die moet dan worden aangemaakt op basis van de events -->
             <xsl:choose>
               <!-- text has been edited, use stored paragraphs -->
-              <xsl:when test="key('text', @n)[not(@class='init')]">
-                <xsl:for-each select="key('text', @n)[not(@class='init')]">
-                  <xsl:choose>
-                    <xsl:when test="span[@class='pres reformat']">
-                      
-                        <xsl:copy>
-                          <xsl:copy-of select="@*"/>
-                          <xsl:apply-templates mode="write"/>
-                        </xsl:copy>
-                      
-                      
-                    </xsl:when>
-                    <xsl:otherwise>
-                      <xsl:copy-of select="."/>
-                    </xsl:otherwise>
-                  </xsl:choose>
+              <xsl:when test="key('text', @n)">
+                <xsl:apply-templates mode="write" select="key('text', @n)"></xsl:apply-templates>
+                <xsl:for-each select="key('text', @n)">
+                
+                  
                 </xsl:for-each>
               </xsl:when>
               <!-- no edited text, use events to generate text -->
@@ -268,14 +257,20 @@
       </tr>
     </xsl:for-each>
   </xsl:template>
-  <xsl:template mode="write" match="span[@class='pres reformat']">
-    <xsl:copy-of select="key('all', @title)"/>
+  <xsl:template mode="write" match="span[@class='pres reformat'] | a[@class='pres reformat']">
+    <!--<xsl:copy-of select="key('all', @title)"/>-->
     <xsl:call-template name="president">
       <xsl:with-param name="event" select="key('all', @title)"/>
       <xsl:with-param name="lang" select="key('all', @title)/@lang"/>
     </xsl:call-template>
   </xsl:template>
-  <xsl:template match="node()" mode="write">
+  <xsl:template match="*" mode="write">
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+      <xsl:apply-templates mode="write"></xsl:apply-templates>
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template match="text()" mode="write">
     <xsl:copy-of select="."/>
   </xsl:template>
   

@@ -35,7 +35,7 @@
 	
 	<!-- matches elements that represent a new or existing event -->
   <!-- they have output: the reconciled event list -->
-	<xsl:template match="p[@title] | span[@title] | event">
+	<xsl:template match="p[@title] | span[@title] | a[@title] | event">
 		<xsl:param name="processed"/>
 		<xsl:param name="refIndexStart" select="'0'"/>
 		<xsl:param name="refIndexStop" select="'1'"/>

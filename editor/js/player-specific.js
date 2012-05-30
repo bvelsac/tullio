@@ -93,17 +93,20 @@ function setUpPlayer(){
 								timeswitch = 1;
 						});
 						
+						$("#startPosition").text('START ' + toHumanTime(offset));
+						
 						// create an extra item in the playlist that shows where the clip ends:
 						// retrieve to the item that contains the time code we need
 						// it's in the next row
 						
 						var nextTC = $(this).parent().parent().next().find("p.timecodes").children().first().text();
-						alert(nextTC);
+						// alert(nextTC);
 						start = new XDate("2011-09-05T" + nextTC);
 						diff = start - reference;
 						
 						$(this).parent().find("div.metadata").children("ul").append("<li><p>STOP</p><span>" + toHumanTime(diff) + "</span></li>");
-						
+
+						$("#stopPosition").text('STOP ' + toHumanTime(diff));
 						
 						// create a new item and insert it into the playlist
 						

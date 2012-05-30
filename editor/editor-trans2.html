@@ -315,8 +315,19 @@ function displayStatus() {
 	 jQuery.ajax({
 			 	type: "GET",
         url:    requestLocks,
-        success: updateLocks,
-				dataType: "xml" 
+        success: function (data) {
+					$(".ui-layout-north").removeClass('networkDown');
+					$(".ui-layout-north").addClass('networkOK');
+					$("#network").text("Network OK");
+					updateLocks(data);
+				},
+				dataType: "xml",
+				error: function (request, status) {
+					$(".ui-layout-north").removeClass('networkOK');
+					$(".ui-layout-north").addClass('networkDown');
+					$("#network").text("Network " + status);
+					// alert(status);
+				}
 	 });
 	 
  }
@@ -699,7 +710,7 @@ displayStatus();
 			
 					
 	editor = CKEDITOR.replace( 'cke', {
-					toolbar: [['Undo', 'Ajaxsave','internalSync','Remove', 'Maximize', 'Abbr', 'Status','Source', 'Simpleclose']],
+					toolbar: [['Undo', 'Ajaxsave','internalSync','Remove', 'Abbr', 'Status','Source', 'Simpleclose']],
 					extraPlugins : 'remove,internalSync,ajaxsave,transform,abbr-custom,status,simpleclose',
 					disableNativeSpellChecker: false,
 					removePlugins : 'scayt,menubutton,contextmenu',
@@ -847,13 +858,18 @@ editor.on( 'contentDom', function( evt )
 			    
 			    <li id="rewind">REWIND</li>
 					<li id='forward'>FORWARD</li>
+					<li class="spacer"></li>
+									<li class="noControl" id="startPosition">XX:XX</li>
+				<li class="noControl" id="stopPosition">XX:XX</li>
 		    </ul>
+
 	    </div>
 
 	  </div>
 	  <div id="settings">
       <input type="checkbox" id="syncCheck" name="syncing">Keep Syncing</input>
 	  </div>
+			  <div id="network">&#160;</div>
   </div>
 </div>
 <div id="spacer">&#160;</div>

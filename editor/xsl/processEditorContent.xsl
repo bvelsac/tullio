@@ -84,7 +84,7 @@
       </xsl:choose>
     </xsl:variable>
     <xsl:choose>
-      <xsl:when test="self::span[@class='pres reformat']">
+      <xsl:when test="self::span[@class='pres reformat'] | self::a[@class='pres reformat']">
         <xsl:call-template name="president">
           <xsl:with-param name="event" select="key('all', $eventRef)"/>
           <xsl:with-param name="lang" select="key('all', $eventRef)/@lang"/>
@@ -98,7 +98,9 @@
         </xsl:when>-->
       <xsl:otherwise>
         <xsl:copy>
-          <xsl:copy-of select="@class"/>
+          <xsl:copy-of select="@*[local-name() != 'title']" />
+          
+
           <xsl:attribute name="title">
             <xsl:value-of select="$eventRef"/>
           </xsl:attribute>

@@ -24,11 +24,17 @@ let $nodes :=  if ($text) then util:eval( $text ) else ()
 		let $nice := transform:transform($nodes, "../xsl/cleanEdit.xsl", ())
 		
 		let $update := if ($nice) then (update insert $atts into $touch, update insert $nice//p preceding $touch[1], update delete doc($text-doc)//p[@op=$op][@marker='invalid']) else ("something went wrong")
-return
-		if ($category = 'orig') then 
+		let $correct := if ( not($touch) ) then 
+											if ( doc($text-doc)//p[@c > $startAsDec] ) then update insert $nice//p preceding doc($text-doc)//p[@c > $startAsDec][1] 
+											else update insert $nice//p into doc($text-doc)/doc
+										else ()
+										
+										
+		let $updateEvents := if ($category = 'orig') then 
 			let $events-doc := concat("/db/tullio/", $meeting, '/events.xml'),
 			$touch2 := doc($events-doc)//e[@n < $stopAsDec and @n >=$startAsDec],
 			$list := for $x in $touch2 return $x/@n cast as xs:string,
 			$update2 := if ($nodes//events) then (update insert $atts into $touch2, update insert $nodes//events/e[not(@active='no')] preceding $touch2[1], update delete doc($events-doc)//e[@op=$op][@marker='invalid']) else ()
-			return <result>{$list}</result>
-		else ()
+			return <result>{$touch}</result>
+			else()
+				return <result>{$touch}</result>
