@@ -63,21 +63,63 @@ td.status {border-left: solid 3px transparent;}
 		td.e-time {width: 50px;}
 		td.e-type  {width: 50px;}
 		td.e-speaker {width: 70px;}
-		td.orig {width: 700px;}
+		td.orig {width: 550px;}
+		td.trans {width: 550px;}
 		.ui-layout-north {position: fixed;
 	left: 0px;
 	top: 0px;
-	height: 150px;
+	height: 105px;
 	width: 100%;
 	}
 	#spacer {clear: both;}
 	
 	#header > div {float: left !important;
-	width: 10%;}
+	/* width: 10%; */
+	}
+	#meeting {
+		margin: 5px;
+		font-weight: bold;
+		margin-right: 25px;
+		
+		
+	}
 	
+	#meeting p {
+		margin: 2px;
+		
+	}
+	
+	#meeting #link {
+		margin-top: 12px;
+		font-weight: normal;
+	}
+	
+	#meeting #title {
+		color: red;
+	}
+	
+	
+	#meeting a {
+	
+		color : #5588BB;
+		text-decoration : none;
+	}
+	
+	
+	#meeting a:before {
+		content: ">>";
+	}
+	
+	#network {
+		padding: 5px;
+		color: gray;
+	}
 	#header > div#player {width: 600px !important;}
 	.ui-layout-north.networkOK {
+		/*
 		background-color: #A1D8CA !important;
+		*/
+		background-color: silver !important;
 	}
 	#centerpane {margin-top: 150px !important;
 	background-color: white;}

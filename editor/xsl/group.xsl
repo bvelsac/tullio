@@ -150,6 +150,10 @@
               <div class="duration"><xsl:value-of select="$audioLength"/>:00</div>
               <!-- total track time (for positioning while loading, until determined -->
               <ul>
+                <li>
+                  <p></p>
+                  <span>0:00</span>
+                </li>
                 <xsl:for-each select="key('clip', @n)">
                   <!-- must be updated using js before loading the track -->
                   <xsl:if test="string(@time)">

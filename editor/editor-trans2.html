@@ -426,7 +426,9 @@ function updateVisibleTexts(once) {
 	$('#text-table tr').removeClass('ruby');
 	// simply loop over all rows
 	
-	if (($("#syncCheck").is(':checked'))) {
+	// if (($("#syncCheck").is(':checked')))
+	
+	if ( false ) {
 	
 	visibles = "";
 	visibleRows.length = 0;
@@ -519,7 +521,8 @@ function initialize(xml, xsl, xmlorig) {
 
 $().ready(function(){
 
-		
+
+				
 		var asString = "";
 		// variable titles does get defined although it cannot be logged
 		
@@ -707,8 +710,12 @@ displayStatus();
 
 					
 					
-			
+				var cellHeight  = ( $(this).height() > ($(window).height()- 205) ) ? ($(window).height()- 205) : $(this).height();
+				var cellWidth  = $(this).width();
 					
+				alert($(window).height());
+				
+				
 	editor = CKEDITOR.replace( 'cke', {
 					toolbar: [['Undo', 'Ajaxsave','internalSync','Remove', 'Abbr', 'Status','Source', 'Simpleclose']],
 					extraPlugins : 'remove,internalSync,ajaxsave,transform,abbr-custom,status,simpleclose',
@@ -716,8 +723,13 @@ displayStatus();
 					removePlugins : 'scayt,menubutton,contextmenu',
 					startupFocus: false,
 					templates_files : [ 'ckeditor/plugins/templates/templates/default.js' ],
+					entities : false,
+					fillEmptyBlocks : false,
 					entities_processNumerical: 'force',
-					forcePasteAsPlainText: true
+					resize_enabled: true,
+					resize_dir: 'vertical',
+					height: cellHeight,
+					width: cellWidth
 			});
 
 var isCtrl = false;
@@ -828,7 +840,7 @@ editor.on( 'contentDom', function( evt )
 				
 		
 		);
-		
+				$("#soundmanager-debug").css('display', 'none');
 });
 
 	</script>
@@ -839,18 +851,21 @@ editor.on( 'contentDom', function( evt )
 <div  class="ui-layout-north">
   <div id="resultpane"></div>
   <div id="header">
-    <div id="meeting"><span id="overview"></span>
+    <div id="meeting">
+			<p id="title">EDITOR</p>
+			<p id="overview"></p>
 			<p id="username">Je suis: <select id="person"></select></p>
+			<p id="link"><a href="/exist/tullio/home.html">Meetings Overview</a></p>
 		</div>
 	  <div id="logo"></div>
 	  <div id="navigation">
-	    <ul>
+	<!--    <ul>
 		    <li><a href="/exist/tullio/home.html">Meetings Overview</a></li>
 		    <li><a href="/exist/tullio/status/status.html">Status Page</a></li>
-	    </ul>
+	    </ul> -->
     </div>
 	  <div id="player">
-	    <div id="recording">Audioplayer</div>
+	    <div id="recording"></div>
 	    <div id='controls'>
 		    <ul>
 			    <li id='toStart'>PLAY FROM START</li>
@@ -867,7 +882,7 @@ editor.on( 'contentDom', function( evt )
 
 	  </div>
 	  <div id="settings">
-      <input type="checkbox" id="syncCheck" name="syncing">Keep Syncing</input>
+<!--      <input type="checkbox" id="syncCheck" name="syncing">Keep Syncing</input> -->
 	  </div>
 			  <div id="network">&#160;</div>
   </div>
