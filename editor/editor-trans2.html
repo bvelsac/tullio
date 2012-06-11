@@ -428,7 +428,7 @@ function updateVisibleTexts(once) {
 	
 	// if (($("#syncCheck").is(':checked')))
 	
-	if ( false ) {
+	if ( true ) {
 	
 	visibles = "";
 	visibleRows.length = 0;
@@ -567,7 +567,9 @@ $().ready(function(){
 		
 		
 		
-		
+		$(document).delegate('.status', 'dblclick', function () {
+				alert("History");
+		});
 		
 		
 
@@ -710,17 +712,18 @@ displayStatus();
 
 					
 					
-				var cellHeight  = ( $(this).height() > ($(window).height()- 205) ) ? ($(window).height()- 205) : $(this).height();
+				var cellHeight  = ( $(this).height() > ($(window).height()- 205) ) ? ($(window).height()- 205) :  $(this).height();
+				var adjustedHeight = ( cellHeight < 300 ) ? 300 : cellHeight;
 				var cellWidth  = $(this).width();
 					
-				alert($(window).height());
+				// alert($(window).height());
 				
 				
 	editor = CKEDITOR.replace( 'cke', {
-					toolbar: [['Undo', 'Ajaxsave','internalSync','Remove', 'Abbr', 'Status','Source', 'Simpleclose']],
+					toolbar: [['Undo', 'Redo', 'PasteText', 'Ajaxsave','internalSync','Remove', 'Abbr', 'Status','Source', 'Simpleclose']],
 					extraPlugins : 'remove,internalSync,ajaxsave,transform,abbr-custom,status,simpleclose',
 					disableNativeSpellChecker: false,
-					removePlugins : 'scayt,menubutton,contextmenu',
+					removePlugins : 'scayt,contextmenu',
 					startupFocus: false,
 					templates_files : [ 'ckeditor/plugins/templates/templates/default.js' ],
 					entities : false,
@@ -728,9 +731,16 @@ displayStatus();
 					entities_processNumerical: 'force',
 					resize_enabled: true,
 					resize_dir: 'vertical',
-					height: cellHeight,
+					height: adjustedHeight,
 					width: cellWidth
 			});
+	
+	editor.on('instanceReady', function() {
+		editor.focus();
+		var range = new CKEDITOR.dom.range( editor.document );
+		range.select();
+	}
+			)
 
 var isCtrl = false;
 	// code for keyboard shortcuts
@@ -739,12 +749,40 @@ editor.on( 'contentDom', function( evt )
         editor.document.on( 'keyup', function(event)
         {
             if(event.data.$.keyCode == 17) isCtrl=false;
+             if(event.data.$.keyCode == 16) isShift=false;
         });
 
         editor.document.on( 'keydown', function(event)
         {
             if(event.data.$.keyCode == 17) isCtrl=true;
-            if(event.data.$.keyCode == 68 && isCtrl == true)
+             if(event.data.$.keyCode == 16) isShift=true;
+             
+             if ( (event.data.$.keyCode == 68 && isCtrl == true && isShift== true) ) {
+             	 editor.execCommand('pastetext');
+             
+             }
+            
+            if( (event.data.$.keyCode == 68 && isCtrl == true) || event.data.$.keyCode == 120 )
+            {		// TOGGLE = D
+                //The preventDefault() call prevents the browser's save popup to appear.
+                //The try statement fixes a weird IE error.
+                try {
+                    event.data.$.preventDefault();
+                } catch(err) {}
+								console.log('save key');
+
+                //Call to your save function
+								lastSound = pagePlayer.lastSound.sID;
+								if (lastSound != undefined) {
+									console.log(lastSound);
+									soundManager.togglePause(lastSound);
+                	return false;}
+            }
+            
+            
+            
+            
+            if( (event.data.$.keyCode == 68 && isCtrl == true) || event.data.$.keyCode == 120 )
             {		// TOGGLE = D
                 //The preventDefault() call prevents the browser's save popup to appear.
                 //The try statement fixes a weird IE error.
@@ -762,7 +800,7 @@ editor.on( 'contentDom', function( evt )
             }
 						
 						
-						if(event.data.$.keyCode == 83 && isCtrl == true)
+						if( (event.data.$.keyCode == 83 && isCtrl == true)  || event.data.$.keyCode == 114 )
             {
 								// REWIND= S
                 //The preventDefault() call prevents the browser's save popup to appear.
@@ -790,7 +828,7 @@ editor.on( 'contentDom', function( evt )
 			
             }
 						
-												if(event.data.$.keyCode == 70 && isCtrl == true)
+												if( (event.data.$.keyCode == 70 && isCtrl == true)  || event.data.$.keyCode == 115 )
             {
 								// REWIND= S
                 //The preventDefault() call prevents the browser's save popup to appear.
@@ -840,7 +878,7 @@ editor.on( 'contentDom', function( evt )
 				
 		
 		);
-				$("#soundmanager-debug").css('display', 'none');
+				
 });
 
 	</script>

@@ -12,19 +12,18 @@ body
 	/* Text color */
 	color: #222;
 
-	background-color: #fff;
+	/*background-color: #fff;*/
 	
 		
 }
 
 p {
-	margin: 0px;
-	margin-bottom: 10px; 
+	
 	
 }
 
 p[title]:before {
-	content: "(" attr(title) ")";
+	content: "[" attr(title) "]";
 	
 	color: #3333ff;
 	margin-right: 4px;
@@ -33,8 +32,10 @@ p[title]:before {
 
 [title] {
 	/*font-family: monospace;*/
-	background-color: #b9bac1;
+	/*background-color: #b9bac1;*/
 	/*background-color: white;*/
+	color: #3333ff;
+
 }
 
 .debug {
@@ -43,7 +44,7 @@ p[title]:before {
 
 }
 not:([title]) .write {background-color: #ccffcc;}
-p, .write, .incomplete {background-color: white;}
+.incomplete {background-color: silver;}
 
 span.text:before {
 	content: "&160;";

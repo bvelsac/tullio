@@ -29,7 +29,7 @@
   -->
   <!--<xsl:variable name="testLoad" select="document('http://localhost:8080/exist/tullio/xq/list-collections.xql')"></xsl:variable>-->
   <xsl:variable name="soundURL" select="'../soundmanager/recordings/'"/>
-  <xsl:variable name="soundURL2" select="'/exist/sound/canal4/'"/>
+  <xsl:variable name="soundURL2" select="'/exist/sound/canal3/'"/>
   <!--  http://localhost:8080/exist/sound/canal3/201203211040.mp3
 -->
   <xsl:variable name="soundExt" select="'.mp3'"/>
@@ -142,7 +142,7 @@
         <ul class="playlist hidden">
           <li>
             <!-- <a href="{concat($soundURL2,$recordingStart)}" id="play-{@n}"> -->
-            <a href="{concat('/exist/sound/canal4/', $audioRef)}" id="play-{@n}">
+            <a href="{concat('/exist/sound/canal1/', $audioRef)}" id="play-{@n}">
               <xsl:value-of select="concat('Clip ', @n)"/>
             </a>
             <!--                <span class="offset">00:07</span>-->
@@ -215,7 +215,9 @@
         <!-- add cell for status code and locking state -->
         <td class="status status-{key('statusCodes', @n)/@val}"
           id="{concat('status-', @n, '-orig')}">
+         
           <p class="status-wrapper">
+          
             <span class="status-code" id="{concat('status-', @n, '-orig-code')}">
               <xsl:value-of select="key('statusCodes', @n)/@val"/>
             </span>
@@ -224,6 +226,7 @@
             </span>
           </p>
           <p class="lockid"/>
+          
         </td>
         <!-- add cell with the original text -->
         <td class="orig content {concat(generate-id(), 'R', @n, '-o')}" id="{concat('R', @n, '-o')}">

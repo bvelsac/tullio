@@ -1,7 +1,7 @@
 .hide: {display: none;}
-.status-EC {background: #ff00ff;}
-.status-N {background: #ff8000;}
-.status-T {background: #ffff00;}
+.status-EC {background: #FFC4FF}
+.status-N, .status- {background: #FFC896;}
+.status-T {background: #FFFFB7}
 .status-R {background: #80ff80;}
 .status-V {background: #008000;}
 .status-A {background: #800000;}
@@ -11,13 +11,43 @@
 .status-VT {background: #8000ff;}
 .status-AT {background: #ff0000;}
 
-.status-code {margin-right: -3px;}
-.status-code, .status-lang {font-family: monospace;}
-td.status {border-left: solid 3px transparent;}
+/*
+.status-T {background: #ffff00;#FFFFB7}
+.status-EC {background: #ff00ff;#FFC4FF}
+#ff8000;
+
+*/
+.sound {padding-top: 15px;}
+
+.startRec  {
+	text-decoration: none; 
+	margin: 5px;
+	margin-top: 10px; 
+
+	font-size: 12px;
+	font-weight: bold;
+color: gray;
+}
 
 
+.sound p {
+
+	display: none;
+}
 
 
+.lockid {font-size: 12px; color: gray;}
+td.status {
+	border-left: solid 3px transparent;
+	vertical-align: top;														 
+ }
+p.status-wrapper {font-family: monospace ; font-weight: bold;}
+td.sound {
+	vertical-align: top;
+}
+
+
+.content {vertical-align: top;}
 	td.status {width: 50px;}
 	td.locked {border-left: solid #f5a5a5 3px;}
 	table.edited {background-color: bisque;}
@@ -26,7 +56,7 @@ td.status {border-left: solid 3px transparent;}
 	.startstop  {display: none;}
 	.structured-events {display: none;}
 	body {font-family: sans-serif;}
-	table {font-size: 12px; }
+	table {font-size: 14px; }
 	#remove {width: 100%;}
 	#header {width: 100%;}
 	/* #header div {background-color: white;  margin: 0.5%; float: left; } */

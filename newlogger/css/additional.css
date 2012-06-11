@@ -114,5 +114,44 @@ margin-right: 0px;
 padding: 4px;
 }
 
+
+/*
+
+CLOCKS
+
+*/
+
+#clock, #timer {
+border: 3px solid silver;
+font-size: 16px;
+padding: 5px;
+font-family: monospace;
+}
+
+#timer {
+background-color: black;
+color: greenYellow;
+}
+
+#clock {
+	color: silver;
+	border: none;
+	padding: 0px;
+}
+
+
+#timer.runningLate {color: orange;}
+#timer.veryLate {color: red;}
+
+.clockwrapper {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	
+}
+
+
+
+
+
 		
 

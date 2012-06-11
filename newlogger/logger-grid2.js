@@ -39,7 +39,7 @@ function toHumanTime(x) {
 
 
 var offset = 0;
-		
+var store;		
 
 Ext.Loader.setConfig({
     enabled: true
@@ -79,10 +79,67 @@ function setOffset() {
 
 
 
-function runAdjust() {
+		function runAdjust() {
 			setOffset();
 			t = setTimeout("runAdjust()", 60000);
 					console.log('OFFSET: '+ offset);
+		}
+		
+		
+		function runClocks() {
+			// display real time
+			
+			var ltimestamp = new Date();
+			ltimestamp.setTime(ltimestamp.getTime() + offset);
+			ltimestamp = Ext.Date.format(ltimestamp, 'H:i:s');
+			$('#clock').text(ltimestamp);
+			var lastClip;
+			
+			// display timelapse since last clipmarker
+			
+			// lookup timestamp of last marker
+			var size;
+			if ( typeof store != "undefined" ) {size = store.getCount(); console.log(size);}
+			if ( size > 0 ) {
+				// loop through the records, starting with most recent record
+				for (i=0; i < size; i++) {
+					record = store.getAt(i);
+				
+					if (record.data.c) {
+						// console.log('clip');
+						
+						var now = new XDate();
+						now.setTime(now.getTime() + offset);
+						now = Ext.Date.format(now, 'H:i:s');
+						var ref = new XDate("2011-09-05T" + now);
+						
+						var current = new XDate("2011-09-05T" + record.data.time);
+						var diff = ref - current;
+						$('#timer').text(toHumanTime(diff));
+						console.log("timer: " + diff);
+						if (diff > 210000 && diff < 300000) {
+							$('#timer').addClass('runningLate');
+						}
+						else {
+							$('#timer').removeClass('runningLate');
+						}
+						
+						if (diff > 300000) {
+							$('#timer').addClass('veryLate');
+						}
+						else {
+							$('#timer').removeClass('veryLate');
+						}
+						break;
+					}
+				}
+			}
+			
+			
+			// wait one second
+			
+			setTimeout ("runClocks()", '1000');
+			
 		}
 
 
@@ -103,6 +160,11 @@ Ext.onReady(function(){
 		
 		console.log('OFFSET: '+ offset);
 		runAdjust();
+		
+		// start displaying clocks
+		runClocks();
+		
+		
 		
 		// load agenda
 		$('#agendaplaceholder').load('/exist/tullio/newlogger/hello3.xql?m=' + m, function() {});
@@ -336,7 +398,7 @@ Ext.onReady(function(){
     });
 
     // create the Data Store
-    var store = Ext.create('Ext.data.Store', {
+    store = Ext.create('Ext.data.Store', {
         model: 'Event',
         autoLoad: true,
 				autoSync: false,
