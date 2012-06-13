@@ -40,11 +40,12 @@
 	<l id="to-F"> à </l>
 		<l id="concerning-F"> concernant </l>
 				<l id="concerning-N"> betreffende </l>
-  <person id="none" gov="no" group="" lang="nl" gender="m">
+  <person id="&#160;" gov="no" group="" lang="nl" gender="m">
     <first>----</first>
     <last>----</last>
   </person>
   
+	
   <person id="AHIDAR_Fouad" gov="no" group="sp.a" lang="nl" gender="m">
       <first>Fouad</first>
       <last>Ahidar</last>
@@ -397,6 +398,7 @@
       <first>Rudi</first>
       <last>Vervoort</last>
    </person>
+
   
   <person id="GROUWELS_Brigitte" gov="yes" gender="f" lang="nl" group="CD&amp;V">
     <first>Brigitte</first>

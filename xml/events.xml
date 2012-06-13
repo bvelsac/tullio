@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <reference name="eventTypes">
+  <event id="" order="0000" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">---</name>
+    <name lang="fr">---</name>
+    <description lang="nl">Geen type.</description>
+    <description lang="fr"></description>
+    
+  </event>
+  
+  <event id="SUITE"  order="00speakers04" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Vervolg (zelfde spreker)</name>
+    <name lang="fr">Suite (même orateur)</name>
+    <description lang="nl">Nieuwe clip, zelfde spreker.</description>
+  </event>
+  
+  <event id="" order="0000" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">---</name>
+    <name lang="fr">---</name>
+    <description lang="nl">Geen type.</description>
+    <description lang="fr"></description>
+    
+  </event>
+  
+  
   <event id="PRES" order="gen-pres" active="y" use-for-editor="y" use-for-agenda="y">
     <name lang="nl">Voorzitter</name>
     <name lang="fr">Président</name>
@@ -122,7 +145,14 @@
     <name lang="nl">Nieuwe spreker (simpel)</name>
     <name lang="fr">Nouvel orateur (simple)</name>
     <description lang="nl"></description>
+	</event>
+  
+  <event id="PRES-SP"  order="00speakers011" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Voorzitter als spreker</name>
+    <name lang="fr">Président comme orateur</name>
+    <description lang="nl"></description>
   </event>
+  
 
 	<event id="ORA-SPR"  order="00speakers01" active="y" use-for-editor="y" use-for-agenda="y">
     <name lang="nl">Nieuwe spreker (vz. geeft het woord)</name>

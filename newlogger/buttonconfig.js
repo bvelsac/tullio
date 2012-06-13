@@ -2,7 +2,8 @@
 var propsRegister = {
 "new clip":
 {
-c:'true'
+c:'true',
+type: 'SUITE'
 },
 "open BHP":
 {
@@ -110,6 +111,16 @@ type:"ZAAL-GLIM"
 
 type:"GEN-ALG"
 },
+
+"PRES-SP":
+{
+	c:'false',
+	type: 'PRES-SP'
+	
+},
+
+
+
 "huytNL":
 {
 

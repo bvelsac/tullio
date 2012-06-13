@@ -99,7 +99,7 @@ function setOffset() {
 			
 			// lookup timestamp of last marker
 			var size;
-			if ( typeof store != "undefined" ) {size = store.getCount(); console.log(size);}
+			if ( typeof store != "undefined" ) {size = store.getCount(); }
 			if ( size > 0 ) {
 				// loop through the records, starting with most recent record
 				for (i=0; i < size; i++) {
@@ -116,7 +116,7 @@ function setOffset() {
 						var current = new XDate("2011-09-05T" + record.data.time);
 						var diff = ref - current;
 						$('#timer').text(toHumanTime(diff));
-						console.log("timer: " + diff);
+						//console.log("timer: " + diff);
 						if (diff > 210000 && diff < 300000) {
 							$('#timer').addClass('runningLate');
 						}
@@ -150,6 +150,7 @@ function setOffset() {
 
 Ext.onReady(function(){
 		
+
 		var m = $.QueryString["m"];
 		var lang = $.QueryString["lang"];
 		console.log(m + lang);
@@ -163,6 +164,61 @@ Ext.onReady(function(){
 		
 		// start displaying clocks
 		runClocks();
+		
+		var meetingId = "";
+		
+		meetingId += m.substr(0,4);
+		meetingId += m.substr(5,2);
+		meetingId += m.substr(8,2);
+		
+		if ( m.indexOf('PLEN') != -1 ) {
+			meetingId += "10";
+		}
+		else if ( m.indexOf('COM-AEZ') != -1 ) {
+			meetingId += "11";
+		}
+		
+		else if ( m.indexOf('COM-AIBZ') != -1 ) {
+			meetingId += "12";
+		}
+		
+		else if ( m.indexOf('COM-ATRO') != -1 ) {
+			meetingId += "13";
+		}
+		
+		else if ( m.indexOf('COM-ENVMIL') != -1 ) {
+			meetingId += "14";
+		}
+		
+		else if ( m.indexOf('COM-FIN') != -1 ) {
+			meetingId += "15";
+		}
+		
+		else if ( m.indexOf('COM-INFRA') != -1 ) {
+			meetingId += "16";
+		}
+		
+		else if ( m.indexOf('COM-LOGHUIS') != -1 ) {
+			meetingId += "17";
+		}
+		
+		else if ( m.indexOf('ASSZSANGEZ') != -1 ) {
+			meetingId += "18";
+		}
+		
+		else if ( m.indexOf('ASSZ') != -1 ) {
+			meetingId += "19";
+		}
+		
+		else if ( m.indexOf('SANGEZ') != -1 ) {
+			meetingId += "20";
+		}
+		else if ( m.indexOf('PFB') != -1 ) {
+			meetingId += "21";
+		}
+		else {
+			meetingId += "22";
+		}
 		
 		
 		
@@ -372,14 +428,16 @@ Ext.onReady(function(){
 		
     Ext.define('Event',{
         extend: 'Ext.data.Model',
+				
 				idgen: {
          type: 'sequential',
          seed: 100,
-         prefix: 'M' + m + '/'
+         prefix:  meetingId 
      },
         fields: [
             // set up the fields mapping into the xml doc
-            // The first needs mapping, the others are very basic
+						
+						/*
             {name: 'n', mapping: '@n'},
 						{name: 'time', mapping: '@time'},
 						{name: 'length', mapping: '@length'},
@@ -393,7 +451,22 @@ Ext.onReady(function(){
 						{name: 'notes', mapping: '@notes'},
 						{name: 'commit', mapping: '@commit'},
 						{name: 'id', mapping: '@id'}
+						*/
 						
+						{name: 'n'},
+						{name: 'time'},
+						{name: 'length'},
+						{name: 'c', type:'bool' },
+						{name: 'lang'},
+						{name: 'type'},
+						{name: 'speaker'},
+						{name: 'props'},
+						{name: 'textN'},
+						{name: 'textF'},
+						{name: 'notes'},
+						{name: 'commit'}
+						//,
+						//{name: 'id'}
         ]
     });
 
@@ -402,6 +475,27 @@ Ext.onReady(function(){
         model: 'Event',
         autoLoad: true,
 				autoSync: false,
+				proxy: {
+					type: 'localstorage',
+					id: 'meetinglog'
+					/*
+					,
+					reader: {
+                type: 'xml',
+								root: 'events',
+                record: 'e',
+                idProperty: 'id'
+            },
+					writer: {
+                type: 'xml',
+                root: 'events',
+								record: 'e',
+                idProperty: 'id'
+            }
+						*/
+				},
+				
+				/*
         proxy: {
             // load using HTTP
             type: 'ajax',
@@ -425,6 +519,7 @@ Ext.onReady(function(){
                 idProperty: 'id'
             }
         },
+				*/
 				listeners: {
 					beforesync: setCommitStatus
 				}
@@ -492,7 +587,7 @@ Ext.onReady(function(){
             {header: "Spreker", width: 140, dataIndex: 'speaker', field: {
                 xtype: 'combobox',
                 typeAhead: true,
-								forceSelection: true,
+								forceSelection: false,
                 triggerAction: 'all',
                 selectOnTab: true,
                 store: allSpeakersDict,
@@ -591,6 +686,8 @@ Ext.onReady(function(){
 									if (fb != 'stop') {
 										if (confirm('Publish clips ?')) store.sync( {callback: checkUpdate} )
 									}
+									records = Ext.encode(Ext.pluck(store.data.items, 'data'));
+									
 								}
             }]
         }],
@@ -760,6 +857,11 @@ Ext.onReady(function(){
 				var event = new Event(propsRegister[event.target.id]);
 										cellEditing.cancelEdit();
 										event.set('time', timestamp);
+										
+										
+										// if ()
+										
+										
 										event.setDirty();
 										store.insert(0, event);
 										//grid.getView().refresh();

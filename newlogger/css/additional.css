@@ -7,6 +7,7 @@
 		}
 		
 		
+		
 		div.buttons, div.more, div.extraButtons {
 			display:block;
 			clear:left;
@@ -47,13 +48,13 @@
             	font-weight: bold;
             	padding-left: 10px;
             }
-            .speakerbutton a:hover {
-            	text-decoration: none;
-            	font-size: 9px;
-            	color: red;
-            	font-weight: bold;
-            	padding-left: 10px;
+            .buttons div:hover, .extraButtons > span:hover, .speakerbutton:hover {
+            	background-color: #ffcc33;
+							
             }
+						
+						
+						
 						
 						div.commit * {
 							background-color: #99ff33;
