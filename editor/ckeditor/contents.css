@@ -51,7 +51,14 @@ span.text:before {
 	
 }
 
-
+.comment {
+	color: silver !important;
+	
+}
+.comment:before {
+	color: silver !important;
+	
+}
 
 .init {display: none;}
 

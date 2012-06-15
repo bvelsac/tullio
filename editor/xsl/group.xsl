@@ -77,8 +77,8 @@
           </xsl:when>
           <xsl:otherwise>
             <!-- er zijn helemaal geen events bekend voor deze clip -->
-            <!-- deze optie is in principe niet mogelijk, de clipmarker heeft ook @c -->
-            <p class="init" title="{@n}" clip="{@c}">
+            <!-- deze optie is in principe niet mogelijk, de clipmarker heeft ook @clip -->
+            <p class="init" title="{@n}" c="{@n}">
               <xsl:text>...</xsl:text>
             </p>
           </xsl:otherwise>
@@ -248,7 +248,7 @@
               </xsl:when>
               <!-- somehow there are not even events -->
               <xsl:otherwise>
-                <p class="write" title="{@n}">
+                <p c="{@n}" class="write" title="{@n}">
                   <xsl:text>...</xsl:text>
                 </p>
               </xsl:otherwise>

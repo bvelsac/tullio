@@ -37,4 +37,4 @@ let $nodes :=  if ($text) then util:eval( $text ) else ()
 			$update2 := if ($nodes//events) then (update insert $atts into $touch2, update insert $nodes//events/e[not(@active='no')] preceding $touch2[1], update delete doc($events-doc)//e[@op=$op][@marker='invalid']) else ()
 			return <result>{$touch}</result>
 			else()
-				return <result>{$touch}</result>
+			return <result>{$touch}</result>

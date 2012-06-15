@@ -219,8 +219,9 @@ Ext.onReady(function(){
 		else {
 			meetingId += "22";
 		}
-		
-		
+		var random = Math.floor(Math.random()*1001);
+		// meetingId += random;
+		console.log("ID:" + meetingId);
 		
 		// load agenda
 		$('#agendaplaceholder').load('/exist/tullio/newlogger/hello3.xql?m=' + m, function() {});
@@ -427,13 +428,15 @@ Ext.onReady(function(){
 		// items have no nr as this is created server side, markers added etc.
 		
     Ext.define('Event',{
-        extend: 'Ext.data.Model',
+        extend: 'Ext.data.Model'
+				/*,
 				
 				idgen: {
          type: 'sequential',
          seed: 100,
-         prefix:  meetingId 
-     },
+				 prefix : meetingId
+				 
+     }*/,
         fields: [
             // set up the fields mapping into the xml doc
 						
@@ -452,7 +455,7 @@ Ext.onReady(function(){
 						{name: 'commit', mapping: '@commit'},
 						{name: 'id', mapping: '@id'}
 						*/
-						
+						{name: 'id', type: 'integer'},
 						{name: 'n'},
 						{name: 'time'},
 						{name: 'length'},
@@ -466,7 +469,7 @@ Ext.onReady(function(){
 						{name: 'notes'},
 						{name: 'commit'}
 						//,
-						//{name: 'id'}
+						
         ]
     });
 
@@ -474,27 +477,12 @@ Ext.onReady(function(){
     store = Ext.create('Ext.data.Store', {
         model: 'Event',
         autoLoad: true,
-				autoSync: false,
+				autoSync: true,
+				
 				proxy: {
 					type: 'localstorage',
-					id: 'meetinglog'
-					/*
-					,
-					reader: {
-                type: 'xml',
-								root: 'events',
-                record: 'e',
-                idProperty: 'id'
-            },
-					writer: {
-                type: 'xml',
-                root: 'events',
-								record: 'e',
-                idProperty: 'id'
-            }
-						*/
+					id: m
 				},
-				
 				/*
         proxy: {
             // load using HTTP
@@ -521,10 +509,12 @@ Ext.onReady(function(){
         },
 				*/
 				listeners: {
-					beforesync: setCommitStatus
+					beforesync: setCommitStatus // moet ook id's aanmaken denk ik
 				}
     }); 
-
+		
+		store.sort('id', 'DESC');
+		
 		var cellEditing = Ext.create('Ext.grid.plugin.CellEditing', {
         clicksToEdit: 1,
 				pluginId: 'cellplugin'
@@ -684,9 +674,18 @@ Ext.onReady(function(){
 									var fb = '';
 									fb = updateClipLength(store);
 									if (fb != 'stop') {
+										/*
 										if (confirm('Publish clips ?')) store.sync( {callback: checkUpdate} )
+										*/
+										if (confirm('Publish clips ?')) {
+											// send the whole lot to the server
+											// records = Ext.encode(Ext.pluck(store.data.items, 'data'));
+											// console.log('extracted: ' + store.data.items);
+											// records = x2js.json2xml_str(store.data.items);
+											console.log(store.data.items);
+										}
 									}
-									records = Ext.encode(Ext.pluck(store.data.items, 'data'));
+
 									
 								}
             }]

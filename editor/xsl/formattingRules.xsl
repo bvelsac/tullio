@@ -2,7 +2,29 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   
   <xsl:template match="e" mode="initialize-text">
-    <p c="{@clip}" title="{@n}" >Unsupported event: <xsl:value-of select="@type"/></p>
+    <xsl:param name="lang" select="@lang"/>
+    <xsl:choose>
+      <xsl:when test="$lang='N'">
+        <p c="{@clip}" title="{@n}" class="comment"><xsl:value-of select="@type"/>: (nog) geen macro, handmatig aanvullen.</p>
+      </xsl:when>
+      <xsl:otherwise><p c="{@clip}" title="{@n}" class="comment"><xsl:value-of select="@type"/>: pas (encore) de macro, à completer par le rédacteur.</p></xsl:otherwise>
+    </xsl:choose>
+    
+
+  </xsl:template>
+  
+  <xsl:template match="e[@type='SUITE']" mode="initialize-text">
+    <xsl:param name="lang" select="@lang"/>
+    <xsl:choose>
+      <xsl:when test="$lang='N'">
+        <p c="{@clip}" title="{@n}" class="comment">Vervolg (zelfde spreker)</p>
+      </xsl:when>
+      <xsl:when test="$lang='F'">
+        <p c="{@clip}" title="{@n}" class="comment">Suite (même orateur)</p>
+      </xsl:when>
+    </xsl:choose>
+    
+    
   </xsl:template>
   
   <xsl:template match="e[@type='PRES']" mode="initialize-text">
