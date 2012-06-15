@@ -68,24 +68,24 @@ function jq(myid) {
 	var user;
 var userLang;
 var checkSession = function(){
-		console.log('check');
+		// console.log ('check');
     $.ajax({
         url : '/exist/tullio/xq/checksession.xql',
         dataType : 'xml',
         async : false,
         success : function(data) {
-					console.log(data);
-					console.log($(data).find('success'));
+					// console.log (data);
+					// console.log ($(data).find('success'));
 					if ($(data).find('success')[0] != null) {
 								user = data.getElementsByTagName("user")[0].getAttribute('id');
 								userLang = data.getElementsByTagName("user")[0].getAttribute('lang');
-								console.log(user + userLang);
+								// console.log (user + userLang);
                 return true;
             }
 						else redirectLogin();
         }
     });
-		console.log('finished');
+		// console.log ('finished');
 }
 function redirectLogin(){
     alert("Please log in");
@@ -122,23 +122,23 @@ checkSession();
     var nP = people.length;
 		var j =0;
 		var k =0;
-		console.log("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨p" + nP);
+		// console.log ("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨p" + nP);
 		 for (i=0; i<nP; i++) {
 			 if (people[i].getAttribute('id') && people[i].getAttribute('gov')=='no') {
-				 // console.log(people[i].getAttribute('id'));
-				 // console.log(people[i].getElementsByTagName('first')[0].firstChild.nodeValue);
+				 // // console.log (people[i].getAttribute('id'));
+				 // // console.log (people[i].getElementsByTagName('first')[0].firstChild.nodeValue);
 				 speakers[j] = [ people[i].getElementsByTagName('last')[0].firstChild.nodeValue + ', ' + people[i].getElementsByTagName('first')[0].firstChild.nodeValue + ' (' + people[i].getAttribute('group') + ')', people[i].getAttribute('id')];
 				 j++;
 			}
 			if (people[i].getAttribute('id') && people[i].getAttribute('gov')=='yes') {
-				 console.log('+++' + people[i].getAttribute('id'));
-				 // console.log(people[i].getElementsByTagName('first')[0].firstChild.nodeValue);
+				 // console.log ('+++' + people[i].getAttribute('id'));
+				 // // console.log (people[i].getElementsByTagName('first')[0].firstChild.nodeValue);
 				 government[k] = [ people[i].getElementsByTagName('last')[0].firstChild.nodeValue + ', ' + people[i].getElementsByTagName('first')[0].firstChild.nodeValue + ' (' + people[i].getAttribute('group') + ')', people[i].getAttribute('id')];
 				 k++;
 			}
 			
 		}
-		console.log(government);
+		// console.log (government);
 		
 		
 	}
@@ -165,10 +165,10 @@ checkSession();
 				frList[counter] = [labelF, id];
 				counter++;
 		});
-		// console.log(nlList);
+		// // console.log (nlList);
 		eventTypes.N = nlList;
 		eventTypes.F = frList;
-		console.log(eventTypes);
+		// console.log (eventTypes);
 	}
 	
 	jQuery.ajax({
@@ -193,10 +193,10 @@ checkSession();
 				frList[counter] = [labelF, id];
 				counter++;
 		});
-		// console.log(nlList);
+		// // console.log (nlList);
 		statusCodes.N = nlList;
 		statusCodes.F = frList;
-		console.log(statusCodes);
+		// console.log (statusCodes);
 	}
 
 	
@@ -221,24 +221,24 @@ var mmm = $.QueryString["m"];
 var user;
 var userLang;
 var checkSession = function(){
-		console.log('check');
+		// console.log ('check');
     $.ajax({
         url : '/exist/tullio/xq/checksession.xql',
         dataType : 'xml',
         async : false,
         success : function(data) {
-					console.log(data);
-					console.log($(data).find('success'));
+					// console.log (data);
+					// console.log ($(data).find('success'));
 					if ($(data).find('success')[0] != null) {
 								user = data.getElementsByTagName("user")[0].getAttribute('id');
 								userLang = data.getElementsByTagName("user")[0].getAttribute('lang');
-								console.log(user + userLang);
+								// console.log (user + userLang);
                 return true;
             }
 						else redirectLogin();
         }
     });
-		console.log('finished');
+		// console.log ('finished');
 }
 function redirectLogin(){
     alert("Please log in");
@@ -246,13 +246,13 @@ function redirectLogin(){
 }
 checkSession();
 
-console.log("user: " + user);
+// console.log ("user: " + user);
  
 function displayStatus() {
 //	 var requestLocks = dbUrl + mmm + "/locks.xml";
 	var requestLocks = "/exist/tullio/xq/return-locks.xql?m=" + mmm; 
 	 function updateLocks(result) {
-		 //console.log('update clipstatus');
+		 //// console.log ('update clipstatus');
 		 var statusTD;
 		 var cell;
 		 $("td.status").removeClass('locked');
@@ -260,13 +260,13 @@ function displayStatus() {
 
 		 var items = result.getElementsByTagName("lock");
      var nI = items.length;
-		 //console.log("l" + nI);
+		 //// console.log ("l" + nI);
 		 for (var i=0; i<nI; i++) {
 			 if (items[i].getAttribute('n')) {
 				 statusTD = "status-" + items[i].getAttribute('n') + "-" + items[i].getAttribute('v');
-				 //console.log(statusTD);
+				 //// console.log (statusTD);
 				 cell = $(jq(statusTD));
-				 //console.log(cell);
+				 //// console.log (cell);
 				 cell.children("p.lockid").text(items[i].getAttribute('id'));
 				 cell.addClass('locked');
 			}
@@ -295,7 +295,7 @@ function displayStatus() {
 				/*
 				$(jq(locks[i].getAttribute('n')) + ' td.status-orig').text(locks[i].getAttribute('o'));
 				var lang = $(jq(locks[i].getAttribute('n')) + ' td.lang-orig').text();
-				// console.log("lang " + lang);
+				// // console.log ("lang " + lang);
 														$(jq(locks[i].getAttribute('n')) + ' td.status-orig').attr("class", "status-orig " + locks[i].getAttribute('o') + lang);
 														
 														$(jq(locks[i].getAttribute('n')) + ' td.status-trans').text(locks[i].getAttribute('t'));
@@ -303,7 +303,7 @@ function displayStatus() {
 														$(jq(locks[i].getAttribute('n')) + ' td.status-trans').attr("class", "status-trans " + locks[i].getAttribute('t') + lang);
 														
 													}
-												//console.log(locks[i].getAttribute('id')); */
+												//// console.log (locks[i].getAttribute('id')); */
 		}
 		
 		
@@ -340,18 +340,18 @@ function displayStatus() {
 	
 
 function secondstep(xml, xsl, xmlorig) {
-	console.log("***** UPDATE ****");
+	// console.log ("***** UPDATE ****");
 
 	xml.getElementsByTagName("all")[0].appendChild(titles);
-		console.log(new XMLSerializer().serializeToString(xml));
+		// console.log (new XMLSerializer().serializeToString(xml));
 	$("#hidden").transform({async:false, xmlobj:xml, xsl:"xsl/group.xsl", xslParams:{mode:runTrans}});
 	// replace
 	var rows = $("#hidden > tr");
-	console.log("*****");
-	console.log("rows: " + rows);
-	console.log("rows-length: " + rows.length);
-	console.log("edited: " + edited);
-	console.log("ids: " + ids);
+	// console.log ("*****");
+	// console.log ("rows: " + rows);
+	// console.log ("rows-length: " + rows.length);
+	// console.log ("edited: " + edited);
+	// console.log ("ids: " + ids);
 
 	var origrowIds = ids.split(',');
 
@@ -362,16 +362,16 @@ function secondstep(xml, xsl, xmlorig) {
 	
 for (var i=0; i<rows.length; i++) {
 	//alert(rows[i]);
-	console.log("0replace: " + origrowIds[i] + ":" + visibleRows[i] + ":" +edited);
+	// console.log ("0replace: " + origrowIds[i] + ":" + visibleRows[i] + ":" +edited);
 	// do not replace the currently edited row
 	if (visibleRows[i] != edited.slice(0,-2)) {
 		// alert("about to replace, it. " + updateCounter + "." + i)
 		// keep editor in place								
 		if (origrowIds[i] == undefined && bottom != "") {
-			console.log("!!! found extra rows");
+			// console.log ("!!! found extra rows");
 			// table is scrolled to the bottom so the server returned all clips to the end and we have extra rows
 			$("#result > tr").filter(":last").after($("#hidden > tr"));
-			console.log("!!! replaced extra rows");
+			// console.log ("!!! replaced extra rows");
 			bottom = "";
 			break;
 		}
@@ -392,7 +392,7 @@ if (edited) {
 	
 		
 		if (newe && edited) {
-			console.log('scrollback');
+			// console.log ('scrollback');
 			$("body").scrollTop($("body").scrollTop() + newPosition - newe);
 			newe = $(jq(edited)).offset().top;
 		}
@@ -441,10 +441,10 @@ function updateVisibleTexts(once) {
     $('#text-table > tbody > tr').each(function() {
 				var currTop = $(this).offset().top;
 				var currBottom = $(this).offset().top + $(this).height();
-				// console.log(this.id + ': ' + cutoffTop + " " + cutoffBottom + " " + currTop + currBottom);
+				// // console.log (this.id + ': ' + cutoffTop + " " + cutoffBottom + " " + currTop + currBottom);
 				
         if (currTop > cutoffTop || currBottom  > cutoffTop || (currTop < cutoffTop && currBottom  > cutoffBottom)) {
-						// console.log('row ' + this.id + ' is visible');
+						// // console.log ('row ' + this.id + ' is visible');
 
 						visibleRows.push(this.id);
 						visibles += "#" + this.id + ",";
@@ -468,20 +468,20 @@ function updateVisibleTexts(once) {
 			// take the id of the last row in the table as stop id
 			stop = $('#text-table > tbody > tr:last').attr("id");
 			bottom = "&bottom=yes";
-			console.log("using last row id: " + stop);
+			// console.log ("using last row id: " + stop);
         }
         updateCounter++;
-	console.log("start: " + start + " stop: " + stop);
-//	console.log(visibleRows);
+	// console.log ("start: " + start + " stop: " + stop);
+//	// console.log (visibleRows);
 	ids = "#" + visibleRows.toString().replace(/,/g, ',#');
 	ids = ids.replace(/\./g,"\\.");
-	console.log("visible rows: " + ids);
+	// console.log ("visible rows: " + ids);
 
 	// highlight refreshed rows
 	$(ids).addClass('ruby');
 	// create request
 	var request = "../xq/return-combined.xql?m=" + mmm + "&start=" + start.substring(1) + "&stop=" + stop.substring(1) + "&include=" + runTrans + bottom;
-	console.log(request);
+	// console.log (request);
 	
 	// refresh the visible rows
 	// query the DB for event and text data
@@ -489,32 +489,32 @@ function updateVisibleTexts(once) {
 	
 	}
 	if (!once) {
-		//console.log('in function repeat, par. once :' +  once);
+		//// console.log ('in function repeat, par. once :' +  once);
 	 setTimeout("updateVisibleTexts(false)", 10000);
 	}
 }  
 
 function initialize(xml, xsl, xmlorig) {
 	
-	console.log('************ init');
-	console.log(xml);
+	// console.log ('************ init');
+	// console.log (xml);
 	
 	jQuery.get( "/exist/tullio/xml/titles.xml", 
 		function(data, textStatus, jqXHR) {
 			
-			console.log(data);
+			// console.log (data);
 			
 			x = data.documentElement;
 			xml.getElementsByTagName("all")[0].appendChild(titles);
 			
-			console.log(new XMLSerializer().serializeToString(xml));
+			// console.log (new XMLSerializer().serializeToString(xml));
 			$("#result").transform({cache:false, async:false, dataType:"xml", xmlobj:xml, xsl:"xsl/group.xsl", xslParams:{mode:runTrans}});
 			// $("#result").transform({xml:"xml/catalog.xml", xsl:"xsl/cds.xsl",xslParams:{test:"Value is set"}});
 			
 		},
 		"xml" );
 	
-		console.log('initializion end');
+		// console.log ('initializion end');
 	
 }
 
@@ -528,7 +528,7 @@ $().ready(function(){
 		
 		
 	      $.each(team, function(val, text) {
-						console.log(team);
+						// console.log (team);
             $('#person').append(
                 $('<option></option>').val(val).html(text)
             );
@@ -540,7 +540,7 @@ $().ready(function(){
 		jQuery.get( "/exist/tullio/xml/titles.xml", 
 			function(data, textStatus, jqXHR) {
 				asString = (new XMLSerializer()).serializeToString(data);
-				console.log('assigned var');
+				// console.log ('assigned var');
 			
 				
 				// titles = data.documentElement;
@@ -552,7 +552,7 @@ $().ready(function(){
          url:    "/exist/tullio/xml/titles.xml",
          success: function(result) {
                       testeee = (new XMLSerializer()).serializeToString(result); 
-											// console.log(testeee);
+											// // console.log (testeee);
 											titlesAsString = testeee;
 											titlesDoc = result;
 											titles = result.documentElement;
@@ -600,9 +600,10 @@ displayStatus();
 
 		$("#text-table td.content").live("dblclick", 
 			function(){
-				console.log(this);
+				console.log('clicked');
+				// console.log (this);
 				$(this).removeClass('content');
-				console.log(this);
+				// console.log (this);
 				// if (this.id == clickmemory) {alert('clip ' + clickmemory + ' already open'); return false;}
 				
 				// set some variables
@@ -632,7 +633,7 @@ displayStatus();
 
 				request.done(function(msg) {
 						msgString =  (new XMLSerializer()).serializeToString(msg);
-						//console.log( msgString);
+						//// console.log ( msgString);
 						if (msgString.indexOf('success')=='-1') {
 							locked = true;
 						}
@@ -644,7 +645,7 @@ displayStatus();
 				});
 
 				
-				console.log("clicked: " + this.id);
+				// console.log ("clicked: " + this.id);
 				
 				if ( locked ) {alert("locked"); locked= false; return false;}
 				
@@ -666,7 +667,7 @@ displayStatus();
 					
 					var editedcontent = "<wrapper n='" + clipid + "'>" + editor.getData().replace(/[&][#]160[;]/gi," ") + "</wrapper>";
 					
-					console.log(editedcontent);
+					// console.log (editedcontent);
 					// store everything on the server
 					
 					
@@ -684,7 +685,7 @@ displayStatus();
 					});
 					
 				
-					console.log(status + cat + clipid + stop + meeting);
+					// console.log (status + cat + clipid + stop + meeting);
 					var old = $(this).offset().top;
 					
 					$.post("../xq/unlock.xql", {
@@ -703,7 +704,7 @@ displayStatus();
 				oldcat = textversion;
 				updateVisibleTexts(true);		
 				
-				console.log('start editing ' + edited);
+				// console.log ('start editing ' + edited);
 				rowId = this.parentNode.id;
 				$(this).addClass("editmode");
 				$(this).children("div:first-child").attr('id', 'cke');
@@ -734,13 +735,14 @@ displayStatus();
 					width: cellWidth
 			});
 	
+	/*
 	editor.on('instanceReady', function() {
 		editor.focus();
 		var range = new CKEDITOR.dom.range( editor.document );
 		range.select();
-	}
-			)
-
+	});
+	*/
+	
 var isCtrl = false;
 	// code for keyboard shortcuts
 editor.on( 'contentDom', function( evt )
@@ -768,12 +770,12 @@ editor.on( 'contentDom', function( evt )
                 try {
                     event.data.$.preventDefault();
                 } catch(err) {}
-								console.log('save key');
+								// console.log ('save key');
 
                 //Call to your save function
 								lastSound = pagePlayer.lastSound.sID;
 								if (lastSound != undefined) {
-									console.log(lastSound);
+									// console.log (lastSound);
 									soundManager.togglePause(lastSound);
                 	return false;}
             }
@@ -788,12 +790,12 @@ editor.on( 'contentDom', function( evt )
                 try {
                     event.data.$.preventDefault();
                 } catch(err) {}
-								console.log('save key');
+								// console.log ('save key');
 
                 //Call to your save function
 								lastSound = pagePlayer.lastSound.sID;
 								if (lastSound != undefined) {
-									console.log(lastSound);
+									// console.log (lastSound);
 									soundManager.togglePause(lastSound);
                 	return false;}
             }
@@ -807,22 +809,22 @@ editor.on( 'contentDom', function( evt )
                 try {
                     event.data.$.preventDefault();
                 } catch(err) {}
-								console.log('save key');
+								// console.log ('save key');
 
                 //Call to your save function
 								lastSound = pagePlayer.lastSound.sID;
 								lastSound = pagePlayer.lastSound.sID;
 								if (!lastSound) {
-									console.log('no sound');
+									// console.log ('no sound');
 									return false;
 								}
 				
 								var s = soundManager.getSoundById(lastSound);
 								if (!s || !s.playState || !s.duration) {
-									console.log("something wrong");
+									// console.log ("something wrong");
 									return false;
 								}
-								console.log(s.position);
+								// console.log (s.position);
 								s.setPosition(s.position - 5000);	
 			
             }
@@ -835,22 +837,22 @@ editor.on( 'contentDom', function( evt )
                 try {
                     event.data.$.preventDefault();
                 } catch(err) {}
-								console.log('save key');
+								// console.log ('save key');
 
                 //Call to your save function
 								lastSound = pagePlayer.lastSound.sID;
 								lastSound = pagePlayer.lastSound.sID;
 								if (!lastSound) {
-									console.log('no sound');
+									// console.log ('no sound');
 									return false;
 								}
 				
 								var s = soundManager.getSoundById(lastSound);
 								if (!s || !s.playState || !s.duration) {
-									console.log("something wrong");
+									// console.log ("something wrong");
 									return false;
 								}
-								console.log(s.position);
+								// console.log (s.position);
 								s.setPosition(s.position + 5000);	
 			
             }

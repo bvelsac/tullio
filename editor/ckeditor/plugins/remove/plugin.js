@@ -12,6 +12,7 @@
 			
 			var selection = editor.getSelection().getStartElement();
 			selection.removeAttribute( 'title' );
+			selection.removeAttribute( 'class' );
 			
 		}
 	});

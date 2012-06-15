@@ -17,10 +17,8 @@ body
 		
 }
 
-p {
-	
-	
-}
+a {text-decoration: none;}
+
 
 p[title]:before {
 	content: "[" attr(title) "]";

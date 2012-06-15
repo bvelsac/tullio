@@ -4,6 +4,14 @@ var cat;
 var clipid;
 var stop;
 
+function testDoc (xmlDoc) {
+	testeee = (new XMLSerializer()).serializeToString(xmlDoc);
+	if (testeee.indexOf("<parsererror") != -1) {
+		console.log('>>> parse error in xml doc');
+	}
+}
+
+
  
 function asfinish(xml2, xsl, object, e) {
 	var asString = (new XMLSerializer()).serializeToString(xml2);
@@ -90,6 +98,7 @@ function asfinalize(xml, xsl, object, e) {
  }
  
 function asreconcile(xml, xsl, xmlorig) {
+	testDoc(xml);
 	var asString = (new XMLSerializer()).serializeToString(xml);
 	console.log("reconcile -- xml:");
 	console.log(asString);
@@ -127,6 +136,10 @@ CKEDITOR.plugins.add('ajaxsave',
 					var doctype = "<?xml version='1.0' encoding='UTF-8'?>\n<!DOCTYPE container [\n<!ENTITY nbsp '&#160;'>\n]>";
 					var content = doctype + '<container><div id="text">' + editor.getData().replace(/[&][#]160[;]/gi," ") + '</div><div id="events">' + $(jq(rowId) + ' div.structured-events').html() + '</div>'  + '</container>';
 					var contentDoc = $.parseXML(content);
+					
+					console.log('base doc ');
+					console.log(contentDoc);
+					
 					contentDoc.getElementsByTagName("container")[0].appendChild(titles);
 					
 											// get latest macro variables
@@ -152,6 +165,9 @@ CKEDITOR.plugins.add('ajaxsave',
 							console.log('request fails -----');
 							alert( "Save action failed, please try again." );
 					});
+					
+					console.log("step 0");
+					testDoc(contentDoc);
 					
 					
 					$.transform({
