@@ -326,6 +326,10 @@ Ext.onReady(function(){
 		*/
 		
 		function updateClipLength(store) {
+			console.log("u c l ");
+			
+			store.suspendAutoSync();
+			
 			if (store.getCount() < 2) return;
 			
 			var size = store.getCount();
@@ -338,11 +342,11 @@ Ext.onReady(function(){
 			// removeRowCls
 			// set language for all events
 			// console.log(store.getAt(size-1).data.lang);
-			if (store.getAt(size-1).data.lang == "" || store.getAt(size-1).data.lang == undefined) {
+			if (size > 3 && ( store.getAt(size-1).data.lang == "" || store.getAt(size-1).data.lang == undefined) ) {
 				alert("Set language for first record"); return "stop";
 			}
 			
-			if (store.getAt(size-1).data.c == "" || store.getAt(size-1).data.c == undefined) {
+			if (size > 3 && ( store.getAt(size-1).data.c == "" || store.getAt(size-1).data.c == undefined )) {
 				alert("First record is not a clip"); return "stop";
 			}
 			/*
@@ -358,13 +362,16 @@ Ext.onReady(function(){
 				// loop through the records, starting with oldest record
 			for (i=size-1; i >= 0; i--) {
 				record = store.getAt(i);
+				
+				record.set('id', size - i);
+				/*
 				if ( record.data.c ) {
 					rowType = (rowType=='odd') ? 'even' : 'odd' ; 
 				}
 				grid.getView().removeRowCls( record, 'odd' )
 				grid.getView().removeRowCls( record, 'even' )
 				grid.getView().addRowCls( record, rowType )
-				
+				*/
 				if (record.data.lang == "" || record.data.lang == undefined) {
 					record.set('lang', langMem);
 				}
@@ -377,7 +384,11 @@ Ext.onReady(function(){
 			// loop through the records, starting with most recent record
 			for (i=0; i < size; i++) {
 				record = store.getAt(i);
+				//record.set('id', i );
 				// console.log(record.data.time + 'L::' + record.data.length);
+				
+				
+				
 				
 				if (record.data.c) {
 					// console.log('clip');
@@ -390,27 +401,42 @@ Ext.onReady(function(){
 					moreRecent = current;
 				}
 				else {
-					record.set('length', ' ');
+					record.set('length', '');
 				}
 			}
+			
+			store.resumeAutoSync();
+
 		}
 		
 		function setCommitStatus(options, eOpts) {
-			
+			console.log('publish');
+			store.suspendAutoSync();
+	
+
 			var size = store.getCount();
-			var found;
+			var found = "";
 			var record;
+			console.log(size);
 			// loop through the records, starting with most recent record
 			for (i=0; i < size; i++) {
 				record = store.getAt(i);
+				//console.log(i);
+				//console.log(record);
 				if (record.data.commit == 'P') break;
-				if (found == "P") record.set('commit', 'P');
-				if (record.data.c && found !='P') {found = "P"; record.set('commit', 'F');} 
+				if (found == "clip") {record.set('commit', 'P')};
+				if (record.data.c && found !='clip') {
+					found = "clip"; 
+					record.set('commit', 'F');
+					
+				} 
 			}
 			console.log('commit');
-			console.log(options);
-			console.log(eOpts);
-			console.log(store);
+			store.sync();
+			store.resumeAutoSync();
+			// console.log(options);
+			// console.log(eOpts);
+			// console.log(store);
 		}
 		/*
 			var size = store.getCount();
@@ -477,8 +503,8 @@ Ext.onReady(function(){
     store = Ext.create('Ext.data.Store', {
         model: 'Event',
         autoLoad: true,
-				autoSync: true,
-				
+				autoSync: false,
+				batchUpdateMode : 'operation',
 				proxy: {
 					type: 'localstorage',
 					id: m
@@ -509,7 +535,13 @@ Ext.onReady(function(){
         },
 				*/
 				listeners: {
-					beforesync: setCommitStatus // moet ook id's aanmaken denk ik
+					beforesync: function () {
+							
+						 updateClipLength(store);
+						 
+					
+					
+					}
 				}
     }); 
 		
@@ -671,6 +703,9 @@ Ext.onReady(function(){
                 iconCls: 'icon-publish',
                 disabled: false,
                 handler: function(){
+									
+									
+									
 									var fb = '';
 									fb = updateClipLength(store);
 									if (fb != 'stop') {
@@ -678,13 +713,31 @@ Ext.onReady(function(){
 										if (confirm('Publish clips ?')) store.sync( {callback: checkUpdate} )
 										*/
 										if (confirm('Publish clips ?')) {
+											
+											
 											// send the whole lot to the server
 											// records = Ext.encode(Ext.pluck(store.data.items, 'data'));
 											// console.log('extracted: ' + store.data.items);
 											// records = x2js.json2xml_str(store.data.items);
-											console.log(store.data.items);
+											//var dump = Ext.JSON.encode(Ext.Array.pluck(store.data.items, 'data'));
+											//console.log(dump);
+											// x2js.json2xml_str(dump);
+											// var records  = xmlJsonClass.json2xml(Ext.Array.pluck(store.data.items, 'data'));
+											var xmlDump = x2js.json2xml_str(Ext.Array.pluck(store.data.items, 'data'));
+											//var badTag = eval('/<(\/?)([0-9+])>/' );
+											
+											
+											xmlDump = xmlDump.replace(/<([0-9]+)>/g, "<e row='$1'>");
+											xmlDump = xmlDump.replace(/<(\/)([0-9]+)>/g, "</e>");
+											xmlDump = "<records meeting='" + m + "'>" + xmlDump + "</records>";
+											
+											
+											console.log(xmlDump);
+											
+											
 										}
 									}
+
 
 									
 								}
@@ -693,7 +746,7 @@ Ext.onReady(function(){
 			
 				listeners: {
 					beforeedit: function(plugin, e, eOpts) {
-						console.log(e.record.data.clip);
+						// console.log(e.record.data.clip);
 						return (e.record.data.commit == 'P' || e.record.data.commit == 'F') ? false : true;
 						//alert('yyy');
             // if (e.record.get("something") != "whatwerelookingfor") {
@@ -709,6 +762,7 @@ Ext.onReady(function(){
 		function update() {
 			// console.log('looping');
 			updateClipLength(store);
+			store.sync();
 			setTimeout(update, 5000);
 		}
 		update();
