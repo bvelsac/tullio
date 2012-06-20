@@ -40,6 +40,7 @@ function toHumanTime(x) {
 
 var offset = 0;
 var store;		
+var batch = 0;
 
 Ext.Loader.setConfig({
     enabled: true
@@ -704,35 +705,71 @@ Ext.onReady(function(){
                 disabled: false,
                 handler: function(){
 									
-									
-									
 									var fb = '';
 									fb = updateClipLength(store);
+									// to do before submitting the clips
+									// 
+									// make a list of the clips that need to be submitted ()
+									
+									// calculate the clip language code of unsubmitted clips => done at server side, takes the language of the clip event
+									
+									// to do after submitting the clips
+									// downgrade publication status if request failed
+									
 									if (fb != 'stop') {
 										/*
 										if (confirm('Publish clips ?')) store.sync( {callback: checkUpdate} )
 										*/
 										if (confirm('Publish clips ?')) {
 											
+											console.log('publish');
+											store.suspendAutoSync();
+
+											var size = store.getCount();
+											var found = "";
+											var record;
+											var newClips = [];
+											batch++;
 											
-											// send the whole lot to the server
-											// records = Ext.encode(Ext.pluck(store.data.items, 'data'));
-											// console.log('extracted: ' + store.data.items);
-											// records = x2js.json2xml_str(store.data.items);
-											//var dump = Ext.JSON.encode(Ext.Array.pluck(store.data.items, 'data'));
-											//console.log(dump);
-											// x2js.json2xml_str(dump);
-											// var records  = xmlJsonClass.json2xml(Ext.Array.pluck(store.data.items, 'data'));
-											var xmlDump = x2js.json2xml_str(Ext.Array.pluck(store.data.items, 'data'));
-											//var badTag = eval('/<(\/?)([0-9+])>/' );
-											
-											
-											xmlDump = xmlDump.replace(/<([0-9]+)>/g, "<e row='$1'>");
+											console.log(size);
+											// loop through the records, starting with most recent record
+											for (i=0; i < size; i++) {
+												record = store.getAt(i);
+												//console.log(i);
+												//console.log(record);
+												if (record.data.commit == 'P') break;
+												if (found == "clip") {record.set('commit', 'P')};
+												if (record.data.c && found !='clip') {
+													found = "clip"; 
+													record.set('commit', 'F');
+												} 
+												newClips.push(record.data);
+												
+											}
+											var xmlDump = x2js.json2xml_str(newClips);
+											xmlDump = xmlDump.replace(/<([0-9]+)>/g, "<e b='" + batch + "' row='$1'>");
 											xmlDump = xmlDump.replace(/<(\/)([0-9]+)>/g, "</e>");
 											xmlDump = "<records meeting='" + m + "'>" + xmlDump + "</records>";
-											
-											
+												
 											console.log(xmlDump);
+											
+											$.ajax({
+													type: 'POST',
+													url: "/exist/tullio/xq/logreceiver.xql?m=" + m,
+													data:  xmlDump,
+													contentType: 'text/xml',
+													processData: false,
+													async: false
+											}).done(function( msg ) {
+												
+											});
+											
+											console.log('commit');
+			
+											store.sync();
+											store.resumeAutoSync();
+											
+											
 											
 											
 										}

@@ -11,7 +11,7 @@ let $serverAddress:= concat("http://", doc('/db/tullioconfig/config.xml')/config
 
 let $meeting := request:get-parameter("m", ())      (:string:)
 let $entries := request:get-data()            (: number -- id of stop event -- included :)
-let $nodes := $entries
+let $nodes :=  $entries
 let $setuser := xdb:login("/db", "admin", "paris305")
 
 let $descr := <meeting>{concat(substring-before($meeting, '-'), substring-before(substring-after($meeting, '-'), '-'), substring-before(substring-after(substring-after($meeting, '-'), '-'), '-'))}</meeting> 

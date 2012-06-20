@@ -6,7 +6,7 @@
     <xmlData>
       <success>true</success>
       <events>
-        <xsl:apply-templates select="/records/item[position()=last()][commit='P']">
+        <xsl:apply-templates select="/records/e[position()=last()][commit='P']">
           <xsl:with-param name="counter" select="$lower"/>
         </xsl:apply-templates>
       </events>
