@@ -142,6 +142,61 @@
     </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
+  
+  <xsl:template match="e[@type='O-BXL']" priority="5" mode="initialize-text">
+    <xsl:param name="lang" select="@lang"/>
+    <xsl:choose >
+      <xsl:when test="$lang='F'">
+        <p c="{@clip}" title="{@n}" class="front">
+          PARLEMENT DE LA RÉGION DE BRUXELLES-CAPITALE  
+        </p>
+        
+        <p c="{@clip}" title="{@n}" class="front">
+          Compte rendu intégral
+        </p>
+        <p c="{@clip}" title="{@n}" class="front">
+          Séance plénière du 
+        </p>
+        <p c="{@clip}" title="{@n}" class="front">
+          <span class="incomplete">VENDREDI XX MOIS 2011</span>
+        </p>
+        <p  c="{@clip}" title="{@n}" class="front">
+          <span class="incomplete">(Séance de l'après-midi)/(Séance du matin)</span>
+        </p>
+        
+        
+      </xsl:when>
+      <xsl:otherwise>
+       
+        <p c="{@clip}" title="{@n}" class="front">
+          BRUSSELS HOOFDSTEDELIJK PARLEMENT  
+          </p>
+        
+        <p c="{@clip}" title="{@n}" class="front">
+          Integraal verslag
+        </p>
+        <p c="{@clip}" title="{@n}" class="front">
+          Plenaire vergadering van
+        </p>
+        <p c="{@clip}" title="{@n}" class="front">
+          <span class="incomplete">DAG XX MAAND JAAR</span>
+        </p>
+        <p  c="{@clip}" title="{@n}" class="front">
+          <span class="incomplete">(Ochtendvergadering/Namiddagvergadering)</span>
+        </p>
+        
+        
+        
+        
+        
+        
+        
+        
+      </xsl:otherwise>
+    </xsl:choose>
+    
+  </xsl:template>
+  
   <xsl:template match="e[@type='QA-AV'] | e[@type='QO-MV'] | e[@type='INT']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"/>
     <xsl:variable name="person" select="key('people', @speaker)"/>
@@ -322,8 +377,8 @@
         select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/><xsl:value-of
           select="$person/first"/>
         <xsl:text> </xsl:text>
-        <xsl:value-of select="$person/last"/>.- </span>
-      <xsl:text>...</xsl:text>
+        <xsl:value-of select="$person/last"/></span> 
+      <xsl:text>.-</xsl:text>
     </p>
   </xsl:template>
   
@@ -363,8 +418,8 @@
           select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/><xsl:value-of
           select="$person/first"/>
         <xsl:text> </xsl:text>
-        <xsl:value-of select="$person/last"/>.- </span>
-      <xsl:text>...</xsl:text>
+        <xsl:value-of select="$person/last"/></span>
+      <xsl:text>.- </xsl:text>
       
     </p>
 
