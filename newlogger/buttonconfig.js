@@ -119,6 +119,12 @@ type:"GEN-ALG"
 	
 },
 
+"POINT":
+{
+	c:'false',
+	type: 'POINT'
+	
+},
 
 
 "huytNL":

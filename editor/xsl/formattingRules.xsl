@@ -4,14 +4,24 @@
   <xsl:template match="e" mode="initialize-text">
     <xsl:param name="lang" select="@lang"/>
     <xsl:choose>
-      <xsl:when test="$lang='N'">
-        <p c="{@clip}" title="{@n}" class="comment"><xsl:value-of select="@type"/>: (nog) geen macro, handmatig aanvullen.</p>
+      <xsl:when test="string(@type)">
+        <xsl:choose>
+          <xsl:when test="$lang='N'">
+            <p c="{@clip}" title="{@n}" class="comment"><xsl:value-of select="@type"/>: (nog) geen macro, handmatig aanvullen.</p>
+          </xsl:when>
+          <xsl:otherwise><p c="{@clip}" title="{@n}" class="comment"><xsl:value-of select="@type"/>: pas (encore) de macro, à completer par le rédacteur.</p></xsl:otherwise>
+        </xsl:choose>
       </xsl:when>
-      <xsl:otherwise><p c="{@clip}" title="{@n}" class="comment"><xsl:value-of select="@type"/>: pas (encore) de macro, à completer par le rédacteur.</p></xsl:otherwise>
+      <xsl:otherwise>
+        
+        <p c="{@clip}" title="{@n}" class="comment">Event <xsl:value-of select="@n"/>
+          <xsl:if test="string(@notes)">, <xsl:value-of select="@notes"/></xsl:if>
+        </p>    
+      </xsl:otherwise>
     </xsl:choose>
     
-
   </xsl:template>
+  
   
   <xsl:template match="e[@type='SUITE']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"/>
@@ -30,7 +40,7 @@
   <xsl:template match="e[@type='PRES']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"/>
     <xsl:variable name="person" select="key('people', @speaker)"></xsl:variable>
-    <p c="{@clip}" title="{@n}">
+    <p c="{@clip}" title="{@n}" class="proc">
     <xsl:value-of select="key('snippets', concat('presi-', $lang))"/>
     <xsl:value-of select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/>
     <xsl:value-of select="$person/first"/>
@@ -39,15 +49,52 @@
     </p>
   </xsl:template>
   
+  <xsl:template match="e[@type='GEN-ALG']" mode="initialize-text">
+    <xsl:param name="lang" select="@lang"/>
+    
+    <p c="{@clip}" title="{@n}" class="title1" ><span class="incomplete">TITEL / TITRE</span></p>
+    <xsl:if test="string(@notes)">
+      <p c="{@clip}" title="{@n}" class="comment" ><xsl:value-of select="@notes"/></p>
+      
+    </xsl:if>
+    
+    
+    <p c="{@clip}" title="{@n}" class="proc">
+      <xsl:call-template name="president">
+        <xsl:with-param name="event" select="."/>
+        <xsl:with-param name="lang" select="$lang"/>
+      </xsl:call-template>
+      <xsl:text>...</xsl:text>
+    </p>
+  </xsl:template>
+  
+  <xsl:template match="e[@type='POINT']" mode="initialize-text">
+    <xsl:param name="lang" select="@lang"/>
+    <xsl:if test="string(@notes)">
+      <p c="{@clip}" title="{@n}" class="comment" ><xsl:value-of select="@notes"/></p>
+      
+    </xsl:if>
+    
+    
+    <p c="{@clip}" title="{@n}" class="proc">
+      <xsl:call-template name="president">
+        <xsl:with-param name="event" select="."/>
+        <xsl:with-param name="lang" select="$lang"/>
+      </xsl:call-template>
+      <xsl:text>...</xsl:text>
+    </p>
+  </xsl:template>
+  
+  
   <xsl:template match="e[@type='CONT-N']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"/>    
-    <p c="{@clip}" title="{@n}">
+    <p c="{@clip}" title="{@n}" class="realia">
       <xsl:value-of select="key('snippets', concat('contN-', $lang))"/>
     </p>
   </xsl:template>
   <xsl:template match="e[@type='CONT-F']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"/>    
-    <p c="{@clip}" title="{@n}">
+    <p c="{@clip}" title="{@n}" class="realia">
       <xsl:value-of select="key('snippets', concat('contF-', $lang))"/>
     </p>
   </xsl:template>
@@ -55,14 +102,15 @@
   
   <xsl:template match="e[@type='START-INT']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"/>
-    <p c="{@clip}" title="{@n}">
+    <p c="{@clip}" title="{@n}" class="title1">
       <xsl:value-of select="key('snippets', concat('startInt-', $lang))"/>
     </p>
-    <p c="{@clip}" title="{@n}" class="incomplete">
+    <p c="{@clip}" title="{@n}" class="proc">
       <xsl:call-template name="president">
       <xsl:with-param name="event" select="."/>
       <xsl:with-param name="lang" select="$lang"/>
       </xsl:call-template>
+      
       <xsl:value-of select="key('snippets', concat('startIntOrd-', $lang))"/>
     </p>
     
@@ -73,11 +121,11 @@
     <xsl:param name="lang" select="@lang"/>
     <xsl:choose>
       <xsl:when test="$lang='N'">
-        <p c="{@clip}" title="{@n}">BRUSSELS HOOFDSTEDELIJK PARLEMENT</p>
-        <p c="{@clip}" title="{@n}">VERENIGDE VERGADERING VAN DE GEMEENSCHAPPELIJKE GEMEENSCHAPSCOMMISSIE</p>
-        <p c="{@clip}" title="{@n}">Integraal verslag van de interpellaties en mondelinge vragen</p>
-        <p c="{@clip}" title="{@n}" class="incomplete">NAAM COMMISSIE</p>
-        <p c="{@clip}" title="{@n}" class="incomplete">VERGADERING VAN DAG XX MAAND 2012</p>
+        <p class="front" c="{@clip}" title="{@n}">BRUSSELS HOOFDSTEDELIJK PARLEMENT</p>
+        <p class="front"  c="{@clip}" title="{@n}">VERENIGDE VERGADERING VAN DE GEMEENSCHAPPELIJKE GEMEENSCHAPSCOMMISSIE</p>
+        <p class="front" c="{@clip}" title="{@n}">Integraal verslag van de interpellaties en mondelinge vragen</p>
+        <p class="front" c="{@clip}" title="{@n}" ><span class="incomplete">NAAM COMMISSIE</span></p>
+        <p class="front" c="{@clip}" title="{@n}" ><span class="incomplete">VERGADERING VAN DAG XX MAAND 2012</span></p>
         <!-- 
         <p c="{@clip}" title="{@n}">Plenaire vergadering van <span class="incomplete">DATUM</span></p>
         <p c="{@clip}" title="{@n}">
@@ -98,6 +146,7 @@
     <xsl:param name="lang" select="@lang"/>
     <xsl:variable name="person" select="key('people', @speaker)"/>
     <xsl:variable name="gov" select="key('people', normalize-space(@props))"/>
+    <p>
     <xsl:choose>
       <xsl:when test="$lang='N'">
         <xsl:choose>
@@ -137,7 +186,8 @@
     <xsl:text>, </xsl:text>
     <xsl:value-of select="$gov/ti[@l=$lang][@meeting-type=$meeting-type]"/>
     <xsl:text>,</xsl:text>
-    <p c="{@clip}" title="{@n}">
+    </p>
+    <p class="title4" c="{@clip}" title="{@n}">
       <xsl:value-of select="key('snippets', concat('concerning-', $lang))"/>
       <xsl:text> "</xsl:text>
       <xsl:choose>
@@ -247,7 +297,7 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <a class="{$class} reformat" title="{$event/@n}" href="#">
+    <span class="{$class} reformat pres" title="{$event/@n}" href="#">
       <xsl:if test="string($segment)">
         <xsl:attribute name="segment">
           <xsl:value-of select="$segment"/>
@@ -261,19 +311,19 @@
           <xsl:text>.-</xsl:text>
         </xsl:otherwise>
       </xsl:choose>
-    </a>
+    </span>
   </xsl:template>
   <xsl:template match="e[@type='NEW']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"/>
     <xsl:variable name="person" select="key('people', @speaker)"/>
     
     <p c="{@clip}">
-      <a class="speaker" title="{@n}" href="#"><xsl:value-of
+      <span class="speaker" title="{@n}" ><xsl:value-of
         select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/><xsl:value-of
           select="$person/first"/>
         <xsl:text> </xsl:text>
-        <xsl:value-of select="$person/last"/>.- </a>
-      
+        <xsl:value-of select="$person/last"/>.- </span>
+      <xsl:text>...</xsl:text>
     </p>
   </xsl:template>
   
@@ -285,7 +335,7 @@
   <xsl:template match="e[@type='ORA-SPR']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"/>
     <xsl:variable name="person" select="key('people', @speaker)"/>
-    <p c="{@clip}" title="{@n}">
+    <p c="{@clip}" title="{@n}" class="proc">
       <xsl:call-template name="president">
         <xsl:with-param name="event" select="."/>
         <xsl:with-param name="lang" select="$lang"/>
@@ -309,38 +359,37 @@
     </p>
     
     <p c="{@clip}">
-      <a class="speaker" title="{@n}" href="#"><xsl:value-of
+      <span class="speaker" title="{@n}"><xsl:value-of
           select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/><xsl:value-of
           select="$person/first"/>
         <xsl:text> </xsl:text>
-        <xsl:value-of select="$person/last"/>.- </a>
+        <xsl:value-of select="$person/last"/>.- </span>
+      <xsl:text>...</xsl:text>
       
     </p>
-    <p c="{@clip}" class="write">...</p>
+
   </xsl:template>
   <xsl:template match="e[@type='EXC-AFW']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"/>
-    <p c="{@clip}" title="{@n}">VERONTSCHULDIGD</p>
-    <p c="{@clip}" title="{@n}">
+    <p c="{@clip}" title="{@n}" class="title1">Verontschuldigd</p>
+    <p c="{@clip}" title="{@n}" class="proc">
       <xsl:call-template name="president">
         <xsl:with-param name="event" select="."/>
         <xsl:with-param name="lang" select="$lang"/>
       </xsl:call-template>
-      <xsl:value-of select="key('snippets', concat('exc-', $lang))"/>
+      <span class="incomplete"><xsl:value-of select="key('snippets', concat('exc-', $lang))"/></span>
+      
     </p>
-    <p c="{@clip}">
+    <p c="{@clip}" class="proc">
       <span class="incomplete">Lijst van afwezigen</span>
     </p>
-    <p c="{@clip}" class="incomplete"/>
-    <p c="{@clip}" class="write"> </p>
   </xsl:template>
 <!--  <xsl:template match="e[@type='']" mode="initialize-text">
     <p c="{@clip}" class="debug" title="{@n}">Event type missing</p>
   </xsl:template>-->
   <xsl:template match="e[@type='marker']" mode="initialize-text">
-    <p c="{@clip}" class="marker" title="{@n}">Start clip <xsl:value-of select="@n"/>
-    </p>
-    <p c="{@clip}" class="write">...</p>
+    <p c="{@clip}" class="comment" title="{@n}">Start clip <xsl:value-of select="@n"/></p>
+
   </xsl:template>
 
   

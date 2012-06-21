@@ -37,6 +37,22 @@ color: gray;
 
 
 .lockid {font-size: 12px; color: gray;}
+
+.lockid {display : none;}
+
+
+
+.status-wrapper:hover + p {
+    display: block;
+		position: absolute;
+		background: Bisque;
+		border: thin solid gray;
+		padding: 3px;
+		
+
+}
+
+
 td.status {
 	border-left: solid 3px transparent;
 	vertical-align: top;														 

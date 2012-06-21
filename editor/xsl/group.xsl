@@ -224,8 +224,10 @@
             <span class="status-lang" id="{concat('status-', @n, '-orig-lang')}">
               <xsl:value-of select="@lang"/>
             </span>
+            <xsl:text>&#160;</xsl:text>
           </p>
           <p class="lockid"/>
+          
           
         </td>
         <!-- add cell with the original text -->
