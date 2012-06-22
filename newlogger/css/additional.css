@@ -1,4 +1,9 @@
-		.cell-title {
+#agendawrapper {
+	max-height : 450px;
+
+}		
+
+.cell-title {
 			font-weight: bold;
 		}
 
@@ -90,7 +95,7 @@
 						}
 		
 		
-						div#basic * {color:#0000cc;}
+						div#basic * {color:#0000cc; height: 75px;}
 						div#events * {color:green;}
 						div#govNL * {color:purple;}
 						div#govFR * {color:red;}
@@ -123,19 +128,19 @@ CLOCKS
 */
 
 #clock, #timer {
-border: 3px solid silver;
 font-size: 16px;
-padding: 5px;
+padding: 0px 50px 0px 50px;
 font-family: monospace;
 }
 
 #timer {
 background-color: black;
 color: greenYellow;
+font-weight: bold;
 }
 
 #clock {
-	color: silver;
+	color: black;
 	border: none;
 	padding: 0px;
 }
@@ -145,10 +150,58 @@ color: greenYellow;
 #timer.veryLate {color: red;}
 
 .clockwrapper {
-	margin-top: 10px;
-	margin-bottom: 10px;
+	/*margin-top: 5px;
+	margin-bottom: 5px;*/
 	
 }
+
+#agendaplaceholder .tableWrapper {
+	overflow-y : scroll;
+	max-height : 430px;
+}
+
+#agendaplaceholder h2, #agendaplaceholder2 h2 {
+	height : 20px;
+}
+
+
+#agendaplaceholder2 .tableWrapper {
+	overflow-y : scroll;
+	max-height : 200px;
+}
+
+div.chatbutton {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #999999;
+    bottom: 0;
+    color: #333333;
+    cursor: pointer;
+      margin: 1px;
+    position: fixed;
+    right: 0;
+    text-align: center;
+padding: 3px;
+    /*width: 1.2em;*/
+    z-index: 100;
+}
+div.chat {
+display: none;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #999999;
+    bottom: 0;
+height: 270px;
+width: 570px;
+    color: #333333;
+    cursor: pointer;
+      margin: 1px;
+    position: fixed;
+    right: 0;
+    text-align: center;
+padding: 3px;
+    /*width: 1.2em;*/
+    z-index: 100;
+}
+
 
 
 

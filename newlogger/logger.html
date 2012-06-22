@@ -36,58 +36,49 @@
 <body>
 <div class='container_18'>
 <div class='grid_3'><h3>Meeting Logger</h3></div>
-<div class='grid_6'><span>Salle / zaal: </span><span id="channel">???</span></div>
-<div class="grid_9"><span>Agenda 2: </span><span id="agenda2">--</span></div>
+<div class='grid_3 clockwrapper'><span  id='timer' >--:--</span></div>
+<div class='grid_3 clockwrapper'><span  id='clock' /></div>
+<div class='grid_3'><span>Salle / zaal: </span><span id="channel">???</span></div>
+<div class="grid_6"><span>Agenda 2: </span><span id="agenda2">--</span></div>
+<!--<div class='grid_6 chatwrapper'><span  id='chat' >&#160;</span></div>-->
 
-		<div class="clear">&nbsp;</div>
-<!--		<div class='grid_2'>F9: Language Switch</div>
+		<!--		<div class='grid_2'>F9: Language Switch</div>
 		<div class='grid_2'>F10: Repeat Previous</div>
 -->		
-		<div class='grid_3'  >&#160;</div>
-		<div class='grid_6 clockwrapper'><span  id='timer' >--:--</span></div>
-		<div class='grid_9 clockwrapper'><span  id='clock' /></div>
+				
 		
-		<div class="clear">&nbsp;</div>
-		<div class="clear">&nbsp;</div>
-		<div class="grid_15">
+				<div class="clear" style="height: 15px;">&nbsp;</div>
+		<div class="grid_16">
     <!-- a place holder for the grid. requires the unique id to be passed in the javascript function, and width and height ! -->
     	<div id="example-grid"></div>
 		</div>
-		<div id="agendawrapper" class="grid_3">
-		<div id='agendaplaceholder' class="grid_3 agendafunc">
+		<div id="agendawrapper" class="grid_5">
+		<div id='agendaplaceholder' class="agendafunc">
 			<p>&nbsp;</p>
 		</div>
-		<div id='agendaplaceholder2' class="grid_3 agendafunc">
+		<div id='agendaplaceholder2' class="agendafunc">
 			<p>&nbsp;</p>
 		</div>
 		
 		</div>
 		
-		<div class="clear">&nbsp;</div>
+		<div class="clear" style="height: 10px;">&nbsp;</div>
 		<div class="grid_15">
-			<div class="buttons" id="openClose">
+<div class="buttons" id="openClose">
 				<!-- This div contains the buttons, there are five rows of normal buttons and then two rows of configurable buttons -->
-				<span>Opening</span>
-            <div id="open BHP" class="eventNotifier">
-                Opening BHP
+				<span>Panic</span>
+            <div id="event" class="eventNotifier">
+               Event
             </div>
-						 <div id="open VVGGC">
-                Opening VVGGC
+						 <div id="clip">
+               Clip
             </div>
-				    <div id="suspend BHP">
-                Schorsing BHP
-            </div>
-						<div id="suspend VVGGC">
-                Schorsing VVGGC
-            </div>
-						<div id="close BHP">
-                Sluiting BHP
-            </div>
-						<div id="close BHP">
-                Sluiting VVGGC
-            </div>
+				    
 				
 				</div>
+
+			
+
 				
 				<div class="buttons" id="basic">
 								<span>Basis</span>
@@ -109,18 +100,40 @@
 												<div id="PRES-SP">
                 VZ als spreker
             </div>
-						<div id="agenda">
-                Nieuw agendapunt
-            </div>
-								<div id="POINT">
-                Mini punt
-            </div>
-			
+									
 				
 				
 				</div>
 				
-				<div class="buttons" id="events">
+				
+<div class="buttons" id="procedure">
+	<span>Procedure</span>
+	<div id="agenda" class="eventNotifier">
+               Agenda
+            </div>
+						
+<div id="POINT" class="eventNotifier">
+                VZ (point, remarque...)
+            </div>
+ <div id="travaux">
+                Ordre des travaux
+            </div>
+            
+<div id="inc" class="eventNotifier">
+                1 incident clos
+            </div>
+<div id="inc2" class="eventNotifier">
+                + incidents clos
+            </div>
+
+						
+						
+
+				
+				
+				</div>
+
+<div class="buttons" id="events">
 								<span>Zaal</span>
             <div id="pres" class="eventNotifier">
                 Voorzitterswissel
@@ -144,6 +157,9 @@
 				
 				
 				</div>
+
+
+<!--
 				<div class="buttons" id="govNL">
 								<span>Regering NL</span>
             <div id="picqueNL" class="eventNotifier">
@@ -210,7 +226,7 @@
 				
 				
 				</div>
-				
+				-->
 				<div class="extraButtons" id="extraSpeakers">
 								<span id="actionMore">More</span>
 								<span id="actionLess">Less</span>
@@ -234,7 +250,9 @@
 	
 		
 		<!-- space for configurable speaker buttons -->
-		
+<div class="chat">
+<iframe border="0" width="570" height="270" src="http://tullio.intranet.bru/tulliochat/index.html"></iframe></div>
+		<div class="chatbutton">CHAT2</div>
 	
 		
 </div>

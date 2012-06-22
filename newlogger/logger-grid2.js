@@ -150,7 +150,12 @@ function setOffset() {
 // http://localhost:8080/exist/rest//db/tullio/2012-03-29-AM_COMM-ECO/events.xml
 
 Ext.onReady(function(){
+		 $(document).delegate('div.chatbutton','click', function(e) {
+			$('div.chat').toggle();
+
+		});
 		
+
 
 		var m = $.QueryString["m"];
 		var lang = $.QueryString["lang"];
@@ -643,8 +648,8 @@ Ext.onReady(function(){
             selType: 'cellmodel'
         },
         renderTo:'example-grid',
-				width: 1060,
-        height: 400,
+				width: 1100,
+        height: 450,
 				plugins: [cellEditing],
 				dockedItems: [{
             xtype: 'toolbar',

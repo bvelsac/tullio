@@ -10,10 +10,12 @@
 	</head>
 	<body>
 	<h2>Agenda <xsl:value-of select="/xml/data/info/meeting"/></h2>
+	<div class="tableWrapper">
     <table class="agenda" border="1">
       
       <xsl:apply-templates  select="//row"></xsl:apply-templates>
     </table>
+</div>
     </body>
     </html>
     

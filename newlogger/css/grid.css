@@ -23,8 +23,15 @@ body {
 .container_18 {
 	margin-left: auto;
 	margin-right: auto;
+	width: 1890px;
+}
+/*
+.container_18 {
+	margin-left: auto;
+	margin-right: auto;
 	width: 1350px;
 }
+*/
 
 /* Grid >> Global
 ----------------------------------------------------------------------------------------------------*/
