@@ -11,12 +11,14 @@
           </xsl:when>
           <xsl:otherwise><p c="{@clip}" title="{@n}" class="comment"><xsl:value-of select="@type"/>: pas (encore) de macro, à completer par le rédacteur.</p></xsl:otherwise>
         </xsl:choose>
+        <p c="{@clip}" title="{@n}">...</p>
+      </xsl:when>
+      <xsl:when test="string(@notes)">
+        <p c="{@clip}" title="{@n}" class="comment"><xsl:value-of select="@notes"/></p>
+        
       </xsl:when>
       <xsl:otherwise>
-        
-        <p c="{@clip}" title="{@n}" class="comment">Event <xsl:value-of select="@n"/>
-          <xsl:if test="string(@notes)">, <xsl:value-of select="@notes"/></xsl:if>
-        </p>    
+        <!-- don't generate text, this event is not useful -->
       </xsl:otherwise>
     </xsl:choose>
     
@@ -33,6 +35,7 @@
         <p c="{@clip}" title="{@n}" class="comment">Suite (même orateur)</p>
       </xsl:when>
     </xsl:choose>
+    <p c="{@clip}" >...</p>
     
     
   </xsl:template>
@@ -51,12 +54,12 @@
   
   <xsl:template match="e[@type='GEN-ALG']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"/>
-    
-    <p c="{@clip}" title="{@n}" class="title1" ><span class="incomplete">TITEL / TITRE</span></p>
     <xsl:if test="string(@notes)">
       <p c="{@clip}" title="{@n}" class="comment" ><xsl:value-of select="@notes"/></p>
       
     </xsl:if>
+    <p c="{@clip}" title="{@n}" class="title1" ><span class="incomplete">TITEL / TITRE</span></p>
+    
     
     
     <p c="{@clip}" title="{@n}" class="proc">
@@ -443,7 +446,7 @@
     <p c="{@clip}" class="debug" title="{@n}">Event type missing</p>
   </xsl:template>-->
   <xsl:template match="e[@type='marker']" mode="initialize-text">
-    <p c="{@clip}" class="comment" title="{@n}">Start clip <xsl:value-of select="@n"/></p>
+  <!--  <p c="{@clip}" class="comment" title="{@n}">Start clip <xsl:value-of select="@n"/></p> -->
 
   </xsl:template>
 
@@ -466,12 +469,21 @@
         <xsl:value-of select="@time"/>
       </td>
       <td class="e-type">
-        <xsl:value-of select="@type"/>
+        <xsl:choose>
+          <xsl:when test="@lang='N'">
+            <xsl:value-of select="key('eventNames', @type)/name[@lang='nl']"/>    
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="key('eventNames', @type)/name[@lang='fr']"/>
+          </xsl:otherwise>
+        </xsl:choose>
+        
+        
       </td>
       <td class="e-speaker">
         <xsl:choose>
           <xsl:when test="string(@speaker)">
-            <xsl:value-of select="@speaker"/>
+            <xsl:value-of select="key('people', @speaker)/last"/>
           </xsl:when>
           <xsl:otherwise>
             <xsl:value-of select="@notes"/>

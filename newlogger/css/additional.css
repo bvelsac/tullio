@@ -3,6 +3,18 @@
 
 }		
 
+tr.odd td {
+	background-color: #FAFAFA !important;
+	
+}
+
+tr.even td {
+	background-color: white !important;
+	
+}
+
+
+
 .cell-title {
 			font-weight: bold;
 		}
@@ -95,7 +107,15 @@
 						}
 		
 		
-						div#basic * {color:#0000cc; height: 75px;}
+						div#basic * {padding-top: 30px; color:#0000cc; height: 75px;}
+						
+						div#basic div {
+							font-weight: bold;
+							
+							text-align: center;
+						}
+						
+						
 						div#events * {color:green;}
 						div#govNL * {color:purple;}
 						div#govFR * {color:red;}
@@ -118,6 +138,11 @@ border-bottom: thin solid gray;
 
 margin-right: 0px;
 padding: 4px;
+}
+
+body {
+	
+	background-color: silver;
 }
 
 
@@ -146,8 +171,8 @@ font-weight: bold;
 }
 
 
-#timer.runningLate {color: orange;}
-#timer.veryLate {color: red;}
+#timer.runningLate {color: black; background-color: orange;}
+#timer.veryLate {color: black; background-color: red;}
 
 .clockwrapper {
 	/*margin-top: 5px;

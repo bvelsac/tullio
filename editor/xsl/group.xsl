@@ -8,6 +8,7 @@
   <!--xsl:include href="http://localhost:8080/exist/tullio/editor/xsl/formattingRules.xsl"/-->
   <xsl:include href="/exist/tullio/editor/xsl/formattingRules.xsl"/>
   
+  <xsl:key name="eventNames" match="//event" use="@id"/>
   <xsl:key match="//e" name="clip" use="@clip"/>
   <xsl:key match="//l" name="snippets" use="@id"/>
   <xsl:key match="//doc/p[not(@class='init')]" name="text" use="@c"/>

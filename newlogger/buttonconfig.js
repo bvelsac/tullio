@@ -1,6 +1,12 @@
 // set up buttons etc.
 var propsRegister = {
-"new clip":
+
+	"clip":
+{
+c:'true'
+},
+	
+	"new clip":
 {
 c:'true',
 type: 'SUITE'
@@ -42,30 +48,28 @@ type:"EINDE-BXL"
 
 type:"EINDE-ARVV"
 },
+
 "in NL":
 {
 type:'CONT-N',
-
-
 c:'true',
 lang:'N'
 },
+
 "in FR":
 {
-
-
 c:'true',
 type:'CONT-F',
 lang:'F'
 },
+
 "new NL":
 {
-
-
 c:'true',
 lang:'N',
 type:"NEW"
 },
+
 "new FR":
 {
 

@@ -14,20 +14,12 @@
     <description lang="nl">Nieuwe clip, zelfde spreker.</description>
   </event>
   
-  <event id="" order="0000" active="y" use-for-editor="y" use-for-agenda="y">
-    <name lang="nl">---</name>
-    <name lang="fr">---</name>
-    <description lang="nl">Geen type.</description>
-    <description lang="fr"></description>
-    
-  </event>
   
   
- 
-	
-	  <event id="PRES" order="gen-pres" active="y" use-for-editor="y" use-for-agenda="y">
-    <name lang="nl">Voorzitterschap</name>
-    <name lang="fr">Présidence</name>
+  
+  <event id="PRES" order="gen-pres" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Voorzitter</name>
+    <name lang="fr">Président</name>
     <description lang="nl">Bedoeld om de voorzitter aan te duiden, in het begin van de vergadering.</description>
     <description lang="fr"></description>
     <properties>
@@ -36,10 +28,9 @@
       </prop>
     </properties>
   </event>
-	
-  <event id="POINT"  order="gen-001" active="y" use-for-editor="y" use-for-agenda="y">
-    <name lang="nl">Punt in de bespreking</name>
-    <name lang="fr">Point dans la discussion</name>
+  <event id="CONT-N"  order="00speakers02" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Verder in het Nederlands</name>
+    <name lang="fr">Poursuivant en néerlandais</name>
     <description lang="nl"></description>
   </event>
   <event id="CONT-F"  order="00speakers03" active="y" use-for-editor="y" use-for-agenda="y">

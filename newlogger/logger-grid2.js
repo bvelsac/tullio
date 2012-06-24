@@ -37,7 +37,7 @@ function toHumanTime(x) {
 	return resultString;
 }
 
-
+var backstep = 2000;
 var offset = 0;
 var store;		
 var batch = 0;
@@ -343,6 +343,8 @@ Ext.onReady(function(){
 			var record;
 			var langMem;
 			var rowType = 'odd';
+			var view = 	grid.getView();
+			
 			
 			// addRowCls( HTMLElement/String/Number/Ext.data.Model rowInfo, String cls )
 			// removeRowCls
@@ -370,14 +372,14 @@ Ext.onReady(function(){
 				record = store.getAt(i);
 				
 				record.set('id', size - i);
-				/*
+				
 				if ( record.data.c ) {
 					rowType = (rowType=='odd') ? 'even' : 'odd' ; 
 				}
-				grid.getView().removeRowCls( record, 'odd' )
-				grid.getView().removeRowCls( record, 'even' )
-				grid.getView().addRowCls( record, rowType )
-				*/
+				view.removeRowCls( record, 'odd' )
+				view.removeRowCls( record, 'even' )
+				view.addRowCls( record, rowType )
+				
 				if (record.data.lang == "" || record.data.lang == undefined) {
 					record.set('lang', langMem);
 				}
@@ -567,20 +569,24 @@ Ext.onReady(function(){
         store: store,
         sortableColumns: false,
         columns: [
-	
-						{header: "N.", width: 30, dataIndex: 'n'},
-						{header: "Tijd", width: 70, dataIndex: 'time', editor: {
-                allowBlank: false
-            }},
-						{header: "Lengte", width: 50, dataIndex: 'length'},
-						{header: "Clip", width: 30, dataIndex: 'c',  
+							{header: "Clip", width: 30, dataIndex: 'c',
+							xtype: 'checkcolumn'
+							/*
+							,
 							editor: {
 								xtype: 'checkbox',
 								cls: 'x-grid-checkheader-editor'
 							},
 							renderer: function(v) { return v ? 'C' : '';}
+							*/
 						},
 						{header: "P", width: 30, dataIndex: 'commit'},
+/*						{header: "N.", width: 30, dataIndex: 'n'},*/
+						{header: "Tijd", width: 70, dataIndex: 'time', editor: {
+                allowBlank: false
+            }},
+						{header: "Lengte", width: 50, dataIndex: 'length'},
+
 						{header: "Taal", width: 50, dataIndex: 'lang',
 							editor: new Ext.form.field.ComboBox({
                 typeAhead: true,
@@ -596,7 +602,20 @@ Ext.onReady(function(){
 								else if (v=='M') return "<span style='color:green'>" + v + "</span>";
 							}
 						},
-            {header: "Type", flex: 1, dataIndex: 'type', 
+            
+            {header: "Spreker", width: 140, dataIndex: 'speaker', field: {
+                xtype: 'combobox',
+                typeAhead: true,
+								forceSelection: false,
+                triggerAction: 'all',
+                selectOnTab: true,
+                store: allSpeakersDict,
+                lazyRender: false,
+								minWidth: 200,
+                listClass: 'x-combo-list-small'
+							
+							}},
+							{header: "Type", flex: 1, dataIndex: 'type', 
 							renderer:  function(value) {
 								return eventTypesLookup[value] ;
 							},
@@ -612,18 +631,12 @@ Ext.onReady(function(){
                 minWidth: 150
 							}
 						},
-            {header: "Spreker", width: 140, dataIndex: 'speaker', field: {
-                xtype: 'combobox',
-                typeAhead: true,
-								forceSelection: false,
-                triggerAction: 'all',
-                selectOnTab: true,
-                store: allSpeakersDict,
-                lazyRender: false,
-								minWidth: 200,
-                listClass: 'x-combo-list-small'
-							
-							}},
+						{header: "Opmerkingen", width: 115, dataIndex: 'notes', editor: {
+								xtype     : 'textareafield',
+								grow      : true,
+								anchor    : '100%'
+								}
+							},
 							{header: "Onderwerp N", width: 180, dataIndex: 'textN', editor: {
 								xtype     : 'textareafield',
 								grow      : true,
@@ -631,12 +644,6 @@ Ext.onReady(function(){
 								}
 							},
             {header: "Onderwerp F", width: 180, dataIndex: 'textF', editor: {
-								xtype     : 'textareafield',
-								grow      : true,
-								anchor    : '100%'
-								}
-							},
-						{header: "Opmerkingen", width: 115, dataIndex: 'notes', editor: {
 								xtype     : 'textareafield',
 								grow      : true,
 								anchor    : '100%'
@@ -660,7 +667,7 @@ Ext.onReady(function(){
                     // Create a record instance through the ModelManager
 										
 										var timestamp = new Date();
-										timestamp.setTime(timestamp.getTime() + offset);
+										timestamp.setTime(timestamp.getTime() + offset - backstep);
 										timestamp = Ext.Date.format(timestamp, 'H:i:s');
 										
 										var event = new Event({
@@ -824,7 +831,7 @@ Ext.onReady(function(){
 												 c:'true'
 					}
 					var timestamp = new Date();
-					timestamp.setTime(timestamp.getTime() + offset);
+					timestamp.setTime(timestamp.getTime() + offset - backstep);
 					timestamp = Ext.Date.format(timestamp, 'H:i:s');
 					var event = new Event(submission);
 					cellEditing.cancelEdit();
@@ -849,7 +856,7 @@ Ext.onReady(function(){
 				fn: function(key, e) {
 					e.preventDefault();
 					var timestamp = new Date();
-					timestamp.setTime(timestamp.getTime() + offset);
+					timestamp.setTime(timestamp.getTime() + offset - backstep);
 					timestamp = Ext.Date.format(timestamp, 'H:i:s');
 					var event = new Event();
 					cellEditing.cancelEdit();
@@ -868,7 +875,7 @@ Ext.onReady(function(){
 		});
 		
 		var mapF12 = new Ext.util.KeyMap(Ext.getDoc(), {
-				// F11 voegt een nieuwe regel toe, is geen clip
+				// F11 voegt een nieuwe regel toe, is een clip
 				key: 123,
 				fn: function() {
 					var timestamp = new Date();
@@ -947,7 +954,7 @@ Ext.onReady(function(){
 				console.log('button clicked by ');
 				console.log(event.target);
 				var timestamp = new Date();
-				timestamp.setTime(timestamp.getTime() + offset);
+				timestamp.setTime(timestamp.getTime() + offset - backstep);
 				timestamp = Ext.Date.format(timestamp, 'H:i:s');
 				var event = new Event(propsRegister[event.target.id]);
 										cellEditing.cancelEdit();
@@ -991,7 +998,7 @@ Ext.onReady(function(){
 					console.log('confbutton clicked ');
 					var conf = $(this).closest('form').find('input').val();
 					var timestamp = new Date();
-					timestamp.setTime(timestamp.getTime() + offset);
+					timestamp.setTime(timestamp.getTime() + offset - backstep);
 					timestamp = Ext.Date.format(timestamp, 'H:i:s');
 					
 					var event = new Event();

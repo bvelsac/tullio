@@ -60,6 +60,9 @@ function jq(myid) {
 	var titles = null;
 	var titlesDoc;
 	
+	var events = null;
+	var eventsDoc;
+	
 
 	var runTrans = $.QueryString["t"];
 	
@@ -153,6 +156,10 @@ checkSession();
 	requestConfig = "/exist/tullio/xq/return-eventTypes.xql?target=editor";
 	
 	function setEventTypes(response) {
+		
+		// eventsDoc = response;
+		events = response.documentElement;
+		
 		var nlList = [];
 		var frList = [];
 		
@@ -343,6 +350,7 @@ function secondstep(xml, xsl, xmlorig) {
 	// console.log ("***** UPDATE ****");
 
 	xml.getElementsByTagName("all")[0].appendChild(titles);
+		xml.getElementsByTagName("all")[0].appendChild(events);
 		// console.log (new XMLSerializer().serializeToString(xml));
 	$("#hidden").transform({async:false, xmlobj:xml, xsl:"xsl/group.xsl", xslParams:{mode:runTrans}});
 	// replace
@@ -506,7 +514,7 @@ function initialize(xml, xsl, xmlorig) {
 			
 			x = data.documentElement;
 			xml.getElementsByTagName("all")[0].appendChild(titles);
-			
+					xml.getElementsByTagName("all")[0].appendChild(events);
 			// console.log (new XMLSerializer().serializeToString(xml));
 			$("#result").transform({cache:false, async:false, dataType:"xml", xmlobj:xml, xsl:"xsl/group.xsl", xslParams:{mode:runTrans}});
 			// $("#result").transform({xml:"xml/catalog.xml", xsl:"xsl/cds.xsl",xslParams:{test:"Value is set"}});
@@ -721,7 +729,7 @@ displayStatus();
 				
 	editor = CKEDITOR.replace( 'cke', {
 					toolbar: [['Styles', 'Undo', 'Redo', 'PasteText', 'Ajaxsave','internalSync','Remove', 'Abbr', 'Status','Source', 'Simpleclose']],
-					extraPlugins : 'remove,internalSync,ajaxsave,transform,abbr-custom,status,simpleclose',
+					extraPlugins : 'remove,internalSync,ajaxsave,transform,abbr-custom,status,simpleclose,wordcount',
 					disableNativeSpellChecker: false,
 					removePlugins : 'scayt,contextmenu',
 					startupFocus: false,

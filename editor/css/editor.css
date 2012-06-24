@@ -177,3 +177,12 @@ td.sound {
 	}
 
 #agendawrapper {max-height : 400px ;}
+
+td.orig, td.trans {
+	vertical-align: top;
+}
+td.events {
+	width: 200px;
+}
+
+p.comment {display: none;}
