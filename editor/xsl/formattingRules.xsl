@@ -24,6 +24,22 @@
     
   </xsl:template>
   
+  <xsl:template match="e[@type='INC']" mode="initialize-text">
+    <xsl:param name="lang" select="@lang"/>
+    <xsl:choose>
+      <xsl:when test="$lang='N'">
+        <p c="{@clip}" title="{@n}" class="realia">- Het incident is gesloten.</p>
+      </xsl:when>
+      <xsl:when test="$lang='F'">
+        <p c="{@clip}" title="{@n}" class="comment">- L'incident est clos.</p>
+      </xsl:when>
+    </xsl:choose>
+    
+    
+  </xsl:template>
+  
+  
+  
   
   <xsl:template match="e[@type='SUITE']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"/>

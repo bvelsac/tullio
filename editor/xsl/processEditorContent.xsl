@@ -3,6 +3,8 @@
   <xsl:output indent="yes" method="xml"/>
   <xsl:include href="/exist/tullio/editor/xsl/formattingRules.xsl"/>
   
+  
+  <xsl:key name="eventNames" match="//event" use="@id"/>
   <xsl:key match="//e" name="clip" use="@clip"/>
   <xsl:key match="//l" name="snippets" use="@id"/>
   <xsl:key match="//doc/p[not(@d='init')]" name="text" use="@c"/>

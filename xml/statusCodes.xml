@@ -5,12 +5,12 @@
     <label lang="fr">Nouveau clip</label>
   </code>  
   <code id="EC">
-    <label lang="nl">Redactie bezig</label>
-    <label lang="fr">En cours de rédaction</label>
+    <label lang="nl">Redactie / vertaling bezig</label>
+    <label lang="fr">En cours de rédaction ou traduction</label>
   </code>  
   <code id="T">
-    <label lang="nl">Redactie klaar</label>
-    <label lang="fr">Texte transcrit</label>
+    <label lang="nl">Redactie / vertaling klaar</label>
+    <label lang="fr">Texte transcrit ou traduit</label>
   </code>  
   <code id="R">
     <label lang="nl">Revisie klaar</label>

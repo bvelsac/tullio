@@ -1,0 +1,551 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.3  (Unix)">
+	<META NAME="AUTHOR" CONTENT="Bert Van Elsacker">
+	<META NAME="CREATED" CONTENT="20120625;13350200">
+	<META NAME="CHANGEDBY" CONTENT="Bert Van Elsacker">
+	<META NAME="CHANGED" CONTENT="20120625;13371600">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 0.79in }
+		P { margin-bottom: 0.08in }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="nl-BE" DIR="LTR">
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><B>Toegang
+tot de Tullio DB client</B></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>Ga
+naar [servername]/exist/index.xml</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>De
+Java web client kan worden gestart via de link links onderaan:</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><IMG SRC="tulliotechhelp_html_45c5389e.jpg" NAME="graphics1" ALIGN=LEFT WIDTH=206 HEIGHT=144 BORDER=0><BR CLEAR=LEFT><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>username
+= admin</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>wachtwoord
+= het admin wachtwoord</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>Biedt
+toegang tot de inhoud van de database, rechtenbeheer, beheer van de
+gebruikers... Deze is georganiseerd als een file systeem, en
+toegankelijk via WebDAV.</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><IMG SRC="tulliotechhelp_html_m8cdb23d.jpg" NAME="graphics2" ALIGN=LEFT WIDTH=741 HEIGHT=664 BORDER=0><BR CLEAR=LEFT><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>Voor
+Tullio zijn er twee directories in gebruik:</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>tullio:
+bevat alle data voor het verslag</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>tullioconfig:
+bevat de taalkeuze van de gebruikers, en het serveradres waarop
+Tullio draait</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>Via
+de Java client kun je ook backups maken van de DB: </FONT></FONT></FONT>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><IMG SRC="tulliotechhelp_html_m74e64df8.jpg" NAME="graphics3" ALIGN=LEFT WIDTH=454 HEIGHT=352 BORDER=0><BR CLEAR=LEFT><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><B>Een
+gebruiker toevoegen:</B></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>1.
+Toevoegen aan de lijst van gebruikers geconfigureerd in eXist</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>-</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><IMG SRC="tulliotechhelp_html_m5c20465a.jpg" NAME="graphics4" ALIGN=LEFT WIDTH=426 HEIGHT=337 BORDER=0><BR CLEAR=LEFT><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>Taalvoorkeur
+instellen in het bestand tullioconfig/users.xml</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><IMG SRC="tulliotechhelp_html_45cd7d1f.jpg" NAME="graphics5" ALIGN=LEFT WIDTH=346 HEIGHT=215 BORDER=0><BR CLEAR=LEFT><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><B>Tullio
+installatie - filestructuur</B></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>De
+directory /exist/webapp bevat de webapplicaties die gebruik maken van
+eXist. Tullio is er daar een van. Alle code voor de
+tulliofunctionaliteiten bevindt zich in de map /exist/webapp/tullio</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>Deze
+code zit ook integraal in de github repository, met één
+uitzondering: de directory js-lib, die een aantal externe javascript
+libraries bevat.</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>De
+verschillende functionaliteiten van Tullio hebben in principe hun
+eigen map:</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>-agenda:
+invoer van de agenda</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>-assemblage:
+de assemblage homepage</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>-editor:
+de interface voor redactie en vertaling</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>-help:
+de help-pagina's</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>-newlogger:
+de interface om de vergadering mee te loggen</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>-
+status (momenteel niet gebruikt maar geeft simpel overzicht van de
+clips en hun status)</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>Deze
+mappen bevatten het overgrote deel van de code voor deze
+functionaliteit, met uitzondering van:</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>-
+gedeelde js-code specifiek voor tullio (js-shared)</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>-
+gedeelde js-libraries (js-lib)</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>-
+de scripts die interageren met de db (xq)</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>De
+andere mappen zijn dus</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>-
+js-lib</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>-
+js-shared</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>-
+soundmanager</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>-
+xq</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>-
+xml: bevat configuraties voor leden, macro's...</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>statusCodes.xml:
+bevat de statuten</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>events.xml:
+definities van de eventtypes</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>titles.xml:
+</FONT></FONT></FONT>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">-
+bevat korte stukjes tekst die worden gebruikt in macro's
+(l-elementen), bvb. </SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;l</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+id</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;startInt-F&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&gt;&lt;span</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+class</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;incomplete&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&gt;</SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">INTERPELLATION/INTERPELLATIONS</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;/span&gt;&lt;/l&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>-
+bevat de definities van de personen (zowel leden als regering,
+inclusief gegevens als bevoegdheden, taalvoorkeur, politieke
+partij...), bvb. </FONT></FONT></FONT>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;person</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+id</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;VANHALEWYN_Vincent&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+gov</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;no&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+group</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;Ecolo&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+lang</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;fr&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+gender</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;m&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000">     
+</FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;first&gt;</SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">Vincent</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;/first&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000">     
+</FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;last&gt;</SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">Vanhalewyn</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;/last&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000">  
+</FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;/person&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;person</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+id</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;GROUWELS_Brigitte&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+gov</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;yes&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+gender</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;f&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+lang</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;nl&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+group</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;CD&amp;amp;V&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000">   
+</FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;first&gt;</SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">Brigitte</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;/first&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000">   
+</FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;last&gt;</SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">Grouwels</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;/last&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">		
+</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;ti</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+l</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;N&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+meeting-type</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;BHP&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&gt;</SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">minister
+van de Brusselse Hoofdstedelijke Regering, belast met Openbare Werken
+en Vervoer</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;/ti&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000">     
+</FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;ti</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+l</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;F&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+meeting-type</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;BHP&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&gt;</SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">ministre
+du Gouvernement de la RŽgion de Bruxelles-Capitale, chargŽe des
+Travaux publics et des Transports</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;/ti&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000">     
+</FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;ti</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+l</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;N&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+meeting-type</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;VVGGC&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&gt;</SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">lid
+van het Verenigd College, bevoegd voor het Beleid inzake Bijstand aan
+Personen en Openbaar Ambt</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;/ti&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000">     
+</FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;ti</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+l</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;F&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+meeting-type</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;VVGGC&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&gt;&lt;/ti&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000"> 
+</FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;/person&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><B>Een
+nieuwe gebruiker aanmaken.</B></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>1.
+De gebruiker creëren als eXist-gebruiker via de Java client</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>2.
+De taalvoorkeur van de gebruiker definiëren in
+tullioconfig/users.xml</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><B>Een
+nieuw event-type aanmaken</B></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>Het
+event-type declareren in het bestand events.xml. Het zal automatisch
+verschijnen in de dropdown met event-types in de editor en de logger.
+(Wel een page refresh doen en de cache leegmaken.) </FONT></FONT></FONT>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><B>Een
+nieuwe knop aanmaken in de logger</B></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>1.
+In newlogger/logger.html de gewenste knoppenbalk opzoeken en een
+extra div toevoegen met een unieke id:</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>&lt;div
+class=&quot;buttons&quot; id=&quot;basic&quot;&gt;</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>								&lt;span&gt;Basis&lt;/span&gt;</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000">
+           <FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>&lt;div
+id=&quot;new clip&quot; class=&quot;eventNotifier&quot;&gt;</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000">
+               <FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>Vervolg
+/ Suite</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000">
+           <FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>&lt;/div&gt;</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>						
+&lt;div id=&quot;in NL&quot;&gt;</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000">
+               <FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>Switch
+&gt; NL</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000">
+           <FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>&lt;/div&gt;</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>				
+   &lt;div id=&quot;in FR&quot;&gt;</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000">
+               <FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>Switch
+&gt; FR</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000">
+           <FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>&lt;/div&gt;</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>						&lt;div
+id=&quot;new NL&quot;&gt;</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000">
+               <FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>Nieuwe
+spreker NL</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000">
+           <FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>&lt;/div&gt;</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>						&lt;div
+id=&quot;new FR&quot;&gt;</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000">
+               <FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>Nouvel
+orateur FR</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000">
+           <FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>&lt;/div&gt;</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>												&lt;div
+id=&quot;PRES-SP&quot;&gt;</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000">
+               <FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>VZ als
+spreker</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000">
+           <FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>&lt;/div&gt;</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>									</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>				</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>				</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>				&lt;/div&gt;</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>2.
+In newlogger/buttonconfig.js deze id associëren met de gewenste
+karakteristieken:</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>&quot;huytNL&quot;:</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>{</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>c:'true',</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>lang:'N',</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>type:'NEW',</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>speaker:'HUYTEBROECK_Evelyne'</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>},</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>De
+mogelijke eigenschappen zijn:</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>						{name:
+'c', type:'bool' },</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>is
+het een clip of niet</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>						{name:
+'lang'},</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>welke
+taal (N, F, M)</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>						{name:
+'type'},</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>het
+event-type</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>						{name:
+'speaker'},</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>welke
+spreker =&gt; id gebruiken die in titles.xml wordt opgegeven</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>						{name:
+'props'},                </FONT></FONT></FONT>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>niet
+nuttig</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>						{name:
+'textN'},</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>voor
+interpellatie, voorstel, resolutie... de titel in het Nederlands</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>						{name:
+'textF'},</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>idem
+in het Frans</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>						{name:
+'notes'},</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>commentaar</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>3.
+Als het om een nieuw event-type gaat, niet vergeten om het te
+declareren in events.xml</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><B>Macro's</B></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>Per
+event-type is er in principe een macro nodig. Alle macro's zijn te
+vinden in het bestand editor/xs/formattingRules.xsl</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000"> 
+</FONT><FONT COLOR="#0064c8"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;xsl:template</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+match</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;e[@type='SUITE']&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+mode</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;initialize-text&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000">   
+</FONT><FONT COLOR="#0064c8"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;xsl:param</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+name</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;lang&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+select</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;@lang&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">/&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000">   
+</FONT><FONT COLOR="#0064c8"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;xsl:choose&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000">     
+</FONT><FONT COLOR="#0064c8"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;xsl:when</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+test</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;$lang='N'&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000">      
+ </FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;p</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+c</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;{@clip}&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+title</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;{@n}&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+class</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;comment&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&gt;</SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">Vervolg
+(zelfde spreker)</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;/p&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000">     
+</FONT><FONT COLOR="#0064c8"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;/xsl:when&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000">     
+</FONT><FONT COLOR="#0064c8"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;xsl:when</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+test</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;$lang='F'&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000">      
+ </FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;p</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+c</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;{@clip}&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+title</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;{@n}&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+class</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;comment&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&gt;&lt;/p&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000">     
+</FONT><FONT COLOR="#0064c8"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;/xsl:when&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000">   
+</FONT><FONT COLOR="#0064c8"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;/xsl:choose&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000">    </FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;p</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+c</SPAN></FONT></FONT></FONT><FONT COLOR="#ff8040"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">=</SPAN></FONT></FONT></FONT><FONT COLOR="#993300"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&quot;{@clip}&quot;</SPAN></FONT></FONT></FONT><FONT COLOR="#f5844c"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&gt;</SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">...</SPAN></FONT></FONT></FONT><FONT COLOR="#000096"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;/p&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000">
+   </FONT>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000">
+   </FONT>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#000000"> 
+</FONT><FONT COLOR="#0064c8"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">&lt;/xsl:template&gt;</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>Aandachtspunten:</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>-
+'mode' moet 'initialize-text' zijn</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>-
+steeds een parameter declareren voor de taal</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>-
+rekening houden met de twee talen  </FONT></FONT></FONT>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>-
+macro's maken paragrafen aan (p-elementen) die een bepaalde klasse
+hebben. In deze paragrafen kunnen span-elementen voorkomen voor
+stukken tekst die de redacteur moet nakijken / vervolledigen.</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>-
+het c-attribuut is altijd nodig</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>-
+het title-attribuut is enkel nodig voor tekst met een specifieke
+status, zoals een titel</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>//
+block level styles</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>{name:'Comment',element:'p',
+attributes:{class:'comment'}},</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>=
+commentaar, nuttig voor de redacteur</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>{name:'Procedure',element:'p',
+attributes:{class:'proc'}},</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>=
+proceduretekst, wordt niet cursief in vertaling</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>{name:'Big
+Title',element:'p', attributes:{class:'title1'}},</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>{name:'Subtitle',element:'p',
+attributes:{class:'title2'}},</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>{name:'ORD',element:'p',
+attributes:{class:'title3'}},</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>{name:'INT',element:'p',
+attributes:{class:'title4'}},</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>{name:'Salle
+/ Zaal',element:'p', attributes:{class:'realia'}},</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>=&gt;
+zijn allerlei soorten titels</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>//
+Inline styles</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>{name:'OK
+(vérifié)',element:'span', attributes:{class:'checked'}},</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>=&gt;
+voor tekst die is nagekeken (namen van instellingen bvb.)</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>{name:'Incomplete',element:'span',
+attributes:{class:'incomplete'}},</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>=&gt;
+voor tekst die uit macro komt maar door de redacteur moet worden
+nagekeken</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>{name:'Orateur
+/ Spreker',element:'span', attributes:{class:'speaker'}}</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Helvetica, sans-serif"><FONT SIZE=3>=&gt;
+voor de sprekersaanduiding (bold)</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+</BODY>
+</HTML>

@@ -123,11 +123,17 @@ type:"GEN-ALG"
 	
 },
 
+"travaux":
+{
+	c:'true',
+	type: 'TRAV'
+	
+},
+
 "POINT":
 {
 	c:'false',
 	type: 'POINT'
-	
 },
 
 
