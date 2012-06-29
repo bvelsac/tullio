@@ -36,13 +36,15 @@
   <xsl:variable name="soundExt" select="'.mp3'"/>
 <xsl:variable name="audioLength" select="'20'" />
   <xsl:variable name="conf" select="//reference"/>
-  <xsl:variable name="meeting-type">
+  <xsl:variable name="mt" select="//*[self::variables or self::info]/type"></xsl:variable>
+  <xsl:variable name="meeting-type" >
     <xsl:choose>
       <xsl:when test="contains(/all/type/e/@type, 'VVGGC')">
         <xsl:value-of select="'VVGGC'"/>
       </xsl:when>
       <xsl:otherwise>BHP</xsl:otherwise>
     </xsl:choose>
+    
   </xsl:variable>
   <xsl:variable name="datestringCurrent" select="//events/meeting"/>
   

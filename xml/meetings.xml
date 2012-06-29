@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meeting-types>
+  <meeting id='PLEN' type='VAR'>
+    <name lang="N">Plenaire</name>    
+    <name lang="F">Plénière</name>
+  </meeting>
+  <meeting id='PFB' type='PFB'>
+    <name lang="N"></name>
+    <name lang="F"></name>
+  </meeting>
+  <meeting id='COM-AEZ' type='BHP'>
+    <name lang="N"></name>
+    <name lang="F"></name>
+  </meeting>
+  <meeting id='COM-AIBZ' type='BHP'>
+    <name lang="N"></name>
+    <name lang="F"></name>
+  </meeting>
+  <meeting id='COM-ATRO' type='BHP'>
+    <name lang="N"></name>
+    <name lang="F"></name>
+  </meeting>
+  <meeting id='COM-ENVMIL' type='BHP'>
+    <name lang="N"></name>
+    <name lang="F"></name>
+  </meeting>
+  <meeting id='COM-FIN' type='BHP'>
+    <name lang="N"></name>
+    <name lang="F"></name>
+  </meeting>
+  <meeting id='COM-INFRA' type='BHP'>
+    <name lang="N"></name>
+    <name lang="F"></name>
+  </meeting>
+  <meeting id='COM-LOGHUIS' type='BHP'>
+    <name lang="N"></name>
+    <name lang="F"></name>
+  </meeting>
+  <meeting id='COM-ASSZ' type='AR'>
+    <name lang="N"></name>
+    <name lang="F"></name>
+  </meeting>
+  <meeting id='COM-SANGEZ' type='AR'>
+    <name lang="N"></name>
+    <name lang="F"></name>
+  </meeting>
+  <meeting id='COM-ASSZSANGEZ' type='AR'>
+    <name lang="N"></name>
+    <name lang="F"></name>
+  </meeting>
+<!-- 
+  <meeting name='COM-AEZ' type='VAR'></meeting>
+  <option value="COM-AIBZ">COM AIBZ</option>
+  <option value="COM-ATRO">COM ATRO</option>
+  <option value="COM-ENVMIL">COM ENVMIL</option>
+  <option value="COM-FIN">COM FIN</option>
+  <option value="COM-INFRA">COM INFRA</option>
+  <option value="COM-LOGHUIS">COM LOGHUIS</option>
+  <option value="COM-ASSZ">COM ASSZ</option>
+  <option value="COM-SANGEZ">COM SANGEZ</option>
+  <option value="COM-ASSZSANGEZ">COM ASSZSANGEZ</option>
+  <option value="PFB">PFB</option>
+-->
+  
+  
+  
+</meeting-types>

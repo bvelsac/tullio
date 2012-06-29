@@ -15,9 +15,10 @@ let $start :=   request:get-parameter("start", ())
 let $stop := request:get-parameter("stop", ()) 
 let $joinTrans := request:get-parameter("include", ())
 let $toFinish := request:get-parameter("bottom", ())
+let $meeting-type := request:get-parameter("mt", ())
 
 let $startAsDec := if ($start) then xs:decimal(normalize-space($start)) else ()
-let $stopAsDec := if (string($toFinish)) then xs:decimal(doc($events-doc)//e[position()=last()]/@n) + 1 else if ($stop) then xs:decimal(normalize-space($stop)) else ()
+let $stopAsDec := if (string($toFinish)) then xs:decimal(doc($events-doc)//e[position()=last()]/@n) + 100 else if ($stop) then xs:decimal(normalize-space($stop)) else ()
 
 (: let $stringdata := "<fitzgerald/>" :)
 
@@ -35,8 +36,9 @@ let $nextAlways := if ($next) then xs:decimal($next/@n) else if (string($stop)) 
 
 let $events := if ($startAsDec and $stopAsDec) then <events>{doc($events-doc)//e[@n < $nextAlways and @n >= $startAsDec], doc($events-doc)//meeting}</events>
 	else doc($events-doc)
-
+(:
 let $type := if (doc($agenda-doc)/xml/type = 'PLEN') then doc($events-doc)//e[string(@n)=$start]/preceding-sibling::*[@type='O-BXL' or @type='O-ARVV' or @type='HERV-ARVV' or @type='HERV-BXL'][1] else doc($agenda-doc)/xml/type
+:)
 
 let $info := doc($agenda-doc)/xml/info
 
@@ -45,6 +47,10 @@ let $presEvent := doc($events-doc)//e[string(@n)=$start]/preceding-sibling::*[@t
 
 :)
 
+let $final-meeting-type := 
+	if  ( not($meeting-type = 'VAR') ) then $meeting-type
+	else if (not($startAsDec)) then doc($events-doc)//e[@type='O-BXL' or @type='O-ARVV' or @type='HERV-ARVV' or @type='HERV-BXL'][1]/@type 
+	else doc($events-doc)//e[@n = $startAsDec]/preceding-sibling::e[@type='O-BXL' or @type='O-ARVV' or @type='HERV-ARVV' or @type='HERV-BXL'][1]/@type
 
 (: for $clip in $completed//e[@c='y'] :)
 
@@ -65,7 +71,7 @@ let $s := if ($startAsDec and $stopAsDec) then <locks>{doc($locks-doc)//s[@a='y'
 
 return
 
-<all>{$info, <variables><type>{$type}</type><pres>{string($presEvent/@speaker)}</pres><next>{string($nextAlways)}</next><nextTimeCode>{$next/@time}</nextTimeCode></variables>, <meta>{$startAsDec, $stop}</meta>,
+<all>{$info, <variables><type>{$final-meeting-type}</type><pres>{string($presEvent/@speaker)}</pres><next>{string($nextAlways)}</next><nextTimeCode>{$next/@time}</nextTimeCode></variables>, <meta>{$startAsDec, $stop}</meta>,
 $events,$texts, $trans1,$s}
 </all>
 

@@ -414,7 +414,7 @@
     <last>Doulkeridis</last>
     <ti l="N" meeting-type="BHP">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Huisvesting en Brandbestrijding en Dringende Medische Hulp</ti>
     <ti l="F" meeting-type="BHP">secrétaire d'État à la Région de Bruxelles-Capitale, chargé du Logement et de la Lutte contre l'Incendie et l'Aide médicale urgente</ti>
-    
+    <ti l="F" meeting-type="PFB">président du Gouvernement, ministre en charge du Budget, de l'Enseignement, du Tourisme et des Relations internationales</ti>
     
     
     
@@ -432,13 +432,14 @@
 		<ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Leefmilieu, Energie en Waterbeleid, Stadsvernieuwing, Brandbestrijding en Dringende Medische Hulp en Huisvesting</ti>
  
 			<ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée de l'Environnement, de l'Energie et de la Politique de l'Eau, de la Rénovation urbaine, de la Lutte contre l'Incendie et l'Aide médicale urgente et du Logement</ti>
-      <ti l="N" meeting-type="VVGGC"></ti>
+    <ti l="F" meeting-type="PFB">ministre en charge de la Cohésion sociale</ti>
       <ti l="F" meeting-type="VVGGC"></ti>
   </person>
   
   <person id="KIR_Emir" gov="yes" gender="m" lang="fr" group="PS">
     <first>Emir</first>
     <last>Kir</last>
+    <ti l="F" meeting-type="PFB">ministre en charge de la Formation professionnelle, de la Culture, du Transport scolaire, de l’Action sociale, de la Famille, du Sport et des Relations internationales</ti>
   </person>
   
   <person id="DE_LILLE_Bruno" gov="yes" gender="m" lang="nl" group="Groen">
@@ -450,12 +451,14 @@
   <person id="CEREXHE_Benoît" gov="yes" gender="m" lang="fr" group="cdH">
     <first>Benoît</first>
     <last>Cerexhe</last>
+    <ti l="F" meeting-type="PFB">ministre en charge de la Fonction publique, de la Politique de la santé et de la Formation professionnelle des Classes moyennes</ti>
   </person>
   
   <person id="HUYTEBROECK_Evelyne" gov="yes" gender="f" lang="fr" group="Ecolo">
     <first>Evelyne</first>
     <last>Huytebroeck</last>
 		<ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Leefmilieu, Energie en Waterbeleid, Stadsvernieuwing, Brandbestrijding en Dringende Medische Hulp en Huisvesting</ti>
+    <ti l="F" meeting-type="PFB">ministre en charge de la Politique d'aide aux personnes handicapées</ti>
  
 			<ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée de l'Environnement, de l'Energie et de la Politique de l'Eau, de la Rénovation urbaine, de la Lutte contre l'Incendie et l'Aide médicale urgente et du Logement</ti>
       <ti l="N" meeting-type="VVGGC"></ti>

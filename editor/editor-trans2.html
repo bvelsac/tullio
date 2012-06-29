@@ -66,6 +66,9 @@ function jq(myid) {
 
 	var runTrans = $.QueryString["t"];
 	
+	var mt = "";
+	
+	
 	//****** check session ********
 	
 	var user;
@@ -94,12 +97,47 @@ function redirectLogin(){
     alert("Please log in");
     window.location = '/exist/tullio/xq/login.xql';
 }
+
+function setMeetingType(meeting) {
+	
+	var fullQuery = '/exist/rest/db/tullio/' + meeting + '?_query=' + 'document("agenda.xml")//info/name' ;
+	
+	$.ajax({
+        url : fullQuery,
+        dataType : 'xml',
+        async : false,
+        success : function(data) {
+					// console.log (data);
+					// console.log ($(data).find('success'));
+					if ($(data).find('name')[0] != null) {
+							mt = $(data).find("name").text();
+              console.log(mt);
+							// data mapping
+							var mTypes = {
+								'PLEN' 		: 'VAR',
+								'COM-AEZ'	:	'BHP',
+								'COM-AIBZ':	'BHP',
+								'COM-ATRO':	'BHP',
+								'COM-ENVMIL':	'BHP',
+								'COM-FIN'	: 'BHP',
+								'COM-INFRA' : 'BHP',
+								'COM-LOGHUIS':	'BHP',
+								'COM-SANGEZ' : 'AR',
+								'COM-ASSZ' : 'AR',
+								'COM_ASSZSANGEZ' : 'AR',
+								'PFB' : 'PFB'
+							};
+								mt = mTypes[mt];
+								console.log(mt);
+					}
+							return true;
+        }
+    });
+}
+
 checkSession();
-	
-	
-	
-	
-	var langChoice = userLang;
+
+var langChoice = userLang;
 	
 	//************** CONFIGURATION *******
 	
@@ -222,7 +260,9 @@ var mmm = $.QueryString["m"];
         var meetingDate = mmm.substr(0,10);
 
         // var user = $.QueryString["u"];
-
+				
+				
+setMeetingType(mmm);
 
 /* load user data */
 var user;
@@ -488,7 +528,10 @@ function updateVisibleTexts(once) {
 	// highlight refreshed rows
 	$(ids).addClass('ruby');
 	// create request
-	var request = "../xq/return-combined.xql?m=" + mmm + "&start=" + start.substring(1) + "&stop=" + stop.substring(1) + "&include=" + runTrans + bottom;
+	
+	//stop = (stop == '') ? '' : stop.substring(1) ;
+	
+	var request = "../xq/return-combined.xql?mt=" + mt + "&m=" + mmm + "&start=" + start.substring(1) + "&stop=" + stop.substring(1) + "&include=" + runTrans + bottom;
 	// console.log (request);
 	
 	// refresh the visible rows
@@ -514,7 +557,7 @@ function initialize(xml, xsl, xmlorig) {
 			
 			x = data.documentElement;
 			xml.getElementsByTagName("all")[0].appendChild(titles);
-					xml.getElementsByTagName("all")[0].appendChild(events);
+			xml.getElementsByTagName("all")[0].appendChild(events);
 			// console.log (new XMLSerializer().serializeToString(xml));
 			$("#result").transform({cache:false, async:false, dataType:"xml", xmlobj:xml, xsl:"xsl/group.xsl", xslParams:{mode:runTrans}});
 			// $("#result").transform({xml:"xml/catalog.xml", xsl:"xsl/cds.xsl",xslParams:{test:"Value is set"}});
@@ -595,7 +638,7 @@ $("#overview").text(mmm);
 		*/			
 		// functie initialize zorgt voor de aanmaak van de tabel aan client side, blijkbaar noodzakelijk	
 		
-		$.transform({  success:initialize, xml: "../xq/return-combined.xql?m=" + mmm + "&include=" + runTrans, xsl: "xsl/addclipref.xsl", xslParams:{translation:"1"}});
+		$.transform({  success:initialize, xml: "../xq/return-combined.xql?mt=" + mt + "&m=" + mmm + "&include=" + runTrans, xsl: "xsl/addclipref.xsl", xslParams:{translation:"1"}});
 
 displayStatus();
 	 setTimeout("updateVisibleTexts(false)", 5000);

@@ -7,13 +7,18 @@ import module namespace util="http://exist-db.org/xquery/util";
 let $serverAddress:= concat("http://", doc('/db/tullioconfig/config.xml')/config/serverAddress)
 
 let $meeting := request:get-parameter("m", ())      (:string:)
-let $channel := request:get-parameter("channel", ())
+
+let $fromClient := request:get-parameter("value", ())
+
 
 let $setuser := xdb:login("/db", "admin", "paris305")
 let $agenda := concat("/db/tullio/", $meeting, "/agenda.xml")
 
-let $setChannel := if (doc($agenda)/xml/channel) then update insert <info>{$channel}</info> into doc($agenda)/xml else ()
+let $setChannel := 
+	if (doc($agenda)/xml/data/info/channel) 
+		then update replace doc($agenda)/xml/data/info/channel with <channel>{$fromClient}</channel> 
+	else if (doc($agenda)/xml/data/info) 
+		then update insert <channel>{$fromClient}</channel> into doc($agenda)/xml/data/info 
+	else ()
 
-return ()
- 
-
+return $fromClient

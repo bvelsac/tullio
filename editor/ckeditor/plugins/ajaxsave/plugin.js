@@ -86,6 +86,7 @@ function asfinalize(xml, xsl, object, e) {
 	//	console.log(xml);
 	//	var asString = (new XMLSerializer()).serializeToString(xml);
 	//	console.log('finalize----' + asString);
+	
 	$.transform({
 			el: "#hidden",
 			async:false, 
@@ -149,7 +150,8 @@ CKEDITOR.plugins.add('ajaxsave',
 							type: "GET",
 							data: {
 								"start": clipid,  
-								"m": mmm
+								"m": mmm,
+								'mt' : mt
 							},
 							async: false,
 							contentType: "text/xml"

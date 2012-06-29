@@ -55,6 +55,7 @@ function finalize(xml, xsl, object, e) {
 		console.log('enter finalize');
 		console.log(xml);
 		var asString = (new XMLSerializer()).serializeToString(xml);
+		
 		console.log('finalize----' + asString);
 	$.transform({
 			el: "#hidden",
@@ -321,7 +322,8 @@ CKEDITOR.plugins.add( 'abbr-custom',
 							type: "GET",
 							data: {
 								"start": clipid,  
-								"m": mmm
+								"m": mmm,
+								'mt' : mt
 							},
 							async: false,
 							contentType: "text/xml"

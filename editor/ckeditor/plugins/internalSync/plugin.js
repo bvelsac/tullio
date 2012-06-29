@@ -52,6 +52,7 @@ function finish(xml2, xsl, object, e) {
 function finalize(xml, xsl, object, e) {
 	//	console.log('enter finalize');
 	//	console.log(xml);
+	
 	var asString = (new XMLSerializer()).serializeToString(xml);
 	console.log('finalize----' + asString);
 	$.transform({
@@ -108,7 +109,8 @@ CKEDITOR.plugins.add( 'internalSync',
 							type: "GET",
 							data: {
 								"start": clipid,  
-								"m": mmm
+								"m": mmm,
+								'mt' : mt
 							},
 							async: false,
 							contentType: "text/xml"

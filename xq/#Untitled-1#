@@ -1,2 +1,6 @@
+http://localhost:8080/exist/rest/db/tullio/2012-06-20---_PLEN_jeanke?_query=document('events.xml')//e[@type=%27marker%27%20or%20@type=%27O-BXL%27][position%28%29=last%28%29]&_howmany=1000
 
-Unsupported event: PRES-CH
+
+
+
+

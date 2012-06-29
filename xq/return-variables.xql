@@ -11,6 +11,7 @@ let $serverAddress:= concat("http://", doc('/db/tullioconfig/config.xml')/config
 let $meeting-id := request:get-parameter("m", ())
 let $events-doc := concat("/db/tullio/", $meeting-id, "/events.xml")
 let $start :=   request:get-parameter("start", ()) 
+let $meeting-type := request:get-parameter("mt", ())
 
 let $startAsDec := if ($start) then xs:decimal(normalize-space($start)) else ()
 
@@ -19,12 +20,15 @@ let $pres := doc(concat($serverAddress, "/exist/tullio/xml/titles.xml"))//person
 
 
 (: let $pres := doc($events-doc)//e[@n <= $startAsDec][@type='pres'][position()=last()] :)
-let $type :=  doc($events-doc)//e[string(@n)=$start]/preceding-sibling::*[contains(@type, 'VVGGC') or contains(@type, 'BHP')][1]/@type
 
+let $final-meeting-type := 
+	if  ( not($meeting-type = 'VAR') ) then $meeting-type
+	else if (not($startAsDec)) then doc($events-doc)//e[@type='O-BXL' or @type='O-ARVV' or @type='HERV-ARVV' or @type='HERV-BXL'][1]/@type 
+	else doc($events-doc)//e[@n = $startAsDec]/preceding-sibling::e[@type='O-BXL' or @type='O-ARVV' or @type='HERV-ARVV' or @type='HERV-BXL'][1]/@type
 
 
 return
 
-<info><type>{$type}</type><pres>{$pres}</pres></info>
+<info><type>{$final-meeting-type}</type><pres>{$pres}</pres></info>
 		
 

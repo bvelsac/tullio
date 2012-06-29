@@ -41,6 +41,7 @@ var backstep = 2000;
 var offset = 0;
 var store;		
 var batch = 0;
+var channel = "";
 
 Ext.Loader.setConfig({
     enabled: true
@@ -144,6 +145,11 @@ function setOffset() {
 		}
 
 
+$(document).ready(function() {
+		
+
+
+});
 
 
 
@@ -260,41 +266,49 @@ Ext.onReady(function(){
 			});
 		
 		
+		function end(content){
+alert(content.current+':'+content.previous)
+}
 		
+/*
+		$('#channel').editable('/exist/tullio/xq/setChannel.xql?m=' + m, { 
+     data   : "{'PLEN':'PLEN','S 201':'S 201','S 204':'S 204', 'selected':'S 204'}",
+     type   : 'select',
+     submit : 'OK'
+ });
+		*/
 		
+		$("#channel.editable_select").editable("/exist/tullio/xq/setChannel.xql?m=" + m, { 
+				data   : "{'canal1':'PLEN','canal3':'S 201','canal4':'S 204'}",
+    type   : "select",
+    submit : "OK",
+    style  : "inherit"
+  });
+
 		
-		
-		
-		
-		$('#channel').editable({
-                    type:'select',
-                    options: channels,
-                    submit:'save',
-                    cancel:'cancel',
-                    editClass:'resultItem',
-                    onSubmit: function(content) {
-											console.log(this);
-											console.log(content);
-											$.ajax({url: "/exist/tullio/xq/setChannel.xql",
-													data: { m: m, channel: audioMap[content.current] }
-											}).done(function( msg ) {
-												
-											});
-										}
-                   });
-		
+		$('#agenda2').editable(function(value, settings) { 
+     console.log(this);
+     console.log(value);
+     console.log(settings);
+		 $('#agendaplaceholder2').load('/exist/tullio/newlogger/hello3.xql?m=' + value);
+     return(value);
+  }, { 
+     type:'select',
+                    data: meetingList,
+                    submit:'OK',
+ });
+		/*
 		$('#agenda2').editable({
                     type:'select',
-                    options: meetingList,
-                    submit:'save',
-                    cancel:'cancel',
-                    editClass:'resultItem',
+                    data: meetingList,
+                    submit:'OK',
+                    cancel:'Cancel',
                     onSubmit: function(content) {
 												$('#agendaplaceholder2').load('/exist/tullio/newlogger/hello3.xql?m=' + content.current, function() {});
 											console.log(content);
 										}
                    });
-		
+		*/
 		
 		// reverse labels and values for eventTypes
 		var eventTypesDict = [];
@@ -570,7 +584,19 @@ Ext.onReady(function(){
         sortableColumns: false,
         columns: [
 							{header: "Clip", width: 30, dataIndex: 'c',
-							xtype: 'checkcolumn'
+							xtype: 'checkcolumn',
+							/*
+							listeners : {
+								
+								
+							}
+							
+							beforecheckchange : function (column,rowindex) {
+								alert('test');
+								console.log(rowindex);
+								console.log(store.getAt(rowindex));
+							}
+							*/
 							/*
 							,
 							editor: {
@@ -742,10 +768,12 @@ Ext.onReady(function(){
 											var record;
 											var newClips = [];
 											batch++;
+											var breakpoint = "INIT";
 											
 											console.log(size);
 											// loop through the records, starting with most recent record
 											for (i=0; i < size; i++) {
+												breakpoint = i;
 												record = store.getAt(i);
 												//console.log(i);
 												//console.log(record);
@@ -765,15 +793,32 @@ Ext.onReady(function(){
 												
 											console.log(xmlDump);
 											
+											
+											function resetClips(breakpoint) {
+												if (breakpoint != 'INIT') {
+													for (i=0; i<breakpoint; i++) {
+																store.getAt(i).set('commit', '');
+													}
+													store.getAt(breakpoint-1).set('commit', 'F');
+												}
+											};
+											
+											
 											$.ajax({
 													type: 'POST',
 													url: "/exist/tullio/xq/logreceiver.xql?m=" + m,
 													data:  xmlDump,
 													contentType: 'text/xml',
 													processData: false,
-													async: false
+													async: false,
+													error : function (request, status, error) {
+														console.log('commit error ocurred');
+														console.log(status);
+														console.log(error);
+														resetClips(breakpoint);
+													}
 											}).done(function( msg ) {
-												
+												console.log(msg);
 											});
 											
 											console.log('commit');
@@ -816,7 +861,15 @@ Ext.onReady(function(){
 		}
 		update();
 		
+		$(document).delegate('#agendaplaceholder h2','dblclick', function(e) {
+				console.log('reload agenda');
+				$('#agendaplaceholder').load('/exist/tullio/newlogger/hello3.xql?m=' + m, function() {});
 		
+				
+		});
+		
+		
+				
 		$(document).delegate('.agendafunc td','click', function(e) {
 					mtype = $(this).siblings().andSelf().filter(".type").text();
 					but=e.target.id;
@@ -979,8 +1032,8 @@ Ext.onReady(function(){
 		
 			$(".buttons div").bind('click', addToStore); 
 			var members = [];
-			for (i=0; i<speakers.length; i++)  {
-				members[i] = speakers[i][1];
+			for (i=0; i<allSpeakers.length; i++)  {
+				members[i] = allSpeakers[i][1];
 				
 			}
 			
