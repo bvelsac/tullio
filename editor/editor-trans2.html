@@ -56,6 +56,7 @@ function jq(myid) {
 	var editor;	
 	var rowId;
 	var bottom;
+	var channel;
 	
 	var titles = null;
 	var titlesDoc;
@@ -100,7 +101,7 @@ function redirectLogin(){
 
 function setMeetingType(meeting) {
 	
-	var fullQuery = '/exist/rest/db/tullio/' + meeting + '?_query=' + 'document("agenda.xml")//info/name' ;
+	var fullQuery = '/exist/rest/db/tullio/' + meeting + '?_query=' + 'document("agenda.xml")//info' ;
 	
 	$.ajax({
         url : fullQuery,
@@ -122,14 +123,19 @@ function setMeetingType(meeting) {
 								'COM-FIN'	: 'BHP',
 								'COM-INFRA' : 'BHP',
 								'COM-LOGHUIS':	'BHP',
-								'COM-SANGEZ' : 'AR',
-								'COM-ASSZ' : 'AR',
-								'COM_ASSZSANGEZ' : 'AR',
+								'COM-SANGEZ' : 'VVGGC',
+								'COM-ASSZ' : 'VVGGC',
+								'COM_ASSZSANGEZ' : 'VVGGC',
 								'PFB' : 'PFB'
 							};
 								mt = mTypes[mt];
 								console.log(mt);
 					}
+					
+					if ($(data).find('channel')[0] != null) {
+							channel = $(data).find("channel").text();
+					}
+					console.log('channel,' + channel);
 							return true;
         }
     });
@@ -392,7 +398,7 @@ function secondstep(xml, xsl, xmlorig) {
 	xml.getElementsByTagName("all")[0].appendChild(titles);
 		xml.getElementsByTagName("all")[0].appendChild(events);
 		// console.log (new XMLSerializer().serializeToString(xml));
-	$("#hidden").transform({async:false, xmlobj:xml, xsl:"xsl/group.xsl", xslParams:{mode:runTrans}});
+		$("#hidden").transform({async:false, xmlobj:xml, xsl:"xsl/group.xsl", xslParams:{mode:runTrans, channel:channel}});
 	// replace
 	var rows = $("#hidden > tr");
 	// console.log ("*****");
@@ -559,7 +565,7 @@ function initialize(xml, xsl, xmlorig) {
 			xml.getElementsByTagName("all")[0].appendChild(titles);
 			xml.getElementsByTagName("all")[0].appendChild(events);
 			// console.log (new XMLSerializer().serializeToString(xml));
-			$("#result").transform({cache:false, async:false, dataType:"xml", xmlobj:xml, xsl:"xsl/group.xsl", xslParams:{mode:runTrans}});
+			$("#result").transform({cache:false, async:false, dataType:"xml", xmlobj:xml, xsl:"xsl/group.xsl", xslParams:{mode:runTrans, channel:channel}});
 			// $("#result").transform({xml:"xml/catalog.xml", xsl:"xsl/cds.xsl",xslParams:{test:"Value is set"}});
 			
 		},
@@ -792,6 +798,14 @@ displayStatus();
 		range.select();
 	});
 	*/
+	
+	
+	editor.on('instanceReady', function (ev) {
+			ev.editor.on('paste', function(ev) {
+					ev.data.html = ev.data.html.replace(/<br>\s*<br>/g, '</p><p>ooo');
+			});
+	});
+	
 	
 var isCtrl = false;
 	// code for keyboard shortcuts

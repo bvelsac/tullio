@@ -63,7 +63,7 @@
     <xsl:variable name="person" select="key('people', @speaker)"></xsl:variable>
     
     <xsl:choose>
-      <xsl:when test="$mt='PFB'">
+      <xsl:when test="$meeting-type='PFB'">
         <p c='{@clip}' title='{@n}' class="proc">
           <xsl:text>Présidence de </xsl:text> 
           <xsl:value-of select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/>
@@ -173,7 +173,7 @@
   <xsl:template match="e[@type='OUV-OPE']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"/>
    <xsl:choose>
-     <xsl:when test="$mt='PFB'">
+     <xsl:when test="$meeting-type='PFB'">
        <p class="proc" c='{@clip}' title='{@n}'>
          <xsl:text>La séance est ouverte à </xsl:text>
          <span class="incomplete">XXhXX.</span>
@@ -280,11 +280,64 @@
     
   </xsl:template>
   
+  <xsl:template name="insertGov">
+    <xsl:param name="nameString"></xsl:param>
+    <xsl:param name="lang"></xsl:param>
+    <xsl:param name="counter" select="'1'"></xsl:param>
+    <xsl:variable name="firstPart" >
+      <xsl:choose>
+        <xsl:when test="contains($nameString, ' ')">
+          <xsl:value-of select="substring-before($nameString, ' ')"/>
+        </xsl:when>
+        <xsl:otherwise><xsl:value-of select="$nameString"/></xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+     
+    <xsl:variable name="gov" select="key('people', $firstPart)"/>
+    
+    <p  class="title4" c="{@clip}" title="{@n}" >
+      <!-- 
+      <xsl:value-of select="$nameString"/>
+      <xsl:value-of select="$firstPart"/>
+      -->
+    <xsl:choose>
+      <xsl:when test="$counter = 1">
+        <xsl:value-of select="key('snippets', concat('to-', $lang))"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="key('snippets', concat('toExtra-', $lang))"/>  
+      </xsl:otherwise>
+    </xsl:choose>
+    
+      <xsl:value-of select="key('snippets', concat('titleSmall-', $gov/@gender, '-',  $lang))"/>
+      <xsl:value-of select="$gov/first"/>
+      <xsl:text> </xsl:text>
+      <xsl:value-of select="$gov/last"/>
+      <xsl:text>, </xsl:text>
+      <xsl:value-of select="$gov/ti[@l=$lang][@meeting-type=$meeting-type]"/>
+      <xsl:text>,</xsl:text>
+    
+    <xsl:choose>
+      <xsl:when test="contains($nameString, ' ')">
+        <xsl:call-template name="insertGov">
+          <xsl:with-param name="nameString" select="substring-after($nameString, ' ')"></xsl:with-param>
+          <xsl:with-param name="counter" select="counter+1"></xsl:with-param>
+          <xsl:with-param name="lang" select="$lang"></xsl:with-param>
+        </xsl:call-template>
+      </xsl:when>
+    </xsl:choose>
+    
+    </p>
+  </xsl:template>
+  
+  
+  
+  
   <xsl:template match="e[@type='QA-AV'] | e[@type='QO-MV'] | e[@type='INT']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"/>
     <xsl:variable name="person" select="key('people', @speaker)"/>
-    <xsl:variable name="gov" select="key('people', normalize-space(@props))"/>
-    <p>
+
+    <p class="title4" c="{@clip}" title="{@n}">
     <xsl:choose>
       <xsl:when test="$lang='N'">
         <xsl:choose>
@@ -305,26 +358,22 @@
         </xsl:choose>
       </xsl:when>
     </xsl:choose>
-    <xsl:variable name="meeting-type" select="'BHP'"/>
-    <!--<xsl:choose>
-      <xsl:when
-      test="contains(preceding-sibling::*[contains(@type, 'VVGGC') or contains(@type, 'BHP')][1]/@type, 'BHP')"
-      >BHP</xsl:when>
-      <xsl:otherwise>VVGGC</xsl:otherwise>
-      </xsl:choose>-->
+    
     <xsl:value-of select="key('snippets', concat('titleSmall-', $person/@gender, '-',  $lang))"/>
     <xsl:value-of select="$person/first"/>
     <xsl:text> </xsl:text>
     <xsl:value-of select="$person/last"/>
-    <xsl:value-of select="key('snippets', concat('to-', $lang))"/>
-    <xsl:value-of select="key('snippets', concat('titleSmall-', $gov/@gender, '-',  $lang))"/>
-    <xsl:value-of select="$gov/first"/>
-    <xsl:text> </xsl:text>
-    <xsl:value-of select="$gov/last"/>
-    <xsl:text>, </xsl:text>
-    <xsl:value-of select="$gov/ti[@l=$lang][@meeting-type=$mt]"/>
-    <xsl:text>,</xsl:text>
-    </p>
+      
+    </p>  
+      <!-- more than one member of governement might be addressed -->
+      
+    <xsl:call-template name="insertGov" >
+      
+      <xsl:with-param name="nameString" select="normalize-space(@props)"></xsl:with-param>
+      <xsl:with-param name="lang" select="$lang"></xsl:with-param>    
+    </xsl:call-template>
+    
+    
     <p class="title4" c="{@clip}" title="{@n}">
       <xsl:value-of select="key('snippets', concat('concerning-', $lang))"/>
       <xsl:text> "</xsl:text>
@@ -338,65 +387,6 @@
       </xsl:choose>
       <xsl:text>".</xsl:text>
     </p>
-    <!--<xsl:choose>
-      <xsl:when test="$lang='N'">
-      <p c="{@clip}" title="{@n}">
-      <xsl:value-of select="$type-NL"/>
-      <xsl:choose>
-      <xsl:when test="$conf//p[@code=$speaker]/gender='M'"> de heer </xsl:when>
-      <xsl:otherwise>mevrouw</xsl:otherwise>
-      </xsl:choose>
-      <xsl:text> </xsl:text>
-      <xsl:value-of select="$conf//p[@code=$speaker]/name"/>
-      <xsl:text> aan </xsl:text>
-      </p>
-      <p c="{@clip}" title="{@n}">
-      <xsl:choose>
-      <xsl:when test="$conf//p[@code=$gov]/gender='M'"> de heer </xsl:when>
-      <xsl:otherwise>mevrouw</xsl:otherwise>
-      </xsl:choose>
-      <xsl:text> </xsl:text>
-      <xsl:value-of select="$conf//p[@code=$gov]/name"/>
-      <xsl:text>, </xsl:text>
-      <xsl:value-of select="$conf//p[@code=$gov]/ti[@l=$lang][@meeting-type=$meeting-type]"/>
-      <xsl:text>,</xsl:text>
-      </p>
-      <p c="{@clip}" title="{@n}">
-      <xsl:text>betreffende "</xsl:text>
-      <xsl:value-of select="@notes"/>
-      <xsl:text>".</xsl:text>
-      </p>
-      </xsl:when>
-      <xsl:otherwise>
-      <p c="{@clip}" title="{@n}">
-      <xsl:value-of select="$type-FR"/>
-      <xsl:choose>
-      
-      <xsl:when test="true()">M. </xsl:when>
-      <xsl:otherwise>Mme</xsl:otherwise>
-      </xsl:choose>
-      <xsl:text> </xsl:text>
-      <xsl:value-of select="$conf//p[@code=$speaker]/name"/>
-      </p>
-      <p c="{@clip}" title="{@n}">
-      <xsl:text> à </xsl:text>
-      <xsl:choose>
-      <xsl:when test="$conf//p[@code=$gov]/gender='M'">M. </xsl:when>
-      <xsl:otherwise>Mme</xsl:otherwise>
-      </xsl:choose>
-      <xsl:text> </xsl:text>
-      <xsl:value-of select="$conf//p[@code=$gov]/name"/>
-      <xsl:text>, </xsl:text>
-      <xsl:value-of select="$conf//p[@code=$gov]/ti[@l=$lang][@meeting-type=$meeting-type]"/>
-      <xsl:text>,</xsl:text>
-      </p>
-      <p c="{@clip}" title="{@n}">
-      <xsl:text>concernant "</xsl:text>
-      <xsl:value-of select="@notes"/>
-      <xsl:text>".</xsl:text>
-      </p>
-      </xsl:otherwise>
-      </xsl:choose>-->
     <p c="{@clip}" class="write" title="{@n}">...</p>
   </xsl:template>
   <xsl:template name="president">
@@ -437,7 +427,7 @@
     </xsl:variable>
     
     <xsl:choose>
-      <xsl:when test="$mt='PFB'">
+      <xsl:when test="$meeting-type='PFB'">
         <span class="{$class} reformat pres" title="{$event/@n}" href="#">
           <xsl:if test="string($segment)">
             <xsl:attribute name="segment">
@@ -489,7 +479,7 @@
         <xsl:choose>
           <xsl:when test="$person/@gov='yes'">
             <xsl:text>, </xsl:text>
-            <span class="incomplete"><xsl:value-of select="$person/ti[@l=$lang][@meeting-type=$mt]"/></span>
+            <span class="incomplete"><xsl:value-of select="$person/ti[@l=$lang][@meeting-type=$meeting-type]"/></span>
             <xsl:text></xsl:text>
           </xsl:when>
           <xsl:otherwise>
@@ -507,7 +497,7 @@
     <xsl:variable name="person" select="key('people', @speaker)"/>
     
     <xsl:choose>
-      <xsl:when test="$mt='PFB'">
+      <xsl:when test="$meeting-type='PFB'">
         <p c="{@clip}" class="title1">Communications</p>
       </xsl:when>
       <xsl:otherwise>
@@ -536,7 +526,7 @@
     <xsl:param name="lang" select="@lang"/>
     <xsl:variable name="person" select="key('people', @speaker)"/>
     <xsl:choose>
-      <xsl:when test="$mt='PFB'">
+      <xsl:when test="$meeting-type='PFB'">
         <p c="{@clip}" title="{@n}" class="proc"><xsl:call-template name="president">
           <xsl:with-param name="event" select="."/>
           <xsl:with-param name="lang" select="$lang"/>
@@ -567,7 +557,7 @@
           <xsl:choose>
             <xsl:when test="$person/@gov='yes'">
               <xsl:text>, </xsl:text>
-              <span class="incomplete"><xsl:value-of select="$person/ti[@l=$lang][@meeting-type=$mt]"/></span>
+              <span class="incomplete"><xsl:value-of select="$person/ti[@l=$lang][@meeting-type=$meeting-type]"/></span>
               <xsl:text>.</xsl:text>
             </xsl:when>
             <xsl:otherwise>
@@ -626,7 +616,7 @@
   <xsl:template match="e[@type='EXC-AFW']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"/>
     <xsl:choose>
-      <xsl:when test="$mt='PFB'">
+      <xsl:when test="$meeting-type='PFB'">
         <p  c="{@clip}" title="{@n}" class="title1">Excusés</p>
         <p c="{@clip}" title="{@n}" class="proc">
           <xsl:call-template name="president">

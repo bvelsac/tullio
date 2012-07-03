@@ -17,8 +17,17 @@
   <xsl:param name="mode"></xsl:param>
   <xsl:param name="server" select="'no'"/>
   <xsl:variable name="conf" select="//reference"/>
-  <xsl:variable name="mt" select="//info/type"></xsl:variable>
-  <xsl:variable name="meeting-type" select="string($mt)"></xsl:variable>
+  
+  <xsl:variable name="meeting-type" >
+    <xsl:choose>
+      <xsl:when test="/all/variables/type = 'VVGGC' or /all/variables/type = 'BHP'">
+        <xsl:value-of select="/all/variables/type"/>
+      </xsl:when>
+      <xsl:when test="contains(/all/variables/type, 'ARVV')">VVGGC</xsl:when>
+      <xsl:when test="contains(/all/variables/type, 'BXL')">BHP</xsl:when>
+    </xsl:choose>
+  </xsl:variable>
+  
   <xsl:template match="/">
     <!-- we're working on the result of a user edit -->
     <div id="consolidated">

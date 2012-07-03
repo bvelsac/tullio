@@ -19,6 +19,7 @@
   <xsl:key match="//s" name="statusCodes" use="@n"/>
   <xsl:key match="//person" name="people" use="@id"/>
   <xsl:param name="mode"></xsl:param>
+  <xsl:param name="channel"></xsl:param>
   <xsl:param name="server" select="'no'"/>
   <!-- Chrome heeft een issue waardoor de document() functie niet werkt, dus alles moet worden toegevoegd aan het input-document
     Google Chrome currently has limited support for XSL. If your XSL refers to any external resources (document() function, xsl:import, xsl:include or external entities), the XSL will run but the result will either be empty or invalid.
@@ -36,16 +37,17 @@
   <xsl:variable name="soundExt" select="'.mp3'"/>
 <xsl:variable name="audioLength" select="'20'" />
   <xsl:variable name="conf" select="//reference"/>
-  <xsl:variable name="mt" select="//*[self::variables or self::info]/type"></xsl:variable>
+ 
   <xsl:variable name="meeting-type" >
     <xsl:choose>
-      <xsl:when test="contains(/all/type/e/@type, 'VVGGC')">
-        <xsl:value-of select="'VVGGC'"/>
+      <xsl:when test="/all/variables/type = 'VVGGC' or /all/variables/type = 'BHP'">
+        <xsl:value-of select="/all/variables/type"/>
       </xsl:when>
-      <xsl:otherwise>BHP</xsl:otherwise>
+      <xsl:when test="contains(/all/variables/type, 'ARVV')">VVGGC</xsl:when>
+      <xsl:when test="contains(/all/variables/type, 'BXL')">BHP</xsl:when>
     </xsl:choose>
-    
   </xsl:variable>
+  
   <xsl:variable name="datestringCurrent" select="//events/meeting"/>
   
 
@@ -145,7 +147,7 @@
         <ul class="playlist hidden">
           <li>
             <!-- <a href="{concat($soundURL2,$recordingStart)}" id="play-{@n}"> -->
-            <a href="{concat('/exist/sound/canal1/', $audioRef)}" id="play-{@n}">
+            <a href="{concat('/exist/sound/', $channel, '/', $audioRef)}" id="play-{@n}">
               <xsl:value-of select="concat('Clip ', @n)"/>
             </a>
             <!--                <span class="offset">00:07</span>-->

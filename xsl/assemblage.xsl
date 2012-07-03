@@ -10,9 +10,22 @@
 <xsl:template match="/">
   <xsl:choose>
     <xsl:when test="$type='1C'">
-      <div>
+    <html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+    <title>ASSEMBLAGE </title>
+    </head>
+    <body>
+    <div>
+    <table>
         <xsl:apply-templates select="response/resultSet/events/e[@c='true']" mode="continu"></xsl:apply-templates>
+        </table>
       </div>
+    </body>
+    
+    
+    </html>
+      
     </xsl:when>
     <xsl:otherwise>
       <table>
@@ -20,6 +33,20 @@
       </table>
     </xsl:otherwise>
   </xsl:choose>
+  </xsl:template>
+  
+  <xsl:template match="e" mode="continu">
+  <tr>
+  <td style="width: 40px; vertical-align:top;" ><span style="font-size: 10px; font-family: monospace;">[<xsl:value-of select="@n"/>] </span></td>
+  <td> <xsl:apply-templates select="key('text', @n)"></xsl:apply-templates></td>
+  
+  
+  
+  </tr>
+  <!-- 
+  <p style="font-size: 10px; font-family: monospace;"><xsl:value-of select="concat('[', @n, ']')" /></p>
+  -->
+  
   </xsl:template>
   
   
@@ -68,16 +95,67 @@
           <xsl:when test="ancestor::trans and not(@title)">font-style: italic;</xsl:when>
           <xsl:otherwise>font-style: normal;</xsl:otherwise>
         </xsl:choose>  
-        <xsl:if test="@title">font-weight:bold</xsl:if>
+        
       </xsl:attribute>
       
       <xsl:apply-templates></xsl:apply-templates>
     </xsl:copy>
   </xsl:template>
   
-  <xsl:template match="span/text()">
-    <xsl:copy-of select="."/>
+  <xsl:template match="p[@class='proc']">
+  <xsl:copy>
+  <xsl:apply-templates/>
+  </xsl:copy>
   </xsl:template>
+  
+  <xsl:template match="p[@class='title4']">
+  <xsl:copy>
+  <xsl:attribute name="style">font-weight: bold;</xsl:attribute>
+  <xsl:apply-templates />
+  </xsl:copy>
+  </xsl:template>
+  
+  <xsl:template match="span[@class='speaker']">
+   <xsl:copy>
+  <xsl:attribute name="style">font-weight: bold;</xsl:attribute>
+  <xsl:apply-templates />
+  <xsl:text>.-</xsl:text>
+  </xsl:copy>
+  </xsl:template>
+  
+   <xsl:template match="span[contains(@class, 'pres')]">
+    <xsl:copy>
+  <xsl:attribute name="style">font-weight: bold;</xsl:attribute>
+  <xsl:apply-templates />
+  <xsl:text>.-</xsl:text>
+  </xsl:copy>
+   </xsl:template>
+   
+   <xsl:template match="p[normalize-space()='...']"></xsl:template>
+   
+   <xsl:template match="p[normalize-space()='']"></xsl:template>
+   
+   <xsl:template match="p[@class='comment']"></xsl:template>
+   
+   <xsl:template match="text()">
+   <xsl:variable name="temp">   <xsl:choose>
+   <xsl:when test="substring(., 1, 2)='.-'">
+   	<!-- <span style="font-weight: bold;">.-</span> -->
+   	<xsl:value-of select="concat(' ', substring-after(., '.-'))"/>
+   </xsl:when>
+   <xsl:otherwise>
+   <xsl:copy-of select="."/>
+   </xsl:otherwise>
+   
+   
+   </xsl:choose></xsl:variable>
+
+  <xsl:value-of select="translate($temp,'_','&#160;')"/>
+   
+   </xsl:template>
+  
+  
+  
   
   
   <xsl:template match="translation//span[@class='speaker']">

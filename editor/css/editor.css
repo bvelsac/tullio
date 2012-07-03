@@ -186,3 +186,67 @@ td.events {
 }
 
 p.comment {display: none;}
+
+div.editable p.comment {
+	display : none;
+	
+	
+}
+div.editable p.incomplete {
+}
+div.editable p.proc {
+}
+div.editable p.title1 {
+	
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: center;
+	
+}
+div.editable p.title2 {
+	font-style:italic;
+	text-align: center;
+	
+	
+	
+}
+div.editable p.title3 {
+	padding-left: 30px; 
+	text-indent:-30px; 
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: justify;
+	
+	
+}
+div.editable p.title4 {
+	padding-left: 30px; 
+	font-weight: bold;
+	text-align: justify;
+	
+	
+}
+div.editable p.realia {
+	font-style: italic;
+}
+
+
+div.editable span.checked {
+	
+}
+
+div.editable span.speaker {
+	font-weight : bold;
+}
+
+div.editable span.pres {
+	font-weight : bold;
+}
+
+div.editable span.incomplete {
+	
+}
+
+
+
+
