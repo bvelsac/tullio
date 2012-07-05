@@ -17,8 +17,7 @@ let $who := request:get-parameter("au", ())
 let $setuser := xdb:login("/db", "admin", "paris305")
 let $lockfile := concat("/db/tullio/", $meeting, "/locks.xml")
 
-let $one := for $s in doc($lockfile)//s[@n=$clipid] return  update delete $s/@a 
-
+let $one := for $s in doc($lockfile)//s[@n=$clipid][@v=$cat] return  update delete $s/@a 
 
 let $update := update insert <s a="y" n="{$clipid}" au="{$who}" val="{$val}" ts="{$ts}" v="{$cat}" />   into doc($lockfile)/locks 
 

@@ -42,9 +42,11 @@ function asfinish(xml2, xsl, object, e) {
 				"id": author
 			},
 			async: false,
-			success: function() {continueSaveHandler = true;}
+			success: function() {continueSaveHandler = true; alert('text saved');}
 	});
 		
+		
+		/*
 		if (continueSaveHandler) {
 		
 		$.ajax({
@@ -76,7 +78,9 @@ function asfinish(xml2, xsl, object, e) {
 		}
 		
 		else {alert('Save action failed, the server could not be reached. Please try again.');}
-	console.log('exit finish');
+	
+		*/
+		console.log('exit finish');
 } 
  
  

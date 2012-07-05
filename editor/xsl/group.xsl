@@ -16,7 +16,7 @@
   <xsl:key match="//moved" name="moved" use="e/@n"/>
   <xsl:key match="container/div[@id='integratedEvents']/events/e" name="new" use="@id"/>
   <xsl:key match="/all/events/e" name="all" use="@n"/>
-  <xsl:key match="//s" name="statusCodes" use="@n"/>
+  <xsl:key match="//s" name="statusCodes" use="concat(@n,@v)"/>
   <xsl:key match="//person" name="people" use="@id"/>
   <xsl:param name="mode"></xsl:param>
   <xsl:param name="channel"></xsl:param>
@@ -52,7 +52,22 @@
   
 
   <xsl:template name="addTranslation">
-    <td class="status" id="{concat('status-', @n, '-trans')}">&#160;</td>
+    <xsl:variable name="language">
+      <xsl:choose>
+        <xsl:when test="@lang='N'">F</xsl:when>
+        <xsl:when test="@lang='F'">N</xsl:when>
+        <xsl:when test="@lang='M'">M</xsl:when>
+      </xsl:choose>
+    </xsl:variable>
+    <td class="status" id="{concat('status-', @n, '-trans')}">
+      <p class="status-wrapper">
+        <span class="status-code" id="status-101-trans-code">
+          <xsl:value-of select="key('statusCodes', concat(@n,'trans'))/@val"/>
+        </span>
+        <span class="status-lang" id="status-101-trans-lang">
+          <xsl:value-of select="$language"/>
+        </span>&nbsp;</p>
+    </td>
     <td class="trans content" id="{concat('R', @n, '-t')}">
       <div class="editable">
         <!-- als er nog geen save is gebeurd, bestaat er nog geen tekst, die moet dan worden aangemaakt op basis van de events -->
@@ -67,14 +82,7 @@
             <xsl:for-each select="key('clip', @n)">
              
               <xsl:apply-templates select="." mode="initialize-text">
-                <xsl:with-param name="lang">
-                  <xsl:choose>
-                    <xsl:when test="@lang='N'">F</xsl:when>
-                    <xsl:when test="@lang='F'">N</xsl:when>
-                    <xsl:when test="@lang='M'">M</xsl:when>
-                  </xsl:choose>
-                  
-                </xsl:with-param>
+                <xsl:with-param name="lang" select="$language"></xsl:with-param>
               </xsl:apply-templates>
               
             </xsl:for-each>
@@ -224,7 +232,7 @@
           <p class="status-wrapper">
           
             <span class="status-code" id="{concat('status-', @n, '-orig-code')}">
-              <xsl:value-of select="key('statusCodes', @n)/@val"/>
+              <xsl:value-of select="key('statusCodes', concat(@n,'orig'))/@val"/>
             </span>
             <span class="status-lang" id="{concat('status-', @n, '-orig-lang')}">
               <xsl:value-of select="@lang"/>

@@ -320,14 +320,12 @@ function displayStatus() {
 				 //// console.log (statusTD);
 				 cell = $(jq(statusTD));
 				 //// console.log (cell);
-				 cell.children("p.lockid").text(items[i].getAttribute('id'));
+				 cell.children("p.lockid").text( items[i].getAttribute('id') );
 				 cell.addClass('locked');
 			}
 		}
 		
 		// now loop over the rows to add the status code
-		
-		
 		
 		items = result.getElementsByTagName("s");
 		$("span.status-code").text(' ');
@@ -335,15 +333,27 @@ function displayStatus() {
 		for (i=0; i<nI; i++) {
 			if (items[i].getAttribute('n')) {
 				var col ='';
+				// get the cell with the status codes
 				statusTD = "status-" + items[i].getAttribute('n') + "-" + items[i].getAttribute('v');
                 if (items[i].getAttribute('v') == "trans") {
                     col = 'T'
                 }
-                cell = $(jq(statusTD));
+        cell = $(jq(statusTD));
+				// get the language code as displayed in the cell
 				var lang = $('#status-' + items[i].getAttribute('n') + '-' + items[i].getAttribute('v') + '-lang').text();
-				$('#status-' + items[i].getAttribute('n') + '-' + items[i].getAttribute('v') + '-code').text(items[i].getAttribute('val') + col);
+				// set the text content of the span that contains the status code
+				// create the id
+				var tempId = 'status-' + items[i].getAttribute('n') + '-' + items[i].getAttribute('v') + '-code';
+				//console.log(statusTD);
+				//console.log(tempId);
+				// check the code
+				var tempCode = items[i].getAttribute('val') + col;
+				//console.log(tempCode);
+				//console.log(  $(jq(tempId)) );
+				//$(jq(tempId)).fadeOut();
+				// set the class of the status cell
 				cell.addClass('status-' + items[i].getAttribute('val') + col);
-				
+				cell.find('span.status-code').text(tempCode);
 				
 				/*
 				$(jq(locks[i].getAttribute('n')) + ' td.status-orig').text(locks[i].getAttribute('o'));
@@ -797,7 +807,7 @@ displayStatus();
 		var range = new CKEDITOR.dom.range( editor.document );
 		range.select();
 	});
-	*/
+	
 	
 	
 	editor.on('instanceReady', function (ev) {
@@ -805,7 +815,7 @@ displayStatus();
 					ev.data.html = ev.data.html.replace(/<br>\s*<br>/g, '</p><p>ooo');
 			});
 	});
-	
+	*/
 	
 var isCtrl = false;
 	// code for keyboard shortcuts
@@ -864,8 +874,13 @@ editor.on( 'contentDom', function( evt )
                 	return false;}
             }
 						
+						if( (event.data.$.keyCode == 83 && isCtrl == true)  ) {
+							editor.execCommand('ajaxsave');
+							
+						}
 						
-						if( (event.data.$.keyCode == 83 && isCtrl == true)  || event.data.$.keyCode == 114 )
+						
+						if( event.data.$.keyCode == 114 )
             {
 								// REWIND= S
                 //The preventDefault() call prevents the browser's save popup to appear.
