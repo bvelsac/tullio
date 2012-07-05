@@ -16,7 +16,7 @@ CKEDITOR.plugins.add('simpleclose',
                 exec : function( editor )
                 {
 									
-									var doIt = confirm("Leave clip without saving ?");
+									var doIt = confirm("Leave clip ?");
 									
 									if (doIt) {
 										noUpdate = true;
@@ -58,7 +58,7 @@ CKEDITOR.plugins.add('simpleclose',
             });
             editor.ui.addButton('Simpleclose',
             {
-                label: 'Close without saving',
+                label: 'Close the clip',
                 command: 'simpleclose',
 									icon: this.path + 'close_icon.gif'
             });

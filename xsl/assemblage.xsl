@@ -17,9 +17,9 @@
     </head>
     <body>
     <div>
-    <table>
+   
         <xsl:apply-templates select="response/resultSet/events/e[@c='true']" mode="continu"></xsl:apply-templates>
-        </table>
+       
       </div>
     </body>
     
@@ -36,13 +36,13 @@
   </xsl:template>
   
   <xsl:template match="e" mode="continu">
-  <tr>
-  <td style="width: 40px; vertical-align:top;" ><span style="font-size: 10px; font-family: monospace;">[<xsl:value-of select="@n"/>] </span></td>
-  <td> <xsl:apply-templates select="key('text', @n)"></xsl:apply-templates></td>
+ 
+  <p style="text-indent: -40px;" ><span style="font-size: 10px; font-family: monospace;">[<xsl:value-of select="@n"/>] </span></p>
+ <xsl:apply-templates select="key('text', @n)"></xsl:apply-templates>
   
   
   
-  </tr>
+  
   <!-- 
   <p style="font-size: 10px; font-family: monospace;"><xsl:value-of select="concat('[', @n, ']')" /></p>
   -->
@@ -127,7 +127,7 @@
     <xsl:copy>
   <xsl:attribute name="style">font-weight: bold;</xsl:attribute>
   <xsl:apply-templates />
-  <xsl:text>.-</xsl:text>
+  <xsl:text></xsl:text>
   </xsl:copy>
    </xsl:template>
    
@@ -136,6 +136,15 @@
    <xsl:template match="p[normalize-space()='']"></xsl:template>
    
    <xsl:template match="p[@class='comment']"></xsl:template>
+   
+   <xsl:template match="p[@class='realia']">
+   <xsl:copy>
+   <xsl:attribute name="style">font-style: italic;</xsl:attribute>
+   <xsl:apply-templates />
+   
+   </xsl:copy>
+   
+   </xsl:template>
    
    <xsl:template match="text()">
    <xsl:variable name="temp">   <xsl:choose>

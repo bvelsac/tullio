@@ -166,7 +166,7 @@
    </person>
    <person id="DESIR_Caroline" gov="no" group="PS" lang="fr" gender="f">
       <first>Caroline</first>
-      <last>Desir</last>
+      <last>Désir</last>
    </person>
    <person id="DESTEXHE_Alain" gov="no" group="MR" lang="f" gender="m">
       <first>Alain</first>
@@ -378,7 +378,7 @@
    </person>
    <person id="VAN DEN BRANDT_Elke" gov="no" group="Groen!" lang="nl" gender="f">
       <first>Elke</first>
-      <last>Van Den Brandt</last>
+      <last>Van den Brandt</last>
    </person>
    <person id="VAN GOIDSENHOVEN_Gaëtan" gov="no" group="MR" lang="f" gender="m">
       <first>Gaëtan</first>
@@ -461,6 +461,8 @@
     <first>Benoît</first>
     <last>Cerexhe</last>
     <ti l="F" meeting-type="PFB">ministre en charge de la Fonction publique, de la Politique de la santé et de la Formation professionnelle des Classes moyennes</ti>
+    <ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargé de l'Emploi, de l'Économie, du Commerce extérieur et de la Recherche scientifique</ti>
+      <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Tewerkstelling, Economie, Buitenlandse Handel en Wetenschappelijk Onderzoek</ti>
   </person>
   
   <person id="HUYTEBROECK_Evelyne" gov="yes" gender="f" lang="fr" group="Ecolo">
