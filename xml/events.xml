@@ -22,7 +22,22 @@
     <name lang="fr">Remarque du prés. (procédure)</name>
     <description lang="nl">Voor officiële opmerkingen van de voorzitter, bijvoorbeeld over de spreektijd.</description>
   </event>
+
+  <event id="INC"  order="GEN-002" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Incident gesloten</name>
+    <name lang="fr">Incident clos</name>
+    <description lang="nl"></description>
+    <description lang="fr"></description>
+  </event>
   
+  <event id="INC2"  order="GEN-002" active="y" use-for-editor="y" use-for-agenda="y">
+    <name lang="nl">Incidenten gesloten</name>
+    <name lang="fr">Incidents clos</name>
+    <description lang="nl"></description>
+    <description lang="fr"></description>
+  </event>
+  
+
   <event id="TRAV"  order="GEN-002" active="y" use-for-editor="y" use-for-agenda="y">
     <name lang="nl">Regeling van de werkzaamheden</name>
     <name lang="fr">Ordre des travaux</name>

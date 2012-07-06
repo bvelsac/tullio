@@ -30,6 +30,22 @@ type:"O-ARVV"
 clip:'',
 type:"SCH-BXL"
 },
+
+"inc" : 
+{
+	
+	type : 'INC'
+	
+},
+
+"inc2" : 
+{
+	
+	type : 'INC2'
+	
+},
+
+
 "suspend VVGGC":
 {
 

@@ -42,6 +42,7 @@ var offset = 0;
 var store;		
 var batch = 0;
 var channel = "";
+var extra = '';
 
 Ext.Loader.setConfig({
     enabled: true
@@ -60,22 +61,28 @@ Ext.require([
 function setOffset() {
 			var dateStr;
 			var random = new Date().getTime();
+			var newOffset = 'none';
 			$.ajax({
 					type: 'GET',
 					url:'/exist/tullio/newlogger/time.html?request=' + random,
 					success: function(data, textStatus, XMLHttpRequest){
-						dateStr = XMLHttpRequest.getResponseHeader('Date');
+									dateStr = XMLHttpRequest.getResponseHeader('Date');
+									var serverTimeMillisGMT = Date.parse(new Date(Date.parse(dateStr)).toUTCString());
+									var localMillisUTC = Date.parse(new Date().toUTCString());
+									newOffset = serverTimeMillisGMT -  localMillisUTC;
+									console.log(newOffset);
+			
 					},
 					error: function (XMLHttpRequest, textStatus, errorThrown) {
+						
+						console.log("time sync error");
 					},
-					async: false
+					async: true
 			});
-			var serverTimeMillisGMT = Date.parse(new Date(Date.parse(dateStr)).toUTCString());
-			var localMillisUTC = Date.parse(new Date().toUTCString());
-			offset = serverTimeMillisGMT -  localMillisUTC;
-
 			
-			return offset;
+			if (newOffset != 'none') { offset = newOffset ; }
+			
+			return newOffset;
 		
 		}		
 
@@ -83,6 +90,7 @@ function setOffset() {
 
 		function runAdjust() {
 			setOffset();
+			
 			t = setTimeout("runAdjust()", 60000);
 					console.log('OFFSET: '+ offset);
 		}
@@ -287,16 +295,17 @@ alert(content.current+':'+content.previous)
 
 		
 		$('#agenda2').editable(function(value, settings) { 
-     console.log(this);
-     console.log(value);
-     console.log(settings);
-		 $('#agendaplaceholder2').load('/exist/tullio/newlogger/hello3.xql?m=' + value);
-     return(value);
-  }, { 
-     type:'select',
-                    data: meetingList,
-                    submit:'OK',
- });
+				console.log(this);
+				console.log(value);
+				console.log(settings);
+				$('#agendaplaceholder2').load('/exist/tullio/newlogger/hello3.xql?m=' + settings.data[value]);
+				extra = settings.data[value];
+				return(settings.data[value]);
+		}, { 
+				type:'select',
+        data: meetingList,
+        submit:'OK'
+		});
 		/*
 		$('#agenda2').editable({
                     type:'select',
@@ -864,6 +873,12 @@ alert(content.current+':'+content.previous)
 		$(document).delegate('#agendaplaceholder h2','dblclick', function(e) {
 				console.log('reload agenda');
 				$('#agendaplaceholder').load('/exist/tullio/newlogger/hello3.xql?m=' + m, function() {});
+		
+				
+		});
+				$(document).delegate('#agendaplaceholder2 h2','dblclick', function(e) {
+				console.log('reload agenda');
+				$('#agendaplaceholder2').load('/exist/tullio/newlogger/hello3.xql?m=' + extra, function() {});
 		
 				
 		});

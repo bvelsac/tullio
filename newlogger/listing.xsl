@@ -70,8 +70,18 @@
         <td class="gov"></td>
       </tr>
     </xsl:if>
-    <xsl:if test="contains(col_type, 'INT') or contains(col_type, 'QO-MV')">
-      <tr class="agenda">
+    <xsl:if test="( contains(col_type, 'INT') or contains(col_type, 'QO-MV') ) and not(contains(col_type, 'START'))">
+    
+		<xsl:call-template name='insertGov'>
+		  <xsl:with-param name="nameString" select="normalize-space(col_gov)"></xsl:with-param>
+		  <xsl:with-param name="lang" select="col_lang"></xsl:with-param>
+		  
+		</xsl:call-template>
+		  
+		
+		
+		<!-- 
+		<tr class="agenda">
         <td class="ref"></td>
         <td class="type">ORA-SPR</td>
         <td class="lang"><xsl:value-of select="col_lang"/></td>
@@ -79,6 +89,17 @@
         <td class="subjectF"></td>
         <td class="short"></td>
         <td class="speaker"><xsl:value-of select="normalize-space(col_gov)"/></td>
+        <td class="gov"></td>
+      </tr>
+		-->
+			<tr class="agenda">
+        <td class="ref"></td>
+        <td class="type">INC</td>
+        <td class="lang"><xsl:value-of select="col_lang"/></td>
+        <td class="subjectN"></td>
+        <td class="subjectF"></td>
+        <td class="short"></td>
+        <td class="speaker"></td>
         <td class="gov"></td>
       </tr>
     </xsl:if>
@@ -149,5 +170,58 @@
   
   
   <xsl:template match="*"></xsl:template>
+	
+	
+	
+	
+	
+	 <xsl:template name="insertGov">
+    <xsl:param name="nameString"></xsl:param>
+    <xsl:param name="lang"></xsl:param>
+    <xsl:param name="counter" select="'1'"></xsl:param>
+    <xsl:variable name="firstPart" >
+      <xsl:choose>
+        <xsl:when test="contains($nameString, ' ')">
+          <xsl:value-of select="substring-before($nameString, ' ')"/>
+        </xsl:when>
+        <xsl:otherwise><xsl:value-of select="$nameString"/></xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+     
+
+		
+		
+		      <tr class="agenda">
+        <td class="ref"></td>
+        <td class="type">ORA-SPR</td>
+        <td class="lang"><xsl:value-of select="col_lang"/></td>
+        <td class="subjectN"></td>
+        <td class="subjectF"></td>
+        <td class="short"></td>
+        <td class="speaker"><xsl:value-of select="$firstPart"/></td>
+        <td class="gov"></td>
+      </tr>
+
+		
+    
+    <xsl:choose>
+      <xsl:when test="contains($nameString, ' ')">
+        <xsl:call-template name="insertGov">
+          <xsl:with-param name="nameString" select="substring-after($nameString, ' ')"></xsl:with-param>
+          <xsl:with-param name="counter" select="counter+1"></xsl:with-param>
+          <xsl:with-param name="lang" select="$lang"></xsl:with-param>
+        </xsl:call-template>
+      </xsl:when>
+    </xsl:choose>
+    
+  </xsl:template>
+	
+	
+	
+	
+	
+	
+	
+	
 
 </xsl:stylesheet>
