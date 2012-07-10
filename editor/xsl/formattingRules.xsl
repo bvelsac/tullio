@@ -26,12 +26,29 @@
   
   <xsl:template match="e[@type='INC']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"/>
+     <p c="{@clip}">...</p>
+    
     <xsl:choose>
       <xsl:when test="$lang='N'">
         <p c="{@clip}" title="{@n}" class="realia">- Het incident is gesloten.</p>
       </xsl:when>
       <xsl:when test="$lang='F'">
-        <p c="{@clip}" title="{@n}" class="comment">- L'incident est clos.</p>
+        <p c="{@clip}" title="{@n}" class="realia">- L'incident est clos.</p>
+      </xsl:when>
+    </xsl:choose>
+    
+    
+  </xsl:template>
+  
+   <xsl:template match="e[@type='INC2']" mode="initialize-text">
+    <xsl:param name="lang" select="@lang"/>
+     <p c="{@clip}">...</p>
+    <xsl:choose>
+      <xsl:when test="$lang='N'">
+        <p c="{@clip}" title="{@n}" class="realia">- De incidenten zijn gesloten.</p>
+      </xsl:when>
+      <xsl:when test="$lang='F'">
+        <p c="{@clip}" title="{@n}" class="realia">- Les incidents sont clos.</p>
       </xsl:when>
     </xsl:choose>
     
@@ -333,7 +350,7 @@
   
   
   
-  <xsl:template match="e[@type='QA-AV'] | e[@type='QO-MV'] | e[@type='INT']" mode="initialize-text">
+  <xsl:template match="e[@type='QA-DV'] | e[@type='QO-MV'] | e[@type='INT']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"/>
     <xsl:variable name="person" select="key('people', @speaker)"/>
 
@@ -479,11 +496,14 @@
         <xsl:choose>
           <xsl:when test="$person/@gov='yes'">
             <xsl:text>, </xsl:text>
-            <span class="incomplete"><xsl:value-of select="$person/ti[@l=$lang][@meeting-type=$meeting-type]"/></span>
+            <span class="incomplete">titel<!--
+            <xsl:value-of select="$person/ti[@l=$lang][@meeting-type=$meeting-type]"/>
+            -->
+            </span>
             <xsl:text></xsl:text>
           </xsl:when>
           <xsl:otherwise>
-            <xsl:value-of select="concat(' (', $person/@group, ')')"/>
+            <!-- <xsl:value-of select="concat(' (', $person/@group, ')')"/> -->
           </xsl:otherwise>
         </xsl:choose> 
       
@@ -533,7 +553,7 @@
         </xsl:call-template>
         <xsl:text> La parole est à </xsl:text>
           <xsl:value-of select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/>
-          <xsl:value-of select="$person/first"/>
+          
           <xsl:text> </xsl:text>
           <xsl:value-of select="$person/last"/>
           
@@ -579,16 +599,14 @@
             <xsl:when test="$lang='F'">
               <xsl:value-of select="key('snippets', concat('parole-', $lang))"/>
               <xsl:value-of select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/>
-              <xsl:value-of select="$person/first"/>
-              <xsl:text> </xsl:text>
+              
               <xsl:value-of select="$person/last"/>.
             </xsl:when>
             <xsl:otherwise>
               <xsl:value-of select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/>
-              <xsl:value-of select="$person/first"/>
-              <xsl:text> </xsl:text>
+              
               <xsl:value-of select="$person/last"/>
-              <xsl:value-of select="key('snippets', concat('parole-', $lang))"/>.
+              <xsl:value-of select="key('snippets', concat('parole-', $lang))"/>
             </xsl:otherwise>
           </xsl:choose>
         </p>

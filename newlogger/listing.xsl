@@ -70,7 +70,7 @@
         <td class="gov"></td>
       </tr>
     </xsl:if>
-    <xsl:if test="( contains(col_type, 'INT') or contains(col_type, 'QO-MV') ) and not(contains(col_type, 'START'))">
+    <xsl:if test="( contains(col_type, 'INT') or contains(col_type, 'QO-MV') or contains(col_type, 'QA-DV') ) and not(contains(col_type, 'START'))">
     
 		<xsl:call-template name='insertGov'>
 		  <xsl:with-param name="nameString" select="normalize-space(col_gov)"></xsl:with-param>

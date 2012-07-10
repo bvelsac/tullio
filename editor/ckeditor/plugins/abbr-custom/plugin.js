@@ -270,7 +270,7 @@ CKEDITOR.plugins.add( 'abbr-custom',
 					// Create a new abbreviation element and an object that will hold the data entered in the dialog window.
 					// http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.dom.document.html#createElement
 					var newEvent = editor.document.createElement( 'event' );
-					var clip = dialog.getValueOf('eventInfo', 'clip') ? 'y' : 'n';
+					var clip = dialog.getValueOf('eventInfo', 'clip') ? 'true' : '';
 					
 					newEvent.setAttribute( 'c', clip );
 					newEvent.setAttribute( 'type', dialog.getValueOf( 'eventInfo', 'type' ) );

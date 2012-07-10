@@ -49,8 +49,8 @@ let $presEvent := doc($events-doc)//e[string(@n)=$start]/preceding-sibling::*[@t
 
 let $final-meeting-type := 
 	if  ( not($meeting-type = 'VAR') ) then $meeting-type
-	else if (not($startAsDec)) then doc($events-doc)//e[@type='O-BXL' or @type='O-ARVV' or @type='HERV-ARVV' or @type='HERV-BXL'][1]/@type 
-	else doc($events-doc)//e[@n = $startAsDec]/preceding-sibling::e[@type='O-BXL' or @type='O-ARVV' or @type='HERV-ARVV' or @type='HERV-BXL'][1]/@type
+	else if (not($startAsDec)) then string(doc($events-doc)//e[@type='O-BXL' or @type='O-ARVV' or @type='HERV-ARVV' or @type='HERV-BXL'][1]/@type) 
+	else string(doc($events-doc)//e[@n = $startAsDec]/preceding-sibling::e[@type='O-BXL' or @type='O-ARVV' or @type='HERV-ARVV' or @type='HERV-BXL'][1]/@type)
 
 (: for $clip in $completed//e[@c='y'] :)
 

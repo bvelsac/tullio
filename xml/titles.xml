@@ -7,10 +7,10 @@
  <l id="startIntOrd-N"><span class="incomplete">Aan de orde is de interpellatie van de heer / mevrouw (naam). OF Aan de orde zijn de interpellaties.</span></l>
  <l id="startIntOrd-F"><span class="incomplete">L'ordre du jour appelle l'interpellation de M. / Mme (nom). OU L'ordre du jour appelle les interpellations.</span></l>
  
-  <l id="contN-N">(Verder in het Nederlands.)</l>
-  <l id="contN-F">(Poursuivant en néerlandais.)</l>
-  <l id="contF-F">(Poursuivant en français.)</l>
-  <l id="contF-N">(Verder in het Frans.)</l>
+  <l id="contN-N">(verder in het Nederlands)</l>
+  <l id="contN-F">(poursuivant en néerlandais)</l>
+  <l id="contF-F">(poursuivant en français)</l>
+  <l id="contF-N">(verder in het Frans)</l>
  
  
 
@@ -214,7 +214,7 @@
    </person>
    <person id="FRAITEUR_Béatrice" gov="no" group="FDF" lang="fr" gender="f">
       <first>Béatrice</first>
-      <last>Fraiteur</last>
+      <last>Fraiteur</last>
    </person>
    <person id="FREMAULT_Céline" gov="no" group="cdH" lang="fr" gender="f">
       <first>Céline</first>
@@ -248,6 +248,13 @@
       <first>Marion</first>
       <last>Lemesre</last>
    </person>
+   
+   <person id="LOOTENS STAEL_Dominiek" gov="no" group="Vlaams Belang" lang="n" gender="m">
+      <first>Dominiek</first>
+      <last>Lootens-Stael</last>
+   </person>
+   
+   
    <person id="LURQUIN_Vincent" gov="no" group="Ecolo" lang="fr" gender="m">
       <first>Vincent</first>
       <last>Lurquin</last>
@@ -422,8 +429,18 @@
   </person>
   
   <person id="VANHENGEL_Guy" gov="yes" gender="m" lang="nl" group="Open VLD">
-    <first>Brigitte</first>
-    <last>Grouwels</last>
+    <first>Guy</first>
+    <last>Vanhengel</last>
+    <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Financiën, Begroting, Openbaar Ambt en Externe Betrekkingen</ti>
+    <ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargé des Finances, du Budget, de la Fonction publique et des Relations extérieures</ti>
+    <ti l="N" meeting-type="VVGGC"></ti>
+    <ti l="F" meeting-type="VVGGC"></ti>
+    
+    
+  </person>
+    <person id="Vanhengel, Guy" gov="yes" gender="m" lang="nl" group="Open VLD">
+    <first>Guy</first>
+    <last>Vanhengel</last>
     <ti l="N" meeting-type="BHP"></ti>
     <ti l="F" meeting-type="BHP"></ti>
     <ti l="N" meeting-type="VVGGC"></ti>
@@ -436,9 +453,9 @@
   <person id="PICQUE_Charles" gov="yes" gender="m" lang="fr" group="PS">
     <first>Charles</first>
     <last>Picqué</last>
-		<ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Leefmilieu, Energie en Waterbeleid, Stadsvernieuwing, Brandbestrijding en Dringende Medische Hulp en Huisvesting</ti>
+		<ti l="N" meeting-type="BHP">minister-president van de Brusselse Hoofdstedelijke Regering, belast met Plaatselijke Besturen, Ruimtelijke Ordening, Monumenten en Landschappen, Openbare Netheid en Ontwikkelingssamenwerking</ti>
  
-			<ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée de l'Environnement, de l'Energie et de la Politique de l'Eau, de la Rénovation urbaine, de la Lutte contre l'Incendie et l'Aide médicale urgente et du Logement</ti>
+			<ti l="F" meeting-type="BHP">ministre-président du Gouvernement de la Région de Bruxelles-Capitale, chargé des Pouvoirs locaux, de l'Aménagement du Territoire, des Monuments et Sites, de la Propreté publique et de la Coopération au Développement</ti>
     <ti l="F" meeting-type="PFB">ministre en charge de la Cohésion sociale</ti>
     <ti l="N" meeting-type="VVGGC"></ti>
     <ti l="F" meeting-type="VVGGC"></ti>
@@ -449,11 +466,17 @@
     <first>Emir</first>
     <last>Kir</last>
     <ti l="F" meeting-type="PFB">ministre en charge de la Formation professionnelle, de la Culture, du Transport scolaire, de l’Action sociale, de la Famille, du Sport et des Relations internationales</ti>
+     <ti l="N" meeting-type="BHP">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Stedenbouw en Openbare Netheid</ti>
+      <ti l="F" meeting-type="BHP">secrétaire d'État à la Région de Bruxelles-Capitale, chargé de l'Urbanisme et de la Propreté publique</ti>
+    
+    
   </person>
   
   <person id="DE_LILLE_Bruno" gov="yes" gender="m" lang="nl" group="Groen">
     <first>Bruno</first>
     <last>De Lille</last>
+     <ti l="N" meeting-type="BHP">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Mobiliteit, Openbaar Ambt, Gelijke Kansen en Administratieve Vereenvoudiging</ti>
+      <ti l="F" meeting-type="BHP">secrétaire d'État à la Région de Bruxelles-Capitale, chargé de la Mobilité, de la Fonction publique, de l'Égalité des Chances et  de la Simplification administrative</ti>
   </person>
   
   
@@ -481,12 +504,7 @@
   
   
   
-    <p code="DE WOLF Vincent">
-      <gender>M</gender>
-      <name>Vincent De Wolf</name>
-      <ti l="N" meeting-type="COM-ECO">voorzitter</ti>
-      <ti l="F" meeting-type="COM-ECO">eerste ondervoorzitter</ti>
-    </p>
+   
     
   </reference>
   

@@ -80,6 +80,7 @@ function asfinish(xml2, xsl, object, e) {
 		else {alert('Save action failed, the server could not be reached. Please try again.');}
 	
 		*/
+		noUpdate = false;
 		console.log('exit finish');
 } 
  

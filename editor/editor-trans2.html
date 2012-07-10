@@ -58,6 +58,8 @@ function jq(myid) {
 	var bottom;
 	var channel;
 	
+	var rowToUpdate;
+	
 	var titles = null;
 	var titlesDoc;
 	
@@ -587,205 +589,29 @@ function initialize(xml, xsl, xmlorig) {
 
 
 $().ready(function(){
-
-
-				
-		var asString = "";
-		// variable titles does get defined although it cannot be logged
-		
-		
-	      $.each(team, function(val, text) {
-						// console.log (team);
-            $('#person').append(
-                $('<option></option>').val(val).html(text)
-            );
-				});
-		
-		
-		setUpPlayer();
-		
-		jQuery.get( "/exist/tullio/xml/titles.xml", 
-			function(data, textStatus, jqXHR) {
-				asString = (new XMLSerializer()).serializeToString(data);
-				// console.log ('assigned var');
-			
-				
-				// titles = data.documentElement;
-				
-			},
-			"xml" );
-		
-		jQuery.ajax({
-         url:    "/exist/tullio/xml/titles.xml",
-         success: function(result) {
-                      testeee = (new XMLSerializer()).serializeToString(result); 
-											// // console.log (testeee);
-											titlesAsString = testeee;
-											titlesDoc = result;
-											titles = result.documentElement;
-                  },
-         async:   false,
-				 contentType: "text/xml"
-    }); 
-		
-
-		$('#titles').html(titlesAsString);
-		$('#username').text(user);
-		
-		
-		
-		$(document).delegate('.status', 'dblclick', function () {
-				alert("History");
-		});
-		
-		
-
  
-$("#overview").text(mmm);
-
-			// initialize maakt events en text files aan, en vult de text file met procedure tekst
-			
-			/*
-			$.get("../xq/initialize.xql", {
-							"meeting": mmm
-					}, function(data) {
-						//	alert("Data Loaded: " + data);
-					});
-		*/			
-		// functie initialize zorgt voor de aanmaak van de tabel aan client side, blijkbaar noodzakelijk	
-		
-		$.transform({  success:initialize, xml: "../xq/return-combined.xql?mt=" + mt + "&m=" + mmm + "&include=" + runTrans, xsl: "xsl/addclipref.xsl", xslParams:{translation:"1"}});
-
-displayStatus();
-	 setTimeout("updateVisibleTexts(false)", 5000);
-		
-		// start displaying status codes
-		
-		loopDisplayStatus();
-		
-						
-
-		$("#text-table td.content").live("dblclick", 
-			function(){
-				console.log('clicked');
-				// console.log (this);
-				$(this).removeClass('content');
-				// console.log (this);
-				// if (this.id == clickmemory) {alert('clip ' + clickmemory + ' already open'); return false;}
-				
-				// set some variables
-				// clickmemory = this.id;
-				var locked = false;		
-				editReqId = this.id.slice(1,-2);
-				author = user;
-				
-				// author = $("#person option:selected").text();
-				var textversion = $(this).hasClass("orig") ? "orig" : "trans";
-				
-
-				// check if the clip is unlocked
-				// td needs class indicating the text version
-				
-				var request = $.ajax({
-						url: "../xq/lock.xql",
-						type: "POST",
-						data: {
-							"v": textversion,
-							"n": editReqId,
-							"id": author,
-							"m": mmm
-						},
-						async: false
-					});
-
-				request.done(function(msg) {
-						msgString =  (new XMLSerializer()).serializeToString(msg);
-						//// console.log ( msgString);
-						if (msgString.indexOf('success')=='-1') {
-							locked = true;
-						}
-				});
-
-				request.fail(function(jqXHR, textStatus) {
-						alert( "Request failed: " + textStatus );
-						locked = true;
-				});
-
-				
-				// console.log ("clicked: " + this.id);
-				
-				if ( locked ) {alert("locked"); locked= false; return false;}
-				
-				newe = $(this).offset().top;
-				
-				// check if another clip is being edited, store text and clean up
-				if ( edited != '' ) {
-					$("#cke").attr('id', '');
-					$(jq(edited)).removeClass("editmode");
-					
-					
-					var clipid = edited.slice(1,-2);
-					var stop = $(jq("stopevent-" + clipid)).text();
-					
-					
-					
-					var cat = $(this).hasClass("orig") ? "orig" : "trans";
-					var status = $(jq("status" + clipid)).text();
-					
-					var editedcontent = "<wrapper n='" + clipid + "'>" + editor.getData().replace(/[&][#]160[;]/gi," ") + "</wrapper>";
-					
-					// console.log (editedcontent);
-					// store everything on the server
-					
-					
-					
-					
-					$.post("../xq/storeClipEdit.xql", {
-							"status": status, 
-							"text": editedcontent,
-							"cat": oldcat,
-							"start": clipid,
-							"stop": stop,
-							"meeting": mmm
-					}, function(data) {
-							// alert("Data Loaded: " + data);
-					});
-					
-				
-					// console.log (status + cat + clipid + stop + meeting);
-					var old = $(this).offset().top;
-					
-					$.post("../xq/unlock.xql", {
-							"v": oldcat,
-							"n": clipid,
-							"id": author,
-							"m": mmm
-					}, function(data) {
-							// alert("Data Loaded: " + data);
-					});
-					editor.destroy();
-					$(jq(edited)).addClass("content");
-					}
-					// first update the row to be sure we don't loose edits...
-				edited = this.id;
-				oldcat = textversion;
-				updateVisibleTexts(true);		
-				
-				// console.log ('start editing ' + edited);
-				rowId = this.parentNode.id;
-				$(this).addClass("editmode");
-				$(this).children("div:first-child").attr('id', 'cke');
-				
-				if ( editor ) editor.destroy();
-
-					
-					
-				var cellHeight  = ( $(this).height() > ($(window).height()- 205) ) ? ($(window).height()- 205) :  $(this).height();
-				var adjustedHeight = ( cellHeight < 300 ) ? 300 : cellHeight;
-				var cellWidth  = $(this).width();
-					
-				// alert($(window).height());
-				
+function updateBeforeEdit (xml, xsl, xmlorig) {
+	console.log("updateBeforeEdit");
+	xml.getElementsByTagName("all")[0].appendChild(titles);
+	xml.getElementsByTagName("all")[0].appendChild(events);
+	// console.log("2nd transformation before");
+	$("#hidden").transform({async:false, xmlobj:xml, xsl:"xsl/group.xsl", xslParams:{mode:runTrans, channel:channel}});
+	// console.log("2nd transformation done");
+	$("#result > tr" + jq('R' + rowToUpdate)).replaceWith($("#hidden > tr"));
+	// $("#result > tr" + jq('R' + rowToUpdate)).css('background-color','red');
+	
+	console.log(jq(edited));
+	var cell = $(jq(edited)); 
+	
+	cell.children("div:first-child").attr('id', 'cke');
+	//cell.children("div:first-child").css('background-color','yellow');
+	
+	
+	var cellHeight  = ( cell.height() > ($(window).height()- 205) ) ? ($(window).height()- 205) :  cell.height();
+	var adjustedHeight = ( cellHeight < 300 ) ? 300 : cellHeight;
+	var cellWidth  = cell.width();
+	
+	
 	editor = CKEDITOR.replace( 'cke', {
 					toolbar: [['Styles', 'Undo', 'Redo', 'PasteText', 'Ajaxsave','internalSync','Remove', 'Abbr', 'Status','Source', 'Simpleclose']],
 					extraPlugins : 'remove,internalSync,ajaxsave,transform,abbr-custom,status,simpleclose,wordcount',
@@ -801,25 +627,10 @@ displayStatus();
 					width: cellWidth
 			});
 	
-	/*
-	editor.on('instanceReady', function() {
-		editor.focus();
-		var range = new CKEDITOR.dom.range( editor.document );
-		range.select();
-	});
 	
+	var isCtrl = false;
 	
-	
-	editor.on('instanceReady', function (ev) {
-			ev.editor.on('paste', function(ev) {
-					ev.data.html = ev.data.html.replace(/<br>\s*<br>/g, '</p><p>ooo');
-			});
-	});
-	*/
-	
-var isCtrl = false;
-	// code for keyboard shortcuts
-editor.on( 'contentDom', function( evt )
+	editor.on( 'contentDom', function( evt )
     {
         editor.document.on( 'keyup', function(event)
         {
@@ -947,7 +758,252 @@ editor.on( 'contentDom', function( evt )
 						
         });
 
-    }, editor.element.$);	
+    }, editor.element.$);
+	
+}
+
+
+
+function updateRow (cell) {
+	
+	rowToUpdate = cell.parentNode.getAttribute('id').substring(1);
+	console.log("edit" + rowToUpdate);
+	var request = "../xq/return-combined.xql?mt=" + mt + "&m=" + mmm + "&start=" + rowToUpdate + "&stop=" + rowToUpdate + "&include=" + runTrans;
+	$.transform({async:false, dataType:"xml", success:updateBeforeEdit, xml:request, xsl: "xsl/addclipref.xsl"});
+	
+}
+
+				
+		var asString = "";
+		// variable titles does get defined although it cannot be logged
+		
+		
+	      $.each(team, function(val, text) {
+						// console.log (team);
+            $('#person').append(
+                $('<option></option>').val(val).html(text)
+            );
+				});
+		
+		
+		setUpPlayer();
+		
+		jQuery.get( "/exist/tullio/xml/titles.xml", 
+			function(data, textStatus, jqXHR) {
+				asString = (new XMLSerializer()).serializeToString(data);
+				// console.log ('assigned var');
+			
+				
+				// titles = data.documentElement;
+				
+			},
+			"xml" );
+		
+		jQuery.ajax({
+         url:    "/exist/tullio/xml/titles.xml",
+         success: function(result) {
+                      testeee = (new XMLSerializer()).serializeToString(result); 
+											// // console.log (testeee);
+											titlesAsString = testeee;
+											titlesDoc = result;
+											titles = result.documentElement;
+                  },
+         async:   false,
+				 contentType: "text/xml"
+    }); 
+		
+
+		$('#titles').html(titlesAsString);
+		$('#username').text(user);
+		
+		
+		
+		$(document).delegate('.status', 'dblclick', function () {
+				alert("History");
+		});
+		
+		
+
+ 
+$("#overview").text(mmm);
+
+			// initialize maakt events en text files aan, en vult de text file met procedure tekst
+			
+			/*
+			$.get("../xq/initialize.xql", {
+							"meeting": mmm
+					}, function(data) {
+						//	alert("Data Loaded: " + data);
+					});
+		*/			
+		// functie initialize zorgt voor de aanmaak van de tabel aan client side, blijkbaar noodzakelijk	
+		
+		$.transform({  success:initialize, xml: "../xq/return-combined.xql?mt=" + mt + "&m=" + mmm + "&include=" + runTrans, xsl: "xsl/addclipref.xsl", xslParams:{translation:"1"}});
+
+displayStatus();
+	 setTimeout("updateVisibleTexts(false)", 5000);
+		
+		// start displaying status codes
+		
+		loopDisplayStatus();
+		
+		
+		
+						
+
+		$("#text-table td.content").live("dblclick", 
+			function(){
+				console.log('clicked');
+				
+				// console.log (this);
+				$(this).removeClass('content');
+				// console.log (this);
+				// if (this.id == clickmemory) {alert('clip ' + clickmemory + ' already open'); return false;}
+				
+				// set some variables
+				// clickmemory = this.id;
+				var locked = false;		
+				editReqId = this.id.slice(1,-2);
+				author = user;
+				
+				// author = $("#person option:selected").text();
+				var textversion = $(this).hasClass("orig") ? "orig" : "trans";
+				
+
+				// check if the clip is unlocked
+				// td needs class indicating the text version
+				
+				var request = $.ajax({
+						url: "../xq/lock.xql",
+						type: "POST",
+						data: {
+							"v": textversion,
+							"n": editReqId,
+							"id": author,
+							"m": mmm
+						},
+						async: false
+					});
+
+				request.done(function(msg) {
+						msgString =  (new XMLSerializer()).serializeToString(msg);
+						//// console.log ( msgString);
+						if (msgString.indexOf('success')=='-1') {
+							locked = true;
+						}
+				});
+
+				request.fail(function(jqXHR, textStatus) {
+						alert( "Request failed: " + textStatus );
+						locked = true;
+				});
+
+				
+				// console.log ("clicked: " + this.id);
+				
+				if ( locked ) {alert("locked"); locked= false; return false;}
+				
+				newe = $(this).offset().top;
+				
+				// check if another clip is being edited, store text and clean up
+				if ( edited != '' ) {
+					$("#cke").attr('id', '');
+					$(jq(edited)).removeClass("editmode");
+					
+					
+					var clipid = edited.slice(1,-2);
+					var stop = $(jq("stopevent-" + clipid)).text();
+					
+					
+					
+					var cat = $(this).hasClass("orig") ? "orig" : "trans";
+					var status = $(jq("status" + clipid)).text();
+					
+					var editedcontent = "<wrapper n='" + clipid + "'>" + editor.getData().replace(/[&][#]160[;]/gi," ") + "</wrapper>";
+					
+					// console.log (editedcontent);
+					// store everything on the server
+					
+					
+					
+					
+					$.post("../xq/storeClipEdit.xql", {
+							"status": status, 
+							"text": editedcontent,
+							"cat": oldcat,
+							"start": clipid,
+							"stop": stop,
+							"meeting": mmm
+					}, function(data) {
+							// alert("Data Loaded: " + data);
+					});
+					
+				
+					// console.log (status + cat + clipid + stop + meeting);
+					var old = $(this).offset().top;
+					
+					$.post("../xq/unlock.xql", {
+							"v": oldcat,
+							"n": clipid,
+							"id": author,
+							"m": mmm
+					}, function(data) {
+							// alert("Data Loaded: " + data);
+					});
+					editor.destroy();
+					$(jq(edited)).addClass("content");
+					}
+					// first update the row to be sure we don't loose edits...
+				edited = this.id;
+				oldcat = textversion;
+				
+				// console.log ('start editing ' + edited);
+				rowId = this.parentNode.id;
+				$(this).addClass("editmode");
+				$(this).children("div:first-child").attr('id', 'cke');
+				
+				if ( editor ) editor.destroy();
+
+				updateRow(this);		
+					
+					
+				var cellHeight  = ( $(this).height() > ($(window).height()- 205) ) ? ($(window).height()- 205) :  $(this).height();
+				var adjustedHeight = ( cellHeight < 300 ) ? 300 : cellHeight;
+				var cellWidth  = $(this).width();
+					
+				// alert($(window).height());
+				/*
+	editor = CKEDITOR.replace( 'cke', {
+					toolbar: [['Styles', 'Undo', 'Redo', 'PasteText', 'Ajaxsave','internalSync','Remove', 'Abbr', 'Status','Source', 'Simpleclose']],
+					extraPlugins : 'remove,internalSync,ajaxsave,transform,abbr-custom,status,simpleclose,wordcount',
+					disableNativeSpellChecker: false,
+					removePlugins : 'scayt,contextmenu',
+					startupFocus: false,
+					templates_files : [ 'ckeditor/plugins/templates/templates/default.js' ],
+					fillEmptyBlocks : false,
+					entities_processNumerical: 'force',
+					resize_enabled: true,
+					resize_dir: 'vertical',
+					height: adjustedHeight,
+					width: cellWidth
+			});
+	*/
+	/*
+	editor.on('instanceReady', function() {
+		editor.focus();
+		var range = new CKEDITOR.dom.range( editor.document );
+		range.select();
+	});
+	
+	
+	
+	editor.on('instanceReady', function (ev) {
+			ev.editor.on('paste', function(ev) {
+					ev.data.html = ev.data.html.replace(/<br>\s*<br>/g, '</p><p>ooo');
+			});
+	});
+	*/
+	// code for keyboard shortcuts
 				
 				
 				

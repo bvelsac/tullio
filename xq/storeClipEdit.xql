@@ -26,7 +26,7 @@ let $nodes :=  if ($text) then util:eval( $text ) else ()
 		let $update := if ($nice) then (update insert $atts into $touch, update insert $nice//p preceding $touch[1], update delete doc($text-doc)//p[@op=$op][@marker='invalid']) else ("something went wrong")
 		let $correct := if ( not($touch) ) then 
 											if ( doc($text-doc)//p[@c > $startAsDec] ) then update insert $nice//p preceding doc($text-doc)//p[@c > $startAsDec][1] 
-											else update insert $nice//p into doc($text-doc)/doc
+											else update insert $nice//p into doc($text-doc)/*
 										else ()
 										
 										
