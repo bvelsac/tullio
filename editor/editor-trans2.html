@@ -768,7 +768,7 @@ function updateRow (cell) {
 	
 	rowToUpdate = cell.parentNode.getAttribute('id').substring(1);
 	console.log("edit" + rowToUpdate);
-	var request = "../xq/return-combined.xql?mt=" + mt + "&m=" + mmm + "&start=" + rowToUpdate + "&stop=" + rowToUpdate + "&include=" + runTrans;
+	var request = "../xq/return-combined.xql?mt=" + mt + "&m=" + mmm + "&start=" + rowToUpdate +  "&include=" + runTrans;
 	$.transform({async:false, dataType:"xml", success:updateBeforeEdit, xml:request, xsl: "xsl/addclipref.xsl"});
 	
 }
