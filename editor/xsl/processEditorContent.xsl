@@ -20,11 +20,11 @@
   
   <xsl:variable name="meeting-type" >
     <xsl:choose>
-      <xsl:when test="/all/variables/type = 'VVGGC' or /all/variables/type = 'BHP'">
-        <xsl:value-of select="/all/variables/type"/>
+      <xsl:when test="/container/info/type = 'VVGGC' or /container/info/type = 'BHP' or /container/info/type = 'PFB'">
+        <xsl:value-of select="/container/info/type"/>
       </xsl:when>
-      <xsl:when test="contains(/all/variables/type, 'ARVV')">VVGGC</xsl:when>
-      <xsl:when test="contains(/all/variables/type, 'BXL')">BHP</xsl:when>
+      <xsl:when test="contains(/container/info/type, 'ARVV')">VVGGC</xsl:when>
+      <xsl:when test="contains(/container/info/type, 'BXL')">BHP</xsl:when>
     </xsl:choose>
   </xsl:variable>
   

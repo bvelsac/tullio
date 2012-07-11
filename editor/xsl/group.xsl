@@ -40,7 +40,7 @@
  
   <xsl:variable name="meeting-type" >
     <xsl:choose>
-      <xsl:when test="/all/variables/type = 'VVGGC' or /all/variables/type = 'BHP'">
+      <xsl:when test="/all/variables/type = 'VVGGC' or /all/variables/type = 'BHP' or /all/variables/type='PFB'">
         <xsl:value-of select="/all/variables/type"/>
       </xsl:when>
       <xsl:when test="contains(/all/variables/type, 'ARVV')">VVGGC</xsl:when>

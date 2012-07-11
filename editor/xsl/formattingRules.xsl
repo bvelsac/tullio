@@ -496,14 +496,26 @@
         <xsl:choose>
           <xsl:when test="$person/@gov='yes'">
             <xsl:text>, </xsl:text>
-            <span class="incomplete">titel<!--
-            <xsl:value-of select="$person/ti[@l=$lang][@meeting-type=$meeting-type]"/>
+            
+            <xsl:choose>
+    
+     <xsl:when test="$meeting-type='PFB'">
+     <xsl:value-of select="$person/ti[@l=$lang][@meeting-type=$meeting-type]"/>
+    </xsl:when>
+    <xsl:otherwise> <span class="incomplete">titel<!--
+           
             -->
-            </span>
+            </span></xsl:otherwise>
+    </xsl:choose>
+            
+           
             <xsl:text></xsl:text>
           </xsl:when>
           <xsl:otherwise>
-            <!-- <xsl:value-of select="concat(' (', $person/@group, ')')"/> -->
+          <xsl:if test="$meeting-type='PFB'">
+          <xsl:value-of select="concat(' (', $person/@group, ')')"/>
+          </xsl:if>
+            <!--  -->
           </xsl:otherwise>
         </xsl:choose> 
       

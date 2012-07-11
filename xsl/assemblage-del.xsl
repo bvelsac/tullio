@@ -13,7 +13,7 @@
     <html>
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
-    <title>ASSEMBLAGE <xsl:value-of select="$type"/></title>
+    <title>ASSEMBLAGE </title>
     </head>
     <body>
     <div>
@@ -58,7 +58,7 @@
         <!-- this column should always be Dutch -->
   
         <xsl:choose>
-          <xsl:when test="e/@lang='F'">
+          <xsl:when test="e/@lang='N'">
             <td>
             <xsl:apply-templates select="key('text', @n)"></xsl:apply-templates>
             </td>
@@ -110,14 +110,14 @@
   
   <xsl:template match="p[@class='title4']">
   <xsl:copy>
-  <xsl:attribute name="style">font-weight: bold; font-style:normal;</xsl:attribute>
+  <xsl:attribute name="style">font-weight: bold;</xsl:attribute>
   <xsl:apply-templates />
   </xsl:copy>
   </xsl:template>
   
   <xsl:template match="span[@class='speaker']">
    <xsl:copy>
-  <xsl:attribute name="style">font-weight: bold; font-style:normal;</xsl:attribute>
+  <xsl:attribute name="style">font-weight: bold;</xsl:attribute>
   <xsl:apply-templates />
   <xsl:text>.-</xsl:text>
   </xsl:copy>
@@ -125,7 +125,7 @@
   
    <xsl:template match="span[contains(@class, 'pres')]">
     <xsl:copy>
-  <xsl:attribute name="style">font-weight: bold; font-style:normal;</xsl:attribute>
+  <xsl:attribute name="style">font-weight: bold;</xsl:attribute>
   <xsl:apply-templates />
   <xsl:text></xsl:text>
   </xsl:copy>

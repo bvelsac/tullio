@@ -1,0 +1,1136 @@
+<html>
+<head>
+	<title>Full Text</title>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8"></META>
+	<link rel="stylesheet" type="text/css" href="css/editor.css" />
+	<link rel="stylesheet" type="text/css" href="../soundmanager/demo/page-player/css/page-player.css" />
+	<link rel="stylesheet" type="text/css" href="../soundmanager/demo/page-player/flashblock/flashblock.css" />
+	<link href="../soundmanager/demo/page-player/css/optional-annotations.css" type="text/css" rel="stylesheet">
+	<link href="css/player-specific.css" rel="stylesheet" type="text/css" />
+	<link href="ckeditor/_samples/sample.css" rel="stylesheet" type="text/css" />
+	
+	<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+	<script language="javascript" src="../js-lib/jquerytransform/js/jquery-1.6.4.js"></script>
+	<script language="javascript" src="../js-lib/jquerytransform/js/jquery.transform.js"></script>
+	
+	<script type="text/javascript" src="/exist/tullio/soundmanager/script/soundmanager2.js"></script>
+	<script type="text/javascript" src="../soundmanager/demo/page-player/script/page-player.js"></script>
+	<script type="text/javascript" src="../soundmanager/demo/page-player/script/optional-page-player-metadata.js"></script>
+	
+	<script type="text/javascript" src="js/player-specific.js"></script>
+	<script type="text/javascript" src="/exist/tullio/js-lib/xdate.js"></script>
+	
+	<script>
+		(function($) {
+    $.QueryString = (function(a) {
+        if (a == "") return {};
+        var b = {};
+        for (var i = 0; i < a.length; ++i)
+        {
+            var p=a[i].split('=');
+            if (p.length != 2) continue;
+            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+        }
+        return b;
+    })(window.location.search.substr(1).split('&'))
+})(jQuery);
+
+
+
+
+
+function jq(myid) {
+   return '#' + myid.replace(/(:|\.)/g,'\\$1');
+ }
+	
+
+	var clickmemory;
+	var dbUrl = "/exist/rest//db/tullio/";
+	var newe;
+	var noUpdate = false;
+	var updateCounter = 0;
+	var scrollState = 0;
+	var start = "";
+	var stop = "";
+	var visibleRows = [];
+	var visibles = "";
+	var meeting = "2011-07-24-COMENVLEEF"; 
+	var ids = "";
+	var edited = "";
+	var editor;	
+	var rowId;
+	var bottom;
+	var channel;
+	
+	var rowToUpdate;
+	
+	var preEdit;
+	
+	var titles = null;
+	var titlesDoc;
+	
+	var events = null;
+	var eventsDoc;
+	var interval;
+	var previousUpdate;
+
+	var runTrans = $.QueryString["t"];
+	
+	var mt = "";
+	
+	
+	//****** check session ********
+	
+	var user;
+var userLang;
+var checkSession = function(){
+		// console.log ('check');
+    $.ajax({
+        url : '/exist/tullio/xq/checksession.xql',
+        dataType : 'xml',
+        async : false,
+        success : function(data) {
+					// console.log (data);
+					// console.log ($(data).find('success'));
+					if ($(data).find('success')[0] != null) {
+								user = data.getElementsByTagName("user")[0].getAttribute('id');
+								userLang = data.getElementsByTagName("user")[0].getAttribute('lang');
+								// console.log (user + userLang);
+                return true;
+            }
+						else redirectLogin();
+        }
+    });
+		// console.log ('finished');
+}
+function redirectLogin(){
+    alert("Please log in");
+    window.location = '/exist/tullio/xq/login.xql';
+}
+
+function setMeetingType(meeting) {
+	
+	var fullQuery = '/exist/rest/db/tullio/' + meeting + '?_query=' + 'document("agenda.xml")//info' ;
+	
+	$.ajax({
+        url : fullQuery,
+        dataType : 'xml',
+        async : false,
+        success : function(data) {
+					// console.log (data);
+					// console.log ($(data).find('success'));
+					if ($(data).find('name')[0] != null) {
+							mt = $(data).find("name").text();
+              console.log(mt);
+							// data mapping
+							var mTypes = {
+								'PLEN' 		: 'VAR',
+								'COM-AEZ'	:	'BHP',
+								'COM-AIBZ':	'BHP',
+								'COM-ATRO':	'BHP',
+								'COM-ENVMIL':	'BHP',
+								'COM-FIN'	: 'BHP',
+								'COM-INFRA' : 'BHP',
+								'COM-LOGHUIS':	'BHP',
+								'COM-SANGEZ' : 'VVGGC',
+								'COM-ASSZ' : 'VVGGC',
+								'COM_ASSZSANGEZ' : 'VVGGC',
+								'PFB' : 'PFB'
+							};
+								mt = mTypes[mt];
+								console.log(mt);
+					}
+					
+					if ($(data).find('channel')[0] != null) {
+							channel = $(data).find("channel").text();
+					}
+					console.log('channel,' + channel);
+							return true;
+        }
+    });
+}
+
+checkSession();
+
+var langChoice = userLang;
+	
+	//************** CONFIGURATION *******
+	
+	var eventTypes = {};
+	var speakers = [];
+	var government = [];
+	var languages;
+	var statusCodes = {};
+	var team;
+	
+	// define simple configuration for use in CKEditor plugin
+	team = ["Lieve", "Daan", "Bienne", "Céline", "Laurence", "Veerle", "Anne", "Johan", "Anita", "Nathalie", "Carine", "Sophie", "Alain", "Jean-Pierre", "Thierry", "Vincent", "Bert", "Michel", "Bérénice", "Isabelle", "Anne"];
+	languages = {N: 	[ [ 'Nederlands' ,  'N' ], [ 'Frans' ,  'F' ] ],
+	F: [ [ 'néerlandais' ,  'N' ], [ 'français' ,  'F' ] ]};
+	
+	// load config data from server
+	// script could limit the data depending on the meeting, add headers to optimize caching
+	var requestConfig = "/exist/tullio/xml/titles.xml";
+	
+	// function fills the speakers and government arrays
+	function setSpeakers(response) {
+		var people = response.getElementsByTagName("person");
+    var nP = people.length;
+		var j =0;
+		var k =0;
+		// console.log ("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨p" + nP);
+		 for (i=0; i<nP; i++) {
+			 if (people[i].getAttribute('id') && people[i].getAttribute('gov')=='no') {
+				 // // console.log (people[i].getAttribute('id'));
+				 // // console.log (people[i].getElementsByTagName('first')[0].firstChild.nodeValue);
+				 speakers[j] = [ people[i].getElementsByTagName('last')[0].firstChild.nodeValue + ', ' + people[i].getElementsByTagName('first')[0].firstChild.nodeValue + ' (' + people[i].getAttribute('group') + ')', people[i].getAttribute('id')];
+				 j++;
+			}
+			if (people[i].getAttribute('id') && people[i].getAttribute('gov')=='yes') {
+				 // console.log ('+++' + people[i].getAttribute('id'));
+				 // // console.log (people[i].getElementsByTagName('first')[0].firstChild.nodeValue);
+				 government[k] = [ people[i].getElementsByTagName('last')[0].firstChild.nodeValue + ', ' + people[i].getElementsByTagName('first')[0].firstChild.nodeValue + ' (' + people[i].getAttribute('group') + ')', people[i].getAttribute('id')];
+				 k++;
+			}
+			
+		}
+		// console.log (government);
+		
+		
+	}
+	
+	jQuery.ajax({
+			 	type: "GET",
+        url:    requestConfig,
+        success: setSpeakers,
+				dataType: "xml" 
+	 });
+	
+	requestConfig = "/exist/tullio/xq/return-eventTypes.xql?target=editor";
+	
+	function setEventTypes(response) {
+		
+		// eventsDoc = response;
+		events = response.documentElement;
+		
+		var nlList = [];
+		var frList = [];
+		
+		var counter = 0;
+		$(response).find('event').each(function(){
+				var id = $(this).attr('id');
+				var labelN = $(this).find("name[lang='nl']").text();
+				var labelF = $(this).find("name[lang='fr']").text();
+				nlList[counter] = [labelN, id];
+				frList[counter] = [labelF, id];
+				counter++;
+		});
+		// // console.log (nlList);
+		eventTypes.N = nlList;
+		eventTypes.F = frList;
+		// console.log (eventTypes);
+	}
+	
+	jQuery.ajax({
+			 	type: "GET",
+        url:    requestConfig,
+        success: setEventTypes,
+				dataType: "xml" 
+	 });
+	
+	requestConfig = "/exist/tullio/xml/statusCodes.xml";
+	
+		function setStatusCodes(response) {
+		var nlList = [];
+		var frList = [];
+		
+		var counter = 0;
+		$(response).find('code').each(function(){
+				var id = $(this).attr('id');
+				var labelN = $(this).find("label[lang='nl']").text();
+				var labelF = $(this).find("label[lang='fr']").text();
+				nlList[counter] = [labelN, id];
+				frList[counter] = [labelF, id];
+				counter++;
+		});
+		// // console.log (nlList);
+		statusCodes.N = nlList;
+		statusCodes.F = frList;
+		// console.log (statusCodes);
+	}
+
+	
+	jQuery.ajax({
+			 	type: "GET",
+        url:    requestConfig,
+        success: setStatusCodes,
+				dataType: "xml" 
+	 });
+	
+	
+	
+	/* Utility function : get query parameters */
+	
+var mmm = $.QueryString["m"];
+        var meetingDate = mmm.substr(0,10);
+
+        // var user = $.QueryString["u"];
+				
+				
+setMeetingType(mmm);
+
+/* load user data */
+var user;
+var userLang;
+var checkSession = function(){
+		// console.log ('check');
+    $.ajax({
+        url : '/exist/tullio/xq/checksession.xql',
+        dataType : 'xml',
+        async : false,
+        success : function(data) {
+					// console.log (data);
+					// console.log ($(data).find('success'));
+					if ($(data).find('success')[0] != null) {
+								user = data.getElementsByTagName("user")[0].getAttribute('id');
+								userLang = data.getElementsByTagName("user")[0].getAttribute('lang');
+								// console.log (user + userLang);
+                return true;
+            }
+						else redirectLogin();
+        }
+    });
+		// console.log ('finished');
+}
+function redirectLogin(){
+    alert("Please log in");
+    window.location = '/exist/tullio/xq/login.xql';
+}
+checkSession();
+
+// console.log ("user: " + user);
+ 
+function displayStatus() {
+//	 var requestLocks = dbUrl + mmm + "/locks.xml";
+	var requestLocks = "/exist/tullio/xq/return-locks.xql?m=" + mmm; 
+	 function updateLocks(result) {
+		 //// console.log ('update clipstatus');
+		 var statusTD;
+		 var cell;
+		 $("td.status").removeClass('locked');
+		 $("p.lockid").text(' ');
+
+		 var items = result.getElementsByTagName("lock");
+     var nI = items.length;
+		 //// console.log ("l" + nI);
+		 for (var i=0; i<nI; i++) {
+			 if (items[i].getAttribute('n')) {
+				 statusTD = "status-" + items[i].getAttribute('n') + "-" + items[i].getAttribute('v');
+				 //// console.log (statusTD);
+				 cell = $(jq(statusTD));
+				 //// console.log (cell);
+				 cell.children("p.lockid").text( items[i].getAttribute('id') );
+				 cell.addClass('locked');
+			}
+		}
+		
+		// now loop over the rows to add the status code
+		
+		items = result.getElementsByTagName("s");
+		$("span.status-code").text(' ');
+		nI = items.length;
+		for (i=0; i<nI; i++) {
+			if (items[i].getAttribute('n')) {
+				var col ='';
+				// get the cell with the status codes
+				statusTD = "status-" + items[i].getAttribute('n') + "-" + items[i].getAttribute('v');
+                if (items[i].getAttribute('v') == "trans") {
+                    col = 'T'
+                }
+        cell = $(jq(statusTD));
+				// get the language code as displayed in the cell
+				var lang = $('#status-' + items[i].getAttribute('n') + '-' + items[i].getAttribute('v') + '-lang').text();
+				// set the text content of the span that contains the status code
+				// create the id
+				var tempId = 'status-' + items[i].getAttribute('n') + '-' + items[i].getAttribute('v') + '-code';
+				//console.log(statusTD);
+				//console.log(tempId);
+				// check the code
+				var tempCode = items[i].getAttribute('val') + col;
+				//console.log(tempCode);
+				//console.log(  $(jq(tempId)) );
+				//$(jq(tempId)).fadeOut();
+				// set the class of the status cell
+				cell.addClass('status-' + items[i].getAttribute('val') + col);
+				cell.find('span.status-code').text(tempCode);
+				
+				/*
+				$(jq(locks[i].getAttribute('n')) + ' td.status-orig').text(locks[i].getAttribute('o'));
+				var lang = $(jq(locks[i].getAttribute('n')) + ' td.lang-orig').text();
+				// // console.log ("lang " + lang);
+														$(jq(locks[i].getAttribute('n')) + ' td.status-orig').attr("class", "status-orig " + locks[i].getAttribute('o') + lang);
+														
+														$(jq(locks[i].getAttribute('n')) + ' td.status-trans').text(locks[i].getAttribute('t'));
+														var lang = $(jq(locks[i].getAttribute('n')) + ' td.lang-trans').text();
+														$(jq(locks[i].getAttribute('n')) + ' td.status-trans').attr("class", "status-trans " + locks[i].getAttribute('t') + lang);
+														
+													}
+												//// console.log (locks[i].getAttribute('id')); */
+		}
+		
+		
+		}
+		
+	 }
+	 
+	 
+	 jQuery.ajax({
+			 	type: "GET",
+        url:    requestLocks,
+        success: function (data) {
+					$(".ui-layout-north").removeClass('networkDown');
+					$(".ui-layout-north").addClass('networkOK');
+					$("#network").text("Network OK");
+					updateLocks(data);
+				},
+				dataType: "xml",
+				error: function (request, status) {
+					$(".ui-layout-north").removeClass('networkOK');
+					$(".ui-layout-north").addClass('networkDown');
+					$("#network").text("Network " + status);
+					// alert(status);
+				}
+	 });
+	 
+ }
+ 
+ function loopDisplayStatus() {
+	 displayStatus();
+   setTimeout(loopDisplayStatus, 4000);
+ }
+ 
+	
+
+function secondstep(xml, xsl, xmlorig) {
+	// console.log ("***** UPDATE ****");
+
+	xml.getElementsByTagName("all")[0].appendChild(titles);
+		xml.getElementsByTagName("all")[0].appendChild(events);
+		// console.log (new XMLSerializer().serializeToString(xml));
+		$("#hidden").transform({async:false, xmlobj:xml, xsl:"xsl/group.xsl", xslParams:{mode:runTrans, channel:channel}});
+	// replace
+	var rows = $("#hidden > tr");
+	// console.log ("*****");
+	// console.log ("rows: " + rows);
+	// console.log ("rows-length: " + rows.length);
+	// console.log ("edited: " + edited);
+	// console.log ("ids: " + ids);
+
+	var origrowIds = ids.split(',');
+
+	
+	
+	
+	
+	
+for (var i=0; i<rows.length; i++) {
+	//alert(rows[i]);
+	// console.log ("0replace: " + origrowIds[i] + ":" + visibleRows[i] + ":" +edited);
+	// do not replace the currently edited row
+	if (visibleRows[i] != edited.slice(0,-2)) {
+		// alert("about to replace, it. " + updateCounter + "." + i)
+		// keep editor in place								
+		if (origrowIds[i] == undefined && bottom != "") {
+			// console.log ("!!! found extra rows");
+			// table is scrolled to the bottom so the server returned all clips to the end and we have extra rows
+			// next line adds these rows to the result table
+			$("#result > tr").filter(":last").after($("#hidden > tr"));
+			// console.log ("!!! replaced extra rows");
+			bottom = "";
+			break;
+		}
+		else {
+			$("#result > tr" + origrowIds[i]).replaceWith($("#hidden > tr:eq(" + 0 + ")"));
+		}
+		// alert("done");
+	}
+	else {
+		$("#hidden > tr:eq(0)").remove();
+	}
+}
+
+
+if (edited) {
+		newPosition = $(jq(edited)).offset().top;
+}
+	
+		
+		if (newe && edited) {
+			// console.log ('scrollback');
+			$("body").scrollTop($("body").scrollTop() + newPosition - newe);
+			newe = $(jq(edited)).offset().top;
+		}
+
+displayStatus();
+
+
+	$("#" + edited.replace(/\./g,"\\.")).addClass('edited');
+	
+	
+	if ( startEditor ) {
+		startEditor = false;
+		console.log(jq(preEdit));
+		console.log( $(jq(preEdit)).html() );
+		var cell = $(jq(preEdit)); 
+		// cell.children("div:first-child").css('background-color','yellow');
+		cell.children("div:first-child").attr('id', 'cke');
+		rowId = cell.parent().attr('id');
+		var cellHeight  = ( cell.height() > ($(window).height()- 205) ) ? ($(window).height()- 205) :  cell.height();
+		var adjustedHeight = ( cellHeight < 300 ) ? 300 : cellHeight;
+		var cellWidth  = cell.width();
+		editor = CKEDITOR.replace( 'cke', {
+					toolbar: [['Styles', 'Undo', 'Redo', 'PasteText', 'Ajaxsave','internalSync','Remove', 'Abbr', 'Status','Source', 'Simpleclose']],
+					extraPlugins : 'remove,internalSync,ajaxsave,transform,abbr-custom,status,simpleclose,wordcount',
+					disableNativeSpellChecker: false,
+					removePlugins : 'scayt,contextmenu',
+					startupFocus: false,
+					templates_files : [ 'ckeditor/plugins/templates/templates/default.js' ],
+					fillEmptyBlocks : false,
+					entities_processNumerical: 'force',
+					resize_enabled: true,
+					resize_dir: 'vertical',
+					height: adjustedHeight,
+					width: cellWidth
+			});
+		edited = preEdit;
+		preEdit = "";
+		
+		// $("body").scrollTop( $("body").scrollTop() + $(jq(edited)).offset().top);
+		
+	}
+	
+	
+}
+
+
+function isVisible(id) {
+	var cutoffTop = $(window).scrollTop();
+	var cutoffBottom =  $(window).scrollTop() + $(window).height();
+	var currTop = $("#" + id).offset().top;
+	var currBottom = $("#" + id).offset().top + $("#" + id).height();
+
+
+	return currTop > cutoffTop || currBottom > cutoffTop || (currTop < cutoffTop && currBottom > cutoffBottom);
+	
+}
+
+function updateVisibleTexts(once) {
+	console.log(once);
+	if ( noUpdate ) {
+		return true;
+	}
+	
+	$('#text-table tr').removeClass('ruby');
+	// simply loop over all rows
+	
+	// if (($("#syncCheck").is(':checked')))
+	
+	if ( true ) {
+	
+	visibles = "";
+	visibleRows.length = 0;
+	var cutoffTop = $(window).scrollTop();
+	var cutoffBottom =  $(window).scrollTop() + $(window).height();
+	var switchFirst = 0;	
+	var switchStop = 0;
+	bottom = "";
+	
+    $('#text-table > tbody > tr').each(function() {
+				var currTop = $(this).offset().top;
+				var currBottom = $(this).offset().top + $(this).height();
+				// // console.log (this.id + ': ' + cutoffTop + " " + cutoffBottom + " " + currTop + currBottom);
+				
+        if (currTop > cutoffTop || currBottom  > cutoffTop || (currTop < cutoffTop && currBottom  > cutoffBottom)) {
+						// // console.log ('row ' + this.id + ' is visible');
+
+						visibleRows.push(this.id);
+						visibles += "#" + this.id + ",";
+						
+						if (switchFirst == 0) {
+							start = this.id;
+							switchFirst = 1;
+						}
+						
+						if ($(this).offset().top > cutoffBottom) {
+							switchStop = "1";
+							stop = this.id;
+							return false; // stops the iteration after the first invisible row 
+						}
+        }
+    });
+		
+		scrollState = 0;
+		if (switchStop==0) {
+			// all rows are visible
+			// take the id of the last row in the table as stop id
+			stop = $('#text-table > tbody > tr:last').attr("id");
+			bottom = "&bottom=yes";
+			// console.log ("using last row id: " + stop);
+        }
+        updateCounter++;
+	// console.log ("start: " + start + " stop: " + stop);
+//	// console.log (visibleRows);
+	ids = "#" + visibleRows.toString().replace(/,/g, ',#');
+	ids = ids.replace(/\./g,"\\.");
+	// console.log ("visible rows: " + ids);
+
+	// highlight refreshed rows
+	$(ids).addClass('ruby');
+	// create request
+	
+	//stop = (stop == '') ? '' : stop.substring(1) ;
+	
+	var request = "../xq/return-combined.xql?mt=" + mt + "&m=" + mmm + "&start=" + start.substring(1) + "&stop=" + stop.substring(1) + "&include=" + runTrans + bottom;
+	// console.log (request);
+	
+	// refresh the visible rows
+	// query the DB for event and text data
+	$.transform({async:false, dataType:"xml", success:secondstep, xml:request, xsl: "xsl/addclipref.xsl"});
+	
+	}
+	if (!once) {
+		//// console.log ('in function repeat, par. once :' +  once);
+	 setTimeout("updateVisibleTexts(false)", 10000);
+	}
+}  
+
+function initialize(xml, xsl, xmlorig) {
+	
+	// console.log ('************ init');
+	// console.log (xml);
+	
+	jQuery.get( "/exist/tullio/xml/titles.xml", 
+		function(data, textStatus, jqXHR) {
+			
+			// console.log (data);
+			
+			x = data.documentElement;
+			xml.getElementsByTagName("all")[0].appendChild(titles);
+			xml.getElementsByTagName("all")[0].appendChild(events);
+			// console.log (new XMLSerializer().serializeToString(xml));
+			$("#result").transform({cache:false, async:false, dataType:"xml", xmlobj:xml, xsl:"xsl/group.xsl", xslParams:{mode:runTrans, channel:channel}});
+			// $("#result").transform({xml:"xml/catalog.xml", xsl:"xsl/cds.xsl",xslParams:{test:"Value is set"}});
+			
+		},
+		"xml" );
+	
+		// console.log ('initializion end');
+	
+}
+
+
+$().ready(function(){
+ 
+function updateBeforeEdit (xml, xsl, xmlorig) {
+	noUpdate = true;
+	console.log("updateBeforeEdit");
+	xml.getElementsByTagName("all")[0].appendChild(titles);
+	xml.getElementsByTagName("all")[0].appendChild(events);
+	// console.log("2nd transformation before");
+	$("#hidden").transform({async:false, xmlobj:xml, xsl:"xsl/group.xsl", xslParams:{mode:runTrans, channel:channel}});
+	// console.log("2nd transformation done");
+	$("#result > tr" + jq('R' + rowToUpdate)).replaceWith($("#hidden > tr"));
+	// $("#result > tr" + jq('R' + rowToUpdate)).css('background-color','red');
+	$("#hidden > tr:eq(0)").remove();
+	console.log(jq(edited));
+	var cell = $(jq(edited)); 
+	
+	cell.children("div:first-child").attr('id', 'cke');
+	//cell.children("div:first-child").css('background-color','yellow');
+	
+	
+	var cellHeight  = ( cell.height() > ($(window).height()- 205) ) ? ($(window).height()- 205) :  cell.height();
+	var adjustedHeight = ( cellHeight < 300 ) ? 300 : cellHeight;
+	var cellWidth  = cell.width();
+	
+	
+	editor = CKEDITOR.replace( 'cke', {
+					toolbar: [['Styles', 'Undo', 'Redo', 'PasteText', 'Ajaxsave','internalSync','Remove', 'Abbr', 'Status','Source', 'Simpleclose']],
+					extraPlugins : 'remove,internalSync,ajaxsave,transform,abbr-custom,status,simpleclose,wordcount',
+					disableNativeSpellChecker: false,
+					removePlugins : 'scayt,contextmenu',
+					startupFocus: false,
+					templates_files : [ 'ckeditor/plugins/templates/templates/default.js' ],
+					fillEmptyBlocks : false,
+					entities_processNumerical: 'force',
+					resize_enabled: true,
+					resize_dir: 'vertical',
+					height: adjustedHeight,
+					width: cellWidth
+			});
+	noUpdate = false;
+	
+	var isCtrl = false;
+	
+	editor.on( 'contentDom', function( evt )
+    {
+        editor.document.on( 'keyup', function(event)
+        {
+            if(event.data.$.keyCode == 17) isCtrl=false;
+             if(event.data.$.keyCode == 16) isShift=false;
+        });
+
+        editor.document.on( 'keydown', function(event)
+        {
+            if(event.data.$.keyCode == 17) isCtrl=true;
+             if(event.data.$.keyCode == 16) isShift=true;
+             
+             if ( (event.data.$.keyCode == 68 && isCtrl == true && isShift== true) ) {
+             	 editor.execCommand('pastetext');
+             
+             }
+            
+            if( (event.data.$.keyCode == 68 && isCtrl == true) || event.data.$.keyCode == 120 )
+            {		// TOGGLE = D
+                //The preventDefault() call prevents the browser's save popup to appear.
+                //The try statement fixes a weird IE error.
+                try {
+                    event.data.$.preventDefault();
+                } catch(err) {}
+								// console.log ('save key');
+
+                //Call to your save function
+								lastSound = pagePlayer.lastSound.sID;
+								if (lastSound != undefined) {
+									// console.log (lastSound);
+									soundManager.togglePause(lastSound);
+                	return false;}
+            }
+            
+            
+            
+            
+            if( (event.data.$.keyCode == 68 && isCtrl == true) || event.data.$.keyCode == 120 )
+            {		// TOGGLE = D
+                //The preventDefault() call prevents the browser's save popup to appear.
+                //The try statement fixes a weird IE error.
+                try {
+                    event.data.$.preventDefault();
+                } catch(err) {}
+								// console.log ('save key');
+
+                //Call to your save function
+								lastSound = pagePlayer.lastSound.sID;
+								if (lastSound != undefined) {
+									// console.log (lastSound);
+									soundManager.togglePause(lastSound);
+                	return false;}
+            }
+						
+						if( (event.data.$.keyCode == 83 && isCtrl == true)  ) {
+							editor.execCommand('ajaxsave');
+							
+						}
+						
+						
+						if( event.data.$.keyCode == 114 )
+            {
+								// REWIND= S
+                //The preventDefault() call prevents the browser's save popup to appear.
+                //The try statement fixes a weird IE error.
+                try {
+                    event.data.$.preventDefault();
+                } catch(err) {}
+								// console.log ('save key');
+
+                //Call to your save function
+								lastSound = pagePlayer.lastSound.sID;
+								lastSound = pagePlayer.lastSound.sID;
+								if (!lastSound) {
+									// console.log ('no sound');
+									return false;
+								}
+				
+								var s = soundManager.getSoundById(lastSound);
+								if (!s || !s.playState || !s.duration) {
+									// console.log ("something wrong");
+									return false;
+								}
+								// console.log (s.position);
+								s.setPosition(s.position - 5000);	
+			
+            }
+						
+												if( (event.data.$.keyCode == 70 && isCtrl == true)  || event.data.$.keyCode == 115 )
+            {
+								// REWIND= S
+                //The preventDefault() call prevents the browser's save popup to appear.
+                //The try statement fixes a weird IE error.
+                try {
+                    event.data.$.preventDefault();
+                } catch(err) {}
+								// console.log ('save key');
+
+                //Call to your save function
+								lastSound = pagePlayer.lastSound.sID;
+								lastSound = pagePlayer.lastSound.sID;
+								if (!lastSound) {
+									// console.log ('no sound');
+									return false;
+								}
+				
+								var s = soundManager.getSoundById(lastSound);
+								if (!s || !s.playState || !s.duration) {
+									// console.log ("something wrong");
+									return false;
+								}
+								// console.log (s.position);
+								s.setPosition(s.position + 5000);	
+			
+            }
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+        });
+
+    }, editor.element.$);
+	
+}
+
+
+
+function updateRow (cell) {
+	
+	rowToUpdate = cell.parentNode.getAttribute('id').substring(1);
+	console.log("edit" + rowToUpdate);
+	var request = "../xq/return-combined.xql?mt=" + mt + "&m=" + mmm + "&start=" + rowToUpdate +  "&include=" + runTrans;
+	$.transform({async:false, dataType:"xml", success:updateBeforeEdit, xml:request, xsl: "xsl/addclipref.xsl"});
+	
+}
+
+				
+		var asString = "";
+		// variable titles does get defined although it cannot be logged
+		
+		
+	      $.each(team, function(val, text) {
+						// console.log (team);
+            $('#person').append(
+                $('<option></option>').val(val).html(text)
+            );
+				});
+		
+		
+		setUpPlayer();
+		
+		jQuery.get( "/exist/tullio/xml/titles.xml", 
+			function(data, textStatus, jqXHR) {
+				asString = (new XMLSerializer()).serializeToString(data);
+				// console.log ('assigned var');
+			
+				
+				// titles = data.documentElement;
+				
+			},
+			"xml" );
+		
+		jQuery.ajax({
+         url:    "/exist/tullio/xml/titles.xml",
+         success: function(result) {
+                      testeee = (new XMLSerializer()).serializeToString(result); 
+											// // console.log (testeee);
+											titlesAsString = testeee;
+											titlesDoc = result;
+											titles = result.documentElement;
+                  },
+         async:   false,
+				 contentType: "text/xml"
+    }); 
+		
+
+		$('#titles').html(titlesAsString);
+		$('#username').text(user);
+		
+		
+		
+		$(document).delegate('.status', 'dblclick', function () {
+				alert("History");
+		});
+		
+		
+
+ 
+$("#overview").text(mmm);
+
+			// initialize maakt events en text files aan, en vult de text file met procedure tekst
+			
+			/*
+			$.get("../xq/initialize.xql", {
+							"meeting": mmm
+					}, function(data) {
+						//	alert("Data Loaded: " + data);
+					});
+		*/			
+		// functie initialize zorgt voor de aanmaak van de tabel aan client side, blijkbaar noodzakelijk	
+		
+		$.transform({  success:initialize, xml: "../xq/return-combined.xql?mt=" + mt + "&m=" + mmm + "&include=" + runTrans, xsl: "xsl/addclipref.xsl", xslParams:{translation:"1"}});
+
+displayStatus();
+	 setTimeout("updateVisibleTexts(false)", 5000);
+		
+		// start displaying status codes
+		
+		loopDisplayStatus();
+		
+		
+		
+						
+
+		$("#text-table td.content").live("dblclick", 
+			function(){
+				console.log('clicked');
+				
+				// console.log (this);
+				$(this).removeClass('content');
+				// console.log (this);
+				// if (this.id == clickmemory) {alert('clip ' + clickmemory + ' already open'); return false;}
+				
+				// set some variables
+				// clickmemory = this.id;
+				var locked = false;		
+				editReqId = this.id.slice(1,-2);
+				author = user;
+				
+				// author = $("#person option:selected").text();
+				var textversion = $(this).hasClass("orig") ? "orig" : "trans";
+				
+
+				// check if the clip is unlocked
+				// td needs class indicating the text version
+				
+				var request = $.ajax({
+						url: "../xq/lock.xql",
+						type: "POST",
+						data: {
+							"v": textversion,
+							"n": editReqId,
+							"id": author,
+							"m": mmm
+						},
+						async: false
+					});
+
+				request.done(function(msg) {
+						msgString =  (new XMLSerializer()).serializeToString(msg);
+						//// console.log ( msgString);
+						if (msgString.indexOf('success')=='-1') {
+							locked = true;
+						}
+				});
+
+				request.fail(function(jqXHR, textStatus) {
+						alert( "Request failed: " + textStatus );
+						locked = true;
+				});
+
+				
+				// console.log ("clicked: " + this.id);
+				
+				if ( locked ) {alert("locked"); locked= false; return false;}
+				
+				newe = $(this).offset().top;
+				
+				// check if another clip is being edited, store text and clean up
+				if ( edited != '' ) {
+					$("#cke").attr('id', '');
+					$(jq(edited)).removeClass("editmode");
+					
+					
+					var clipid = edited.slice(1,-2);
+					var stop = $(jq("stopevent-" + clipid)).text();
+					
+					
+					
+					var cat = $(this).hasClass("orig") ? "orig" : "trans";
+					var status = $(jq("status" + clipid)).text();
+					
+					var editedcontent = "<wrapper n='" + clipid + "'>" + editor.getData().replace(/[&][#]160[;]/gi," ") + "</wrapper>";
+					
+					// console.log (editedcontent);
+					// store everything on the server
+					
+					
+					
+					
+					$.post("../xq/storeClipEdit.xql", {
+							"status": status, 
+							"text": editedcontent,
+							"cat": oldcat,
+							"start": clipid,
+							"stop": stop,
+							"meeting": mmm
+					}, function(data) {
+							// alert("Data Loaded: " + data);
+					});
+					
+				
+					// console.log (status + cat + clipid + stop + meeting);
+					var old = $(this).offset().top;
+					
+					$.post("../xq/unlock.xql", {
+							"v": oldcat,
+							"n": clipid,
+							"id": author,
+							"m": mmm
+					}, function(data) {
+							// alert("Data Loaded: " + data);
+					});
+					editor.destroy();
+					$(jq(edited)).addClass("content");
+					}
+					// first update the row to be sure we don't loose edits...
+					// we cannot set 'edited' already because the cell will not be updated then
+					// so use a different var 
+					preEdit = this.id;
+					
+					
+					
+				
+				// console.log ('start editing ' + edited);
+				// rowId = this.parentNode.id;
+				// $(this).addClass("editmode");
+				//$(this).children("div:first-child").attr('id', 'cke');
+				
+				if ( editor ) editor.destroy();
+				startEditor = true;
+				updateVisibleTexts(true);		
+				
+				oldcat = textversion;
+
+					
+					/*
+				var cellHeight  = ( $(this).height() > ($(window).height()- 205) ) ? ($(window).height()- 205) :  $(this).height();
+				var adjustedHeight = ( cellHeight < 300 ) ? 300 : cellHeight;
+				var cellWidth  = $(this).width();
+					*/
+				// alert($(window).height());
+				/*
+	editor = CKEDITOR.replace( 'cke', {
+					toolbar: [['Styles', 'Undo', 'Redo', 'PasteText', 'Ajaxsave','internalSync','Remove', 'Abbr', 'Status','Source', 'Simpleclose']],
+					extraPlugins : 'remove,internalSync,ajaxsave,transform,abbr-custom,status,simpleclose,wordcount',
+					disableNativeSpellChecker: false,
+					removePlugins : 'scayt,contextmenu',
+					startupFocus: false,
+					templates_files : [ 'ckeditor/plugins/templates/templates/default.js' ],
+					fillEmptyBlocks : false,
+					entities_processNumerical: 'force',
+					resize_enabled: true,
+					resize_dir: 'vertical',
+					height: adjustedHeight,
+					width: cellWidth
+			});
+	*/
+	/*
+	editor.on('instanceReady', function() {
+		editor.focus();
+		var range = new CKEDITOR.dom.range( editor.document );
+		range.select();
+	});
+	
+	
+	
+	editor.on('instanceReady', function (ev) {
+			ev.editor.on('paste', function(ev) {
+					ev.data.html = ev.data.html.replace(/<br>\s*<br>/g, '</p><p>ooo');
+			});
+	});
+	*/
+	// code for keyboard shortcuts
+				
+				
+				
+	//			updateVisibleTextsWhenEdit(rowId);
+			
+	
+				}
+				
+		
+		);
+				
+});
+
+	</script>
+	
+	
+</head>
+<body >
+<div  class="ui-layout-north">
+  <div id="resultpane"></div>
+  <div id="header">
+    <div id="meeting">
+			<p id="title">EDITOR</p>
+			<p id="overview"></p>
+			<p id="username">Je suis: <select id="person"></select></p>
+			<p id="link"><a href="/exist/tullio/home.html">Meetings Overview</a></p>
+		</div>
+	  <div id="logo"></div>
+	  <div id="navigation">
+	<!--    <ul>
+		    <li><a href="/exist/tullio/home.html">Meetings Overview</a></li>
+		    <li><a href="/exist/tullio/status/status.html">Status Page</a></li>
+	    </ul> -->
+    </div>
+	  <div id="player">
+	    <div id="recording"></div>
+	    <div id='controls'>
+		    <ul>
+			    <li id='toStart'>PLAY FROM START</li>
+			    <li id='startStop'>PLAY / PAUSE</li>
+			    
+			    <li id="rewind">REWIND</li>
+					<li id='forward'>FORWARD</li>
+					<li class="spacer"></li>
+									<li class="noControl" id="startPosition">XX:XX</li>
+				<li class="noControl" id="stopPosition">XX:XX</li>
+		    </ul>
+
+	    </div>
+
+	  </div>
+	  <div id="settings">
+<!--      <input type="checkbox" id="syncCheck" name="syncing">Keep Syncing</input> -->
+	  </div>
+			  <div id="network">&#160;</div>
+  </div>
+</div>
+<div id="spacer">&#160;</div>
+<div id="centerpane" class="ui-layout-center">
+
+	<div id="tablewrapper">
+		<table id="text-table">
+			<tbody id ="result"></tbody>
+		</table>
+	</div>
+</div>
+
+<div id="titles"></div>
+<div id="hidden"></div>
+<div id="debug"></div>
+
+<div id="island"></div>
+<div id="ref"></div>
+<script>
+		window.onbeforeunload = function () {
+        return("You're about to quit");
+    };
+</script>
+
+</body>
+</html>
