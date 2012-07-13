@@ -1,0 +1,1940 @@
+Firebug's log limit has been reached. 878 entries not shown.			 
+305
+plugin...C2L85PO (line 24)
+(an empty string)
+plugin...C2L85PO (line 25)
+2012-06-05---_PFB_xxxxxx
+plugin...C2L85PO (line 26)
+***
+plugin...C2L85PO (line 27)
+POST http://localhost:8080/exist/tullio/xq/storeClipEdit.xql
+	
+200 OK
+		355ms	
+jquery-1.6.4.js (line 7950)
+Document
+plugin...C2L85PO (line 49)
+exit finish
+plugin...C2L85PO (line 88)
+exit finalize
+plugin...C2L85PO (line 107)
+no controls added
+page-player.js (line 586)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120041402
+	
+200 OK
+		222ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120041420
+	
+200 OK
+		92ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120041762
+	
+200 OK
+		54ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		20ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120042630
+	
+200 OK
+		54ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120042655
+	
+200 OK
+		98ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120042864
+	
+200 OK
+		77ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		23ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		24ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120043900
+	
+200 OK
+		283ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120043926
+	
+200 OK
+		303ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120044341
+	
+200 OK
+		76ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		11ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120045135
+	
+200 OK
+		42ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120045153
+	
+200 OK
+		78ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120045318
+	
+200 OK
+		68ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		18ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120046341
+	
+200 OK
+		27ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120046361
+	
+200 OK
+		116ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120046569
+	
+200 OK
+		63ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		12ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120047535
+	
+200 OK
+		210ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120047551
+	
+200 OK
+		261ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120047887
+	
+200 OK
+		514ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		34ms	
+jquery-1.6.4.js (line 7950)
+plugin R305-o
+plugin...C2L85PO (line 23)
+POST http://localhost:8080/exist/tullio/xq/unlock.xql
+	
+200 OK
+		102ms	
+jquery-1.6.4.js (line 7950)
+exit finish
+plugin...C2L85PO (line 50)
+no controls added
+page-player.js (line 586)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		18ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120049609
+	
+200 OK
+		16ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120049635
+	
+200 OK
+		78ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120049846
+	
+200 OK
+		60ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		23ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120050819
+	
+200 OK
+		13ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120050840
+	
+200 OK
+		49ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120050967
+	
+200 OK
+		71ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		12ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120052030
+	
+200 OK
+		18ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120052051
+	
+200 OK
+		88ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120052278
+	
+200 OK
+		49ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		24ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120053262
+	
+200 OK
+		25ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120053279
+	
+200 OK
+		90ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120053452
+	
+200 OK
+		60ms	
+jquery-1.6.4.js (line 7950)
+clicked
+editor...&lang=N (line 898)
+POST http://localhost:8080/exist/tullio/xq/lock.xql
+	
+200 OK
+		237ms	
+jquery-1.6.4.js (line 7950)
+true
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120053981
+	
+200 OK
+		82ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120054017
+	
+200 OK
+		392ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		225ms	
+jquery-1.6.4.js (line 7950)
+#R305-o
+editor...&lang=N (line 482)
+<div class="editable"><p c="305"> [153 par 1] 1 2 3 4 5 6 7 8 9 10 11 12 13 14 The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p><p c="305"> [153 par 2] The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p><p c="305"> [153 par 3] The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p></div>
+editor...&lang=N (line 483)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		247ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120054836
+	
+200 OK
+		226ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		20ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120055642
+	
+200 OK
+		24ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120055662
+	
+200 OK
+		86ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120055810
+	
+200 OK
+		35ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		22ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120056796
+	
+200 OK
+		143ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120056816
+	
+200 OK
+		183ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120057090
+	
+200 OK
+		205ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		42ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120058187
+	
+200 OK
+		24ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120058210
+	
+200 OK
+		303ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120058609
+	
+200 OK
+		63ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		20ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		27ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120059557
+	
+200 OK
+		27ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120059579
+	
+200 OK
+		68ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120059745
+	
+200 OK
+		63ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		9ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120060787
+	
+200 OK
+		15ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120060808
+	
+200 OK
+		100ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120061018
+	
+200 OK
+		49ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		14ms	
+jquery-1.6.4.js (line 7950)
+plugin R305-o
+plugin...C2L85PO (line 137)
+base doc
+plugin...C2L85PO (line 150)
+Document
+plugin...C2L85PO (line 151)
+GET http://localhost:8080/exist/tullio/xq/return-var....xql?start=305&m=2012-06-05---_PFB_xxxxxx&mt=PFB
+	
+200 OK
+		51ms	
+jquery-1.6.4.js (line 7950)
+<info> <type>PFB</type> <pres/> </info>
+plugin...C2L85PO (line 171)
+step 0
+plugin...C2L85PO (line 180)
+GET http://localhost:8080/exist/tullio/editor/xsl/flatten.xsl?_=1342120061770
+	
+200 OK
+		43ms	
+jquery-1.6.4.js (line 7950)
+reconcile -- xml:
+plugin...C2L85PO (line 113)
+<container><div id="text"><p c="305"> [153 par 1] 1 2 3 4 5 6 7 8 9 10 11 12 13 14&amp;( The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> <p c="305"> [153 par 2] The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> <p c="305"> [153 par 3] The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> </div><reference name="titles"> <l id="presi-N">Voorzitterschap: </l> <l id="presi-F">Présidence: </l> <l id="startInt-F"><span class="incomplete">INTERPELLATION/INTERPELLATIONS</span></l> <l id="startInt-N"><span class="incomplete">INTERPELLATIE/INTERPELLATIES</span></l> <l id="startIntOrd-N"><span class="incomplete">Aan de orde is de interpellatie van de heer / mevrouw (naam). OF Aan de orde zijn de interpellaties.</span></l> <l id="startIntOrd-F"><span class="incomplete">L'ordre du jour appelle l'interpellation de M. / Mme (nom). OU L'ordre du jour appelle les interpellations.</span></l> <l id="contN-N">(verder in het Nederlands)</l> <l id="contN-F">(poursuivant en néerlandais)</l> <l id="contF-F">(poursuivant en français)</l> <l id="contF-N">(verder in het Frans)</l> <l id="pres-m-N">De voorzitter.- </l> <l id="pres-f-N">Mevrouw de voorzitter.- </l> <l id="pres-m-F">M. le président.- </l> <l id="pres-f-F">Mme la présidente.- </l> <l id="exc-F">Mme la présidente.- </l> <l id="exc-N"><span class="incomplete">Verontschuldigen/Verontschuldigt zich voor hun/zijn/haar afwezigheid:</span></l> <l id="exc-N"><span class="incomplete">Ont / A prié d'excuser leur / son absence :</span></l> <l id="title-m-N">De heer </l> <l id="titleSmall-m-N">de heer </l> <l id="title-m-F">M. </l> <l id="titleSmall-m-F">M. </l> <l id="title-f-N">Mevrouw </l> <l id="titleSmall-f-N">Mevrouw </l> <l id="title-f-F">Mme </l> <l id="titleSmall-f-F">Mme </l> <l id="parole-N"> heeft het woord.</l> <l id="parole-F">La parole est à </l> <l id="to-N"> aan </l> <l id="to-F"> à </l> <l id="toExtra-N">en aan </l> <l id="toExtra-F">et à </l> <l id="concerning-F"> concernant </l> <l id="concerning-N"> betreffende </l> <person gender="m" lang="nl" group="" gov="no" id="---"> <first>----</first> <last>----</last> </person> <person gender="m" lang="nl" group="sp.a" gov="no" id="AHIDAR_Fouad"> <first>Fouad</first> <last>Ahidar</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="ALBISHARI_Aziz"> <first>Aziz</first> <last>Albishari</last> </person> <person gender="f" lang="nl" group="Open VLD" gov="no" id="AMPE_Els"> <first>Els</first> <last>Ampe</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="AZZOUZI_Mohamed"> <first>Mohamed</first> <last>Azzouzi</last> </person> <person gender="f" lang="f" group="MR" gov="no" id="BERTIEAUX_Françoise"> <first>Françoise</first> <last>Bertieaux</last> </person> <person gender="f" lang="fr" group="PS" gov="no" id="BOUARFA_Sfia"> <first>Sfia</first> <last>Bouarfa</last> </person> <person gender="f" lang="fr" group="Ecolo" gov="no" id="BRAECKMAN_Dominique"> <first>Dominique</first> <last>Braeckman</last> </person> <person gender="m" lang="f" group="MR" gov="no" id="BROTCHI_Jacques"> <first>Jacques</first> <last>Brotchi</last> </person> <person gender="f" lang="nl" group="sp.a" gov="no" id="BROUHON_Sophie"> <first>Sophie</first> <last>Brouhon</last> </person> <person gender="f" lang="fr" group="cdH" gov="no" id="CARON_Danielle"> <first>Danielle</first> <last>Caron</last> </person> <person gender="f" lang="fr" group="PS" gov="no" id="CARTHE_Michèle"> <first>Michèle</first> <last>Carthe</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="CHAHID_Mohammadi"> <first>Mohammadi</first> <last>Chahid</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="CLOSE_Philippe"> <first>Philippe</first> <last>Close</last> </person> <person gender="m" lang="fr" group="FDF" gov="no" id="COLSON_Michel"> <first>Michel</first> <last>Colson</last> </person> <person gender="m" lang="nl" group="Open VLD" gov="no" id="COPPENS_René"> <first>René</first> <last>Coppens</last> </person> <person gender="f" lang="f" group="MR" gov="no" id="d'Ursel_Anne-Charlotte"> <first>Anne-Charlotte</first> <last>d'Ursel</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="DAÏF_Mohamed"> <first>Mohamed</first> <last>Daïf</last> </person> <person gender="m" lang="fr" group="FDF" gov="no" id="DE BOCK_Emmanuel"> <first>Emmanuel</first> <last>De Bock</last> </person> <person gender="m" lang="f" group="MR" gov="no" id="de Clippele_Olivier"> <first>Olivier</first> <last>de Clippele</last> </person> <person gender="f" lang="nl" group="CD&amp;V" gov="no" id="DE PAUW_Brigitte"> <first>Brigitte</first> <last>De Pauw</last> </person> <person gender="m" lang="fr" group="N-VA" gov="no" id="DE RIDDER_Paul"> <first>Paul</first> <last>De Ridder</last> </person> <person gender="m" lang="f" group="MR" gov="no" id="De Wolf_Vincent"> <first>Vincent</first> <last>De Wolf</last> </person> <person gender="f" lang="fr" group="cdH" gov="no" id="de_GROOTE Julie"> <first>Julie</first> <last>de Groote</last> </person> <person gender="m" lang="fr" group="FDF" gov="no" id="de_PATOUL Serge"> <first>Serge</first> <last>de Patoul</last> </person> <person gender="f" lang="nl" group="CD&amp;V" gov="no" id="DEBAETS_Bianca"> <first>Bianca</first> <last>Debaets</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="DEFOSSE_Jean-Claude"> <first>Jean-Claude</first> <last>Defosse</last> </person> <person gender="f" lang="nl" group="Open VLD" gov="no" id="DEJONGHE_Carla"> <first>Carla</first> <last>Dejonghe</last> </person> <person gender="f" lang="fr" group="Ecolo" gov="no" id="DELFORGE_Céline"> <first>Céline</first> <last>Delforge</last> </person> <person gender="m" lang="nl" group="Ind" gov="no" id="DEMOL_Johan"> <first>Johan</first> <last>Demol</last> </person> <person gender="f" lang="fr" group="PS" gov="no" id="DESIR_Caroline"> <first>Caroline</first> <last>Désir</last> </person> <person gender="m" lang="f" group="MR" gov="no" id="DESTEXHE_Alain"> <first>Alain</first> <last>Destexhe</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="DIALLO_Bea"> <first>Bea</first> <last>Diallo</last> </person> <person gender="f" lang="fr" group="Ecolo" gov="no" id="DIRIX_Anne"> <first>Anne</first> <last>Dirix</last> </person> <person gender="m" lang="fr" group="cdH" gov="no" id="DOYEN_Hervé"> <first>Hervé</first> <last>Doyen</last> </person> <person gender="m" lang="f" group="MR" gov="no" id="DRAPS_Willem"> <first>Willem</first> <last>Draps</last> </person> <person gender="m" lang="fr" group="cdH" gov="no" id="du BUS de WARNAFFE_André"> <first>André</first> <last>du Bus de Warnaffe</last> </person> <person gender="f" lang="fr" group="PS" gov="no" id="DUPUIS_Françoise"> <first>Françoise</first> <last>Dupuis</last> </person> <person gender="m" lang="fr" group="cdH" gov="no" id="EL KHANNOUSS_Ahmed"> <first>Ahmed</first> <last>El Khannouss</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="EL KTIBI_Ahmed"> <first>Ahmed</first> <last>El Ktibi</last> </person> <person gender="f" lang="fr" group="PS" gov="no" id="EL YOUSFI_Nadia"> <first>Nadia</first> <last>El Yousfi</last> </person> <person gender="m" lang="fr" group="cdH" gov="no" id="FASSI-FIHRI_Hamza"> <first>Hamza</first> <last>Fassi-Fihri</last> </person> <person gender="f" lang="fr" group="FDF" gov="no" id="FRAITEUR_Béatrice"> <first>Béatrice</first> <last>Fraiteur</last> </person> <person gender="f" lang="fr" group="cdH" gov="no" id="FREMAULT_Céline"> <first>Céline</first> <last>Fremault</last> </person> <person gender="m" lang="fr" group="FDF" gov="no" id="GOSUIN_Didier"> <first>Didier</first> <last>Gosuin</last> </person> <person gender="f" lang="fr" group="Ecolo" gov="no" id="HERSCOVICI_Anne"> <first>Anne</first> <last>Herscovici</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="HUTCHINSON_Alain"> <first>Alain</first> <last>Hutchinson</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="IKAZBAN_Jamal"> <first>Jamal</first> <last>Ikazban</last> </person> <person gender="f" lang="fr" group="FDF" gov="no" id="JODOGNE_Cécile"> <first>Cécile</first> <last>Jodogne</last> </person> <person gender="f" lang="fr" group="Ecolo" gov="no" id="KHATTABI_Zakia"> <first>Zakia</first> <last>Khattabi</last> </person> <person gender="f" lang="f" group="MR" gov="no" id="LEMESRE_Marion"> <first>Marion</first> <last>Lemesre</last> </person> <person gender="m" lang="n" group="Vlaams Belang" gov="no" id="LOOTENS STAEL_Dominiek"> <first>Dominiek</first> <last>Lootens-Stael</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="LURQUIN_Vincent"> <first>Vincent</first> <last>Lurquin</last> </person> <person gender="f" lang="nl" group="Groen!" gov="no" id="MAES_Annemie"> <first>Annemie</first> <last>Maes</last> </person> <person gender="m" lang="fr" group="cdH" gov="no" id="MAMPAKA_MANKAMBA Bertin"> <first>Bertin</first> <last>Mampaka Mankamba</last> </person> <person gender="f" lang="fr" group="FDF" gov="no" id="MANDAILA_Gisèle"> <first>Gisèle</first> <last>Mandaila</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="MARON_Alain"> <first>Alain</first> <last>Maron</last> </person> <person gender="m" lang="nl" group="Open VLD" gov="no" id="MENNEKENS_Herman"> <first>Herman</first> <last>Mennekens</last> </person> <person gender="m" lang="fr" group="cdH" gov="no" id="MIGISHA_Pierre"> <first>Pierre</first> <last>Migisha</last> </person> <person gender="f" lang="fr" group="FDF" gov="no" id="MOLENBERG_Isabelle"> <first>Isabelle</first> <last>Molenberg</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="MOREL_Jacques"> <first>Jacques</first> <last>Morel</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="MOUHSSIN_Ahmed"> <first>Ahmed</first> <last>Mouhssin</last> </person> <person gender="f" lang="fr" group="PS" gov="no" id="MOUREAUX_Catherine"> <first>Catherine</first> <last>Moureaux</last> </person> <person gender="f" lang="fr" group="PS" gov="no" id="MOUZON_Anne Sylvie"> <first>Anne Sylvie</first> <last>Mouzon</last> </person> <person gender="f" lang="fr" group="Ecolo" gov="no" id="NAGY_Marie"> <first>Marie</first> <last>Nagy</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="OURIAGHLI_Mohamed"> <first>Mohamed</first> <last>Ouriaghli</last> </person> <person gender="f" lang="fr" group="cdH" gov="no" id="OZDEMIR_Mahinur"> <first>Mahinur</first> <last>Ozdemir</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="ÖZKARA_Emin"> <first>Emin</first> <last>Özkara</last> </person> <person gender="f" lang="fr" group="PS" gov="no" id="P'tito_Olivia"> <first>Olivia</first> <last>P'tito</last> </person> <person gender="f" lang="fr" group="FDF" gov="no" id="PAYFA_Martine"> <first>Martine</first> <last>Payfa</last> </person> <person gender="f" lang="fr" group="FDF" gov="no" id="PERSOONS_Caroline"> <first>Caroline</first> <last>Persoons</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="PESZTAT_Yaron"> <first>Yaron</first> <last>Pesztat</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="PINXTEREN_Arnaud"> <first>Arnaud</first> <last>Pinxteren</last> </person> <person gender="m" lang="f" group="MR" gov="no" id="PIVIN_Philippe"> <first>Philippe</first> <last>Pivin</last> </person> <person gender="m" lang="fr" group="cdH" gov="no" id="RIGUELLE_Joël"> <first>Joël</first> <last>Riguelle</last> </person> <person gender="f" lang="nl" group="sp.a" gov="no" id="ROEX_Elke"> <first>Elke</first> <last>Roex</last> </person> <person gender="f" lang="f" group="MR" gov="no" id="ROUSSEAUX_Jacqueline"> <first>Jacqueline</first> <last>Rousseaux</last> </person> <person gender="f" lang="f" group="MR" gov="no" id="SCHEPMANS_Françoise"> <first>Françoise</first> <last>Schepmans</last> </person> <person gender="f" lang="fr" group="FDF" gov="no" id="SIDIBE_Fatoumata"> <first>Fatoumata</first> <last>Sidibe</last> </person> <person gender="f" lang="f" group="MR" gov="no" id="TEITELBAUM_Viviane"> <first>Viviane</first> <last>Teitelbaum</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="THIELEMANS_Freddy"> <first>Freddy</first> <last>Thielemans</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="TOMAS_Eric"> <first>Eric</first> <last>Tomas</last> </person> <person gender="f" lang="fr" group="Ecolo" gov="no" id="TRACHTE_Barbara"> <first>Barbara</first> <last>Trachte</last> </person> <person gender="m" lang="nl" group="sp.a" gov="no" id="VAN DAMME_Jef"> <first>Jef</first> <last>Van Damme</last> </person> <person gender="f" lang="nl" group="Groen!" gov="no" id="VAN DEN BRANDT_Elke"> <first>Elke</first> <last>Van den Brandt</last> </person> <person gender="m" lang="f" group="MR" gov="no" id="VAN GOIDSENHOVEN_Gaëtan"> <first>Gaëtan</first> <last>Van Goidsenhoven</last> </person> <person gender="f" lang="nl" group="Ind" gov="no" id="VAN LINTER_Greet"> <first>Greet</first> <last>Van Linter</last> </person> <person gender="m" lang="nl" group="CD&amp;V" gov="no" id="VANDENBOSSCHE_Walter"> <first>Walter</first> <last>Vandenbossche</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="VANHALEWYN_Vincent"> <first>Vincent</first> <last>Vanhalewyn</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="VERVOORT_Rudi"> <first>Rudi</first> <last>Vervoort</last> </person> <person group="CD&amp;V" lang="nl" gender="f" gov="yes" id="GROUWELS_Brigitte"> <first>Brigitte</first> <last>Grouwels</last> <ti meeting-type="BHP" l="N">minister van de Brusselse Hoofdstedelijke Regering, belast met Openbare Werken en Vervoer</ti> <ti meeting-type="BHP" l="F">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée des Travaux publics et des Transports</ti> <ti meeting-type="VVGGC" l="N">lid van het Verenigd College, bevoegd voor het Beleid inzake Bijstand aan Personen en Openbaar Ambt</ti> <ti meeting-type="VVGGC" l="F">membre du Collège réuni, compétente pour la Politique d'Aide aux Personnes et la Fonction publique</ti> </person> <person group="Ecolo" lang="fr" gender="m" gov="yes" id="DOULKERIDIS_Christos"> <first>Christos</first> <last>Doulkeridis</last> <ti meeting-type="BHP" l="N">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Huisvesting en Brandbestrijding en Dringende Medische Hulp</ti> <ti meeting-type="BHP" l="F">secrétaire d'État à la Région de Bruxelles-Capitale, chargé du Logement et de la Lutte contre l'Incendie et l'Aide médicale urgente</ti> <ti meeting-type="VVGGC" l="N"/> <ti meeting-type="VVGGC" l="F"/> <ti meeting-type="PFB" l="F">président du Gouvernement, ministre en charge du Budget, de l'Enseignement, du Tourisme et des Relations internationales</ti> </person> <person group="Open VLD" lang="nl" gender="m" gov="yes" id="VANHENGEL_Guy"> <first>Guy</first> <last>Vanhengel</last> <ti meeting-type="BHP" l="N">minister van de Brusselse Hoofdstedelijke Regering, belast met Financiën, Begroting, Openbaar Ambt en Externe Betrekkingen</ti> <ti meeting-type="BHP" l="F">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargé des Finances, du Budget, de la Fonction publique et des Relations extérieures</ti> <ti meeting-type="VVGGC" l="N"/> <ti meeting-type="VVGGC" l="F"/> </person> <person group="Open VLD" lang="nl" gender="m" gov="yes" id="Vanhengel, Guy"> <first>Guy</first> <last>Vanhengel</last> <ti meeting-type="BHP" l="N"/> <ti meeting-type="BHP" l="F"/> <ti meeting-type="VVGGC" l="N"/> <ti meeting-type="VVGGC" l="F"/> </person> <person group="PS" lang="fr" gender="m" gov="yes" id="PICQUE_Charles"> <first>Charles</first> <last>Picqué</last> <ti meeting-type="BHP" l="N">minister-president van de Brusselse Hoofdstedelijke Regering, belast met Plaatselijke Besturen, Ruimtelijke Ordening, Monumenten en Landschappen, Openbare Netheid en Ontwikkelingssamenwerking</ti> <ti meeting-type="BHP" l="F">ministre-président du Gouvernement de la Région de Bruxelles-Capitale, chargé des Pouvoirs locaux, de l'Aménagement du Territoire, des Monuments et Sites, de la Propreté publique et de la Coopération au Développement</ti> <ti meeting-type="PFB" l="F">ministre en charge de la Cohésion sociale</ti> <ti meeting-type="VVGGC" l="N"/> <ti meeting-type="VVGGC" l="F"/> </person> <person group="PS" lang="fr" gender="m" gov="yes" id="KIR_Emir"> <first>Emir</first> <last>Kir</last> <ti meeting-type="PFB" l="F">ministre en charge de la Formation professionnelle, de la Culture, du Transport scolaire, de l’Action sociale, de la Famille, du Sport et des Relations internationales</ti> <ti meeting-type="BHP" l="N">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Stedenbouw en Openbare Netheid</ti> <ti meeting-type="BHP" l="F">secrétaire d'État à la Région de Bruxelles-Capitale, chargé de l'Urbanisme et de la Propreté publique</ti> </person> <person group="Groen" lang="nl" gender="m" gov="yes" id="DE_LILLE_Bruno"> <first>Bruno</first> <last>De Lille</last> <ti meeting-type="BHP" l="N">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Mobiliteit, Openbaar Ambt, Gelijke Kansen en Administratieve Vereenvoudiging</ti> <ti meeting-type="BHP" l="F">secrétaire d'État à la Région de Bruxelles-Capitale, chargé de la Mobilité, de la Fonction publique, de l'Égalité des Chances et de la Simplification administrative</ti> </person> <person group="cdH" lang="fr" gender="m" gov="yes" id="CEREXHE_Benoît"> <first>Benoît</first> <last>Cerexhe</last> <ti meeting-type="PFB" l="F">ministre en charge de la Fonction publique, de la Politique de la santé et de la Formation professionnelle des Classes moyennes</ti> <ti meeting-type="BHP" l="F">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargé de l'Emploi, de l'Économie, du Commerce extérieur et de la Recherche scientifique</ti> <ti meeting-type="BHP" l="N">minister van de Brusselse Hoofdstedelijke Regering, belast met Tewerkstelling, Economie, Buitenlandse Handel en Wetenschappelijk Onderzoek</ti> </person> <person group="Ecolo" lang="fr" gender="f" gov="yes" id="HUYTEBROECK_Evelyne"> <first>Evelyne</first> <last>Huytebroeck</last> <ti meeting-type="BHP" l="N">minister van de Brusselse Hoofdstedelijke Regering, belast met Leefmilieu, Energie en Waterbeleid, Stadsvernieuwing, Brandbestrijding en Dringende Medische Hulp en Huisvesting</ti> <ti meeting-type="PFB" l="F">ministre en charge de la Politique d'aide aux personnes handicapées</ti> <ti meeting-type="BHP" l="F">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée de l'Environnement, de l'Energie et de la Politique de l'Eau, de la Rénovation urbaine, de la Lutte contre l'Incendie et l'Aide médicale urgente et du Logement</ti> <ti meeting-type="VVGGC" l="N">lid van het Verenigd College, bevoegd voor het Beleid inzake Bijstand aan Personen, Financiën, Begroting en Externe Betrekkingen</ti> <ti meeting-type="VVGGC" l="F">membre du Collège réuni, compétente pour la Politique d’Aide aux Personnes, les Finances, le Budget et les Relations extérieures</ti> </person> </reference><info> <type>PFB</type> <pres/> </info><div id="events"><events next="307"><e lang="F" c="true" n="305" type="marker" time="03:22:27" length="00:02" commit="P" clip="305"/><e n="307"/></events></div><div id="flattened"/></container>
+plugin...C2L85PO (line 114)
+GET http://localhost:8080/exist/tullio/editor/xsl/reconcile.xsl?_=1342120061914
+	
+200 OK
+		51ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/processEditorContent.xsl?_=1342120062012
+	
+200 OK
+		148ms	
+jquery-1.6.4.js (line 7950)
+AJAX SAVE
+plugin...C2L85PO (line 19)
+<div id="consolidated"><div id="rawEvents"><events next="307"><e lang="F" c="true" n="305" type="marker" time="03:22:27" length="00:02" commit="P" clip="305"/></events></div><div id="structuredEvents"><table class="events-table"><tr class="events"><td class="e-n">305</td><td class="e-time">03:22:27</td><td class="e-type">marker</td><td class="e-speaker"/><td class="offset305"/></tr></table></div><div id="text"><p c="305"> [153 par 1] 1 2 3 4 5 6 7 8 9 10 11 12 13 14&amp;( The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> <p c="305"> [153 par 2] The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> <p c="305"> [153 par 3] The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> </div></div>
+plugin...C2L85PO (line 20)
+Document
+plugin...C2L85PO (line 21)
+bert
+plugin...C2L85PO (line 22)
+orig
+plugin...C2L85PO (line 23)
+305
+plugin...C2L85PO (line 24)
+(an empty string)
+plugin...C2L85PO (line 25)
+2012-06-05---_PFB_xxxxxx
+plugin...C2L85PO (line 26)
+***
+plugin...C2L85PO (line 27)
+POST http://localhost:8080/exist/tullio/xq/storeClipEdit.xql
+	
+200 OK
+		141ms	
+jquery-1.6.4.js (line 7950)
+Document
+plugin...C2L85PO (line 49)
+exit finish
+plugin...C2L85PO (line 88)
+exit finalize
+plugin...C2L85PO (line 107)
+no controls added
+page-player.js (line 586)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120064217
+	
+200 OK
+		95ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120064244
+	
+200 OK
+		139ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		108ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120064587
+	
+200 OK
+		261ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		15ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120065695
+	
+200 OK
+		12ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120065718
+	
+200 OK
+		46ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120065840
+	
+200 OK
+		56ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		61ms	
+jquery-1.6.4.js (line 7950)
+plugin R305-o
+plugin...C2L85PO (line 23)
+POST http://localhost:8080/exist/tullio/xq/unlock.xql
+	
+200 OK
+		114ms	
+jquery-1.6.4.js (line 7950)
+exit finish
+plugin...C2L85PO (line 50)
+no controls added
+page-player.js (line 586)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120068298
+	
+200 OK
+		409ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120068331
+	
+200 OK
+		374ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120068937
+	
+200 OK
+		66ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		21ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		168ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120069641
+	
+200 OK
+		14ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120069664
+	
+200 OK
+		65ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120069807
+	
+200 OK
+		65ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		11ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120070857
+	
+200 OK
+		175ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120070880
+	
+200 OK
+		82ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120071176
+	
+200 OK
+		67ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		11ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120072067
+	
+200 OK
+		14ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120072087
+	
+200 OK
+		65ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120072229
+	
+200 OK
+		59ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		16ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120073243
+	
+200 OK
+		10ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120073259
+	
+200 OK
+		34ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120073367
+	
+200 OK
+		53ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		19ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		12ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120074442
+	
+200 OK
+		13ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120074467
+	
+200 OK
+		154ms	
+jquery-1.6.4.js (line 7950)
+clicked
+editor...&lang=N (line 898)
+POST http://localhost:8080/exist/tullio/xq/lock.xql
+	
+200 OK
+		133ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120074710
+	
+200 OK
+		91ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		247ms	
+jquery-1.6.4.js (line 7950)
+true
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120075049
+	
+200 OK
+		422ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120075072
+	
+200 OK
+		265ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120075625
+	
+200 OK
+		69ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		34ms	
+jquery-1.6.4.js (line 7950)
+#R305-o
+editor...&lang=N (line 482)
+<div class="editable"><p c="305"> [153 par 1] 1 2 3 4 5 6 7 8 9 10 11 12 13 14&amp;( The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p><p c="305"> [153 par 2] The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p><p c="305"> [153 par 3] The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p></div>
+editor...&lang=N (line 483)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120076350
+	
+200 OK
+		79ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120076371
+	
+200 OK
+		110ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120076656
+	
+200 OK
+		30ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		8ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120077505
+	
+200 OK
+		10ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120077521
+	
+200 OK
+		45ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120077609
+	
+200 OK
+		30ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		13ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		26ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120078803
+	
+200 OK
+		122ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120078832
+	
+200 OK
+		183ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120079156
+	
+200 OK
+		77ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		17ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120080230
+	
+200 OK
+		24ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120080258
+	
+200 OK
+		67ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120080487
+	
+200 OK
+		52ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		14ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120081411
+	
+200 OK
+		13ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120081427
+	
+200 OK
+		151ms	
+jquery-1.6.4.js (line 7950)
+plugin R305-o
+plugin...C2L85PO (line 137)
+base doc
+plugin...C2L85PO (line 150)
+Document
+plugin...C2L85PO (line 151)
+GET http://localhost:8080/exist/tullio/xq/return-var....xql?start=305&m=2012-06-05---_PFB_xxxxxx&mt=PFB
+	
+200 OK
+		105ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120081642
+	
+200 OK
+		57ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		126ms	
+jquery-1.6.4.js (line 7950)
+<info> <type>PFB</type> <pres/> </info>
+plugin...C2L85PO (line 171)
+step 0
+plugin...C2L85PO (line 180)
+GET http://localhost:8080/exist/tullio/editor/xsl/flatten.xsl?_=1342120081855
+	
+200 OK
+		91ms	
+jquery-1.6.4.js (line 7950)
+reconcile -- xml:
+plugin...C2L85PO (line 113)
+<container><div id="text"><p c="305"> [153 par 1] 1 2 3 4 5 6 7 8 9 10 11 12 13 14&amp;( ERBZERB The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> <p c="305"> [153 par 2] The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> <p c="305"> [153 par 3] The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> </div><info> <type>PFB</type> <pres/> </info><div id="events"><events next="307"><e lang="F" clip="305" commit="P" length="00:02" time="03:22:27" type="marker" n="305" c="true"/><e n="307"/></events></div><div id="flattened"/></container>
+plugin...C2L85PO (line 114)
+GET http://localhost:8080/exist/tullio/editor/xsl/reconcile.xsl?_=1342120082026
+	
+200 OK
+		206ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/processEditorContent.xsl?_=1342120082264
+	
+200 OK
+		81ms	
+jquery-1.6.4.js (line 7950)
+AJAX SAVE
+plugin...C2L85PO (line 19)
+<div id="consolidated"><div id="rawEvents"><events next="307"><e lang="F" clip="305" commit="P" length="00:02" time="03:22:27" type="marker" n="305" c="true"/></events></div><div id="structuredEvents"><table class="events-table"><tr class="events"><td class="e-n">305</td><td class="e-time">03:22:27</td><td class="e-type">marker</td><td class="e-speaker"/><td class="offset305"/></tr></table></div><div id="text"><p c="305"> [153 par 1] 1 2 3 4 5 6 7 8 9 10 11 12 13 14&amp;( ERBZERB The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> <p c="305"> [153 par 2] The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> <p c="305"> [153 par 3] The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> </div></div>
+plugin...C2L85PO (line 20)
+Document
+plugin...C2L85PO (line 21)
+bert
+plugin...C2L85PO (line 22)
+orig
+plugin...C2L85PO (line 23)
+305
+plugin...C2L85PO (line 24)
+(an empty string)
+plugin...C2L85PO (line 25)
+2012-06-05---_PFB_xxxxxx
+plugin...C2L85PO (line 26)
+***
+plugin...C2L85PO (line 27)
+POST http://localhost:8080/exist/tullio/xq/storeClipEdit.xql
+	
+200 OK
+		103ms	
+jquery-1.6.4.js (line 7950)
+Document
+plugin...C2L85PO (line 49)
+exit finish
+plugin...C2L85PO (line 88)
+exit finalize
+plugin...C2L85PO (line 107)
+no controls added
+page-player.js (line 586)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120084529
+	
+200 OK
+		17ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120084549
+	
+200 OK
+		48ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		118ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120084687
+	
+200 OK
+		202ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		15ms	
+jquery-1.6.4.js (line 7950)
+plugin R305-o
+plugin...C2L85PO (line 23)
+POST http://localhost:8080/exist/tullio/xq/unlock.xql
+	
+200 OK
+		75ms	
+jquery-1.6.4.js (line 7950)
+exit finish
+plugin...C2L85PO (line 50)
+no controls added
+page-player.js (line 586)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120087057
+	
+200 OK
+		19ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120087075
+	
+200 OK
+		107ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120087384
+	
+200 OK
+		60ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		43ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120088312
+	
+200 OK
+		54ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120088338
+	
+200 OK
+		94ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120088528
+	
+200 OK
+		67ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		14ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		146ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120089632
+	
+200 OK
+		227ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120089654
+	
+200 OK
+		268ms	
+jquery-1.6.4.js (line 7950)
+clicked
+editor...&lang=N (line 898)
+POST http://localhost:8080/exist/tullio/xq/lock.xql
+	
+200 OK
+		64ms	
+jquery-1.6.4.js (line 7950)
+true
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120089949
+	
+200 OK
+		25ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120089975
+	
+200 OK
+		172ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120090084
+	
+200 OK
+		165ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120090161
+	
+200 OK
+		100ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120090312
+	
+200 OK
+		59ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		418ms	
+jquery-1.6.4.js (line 7950)
+#R305-o
+editor...&lang=N (line 482)
+<div class="editable"><p c="305"> [153 par 1] 1 2 3 4 5 6 7 8 9 10 11 12 13 14&amp;( ERBZERB The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p><p c="305"> [153 par 2] The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p><p c="305"> [153 par 3] The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p></div>
+editor...&lang=N (line 483)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		151ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		30ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120091825
+	
+200 OK
+		12ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120091846
+	
+200 OK
+		77ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120091987
+	
+200 OK
+		60ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		83ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120093029
+	
+200 OK
+		16ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120093049
+	
+200 OK
+		52ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120093158
+	
+200 OK
+		63ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		194ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120094289
+	
+200 OK
+		129ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120094322
+	
+200 OK
+		174ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		159ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120094635
+	
+200 OK
+		298ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		19ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120095791
+	
+200 OK
+		30ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120095813
+	
+200 OK
+		122ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120096023
+	
+200 OK
+		101ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		25ms	
+jquery-1.6.4.js (line 7950)
+plugin R305-o
+plugin...C2L85PO (line 137)
+base doc
+plugin...C2L85PO (line 150)
+Document
+plugin...C2L85PO (line 151)
+GET http://localhost:8080/exist/tullio/xq/return-var....xql?start=305&m=2012-06-05---_PFB_xxxxxx&mt=PFB
+	
+200 OK
+		67ms	
+jquery-1.6.4.js (line 7950)
+<info> <type>PFB</type> <pres/> </info>
+plugin...C2L85PO (line 171)
+step 0
+plugin...C2L85PO (line 180)
+GET http://localhost:8080/exist/tullio/editor/xsl/flatten.xsl?_=1342120096912
+	
+200 OK
+		79ms	
+jquery-1.6.4.js (line 7950)
+reconcile -- xml:
+plugin...C2L85PO (line 113)
+<container><div id="text"><p c="305"> [153 par 1] 1 2 3 4 5 6 7 8 9 10 11 12 13 14&amp;( ERBZERB VERBERBERB The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> <p c="305"> [153 par 2] The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> <p c="305"> [153 par 3] The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> </div><reference name="titles"> <l id="presi-N">Voorzitterschap: </l> <l id="presi-F">Présidence: </l> <l id="startInt-F"><span class="incomplete">INTERPELLATION/INTERPELLATIONS</span></l> <l id="startInt-N"><span class="incomplete">INTERPELLATIE/INTERPELLATIES</span></l> <l id="startIntOrd-N"><span class="incomplete">Aan de orde is de interpellatie van de heer / mevrouw (naam). OF Aan de orde zijn de interpellaties.</span></l> <l id="startIntOrd-F"><span class="incomplete">L'ordre du jour appelle l'interpellation de M. / Mme (nom). OU L'ordre du jour appelle les interpellations.</span></l> <l id="contN-N">(verder in het Nederlands)</l> <l id="contN-F">(poursuivant en néerlandais)</l> <l id="contF-F">(poursuivant en français)</l> <l id="contF-N">(verder in het Frans)</l> <l id="pres-m-N">De voorzitter.- </l> <l id="pres-f-N">Mevrouw de voorzitter.- </l> <l id="pres-m-F">M. le président.- </l> <l id="pres-f-F">Mme la présidente.- </l> <l id="exc-F">Mme la présidente.- </l> <l id="exc-N"><span class="incomplete">Verontschuldigen/Verontschuldigt zich voor hun/zijn/haar afwezigheid:</span></l> <l id="exc-N"><span class="incomplete">Ont / A prié d'excuser leur / son absence :</span></l> <l id="title-m-N">De heer </l> <l id="titleSmall-m-N">de heer </l> <l id="title-m-F">M. </l> <l id="titleSmall-m-F">M. </l> <l id="title-f-N">Mevrouw </l> <l id="titleSmall-f-N">Mevrouw </l> <l id="title-f-F">Mme </l> <l id="titleSmall-f-F">Mme </l> <l id="parole-N"> heeft het woord.</l> <l id="parole-F">La parole est à </l> <l id="to-N"> aan </l> <l id="to-F"> à </l> <l id="toExtra-N">en aan </l> <l id="toExtra-F">et à </l> <l id="concerning-F"> concernant </l> <l id="concerning-N"> betreffende </l> <person gender="m" lang="nl" group="" gov="no" id="---"> <first>----</first> <last>----</last> </person> <person gender="m" lang="nl" group="sp.a" gov="no" id="AHIDAR_Fouad"> <first>Fouad</first> <last>Ahidar</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="ALBISHARI_Aziz"> <first>Aziz</first> <last>Albishari</last> </person> <person gender="f" lang="nl" group="Open VLD" gov="no" id="AMPE_Els"> <first>Els</first> <last>Ampe</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="AZZOUZI_Mohamed"> <first>Mohamed</first> <last>Azzouzi</last> </person> <person gender="f" lang="f" group="MR" gov="no" id="BERTIEAUX_Françoise"> <first>Françoise</first> <last>Bertieaux</last> </person> <person gender="f" lang="fr" group="PS" gov="no" id="BOUARFA_Sfia"> <first>Sfia</first> <last>Bouarfa</last> </person> <person gender="f" lang="fr" group="Ecolo" gov="no" id="BRAECKMAN_Dominique"> <first>Dominique</first> <last>Braeckman</last> </person> <person gender="m" lang="f" group="MR" gov="no" id="BROTCHI_Jacques"> <first>Jacques</first> <last>Brotchi</last> </person> <person gender="f" lang="nl" group="sp.a" gov="no" id="BROUHON_Sophie"> <first>Sophie</first> <last>Brouhon</last> </person> <person gender="f" lang="fr" group="cdH" gov="no" id="CARON_Danielle"> <first>Danielle</first> <last>Caron</last> </person> <person gender="f" lang="fr" group="PS" gov="no" id="CARTHE_Michèle"> <first>Michèle</first> <last>Carthe</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="CHAHID_Mohammadi"> <first>Mohammadi</first> <last>Chahid</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="CLOSE_Philippe"> <first>Philippe</first> <last>Close</last> </person> <person gender="m" lang="fr" group="FDF" gov="no" id="COLSON_Michel"> <first>Michel</first> <last>Colson</last> </person> <person gender="m" lang="nl" group="Open VLD" gov="no" id="COPPENS_René"> <first>René</first> <last>Coppens</last> </person> <person gender="f" lang="f" group="MR" gov="no" id="d'Ursel_Anne-Charlotte"> <first>Anne-Charlotte</first> <last>d'Ursel</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="DAÏF_Mohamed"> <first>Mohamed</first> <last>Daïf</last> </person> <person gender="m" lang="fr" group="FDF" gov="no" id="DE BOCK_Emmanuel"> <first>Emmanuel</first> <last>De Bock</last> </person> <person gender="m" lang="f" group="MR" gov="no" id="de Clippele_Olivier"> <first>Olivier</first> <last>de Clippele</last> </person> <person gender="f" lang="nl" group="CD&amp;V" gov="no" id="DE PAUW_Brigitte"> <first>Brigitte</first> <last>De Pauw</last> </person> <person gender="m" lang="fr" group="N-VA" gov="no" id="DE RIDDER_Paul"> <first>Paul</first> <last>De Ridder</last> </person> <person gender="m" lang="f" group="MR" gov="no" id="De Wolf_Vincent"> <first>Vincent</first> <last>De Wolf</last> </person> <person gender="f" lang="fr" group="cdH" gov="no" id="de_GROOTE Julie"> <first>Julie</first> <last>de Groote</last> </person> <person gender="m" lang="fr" group="FDF" gov="no" id="de_PATOUL Serge"> <first>Serge</first> <last>de Patoul</last> </person> <person gender="f" lang="nl" group="CD&amp;V" gov="no" id="DEBAETS_Bianca"> <first>Bianca</first> <last>Debaets</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="DEFOSSE_Jean-Claude"> <first>Jean-Claude</first> <last>Defosse</last> </person> <person gender="f" lang="nl" group="Open VLD" gov="no" id="DEJONGHE_Carla"> <first>Carla</first> <last>Dejonghe</last> </person> <person gender="f" lang="fr" group="Ecolo" gov="no" id="DELFORGE_Céline"> <first>Céline</first> <last>Delforge</last> </person> <person gender="m" lang="nl" group="Ind" gov="no" id="DEMOL_Johan"> <first>Johan</first> <last>Demol</last> </person> <person gender="f" lang="fr" group="PS" gov="no" id="DESIR_Caroline"> <first>Caroline</first> <last>Désir</last> </person> <person gender="m" lang="f" group="MR" gov="no" id="DESTEXHE_Alain"> <first>Alain</first> <last>Destexhe</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="DIALLO_Bea"> <first>Bea</first> <last>Diallo</last> </person> <person gender="f" lang="fr" group="Ecolo" gov="no" id="DIRIX_Anne"> <first>Anne</first> <last>Dirix</last> </person> <person gender="m" lang="fr" group="cdH" gov="no" id="DOYEN_Hervé"> <first>Hervé</first> <last>Doyen</last> </person> <person gender="m" lang="f" group="MR" gov="no" id="DRAPS_Willem"> <first>Willem</first> <last>Draps</last> </person> <person gender="m" lang="fr" group="cdH" gov="no" id="du BUS de WARNAFFE_André"> <first>André</first> <last>du Bus de Warnaffe</last> </person> <person gender="f" lang="fr" group="PS" gov="no" id="DUPUIS_Françoise"> <first>Françoise</first> <last>Dupuis</last> </person> <person gender="m" lang="fr" group="cdH" gov="no" id="EL KHANNOUSS_Ahmed"> <first>Ahmed</first> <last>El Khannouss</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="EL KTIBI_Ahmed"> <first>Ahmed</first> <last>El Ktibi</last> </person> <person gender="f" lang="fr" group="PS" gov="no" id="EL YOUSFI_Nadia"> <first>Nadia</first> <last>El Yousfi</last> </person> <person gender="m" lang="fr" group="cdH" gov="no" id="FASSI-FIHRI_Hamza"> <first>Hamza</first> <last>Fassi-Fihri</last> </person> <person gender="f" lang="fr" group="FDF" gov="no" id="FRAITEUR_Béatrice"> <first>Béatrice</first> <last>Fraiteur</last> </person> <person gender="f" lang="fr" group="cdH" gov="no" id="FREMAULT_Céline"> <first>Céline</first> <last>Fremault</last> </person> <person gender="m" lang="fr" group="FDF" gov="no" id="GOSUIN_Didier"> <first>Didier</first> <last>Gosuin</last> </person> <person gender="f" lang="fr" group="Ecolo" gov="no" id="HERSCOVICI_Anne"> <first>Anne</first> <last>Herscovici</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="HUTCHINSON_Alain"> <first>Alain</first> <last>Hutchinson</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="IKAZBAN_Jamal"> <first>Jamal</first> <last>Ikazban</last> </person> <person gender="f" lang="fr" group="FDF" gov="no" id="JODOGNE_Cécile"> <first>Cécile</first> <last>Jodogne</last> </person> <person gender="f" lang="fr" group="Ecolo" gov="no" id="KHATTABI_Zakia"> <first>Zakia</first> <last>Khattabi</last> </person> <person gender="f" lang="f" group="MR" gov="no" id="LEMESRE_Marion"> <first>Marion</first> <last>Lemesre</last> </person> <person gender="m" lang="n" group="Vlaams Belang" gov="no" id="LOOTENS STAEL_Dominiek"> <first>Dominiek</first> <last>Lootens-Stael</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="LURQUIN_Vincent"> <first>Vincent</first> <last>Lurquin</last> </person> <person gender="f" lang="nl" group="Groen!" gov="no" id="MAES_Annemie"> <first>Annemie</first> <last>Maes</last> </person> <person gender="m" lang="fr" group="cdH" gov="no" id="MAMPAKA_MANKAMBA Bertin"> <first>Bertin</first> <last>Mampaka Mankamba</last> </person> <person gender="f" lang="fr" group="FDF" gov="no" id="MANDAILA_Gisèle"> <first>Gisèle</first> <last>Mandaila</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="MARON_Alain"> <first>Alain</first> <last>Maron</last> </person> <person gender="m" lang="nl" group="Open VLD" gov="no" id="MENNEKENS_Herman"> <first>Herman</first> <last>Mennekens</last> </person> <person gender="m" lang="fr" group="cdH" gov="no" id="MIGISHA_Pierre"> <first>Pierre</first> <last>Migisha</last> </person> <person gender="f" lang="fr" group="FDF" gov="no" id="MOLENBERG_Isabelle"> <first>Isabelle</first> <last>Molenberg</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="MOREL_Jacques"> <first>Jacques</first> <last>Morel</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="MOUHSSIN_Ahmed"> <first>Ahmed</first> <last>Mouhssin</last> </person> <person gender="f" lang="fr" group="PS" gov="no" id="MOUREAUX_Catherine"> <first>Catherine</first> <last>Moureaux</last> </person> <person gender="f" lang="fr" group="PS" gov="no" id="MOUZON_Anne Sylvie"> <first>Anne Sylvie</first> <last>Mouzon</last> </person> <person gender="f" lang="fr" group="Ecolo" gov="no" id="NAGY_Marie"> <first>Marie</first> <last>Nagy</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="OURIAGHLI_Mohamed"> <first>Mohamed</first> <last>Ouriaghli</last> </person> <person gender="f" lang="fr" group="cdH" gov="no" id="OZDEMIR_Mahinur"> <first>Mahinur</first> <last>Ozdemir</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="ÖZKARA_Emin"> <first>Emin</first> <last>Özkara</last> </person> <person gender="f" lang="fr" group="PS" gov="no" id="P'tito_Olivia"> <first>Olivia</first> <last>P'tito</last> </person> <person gender="f" lang="fr" group="FDF" gov="no" id="PAYFA_Martine"> <first>Martine</first> <last>Payfa</last> </person> <person gender="f" lang="fr" group="FDF" gov="no" id="PERSOONS_Caroline"> <first>Caroline</first> <last>Persoons</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="PESZTAT_Yaron"> <first>Yaron</first> <last>Pesztat</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="PINXTEREN_Arnaud"> <first>Arnaud</first> <last>Pinxteren</last> </person> <person gender="m" lang="f" group="MR" gov="no" id="PIVIN_Philippe"> <first>Philippe</first> <last>Pivin</last> </person> <person gender="m" lang="fr" group="cdH" gov="no" id="RIGUELLE_Joël"> <first>Joël</first> <last>Riguelle</last> </person> <person gender="f" lang="nl" group="sp.a" gov="no" id="ROEX_Elke"> <first>Elke</first> <last>Roex</last> </person> <person gender="f" lang="f" group="MR" gov="no" id="ROUSSEAUX_Jacqueline"> <first>Jacqueline</first> <last>Rousseaux</last> </person> <person gender="f" lang="f" group="MR" gov="no" id="SCHEPMANS_Françoise"> <first>Françoise</first> <last>Schepmans</last> </person> <person gender="f" lang="fr" group="FDF" gov="no" id="SIDIBE_Fatoumata"> <first>Fatoumata</first> <last>Sidibe</last> </person> <person gender="f" lang="f" group="MR" gov="no" id="TEITELBAUM_Viviane"> <first>Viviane</first> <last>Teitelbaum</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="THIELEMANS_Freddy"> <first>Freddy</first> <last>Thielemans</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="TOMAS_Eric"> <first>Eric</first> <last>Tomas</last> </person> <person gender="f" lang="fr" group="Ecolo" gov="no" id="TRACHTE_Barbara"> <first>Barbara</first> <last>Trachte</last> </person> <person gender="m" lang="nl" group="sp.a" gov="no" id="VAN DAMME_Jef"> <first>Jef</first> <last>Van Damme</last> </person> <person gender="f" lang="nl" group="Groen!" gov="no" id="VAN DEN BRANDT_Elke"> <first>Elke</first> <last>Van den Brandt</last> </person> <person gender="m" lang="f" group="MR" gov="no" id="VAN GOIDSENHOVEN_Gaëtan"> <first>Gaëtan</first> <last>Van Goidsenhoven</last> </person> <person gender="f" lang="nl" group="Ind" gov="no" id="VAN LINTER_Greet"> <first>Greet</first> <last>Van Linter</last> </person> <person gender="m" lang="nl" group="CD&amp;V" gov="no" id="VANDENBOSSCHE_Walter"> <first>Walter</first> <last>Vandenbossche</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="VANHALEWYN_Vincent"> <first>Vincent</first> <last>Vanhalewyn</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="VERVOORT_Rudi"> <first>Rudi</first> <last>Vervoort</last> </person> <person group="CD&amp;V" lang="nl" gender="f" gov="yes" id="GROUWELS_Brigitte"> <first>Brigitte</first> <last>Grouwels</last> <ti meeting-type="BHP" l="N">minister van de Brusselse Hoofdstedelijke Regering, belast met Openbare Werken en Vervoer</ti> <ti meeting-type="BHP" l="F">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée des Travaux publics et des Transports</ti> <ti meeting-type="VVGGC" l="N">lid van het Verenigd College, bevoegd voor het Beleid inzake Bijstand aan Personen en Openbaar Ambt</ti> <ti meeting-type="VVGGC" l="F">membre du Collège réuni, compétente pour la Politique d'Aide aux Personnes et la Fonction publique</ti> </person> <person group="Ecolo" lang="fr" gender="m" gov="yes" id="DOULKERIDIS_Christos"> <first>Christos</first> <last>Doulkeridis</last> <ti meeting-type="BHP" l="N">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Huisvesting en Brandbestrijding en Dringende Medische Hulp</ti> <ti meeting-type="BHP" l="F">secrétaire d'État à la Région de Bruxelles-Capitale, chargé du Logement et de la Lutte contre l'Incendie et l'Aide médicale urgente</ti> <ti meeting-type="VVGGC" l="N"/> <ti meeting-type="VVGGC" l="F"/> <ti meeting-type="PFB" l="F">président du Gouvernement, ministre en charge du Budget, de l'Enseignement, du Tourisme et des Relations internationales</ti> </person> <person group="Open VLD" lang="nl" gender="m" gov="yes" id="VANHENGEL_Guy"> <first>Guy</first> <last>Vanhengel</last> <ti meeting-type="BHP" l="N">minister van de Brusselse Hoofdstedelijke Regering, belast met Financiën, Begroting, Openbaar Ambt en Externe Betrekkingen</ti> <ti meeting-type="BHP" l="F">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargé des Finances, du Budget, de la Fonction publique et des Relations extérieures</ti> <ti meeting-type="VVGGC" l="N"/> <ti meeting-type="VVGGC" l="F"/> </person> <person group="Open VLD" lang="nl" gender="m" gov="yes" id="Vanhengel, Guy"> <first>Guy</first> <last>Vanhengel</last> <ti meeting-type="BHP" l="N"/> <ti meeting-type="BHP" l="F"/> <ti meeting-type="VVGGC" l="N"/> <ti meeting-type="VVGGC" l="F"/> </person> <person group="PS" lang="fr" gender="m" gov="yes" id="PICQUE_Charles"> <first>Charles</first> <last>Picqué</last> <ti meeting-type="BHP" l="N">minister-president van de Brusselse Hoofdstedelijke Regering, belast met Plaatselijke Besturen, Ruimtelijke Ordening, Monumenten en Landschappen, Openbare Netheid en Ontwikkelingssamenwerking</ti> <ti meeting-type="BHP" l="F">ministre-président du Gouvernement de la Région de Bruxelles-Capitale, chargé des Pouvoirs locaux, de l'Aménagement du Territoire, des Monuments et Sites, de la Propreté publique et de la Coopération au Développement</ti> <ti meeting-type="PFB" l="F">ministre en charge de la Cohésion sociale</ti> <ti meeting-type="VVGGC" l="N"/> <ti meeting-type="VVGGC" l="F"/> </person> <person group="PS" lang="fr" gender="m" gov="yes" id="KIR_Emir"> <first>Emir</first> <last>Kir</last> <ti meeting-type="PFB" l="F">ministre en charge de la Formation professionnelle, de la Culture, du Transport scolaire, de l’Action sociale, de la Famille, du Sport et des Relations internationales</ti> <ti meeting-type="BHP" l="N">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Stedenbouw en Openbare Netheid</ti> <ti meeting-type="BHP" l="F">secrétaire d'État à la Région de Bruxelles-Capitale, chargé de l'Urbanisme et de la Propreté publique</ti> </person> <person group="Groen" lang="nl" gender="m" gov="yes" id="DE_LILLE_Bruno"> <first>Bruno</first> <last>De Lille</last> <ti meeting-type="BHP" l="N">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Mobiliteit, Openbaar Ambt, Gelijke Kansen en Administratieve Vereenvoudiging</ti> <ti meeting-type="BHP" l="F">secrétaire d'État à la Région de Bruxelles-Capitale, chargé de la Mobilité, de la Fonction publique, de l'Égalité des Chances et de la Simplification administrative</ti> </person> <person group="cdH" lang="fr" gender="m" gov="yes" id="CEREXHE_Benoît"> <first>Benoît</first> <last>Cerexhe</last> <ti meeting-type="PFB" l="F">ministre en charge de la Fonction publique, de la Politique de la santé et de la Formation professionnelle des Classes moyennes</ti> <ti meeting-type="BHP" l="F">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargé de l'Emploi, de l'Économie, du Commerce extérieur et de la Recherche scientifique</ti> <ti meeting-type="BHP" l="N">minister van de Brusselse Hoofdstedelijke Regering, belast met Tewerkstelling, Economie, Buitenlandse Handel en Wetenschappelijk Onderzoek</ti> </person> <person group="Ecolo" lang="fr" gender="f" gov="yes" id="HUYTEBROECK_Evelyne"> <first>Evelyne</first> <last>Huytebroeck</last> <ti meeting-type="BHP" l="N">minister van de Brusselse Hoofdstedelijke Regering, belast met Leefmilieu, Energie en Waterbeleid, Stadsvernieuwing, Brandbestrijding en Dringende Medische Hulp en Huisvesting</ti> <ti meeting-type="PFB" l="F">ministre en charge de la Politique d'aide aux personnes handicapées</ti> <ti meeting-type="BHP" l="F">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée de l'Environnement, de l'Energie et de la Politique de l'Eau, de la Rénovation urbaine, de la Lutte contre l'Incendie et l'Aide médicale urgente et du Logement</ti> <ti meeting-type="VVGGC" l="N">lid van het Verenigd College, bevoegd voor het Beleid inzake Bijstand aan Personen, Financiën, Begroting en Externe Betrekkingen</ti> <ti meeting-type="VVGGC" l="F">membre du Collège réuni, compétente pour la Politique d’Aide aux Personnes, les Finances, le Budget et les Relations extérieures</ti> </person> </reference><info> <type>PFB</type> <pres/> </info><div id="events"><events next="307"><e lang="F" c="true" n="305" type="marker" time="03:22:27" length="00:02" commit="P" clip="305"/><e n="307"/></events></div><div id="flattened"/></container>
+plugin...C2L85PO (line 114)
+GET http://localhost:8080/exist/tullio/editor/xsl/reconcile.xsl?_=1342120097087
+	
+200 OK
+		72ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/processEditorContent.xsl?_=1342120097195
+	
+200 OK
+		51ms	
+jquery-1.6.4.js (line 7950)
+AJAX SAVE
+plugin...C2L85PO (line 19)
+<div id="consolidated"><div id="rawEvents"><events next="307"><e lang="F" c="true" n="305" type="marker" time="03:22:27" length="00:02" commit="P" clip="305"/></events></div><div id="structuredEvents"><table class="events-table"><tr class="events"><td class="e-n">305</td><td class="e-time">03:22:27</td><td class="e-type">marker</td><td class="e-speaker"/><td class="offset305"/></tr></table></div><div id="text"><p c="305"> [153 par 1] 1 2 3 4 5 6 7 8 9 10 11 12 13 14&amp;( ERBZERB VERBERBERB The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> <p c="305"> [153 par 2] The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> <p c="305"> [153 par 3] The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> </div></div>
+plugin...C2L85PO (line 20)
+Document
+plugin...C2L85PO (line 21)
+bert
+plugin...C2L85PO (line 22)
+orig
+plugin...C2L85PO (line 23)
+305
+plugin...C2L85PO (line 24)
+(an empty string)
+plugin...C2L85PO (line 25)
+2012-06-05---_PFB_xxxxxx
+plugin...C2L85PO (line 26)
+***
+plugin...C2L85PO (line 27)
+POST http://localhost:8080/exist/tullio/xq/storeClipEdit.xql
+	
+200 OK
+		146ms	
+jquery-1.6.4.js (line 7950)
+Document
+plugin...C2L85PO (line 49)
+exit finish
+plugin...C2L85PO (line 88)
+exit finalize
+plugin...C2L85PO (line 107)
+no controls added
+page-player.js (line 586)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120100220
+	
+200 OK
+		37ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120100242
+	
+200 OK
+		308ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		43ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120100655
+	
+200 OK
+		431ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		27ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120101856
+	
+200 OK
+		40ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120101873
+	
+200 OK
+		64ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120102009
+	
+200 OK
+		58ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		14ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120103074
+	
+200 OK
+		124ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120103098
+	
+200 OK
+		331ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120103553
+	
+200 OK
+		185ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		115ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120104580
+	
+200 OK
+		15ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120104625
+	
+200 OK
+		41ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120104790
+	
+200 OK
+		58ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		10ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		27ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120105891
+	
+200 OK
+		166ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120105916
+	
+200 OK
+		223ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120106229
+	
+200 OK
+		103ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		92ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120107246
+	
+200 OK
+		14ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120107278
+	
+200 OK
+		107ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120107539
+	
+200 OK
+		67ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		51ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-var....xql?start=305&m=2012-06-05---_PFB_xxxxxx&mt=PFB
+	
+200 OK
+		87ms	
+jquery-1.6.4.js (line 7950)
+<info> <type>PFB</type> <pres/> </info>
+plugin...C2L85PO (line 121)
+init //////<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE container [ <!ENTITY nbsp '&#160;'> ]> <container><div id="text"><p c="305"> [153 par 1] 1 2 3 4 5 6 7 8 9 10 11 12 13 14&amp;( ERBZERB VERBERBERB ERVZEVEZVERAAAA The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> <p c="305"> [153 par 2] The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> <p c="305"> [153 par 3] The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> </div><div id="events"><events next="307"><e clip="305" commit="P" length="00:02" time="03:22:27" type="marker" n="305" c="true" lang="F"/></events></div><reference name="titles"> <l id="presi-N">Voorzitterschap: </l> <l id="presi-F">Présidence: </l> <l id="startInt-F"><span class="incomplete">INTERPELLATION/INTERPELLATIONS</span></l> <l id="startInt-N"><span class="incomplete">INTERPELLATIE/INTERPELLATIES</span></l> <l id="startIntOrd-N"><span class="incomplete">Aan de orde is de interpellatie van de heer / mevrouw (naam). OF Aan de orde zijn de interpellaties.</span></l> <l id="startIntOrd-F"><span class="incomplete">L'ordre du jour appelle l'interpellation de M. / Mme (nom). OU L'ordre du jour appelle les interpellations.</span></l> <l id="contN-N">(verder in het Nederlands)</l> <l id="contN-F">(poursuivant en néerlandais)</l> <l id="contF-F">(poursuivant en français)</l> <l id="contF-N">(verder in het Frans)</l> <l id="pres-m-N">De voorzitter.- </l> <l id="pres-f-N">Mevrouw de voorzitter.- </l> <l id="pres-m-F">M. le président.- </l> <l id="pres-f-F">Mme la présidente.- </l> <l id="exc-F">Mme la présidente.- </l> <l id="exc-N"><span class="incomplete">Verontschuldigen/Verontschuldigt zich voor hun/zijn/haar afwezigheid:</span></l> <l id="exc-N"><span class="incomplete">Ont / A prié d'excuser leur / son absence :</span></l> <l id="title-m-N">De heer </l> <l id="titleSmall-m-N">de heer </l> <l id="title-m-F">M. </l> <l id="titleSmall-m-F">M. </l> <l id="title-f-N">Mevrouw </l> <l id="titleSmall-f-N">Mevrouw </l> <l id="title-f-F">Mme </l> <l id="titleSmall-f-F">Mme </l> <l id="parole-N"> heeft het woord.</l> <l id="parole-F">La parole est à </l> <l id="to-N"> aan </l> <l id="to-F"> à </l> <l id="toExtra-N">en aan </l> <l id="toExtra-F">et à </l> <l id="concerning-F"> concernant </l> <l id="concerning-N"> betreffende </l> <person id="---" gov="no" group="" lang="nl" gender="m"> <first>----</first> <last>----</last> </person> <person id="AHIDAR_Fouad" gov="no" group="sp.a" lang="nl" gender="m"> <first>Fouad</first> <last>Ahidar</last> </person> <person id="ALBISHARI_Aziz" gov="no" group="Ecolo" lang="fr" gender="m"> <first>Aziz</first> <last>Albishari</last> </person> <person id="AMPE_Els" gov="no" group="Open VLD" lang="nl" gender="f"> <first>Els</first> <last>Ampe</last> </person> <person id="AZZOUZI_Mohamed" gov="no" group="PS" lang="fr" gender="m"> <first>Mohamed</first> <last>Azzouzi</last> </person> <person id="BERTIEAUX_Françoise" gov="no" group="MR" lang="f" gender="f"> <first>Françoise</first> <last>Bertieaux</last> </person> <person id="BOUARFA_Sfia" gov="no" group="PS" lang="fr" gender="f"> <first>Sfia</first> <last>Bouarfa</last> </person> <person id="BRAECKMAN_Dominique" gov="no" group="Ecolo" lang="fr" gender="f"> <first>Dominique</first> <last>Braeckman</last> </person> <person id="BROTCHI_Jacques" gov="no" group="MR" lang="f" gender="m"> <first>Jacques</first> <last>Brotchi</last> </person> <person id="BROUHON_Sophie" gov="no" group="sp.a" lang="nl" gender="f"> <first>Sophie</first> <last>Brouhon</last> </person> <person id="CARON_Danielle" gov="no" group="cdH" lang="fr" gender="f"> <first>Danielle</first> <last>Caron</last> </person> <person id="CARTHE_Michèle" gov="no" group="PS" lang="fr" gender="f"> <first>Michèle</first> <last>Carthe</last> </person> <person id="CHAHID_Mohammadi" gov="no" group="PS" lang="fr" gender="m"> <first>Mohammadi</first> <last>Chahid</last> </person> <person id="CLOSE_Philippe" gov="no" group="PS" lang="fr" gender="m"> <first>Philippe</first> <last>Close</last> </person> <person id="COLSON_Michel" gov="no" group="FDF" lang="fr" gender="m"> <first>Michel</first> <last>Colson</last> </person> <person id="COPPENS_René" gov="no" group="Open VLD" lang="nl" gender="m"> <first>René</first> <last>Coppens</last> </person> <person id="d'Ursel_Anne-Charlotte" gov="no" group="MR" lang="f" gender="f"> <first>Anne-Charlotte</first> <last>d'Ursel</last> </person> <person id="DAÏF_Mohamed" gov="no" group="PS" lang="fr" gender="m"> <first>Mohamed</first> <last>Daïf</last> </person> <person id="DE BOCK_Emmanuel" gov="no" group="FDF" lang="fr" gender="m"> <first>Emmanuel</first> <last>De Bock</last> </person> <person id="de Clippele_Olivier" gov="no" group="MR" lang="f" gender="m"> <first>Olivier</first> <last>de Clippele</last> </person> <person id="DE PAUW_Brigitte" gov="no" group="CD&amp;V" lang="nl" gender="f"> <first>Brigitte</first> <last>De Pauw</last> </person> <person id="DE RIDDER_Paul" gov="no" group="N-VA" lang="fr" gender="m"> <first>Paul</first> <last>De Ridder</last> </person> <person id="De Wolf_Vincent" gov="no" group="MR" lang="f" gender="m"> <first>Vincent</first> <last>De Wolf</last> </person> <person id="de_GROOTE Julie" gov="no" group="cdH" lang="fr" gender="f"> <first>Julie</first> <last>de Groote</last> </person> <person id="de_PATOUL Serge" gov="no" group="FDF" lang="fr" gender="m"> <first>Serge</first> <last>de Patoul</last> </person> <person id="DEBAETS_Bianca" gov="no" group="CD&amp;V" lang="nl" gender="f"> <first>Bianca</first> <last>Debaets</last> </person> <person id="DEFOSSE_Jean-Claude" gov="no" group="Ecolo" lang="fr" gender="m"> <first>Jean-Claude</first> <last>Defosse</last> </person> <person id="DEJONGHE_Carla" gov="no" group="Open VLD" lang="nl" gender="f"> <first>Carla</first> <last>Dejonghe</last> </person> <person id="DELFORGE_Céline" gov="no" group="Ecolo" lang="fr" gender="f"> <first>Céline</first> <last>Delforge</last> </person> <person id="DEMOL_Johan" gov="no" group="Ind" lang="nl" gender="m"> <first>Johan</first> <last>Demol</last> </person> <person id="DESIR_Caroline" gov="no" group="PS" lang="fr" gender="f"> <first>Caroline</first> <last>Désir</last> </person> <person id="DESTEXHE_Alain" gov="no" group="MR" lang="f" gender="m"> <first>Alain</first> <last>Destexhe</last> </person> <person id="DIALLO_Bea" gov="no" group="PS" lang="fr" gender="m"> <first>Bea</first> <last>Diallo</last> </person> <person id="DIRIX_Anne" gov="no" group="Ecolo" lang="fr" gender="f"> <first>Anne</first> <last>Dirix</last> </person> <person id="DOYEN_Hervé" gov="no" group="cdH" lang="fr" gender="m"> <first>Hervé</first> <last>Doyen</last> </person> <person id="DRAPS_Willem" gov="no" group="MR" lang="f" gender="m"> <first>Willem</first> <last>Draps</last> </person> <person id="du BUS de WARNAFFE_André" gov="no" group="cdH" lang="fr" gender="m"> <first>André</first> <last>du Bus de Warnaffe</last> </person> <person id="DUPUIS_Françoise" gov="no" group="PS" lang="fr" gender="f"> <first>Françoise</first> <last>Dupuis</last> </person> <person id="EL KHANNOUSS_Ahmed" gov="no" group="cdH" lang="fr" gender="m"> <first>Ahmed</first> <last>El Khannouss</last> </person> <person id="EL KTIBI_Ahmed" gov="no" group="PS" lang="fr" gender="m"> <first>Ahmed</first> <last>El Ktibi</last> </person> <person id="EL YOUSFI_Nadia" gov="no" group="PS" lang="fr" gender="f"> <first>Nadia</first> <last>El Yousfi</last> </person> <person id="FASSI-FIHRI_Hamza" gov="no" group="cdH" lang="fr" gender="m"> <first>Hamza</first> <last>Fassi-Fihri</last> </person> <person id="FRAITEUR_Béatrice" gov="no" group="FDF" lang="fr" gender="f"> <first>Béatrice</first> <last>Fraiteur</last> </person> <person id="FREMAULT_Céline" gov="no" group="cdH" lang="fr" gender="f"> <first>Céline</first> <last>Fremault</last> </person> <person id="GOSUIN_Didier" gov="no" group="FDF" lang="fr" gender="m"> <first>Didier</first> <last>Gosuin</last> </person> <person id="HERSCOVICI_Anne" gov="no" group="Ecolo" lang="fr" gender="f"> <first>Anne</first> <last>Herscovici</last> </person> <person id="HUTCHINSON_Alain" gov="no" group="PS" lang="fr" gender="m"> <first>Alain</first> <last>Hutchinson</last> </person> <person id="IKAZBAN_Jamal" gov="no" group="PS" lang="fr" gender="m"> <first>Jamal</first> <last>Ikazban</last> </person> <person id="JODOGNE_Cécile" gov="no" group="FDF" lang="fr" gender="f"> <first>Cécile</first> <last>Jodogne</last> </person> <person id="KHATTABI_Zakia" gov="no" group="Ecolo" lang="fr" gender="f"> <first>Zakia</first> <last>Khattabi</last> </person> <person id="LEMESRE_Marion" gov="no" group="MR" lang="f" gender="f"> <first>Marion</first> <last>Lemesre</last> </person> <person id="LOOTENS STAEL_Dominiek" gov="no" group="Vlaams Belang" lang="n" gender="m"> <first>Dominiek</first> <last>Lootens-Stael</last> </person> <person id="LURQUIN_Vincent" gov="no" group="Ecolo" lang="fr" gender="m"> <first>Vincent</first> <last>Lurquin</last> </person> <person id="MAES_Annemie" gov="no" group="Groen!" lang="nl" gender="f"> <first>Annemie</first> <last>Maes</last> </person> <person id="MAMPAKA_MANKAMBA Bertin" gov="no" group="cdH" lang="fr" gender="m"> <first>Bertin</first> <last>Mampaka Mankamba</last> </person> <person id="MANDAILA_Gisèle" gov="no" group="FDF" lang="fr" gender="f"> <first>Gisèle</first> <last>Mandaila</last> </person> <person id="MARON_Alain" gov="no" group="Ecolo" lang="fr" gender="m"> <first>Alain</first> <last>Maron</last> </person> <person id="MENNEKENS_Herman" gov="no" group="Open VLD" lang="nl" gender="m"> <first>Herman</first> <last>Mennekens</last> </person> <person id="MIGISHA_Pierre" gov="no" group="cdH" lang="fr" gender="m"> <first>Pierre</first> <last>Migisha</last> </person> <person id="MOLENBERG_Isabelle" gov="no" group="FDF" lang="fr" gender="f"> <first>Isabelle</first> <last>Molenberg</last> </person> <person id="MOREL_Jacques" gov="no" group="Ecolo" lang="fr" gender="m"> <first>Jacques</first> <last>Morel</last> </person> <person id="MOUHSSIN_Ahmed" gov="no" group="Ecolo" lang="fr" gender="m"> <first>Ahmed</first> <last>Mouhssin</last> </person> <person id="MOUREAUX_Catherine" gov="no" group="PS" lang="fr" gender="f"> <first>Catherine</first> <last>Moureaux</last> </person> <person id="MOUZON_Anne Sylvie" gov="no" group="PS" lang="fr" gender="f"> <first>Anne Sylvie</first> <last>Mouzon</last> </person> <person id="NAGY_Marie" gov="no" group="Ecolo" lang="fr" gender="f"> <first>Marie</first> <last>Nagy</last> </person> <person id="OURIAGHLI_Mohamed" gov="no" group="PS" lang="fr" gender="m"> <first>Mohamed</first> <last>Ouriaghli</last> </person> <person id="OZDEMIR_Mahinur" gov="no" group="cdH" lang="fr" gender="f"> <first>Mahinur</first> <last>Ozdemir</last> </person> <person id="ÖZKARA_Emin" gov="no" group="PS" lang="fr" gender="m"> <first>Emin</first> <last>Özkara</last> </person> <person id="P'tito_Olivia" gov="no" group="PS" lang="fr" gender="f"> <first>Olivia</first> <last>P'tito</last> </person> <person id="PAYFA_Martine" gov="no" group="FDF" lang="fr" gender="f"> <first>Martine</first> <last>Payfa</last> </person> <person id="PERSOONS_Caroline" gov="no" group="FDF" lang="fr" gender="f"> <first>Caroline</first> <last>Persoons</last> </person> <person id="PESZTAT_Yaron" gov="no" group="Ecolo" lang="fr" gender="m"> <first>Yaron</first> <last>Pesztat</last> </person> <person id="PINXTEREN_Arnaud" gov="no" group="Ecolo" lang="fr" gender="m"> <first>Arnaud</first> <last>Pinxteren</last> </person> <person id="PIVIN_Philippe" gov="no" group="MR" lang="f" gender="m"> <first>Philippe</first> <last>Pivin</last> </person> <person id="RIGUELLE_Joël" gov="no" group="cdH" lang="fr" gender="m"> <first>Joël</first> <last>Riguelle</last> </person> <person id="ROEX_Elke" gov="no" group="sp.a" lang="nl" gender="f"> <first>Elke</first> <last>Roex</last> </person> <person id="ROUSSEAUX_Jacqueline" gov="no" group="MR" lang="f" gender="f"> <first>Jacqueline</first> <last>Rousseaux</last> </person> <person id="SCHEPMANS_Françoise" gov="no" group="MR" lang="f" gender="f"> <first>Françoise</first> <last>Schepmans</last> </person> <person id="SIDIBE_Fatoumata" gov="no" group="FDF" lang="fr" gender="f"> <first>Fatoumata</first> <last>Sidibe</last> </person> <person id="TEITELBAUM_Viviane" gov="no" group="MR" lang="f" gender="f"> <first>Viviane</first> <last>Teitelbaum</last> </person> <person id="THIELEMANS_Freddy" gov="no" group="PS" lang="fr" gender="m"> <first>Freddy</first> <last>Thielemans</last> </person> <person id="TOMAS_Eric" gov="no" group="PS" lang="fr" gender="m"> <first>Eric</first> <last>Tomas</last> </person> <person id="TRACHTE_Barbara" gov="no" group="Ecolo" lang="fr" gender="f"> <first>Barbara</first> <last>Trachte</last> </person> <person id="VAN DAMME_Jef" gov="no" group="sp.a" lang="nl" gender="m"> <first>Jef</first> <last>Van Damme</last> </person> <person id="VAN DEN BRANDT_Elke" gov="no" group="Groen!" lang="nl" gender="f"> <first>Elke</first> <last>Van den Brandt</last> </person> <person id="VAN GOIDSENHOVEN_Gaëtan" gov="no" group="MR" lang="f" gender="m"> <first>Gaëtan</first> <last>Van Goidsenhoven</last> </person> <person id="VAN LINTER_Greet" gov="no" group="Ind" lang="nl" gender="f"> <first>Greet</first> <last>Van Linter</last> </person> <person id="VANDENBOSSCHE_Walter" gov="no" group="CD&amp;V" lang="nl" gender="m"> <first>Walter</first> <last>Vandenbossche</last> </person> <person id="VANHALEWYN_Vincent" gov="no" group="Ecolo" lang="fr" gender="m"> <first>Vincent</first> <last>Vanhalewyn</last> </person> <person id="VERVOORT_Rudi" gov="no" group="PS" lang="fr" gender="m"> <first>Rudi</first> <last>Vervoort</last> </person> <person id="GROUWELS_Brigitte" gov="yes" gender="f" lang="nl" group="CD&amp;V"> <first>Brigitte</first> <last>Grouwels</last> <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Openbare Werken en Vervoer</ti> <ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée des Travaux publics et des Transports</ti> <ti l="N" meeting-type="VVGGC">lid van het Verenigd College, bevoegd voor het Beleid inzake Bijstand aan Personen en Openbaar Ambt</ti> <ti l="F" meeting-type="VVGGC">membre du Collège réuni, compétente pour la Politique d'Aide aux Personnes et la Fonction publique</ti> </person> <person id="DOULKERIDIS_Christos" gov="yes" gender="m" lang="fr" group="Ecolo"> <first>Christos</first> <last>Doulkeridis</last> <ti l="N" meeting-type="BHP">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Huisvesting en Brandbestrijding en Dringende Medische Hulp</ti> <ti l="F" meeting-type="BHP">secrétaire d'État à la Région de Bruxelles-Capitale, chargé du Logement et de la Lutte contre l'Incendie et l'Aide médicale urgente</ti> <ti l="N" meeting-type="VVGGC"/> <ti l="F" meeting-type="VVGGC"/> <ti l="F" meeting-type="PFB">président du Gouvernement, ministre en charge du Budget, de l'Enseignement, du Tourisme et des Relations internationales</ti> </person> <person id="VANHENGEL_Guy" gov="yes" gender="m" lang="nl" group="Open VLD"> <first>Guy</first> <last>Vanhengel</last> <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Financiën, Begroting, Openbaar Ambt en Externe Betrekkingen</ti> <ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargé des Finances, du Budget, de la Fonction publique et des Relations extérieures</ti> <ti l="N" meeting-type="VVGGC"/> <ti l="F" meeting-type="VVGGC"/> </person> <person id="Vanhengel, Guy" gov="yes" gender="m" lang="nl" group="Open VLD"> <first>Guy</first> <last>Vanhengel</last> <ti l="N" meeting-type="BHP"/> <ti l="F" meeting-type="BHP"/> <ti l="N" meeting-type="VVGGC"/> <ti l="F" meeting-type="VVGGC"/> </person> <person id="PICQUE_Charles" gov="yes" gender="m" lang="fr" group="PS"> <first>Charles</first> <last>Picqué</last> <ti l="N" meeting-type="BHP">minister-president van de Brusselse Hoofdstedelijke Regering, belast met Plaatselijke Besturen, Ruimtelijke Ordening, Monumenten en Landschappen, Openbare Netheid en Ontwikkelingssamenwerking</ti> <ti l="F" meeting-type="BHP">ministre-président du Gouvernement de la Région de Bruxelles-Capitale, chargé des Pouvoirs locaux, de l'Aménagement du Territoire, des Monuments et Sites, de la Propreté publique et de la Coopération au Développement</ti> <ti l="F" meeting-type="PFB">ministre en charge de la Cohésion sociale</ti> <ti l="N" meeting-type="VVGGC"/> <ti l="F" meeting-type="VVGGC"/> </person> <person id="KIR_Emir" gov="yes" gender="m" lang="fr" group="PS"> <first>Emir</first> <last>Kir</last> <ti l="F" meeting-type="PFB">ministre en charge de la Formation professionnelle, de la Culture, du Transport scolaire, de l’Action sociale, de la Famille, du Sport et des Relations internationales</ti> <ti l="N" meeting-type="BHP">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Stedenbouw en Openbare Netheid</ti> <ti l="F" meeting-type="BHP">secrétaire d'État à la Région de Bruxelles-Capitale, chargé de l'Urbanisme et de la Propreté publique</ti> </person> <person id="DE_LILLE_Bruno" gov="yes" gender="m" lang="nl" group="Groen"> <first>Bruno</first> <last>De Lille</last> <ti l="N" meeting-type="BHP">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Mobiliteit, Openbaar Ambt, Gelijke Kansen en Administratieve Vereenvoudiging</ti> <ti l="F" meeting-type="BHP">secrétaire d'État à la Région de Bruxelles-Capitale, chargé de la Mobilité, de la Fonction publique, de l'Égalité des Chances et de la Simplification administrative</ti> </person> <person id="CEREXHE_Benoît" gov="yes" gender="m" lang="fr" group="cdH"> <first>Benoît</first> <last>Cerexhe</last> <ti l="F" meeting-type="PFB">ministre en charge de la Fonction publique, de la Politique de la santé et de la Formation professionnelle des Classes moyennes</ti> <ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargé de l'Emploi, de l'Économie, du Commerce extérieur et de la Recherche scientifique</ti> <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Tewerkstelling, Economie, Buitenlandse Handel en Wetenschappelijk Onderzoek</ti> </person> <person id="HUYTEBROECK_Evelyne" gov="yes" gender="f" lang="fr" group="Ecolo"> <first>Evelyne</first> <last>Huytebroeck</last> <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Leefmilieu, Energie en Waterbeleid, Stadsvernieuwing, Brandbestrijding en Dringende Medische Hulp en Huisvesting</ti> <ti l="F" meeting-type="PFB">ministre en charge de la Politique d'aide aux personnes handicapées</ti> <ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée de l'Environnement, de l'Energie et de la Politique de l'Eau, de la Rénovation urbaine, de la Lutte contre l'Incendie et l'Aide médicale urgente et du Logement</ti> <ti l="N" meeting-type="VVGGC">lid van het Verenigd College, bevoegd voor het Beleid inzake Bijstand aan Personen, Financiën, Begroting en Externe Betrekkingen</ti> <ti l="F" meeting-type="VVGGC">membre du Collège réuni, compétente pour la Politique d’Aide aux Personnes, les Finances, le Budget et les Relations extérieures</ti> </person> </reference><info> <type>PFB</type> <pres/> </info></container>
+plugin...C2L85PO (line 130)
+GET http://localhost:8080/exist/tullio/editor/xsl/flatten.xsl?_=1342120108425
+	
+200 OK
+		102ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/reconcile.xsl?_=1342120108579
+	
+200 OK
+		69ms	
+jquery-1.6.4.js (line 7950)
+finalize----<container><div id="text"><p c="305"> [153 par 1] 1 2 3 4 5 6 7 8 9 10 11 12 13 14&amp;( ERBZERB VERBERBERB ERVZEVEZVERAAAA The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> <p c="305"> [153 par 2] The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> <p c="305"> [153 par 3] The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> </div><reference name="titles"> <l id="presi-N">Voorzitterschap: </l> <l id="presi-F">Présidence: </l> <l id="startInt-F"><span class="incomplete">INTERPELLATION/INTERPELLATIONS</span></l> <l id="startInt-N"><span class="incomplete">INTERPELLATIE/INTERPELLATIES</span></l> <l id="startIntOrd-N"><span class="incomplete">Aan de orde is de interpellatie van de heer / mevrouw (naam). OF Aan de orde zijn de interpellaties.</span></l> <l id="startIntOrd-F"><span class="incomplete">L'ordre du jour appelle l'interpellation de M. / Mme (nom). OU L'ordre du jour appelle les interpellations.</span></l> <l id="contN-N">(verder in het Nederlands)</l> <l id="contN-F">(poursuivant en néerlandais)</l> <l id="contF-F">(poursuivant en français)</l> <l id="contF-N">(verder in het Frans)</l> <l id="pres-m-N">De voorzitter.- </l> <l id="pres-f-N">Mevrouw de voorzitter.- </l> <l id="pres-m-F">M. le président.- </l> <l id="pres-f-F">Mme la présidente.- </l> <l id="exc-F">Mme la présidente.- </l> <l id="exc-N"><span class="incomplete">Verontschuldigen/Verontschuldigt zich voor hun/zijn/haar afwezigheid:</span></l> <l id="exc-N"><span class="incomplete">Ont / A prié d'excuser leur / son absence :</span></l> <l id="title-m-N">De heer </l> <l id="titleSmall-m-N">de heer </l> <l id="title-m-F">M. </l> <l id="titleSmall-m-F">M. </l> <l id="title-f-N">Mevrouw </l> <l id="titleSmall-f-N">Mevrouw </l> <l id="title-f-F">Mme </l> <l id="titleSmall-f-F">Mme </l> <l id="parole-N"> heeft het woord.</l> <l id="parole-F">La parole est à </l> <l id="to-N"> aan </l> <l id="to-F"> à </l> <l id="toExtra-N">en aan </l> <l id="toExtra-F">et à </l> <l id="concerning-F"> concernant </l> <l id="concerning-N"> betreffende </l> <person id="---" gov="no" group="" lang="nl" gender="m"> <first>----</first> <last>----</last> </person> <person id="AHIDAR_Fouad" gov="no" group="sp.a" lang="nl" gender="m"> <first>Fouad</first> <last>Ahidar</last> </person> <person id="ALBISHARI_Aziz" gov="no" group="Ecolo" lang="fr" gender="m"> <first>Aziz</first> <last>Albishari</last> </person> <person id="AMPE_Els" gov="no" group="Open VLD" lang="nl" gender="f"> <first>Els</first> <last>Ampe</last> </person> <person id="AZZOUZI_Mohamed" gov="no" group="PS" lang="fr" gender="m"> <first>Mohamed</first> <last>Azzouzi</last> </person> <person id="BERTIEAUX_Françoise" gov="no" group="MR" lang="f" gender="f"> <first>Françoise</first> <last>Bertieaux</last> </person> <person id="BOUARFA_Sfia" gov="no" group="PS" lang="fr" gender="f"> <first>Sfia</first> <last>Bouarfa</last> </person> <person id="BRAECKMAN_Dominique" gov="no" group="Ecolo" lang="fr" gender="f"> <first>Dominique</first> <last>Braeckman</last> </person> <person id="BROTCHI_Jacques" gov="no" group="MR" lang="f" gender="m"> <first>Jacques</first> <last>Brotchi</last> </person> <person id="BROUHON_Sophie" gov="no" group="sp.a" lang="nl" gender="f"> <first>Sophie</first> <last>Brouhon</last> </person> <person id="CARON_Danielle" gov="no" group="cdH" lang="fr" gender="f"> <first>Danielle</first> <last>Caron</last> </person> <person id="CARTHE_Michèle" gov="no" group="PS" lang="fr" gender="f"> <first>Michèle</first> <last>Carthe</last> </person> <person id="CHAHID_Mohammadi" gov="no" group="PS" lang="fr" gender="m"> <first>Mohammadi</first> <last>Chahid</last> </person> <person id="CLOSE_Philippe" gov="no" group="PS" lang="fr" gender="m"> <first>Philippe</first> <last>Close</last> </person> <person id="COLSON_Michel" gov="no" group="FDF" lang="fr" gender="m"> <first>Michel</first> <last>Colson</last> </person> <person id="COPPENS_René" gov="no" group="Open VLD" lang="nl" gender="m"> <first>René</first> <last>Coppens</last> </person> <person id="d'Ursel_Anne-Charlotte" gov="no" group="MR" lang="f" gender="f"> <first>Anne-Charlotte</first> <last>d'Ursel</last> </person> <person id="DAÏF_Mohamed" gov="no" group="PS" lang="fr" gender="m"> <first>Mohamed</first> <last>Daïf</last> </person> <person id="DE BOCK_Emmanuel" gov="no" group="FDF" lang="fr" gender="m"> <first>Emmanuel</first> <last>De Bock</last> </person> <person id="de Clippele_Olivier" gov="no" group="MR" lang="f" gender="m"> <first>Olivier</first> <last>de Clippele</last> </person> <person id="DE PAUW_Brigitte" gov="no" group="CD&amp;V" lang="nl" gender="f"> <first>Brigitte</first> <last>De Pauw</last> </person> <person id="DE RIDDER_Paul" gov="no" group="N-VA" lang="fr" gender="m"> <first>Paul</first> <last>De Ridder</last> </person> <person id="De Wolf_Vincent" gov="no" group="MR" lang="f" gender="m"> <first>Vincent</first> <last>De Wolf</last> </person> <person id="de_GROOTE Julie" gov="no" group="cdH" lang="fr" gender="f"> <first>Julie</first> <last>de Groote</last> </person> <person id="de_PATOUL Serge" gov="no" group="FDF" lang="fr" gender="m"> <first>Serge</first> <last>de Patoul</last> </person> <person id="DEBAETS_Bianca" gov="no" group="CD&amp;V" lang="nl" gender="f"> <first>Bianca</first> <last>Debaets</last> </person> <person id="DEFOSSE_Jean-Claude" gov="no" group="Ecolo" lang="fr" gender="m"> <first>Jean-Claude</first> <last>Defosse</last> </person> <person id="DEJONGHE_Carla" gov="no" group="Open VLD" lang="nl" gender="f"> <first>Carla</first> <last>Dejonghe</last> </person> <person id="DELFORGE_Céline" gov="no" group="Ecolo" lang="fr" gender="f"> <first>Céline</first> <last>Delforge</last> </person> <person id="DEMOL_Johan" gov="no" group="Ind" lang="nl" gender="m"> <first>Johan</first> <last>Demol</last> </person> <person id="DESIR_Caroline" gov="no" group="PS" lang="fr" gender="f"> <first>Caroline</first> <last>Désir</last> </person> <person id="DESTEXHE_Alain" gov="no" group="MR" lang="f" gender="m"> <first>Alain</first> <last>Destexhe</last> </person> <person id="DIALLO_Bea" gov="no" group="PS" lang="fr" gender="m"> <first>Bea</first> <last>Diallo</last> </person> <person id="DIRIX_Anne" gov="no" group="Ecolo" lang="fr" gender="f"> <first>Anne</first> <last>Dirix</last> </person> <person id="DOYEN_Hervé" gov="no" group="cdH" lang="fr" gender="m"> <first>Hervé</first> <last>Doyen</last> </person> <person id="DRAPS_Willem" gov="no" group="MR" lang="f" gender="m"> <first>Willem</first> <last>Draps</last> </person> <person id="du BUS de WARNAFFE_André" gov="no" group="cdH" lang="fr" gender="m"> <first>André</first> <last>du Bus de Warnaffe</last> </person> <person id="DUPUIS_Françoise" gov="no" group="PS" lang="fr" gender="f"> <first>Françoise</first> <last>Dupuis</last> </person> <person id="EL KHANNOUSS_Ahmed" gov="no" group="cdH" lang="fr" gender="m"> <first>Ahmed</first> <last>El Khannouss</last> </person> <person id="EL KTIBI_Ahmed" gov="no" group="PS" lang="fr" gender="m"> <first>Ahmed</first> <last>El Ktibi</last> </person> <person id="EL YOUSFI_Nadia" gov="no" group="PS" lang="fr" gender="f"> <first>Nadia</first> <last>El Yousfi</last> </person> <person id="FASSI-FIHRI_Hamza" gov="no" group="cdH" lang="fr" gender="m"> <first>Hamza</first> <last>Fassi-Fihri</last> </person> <person id="FRAITEUR_Béatrice" gov="no" group="FDF" lang="fr" gender="f"> <first>Béatrice</first> <last>Fraiteur</last> </person> <person id="FREMAULT_Céline" gov="no" group="cdH" lang="fr" gender="f"> <first>Céline</first> <last>Fremault</last> </person> <person id="GOSUIN_Didier" gov="no" group="FDF" lang="fr" gender="m"> <first>Didier</first> <last>Gosuin</last> </person> <person id="HERSCOVICI_Anne" gov="no" group="Ecolo" lang="fr" gender="f"> <first>Anne</first> <last>Herscovici</last> </person> <person id="HUTCHINSON_Alain" gov="no" group="PS" lang="fr" gender="m"> <first>Alain</first> <last>Hutchinson</last> </person> <person id="IKAZBAN_Jamal" gov="no" group="PS" lang="fr" gender="m"> <first>Jamal</first> <last>Ikazban</last> </person> <person id="JODOGNE_Cécile" gov="no" group="FDF" lang="fr" gender="f"> <first>Cécile</first> <last>Jodogne</last> </person> <person id="KHATTABI_Zakia" gov="no" group="Ecolo" lang="fr" gender="f"> <first>Zakia</first> <last>Khattabi</last> </person> <person id="LEMESRE_Marion" gov="no" group="MR" lang="f" gender="f"> <first>Marion</first> <last>Lemesre</last> </person> <person id="LOOTENS STAEL_Dominiek" gov="no" group="Vlaams Belang" lang="n" gender="m"> <first>Dominiek</first> <last>Lootens-Stael</last> </person> <person id="LURQUIN_Vincent" gov="no" group="Ecolo" lang="fr" gender="m"> <first>Vincent</first> <last>Lurquin</last> </person> <person id="MAES_Annemie" gov="no" group="Groen!" lang="nl" gender="f"> <first>Annemie</first> <last>Maes</last> </person> <person id="MAMPAKA_MANKAMBA Bertin" gov="no" group="cdH" lang="fr" gender="m"> <first>Bertin</first> <last>Mampaka Mankamba</last> </person> <person id="MANDAILA_Gisèle" gov="no" group="FDF" lang="fr" gender="f"> <first>Gisèle</first> <last>Mandaila</last> </person> <person id="MARON_Alain" gov="no" group="Ecolo" lang="fr" gender="m"> <first>Alain</first> <last>Maron</last> </person> <person id="MENNEKENS_Herman" gov="no" group="Open VLD" lang="nl" gender="m"> <first>Herman</first> <last>Mennekens</last> </person> <person id="MIGISHA_Pierre" gov="no" group="cdH" lang="fr" gender="m"> <first>Pierre</first> <last>Migisha</last> </person> <person id="MOLENBERG_Isabelle" gov="no" group="FDF" lang="fr" gender="f"> <first>Isabelle</first> <last>Molenberg</last> </person> <person id="MOREL_Jacques" gov="no" group="Ecolo" lang="fr" gender="m"> <first>Jacques</first> <last>Morel</last> </person> <person id="MOUHSSIN_Ahmed" gov="no" group="Ecolo" lang="fr" gender="m"> <first>Ahmed</first> <last>Mouhssin</last> </person> <person id="MOUREAUX_Catherine" gov="no" group="PS" lang="fr" gender="f"> <first>Catherine</first> <last>Moureaux</last> </person> <person id="MOUZON_Anne Sylvie" gov="no" group="PS" lang="fr" gender="f"> <first>Anne Sylvie</first> <last>Mouzon</last> </person> <person id="NAGY_Marie" gov="no" group="Ecolo" lang="fr" gender="f"> <first>Marie</first> <last>Nagy</last> </person> <person id="OURIAGHLI_Mohamed" gov="no" group="PS" lang="fr" gender="m"> <first>Mohamed</first> <last>Ouriaghli</last> </person> <person id="OZDEMIR_Mahinur" gov="no" group="cdH" lang="fr" gender="f"> <first>Mahinur</first> <last>Ozdemir</last> </person> <person id="ÖZKARA_Emin" gov="no" group="PS" lang="fr" gender="m"> <first>Emin</first> <last>Özkara</last> </person> <person id="P'tito_Olivia" gov="no" group="PS" lang="fr" gender="f"> <first>Olivia</first> <last>P'tito</last> </person> <person id="PAYFA_Martine" gov="no" group="FDF" lang="fr" gender="f"> <first>Martine</first> <last>Payfa</last> </person> <person id="PERSOONS_Caroline" gov="no" group="FDF" lang="fr" gender="f"> <first>Caroline</first> <last>Persoons</last> </person> <person id="PESZTAT_Yaron" gov="no" group="Ecolo" lang="fr" gender="m"> <first>Yaron</first> <last>Pesztat</last> </person> <person id="PINXTEREN_Arnaud" gov="no" group="Ecolo" lang="fr" gender="m"> <first>Arnaud</first> <last>Pinxteren</last> </person> <person id="PIVIN_Philippe" gov="no" group="MR" lang="f" gender="m"> <first>Philippe</first> <last>Pivin</last> </person> <person id="RIGUELLE_Joël" gov="no" group="cdH" lang="fr" gender="m"> <first>Joël</first> <last>Riguelle</last> </person> <person id="ROEX_Elke" gov="no" group="sp.a" lang="nl" gender="f"> <first>Elke</first> <last>Roex</last> </person> <person id="ROUSSEAUX_Jacqueline" gov="no" group="MR" lang="f" gender="f"> <first>Jacqueline</first> <last>Rousseaux</last> </person> <person id="SCHEPMANS_Françoise" gov="no" group="MR" lang="f" gender="f"> <first>Françoise</first> <last>Schepmans</last> </person> <person id="SIDIBE_Fatoumata" gov="no" group="FDF" lang="fr" gender="f"> <first>Fatoumata</first> <last>Sidibe</last> </person> <person id="TEITELBAUM_Viviane" gov="no" group="MR" lang="f" gender="f"> <first>Viviane</first> <last>Teitelbaum</last> </person> <person id="THIELEMANS_Freddy" gov="no" group="PS" lang="fr" gender="m"> <first>Freddy</first> <last>Thielemans</last> </person> <person id="TOMAS_Eric" gov="no" group="PS" lang="fr" gender="m"> <first>Eric</first> <last>Tomas</last> </person> <person id="TRACHTE_Barbara" gov="no" group="Ecolo" lang="fr" gender="f"> <first>Barbara</first> <last>Trachte</last> </person> <person id="VAN DAMME_Jef" gov="no" group="sp.a" lang="nl" gender="m"> <first>Jef</first> <last>Van Damme</last> </person> <person id="VAN DEN BRANDT_Elke" gov="no" group="Groen!" lang="nl" gender="f"> <first>Elke</first> <last>Van den Brandt</last> </person> <person id="VAN GOIDSENHOVEN_Gaëtan" gov="no" group="MR" lang="f" gender="m"> <first>Gaëtan</first> <last>Van Goidsenhoven</last> </person> <person id="VAN LINTER_Greet" gov="no" group="Ind" lang="nl" gender="f"> <first>Greet</first> <last>Van Linter</last> </person> <person id="VANDENBOSSCHE_Walter" gov="no" group="CD&amp;V" lang="nl" gender="m"> <first>Walter</first> <last>Vandenbossche</last> </person> <person id="VANHALEWYN_Vincent" gov="no" group="Ecolo" lang="fr" gender="m"> <first>Vincent</first> <last>Vanhalewyn</last> </person> <person id="VERVOORT_Rudi" gov="no" group="PS" lang="fr" gender="m"> <first>Rudi</first> <last>Vervoort</last> </person> <person id="GROUWELS_Brigitte" gov="yes" gender="f" lang="nl" group="CD&amp;V"> <first>Brigitte</first> <last>Grouwels</last> <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Openbare Werken en Vervoer</ti> <ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée des Travaux publics et des Transports</ti> <ti l="N" meeting-type="VVGGC">lid van het Verenigd College, bevoegd voor het Beleid inzake Bijstand aan Personen en Openbaar Ambt</ti> <ti l="F" meeting-type="VVGGC">membre du Collège réuni, compétente pour la Politique d'Aide aux Personnes et la Fonction publique</ti> </person> <person id="DOULKERIDIS_Christos" gov="yes" gender="m" lang="fr" group="Ecolo"> <first>Christos</first> <last>Doulkeridis</last> <ti l="N" meeting-type="BHP">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Huisvesting en Brandbestrijding en Dringende Medische Hulp</ti> <ti l="F" meeting-type="BHP">secrétaire d'État à la Région de Bruxelles-Capitale, chargé du Logement et de la Lutte contre l'Incendie et l'Aide médicale urgente</ti> <ti l="N" meeting-type="VVGGC"/> <ti l="F" meeting-type="VVGGC"/> <ti l="F" meeting-type="PFB">président du Gouvernement, ministre en charge du Budget, de l'Enseignement, du Tourisme et des Relations internationales</ti> </person> <person id="VANHENGEL_Guy" gov="yes" gender="m" lang="nl" group="Open VLD"> <first>Guy</first> <last>Vanhengel</last> <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Financiën, Begroting, Openbaar Ambt en Externe Betrekkingen</ti> <ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargé des Finances, du Budget, de la Fonction publique et des Relations extérieures</ti> <ti l="N" meeting-type="VVGGC"/> <ti l="F" meeting-type="VVGGC"/> </person> <person id="Vanhengel, Guy" gov="yes" gender="m" lang="nl" group="Open VLD"> <first>Guy</first> <last>Vanhengel</last> <ti l="N" meeting-type="BHP"/> <ti l="F" meeting-type="BHP"/> <ti l="N" meeting-type="VVGGC"/> <ti l="F" meeting-type="VVGGC"/> </person> <person id="PICQUE_Charles" gov="yes" gender="m" lang="fr" group="PS"> <first>Charles</first> <last>Picqué</last> <ti l="N" meeting-type="BHP">minister-president van de Brusselse Hoofdstedelijke Regering, belast met Plaatselijke Besturen, Ruimtelijke Ordening, Monumenten en Landschappen, Openbare Netheid en Ontwikkelingssamenwerking</ti> <ti l="F" meeting-type="BHP">ministre-président du Gouvernement de la Région de Bruxelles-Capitale, chargé des Pouvoirs locaux, de l'Aménagement du Territoire, des Monuments et Sites, de la Propreté publique et de la Coopération au Développement</ti> <ti l="F" meeting-type="PFB">ministre en charge de la Cohésion sociale</ti> <ti l="N" meeting-type="VVGGC"/> <ti l="F" meeting-type="VVGGC"/> </person> <person id="KIR_Emir" gov="yes" gender="m" lang="fr" group="PS"> <first>Emir</first> <last>Kir</last> <ti l="F" meeting-type="PFB">ministre en charge de la Formation professionnelle, de la Culture, du Transport scolaire, de l’Action sociale, de la Famille, du Sport et des Relations internationales</ti> <ti l="N" meeting-type="BHP">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Stedenbouw en Openbare Netheid</ti> <ti l="F" meeting-type="BHP">secrétaire d'État à la Région de Bruxelles-Capitale, chargé de l'Urbanisme et de la Propreté publique</ti> </person> <person id="DE_LILLE_Bruno" gov="yes" gender="m" lang="nl" group="Groen"> <first>Bruno</first> <last>De Lille</last> <ti l="N" meeting-type="BHP">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Mobiliteit, Openbaar Ambt, Gelijke Kansen en Administratieve Vereenvoudiging</ti> <ti l="F" meeting-type="BHP">secrétaire d'État à la Région de Bruxelles-Capitale, chargé de la Mobilité, de la Fonction publique, de l'Égalité des Chances et de la Simplification administrative</ti> </person> <person id="CEREXHE_Benoît" gov="yes" gender="m" lang="fr" group="cdH"> <first>Benoît</first> <last>Cerexhe</last> <ti l="F" meeting-type="PFB">ministre en charge de la Fonction publique, de la Politique de la santé et de la Formation professionnelle des Classes moyennes</ti> <ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargé de l'Emploi, de l'Économie, du Commerce extérieur et de la Recherche scientifique</ti> <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Tewerkstelling, Economie, Buitenlandse Handel en Wetenschappelijk Onderzoek</ti> </person> <person id="HUYTEBROECK_Evelyne" gov="yes" gender="f" lang="fr" group="Ecolo"> <first>Evelyne</first> <last>Huytebroeck</last> <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Leefmilieu, Energie en Waterbeleid, Stadsvernieuwing, Brandbestrijding en Dringende Medische Hulp en Huisvesting</ti> <ti l="F" meeting-type="PFB">ministre en charge de la Politique d'aide aux personnes handicapées</ti> <ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée de l'Environnement, de l'Energie et de la Politique de l'Eau, de la Rénovation urbaine, de la Lutte contre l'Incendie et l'Aide médicale urgente et du Logement</ti> <ti l="N" meeting-type="VVGGC">lid van het Verenigd College, bevoegd voor het Beleid inzake Bijstand aan Personen, Financiën, Begroting en Externe Betrekkingen</ti> <ti l="F" meeting-type="VVGGC">membre du Collège réuni, compétente pour la Politique d’Aide aux Personnes, les Finances, le Budget et les Relations extérieures</ti> </person> </reference><info> <type>PFB</type> <pres/> </info><div id="events"><events next="307"><e clip="305" commit="P" length="00:02" time="03:22:27" type="marker" n="305" c="true" lang="F"/><e n="307"/></events></div><div id="integratedEvents"><events next="307"><e clip="305" commit="P" length="00:02" time="03:22:27" type="marker" n="305" c="true" lang="F"/><leftovers/></events></div></container>
+plugin...C2L85PO (line 57)
+GET http://localhost:8080/exist/tullio/editor/xsl/processEditorContent.xsl?_=1342120108742
+	
+200 OK
+		84ms	
+jquery-1.6.4.js (line 7950)
+enter finish R305
+plugin...C2L85PO (line 22)
+Document
+plugin...C2L85PO (line 24)
+old table
+plugin...C2L85PO (line 29)
+[table.events-table]
+plugin...C2L85PO (line 30)
+new table
+plugin...C2L85PO (line 31)
+<p c="305"> [153 par 1] 1 2 3 4 5 6 7 8 9 10 11 12 13 14&amp;( ERBZERB VERBERBERB ERVZEVEZVERAAAA The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> <p c="305"> [153 par 2] The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p> <p c="305"> [153 par 3] The Newton project was a PDA platform. The PDA category did not exist for most of Newton's genesis, and the phrase "personal digital assistant" was coined relatively late in the development cycle by Apple's CEO John Sculley,[1] the driving force behind the project. Larry Tesler identified that a powerful, low-power processor was needed for sophisticated graphics manipulation. He found Hermann Hauser, with the Acorn RISC Machine processor, and put together Advanced RISC Machines.[2] Newton was intended to be a complete reinvention of personal computing. For most of its design lifecycle Newton had a large-format screen, more internal memory, and an object-oriented graphics kernel. One of the original motivating use cases for the design was known as the "Architect Scenario", in which Newton's designers imagined a residential architect working quickly with a client to sketch, clean up, and interactively modify a simple two-dimensional home plan.</p>
+plugin...C2L85PO (line 32)
+exit finish
+plugin...C2L85PO (line 46)
+exit finalize
+plugin...C2L85PO (line 66)
+no controls added
+page-player.js (line 586)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120109503
+	
+200 OK
+		182ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120109526
+	
+200 OK
+		315ms	
+jquery-1.6.4.js (line 7950)
+plugin R305-o
+plugin...C2L85PO (line 137)
+base doc
+plugin...C2L85PO (line 150)
+Document
+plugin...C2L85PO (line 151)
+GET http://localhost:8080/exist/tullio/xq/return-var....xql?start=305&m=2012-06-05---_PFB_xxxxxx&mt=PFB
+	
+200 OK
+		256ms	
+jquery-1.6.4.js (line 7950)
+<info> <type>PFB</type> <pres/> </info>
+plugin...C2L85PO (line 171)
+step 0
+plugin...C2L85PO (line 180)
+GET http://localhost:8080/exist/tullio/editor/xsl/flatten.xsl?_=1342120109980
+	
+200 OK
+		195ms	
+jquery-1.6.4.js (line 7950)
+reconcile -- xml:
+plugin...C2L85PO (line 113)
+<container><div id="text"/><reference name="titles"> <l id="presi-N">Voorzitterschap: </l> <l id="presi-F">Présidence: </l> <l id="startInt-F"><span class="incomplete">INTERPELLATION/INTERPELLATIONS</span></l> <l id="startInt-N"><span class="incomplete">INTERPELLATIE/INTERPELLATIES</span></l> <l id="startIntOrd-N"><span class="incomplete">Aan de orde is de interpellatie van de heer / mevrouw (naam). OF Aan de orde zijn de interpellaties.</span></l> <l id="startIntOrd-F"><span class="incomplete">L'ordre du jour appelle l'interpellation de M. / Mme (nom). OU L'ordre du jour appelle les interpellations.</span></l> <l id="contN-N">(verder in het Nederlands)</l> <l id="contN-F">(poursuivant en néerlandais)</l> <l id="contF-F">(poursuivant en français)</l> <l id="contF-N">(verder in het Frans)</l> <l id="pres-m-N">De voorzitter.- </l> <l id="pres-f-N">Mevrouw de voorzitter.- </l> <l id="pres-m-F">M. le président.- </l> <l id="pres-f-F">Mme la présidente.- </l> <l id="exc-F">Mme la présidente.- </l> <l id="exc-N"><span class="incomplete">Verontschuldigen/Verontschuldigt zich voor hun/zijn/haar afwezigheid:</span></l> <l id="exc-N"><span class="incomplete">Ont / A prié d'excuser leur / son absence :</span></l> <l id="title-m-N">De heer </l> <l id="titleSmall-m-N">de heer </l> <l id="title-m-F">M. </l> <l id="titleSmall-m-F">M. </l> <l id="title-f-N">Mevrouw </l> <l id="titleSmall-f-N">Mevrouw </l> <l id="title-f-F">Mme </l> <l id="titleSmall-f-F">Mme </l> <l id="parole-N"> heeft het woord.</l> <l id="parole-F">La parole est à </l> <l id="to-N"> aan </l> <l id="to-F"> à </l> <l id="toExtra-N">en aan </l> <l id="toExtra-F">et à </l> <l id="concerning-F"> concernant </l> <l id="concerning-N"> betreffende </l> <person gender="m" lang="nl" group="" gov="no" id="---"> <first>----</first> <last>----</last> </person> <person gender="m" lang="nl" group="sp.a" gov="no" id="AHIDAR_Fouad"> <first>Fouad</first> <last>Ahidar</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="ALBISHARI_Aziz"> <first>Aziz</first> <last>Albishari</last> </person> <person gender="f" lang="nl" group="Open VLD" gov="no" id="AMPE_Els"> <first>Els</first> <last>Ampe</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="AZZOUZI_Mohamed"> <first>Mohamed</first> <last>Azzouzi</last> </person> <person gender="f" lang="f" group="MR" gov="no" id="BERTIEAUX_Françoise"> <first>Françoise</first> <last>Bertieaux</last> </person> <person gender="f" lang="fr" group="PS" gov="no" id="BOUARFA_Sfia"> <first>Sfia</first> <last>Bouarfa</last> </person> <person gender="f" lang="fr" group="Ecolo" gov="no" id="BRAECKMAN_Dominique"> <first>Dominique</first> <last>Braeckman</last> </person> <person gender="m" lang="f" group="MR" gov="no" id="BROTCHI_Jacques"> <first>Jacques</first> <last>Brotchi</last> </person> <person gender="f" lang="nl" group="sp.a" gov="no" id="BROUHON_Sophie"> <first>Sophie</first> <last>Brouhon</last> </person> <person gender="f" lang="fr" group="cdH" gov="no" id="CARON_Danielle"> <first>Danielle</first> <last>Caron</last> </person> <person gender="f" lang="fr" group="PS" gov="no" id="CARTHE_Michèle"> <first>Michèle</first> <last>Carthe</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="CHAHID_Mohammadi"> <first>Mohammadi</first> <last>Chahid</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="CLOSE_Philippe"> <first>Philippe</first> <last>Close</last> </person> <person gender="m" lang="fr" group="FDF" gov="no" id="COLSON_Michel"> <first>Michel</first> <last>Colson</last> </person> <person gender="m" lang="nl" group="Open VLD" gov="no" id="COPPENS_René"> <first>René</first> <last>Coppens</last> </person> <person gender="f" lang="f" group="MR" gov="no" id="d'Ursel_Anne-Charlotte"> <first>Anne-Charlotte</first> <last>d'Ursel</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="DAÏF_Mohamed"> <first>Mohamed</first> <last>Daïf</last> </person> <person gender="m" lang="fr" group="FDF" gov="no" id="DE BOCK_Emmanuel"> <first>Emmanuel</first> <last>De Bock</last> </person> <person gender="m" lang="f" group="MR" gov="no" id="de Clippele_Olivier"> <first>Olivier</first> <last>de Clippele</last> </person> <person gender="f" lang="nl" group="CD&amp;V" gov="no" id="DE PAUW_Brigitte"> <first>Brigitte</first> <last>De Pauw</last> </person> <person gender="m" lang="fr" group="N-VA" gov="no" id="DE RIDDER_Paul"> <first>Paul</first> <last>De Ridder</last> </person> <person gender="m" lang="f" group="MR" gov="no" id="De Wolf_Vincent"> <first>Vincent</first> <last>De Wolf</last> </person> <person gender="f" lang="fr" group="cdH" gov="no" id="de_GROOTE Julie"> <first>Julie</first> <last>de Groote</last> </person> <person gender="m" lang="fr" group="FDF" gov="no" id="de_PATOUL Serge"> <first>Serge</first> <last>de Patoul</last> </person> <person gender="f" lang="nl" group="CD&amp;V" gov="no" id="DEBAETS_Bianca"> <first>Bianca</first> <last>Debaets</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="DEFOSSE_Jean-Claude"> <first>Jean-Claude</first> <last>Defosse</last> </person> <person gender="f" lang="nl" group="Open VLD" gov="no" id="DEJONGHE_Carla"> <first>Carla</first> <last>Dejonghe</last> </person> <person gender="f" lang="fr" group="Ecolo" gov="no" id="DELFORGE_Céline"> <first>Céline</first> <last>Delforge</last> </person> <person gender="m" lang="nl" group="Ind" gov="no" id="DEMOL_Johan"> <first>Johan</first> <last>Demol</last> </person> <person gender="f" lang="fr" group="PS" gov="no" id="DESIR_Caroline"> <first>Caroline</first> <last>Désir</last> </person> <person gender="m" lang="f" group="MR" gov="no" id="DESTEXHE_Alain"> <first>Alain</first> <last>Destexhe</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="DIALLO_Bea"> <first>Bea</first> <last>Diallo</last> </person> <person gender="f" lang="fr" group="Ecolo" gov="no" id="DIRIX_Anne"> <first>Anne</first> <last>Dirix</last> </person> <person gender="m" lang="fr" group="cdH" gov="no" id="DOYEN_Hervé"> <first>Hervé</first> <last>Doyen</last> </person> <person gender="m" lang="f" group="MR" gov="no" id="DRAPS_Willem"> <first>Willem</first> <last>Draps</last> </person> <person gender="m" lang="fr" group="cdH" gov="no" id="du BUS de WARNAFFE_André"> <first>André</first> <last>du Bus de Warnaffe</last> </person> <person gender="f" lang="fr" group="PS" gov="no" id="DUPUIS_Françoise"> <first>Françoise</first> <last>Dupuis</last> </person> <person gender="m" lang="fr" group="cdH" gov="no" id="EL KHANNOUSS_Ahmed"> <first>Ahmed</first> <last>El Khannouss</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="EL KTIBI_Ahmed"> <first>Ahmed</first> <last>El Ktibi</last> </person> <person gender="f" lang="fr" group="PS" gov="no" id="EL YOUSFI_Nadia"> <first>Nadia</first> <last>El Yousfi</last> </person> <person gender="m" lang="fr" group="cdH" gov="no" id="FASSI-FIHRI_Hamza"> <first>Hamza</first> <last>Fassi-Fihri</last> </person> <person gender="f" lang="fr" group="FDF" gov="no" id="FRAITEUR_Béatrice"> <first>Béatrice</first> <last>Fraiteur</last> </person> <person gender="f" lang="fr" group="cdH" gov="no" id="FREMAULT_Céline"> <first>Céline</first> <last>Fremault</last> </person> <person gender="m" lang="fr" group="FDF" gov="no" id="GOSUIN_Didier"> <first>Didier</first> <last>Gosuin</last> </person> <person gender="f" lang="fr" group="Ecolo" gov="no" id="HERSCOVICI_Anne"> <first>Anne</first> <last>Herscovici</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="HUTCHINSON_Alain"> <first>Alain</first> <last>Hutchinson</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="IKAZBAN_Jamal"> <first>Jamal</first> <last>Ikazban</last> </person> <person gender="f" lang="fr" group="FDF" gov="no" id="JODOGNE_Cécile"> <first>Cécile</first> <last>Jodogne</last> </person> <person gender="f" lang="fr" group="Ecolo" gov="no" id="KHATTABI_Zakia"> <first>Zakia</first> <last>Khattabi</last> </person> <person gender="f" lang="f" group="MR" gov="no" id="LEMESRE_Marion"> <first>Marion</first> <last>Lemesre</last> </person> <person gender="m" lang="n" group="Vlaams Belang" gov="no" id="LOOTENS STAEL_Dominiek"> <first>Dominiek</first> <last>Lootens-Stael</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="LURQUIN_Vincent"> <first>Vincent</first> <last>Lurquin</last> </person> <person gender="f" lang="nl" group="Groen!" gov="no" id="MAES_Annemie"> <first>Annemie</first> <last>Maes</last> </person> <person gender="m" lang="fr" group="cdH" gov="no" id="MAMPAKA_MANKAMBA Bertin"> <first>Bertin</first> <last>Mampaka Mankamba</last> </person> <person gender="f" lang="fr" group="FDF" gov="no" id="MANDAILA_Gisèle"> <first>Gisèle</first> <last>Mandaila</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="MARON_Alain"> <first>Alain</first> <last>Maron</last> </person> <person gender="m" lang="nl" group="Open VLD" gov="no" id="MENNEKENS_Herman"> <first>Herman</first> <last>Mennekens</last> </person> <person gender="m" lang="fr" group="cdH" gov="no" id="MIGISHA_Pierre"> <first>Pierre</first> <last>Migisha</last> </person> <person gender="f" lang="fr" group="FDF" gov="no" id="MOLENBERG_Isabelle"> <first>Isabelle</first> <last>Molenberg</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="MOREL_Jacques"> <first>Jacques</first> <last>Morel</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="MOUHSSIN_Ahmed"> <first>Ahmed</first> <last>Mouhssin</last> </person> <person gender="f" lang="fr" group="PS" gov="no" id="MOUREAUX_Catherine"> <first>Catherine</first> <last>Moureaux</last> </person> <person gender="f" lang="fr" group="PS" gov="no" id="MOUZON_Anne Sylvie"> <first>Anne Sylvie</first> <last>Mouzon</last> </person> <person gender="f" lang="fr" group="Ecolo" gov="no" id="NAGY_Marie"> <first>Marie</first> <last>Nagy</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="OURIAGHLI_Mohamed"> <first>Mohamed</first> <last>Ouriaghli</last> </person> <person gender="f" lang="fr" group="cdH" gov="no" id="OZDEMIR_Mahinur"> <first>Mahinur</first> <last>Ozdemir</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="ÖZKARA_Emin"> <first>Emin</first> <last>Özkara</last> </person> <person gender="f" lang="fr" group="PS" gov="no" id="P'tito_Olivia"> <first>Olivia</first> <last>P'tito</last> </person> <person gender="f" lang="fr" group="FDF" gov="no" id="PAYFA_Martine"> <first>Martine</first> <last>Payfa</last> </person> <person gender="f" lang="fr" group="FDF" gov="no" id="PERSOONS_Caroline"> <first>Caroline</first> <last>Persoons</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="PESZTAT_Yaron"> <first>Yaron</first> <last>Pesztat</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="PINXTEREN_Arnaud"> <first>Arnaud</first> <last>Pinxteren</last> </person> <person gender="m" lang="f" group="MR" gov="no" id="PIVIN_Philippe"> <first>Philippe</first> <last>Pivin</last> </person> <person gender="m" lang="fr" group="cdH" gov="no" id="RIGUELLE_Joël"> <first>Joël</first> <last>Riguelle</last> </person> <person gender="f" lang="nl" group="sp.a" gov="no" id="ROEX_Elke"> <first>Elke</first> <last>Roex</last> </person> <person gender="f" lang="f" group="MR" gov="no" id="ROUSSEAUX_Jacqueline"> <first>Jacqueline</first> <last>Rousseaux</last> </person> <person gender="f" lang="f" group="MR" gov="no" id="SCHEPMANS_Françoise"> <first>Françoise</first> <last>Schepmans</last> </person> <person gender="f" lang="fr" group="FDF" gov="no" id="SIDIBE_Fatoumata"> <first>Fatoumata</first> <last>Sidibe</last> </person> <person gender="f" lang="f" group="MR" gov="no" id="TEITELBAUM_Viviane"> <first>Viviane</first> <last>Teitelbaum</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="THIELEMANS_Freddy"> <first>Freddy</first> <last>Thielemans</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="TOMAS_Eric"> <first>Eric</first> <last>Tomas</last> </person> <person gender="f" lang="fr" group="Ecolo" gov="no" id="TRACHTE_Barbara"> <first>Barbara</first> <last>Trachte</last> </person> <person gender="m" lang="nl" group="sp.a" gov="no" id="VAN DAMME_Jef"> <first>Jef</first> <last>Van Damme</last> </person> <person gender="f" lang="nl" group="Groen!" gov="no" id="VAN DEN BRANDT_Elke"> <first>Elke</first> <last>Van den Brandt</last> </person> <person gender="m" lang="f" group="MR" gov="no" id="VAN GOIDSENHOVEN_Gaëtan"> <first>Gaëtan</first> <last>Van Goidsenhoven</last> </person> <person gender="f" lang="nl" group="Ind" gov="no" id="VAN LINTER_Greet"> <first>Greet</first> <last>Van Linter</last> </person> <person gender="m" lang="nl" group="CD&amp;V" gov="no" id="VANDENBOSSCHE_Walter"> <first>Walter</first> <last>Vandenbossche</last> </person> <person gender="m" lang="fr" group="Ecolo" gov="no" id="VANHALEWYN_Vincent"> <first>Vincent</first> <last>Vanhalewyn</last> </person> <person gender="m" lang="fr" group="PS" gov="no" id="VERVOORT_Rudi"> <first>Rudi</first> <last>Vervoort</last> </person> <person group="CD&amp;V" lang="nl" gender="f" gov="yes" id="GROUWELS_Brigitte"> <first>Brigitte</first> <last>Grouwels</last> <ti meeting-type="BHP" l="N">minister van de Brusselse Hoofdstedelijke Regering, belast met Openbare Werken en Vervoer</ti> <ti meeting-type="BHP" l="F">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée des Travaux publics et des Transports</ti> <ti meeting-type="VVGGC" l="N">lid van het Verenigd College, bevoegd voor het Beleid inzake Bijstand aan Personen en Openbaar Ambt</ti> <ti meeting-type="VVGGC" l="F">membre du Collège réuni, compétente pour la Politique d'Aide aux Personnes et la Fonction publique</ti> </person> <person group="Ecolo" lang="fr" gender="m" gov="yes" id="DOULKERIDIS_Christos"> <first>Christos</first> <last>Doulkeridis</last> <ti meeting-type="BHP" l="N">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Huisvesting en Brandbestrijding en Dringende Medische Hulp</ti> <ti meeting-type="BHP" l="F">secrétaire d'État à la Région de Bruxelles-Capitale, chargé du Logement et de la Lutte contre l'Incendie et l'Aide médicale urgente</ti> <ti meeting-type="VVGGC" l="N"/> <ti meeting-type="VVGGC" l="F"/> <ti meeting-type="PFB" l="F">président du Gouvernement, ministre en charge du Budget, de l'Enseignement, du Tourisme et des Relations internationales</ti> </person> <person group="Open VLD" lang="nl" gender="m" gov="yes" id="VANHENGEL_Guy"> <first>Guy</first> <last>Vanhengel</last> <ti meeting-type="BHP" l="N">minister van de Brusselse Hoofdstedelijke Regering, belast met Financiën, Begroting, Openbaar Ambt en Externe Betrekkingen</ti> <ti meeting-type="BHP" l="F">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargé des Finances, du Budget, de la Fonction publique et des Relations extérieures</ti> <ti meeting-type="VVGGC" l="N"/> <ti meeting-type="VVGGC" l="F"/> </person> <person group="Open VLD" lang="nl" gender="m" gov="yes" id="Vanhengel, Guy"> <first>Guy</first> <last>Vanhengel</last> <ti meeting-type="BHP" l="N"/> <ti meeting-type="BHP" l="F"/> <ti meeting-type="VVGGC" l="N"/> <ti meeting-type="VVGGC" l="F"/> </person> <person group="PS" lang="fr" gender="m" gov="yes" id="PICQUE_Charles"> <first>Charles</first> <last>Picqué</last> <ti meeting-type="BHP" l="N">minister-president van de Brusselse Hoofdstedelijke Regering, belast met Plaatselijke Besturen, Ruimtelijke Ordening, Monumenten en Landschappen, Openbare Netheid en Ontwikkelingssamenwerking</ti> <ti meeting-type="BHP" l="F">ministre-président du Gouvernement de la Région de Bruxelles-Capitale, chargé des Pouvoirs locaux, de l'Aménagement du Territoire, des Monuments et Sites, de la Propreté publique et de la Coopération au Développement</ti> <ti meeting-type="PFB" l="F">ministre en charge de la Cohésion sociale</ti> <ti meeting-type="VVGGC" l="N"/> <ti meeting-type="VVGGC" l="F"/> </person> <person group="PS" lang="fr" gender="m" gov="yes" id="KIR_Emir"> <first>Emir</first> <last>Kir</last> <ti meeting-type="PFB" l="F">ministre en charge de la Formation professionnelle, de la Culture, du Transport scolaire, de l’Action sociale, de la Famille, du Sport et des Relations internationales</ti> <ti meeting-type="BHP" l="N">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Stedenbouw en Openbare Netheid</ti> <ti meeting-type="BHP" l="F">secrétaire d'État à la Région de Bruxelles-Capitale, chargé de l'Urbanisme et de la Propreté publique</ti> </person> <person group="Groen" lang="nl" gender="m" gov="yes" id="DE_LILLE_Bruno"> <first>Bruno</first> <last>De Lille</last> <ti meeting-type="BHP" l="N">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Mobiliteit, Openbaar Ambt, Gelijke Kansen en Administratieve Vereenvoudiging</ti> <ti meeting-type="BHP" l="F">secrétaire d'État à la Région de Bruxelles-Capitale, chargé de la Mobilité, de la Fonction publique, de l'Égalité des Chances et de la Simplification administrative</ti> </person> <person group="cdH" lang="fr" gender="m" gov="yes" id="CEREXHE_Benoît"> <first>Benoît</first> <last>Cerexhe</last> <ti meeting-type="PFB" l="F">ministre en charge de la Fonction publique, de la Politique de la santé et de la Formation professionnelle des Classes moyennes</ti> <ti meeting-type="BHP" l="F">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargé de l'Emploi, de l'Économie, du Commerce extérieur et de la Recherche scientifique</ti> <ti meeting-type="BHP" l="N">minister van de Brusselse Hoofdstedelijke Regering, belast met Tewerkstelling, Economie, Buitenlandse Handel en Wetenschappelijk Onderzoek</ti> </person> <person group="Ecolo" lang="fr" gender="f" gov="yes" id="HUYTEBROECK_Evelyne"> <first>Evelyne</first> <last>Huytebroeck</last> <ti meeting-type="BHP" l="N">minister van de Brusselse Hoofdstedelijke Regering, belast met Leefmilieu, Energie en Waterbeleid, Stadsvernieuwing, Brandbestrijding en Dringende Medische Hulp en Huisvesting</ti> <ti meeting-type="PFB" l="F">ministre en charge de la Politique d'aide aux personnes handicapées</ti> <ti meeting-type="BHP" l="F">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée de l'Environnement, de l'Energie et de la Politique de l'Eau, de la Rénovation urbaine, de la Lutte contre l'Incendie et l'Aide médicale urgente et du Logement</ti> <ti meeting-type="VVGGC" l="N">lid van het Verenigd College, bevoegd voor het Beleid inzake Bijstand aan Personen, Financiën, Begroting en Externe Betrekkingen</ti> <ti meeting-type="VVGGC" l="F">membre du Collège réuni, compétente pour la Politique d’Aide aux Personnes, les Finances, le Budget et les Relations extérieures</ti> </person> </reference><info> <type>PFB</type> <pres/> </info><div id="events"><events next="307"><e lang="F" clip="305" commit="P" length="00:02" time="03:22:27" type="marker" n="305" c="true"/><e n="307"/></events></div><div id="flattened"/></container>
+plugin...C2L85PO (line 114)
+GET http://localhost:8080/exist/tullio/editor/xsl/reconcile.xsl?_=1342120110285
+	
+200 OK
+		73ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/processEditorContent.xsl?_=1342120110416
+	
+200 OK
+		37ms	
+jquery-1.6.4.js (line 7950)
+AJAX SAVE
+plugin...C2L85PO (line 19)
+<div id="consolidated"><div id="rawEvents"><events next="307"><e lang="F" clip="305" commit="P" length="00:02" time="03:22:27" type="marker" n="305" c="true"/></events></div><div id="structuredEvents"><table class="events-table"><tr class="events"><td class="e-n">305</td><td class="e-time">03:22:27</td><td class="e-type">marker</td><td class="e-speaker"/><td class="offset305"/></tr></table></div><div id="text"/></div>
+plugin...C2L85PO (line 20)
+Document
+plugin...C2L85PO (line 21)
+bert
+plugin...C2L85PO (line 22)
+orig
+plugin...C2L85PO (line 23)
+305
+plugin...C2L85PO (line 24)
+(an empty string)
+plugin...C2L85PO (line 25)
+2012-06-05---_PFB_xxxxxx
+plugin...C2L85PO (line 26)
+***
+plugin...C2L85PO (line 27)
+POST http://localhost:8080/exist/tullio/xq/storeClipEdit.xql
+	
+200 OK
+		112ms	
+jquery-1.6.4.js (line 7950)
+Document
+plugin...C2L85PO (line 49)
+exit finish
+plugin...C2L85PO (line 88)
+exit finalize
+plugin...C2L85PO (line 107)
+no controls added
+page-player.js (line 586)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		17ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120112751
+	
+200 OK
+		172ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120112774
+	
+200 OK
+		208ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120113094
+	
+200 OK
+		44ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		17ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120114093
+	
+200 OK
+		14ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120114122
+	
+200 OK
+		80ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120114283
+	
+200 OK
+		62ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		36ms	
+jquery-1.6.4.js (line 7950)
+plugin R305-o
+plugin...C2L85PO (line 23)
+POST http://localhost:8080/exist/tullio/xq/unlock.xql
+	
+200 OK
+		62ms	
+jquery-1.6.4.js (line 7950)
+exit finish
+plugin...C2L85PO (line 50)
+no controls added
+page-player.js (line 586)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120116815
+	
+200 OK
+		133ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=307&include=undefined&_=1342120116832
+	
+200 OK
+		147ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120117088
+	
+200 OK
+		68ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		40ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		201ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120118053
+	
+200 OK
+		26ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=309&include=undefined&_=1342120118088
+	
+200 OK
+		142ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120118376
+	
+200 OK
+		76ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		11ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120119308
+	
+200 OK
+		16ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=309&include=undefined&_=1342120119324
+	
+200 OK
+		50ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120119449
+	
+200 OK
+		53ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		15ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120120488
+	
+200 OK
+		276ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=309&include=undefined&_=1342120120509
+	
+200 OK
+		295ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120120890
+	
+200 OK
+		77ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		18ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120121719
+	
+200 OK
+		13ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=309&include=undefined&_=1342120121736
+	
+200 OK
+		162ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		37ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120122000
+	
+200 OK
+		56ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		22ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120122926
+	
+200 OK
+		15ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=309&include=undefined&_=1342120122948
+	
+200 OK
+		118ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120123182
+	
+200 OK
+		103ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		37ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120124179
+	
+200 OK
+		18ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=309&include=undefined&_=1342120124199
+	
+200 OK
+		55ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120124335
+	
+200 OK
+		66ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		15ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120125373
+	
+200 OK
+		11ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=309&include=undefined&_=1342120125388
+	
+200 OK
+		42ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120125504
+	
+200 OK
+		50ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		25ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		41ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120126555
+	
+200 OK
+		27ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=309&include=undefined&_=1342120126579
+	
+200 OK
+		69ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120126737
+	
+200 OK
+		62ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		18ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120127788
+	
+200 OK
+		33ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=309&include=undefined&_=1342120127816
+	
+200 OK
+		65ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120128129
+	
+200 OK
+		70ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		11ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120129053
+	
+200 OK
+		11ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=309&include=undefined&_=1342120129069
+	
+200 OK
+		58ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120129210
+	
+200 OK
+		62ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		17ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120130232
+	
+200 OK
+		39ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=309&include=undefined&_=1342120130255
+	
+200 OK
+		76ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120130423
+	
+200 OK
+		77ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		31ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		223ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120131481
+	
+200 OK
+		15ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=309&include=undefined&_=1342120131500
+	
+200 OK
+		109ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120131680
+	
+200 OK
+		71ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		25ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120132697
+	
+200 OK
+		13ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=309&include=undefined&_=1342120132716
+	
+200 OK
+		52ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120132881
+	
+200 OK
+		63ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		13ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120133915
+	
+200 OK
+		12ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=309&include=undefined&_=1342120133933
+	
+200 OK
+		384ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120134403
+	
+200 OK
+		410ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		80ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120135513
+	
+200 OK
+		166ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=309&include=undefined&_=1342120135547
+	
+200 OK
+		200ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		198ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120135943
+	
+200 OK
+		268ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		25ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120136964
+	
+200 OK
+		16ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=309&include=undefined&_=1342120136982
+	
+200 OK
+		53ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/editor/xsl/group.xsl?_=1342120137107
+	
+200 OK
+		152ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-locks.xql?m=2012-06-05---_PFB_xxxxxx
+	
+200 OK
+		22ms	
+jquery-1.6.4.js (line 7950)
+false
+editor...&lang=N (line 528)
+GET http://localhost:8080/exist/tullio/editor/xsl/addclipref.xsl?_=1342120138251
+	
+200 OK
+		17ms	
+jquery-1.6.4.js (line 7950)
+GET http://localhost:8080/exist/tullio/xq/return-com...t=303&stop=309&include=undefined&_=1342120138275
+	
+			
+jquery-1.6.4.js (line 7950)
+

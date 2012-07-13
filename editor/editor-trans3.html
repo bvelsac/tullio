@@ -19,7 +19,8 @@
 	
 	<script type="text/javascript" src="js/player-specific.js"></script>
 	<script type="text/javascript" src="/exist/tullio/js-lib/xdate.js"></script>
-	
+	<script type="text/javascript" src="/exist/tullio/js-lib/htmlparser.js"></script>
+	<script type="text/javascript" src="/exist/tullio/js-lib/encoder.js"></script>
 	<script>
 		(function($) {
     $.QueryString = (function(a) {
@@ -43,7 +44,7 @@ function jq(myid) {
    return '#' + myid.replace(/(:|\.)/g,'\\$1');
  }
 	
-
+ var startEditor;
 	var clickmemory;
 	var dbUrl = "/exist/rest//db/tullio/";
 	var newe;
@@ -63,6 +64,8 @@ function jq(myid) {
 	var channel;
 	
 	var rowToUpdate;
+	
+	var updated = '';
 	
 	var preEdit;
 	
@@ -121,7 +124,7 @@ function setMeetingType(meeting) {
 					// console.log ($(data).find('success'));
 					if ($(data).find('name')[0] != null) {
 							mt = $(data).find("name").text();
-              console.log(mt);
+              // console.log(mt);
 							// data mapping
 							var mTypes = {
 								'PLEN' 		: 'VAR',
@@ -312,6 +315,10 @@ checkSession();
  
 function displayStatus() {
 //	 var requestLocks = dbUrl + mmm + "/locks.xml";
+
+	interval = new Date().getTime() - updated;
+	$("#interval").text('(' + interval + ')');
+
 	var requestLocks = "/exist/tullio/xq/return-locks.xql?m=" + mmm; 
 	 function updateLocks(result) {
 		 //// console.log ('update clipstatus');
@@ -502,6 +509,139 @@ displayStatus();
 					height: adjustedHeight,
 					width: cellWidth
 			});
+		
+		var isCtrl = false;
+	
+	editor.on( 'contentDom', function( evt )
+    {
+        editor.document.on( 'keyup', function(event)
+        {
+            if(event.data.$.keyCode == 17) isCtrl=false;
+             if(event.data.$.keyCode == 16) isShift=false;
+        });
+
+        editor.document.on( 'keydown', function(event)
+        {
+            if(event.data.$.keyCode == 17) isCtrl=true;
+             if(event.data.$.keyCode == 16) isShift=true;
+             
+             if ( (event.data.$.keyCode == 68 && isCtrl == true && isShift== true) ) {
+             	 editor.execCommand('pastetext');
+             
+             }
+            
+            if( (event.data.$.keyCode == 68 && isCtrl == true) || event.data.$.keyCode == 120 )
+            {		// TOGGLE = D
+                //The preventDefault() call prevents the browser's save popup to appear.
+                //The try statement fixes a weird IE error.
+                try {
+                    event.data.$.preventDefault();
+                } catch(err) {}
+								// console.log ('save key');
+
+                //Call to your save function
+								lastSound = pagePlayer.lastSound.sID;
+								if (lastSound != undefined) {
+									// console.log (lastSound);
+									soundManager.togglePause(lastSound);
+                	return false;}
+            }
+            
+            
+            
+            
+            if( (event.data.$.keyCode == 68 && isCtrl == true) || event.data.$.keyCode == 120 )
+            {		// TOGGLE = D
+                //The preventDefault() call prevents the browser's save popup to appear.
+                //The try statement fixes a weird IE error.
+                try {
+                    event.data.$.preventDefault();
+                } catch(err) {}
+								// console.log ('save key');
+
+                //Call to your save function
+								lastSound = pagePlayer.lastSound.sID;
+								if (lastSound != undefined) {
+									// console.log (lastSound);
+									soundManager.togglePause(lastSound);
+                	return false;}
+            }
+						
+						if( (event.data.$.keyCode == 83 && isCtrl == true)  ) {
+							editor.execCommand('ajaxsave');
+							
+						}
+						
+						
+						if( event.data.$.keyCode == 114 )
+            {
+								// REWIND= S
+                //The preventDefault() call prevents the browser's save popup to appear.
+                //The try statement fixes a weird IE error.
+                try {
+                    event.data.$.preventDefault();
+                } catch(err) {}
+								// console.log ('save key');
+
+                //Call to your save function
+								lastSound = pagePlayer.lastSound.sID;
+								lastSound = pagePlayer.lastSound.sID;
+								if (!lastSound) {
+									// console.log ('no sound');
+									return false;
+								}
+				
+								var s = soundManager.getSoundById(lastSound);
+								if (!s || !s.playState || !s.duration) {
+									// console.log ("something wrong");
+									return false;
+								}
+								// console.log (s.position);
+								s.setPosition(s.position - 5000);	
+			
+            }
+						
+												if( (event.data.$.keyCode == 70 && isCtrl == true)  || event.data.$.keyCode == 115 )
+            {
+								// REWIND= S
+                //The preventDefault() call prevents the browser's save popup to appear.
+                //The try statement fixes a weird IE error.
+                try {
+                    event.data.$.preventDefault();
+                } catch(err) {}
+								// console.log ('save key');
+
+                //Call to your save function
+								lastSound = pagePlayer.lastSound.sID;
+								lastSound = pagePlayer.lastSound.sID;
+								if (!lastSound) {
+									// console.log ('no sound');
+									return false;
+								}
+				
+								var s = soundManager.getSoundById(lastSound);
+								if (!s || !s.playState || !s.duration) {
+									// console.log ("something wrong");
+									return false;
+								}
+								// console.log (s.position);
+								s.setPosition(s.position + 5000);	
+			
+            }
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+        });
+
+    }, editor.element.$);
+		
 		edited = preEdit;
 		preEdit = "";
 		
@@ -530,6 +670,8 @@ function updateVisibleTexts(once) {
 		return true;
 	}
 	
+	updated = new Date().getTime();
+		
 	$('#text-table tr').removeClass('ruby');
 	// simply loop over all rows
 	
@@ -595,7 +737,7 @@ function updateVisibleTexts(once) {
 	
 	// refresh the visible rows
 	// query the DB for event and text data
-	$.transform({async:false, dataType:"xml", success:secondstep, xml:request, xsl: "xsl/addclipref.xsl"});
+	$.transform({async:true, dataType:"xml", success:secondstep, xml:request, xsl: "xsl/addclipref.xsl"});
 	
 	}
 	if (!once) {
@@ -1108,6 +1250,7 @@ displayStatus();
 <!--      <input type="checkbox" id="syncCheck" name="syncing">Keep Syncing</input> -->
 	  </div>
 			  <div id="network">&#160;</div>
+				<div id="interval">&#160;</div>
   </div>
 </div>
 <div id="spacer">&#160;</div>
