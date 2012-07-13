@@ -71,13 +71,21 @@
             
             // Word Count Label - setTimeout used as this element won't be available until after init
             setTimeout(function() {
-                if (editor.config.wordcount_maxWords > 0) { 
+								
+								if (editor != null ) {
+									if (editor.config.wordcount_maxWords > 0) { 
                     // Display with limit
                     $('td#cke_bottom_'+editor.name).append('<div id="cke_wordcount_'+editor.name+'" style="display: inline-block; float: right; text-align: right; margin-top: 5px; cursor:auto; font:12px Arial,Helvetica,Tahoma,Verdana,Sans-Serif; height:auto; padding:0; text-align:left; text-decoration:none; vertical-align:baseline; white-space:nowrap; width:auto;">Word Count: '+GetWordCount(editor.getData())+'/'+editor.config.wordcount_maxWords+'</div>');
-                } else {
+									} else {
                     // Just display word count
-                    $('td#cke_bottom_'+editor.name).append('<div id="cke_wordcount_'+editor.name+'" style="display: inline-block; float: right; text-align: right; margin-top: 5px; cursor:auto; font:12px Arial,Helvetica,Tahoma,Verdana,Sans-Serif; height:auto; padding:0; text-align:left; text-decoration:none; vertical-align:baseline; white-space:nowrap; width:auto;">Word Count: '+GetWordCount(editor.getData())+'</div>');
-                }
+                   if (editor.window) {
+										 console.log(editor);
+                        $('td#cke_bottom_'+editor.name).append('<div id="cke_wordcount_'+editor.name+'" style="display: inline-block; float: right; text-align: right; margin-top: 5px; cursor:auto; font:12px Arial,Helvetica,Tahoma,Verdana,Sans-Serif; height:auto; padding:0; text-align:left; text-decoration:none; vertical-align:baseline; white-space:nowrap; width:auto;">Word Count: '+GetWordCount(editor.getData())+'</div>');
+								
+                        }
+												else {console.log('editor died');}
+									}
+								}
             }, 4000);
                                                                                                                         
             editor.on('key', ShowWordCount);

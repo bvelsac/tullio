@@ -41,23 +41,18 @@ CKEDITOR.plugins.add('simpleclose',
 											},
 											async: false,
 											success : function () {
-												console.log('successfully closed the clip');
-												setTimeout("editor.destroy(false); editor = null; $('#cke').attr('id', ''); $(jq(edited)).addClass('content'); edited=''; noUpdate = false;", 1000);
+												editor.destroy(false);
+												setTimeout("$('#cke').attr('id', '');", 100);
+												
+												$(jq(edited)).addClass('content');
+												edited='';
+												editor = '';
 											}
 										});
-
-
-													
-										
 									}
 									
-									
-									
+									noUpdate = false;
 									console.log('exit finish');
-									
-									
-									
-									
 						
                 },
                 canUndo : false
@@ -70,4 +65,3 @@ CKEDITOR.plugins.add('simpleclose',
             });
         }
     });
-

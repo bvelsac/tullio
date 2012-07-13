@@ -29,6 +29,11 @@ let $final-meeting-type :=
 
 return
 
-<info><type>{$final-meeting-type}</type><pres>{$pres}</pres></info>
+<info>
+	<type>{$final-meeting-type}</type>
+	<pres>{$pres}</pres>
+	<next></next>	
+	
+</info>
 		
 
