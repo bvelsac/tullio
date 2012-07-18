@@ -94,6 +94,12 @@ CKEDITOR.plugins.add( 'abbr-custom',
 	// http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.pluginDefinition.html#init
 	init: function( editor )
 	{
+		
+							console.log(".................using macro");
+					console.log(eventTypes);
+
+					console.log(languages);
+		
 		// Define an editor command that inserts an abbreviation. 
 		// http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.editor.html#addCommand
 		editor.addCommand( 'abbrDialog',new CKEDITOR.dialogCommand( 'abbrDialog' ) );
@@ -264,6 +270,8 @@ CKEDITOR.plugins.add( 'abbr-custom',
 				// http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.dialog.dialogDefinition.html#onOk
 				onOk : function()
 				{
+					
+					
 					// A dialog window object.
 					// http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.dialog.html 
 					var dialog = this;

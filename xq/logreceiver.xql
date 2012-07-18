@@ -30,7 +30,7 @@ let $check := if ( not( xmldb:collection-exists($collection) ) )
    else ()
 
 (: look up the highest number of existing events :)
-let $max := if (string($id) = "") then 102 else xs:decimal(doc($eventfile)//e[position()=last()]/@n) + 2
+let $max := if (string($id) = "") then 102 else xs:decimal(doc($eventfile)//events/@max) + 2
 
 (: do not overwrite existing text, divide max by 2 for stylesheet since it uses doubles and doubles - 1 for markers :)
 (: next one is server return for the grid update :)
@@ -71,6 +71,12 @@ let $storedClips := if ($max = 102) then xdb:store(concat("/db/tullio/", $meetin
  
  
 let $locks := if ($max = 102) then xdb:store(concat("/db/tullio/", $meeting), "locks.xml", <locks meeting="{$meeting}"></locks>) else ()
+
+(: update the record of number of clips :)
+
+let $highest := xs:decimal(doc($eventfile)//events/e[position() = last()]/@n) 
+
+let $updateMax := update replace doc($eventfile)/events/@max with attribute max {$highest}
 
 
 return 

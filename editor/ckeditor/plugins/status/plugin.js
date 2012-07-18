@@ -10,6 +10,7 @@ CKEDITOR.plugins.add( 'status',
 	// http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.pluginDefinition.html#init
 	init: function( editor )
 	{
+		console.log('status ' + langChoice);
 		// Define an editor command that inserts an abbreviation. 
 		// http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.editor.html#addCommand
 		editor.addCommand( 'statusDialog',new CKEDITOR.dialogCommand( 'statusDialog' ) );
@@ -47,6 +48,7 @@ CKEDITOR.plugins.add( 'status',
 										type: 'select',
 										id : 'status',
 										items : statusCodes[langChoice],
+										// items : ['a', 'b'],
 										'default' : 'EC',
 										onChange : function (api) {
 											// alert('Current value: ' + this.getValue() );

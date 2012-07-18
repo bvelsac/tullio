@@ -8,9 +8,14 @@ function testDoc (xmlDoc) {
 	testeee = (new XMLSerializer()).serializeToString(xmlDoc);
 	if (testeee.indexOf("<parsererror") != -1) {
 		console.log('>>> parse error in xml doc');
+		// console.log(testeee);
 	}
+	else {console.log('doc ok');}
 }
 
+function testString (xmlStr) {
+	testeee = $.parseXML(xmlStr);
+}
 
  
 function asfinish(xml2, xsl, object, e) {
@@ -46,7 +51,8 @@ function asfinish(xml2, xsl, object, e) {
 				"id": author
 			},
 			async: false,
-			success: function(response) {continueSaveHandler = true; alert('text saved'); console.log(response);}
+			success: function(response) {continueSaveHandler = true; alert('text saved'); console.log(response);},
+			error: function (jqXHR, textStatus, errorThrown) {alert( "Save action failed." + textStatus );}
 	});
 		
 		
@@ -136,12 +142,77 @@ CKEDITOR.plugins.add('ajaxsave',
 									
 									editor.fire( 'saveSnapshot' );
 									
-									var editorContent = Encoder.HTML2Numerical(editor.getSnapshot());
-									console.log(editorContent);
+									var currentData = editor.getData();
+									console.log("......getdata ");
+									console.log(currentData);
 									
-									var clean = HTMLtoXML(editorContent); 
+									console.log("......snapshot ");
+									console.log(editor.getSnapshot());
 									
+									
+									
+
+									// additionally throw away cke-specific attributes as they will crash the parser
+
+									var clean = Encoder.HTML2Numerical(editor.getSnapshot().replace(/[-\w]*data-cke[^\s]*/gi,""));
+									
+									// escape curly braces because they have special meaning in XQuery
+									clean = clean.replace(/\{/gi, '{{');
+									clean = clean.replace(/\}/gi, '}}');
+										
+									
+									try
+  {
+									clean = HTMLtoXML(clean);
+  }
+catch(err)
+  {
+  alert("Invalid Document");
+	return true;
+  }
+									
+
+									
+									console.log('clean');
 									console.log(clean);
+									
+									
+									
+									
+									/*
+									
+									The idea behind this code does not work since the document is still HTML
+									It cannot be XHTML because CKEditor cannot live in XHTML
+									
+									
+									$("#representation").html(clean);
+									var intermediate = document.getElementById("representation");
+									var xmlVersion = new XMLSerializer().serializeToString( intermediate );
+									testString(xmlVersion);
+									
+									console.log("...........................xmlversion");
+									console.log(xmlVersion);
+									var editorContent = 
+									// console.log(editorContent);
+									
+									
+									// console.log(".......test content of original representation element");
+									// testDoc(intermediate);
+									// console.log(xmlVersion);
+									// console.log(".......test serialized string");
+									
+									// var contentDocxx = $.parseXML(editorContent);
+									// testDoc(contentDocxx);
+									// contentDocxx = $.parseXML(editorContent.replace(/[&][#]160[;]/gi," "));
+									// testDoc(contentDocxx); 
+					
+									
+									
+									//  
+									
+									// console.log(clean);
+									*/
+									
 									
 									noUpdate = true;
 									console.log("plugin " + edited);
@@ -153,15 +224,22 @@ CKEDITOR.plugins.add('ajaxsave',
 
 // refresh content first .replace(/[&][#]160[;]/gi," ")
 
+					
+
+
 					var doctype = "<?xml version='1.0' encoding='UTF-8'?>\n<!DOCTYPE container [\n<!ENTITY nbsp '&#160;'>\n]>";
 					var content = doctype + '<container><div id="text">' + clean.replace(/[&][#]160[;]/gi," ") + '</div><div id="events">' + $(jq(rowId) + ' div.structured-events').html() + '</div>'  + '</container>';
+					
 					var contentDoc = $.parseXML(content);
+					testDoc(contentDoc);
+					
 					
 					// console.log('base doc ');
-					// console.log(contentDoc);
+					// console.log(content);
 					
 					contentDoc.getElementsByTagName("container")[0].appendChild(titles);
-					
+					console.log('titles');
+					testDoc(contentDoc);
 											// get latest macro variables
 									
 					var request = $.ajax({
@@ -186,8 +264,9 @@ CKEDITOR.plugins.add('ajaxsave',
 							console.log('request fails -----');
 							alert( "Save action failed, please try again." );
 					});
-					
-					// console.log("step 0");
+					console.log('v');
+					//console.log((new XMLSerializer()).serializeToString(contentDoc));
+					console.log("step 0");
 					testDoc(contentDoc);
 					
 					

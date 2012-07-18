@@ -8,7 +8,7 @@ import module namespace util="http://exist-db.org/xquery/util";
 (: create the new collection for this meeting :)
 
 let $agenda := "/exist/tullio/newlogger/hello3.xql"
-let $editor := "/exist/tullio/editor/editor-trans3.html"
+let $editor := "/exist/tullio/editor/editorB.html"
 let $translate := "/exist/tullio/editor/editor-trans3.html?t=yes"
 let $statuspage := "/exist/tullio/status/status.html"
 let $assemblage := "/exist/tullio/assemblage/assemblage.html"
