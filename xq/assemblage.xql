@@ -13,7 +13,13 @@ let $trans1-doc := concat("/db/tullio/", $meeting-id, "/trans1.xml")
 let $start :=   request:get-parameter("start", ()) 
 let $stop := request:get-parameter("stop", ()) 
 let $numbering := request:get-parameter("numbering", ())
+let $firstLang := request:get-parameter("firstLang", ())
 let $type := request:get-parameter("type", ())
+
+
+
+let $serverAddress:= concat("http://", doc('/db/tullioconfig/config.xml')/config/serverAddress)
+let $cellTypes := doc(concat($serverAddress, "/exist/tullio/xml/events.xml"))//event[@cell='y']
 
 (: start & stop:
 if there is a start parameter, system will return all p-elements with clip number equal to or greater than start
@@ -38,9 +44,23 @@ let $events :=
 		then  <events>{doc($events-doc)//e[@n < $stopAsDec]}</events>
 		else doc($events-doc)
 
-(:
-let $type := $events//e[string(@n)=$start]/preceding-sibling::*[contains(@type, 'VVGGC') or contains(@type, 'BHP')][1]
-:)
+
+let $firstCell := doc($events-doc)//e[@c='true'][following-sibling::e[1]/@type[string() = $cellTypes/@id]][1]
+
+let $veryFirstCell := if ($firstCell/preceding-sibling::e) then <group>{$firstCell/preceding-sibling::e}</group> else ()
+
+			
+			
+			
+let $groupedEvents :=			
+for $cell in doc($events-doc)//e[@c='true'][following-sibling::e[1]/@type[string() = $cellTypes/@id]]
+
+let $next-cell := $cell/following-sibling::e[@c='true'][following-sibling::e[1]/@type[string() = $cellTypes/@id]][1]
+
+let $remainder := if ($next-cell) then () else $cell/following-sibling::e[@c='true']
+
+return 
+<group>{($cell, doc($events-doc)//e[. >> $cell and . << $next-cell], $remainder)}</group>
 
 let $texts := 
 	if ($startAsDec and $stopAsDec) 
@@ -90,13 +110,25 @@ let $output :=
 		<params>{$start, $stop, $numbering, $type}</params>
 	</meta>
 	<resultSet>
-		{$events, $texts, $trans1}
+		{<events>{$veryFirstCell, $groupedEvents}</events>, $texts, $trans1}
 
 	</resultSet>
 </response>
 
 
-
-return transform:transform($output, "../xsl/assemblage.xsl", <parameters><param name="numbering" value="{$numbering}"/><param name="type" value="{$type}"/></parameters>)
+(: return   $output :)
+return transform:transform($output, "../xsl/assemblage-ns.xsl", <parameters><param name="numbering" value="{$numbering}"/><param name="type" value="{$type}"/><param name="firstLang" value="{$firstLang}"/></parameters>)
  
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Full Text</title>
+	<meta http-equiv="Content-Type" content="text/xml; charset=UTF-8"></meta>
+	<link rel="stylesheet" type="text/css" href="css/newC.css" />
+	<link rel="stylesheet" type="text/css" href="../soundmanager/demo/page-player/css/page-player.css" />
+	<link rel="stylesheet" type="text/css" href="../soundmanager/demo/page-player/flashblock/flashblock.css" />
+	<link href="../soundmanager/demo/page-player/css/optional-annotations.css" type="text/css" rel="stylesheet" />
+	<link href="css/player-specific.css" rel="stylesheet" type="text/css" />
+	
+	
+	<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+	<script language="javascript" src="../js-lib/jquerytransform/js/jquery-1.6.4.js"></script>
+	<script src="../js-lib/jquery.tools.min.js"></script>
+	<script language="javascript" src="../js-lib/jquerytransform/js/jquery.transform.js"></script>
+	<script language="javascript" src="../js-lib/jquery.animate-colors-min.js"></script>
+	
+	<script type="text/javascript" src="/exist/tullio/soundmanager/script/soundmanager2.js"></script>
+	<script type="text/javascript" src="../soundmanager/demo/page-player/script/page-player.js"></script>
+	<script type="text/javascript" src="../soundmanager/demo/page-player/script/optional-page-player-metadata.js"></script>
+	
+	<script type="text/javascript" src="js/player-specific.js"></script>
+	<script type="text/javascript" src="/exist/tullio/js-lib/xdate.js"></script>
+	<script type="text/javascript" src="/exist/tullio/js-lib/htmlparser.js"></script>
+	<script type="text/javascript" src="/exist/tullio/js-lib/encoder.js"></script>
+	<script type="text/javascript" src="js/editor.js"></script>
+	
+  <script type="text/javascript"></script>
+	
+	
+</head>
+<body >
+<div  class="ui-layout-north v2">
+  <div id="resultpane"></div>
+  <div id="header">
+    <div id="meeting">
+			<p id="title">EDITOR</p>
+			<p id="overview"></p>
+			<p id="username">Je suis: <select id="person"></select></p>
+			<p id="link"><a href="/exist/tullio/home.html">Meetings Overview</a></p>
+		</div>
+	  <div id="logo"></div>
+	  <div id="navigation">
+	<!--    <ul>
+		    <li><a href="/exist/tullio/home.html">Meetings Overview</a></li>
+		    <li><a href="/exist/tullio/status/status.html">Status Page</a></li>
+	    </ul> -->
+    </div>
+	  <div id="player">
+	    <div id="recording"></div>
+	    <div id='controls'>
+		    <ul>
+			    <li id='toStart'>PLAY FROM START</li>
+			    <li id='startStop'>PLAY / PAUSE</li>
+			    
+			    <li id="rewind">REWIND</li>
+					<li id='forward'>FORWARD</li>
+					<li class="spacer"></li>
+									<li class="noControl" id="startPosition">XX:XX</li>
+				<li class="noControl" id="stopPosition">XX:XX</li>
+		    </ul>
+
+	    </div>
+
+	  </div>
+	  <div id="settings">
+<!--      <input type="checkbox" id="syncCheck" name="syncing">Keep Syncing</input> -->
+	  </div>
+			  <div id="network">&#160;</div>
+				<div id="interval">&#160;</div>
+				
+				
+				<div id="clipstatus">
+				<div id="clipframes"></div>
+				<div id="prepare"></div>
+				</div>
+				
+  </div>
+</div>
+<div id="spacer">&#160;</div>
+<div id="history"></div>
+<div id="centerpane" class="ui-layout-center">
+
+	<div id="tablewrapper">
+		<table id="text-table">
+			<tbody id ="result"></tbody>
+		</table>
+	</div>
+</div>
+
+<div id="titles"></div>
+<div id="hidden"></div>
+<div id="debug"></div>
+<div id="representation"></div>
+<div id="island"></div>
+<div id="ref"></div>
+<script>
+function closeMe () {
+var message;
+			if (edited != '' ) message = "You're about to quit but clip " + edited + " is still open, changes will NOT be saved."; 
+			else message = "You're about to quit.";
+			 
+			return message;
+}
+
+window.onbeforeunload = closeMe;
+      
+</script>
+
+</body>
+</html>

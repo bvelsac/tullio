@@ -21,5 +21,3 @@ return
 for $pres in doc(concat($serverAddress, "/exist/tullio/xml/events.xml"))//event[@*[local-name()=$att] = 'y']
 order by $pres/@order
 return $pres}</events>
-		
-

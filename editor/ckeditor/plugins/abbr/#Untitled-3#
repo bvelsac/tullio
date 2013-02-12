@@ -1,5 +1,0 @@
-- verplaatsen van "play" link : extra regel in events table
-- in events table: elke regel moet onClick een functie aanroepen voor de audioplayer (NTH)
-- hotkeys audioplayer --combinatie met ckeditor
-- overzichtpagina moet linken naar status
-- editorpagina moet statuscodes gebruiken

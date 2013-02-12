@@ -4,13 +4,15 @@ import module namespace xdb="http://exist-db.org/xquery/xmldb";
 import module namespace util="http://exist-db.org/xquery/util";
 
 let $setuser := xdb:login("/db", "admin", "paris305")
-let $stringdata := request:get-parameter("test", ())
-let $nodes := util:eval( $stringdata ) 
-let $test := <xml>{$nodes}</xml> 
+
+let $meeting := request:get-parameter("m", ())      (:string:)
+let $stringdata := request:get-data()
+
+let $test := $stringdata 
 
 (: create the new collection for this meeting :)
 
-let $collection := concat("/db/tullio/", string($test/data/info/meeting))
+let $collection := concat("/db/tullio/", string($test//meeting))
 
 
 let $check := if ( not( xmldb:collection-exists($collection) ) )
@@ -25,5 +27,8 @@ let $confStored := xdb:store($collection, "agenda.xml", $test)
 
 
 return 
-<span>Data saved to collection {$collection}.</span>
+(
+	<span>Data saved to collection {$collection}.</span>
+	
+)
 

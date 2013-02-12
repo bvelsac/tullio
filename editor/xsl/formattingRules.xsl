@@ -303,8 +303,8 @@
     <xsl:param name="counter" select="'1'"></xsl:param>
     <xsl:variable name="firstPart" >
       <xsl:choose>
-        <xsl:when test="contains($nameString, ' ')">
-          <xsl:value-of select="substring-before($nameString, ' ')"/>
+        <xsl:when test="contains($nameString, '+')">
+          <xsl:value-of select="substring-before($nameString, '+')"/>
         </xsl:when>
         <xsl:otherwise><xsl:value-of select="$nameString"/></xsl:otherwise>
       </xsl:choose>
@@ -335,9 +335,9 @@
       <xsl:text>,</xsl:text>
     
     <xsl:choose>
-      <xsl:when test="contains($nameString, ' ')">
+      <xsl:when test="contains($nameString, '+') and normalize-space(substring-after($nameString, '+'))">
         <xsl:call-template name="insertGov">
-          <xsl:with-param name="nameString" select="substring-after($nameString, ' ')"></xsl:with-param>
+          <xsl:with-param name="nameString" select="substring-after($nameString, '+')"></xsl:with-param>
           <xsl:with-param name="counter" select="counter+1"></xsl:with-param>
           <xsl:with-param name="lang" select="$lang"></xsl:with-param>
         </xsl:call-template>
@@ -397,9 +397,11 @@
       <xsl:choose>
         <xsl:when test="$lang='N'">
           <xsl:value-of select="@textN"/>
+          <xsl:value-of select="@textn"/>
         </xsl:when>
         <xsl:when test="$lang='F'">
           <xsl:value-of select="@textF"/>
+          <xsl:value-of select="@textf"/>
         </xsl:when>
       </xsl:choose>
       <xsl:text>".</xsl:text>
@@ -455,7 +457,7 @@
             <xsl:when test="$pres-gender='m'">M. le Président</xsl:when>
             <xsl:otherwise>Mme la Présidente</xsl:otherwise>
           </xsl:choose>
-        </span><xsl:text>.-</xsl:text>
+        </span><xsl:text>.- </xsl:text>
         
         
       </xsl:when>
@@ -471,10 +473,11 @@
               <xsl:value-of select="key('snippets', concat('pres-', $pres-gender, '-', $lang))"/>
             </xsl:when>
             <xsl:otherwise>
-              <xsl:text>.-</xsl:text>
+              <xsl:text>PRES</xsl:text>
             </xsl:otherwise>
           </xsl:choose>
         </span>
+        <xsl:text>.- </xsl:text>
       </xsl:otherwise>
     </xsl:choose>
     
@@ -520,7 +523,7 @@
         </xsl:choose> 
       
       </span> 
-      <xsl:text>.-</xsl:text>
+      <xsl:text>.- </xsl:text>
     </p>
   </xsl:template>
   
@@ -629,7 +632,13 @@
               select="$person/first"/>
             <xsl:text> </xsl:text>
             <xsl:value-of select="$person/last"/>
-            
+          
+            <xsl:if test="$person/@gov='yes'">
+              <xsl:text>, </xsl:text>
+              <xsl:value-of select="$person/short[@l=$lang][@meeting-type=$meeting-type]"/>
+              
+            </xsl:if>
+        
           </span>
           <xsl:text>.- </xsl:text>
           

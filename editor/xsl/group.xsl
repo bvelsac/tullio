@@ -59,14 +59,36 @@
         <xsl:when test="@lang='M'">M</xsl:when>
       </xsl:choose>
     </xsl:variable>
-    <td class="status" id="{concat('status-', @n, '-trans')}">
+    
+<!--    <td class="status status-{key('statusCodes', @n)/@val}"
+      id="{concat('status-', @n, '-orig')}">
+      
+      <p class="status-wrapper" >      
+        <span class="status-code" id="{concat('status-', @n, '-orig-code')}">
+          <xsl:value-of select="key('statusCodes', concat(@n,'orig'))/@val"/>
+        </span>
+        <span class="status-lang" id="{concat('status-', @n, '-orig-lang')}">
+          <xsl:value-of select="@lang"/>
+        </span>
+        <xsl:text>&#160;</xsl:text>
+      </p>
+      <div class="lockid">
+        <p></p>
+      </div>
+    </td>
+-->    
+    <td class="status status-{key('statusCodes', @n)/@val}" id="{concat('status-', @n, '-trans')}">
       <p class="status-wrapper">
-        <span class="status-code" id="status-101-trans-code">
+        <span class="status-code" id="{concat('status-', @n, '-trans-code')}">
           <xsl:value-of select="key('statusCodes', concat(@n,'trans'))/@val"/>
         </span>
-        <span class="status-lang" id="status-101-trans-lang">
+        <span class="status-lang" id="{concat('status-', @n, '-trans-lang')}">
           <xsl:value-of select="$language"/>
-        </span>&nbsp;</p>
+        </span>&#160;</p>
+      <div class="lockid">
+        <p></p>
+      </div>
+      
     </td>
     <td class="trans content" id="{concat('R', @n, '-t')}">
       <div class="editable">
@@ -229,8 +251,7 @@
         <td class="status status-{key('statusCodes', @n)/@val}"
           id="{concat('status-', @n, '-orig')}">
          
-          <p class="status-wrapper">
-          
+          <p class="status-wrapper" >      
             <span class="status-code" id="{concat('status-', @n, '-orig-code')}">
               <xsl:value-of select="key('statusCodes', concat(@n,'orig'))/@val"/>
             </span>
@@ -239,9 +260,9 @@
             </span>
             <xsl:text>&#160;</xsl:text>
           </p>
-          <p class="lockid"/>
-          
-          
+          <div class="lockid">
+            <p></p>
+          </div>
         </td>
         <!-- add cell with the original text -->
         <td class="orig content {concat(generate-id(), 'R', @n, '-o')}" id="{concat('R', @n, '-o')}">

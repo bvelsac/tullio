@@ -6,7 +6,7 @@
     <xmlData>
       <success>true</success>
       <events max="">
-        <xsl:apply-templates select="/records/e[position()=last()][commit='P']">
+        <xsl:apply-templates select="/records/e[position()=last()][commit='D']">
           <xsl:with-param name="counter" select="$lower"/>
         </xsl:apply-templates>
       </events>
@@ -19,7 +19,7 @@
     </xsl:apply-templates>
   </events> -->
   </xsl:template>
-  <xsl:template match="e[commit='P']">
+  <xsl:template match="e[commit='D']">
     <!-- F-event can have an id but should not yet be stored as it will be submitted again when its length is defined -->
     
     <xsl:param name="counter"/>

@@ -1,0 +1,487 @@
+.status-EC, #clipframes div.stat-EC {
+    background: none repeat scroll 0 0 #FFC4FF;
+}
+.status-N, .status- {
+    background: none repeat scroll 0 0 tomato;
+}
+.status-T, #clipframes div.stat-T {
+    background: none repeat scroll 0 0 #FFFFB7;
+}
+.status-R, #clipframes div.stat-R {
+    background: none repeat scroll 0 0 mediumspringgreen;
+}
+.status-V, #clipframes div.stat-V {
+    background: none repeat scroll 0 0 #008000;
+}
+.status-A, #clipframes div.stat-A {
+    background: none repeat scroll 0 0 #800000;
+    color: silver;
+}
+.status-S, #clipframes div.stat-S {
+    background: none repeat scroll 0 0 purple;
+    color: silver;
+}
+.status-ECT {
+    background-color: pink;
+}
+.status-TT {
+    background: none repeat scroll 0 0 #00FFFF;
+}
+.status-RT {
+    background: none repeat scroll 0 0 #0000FF;
+}
+.status-VT {
+    background: none repeat scroll 0 0 #8000FF;
+}
+.status-AT {
+    background: none repeat scroll 0 0 #FF0000;
+    color: silver;
+}
+.status-ST {
+    background: none repeat scroll 0 0 purple;
+    color: silver;
+}
+.sound {
+    padding-top: 15px;
+}
+.startRec {
+    color: gray;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 10px 5px 5px;
+    text-decoration: none;
+}
+.sound p {
+    display: none;
+}
+.lockid, .history {
+    color: gray;
+    font-size: 12px;
+}
+.lockid {
+    display: none;
+}
+#history #unlock {
+    color: red;
+    float: right;
+    opacity: 0.55;
+}
+.status:hover div.lockid {
+    background: none repeat scroll 0 0 Bisque;
+    border: thin solid gray;
+    display: block;
+    padding: 3px;
+    position: absolute;
+}
+td.status {
+    border-left: 3px solid transparent;
+    vertical-align: top;
+}
+p.status-wrapper {
+    font-family: monospace;
+    font-weight: bold;
+}
+td.sound {
+    vertical-align: top;
+}
+.content {
+    vertical-align: top;
+}
+td.status {
+    width: 35px;
+}
+td.locked {
+    border-left: 3px solid #D10F0F;
+}
+table.edited {
+    background-color: bisque;
+}
+.leftovers {
+    color: #BFBEBE;
+}
+.structured-events {
+    display: none;
+}
+body {
+    font-family: sans-serif;
+}
+table {
+    font-size: 14px;
+}
+#remove {
+    width: 100%;
+}
+#header {
+    width: 100%;
+}
+#free {
+    width: 19%;
+}
+#navigation ul {
+    padding: 0;
+}
+#navigation ul li {
+    display: inline;
+    list-style-type: none;
+    margin-right: 20px;
+}
+#texts {
+    background-color: silver;
+}
+#hidden {
+    background-color: yellow;
+}
+#titles {
+    display: none;
+}
+td {
+    border: thin dotted navy;
+}
+.startevent {
+    background-color: #66FF00;
+}
+.stopevent {
+    background-color: #00FFCC;
+}
+div.editable {
+    border: 2px solid Transparent;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+div.editable:hover {
+    border-color: blue;
+}
+#hidden, #debug, #island {
+    display: none;
+}
+td.events {
+    vertical-align: top;
+}
+table.events-table * {
+    font-size: 10px;
+}
+table.events-table td {
+    border: thin dotted #006666;
+}
+td.e-time {
+    width: 40px;
+}
+td.e-type {
+    width: 40px;
+}
+td.e-speaker {
+    width: 50px;
+}
+td.orig {
+    width: 500px;
+}
+td.trans {
+    width: 500px;
+}
+.ui-layout-north {
+    height: 105px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+#spacer {
+    clear: both;
+}
+#header > div {
+    float: left !important;
+}
+#meeting {
+    font-weight: bold;
+    margin: 5px 25px 5px 5px;
+}
+#meeting p {
+    color: silver;
+    margin: 2px;
+}
+#meeting #link {
+    font-weight: normal;
+    margin-top: 12px;
+}
+#meeting #title {
+    color: gray;
+    
+    
+    
+}
+#meeting a {
+    color: #5588BB;
+    text-decoration: none;
+}
+#meeting a:before {
+    content: ">>";
+}
+#network, #interval {
+    color: gray;
+    padding: 5px;
+}
+#header > div#player {
+    width: 600px !important;
+}
+.ui-layout-north.networkOK {
+    background-color: silver !important;
+}
+.ui-layout-north.networkOK.v2 {
+    background-color: #252590 !important;
+}
+#centerpane {
+    background-color: white;
+    margin-top: 150px !important;
+}
+.ui-layout-north.networkDown {
+    background-color: #FF6666;
+}
+#agendawrapper {
+    max-height: 400px;
+}
+td.orig, td.trans {
+    vertical-align: top;
+}
+td.events {
+    width: 100px;
+}
+p.comment {
+    display: none;
+}
+div.editable p.comment {
+    display: none;
+}
+div.editable p.incomplete {
+}
+div.editable p.proc {
+}
+div.editable p.title1 {
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+div.editable p.title2 {
+    font-style: italic;
+    text-align: center;
+}
+div.editable p.title3 {
+    font-weight: bold;
+    padding-left: 30px;
+    text-align: justify;
+    text-indent: -30px;
+    text-transform: uppercase;
+}
+div.editable p.title4 {
+    font-weight: bold;
+    padding-left: 30px;
+    text-align: justify;
+}
+div.editable p.realia {
+    font-style: italic;
+}
+div.editable span.checked {
+}
+div.editable span.speaker {
+    font-weight: bold;
+}
+div.editable span.pres {
+    font-weight: bold;
+}
+div.editable span.incomplete {
+}
+#clipstatus {
+    clear: left;
+    width: 100%;
+}
+#clipstatus > div {
+    display: none;
+}
+#clipstatus > div:first-child {
+    display: block;
+}
+#clipstatus {
+    background-color: slateblue;
+    padding: 12px 2px 7px;
+}
+#clipframes > div > div {
+    background-color: silver;
+    border: 2px solid transparent;
+    float: left;
+    font-size: 10px;
+    height: 10px;
+    margin-left: 2px;
+    width: 20px;
+}
+#clipframes > div > div:hover > span {
+    display: block;
+    position: fixed;
+    width: 105px;
+    z-index: 10;
+}
+#clipframes > div.clipstatus-orig > div:hover > span {
+    background-color: white;
+    color: black;
+}
+#clipframes > div.clipstatus-trans > div:hover > span {
+    background-color: black;
+    color: white;
+}
+#clipframes > div > div:hover > span {
+    background: none repeat scroll 0 0 white;
+    display: block;
+    height: 105px;
+    left: 0;
+    padding-left: 5px;
+    position: fixed;
+    width: 153px;
+    z-index: 10;
+}
+#clipframes > div > div:hover > span.n {
+    font-size: 20px;
+    height: 30px;
+    top: 0;
+}
+#clipframes > div > div:hover > span.code {
+    font-size: 15px;
+    height: 20px;
+    top: 30px;
+}
+#clipframes > div > div:hover > span.lang {
+    font-size: 15px;
+    height: 20px;
+    top: 50px;
+}
+#clipframes > div > div:hover > span.lockid {
+    font-size: 12px;
+    height: 35px;
+    top: 70px;
+}
+#clipframes > div > div.lang-N {
+    margin-top: -5px;
+}
+#clipframes > div > div.lang-F {
+    padding-top: 5px;
+}
+#clipframes > div span {
+    display: none;
+}
+#clipframes > div span.n {
+    display: inline;
+}
+#clipframes div.locked {
+    border: 2px solid red;
+}
+#clipframes > div > span.n:before {
+    content: " ";
+}
+#clipframes > div > span.n {
+    display: inline;
+}
+#clipframes .clipstatus-trans {
+    clear: left;
+    float: left;
+    margin-top: 15px;
+}
+#clipstatus table tr#clipids td {
+    border-top: 2px solid transparent;
+}
+#history {
+    background-color: whitesmoke;
+    border: 8px solid pink;
+    border-radius: 8px 8px 8px 8px;
+    display: none;
+    width: 400px;
+}
+#history {
+    font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+    padding: 10px;
+}
+#history h2 {
+    background-color: #6D84B4;
+    border: 1px solid #3B5998;
+    color: #FFFFFF;
+    font-size: 20px;
+    margin: -11px -11px 10px;
+    padding: 5px 10px;
+}
+#history table {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+
+/* extras */
+
+#representation { display: none;}
+
+@media screen and (max-width: 930px) {
+	body.orig div {display: none;}
+	body.orig #representation {
+		display: block;
+		background-color: blue;
+		color: tomato;
+		font-size: 40px;
+		border: solid 5px tomato;
+                padding: 30px;        
+		}
+}
+
+
+@media screen and (max-width: 1340px) {
+	body.trans div {display: none;}
+	body.trans #representation {
+		display: block;
+		background-color: blue;
+		color: tomato;
+		font-size: 40px;
+		border: solid 5px tomato;
+                padding: 30px;        
+		}
+}
+
+span.status-lang {display: block;}
+
+p.status-wrapper {
+    display: block !important;
+    font-family: sans-serif;
+    margin: 0 0 0 -2px;
+    overflow-x: hidden;
+    padding: 0;
+    width: 9px;
+        font-weight: bold;
+}
+
+td.status {
+    width: 10px !important;
+}
+
+td.status.locked.status-, td.status.locked.status-N   {
+
+border-left: blue solid 3px;
+}
+
+body.orig td.orig {
+	font-size: 16px;
+	width: 600px;
+}
+
+@media screen and (min-width: 0px) and (max-width: 1586px) {
+	#clipstatus {
+	padding : 6px 1px 3px;	
+	}
+	
+	#clipframes > div > div {
+		background-color: grey;
+    border: 1px solid transparent;
+    float: left;
+    font-size: 6px;
+    height: 8px;
+    margin-left: 1px;
+    width: 11px;
+					
+			
+	}
+
+	#header {font-size: 8px !important ; }
+	
+}

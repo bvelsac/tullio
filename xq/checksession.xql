@@ -27,14 +27,21 @@ declare function local:add-attribute() as empty()
         else
             ()
 };
+(:
+
+
+
+:)
+
 
 let $user := if ( session:exists() ) then session:get-attribute('user') else ()
 let $who :=  if ( $user ) then <success>{doc('/db/tullioconfig/users.xml')/users/user[@id=$user]}</success> else <false/>
 let $set := session:set-attribute('lang', doc('/db/tullioconfig/users.xml')/users/user[@id=$user]/@lang)
 
-
 return <response>{$who}</response>
-
+(:
+return <response>{$who, $user}</response>
+:)
 (:
 
 doc('/db/tullioconfig/config.xml')/config/serverAddress

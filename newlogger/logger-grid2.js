@@ -253,6 +253,8 @@ Ext.onReady(function(){
 		var audioMap = {'Hemicycle / halfrond':'canal1', 'S 201':'canal3', 'S 206':'canal4'};
 		var meetingList = {};
 		
+		// var converter = new X2JS();
+		var xotree = new XML.ObjTree();
 		
 		$.ajax({
 					type: 'GET',
@@ -287,7 +289,7 @@ alert(content.current+':'+content.previous)
 		*/
 		
 		$("#channel.editable_select").editable("/exist/tullio/xq/setChannel.xql?m=" + m, { 
-				data   : "{'canal1':'PLEN','canal3':'S 201','canal4':'S 204'}",
+				data   : "{'canal1':'PLEN','canal3':'S 201','canal4':'S 206'}",
     type   : "select",
     submit : "OK",
     style  : "inherit"
@@ -355,7 +357,7 @@ alert(content.current+':'+content.previous)
 		*/
 		
 		function updateClipLength(store) {
-			console.log("u c l ");
+			// console.log("u c l ");
 			
 			store.suspendAutoSync();
 			
@@ -752,8 +754,82 @@ alert(content.current+':'+content.previous)
                 disabled: false,
                 handler: function(){
 									
+									// re-initialize vars
+									var newClips = [];
+									
 									var fb = '';
 									fb = updateClipLength(store);
+									
+									
+									
+									
+									function publish() {
+    console.log('start publication');
+    var xmlDump = '';
+    try {
+        if (newClips) {
+            console.log('conversion');
+						
+						
+						xmlDump = xotree.writeXML(newClips);
+            //xmlDump = converter.json2xml_str(newClips);
+            console.log(xmlDump);
+
+            try {
+                // check if dump went well
+                if (xmlDump.match(/time/)) {
+										xmlDecl = '<?xml version="1.0" encoding="UTF-8" ?>';
+										xmlDump = xmlDump.substring(xmlDump.indexOf(xmlDecl) + xmlDecl.length);
+										
+                    xmlDump = xmlDump.replace(/<([0-9]+)>/g, "<e b='" + batch + "' row='$1'>");
+                    xmlDump = xmlDump.replace(/<(\/)([0-9]+)>/g, "</e>");
+                    xmlDump = "<records meeting='" + m + "'>" + xmlDump + "</records>";
+
+                    console.log(xmlDump);
+
+                    $.ajax({
+                        type: 'POST',
+                        url: "/exist/tullio/xq/logreceiver.xql?m=" + m,
+                        data: xmlDump,
+                        contentType: 'text/xml',
+                        processData: false,
+                        async: false,
+                        error: function (request, status, error) {
+                            console.log('commit error ocurred');
+                            console.log(status);
+                            console.log(error);
+                            // resetClips(breakpoint);
+                        },
+                        success: function () {
+                            for (i = 0; i < size; i++) {
+                                record = store.getAt(i);
+                                if (record.data.commit == 'D') {
+                                    record.set('commit', 'P');
+                                }
+                            }
+                        }
+                    }).done(function (msg) {
+                        console.log(msg);
+                    });
+                } else {
+                    console.log('xml dump error ocurred');
+                }
+            } catch (e) {
+                console.log('unknown issue with xmldump');
+            }
+        } else {
+            console.log('clip object does not exist');
+        }
+    } catch (e) {
+        console.log('xml conversion error');
+        console.log(e);
+    }
+}
+									
+									
+									
+									
+									
 									// to do before submitting the clips
 									// 
 									// make a list of the clips that need to be submitted ()
@@ -775,11 +851,12 @@ alert(content.current+':'+content.previous)
 											var size = store.getCount();
 											var found = "";
 											var record;
-											var newClips = [];
+											
 											batch++;
 											var breakpoint = "INIT";
 											
 											console.log(size);
+											// prepare the data object
 											// loop through the records, starting with most recent record
 											for (i=0; i < size; i++) {
 												breakpoint = i;
@@ -787,7 +864,7 @@ alert(content.current+':'+content.previous)
 												//console.log(i);
 												//console.log(record);
 												if (record.data.commit == 'P') break;
-												if (found == "clip") {record.set('commit', 'P')};
+												if (found == "clip") {record.set('commit', 'D')};
 												if (record.data.c && found !='clip') {
 													found = "clip"; 
 													record.set('commit', 'F');
@@ -795,48 +872,17 @@ alert(content.current+':'+content.previous)
 												newClips.push(record.data);
 												
 											}
-											var xmlDump = x2js.json2xml_str(newClips);
-											xmlDump = xmlDump.replace(/<([0-9]+)>/g, "<e b='" + batch + "' row='$1'>");
-											xmlDump = xmlDump.replace(/<(\/)([0-9]+)>/g, "</e>");
-											xmlDump = "<records meeting='" + m + "'>" + xmlDump + "</records>";
-												
-											console.log(xmlDump);
+	
 											
 											
-											function resetClips(breakpoint) {
-												if (breakpoint != 'INIT') {
-													for (i=0; i<breakpoint; i++) {
-																store.getAt(i).set('commit', '');
-													}
-													store.getAt(breakpoint-1).set('commit', 'F');
-												}
-											};
+											setTimeout(publish, 100);
 											
 											
-											$.ajax({
-													type: 'POST',
-													url: "/exist/tullio/xq/logreceiver.xql?m=" + m,
-													data:  xmlDump,
-													contentType: 'text/xml',
-													processData: false,
-													async: false,
-													error : function (request, status, error) {
-														console.log('commit error ocurred');
-														console.log(status);
-														console.log(error);
-														resetClips(breakpoint);
-													}
-											}).done(function( msg ) {
-												console.log(msg);
-											});
 											
-											console.log('commit');
+											console.log('publish end');
 			
 											store.sync();
 											store.resumeAutoSync();
-											
-											
-											
 											
 										}
 									}

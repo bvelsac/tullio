@@ -51,7 +51,17 @@ function asfinish(xml2, xsl, object, e) {
 				"id": author
 			},
 			async: false,
-			success: function(response) {continueSaveHandler = true; alert('text saved'); console.log(response);},
+			success: function(response) {
+				continueSaveHandler = true; 
+				console.log(response);
+				console.log(jq(edited));
+				// alert( $(jq(edited)).text() );
+
+				$(jq(edited)).animate({'opacity': 0.25}, 600);
+				$(jq(edited)).animate({'opacity': 1.00}, 600);
+
+
+			},
 			error: function (jqXHR, textStatus, errorThrown) {alert( "Save action failed." + textStatus );}
 	});
 		
@@ -79,7 +89,7 @@ function asfinish(xml2, xsl, object, e) {
 	
 	var newContent = $("#hidden div#text").html();
 	editor.setData(newContent);
-					
+	
 	$("#cke").attr('id', '');
 
 	setTimeout( function() {$(jq(edited)).addClass("content"); edited=''; editor.destroy(); }, 200);					

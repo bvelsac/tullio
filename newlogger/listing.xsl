@@ -181,8 +181,8 @@
     <xsl:param name="counter" select="'1'"></xsl:param>
     <xsl:variable name="firstPart" >
       <xsl:choose>
-        <xsl:when test="contains($nameString, ' ')">
-          <xsl:value-of select="substring-before($nameString, ' ')"/>
+        <xsl:when test="contains($nameString, '+')">
+          <xsl:value-of select="substring-before($nameString, '+')"/>
         </xsl:when>
         <xsl:otherwise><xsl:value-of select="$nameString"/></xsl:otherwise>
       </xsl:choose>
@@ -205,9 +205,9 @@
 		
     
     <xsl:choose>
-      <xsl:when test="contains($nameString, ' ')">
+      <xsl:when test="contains($nameString, '+') and normalize-space(substring-after($nameString, '+'))">
         <xsl:call-template name="insertGov">
-          <xsl:with-param name="nameString" select="substring-after($nameString, ' ')"></xsl:with-param>
+          <xsl:with-param name="nameString" select="substring-after($nameString, '+')"></xsl:with-param>
           <xsl:with-param name="counter" select="counter+1"></xsl:with-param>
           <xsl:with-param name="lang" select="$lang"></xsl:with-param>
         </xsl:call-template>

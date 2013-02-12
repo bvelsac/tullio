@@ -37,6 +37,8 @@ session:create(),
 <html>
 <head>
 <title>Tullio :: Log In</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
 <!--
 <link rel="stylesheet" type="text/css" href="/exist/tullio/login/login.css"  />
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js" />
@@ -61,7 +63,7 @@ session:create(),
                     <td><input name="pass" type="password" size="20"/></td>
                 </tr>
                 <tr>
-                    <td colspan="2" align="left"><input type="submit"/></td>
+                    <td colspan="2" align="left"><input id="mainLogin" type="submit"/></td>
                 </tr>
             </table>
         </form>

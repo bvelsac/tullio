@@ -1,4 +1,4 @@
-﻿<html>
+<html>
 <head>
 <title>Assemblage</title>
 <style type="text/css">
@@ -61,8 +61,12 @@
 	<p>start:<input type="text" id="start"></input> stop:<input type="text" id="stop"></input></p>
 	<!-- minimum status:<select id="minStatus"></select> -->
 	<p>type:<select id="type">
-    <option>1C</option>
-    <option>2C</option>
+    <option>continu</option>
+    <option>complet</option>
+  </select> 
+C1:<select id="firstLang">
+    <option>F</option>
+    <option>N</option>
   </select> 
 	numbering:<input id="numbering" type="checkbox"></input><span id="actionGo">go</span><span id="downloadlink"></span></p>
 
@@ -76,7 +80,7 @@
 
 
 
-
+  
 </div>
 
 <script>
@@ -105,6 +109,7 @@ $("body").delegate( "#actionGo", "click", function() {
 		var start = $("#start").val();
 		var stop = $("#stop").val();
 		var type = $("#type").val();
+		var firstLang = $("#firstLang").val();
 		var numbering =  $("#numbering:checked").val();
 		
 		
@@ -117,13 +122,14 @@ $("body").delegate( "#actionGo", "click", function() {
 							"start": start,
 							"m": meeting,
 							"type" : type,
-							"numbering": numbering
+							"numbering": numbering,
+							"firstLang": firstLang
 						},
 						async: true
 					});
 
 		request.done(function(msg) {
-				var link = "<a href='" + requestBase + '?start=' + start + '&stop=' + stop + '&m=' + meeting + '&type=' + type + '&numbering=' + numbering + "'>download " + meeting + "</a>";
+				var link = "<a href='" + requestBase + '?start=' + start + '&stop=' + stop + '&m=' + meeting + '&type=' + type + '&firstLang=' + firstLang + '&numbering=' + numbering + "'>download " + meeting + "</a>";
 				$("#downloadlink").html(link);
 				
 				

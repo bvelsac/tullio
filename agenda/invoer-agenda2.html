@@ -80,6 +80,11 @@
 			
 <script>
 
+
+function xml_escape(val) {
+    return String(val).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+};
+
 var members = [];
 
 function setSpeakers(response) {
@@ -133,7 +138,7 @@ var types = ['---', 'OUV-OPE', 'EXC-AFW', 'COMM-MED', 'GEN-ALG', 'P.E.CONS-INOVE
 Types voor commissievergaderingen
 
 */
-var types = ['---', 'OUV-OPE', 'O-BXL', 'O-ARVV',  'PRES', 'EXC-AFW', 'COMM-MED', 'GEN-ALG', 'ORA-SPR', 'P.E.CONS-INOVERW','START-MV', 'START-INT', 'QO-MV', 'QO-MV JOINTE',  'QA-DV', 'QA-DV JOINTE', 'INT', 'INT JOINTE', 'FIN-EINDE'];		
+var types = ['---', 'OUV-OPE', 'O-BXL', 'O-ARVV',  'PRES', 'EXC-AFW', 'COMM-MED', 'GEN-ALG', 'ORA-SPR', 'P.E.CONS-INOVERW','START-MV', 'START-INT', 'START-DV', 'QO-MV', 'QO-MV JOINTE',  'QA-DV', 'QA-DV JOINTE', 'INT', 'INT JOINTE', 'VOTE','FIN-EINDE'];		
 
 
 
@@ -155,7 +160,7 @@ var types = ['---', 'OUV-OPE', 'O-BXL', 'O-ARVV',  'PRES', 'EXC-AFW', 'COMM-MED'
 				
 				
 				YAHOO.widget.DataTable.Formatter['my_chk_mod'] = function(elCell, oRecord, oColumn, oData) {
-					var gov = ['PICQUE_Charles', 'KIR_Emir', 'DOULKERIDIS_Christos', 'GROUWELS_Brigitte', 'DE_LILLE_Bruno', 'HUYTEBROECK_Evelyne', 'CEREXHE_Benoît', 'VANHENGEL_Guy'];
+					var gov = ['PICQUE_Charles', 'MADRANE_Rachid', 'DOULKERIDIS_Christos', 'GROUWELS_Brigitte', 'DE_LILLE_Bruno', 'HUYTEBROECK_Evelyne', 'CEREXHE_Benoît', 'VANHENGEL_Guy'];
 					var inner = '';
 					for (var i=0;i<gov.length;i++) {
 						inner += gov[i] + ": <input type='checkbox' value='" + gov[i] + "'  />";
@@ -225,15 +230,28 @@ result += "<info><meeting>" + $("#datepicker").val() + "-" + $("#time option:sel
 				result += "<row>";
 				result += "<id>" + i + "</id>";
         for (j=0; j<aCols.length; j++) {
-					 
-					result += "<col_" + aCols[j].key + ">" + oData[aCols[j].key] + "</col_" + aCols[j].key + ">"
+        
+        var val = oData[aCols[j].key];
+        val = (val == null) ? "" : val;
+        
+        console.log(aCols[j].key);
+        console.log(val);
+        console.log(aCols[j].key == 'gov');
+        console.log(val.substr(-1) == "+");
+        // console.log(val.slice(0,-1));
+        if (aCols[j].key == 'gov'  && val.substr(-1) == "+") {
+        	val = val.slice(0,-1);
+        }
+        // val = (aCols[j].key == 'gov'  && val.substr(-1) == "+" ) ? val.slice(0,-1) : val;
+
+	result += "<col_" + aCols[j].key + ">" + xml_escape(val) + "</col_" + aCols[j].key + ">"
 
         }
 				result += "</row>";
 
     }
 		result += "</data>";
-		
+		console.log('result:' + result);
 		// post it to the server
 		var div = document.getElementById('container');
 
@@ -261,7 +279,7 @@ var handleFailure = function(o) {console.log(o);}
 		var sURL = "hello2.xql";
 	
 
-		var postData = 'test=' + result;
+		var postData = result;
 		
 		var callbackeee = 
 	{ 
@@ -273,10 +291,40 @@ var handleFailure = function(o) {console.log(o);}
 	// alert(result);
 			console.log('voor post');
 		console.log(postData);
+		
+		/*
+		 $.ajax({
+                        type: 'POST',
+                        url: sURL,
+                        data: postData,
+                        contentType: 'text/xml',
+                        processData: false,
+                        async: false,
+                        error: function (request, status, error) {
+                            console.log('commit error ocurred');
+                            console.log(status);
+                            console.log(error);
+                            // resetClips(breakpoint);
+                        },
+                        success: function () {
+                            for (i = 0; i < size; i++) {
+                                record = store.getAt(i);
+                                if (record.data.commit == 'D') {
+                                    record.set('commit', 'P');
+                                }
+                            }
+                        }
+                    }).done(function (msg) {
+                        console.log(msg);
+                    });
+		
+		*/
+		YAHOO.util.Connect.setDefaultPostHeader(false);
+YAHOO.util.Connect.initHeader("Content-Type", "text/xml; charset=utf-8");
 	var request = YAHOO.util.Connect.asyncRequest('POST', sURL, callbackeee, postData); 
 		console.log('na post');	
 	
-		
+	
 			
 
 		
@@ -483,8 +531,9 @@ var handleFailure = function(o) {console.log(o);}
 "RIGUELLE Joël "
 		];
 
-				
-				$( ".yui-dt-col-speaker div input" ).autocomplete({
+		
+$(".yui-dt-col-speaker div input").live("focus", function (event) {
+    $(this).autocomplete({
 						
 						
 						source: function(req, response) {
@@ -493,10 +542,8 @@ var handleFailure = function(o) {console.log(o);}
         response($.grep(members, function(item){return matcher.test(item); }) );
         }
 				});
-
-				
-				
-				
+});		
+		
 				
 				myDataTable.subscribe("checkboxClickEvent", function(oArgs){
 						

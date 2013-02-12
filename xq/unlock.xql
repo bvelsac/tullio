@@ -22,6 +22,7 @@ let $meeting := request:get-parameter("m", ())      (:string:)
 let $clip := request:get-parameter("n", ())            (:number:)
 let $version := request:get-parameter("v", ())         (:string -- 'orig' or 'trans' :)
 let $person := request:get-parameter("id", ())          (: string  :)
+let $force := request:get-parameter("force", ())          (: string  :)
 
 (: This script processes data sent after a clip edit -- the system can assume that the meeting and the clip id does already exist, otherwise the user would not have been able to edit the clip text
 => not true...
@@ -45,7 +46,9 @@ let $style := <!DOCTYPE stylesheet [
 let $doc := "/locks.xml"
 let $locks-doc := concat("/db/tullio/", $meeting, $doc)
 (: let $point := doc($locks-doc)/locks :)
-let $result := if (doc($locks-doc)//lock[@n=$clip][@v=$version][@id=$person]) then (update delete doc($locks-doc)//lock[@n=$clip][@v=$version][@id=$person], <p>success unlocked {$clip} - {$version}</p>) else <p>not found</p>
+let $result := if (doc($locks-doc)//lock[@n=$clip][@v=$version][@id=$person]) then (update delete doc($locks-doc)//lock[@n=$clip][@v=$version][@id=$person], <p>success unlocked {$clip} - {$version}</p>) 
+	else if ($force = 'true' and doc($locks-doc)//lock[@n=$clip][@v=$version]) then (update delete doc($locks-doc)//lock[@n=$clip][@v=$version], <p>success unlocked {$clip} - {$version}</p>)
+	else <p>not found</p>
 
 
 

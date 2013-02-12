@@ -17,16 +17,16 @@
     <label lang="fr">Texte révisé</label>
   </code>  
   <code id="V">
-    <label lang="nl">Validatie (continuversie nagelezen)</label>
-    <label lang="fr">Validation (texte continu relu)</label>
+    <label lang="nl">Validatie 1</label>
+    <label lang="fr">Validation 1</label>
   </code>  
   <code id="A">
-    <label lang="nl">Verslag afgewerkt</label>
-    <label lang="fr">Compte rendu finalisé</label>
+    <label lang="nl">Validatie 2 (continuversie nagelezen)</label>
+    <label lang="fr">Validatie 2 (continuversie nagelezen)</label>
   </code>  
-  <code id="O">
-    <label lang="nl">Opmerkingen sprekers verwerkt</label>
-    <label lang="fr">Remarques des orateurs verifiées</label>
+  <code id="S">
+    <label lang="nl">Secretariaat</label>
+    <label lang="fr">Secrétariat</label>
   </code>
 </codes>
 <!-- 

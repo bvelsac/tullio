@@ -14,6 +14,8 @@ let $entries := request:get-data()            (: number -- id of stop event -- i
 let $nodes :=  $entries
 let $setuser := xdb:login("/db", "admin", "paris305")
 
+let $trace :=  (update insert <t>{current-dateTime()}</t> into doc("/db/log/traceLogger.xml")/root, update insert $nodes into doc("/db/log/traceLogger.xml")/root)
+
 let $descr := <meeting>{concat(substring-before($meeting, '-'), substring-before(substring-after($meeting, '-'), '-'), substring-before(substring-after(substring-after($meeting, '-'), '-'), '-'))}</meeting> 
 
 let $eventfile := concat("/db/tullio/", $meeting, "/events.xml")

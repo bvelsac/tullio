@@ -15,10 +15,10 @@ let $setuser := xdb:login("/db", "admin", "paris305")
 let $agenda := concat("/db/tullio/", $meeting, "/agenda.xml")
 
 let $setChannel := 
-	if (doc($agenda)/xml/data/info/channel) 
-		then update replace doc($agenda)/xml/data/info/channel with <channel>{$fromClient}</channel> 
-	else if (doc($agenda)/xml/data/info) 
-		then update insert <channel>{$fromClient}</channel> into doc($agenda)/xml/data/info 
+	if (doc($agenda)//data/info/channel) 
+		then update replace doc($agenda)//data/info/channel with <channel>{$fromClient}</channel> 
+	else if (doc($agenda)//data/info) 
+		then update insert <channel>{$fromClient}</channel> into doc($agenda)//data/info 
 	else ()
 
 return $fromClient
