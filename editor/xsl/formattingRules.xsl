@@ -319,10 +319,22 @@
       -->
     <xsl:choose>
       <xsl:when test="$counter = 1">
-        <xsl:value-of select="key('snippets', concat('to-', $lang))"/>
+      	<xsl:choose>
+      		<xsl:when test="@type='INT' and $lang='N'">tot </xsl:when>
+      		<xsl:otherwise>
+      		<xsl:value-of select="key('snippets', concat('to-', $lang))"/>
+      		</xsl:otherwise>
+      	</xsl:choose>
+
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="key('snippets', concat('toExtra-', $lang))"/>  
+      <xsl:choose>
+      		<xsl:when test="@type='INT' and $lang='N'">en tot </xsl:when>
+      		<xsl:otherwise>
+      		<xsl:value-of select="key('snippets', concat('to-', $lang))"/>
+      		</xsl:otherwise>
+      </xsl:choose>
+  
       </xsl:otherwise>
     </xsl:choose>
     
@@ -505,10 +517,11 @@
      <xsl:when test="$meeting-type='PFB'">
      <xsl:value-of select="$person/ti[@l=$lang][@meeting-type=$meeting-type]"/>
     </xsl:when>
-    <xsl:otherwise> <span class="incomplete">titel<!--
-           
-            -->
-            </span></xsl:otherwise>
+    <xsl:otherwise> 
+    
+    <xsl:value-of select="$person/short[@l=$lang][@meeting-type=$meeting-type]"/>
+    
+    </xsl:otherwise>
     </xsl:choose>
             
            

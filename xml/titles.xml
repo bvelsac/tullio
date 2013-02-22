@@ -235,6 +235,10 @@
       <first>Cécile</first>
       <last>Jodogne</last>
    </person>
+   <person id="KIR_Emir" gov="no" group="PS" lang="fr" gender="m">
+      <first>Emir</first>
+      <last>Kir</last>
+   </person>
    <person id="KHATTABI_Zakia" gov="no" group="Ecolo" lang="fr" gender="f">
       <first>Zakia</first>
       <last>Khattabi</last>
@@ -482,7 +486,7 @@
    
          
   </person>
-  
+<!--  
   <person id="KIR_Emir" gov="yes" gender="m" lang="fr" group="PS">
     <first>Emir</first>
     <last>Kir</last>
@@ -496,7 +500,7 @@
    
     
   </person>
-  
+  -->
   <person id="MADRANE_Rachid" gov="yes" gender="m" lang="fr" group="PS">
     <first>Rachid</first>
     <last>Madrane</last>
@@ -547,7 +551,7 @@
     <last>Huytebroeck</last>
 		<ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Leefmilieu, Energie en Waterbeleid, Stadsvernieuwing, Brandbestrijding en Dringende Medische Hulp en Huisvesting</ti>
     <ti l="F" meeting-type="PFB">ministre en charge de la Politique d'aide aux personnes handicapées</ti>
- 	<ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée de l'Environnement, de l'Energie et de la Politique de l'Eau, de la Rénovation urbaine, de la Lutte contre l'Incendie et l'Aide médicale urgente et du Logement</ti>
+ 	<ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée de l'Environnement, de l'Énergie et de la Politique de l'Eau, de la Rénovation urbaine, de la Lutte contre l'Incendie et l'Aide médicale urgente et du Logement</ti>
     <ti l="N" meeting-type="VVGGC">lid van het Verenigd College, bevoegd voor het Beleid  inzake  Bijstand  aan  Personen,  Financiën,  Begroting  en  Externe Betrekkingen</ti>
     <ti l="F" meeting-type="VVGGC">membre du Collège réuni, compétente pour la Politique d’Aide aux Personnes, les Finances, le Budget et les Relations extérieures</ti>
      

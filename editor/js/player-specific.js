@@ -257,9 +257,30 @@ function setUpPlayer(){
 		
 		$("#startStop").live("click", function(){
 			lastSound = pagePlayer.lastSound.sID;
-			console.log(lastSound);
+			if (!lastSound) {
+					console.log('no sound');
+					return false;
+				}
+				
+			var s = soundManager.getSoundById(lastSound);
+			if (!s || !s.playState || !s.duration) {
+					console.log("something wrong");
+					return false;
+				}
+				/*
+				playState
+Numeric value indicating the current playing state of the sound.
+0 = stopped/uninitialised
+1 = playing or buffering sound (play has been called, waiting for data etc.)
+Note that a 1 may not always guarantee that sound is being heard, given buffering and autoPlay status.
+				*/
+				console.log("playstate: " + s.playState);
+				
+					s.setPosition(s.position - 1250);
+					
+			
+				
 			soundManager.togglePause(lastSound);
-			//$('<li><a href="../_mp3/office_lcobby.mp3">Nog eentjen</a></li>').insertBefore('.last');
 		
 		
 		

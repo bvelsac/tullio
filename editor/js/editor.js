@@ -529,11 +529,14 @@ function docupdate() {
       editor.document.on('keydown', function (event) {
         if (event.data.$.keyCode == 17) isCtrl = true;
         if (event.data.$.keyCode == 16) isShift = true;
-        if ((event.data.$.keyCode == 68 && isCtrl == true && isShift == true)) {
+        
+        /* CTRL + SHIFT + V = PASTE */
+        if ((event.data.$.keyCode == 86 && isCtrl == true && isShift == true)) {
           editor.execCommand('pastetext');
         }
-        if ((event.data.$.keyCode == 68 && isCtrl == true) || event.data.$.keyCode == 120) { // TOGGLE = D
-          //The preventDefault() call prevents the browser's save popup to appear.
+        
+        /* F9 = START / STOP WITH BACKSTEP 2500 MS*/
+        if ( event.data.$.keyCode == 120) { 
           //The try statement fixes a weird IE error.
           try {
             event.data.$.preventDefault();
@@ -541,28 +544,26 @@ function docupdate() {
           lastSound = pagePlayer.lastSound.sID;
           if (lastSound != undefined) {
             // console.log (lastSound);
+            var s = soundManager.getSoundById(lastSound);
+            s.setPosition(s.position - 1250);
             soundManager.togglePause(lastSound);
             return false;
           }
         }
-        if ((event.data.$.keyCode == 68 && isCtrl == true) || event.data.$.keyCode == 120) { // TOGGLE = D
-          //The preventDefault() call prevents the browser's save popup to appear.
-          //The try statement fixes a weird IE error.
-          try {
-            event.data.$.preventDefault();
-          } catch (err) {}
-          // console.log ('save key');
-          //Call to your save function
-          lastSound = pagePlayer.lastSound.sID;
-          if (lastSound != undefined) {
-            // console.log (lastSound);
-            soundManager.togglePause(lastSound);
-            return false;
-          }
-        }
+        
+        
+       /* CTRL + S = SAVE */
         if ((event.data.$.keyCode == 83 && isCtrl == true)) {
+        	
+        	try {
+                    event.data.$.preventDefault();
+                } catch(err) {}
+        	
           editor.execCommand('ajaxsave');
+          return false;
         }
+        
+        /* F3 = REWIND */        
         if (event.data.$.keyCode == 114) {
           // REWIND= S
           //The preventDefault() call prevents the browser's save popup to appear.
@@ -586,16 +587,14 @@ function docupdate() {
           // console.log (s.position);
           s.setPosition(s.position - 5000);
         }
-        if ((event.data.$.keyCode == 70 && isCtrl == true) || event.data.$.keyCode == 115) {
-          // REWIND= S
-          //The preventDefault() call prevents the browser's save popup to appear.
-          //The try statement fixes a weird IE error.
+        
+        /* F4 = FORWARD */
+        if (event.data.$.keyCode == 115) {
+        
           try {
             event.data.$.preventDefault();
           } catch (err) {}
-          // console.log ('save key');
-          //Call to your save function
-          lastSound = pagePlayer.lastSound.sID;
+        
           lastSound = pagePlayer.lastSound.sID;
           if (!lastSound) {
             // console.log ('no sound');
@@ -761,6 +760,10 @@ function setupClipOverview(cells) {
   $("#clipstatus").append(cellMarkup);
 }
 $().ready(function () {
+		
+		
+ 	
+
   if (runTrans == "yes") {
     $("body").addClass("trans");
   } else {
