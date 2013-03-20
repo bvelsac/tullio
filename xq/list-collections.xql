@@ -27,12 +27,18 @@ for $meet in xmldb:get-child-collections("/db/tullio/")
 	order by string($meet) descending
 	return 
 	<tr class='{$status}'>
-		<td class="meeting-id ">{$meet}</td>
-		<td class="meeting-id "><a href="{concat($agenda, '?m=', $meet)}">agenda</a></td>
+		<td class="meeting-id "><span class="id">{$meet}</span>
+		
+		{
+			if (string($id) != "") then <a class="reLog" href="{concat('/exist/tullio/newlogger/logger.html', '?m=', $meet, '&amp;lang=', $lang)}" >re-log</a> else ()
+		}
+		
+		</td>
+		<td class=" "><a href="{concat($agenda, '?m=', $meet)}">agenda</a></td>
 		<!--
 		<td class="meeting-id "><a href="{concat($logger, '?m=', $meet, '&amp;lang=', $lang)}">log</a></td>
 		-->
-		<td class="meeting-id ">
+		<td class=" ">
 		{
 			if (string($id) = "") then <td class="meeting-id "><a href="{concat($logger, '?m=', $meet, '&amp;lang=', $lang)}">log</a></td> else ()
 		}
@@ -44,17 +50,17 @@ for $meet in xmldb:get-child-collections("/db/tullio/")
 		}	
 		</td>
 		-->
-		<td class="meeting-id ">
+		<td class=" ">
 		{
 			if (string($id) = "") then () else <a href="{concat($editor, '?m=', $meet, '&amp;lang=', $lang)}">edit</a>
 		}
 		</td>
-		<td class="meeting-id ">
+		<td class=" ">
 		{
 			if (string($id) = "") then () else 		<a href="{concat($translate, '&amp;m=', $meet, '&amp;lang=', $lang)}">translate</a>
 		}
 		</td>
-		<td class="meeting-id ">
+		<td class=" ">
 		{
 			if (string($id) = "") then () else 		<a href="{concat($assemblage, '?m=', $meet, '&amp;lang=', $lang)}">assemblage</a>
 		}

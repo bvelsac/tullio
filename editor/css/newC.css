@@ -246,7 +246,10 @@ td.events {
     width: 100px;
 }
 p.comment {
-    display: none;
+display: block !important;
+    color: gray;
+	border: thin solid silver;
+padding: 2px;
 }
 div.editable p.comment {
     display: none;

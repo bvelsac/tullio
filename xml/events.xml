@@ -196,12 +196,20 @@
     <description lang="nl"></description>
   </event>
 	
-<event id="ORA-SPR QAJ"  order="00speakers99" active="y" use-for-editor="y" use-for-agenda="y"  cell="y">
+<event id="ORA-J QA"  order="00speakers98" active="y" use-for-editor="y" use-for-agenda="y"  cell="y">
     <name lang="nl">Nieuwe spreker toeg. DV</name>
     <name lang="fr">Nouvel orateur QA jointe</name>
     <description lang="nl"></description>
   </event>
-	
+	<event id="ORA-J QO"  order="00speakers97" active="y" use-for-editor="y" use-for-agenda="y"  cell="y">
+    <name lang="nl">Nieuwe spreker toeg. MV</name>
+    <name lang="fr">Nouvel orateur QO jointe</name>
+    <description lang="nl"></description>
+  </event><event id="ORA-J INT"  order="00speakers99" active="y" use-for-editor="y" use-for-agenda="y"  cell="y">
+    <name lang="nl">Nieuwe spreker toeg. INT</name>
+    <name lang="fr">Nouvel orateur INT jointe</name>
+    <description lang="nl"></description>
+  </event>
 	
 
 	

@@ -26,8 +26,11 @@
 	<l id="titleSmall-f-N">Mevrouw </l>
 	<l id="title-f-F">Mme </l>
 	<l id="titleSmall-f-F">Mme </l>
-	<l id="parole-N"> heeft het woord.</l>
+	<l id="parole-N"> heeft het woord</l>
 	<l id="parole-F">La parole est à </l>
+	<l id="zijnhaar-f">haar</l>
+	<l id="zijnhaar-m">zijn</l>
+	
 	<l id="to-N"> aan </l>
 	<l id="to-F"> à </l>
   <l id="toExtra-N">en aan </l>

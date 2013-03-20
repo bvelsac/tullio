@@ -177,6 +177,9 @@ Ext.onReady(function(){
 		console.log(eventTypes[lang]);
 		var counter;
 		
+		var editorLink = "/exist/tullio/editor/editorH.html?m=" + m + "&lang=" + lang;
+		
+		$(".toEdit").attr('href', editorLink);
 		// align with server time
 		
 		console.log('OFFSET: '+ offset);
@@ -272,7 +275,7 @@ Ext.onReady(function(){
 					},
 					error: function (XMLHttpRequest, textStatus, errorThrown) {
 					},
-					async: false
+					async: true
 			});
 		
 		
@@ -359,7 +362,10 @@ alert(content.current+':'+content.previous)
 		function updateClipLength(store) {
 			// console.log("u c l ");
 			
-			store.suspendAutoSync();
+			// store.suspendAutoSync();
+			
+			
+			
 			
 			if (store.getCount() < 2) return;
 			
@@ -413,10 +419,14 @@ alert(content.current+':'+content.previous)
 				
 				
 			}
-			
+			var keys ='';
+			localStorage.clear();
 			// loop through the records, starting with most recent record
 			for (i=0; i < size; i++) {
+				keys = keys + (i+1) +',';
 				record = store.getAt(i);
+				
+				//console.log(Ext.encode(record.data));
 				//record.set('id', i );
 				// console.log(record.data.time + 'L::' + record.data.length);
 				
@@ -436,15 +446,38 @@ alert(content.current+':'+content.previous)
 				else {
 					record.set('length', '');
 				}
-			}
+				
+				// put record in localStorage
+				
+				localStorage.setItem( m + '-' + (size-i) , Ext.encode(record.data) );
 			
-			store.resumeAutoSync();
+			
+				
+
+				  
+				
+			}
+				// meeting id is the key for an array of record keys
+				store.commitChanges();
+				
+				localStorage.setItem( m, keys.slice(0,-1) );
+			
+			
+							// we also need a counter
+				
+				localStorage.setItem( m + '-counter', size );
+			
+			// store.resumeAutoSync();
+			
+			
+			
+			
 
 		}
 		
 		function setCommitStatus(options, eOpts) {
 			console.log('publish');
-			store.suspendAutoSync();
+			// store.suspendAutoSync();
 	
 
 			var size = store.getCount();
@@ -465,8 +498,8 @@ alert(content.current+':'+content.previous)
 				} 
 			}
 			console.log('commit');
-			store.sync();
-			store.resumeAutoSync();
+			// store.sync();
+			// store.resumeAutoSync();
 			// console.log(options);
 			// console.log(eOpts);
 			// console.log(store);
@@ -569,7 +602,7 @@ alert(content.current+':'+content.previous)
 				*/
 				listeners: {
 					beforesync: function () {
-							
+						console.log('about to sync');	
 						 updateClipLength(store);
 						 
 					
@@ -711,7 +744,7 @@ alert(content.current+':'+content.previous)
 											time: timestamp
 										});
 										cellEditing.cancelEdit();
-										event.setDirty();
+										//event.setDirty();
 										store.insert(0, event);
 										//grid.getView().refresh();
 										// store.commitChanges();
@@ -846,7 +879,7 @@ alert(content.current+':'+content.previous)
 										if (confirm('Publish clips ?')) {
 											
 											console.log('publish');
-											store.suspendAutoSync();
+											// store.suspendAutoSync();
 
 											var size = store.getCount();
 											var found = "";
@@ -881,8 +914,8 @@ alert(content.current+':'+content.previous)
 											
 											console.log('publish end');
 			
-											store.sync();
-											store.resumeAutoSync();
+											// store.sync();
+											// store.resumeAutoSync();
 											
 										}
 									}
@@ -909,9 +942,17 @@ alert(content.current+':'+content.previous)
 		
 		
 		function update() {
-			// console.log('looping');
+			console.log('UCL');
 			updateClipLength(store);
-			store.sync();
+			
+			console.log('SYNC');
+			
+			
+			// console.log(Ext.encode(grid.getStore().data));
+			
+			
+			
+			// store.sync();
 			setTimeout(update, 5000);
 		}
 		update();
@@ -950,7 +991,7 @@ alert(content.current+':'+content.previous)
 					var event = new Event(submission);
 					cellEditing.cancelEdit();
 					event.set('time', timestamp);
-					event.setDirty();
+					//event.setDirty();
 					store.insert(0, event);
 					
 					$(this).parent().css('background-color', 'silver');
@@ -975,7 +1016,7 @@ alert(content.current+':'+content.previous)
 					var event = new Event();
 					cellEditing.cancelEdit();
 					event.set('time', timestamp);
-					event.setDirty();
+					//event.setDirty();
 					store.insert(0, event);
 					cellEditing.startEditByPosition({
 						row: 0,
@@ -999,7 +1040,7 @@ alert(content.current+':'+content.previous)
 					cellEditing.cancelEdit();
 					event.set('time', timestamp);
 					event.set('c', true);
-					event.setDirty();
+					//event.setDirty();
 					store.insert(0, event);
 					cellEditing.startEditByPosition({
 						row: 0,
@@ -1040,7 +1081,7 @@ alert(content.current+':'+content.previous)
 			for (i=0; i < size; i++) {
 				record = store.getAt(i);
 				if (record.data.commit == 'P' || record.data.commit == 'F') break;
-				record.setDirty();
+				//record.setDirty();
 			}
 			
 			
@@ -1078,7 +1119,7 @@ alert(content.current+':'+content.previous)
 										// if ()
 										
 										
-										event.setDirty();
+										//event.setDirty();
 										store.insert(0, event);
 										//grid.getView().refresh();
 										// store.commitChanges();
@@ -1123,7 +1164,7 @@ alert(content.current+':'+content.previous)
 					event.set('speaker', conf);
 					event.set('lang', langMap[conf]);
 					event.set('c', 'false');
-					event.setDirty();
+					//event.setDirty();
 					store.insert(0, event);
 					cellEditing.startEditByPosition({
 							row: 0,

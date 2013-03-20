@@ -83,7 +83,7 @@
       <xsl:when test="$meeting-type='PFB'">
         <p c='{@clip}' title='{@n}' class="proc">
           <xsl:text>Présidence de </xsl:text> 
-          <xsl:value-of select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/>
+          <xsl:value-of select="key('snippets', concat('titleSmall-', $person/@gender, '-',  $lang))"/>
           <xsl:value-of select="$person/first"/>
           <xsl:text> </xsl:text>
           <xsl:value-of select="$person/last"/>,  <span class="incomplete">TITRE / TITEL</span>
@@ -92,7 +92,7 @@
       <xsl:otherwise>
         <p c="{@clip}" title="{@n}" class="proc">
           <xsl:value-of select="key('snippets', concat('presi-', $lang))"/>
-          <xsl:value-of select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/>
+          <xsl:value-of select="key('snippets', concat('titleSmall-', $person/@gender, '-',  $lang))"/>
           <xsl:value-of select="$person/first"/>
           <xsl:text> </xsl:text>
           <xsl:value-of select="$person/last"/>,  <span class="incomplete">TITRE / TITEL</span>.
@@ -104,6 +104,23 @@
     </xsl:choose>
     
   </xsl:template>
+  
+  <xsl:template match="e[@type='PRES-CH']" mode="initialize-text">
+  <xsl:param name="lang" select="@lang"/>
+    <xsl:variable name="person" select="key('people', @speaker)"></xsl:variable>
+     <p c="{@clip}" title="{@n}" class="realia">
+       (<xsl:value-of select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/>
+         <xsl:value-of select="$person/first"/>
+          <xsl:text> </xsl:text>
+          <xsl:value-of select="$person/last"/>,  <span class="incomplete">TITRE / TITEL</span>, 
+          <xsl:choose>
+          <xsl:when test="$lang='N'"> treedt <span class="incomplete">opnieuw</span> als voorzitter op)</xsl:when>
+          <xsl:when test="$lang='F'"> <span class="incomplete">reprend</span> place au fauteuil présidentiel)</xsl:when>
+          </xsl:choose>
+        </p>
+
+  </xsl:template>
+  
   
   <xsl:template match="e[@type='GEN-ALG']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"/>
@@ -223,7 +240,7 @@
            <p class="front"  c="{@clip}" title="{@n}">VERENIGDE VERGADERING VAN DE GEMEENSCHAPPELIJKE GEMEENSCHAPSCOMMISSIE</p>
            <p class="front" c="{@clip}" title="{@n}">Integraal verslag van de interpellaties en mondelinge vragen</p>
            <p class="front" c="{@clip}" title="{@n}" ><span class="incomplete">NAAM COMMISSIE</span></p>
-           <p class="front" c="{@clip}" title="{@n}" ><span class="incomplete">VERGADERING VAN DAG XX MAAND 2012</span></p>
+           <p class="front" c="{@clip}" title="{@n}" ><span class="incomplete">VERGADERING VAN DAG XX MAAND 2013</span></p>
            <!-- 
              <p c="{@clip}" title="{@n}">Plenaire vergadering van <span class="incomplete">DATUM</span></p>
              <p c="{@clip}" title="{@n}">
@@ -236,7 +253,7 @@
            <p c="{@clip}" title="{@n}">ASSEMBLÉE RÉUNIE DE LA COMMISSION COMMUNAUTAIRE COMMUNE</p>
            <p c="{@clip}" title="{@n}">Compte rendu intégral des interpellations et des questions orales</p>
            <p c="{@clip}" title="{@n}" class="incomplete">NOM DE LA COMMISSION</p>
-           <p c="{@clip}" title="{@n}" class="incomplete">RÉUNION DU JOUR XX MOIS 2011</p>
+           <p c="{@clip}" title="{@n}" class="incomplete">RÉUNION DU JOUR XX MOIS 2013</p>
          </xsl:otherwise>
        </xsl:choose>
      </xsl:otherwise>
@@ -362,7 +379,7 @@
   
   
   
-  <xsl:template match="e[@type='QA-DV'] | e[@type='QO-MV'] | e[@type='INT']" mode="initialize-text">
+  <xsl:template match="e[@type='QA-DV'] | e[@type='QO-MV'] | e[@type='INT'] | e[@type='INT JOINTE'] | e[@type='QO-MV JOINTE'] | e[@type='QA-DV JOINTE']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"/>
     <xsl:variable name="person" select="key('people', @speaker)"/>
 
@@ -370,6 +387,10 @@
     <xsl:choose>
       <xsl:when test="$lang='N'">
         <xsl:choose>
+        <xsl:when test="@type='INT JOINTE'">Toegevoegde interpellatie van </xsl:when>
+        <xsl:when test="@type='QO-MV JOINTE'">Toegevoegde mondelinge vraag van </xsl:when>
+        <xsl:when test="@type='QA-DV JOINTE'">Toegevoegde dringende vraag van </xsl:when>
+         
           <xsl:when test="@type='INT'">Interpellatie van </xsl:when>
           <xsl:when test="@type='QO-MV'">
             <xsl:text>Mondelinge vraag van </xsl:text>
@@ -379,6 +400,9 @@
       </xsl:when>
       <xsl:when test="$lang='F'">
         <xsl:choose>
+         <xsl:when test="@type='INT JOINTE'">Interpellation jointe de </xsl:when>
+        <xsl:when test="@type='QO-MV JOINTE'">Question orale jointe de </xsl:when>
+        <xsl:when test="@type='QA-DV JOINTE'">Question d'actualité jointe de </xsl:when>
           <xsl:when test="@type='INT'">Interpellation de </xsl:when>
           <xsl:when test="@type='QO-MV'">
             <xsl:text>Question orale de </xsl:text>
@@ -396,12 +420,15 @@
     </p>  
       <!-- more than one member of governement might be addressed -->
       
+      <xsl:if test="not(contains(@type, 'JOINTE'))">
+      
+      
     <xsl:call-template name="insertGov" >
       
       <xsl:with-param name="nameString" select="normalize-space(@props)"></xsl:with-param>
       <xsl:with-param name="lang" select="$lang"></xsl:with-param>    
     </xsl:call-template>
-    
+    </xsl:if>
     
     <p class="title4" c="{@clip}" title="{@n}">
       <xsl:value-of select="key('snippets', concat('concerning-', $lang))"/>
@@ -570,7 +597,7 @@
   
   
   
-  <xsl:template match="e[@type='ORA-SPR']" mode="initialize-text">
+  <xsl:template match="e[@type='ORA-J QO'] | e[@type='ORA-J QA'] | e[@type='ORA-J INT'] | e[@type='ORA-SPR']" mode="initialize-text">
     <xsl:param name="lang" select="@lang"/>
     <xsl:variable name="person" select="key('people', @speaker)"/>
     <xsl:choose>
@@ -628,13 +655,56 @@
               <xsl:value-of select="key('snippets', concat('parole-', $lang))"/>
               <xsl:value-of select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/>
               
-              <xsl:value-of select="$person/last"/>.
+              <xsl:value-of select="$person/last"/>
+              <xsl:choose>
+              <xsl:when test="@type='ORA-J QO'">
+              <xsl:text> pour sa question orale jointe</xsl:text>
+              </xsl:when>
+                            <xsl:when test="@type='ORA-J QA'">
+              <xsl:text> pour sa question d'actualité jointe</xsl:text>
+              </xsl:when>
+                            <xsl:when test="@type='ORA-J INT'">
+              <xsl:text> pour son interpellation jointe</xsl:text>
+              </xsl:when>
+              
+              </xsl:choose>
+              
+              <xsl:text>.</xsl:text>
             </xsl:when>
             <xsl:otherwise>
               <xsl:value-of select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/>
               
               <xsl:value-of select="$person/last"/>
               <xsl:value-of select="key('snippets', concat('parole-', $lang))"/>
+              <xsl:choose>
+              <xsl:when test="contains(@type, 'ORA-J')">
+              	<xsl:text> voor </xsl:text>
+              	<xsl:value-of select="key('snippets', concat('zijnhaar-', $person/@gender))"/>
+              	<xsl:text> </xsl:text>
+              		<xsl:choose>
+              		 <xsl:when test="@type='ORA-J QA'">
+              <xsl:text>toegevoegde dringende vraag</xsl:text>
+              </xsl:when>
+                            <xsl:when test="@type='ORA-J QO'">
+              <xsl:text>toegevoegde mondelinge vraag</xsl:text>
+              </xsl:when>
+              <xsl:when test="@type='ORA-J INT'">
+              <xsl:text>toegevoegde interpellatie</xsl:text>
+              </xsl:when>
+              		
+              		</xsl:choose>
+              	
+              	
+              	
+              </xsl:when>
+              
+                           
+              
+              </xsl:choose>
+              
+              
+              
+              <xsl:text>.</xsl:text>
             </xsl:otherwise>
           </xsl:choose>
         </p>
