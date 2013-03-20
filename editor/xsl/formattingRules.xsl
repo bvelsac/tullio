@@ -451,6 +451,7 @@
     <xsl:param name="class" select="'pres'"/>
     <xsl:param name="segment"/>
     <xsl:param name="event"/>
+     <xsl:param name="reformat"/>
     <xsl:param name="lang" select="$event/@lang"/>
     <!--<xsl:text>debug</xsl:text><xsl:value-of select="$lang"/>-->
     <!--<xsl:comment>
@@ -516,7 +517,10 @@
             </xsl:otherwise>
           </xsl:choose>
         </span>
-        <xsl:text>.- </xsl:text>
+        <xsl:if test="not($reformat='true')">
+        	<xsl:text>.- </xsl:text>
+        </xsl:if>
+        
       </xsl:otherwise>
     </xsl:choose>
     

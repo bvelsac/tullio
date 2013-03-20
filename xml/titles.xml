@@ -23,7 +23,7 @@
 	<l id="title-m-F">M. </l>
 	<l id="titleSmall-m-F">M. </l>
 	<l id="title-f-N">Mevrouw </l>
-	<l id="titleSmall-f-N">Mevrouw </l>
+	<l id="titleSmall-f-N">mevrouw </l>
 	<l id="title-f-F">Mme </l>
 	<l id="titleSmall-f-F">Mme </l>
 	<l id="parole-N"> heeft het woord</l>
@@ -89,6 +89,12 @@
       <first>Michèle</first>
       <last>Carthé</last>
    </person>
+   
+    <person id="CEREXHE_Benoît" gov="no" gender="m" lang="fr" group="cdH">
+    <first>Benoît</first>
+    <last>Cerexhe</last>
+    </person>
+   
    <person id="CHAHID_Mohammadi" gov="no" group="PS" lang="fr" gender="m">
       <first>Mohammadi</first>
       <last>Chahid</last>
@@ -214,10 +220,13 @@
       <last>Fraiteur</last>
 
    </person>
+   <!--
    <person id="FREMAULT_Céline" gov="no" group="cdH" lang="fr" gender="f">
       <first>Céline</first>
       <last>Fremault</last>
    </person>
+   -->
+   
    <person id="GOSUIN_Didier" gov="no" group="FDF" lang="fr" gender="m">
       <first>Didier</first>
       <last>Gosuin</last>
@@ -531,6 +540,23 @@
    
   </person>
   
+  <person id="FREMAULT_Céline" gov="yes" group="cdH" lang="fr" gender="f">
+      <first>Céline</first>
+      <last>Fremault</last>
+      <ti l="F" meeting-type="PFB">ministre en charge de la Fonction publique, de la Politique de la Santé et de la Formation professionnelle des Classes moyennes</ti>
+    <ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargé de l'Emploi, de l'Économie, du Commerce extérieur et de la Recherche scientifique</ti>
+      <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Tewerkstelling, Economie, Buitenlandse Handel en Wetenschappelijk Onderzoek</ti>
+      <ti l="N" meeting-type="VVGGC">lid van het Verenigd College, bevoegd voor het Gezondheidsbeleid en het Openbaar Ambt</ti>
+    <ti l="F" meeting-type="VVGGC">membre du Collège réuni, compétent pour la Politique de la Santé et la Fonction publique</ti>
+     
+    	 <short l="N" meeting-type="BHP">minister</short>
+      <short l="F" meeting-type="BHP">ministre</short>
+      <short l="N" meeting-type="VVGGC">lid van het Verenigd College</short>
+      <short l="F" meeting-type="VVGGC">membre du Collège réuni</short>
+      
+   </person>
+  
+  <!--
   
   <person id="CEREXHE_Benoît" gov="yes" gender="m" lang="fr" group="cdH">
     <first>Benoît</first>
@@ -548,7 +574,7 @@
    
    
   </person>
-  
+  -->
   <person id="HUYTEBROECK_Evelyne" gov="yes" gender="f" lang="fr" group="Ecolo">
     <first>Evelyne</first>
     <last>Huytebroeck</last>

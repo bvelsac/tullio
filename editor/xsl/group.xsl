@@ -300,11 +300,12 @@
       </tr>
     </xsl:for-each>
   </xsl:template>
-  <xsl:template mode="write" match="span[@class='pres reformat'] | a[@class='pres reformat']">
+  <xsl:template mode="write" match="span[contains(@class, 'pres reformat')] | a[@class='pres reformat']">
     <!--<xsl:copy-of select="key('all', @title)"/>-->
     <xsl:call-template name="president">
       <xsl:with-param name="event" select="key('all', @title)"/>
       <xsl:with-param name="lang" select="key('all', @title)/@lang"/>
+      <xsl:with-param name="reformat" select="'true'"/>
     </xsl:call-template>
   </xsl:template>
   <xsl:template match="*" mode="write">

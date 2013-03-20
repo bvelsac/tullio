@@ -230,6 +230,9 @@
 		<xsl:attribute name="style">
 		<xsl:choose>
 					<xsl:when test="not( @title and string(@class) ) and not(contains(@class, 'title'))">font-style: italic;</xsl:when>
+					<xsl:when test="contains(@class, 'title1')">font-style: normal; font-weight: bold; text-align: center; text-transform: uppercase;</xsl:when>
+					
+					
 					<xsl:otherwise>font-style: normal;</xsl:otherwise>
 				</xsl:choose>
 				</xsl:attribute>
@@ -265,7 +268,7 @@
 
 			</xsl:choose>
 </xsl:copy>
-			<xsl:if test="ancestor::trans">
+			<xsl:if test="ancestor::trans and not(contains(.,'voorzitter')) and not(contains(.,'résident'))">
 				<xsl:choose>
 					<xsl:when test="key('events', ancestor::p/@c)/@lang='F'">
 					<xsl:text> (in het Frans)</xsl:text>
