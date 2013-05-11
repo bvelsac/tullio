@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>AGENDA</title>
+    <!--[if IE]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
+      </script>
+    <![endif]-->
+    
+  
+     <link rel="stylesheet" type="text/css" href="../js-lib/newagenda/css/flick/jquery-ui-1.10.2.custom.min.css" />
+     <link rel="stylesheet" type="text/css" href="../js-lib/newagenda/token-input.css" />
+     <link rel="stylesheet" type="text/css" href="../js-lib/newagenda/token-input-facebook.css" />
+       <link rel="stylesheet" type="text/css" href="footable.css" />
+
+       <script>var target='agenda';</script>
+       
+<script language="javascript" src="../js-lib/newagenda/jquery-1.9.1.min.js"></script>
+<script language="javascript" src="../js-lib/newagenda/jquery-ui-1.10.2.custom.min.js"></script>
+<script language="javascript" src="../js-lib/newagenda/jquery.tokeninput.js"></script>
+<script language="javascript" src="../js-lib/newagenda/jsonml-dom.js"></script>
+<script language="javascript" src="../js-lib/newagenda/jsonml-xml.js"></script>
+<script language="javascript" src="../js-lib/newagenda/xml2json.js"></script>
+<script language="javascript" src="../js-shared/common.js"></script>
+
+<script language="javascript" src="agenda.js"></script>
+<script language="javascript" src="../js-lib/jquerytransform/js/jquery.transform.js"></script>
+<!--
+<script language="javascript" src="../js-lib/newagenda/"></script>
+<script language="javascript" src="../js-lib/newagenda/"></script>
+<script language="javascript" src="../js-lib/jquerytransform/js/jquery.transform.js"></script>
+    -->
+    
+    <style>
+      body { margin:50px; }
+      article, aside, figure, footer, header, hgroup, menu, nav, section { 
+        display:block;
+      }
+      tags, data {display : none;}
+    </style>
+  </head>
+  <body>
+    <nav>
+    <!--
+      <a id="start" href="simple-html5-document.html">Tullio Home</a>
+      -->
+    </nav>
+   <div id="commands">
+    <button class='button add' id='add'>Add</button>
+    <button class='button save' id='save'>Save</button>
+    
+           
+    
+</div>
+<div id="agenda">
+    <table class="footable" id="sortable">
+        
+    </table>
+</div>
+   
+  </body>	
+</html>

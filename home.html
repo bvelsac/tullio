@@ -38,8 +38,10 @@ div#content{
  
  #help {margin-left: 80%;}
  
- .reLog {display: none;}
- .meeting-id:hover .reLog {display: inline;}
+ .reLog, .editAgenda {display: none;}
+ 
+ .meeting-id:hover .reLog, .viewAgenda:hover .editAgenda {display: inline; } 
+ 
  
 </style>
  
@@ -111,6 +113,7 @@ $(document).ready(function() {
 	
 	
 </div>
+    <a href="/exist/tullio/newagenda/agenda.html">Nieuwe agenda / nouvel agenda</a>
 
 
 

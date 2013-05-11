@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>AGENDA</title>
+    <!--[if IE]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
+      </script>
+    <![endif]-->
+    
+  
+     <link rel="stylesheet" type="text/css" href="../js-lib/newagenda/css/flick/jquery-ui-1.10.2.custom.min.css" />
+     <link rel="stylesheet" type="text/css" href="../js-lib/newagenda/token-input.css" />
+     <link rel="stylesheet" type="text/css" href="../js-lib/newagenda/token-input-facebook.css" />
+       <link rel="stylesheet" type="text/css" href="footable.css" />
+
+       <script>var target='agenda';</script>
+       
+<script language="javascript" src="../js-lib/newagenda/jquery-1.9.1.min.js"></script>
+<script language="javascript" src="../js-lib/newagenda/jquery-ui-1.10.2.custom.min.js"></script>
+<script language="javascript" src="../js-lib/newagenda/jquery.tokeninput.js"></script>
+<script language="javascript" src="../js-lib/newagenda/jsonml-dom.js"></script>
+<script language="javascript" src="../js-lib/newagenda/jsonml-xml.js"></script>
+<script language="javascript" src="../js-lib/newagenda/xml2json.js"></script>
+<script language="javascript" src="../js-shared/common.js"></script>
+
+<script language="javascript" src="agenda.js"></script>
+<script language="javascript" src="../js-lib/jquerytransform/js/jquery.transform.js"></script>
+        
+<script language="javascript" src="../js-lib/jquery.jeditable.mini.js"></script>
+        
+<!--
+<script language="javascript" src="../js-lib/newagenda/"></script>
+<script language="javascript" src="../js-lib/newagenda/"></script>
+<script language="javascript" src="../js-lib/jquerytransform/js/jquery.transform.js"></script>
+    -->
+    
+    <style>
+      body {
+          margin:50px;
+      }
+      article, aside, figure, footer, header, hgroup, menu, nav, section {
+          display:block;
+      }
+      .saveAs, #saveMessage, tags, data {
+          display : none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+        <!-- <a id="start" href="simple-html5-document.html">Tullio Home</a>
+      -->
+    </nav>
+    <h3 id="titlePlaceholder"></h3>
+    <p id="saveMessage">SAVED</p>
+    <div id="metadata">
+        <p>Datum:
+            <input id="datepicker" type="text"></input>
+        </p>
+        <p>AM/PM:
+            <select id="time">
+                <option value="AM">AM</option>
+                <option value="PM">PM</option>
+                <option value="--" selected='true'>--</option>
+            </select>
+            <p>Vergadering:
+                <select id="meeting-type">
+                    <option value="PLEN">Plenaire - plénière</option>
+                    <option value="COM-AEZ">COM AEZ</option>
+                    <option value="COM-AIBZ">COM AIBZ</option>
+                    <option value="COM-ATRO">COM ATRO</option>
+                    <option value="COM-ENVMIL">COM ENVMIL</option>
+                    <option value="COM-FIN">COM FIN</option>
+                    <option value="COM-INFRA">COM INFRA</option>
+                    <option value="COM-LOGHUIS">COM LOGHUIS</option>
+                    <option value="COM-ASSZ">COM ASSZ</option>
+                    <option value="COM-SANGEZ">COM SANGEZ</option>
+                    <option value="COM-ASSZSANGEZ">COM ASSZSANGEZ</option>
+                    <option value="PFB">PFB</option>
+                </select>
+            </p>
+            <p>Toevoeging (ZONDER SPATIES):
+                <input id="addText" type="text"></input>
+            </p>
+    </div>
+    <div id="commands">
+        <button class='button add' id='add'>Add</button>
+        <button class='button save' id='save'>Save</button>
+        <button class='button saveAs' id='saveAs'>Save As</button>
+    </div>
+    <div id="agenda">
+        <table class="footable" id="sortable">
+        <thead>
+                <tr>
+                    <th>TYPE</th>
+  <th>F/N</th>
+
+                    <th>SUJET / ONDERWERP NL</th>
+                    <th>SUJET / ONDERWERP FR</th>
+                    <th>KEYWORD</th>
+                    <th>ORATEUR / SPREKER</th>
+                    <th>GOUV. / REG.</th>
+                    <th>-</th>
+                    
+                </tr>
+            </thead></table>
+    </div>
+</body>	
+</html>

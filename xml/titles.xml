@@ -7,6 +7,17 @@
  <l id="startIntOrd-N"><span class="incomplete">Aan de orde is de interpellatie van de heer / mevrouw (naam). OF Aan de orde zijn de interpellaties.</span></l>
  <l id="startIntOrd-F"><span class="incomplete">L'ordre du jour appelle l'interpellation de M. / Mme (nom). OU L'ordre du jour appelle les interpellations.</span></l>
  
+  <l id="startMV-F"><span class="incomplete">QUESTION ORALE / ORALES</span></l>
+ <l id="startMV-N"><span class="incomplete">MONDELINGE VRAAG / VRAGEN</span></l>
+ <l id="startMVOrd-N"><span class="incomplete">Aan de orde is de mondelinge vraag van de heer / mevrouw (naam). OF Aan de orde zijn de mondelinge vragen.</span></l>
+ <l id="startMVOrd-F"><span class="incomplete">L'ordre du jour appelle la question orale de M. / Mme (nom). OU L'ordre du jour appelle les questions orales.</span></l>
+ 
+  <l id="startDV-F"><span class="incomplete">QUESTION / QUESTIONS D'ACTUALITÉ</span></l>
+ <l id="startDV-N"><span class="incomplete">DRINGENDE VRAAG / VRAGEN</span></l>
+ <l id="startDVOrd-N"><span class="incomplete">Aan de orde is de dringende vraag van de heer / mevrouw (naam). OF Aan de orde zijn de dringende vragen.</span></l>
+ <l id="startDVOrd-F"><span class="incomplete">L'ordre du jour appelle la question d'actualité de M. / Mme (nom). OU L'ordre du jour appelle les questions d'actualité.</span></l>
+ 
+ 
   <l id="contN-N">(verder in het Nederlands)</l>
   <l id="contN-F">(poursuivant en néerlandais)</l>
   <l id="contF-F">(poursuivant en français)</l>
@@ -346,6 +357,17 @@
       <first>Yaron</first>
       <last>Pesztat</last>
    </person>
+
+   <person id="PICQUE_Charles" gov="no" group="PS" lang="fr" gender="m">
+      <first>Charles</first>
+      <last>Picqué</last>
+   </person>
+
+
+   
+   
+   
+   
    <person id="PINXTEREN_Arnaud" gov="no" group="Ecolo" lang="fr" gender="m">
       <first>Arnaud</first>
       <last>Pinxteren</last>
@@ -425,11 +447,12 @@
       <first>Jean-Luc</first>
       <last>Vanraes</last>
    </person>
+   <!--
    <person id="VERVOORT_Rudi" gov="no" group="PS" lang="fr" gender="m">
       <first>Rudi</first>
       <last>Vervoort</last>
    </person>
-
+-->
  
   
   
@@ -481,9 +504,9 @@
     
  
  
-  <person id="PICQUE_Charles" gov="yes" gender="m" lang="fr" group="PS">
-    <first>Charles</first>
-    <last>Picqué</last>
+  <person id="VERVOORT_Rudi" gov="yes" gender="m" lang="fr" group="PS">
+    <first>Rudi</first>
+    <last>Vervoort</last>
 		<ti l="N" meeting-type="BHP">minister-president van de Brusselse Hoofdstedelijke Regering, belast met Plaatselijke Besturen, Ruimtelijke Ordening, Monumenten en Landschappen, Openbare Netheid en Ontwikkelingssamenwerking</ti>
  
 			<ti l="F" meeting-type="BHP">ministre-président du Gouvernement de la Région de Bruxelles-Capitale, chargé des Pouvoirs locaux, de l'Aménagement du Territoire, des Monuments et Sites, de la Propreté publique et de la Coopération au Développement</ti>
@@ -544,10 +567,10 @@
       <first>Céline</first>
       <last>Fremault</last>
       <ti l="F" meeting-type="PFB">ministre en charge de la Fonction publique, de la Politique de la Santé et de la Formation professionnelle des Classes moyennes</ti>
-    <ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargé de l'Emploi, de l'Économie, du Commerce extérieur et de la Recherche scientifique</ti>
+    <ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée de l'Emploi, de l'Économie, du Commerce extérieur et de la Recherche scientifique</ti>
       <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Tewerkstelling, Economie, Buitenlandse Handel en Wetenschappelijk Onderzoek</ti>
       <ti l="N" meeting-type="VVGGC">lid van het Verenigd College, bevoegd voor het Gezondheidsbeleid en het Openbaar Ambt</ti>
-    <ti l="F" meeting-type="VVGGC">membre du Collège réuni, compétent pour la Politique de la Santé et la Fonction publique</ti>
+    <ti l="F" meeting-type="VVGGC">membre du Collège réuni, compétente pour la Politique de la Santé et la Fonction publique</ti>
      
     	 <short l="N" meeting-type="BHP">minister</short>
       <short l="F" meeting-type="BHP">ministre</short>

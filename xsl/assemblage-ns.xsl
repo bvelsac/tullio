@@ -268,7 +268,7 @@
 
 			</xsl:choose>
 </xsl:copy>
-			<xsl:if test="ancestor::trans and not(contains(.,'voorzitter')) and not(contains(.,'résident'))">
+			<xsl:if test="ancestor::trans and not(contains(.,'voorzitter')  and not (contains(., 'College'))  ) and not(contains(.,'résident') and not (contains(., 'réuni')))">
 				<xsl:choose>
 					<xsl:when test="key('events', ancestor::p/@c)/@lang='F'">
 					<xsl:text> (in het Frans)</xsl:text>

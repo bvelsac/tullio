@@ -246,8 +246,9 @@ Ext.onReady(function(){
 		// meetingId += random;
 		console.log("ID:" + meetingId);
 		
-		// load agenda
-		$('#agendaplaceholder').load('/exist/tullio/newlogger/hello3.xql?m=' + m, function() {});
+		// load agenda http://192.168.25.253:8080/exist/rest//db/tullio/2013-04-26---_PFB_/agenda.xml?_xsl=/tullioxsl/agenda2log.xsl
+		$('#agendaplaceholder').load('/exist/rest//db/tullio/' + m + '/agenda.xml?_xsl=/tullioxsl/agenda2log.xsl', function() {});
+		// $('#agendaplaceholder').load('/exist/tullio/newlogger/hello3.xql?m=' + m, function() {});
 		
 		// code for meeting room selection
 		
@@ -303,7 +304,9 @@ alert(content.current+':'+content.previous)
 				console.log(this);
 				console.log(value);
 				console.log(settings);
-				$('#agendaplaceholder2').load('/exist/tullio/newlogger/hello3.xql?m=' + settings.data[value]);
+$('#agendaplaceholder2').load('/exist/rest//db/tullio/' + settings.data[value] + '/agenda.xml?_xsl=/tullioxsl/agenda2log.xsl', function() {});
+
+				//$('#agendaplaceholder2').load('/exist/tullio/newlogger/hello3.xql?m=' + settings.data[value]);
 				extra = settings.data[value];
 				return(settings.data[value]);
 		}, { 
@@ -676,7 +679,7 @@ alert(content.current+':'+content.previous)
             {header: "Spreker", width: 140, dataIndex: 'speaker', field: {
                 xtype: 'combobox',
                 typeAhead: true,
-								forceSelection: false,
+								forceSelection: true,
                 triggerAction: 'all',
                 selectOnTab: true,
                 store: allSpeakersDict,
@@ -959,13 +962,18 @@ alert(content.current+':'+content.previous)
 		
 		$(document).delegate('#agendaplaceholder h2','dblclick', function(e) {
 				console.log('reload agenda');
-				$('#agendaplaceholder').load('/exist/tullio/newlogger/hello3.xql?m=' + m, function() {});
+$('#agendaplaceholder').load('/exist/rest//db/tullio/' + m + '/agenda.xml?_xsl=/tullioxsl/agenda2log.xsl', function() {});
+
+
+			
 		
 				
 		});
 				$(document).delegate('#agendaplaceholder2 h2','dblclick', function(e) {
 				console.log('reload agenda');
-				$('#agendaplaceholder2').load('/exist/tullio/newlogger/hello3.xql?m=' + extra, function() {});
+$('#agendaplaceholder').load('/exist/rest//db/tullio/' + extra + '/agenda.xml?_xsl=/tullioxsl/agenda2log.xsl', function() {});
+
+				//$('#agendaplaceholder2').load('/exist/tullio/newlogger/hello3.xql?m=' + extra, function() {});
 		
 				
 		});

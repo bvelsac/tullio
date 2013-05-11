@@ -1,0 +1,187 @@
+<html>
+<head>
+<title>Meeting Dashboard</title>
+<meta http-equiv="Content-Type" content="text/xml; charset=UTF-8"></meta>
+<link rel="stylesheet" type="text/css" href="dashboard.css" />
+
+<script language="javascript" src="../js-lib/jquerytransform/js/jquery-1.6.4.js"></script>
+
+<script language="javascript" src="../js-lib/jquerytransform/js/jquery.transform.js"></script>
+
+</head>
+<style>
+
+
+table {
+empty-cells: show;
+border-collapse: collapse;
+}
+
+td {
+border: thin solid grey;
+
+}
+/*
+tr:not(.error) {
+ display: none;
+}
+*/
+
+
+tr.marker {border-top: solid  }
+tr.error {background-color: red;}
+
+</style>
+<script>
+$().ready( function(){
+
+(function($) {
+    $.QueryString = (function(a) {
+        if (a == "") return {};
+        var b = {};
+        for (var i = 0; i < a.length; ++i)
+        {
+            var p=a[i].split('=');
+            if (p.length != 2) continue;
+            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+        }
+        return b;
+    })(window.location.search.substr(1).split('&'))
+})(jQuery);
+
+var m =  $.QueryString["m"];
+var titles;
+var events;
+var consolidated  = document.implementation.createDocument ('', 'all', null);
+console.log(consolidated);
+console.log(consolidated.documentElement);
+/*consolidated.documentElement.appendChild(consolidated.createElement('doc'));
+console.log(consolidated);
+console.log(consolidated.documentElement);
+*/
+  jQuery.ajax({
+    url: "/exist/tullio/xml/titles.xml",
+    success: function (result) {
+    	consolidated.documentElement.appendChild(result.documentElement);
+      titles = result.documentElement;
+    },
+    async: false,
+    contentType: "text/xml"
+  });
+  
+  
+  
+    jQuery.ajax({
+    url: "/exist/rest//db/tullio/" + m + "/events.xml?_howmany=10000",
+    success: function (result) {
+    consolidated.documentElement.appendChild(result.documentElement);
+    	events = result.documentElement;
+       
+      
+      
+      
+      
+     
+    },
+    async: false,
+    contentType: "text/xml"
+  });
+ 
+  
+    console.log (new XMLSerializer().serializeToString(consolidated));
+     
+  
+
+
+   $.transform({el:"#dashboard",xmlobj:consolidated,xsl:"events2dashboard.xsl"});
+
+// set up show/hide for checkboxes
+
+
+
+var selectorForClips = "tr.marker";
+var selectorForPres = "tr.PRES, tr.PRES-CH";
+var selectorForAgenda = "tr.QO-MV, tr.QA-DV, tr.INT, tr.GEN-ALG, tr.POINT";
+var selectorForMeeting = "tr.EINDE-ARVV, tr.EINDE-BXL, tr.FIN-EINDE, tr.HERV-ARVV, tr.HERV-BXL, tr.O-BXL, tr.O-ARVV, tr.SCH-ARVV, tr.SCH-BXL";
+var selectorForVote = "tr.VOTE";
+var selectorForError = "tr.error";
+
+function updateCSS (trigger, selector) {
+console.log("function called");
+console.log(selector);
+console.log(trigger);
+	var thisCheck = $(trigger);
+	if (thisCheck.is (':checked'))
+		{
+			
+			$(selector).css({'display': 'table-row'});
+		}
+	else {
+		
+		$(selector).css({'display': 'none'});
+		
+	}
+;}
+
+
+
+$('#clips').change( function () {
+updateCSS(this, selectorForClips);
+});
+$('#pres').change( function () {
+updateCSS(this, selectorForPres);
+});
+$('#agenda').change( function () {
+updateCSS(this, selectorForAgenda);
+});
+$('#startstop').change( function () {
+updateCSS(this, selectorForMeeting);
+});
+$('#vote').change( function () {
+updateCSS(this, selectorForVote);
+});
+$('#error').change( function () {
+updateCSS(this, selectorForError);
+});
+        
+   
+
+$("#all").click ( function() {
+	$("tr").css({"display":"table-row"});
+});
+$("#nothing").click ( function() {
+	$("tr").css({"display":"none"});
+});
+
+$("#meeting").text(m);
+
+});
+
+</script>
+<body>
+<div id="meeting"></div>
+
+<div id="selectors">
+
+<button id="all" type="button">Show all</button>
+<button id="nothing" type="button">Show nothing</button>
+
+<input type="checkbox" name="clips" id="clips"  />
+<label for="all">CLIPS</label>
+<input type="checkbox" name="pres" id="pres"  />
+<label for="all">PRES</label>
+<input type="checkbox" name="agenda" id="agenda"  />
+<label for="all">AGENDA</label>
+<input type="checkbox" name="startstop" id="startstop"  />
+<label for="all">PRB - ARCC</label>
+<input type="checkbox" name="vote" id="vote"  />
+<label for="all">VOTE</label>
+<input type="checkbox" name="error" id="error"  />
+<label for="all">ERROR</label>
+
+</div>
+   <div id="dashboard">
+  
+   </div>
+</body>
+   </html>

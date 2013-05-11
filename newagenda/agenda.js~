@@ -1,0 +1,274 @@
+/* load user data */
+var user;
+var userLang;
+var checkSession = function () {
+  // console.log ('check');
+  $.ajax({
+    url: '/exist/tullio/xq/checksession.xql',
+    dataType: 'xml',
+    async: false,
+    success: function (data) {
+      // console.log (data);
+      // console.log ($(data).find('success'));
+      if ($(data).find('success')[0] != null) {
+        user = data.getElementsByTagName("user")[0].getAttribute('id');
+        userLang = data.getElementsByTagName("user")[0].getAttribute('lang');
+        // console.log (user + userLang);
+        return true;
+      } else redirectLogin();
+    }
+  });
+  // console.log ('finished');
+}
+
+  function redirectLogin() {
+    alert("Please log in");
+    window.location = '/exist/tullio/xq/login.xql';
+  }
+checkSession();
+
+
+var types = ['---', 'OUV-OPE', 'O-BXL', 'O-ARVV',  'PRES', 'EXC-AFW', 'COMM-MED', 'GEN-ALG', 'ORA-SPR', 'P.E.CONS-INOVERW','START-MV', 'START-INT', 'START-DV', 'QO-MV', 'QO-MV JOINTE',  'QA-DV', 'QA-DV JOINTE', 'INT', 'INT JOINTE', 'VOTE','FIN-EINDE'];		
+
+
+
+
+
+$(document).ready( function() {
+
+
+var gov = [];
+
+government.forEach(function(val, i) {
+		gov[i] = {id:val[1], name:val[0]};
+});
+
+var members = [];
+speakers.forEach(function(val, i) {
+		members [i] = {value:val[1], label:val[0]};
+});
+console.log(JSON.stringify(members));
+		
+// config is a js hash that takes as a key the identifiers specified in the -pantsName, and as a value the data structure that must be used to configure the input functionality of the cell 		
+				
+var config = {
+    'type': types,
+
+//'type' : eventTypes[userLang],
+        'people': members,
+
+        'programming': gov
+};
+
+var nameTest = new RegExp("-pantsName-([^ ]+)");
+var typeTest = new RegExp("\-pantsType\-([^ ]+)");
+
+
+
+function addRow() {
+    var newRow = $('<tr><td class="-pantsName-type -pantsType-dropdown"></td> <td class="-pantsName-textn -pantsType-text"></td><td class="-pantsName-textf -pantsType-text"></td><td class="keyword -pantsType-text"></td><td class="-pantsName-people -pantsType-autocomplete"></td><td class="-pantsName-programming -pantsType-tags"></td><td class="-pantsType-commands"></tr>');
+
+    newRow.children("td").each(function (index) {
+        initializeCell(this);
+    });
+
+    $("#sortable").append(newRow);
+
+
+}
+$(document).on("click", ".delete", function (event) {
+
+    $(this).parents("tr").remove();
+});
+
+
+$(document).on("click", "#add", function (event) {
+
+    addRow(this);
+});
+
+function storeDoc(result,xsl,xml,obj) {
+	console.log(result);
+	var serializer = new XMLSerializer ();
+        var str = serializer.serializeToString (result);
+	$.ajax({
+			url: "/exist/rest/db/tullio/agenda/test.xml",
+			type: "PUT",
+			contentType: "application/xml;charset=UTF-8",
+			data: str,
+			async: false,
+			success: function(response) {},
+			error: function (jqXHR, textStatus, errorThrown) {alert( "Save action failed." + textStatus );}
+	});
+}
+function onError(html,xsl,xml,obj,ex) {
+	alert("Error: " + ex.message);
+}
+$(document).on("click", "#save", function (event) {
+		
+		var basicInput = JsonML.toXMLText(JsonML.fromHTML(document.getElementById('agenda')));		
+		// console.log(basicInput);			
+		$.transform({error:onError, success:storeDoc, xmlstr:basicInput, xsl:"htmlCleanup.xsl"});		
+	
+});
+
+
+// store dropdown data
+$(document).on("change", "td select", function (event) {
+		
+var cell = $(this).parent("td");
+  var laVa = {
+  data: {
+  	  label: $(this).children("option:selected").text(),
+  	  value : $(this).val()
+  	  }
+  };
+   cell.children("data").remove();
+   cell.append(x2js.json2xml_str(laVa));
+  cell.attr('data-pants', $(this).val());
+  
+
+
+});
+// store tags data
+
+
+
+
+
+function persistTags() {
+var result = { tags : {tag : this.tokenInput("get")}};
+var tags = x2js.json2xml_str(result);
+var cell = $(this).parent("td");
+cell.children("tags").remove();
+cell.append(tags);
+cell.attr('data-pants', JSON.stringify(this.tokenInput('get')));
+	
+	
+// console.log(this.tokenInput("get"));
+//console.log(x2js.json2xml_str(data));
+
+	/*
+		console.log(x2js.json2xml_str(laVa));
+    console.log(x2js.json2xml_str(laVa));
+    console.log(dataIsland);
+    dataIsland = dataIsland.replace(/<([0-9]+)>/g, '<item n="$1">');
+    dataIsland = dataIsland.replace(/<\/([0-9]+)>/g, '</item>');
+
+    $(this).parent('td').attr('data-pants', JSON.stringify(kv));
+    console.log("test: " + dataIsland);
+    $(this).parent('td').append("<data>" + dataIsland + "</data>");
+
+    console.log($(this).parent('td').parent('tr').find('input'));
+    var gggg = x2js.json2xml_str($(this).parent('td').parent('tr').find('input.iii').tokenInput("get"));
+    alert(gggg);
+    console.log(JsonML.toXMLText(JsonML.fromHTML(document.getElementById('agenda'))));	
+	*/
+	
+	
+}
+
+
+// text data does not have to be stored but is taken from the dom
+
+
+
+
+
+function initializeCell(cell) {
+
+    var name = "";
+    var type = "";
+
+    if ($(cell).attr('class')) {
+        var nameMatch = $(cell).attr('class').match(nameTest);
+        var typeMatch = $(cell).attr('class').match(typeTest);
+    }
+    //console.log(index + "r: " + nameMatch + typeMatch);
+
+    if (nameMatch) name = nameMatch[1];
+    if (typeMatch) type = typeMatch[1];
+    // console.log(index + ": " + name + type);
+    switch (type) {
+        case 'dropdown':
+            console.log("convert to dd");
+            // there should be an entry in the config hash that points to an array with options    
+            var s = $("<select id=\"selectId\" name=\"selectName\" />");
+            var options = config[name];
+            for (var i = 0; i < options.length; i++) {
+            	    
+            	 var settings = {};
+            	 if (options[i] instanceof Array) {
+            	 	 settings['value'] = options[i][1];
+            	 	settings['text'] = options[i][0];
+                		}
+                		else {
+                		 settings['value'] = options[i];
+            	 	settings['text'] = options[i];
+                		}
+            	    
+                $("<option />", settings).appendTo(s);
+
+
+            }
+            $(cell).append(s);
+
+
+
+            break;
+
+        case 'tags':
+            console.log("initialize tags");
+
+            var localData = config[name];
+            $(cell).append("<input class='iii' type='text' ></input>").children("input").tokenInput(localData, {
+                theme: 'facebook',
+                onAdd: persistTags,
+                onDelete: persistTags
+                
+            });
+            break;
+
+        case 'text':
+            $(cell).append("<p class='contenteditable' contenteditable='true'>...</p>");
+            break;
+          
+        case 'autocomplete':
+        	$(cell).append("<input class='autocomplete' type='text'></input>");
+        	$(cell).children("input").autocomplete({
+        	 		 source: function(req, response) {
+        	 		 	 var re = $.ui.autocomplete.escapeRegex(req.term);
+        	 		 	 var matcher = new RegExp( "^" + re, "i" );
+        	 		 	  response($.grep( members, function(item){ 
+        	 		 	  	return matcher.test(item.label); }) ); 
+        	 		 	}
+        	 		 });
+        	break;
+
+        case 'commands':
+            $(cell).append("<button class='delete'>Delete</button>");
+            $(cell).children().button({ text: false, icons: { primary: "ui-icon-closethick" } })
+        default:
+
+    }
+
+
+
+
+
+}
+// create 5 rows
+for (var i = 1; i <= 5; i++) {
+
+    addRow();
+
+
+}
+$(".button").button();
+
+$("#sortable tbody").sortable({
+    cancel: ':input,button,.contenteditable'
+});
+
+
+});
