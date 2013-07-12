@@ -248,7 +248,7 @@ function dataToHTML(agendaArray1, agendaArray2) {
                     if (spec[i][0]=="keywords"){
                         var generatedKeywords = "";
                         var kwCounter = 0;
-                        var lang = agendaArray2[c][2];
+                        var lang = agendaArray2[c][1];
                         var base;
 
                         if (lang == "N") base = agendaArray2[c][4];

@@ -393,7 +393,7 @@
           <xsl:choose>
             <xsl:when test="@type='INT' and $lang='N'">en tot </xsl:when>
             <xsl:otherwise>
-              <xsl:value-of select="key('snippets', concat('to-', $lang))"/>
+              <xsl:value-of select="key('snippets', concat('toExtra-', $lang))"/>
             </xsl:otherwise>
           </xsl:choose>
         </xsl:otherwise>
@@ -841,9 +841,9 @@ Samenspraak -->
             <xsl:choose>
               <xsl:when test="$person/@gov='yes'">
                 <xsl:text>, </xsl:text>
-                <span class="incomplete">
+                
                   <xsl:value-of select="$person/short[@l=$lang][@meeting-type=$meeting-type]"/>
-                </span>
+                
                 <xsl:text></xsl:text>
               </xsl:when>
               <xsl:when test="$meeting-type='PFB'"> 
