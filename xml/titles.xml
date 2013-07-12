@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <reference name="titles">
   <l id="presi-N">Voorzitterschap: </l>
-  <l id="presi-F">Présidence: </l>
+  <l id="presi-F">Présidence_: </l>
  <l id="startInt-F"><span class="incomplete">INTERPELLATION/INTERPELLATIONS</span></l>
  <l id="startInt-N"><span class="incomplete">INTERPELLATIE/INTERPELLATIES</span></l>
  <l id="startIntOrd-N"><span class="incomplete">Aan de orde is de interpellatie van de heer / mevrouw (naam). OF Aan de orde zijn de interpellaties.</span></l>
@@ -473,16 +473,18 @@
   </person>
   
   <person id="DOULKERIDIS_Christos" gov="yes" gender="m" lang="fr" group="Ecolo">
+  <!-- GEEN LID VAN HET VERENIGD COLLEGE -->
     <first>Christos</first>
     <last>Doulkeridis</last>
     <ti l="N" meeting-type="BHP">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Huisvesting en Brandbestrijding en Dringende Medische Hulp</ti>
     <ti l="F" meeting-type="BHP">secrétaire d'État à la Région de Bruxelles-Capitale, chargé du Logement et de la Lutte contre l'Incendie et l'Aide médicale urgente</ti>
-    <ti l="N" meeting-type="VVGGC"></ti>
-    <ti l="F" meeting-type="VVGGC"></ti>
+  
     <ti l="F" meeting-type="PFB">président du Gouvernement, ministre en charge du Budget, de l'Enseignement, du Tourisme et des Relations internationales</ti>
     
     <short l="N" meeting-type="BHP">staatssecretaris</short>
       <short l="F" meeting-type="BHP">secrétaire d'État</short>
+        <short l="F" meeting-type="PFB">ministre-président</short>
+      
     
   </person>
   
@@ -518,6 +520,7 @@
       <short l="F" meeting-type="BHP">ministre-président</short>
       <short l="N" meeting-type="VVGGC">voorzitter van het Verenigd College</short>
       <short l="F" meeting-type="VVGGC">président du Collège réuni</short>
+        <short l="F" meeting-type="PFB">ministre</short>
    
          
   </person>
@@ -545,12 +548,13 @@
      
     	 <short l="N" meeting-type="BHP">staatssecretaris</short>
       <short l="F" meeting-type="BHP">secrétaire d'État</short>
-   
+     <short l="F" meeting-type="PFB">ministre</short>
    
     
   </person>
   
   <person id="DE_LILLE_Bruno" gov="yes" gender="m" lang="nl" group="Groen">
+   <!-- GEEN LID VAN HET VERENIGD COLLEGE -->
     <first>Bruno</first>
     <last>De Lille</last>
      <ti l="N" meeting-type="BHP">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Mobiliteit, Openbaar Ambt, Gelijke Kansen en Administratieve Vereenvoudiging</ti>
@@ -576,7 +580,7 @@
       <short l="F" meeting-type="BHP">ministre</short>
       <short l="N" meeting-type="VVGGC">lid van het Verenigd College</short>
       <short l="F" meeting-type="VVGGC">membre du Collège réuni</short>
-      
+        <short l="F" meeting-type="PFB">ministre</short>
    </person>
   
   <!--
@@ -611,7 +615,7 @@
       <short l="F" meeting-type="BHP">ministre</short>
       <short l="N" meeting-type="VVGGC">lid van het Verenigd College</short>
       <short l="F" meeting-type="VVGGC">membre du Collège réuni</short>
-   
+     <short l="F" meeting-type="PFB">ministre</short>
    
   </person>
   </reference>

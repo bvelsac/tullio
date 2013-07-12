@@ -251,9 +251,12 @@ display: block !important;
 	border: thin solid silver;
 padding: 2px;
 }
-div.editable p.comment {
-    display: none;
+
+div.editable p.proc {
+	
+color: purple;	
 }
+
 div.editable p.incomplete {
 }
 div.editable p.proc {
@@ -282,10 +285,17 @@ div.editable p.title4 {
 div.editable p.realia {
     font-style: italic;
 }
+
+div.editable p.front {
+	text-align: center;
+	font-weight: bold;
+}
+
 div.editable span.checked {
 }
 div.editable span.speaker {
-    font-weight: bold;
+	font-weight: bold;
+
 }
 div.editable span.pres {
     font-weight: bold;

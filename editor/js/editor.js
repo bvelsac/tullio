@@ -88,7 +88,7 @@ function setMeetingType(meeting) {
           'COM-LOGHUIS': 'BHP',
           'COM-SANGEZ': 'VVGGC',
           'COM-ASSZ': 'VVGGC',
-          'COM_ASSZSANGEZ': 'VVGGC',
+          'COM-ASSZSANGEZ': 'VVGGC',
           'PFB': 'PFB'
         };
         mt = mTypes[mt];

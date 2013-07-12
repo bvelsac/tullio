@@ -15,20 +15,25 @@
        <link rel="stylesheet" type="text/css" href="footable.css" />
 
        <script>var target='agenda';</script>
-       
+      
 <script language="javascript" src="../js-lib/newagenda/jquery-1.9.1.min.js"></script>
 <script language="javascript" src="../js-lib/newagenda/jquery-ui-1.10.2.custom.min.js"></script>
 <script language="javascript" src="../js-lib/newagenda/jquery.tokeninput.js"></script>
 <script language="javascript" src="../js-lib/newagenda/jsonml-dom.js"></script>
 <script language="javascript" src="../js-lib/newagenda/jsonml-xml.js"></script>
 <script language="javascript" src="../js-lib/newagenda/xml2json.js"></script>
-<script language="javascript" src="../js-shared/common.js"></script>
-
-<script language="javascript" src="agenda.js"></script>
+<script language="javascript" src="../js-lib/underscore-min.js"></script>
+<script language="javascript" src="../js-lib/string.min.js"></script>
+<script type="text/javascript" src="/exist/tullio/js-lib/ObjTree.js"></script>
 <script language="javascript" src="../js-lib/jquerytransform/js/jquery.transform.js"></script>
-        
 <script language="javascript" src="../js-lib/jquery.jeditable.mini.js"></script>
-        
+
+<script language="javascript" src="../js-shared/common.js"></script>
+<script language="javascript" src="agenda.js"></script>
+
+ <script language="javascript" src="textparse-new.js"></script>
+
+
 <!--
 <script language="javascript" src="../js-lib/newagenda/"></script>
 <script language="javascript" src="../js-lib/newagenda/"></script>
@@ -44,6 +49,10 @@
       }
       .saveAs, #saveMessage, tags, data {
           display : none;
+      }
+      .inputarea {
+      	float: left;
+      	margin: 5px;
       }
     </style>
   </head>
@@ -88,6 +97,7 @@
         <button class='button add' id='add'>Add</button>
         <button class='button save' id='save'>Save</button>
         <button class='button saveAs' id='saveAs'>Save As</button>
+         <button class='button convert' id='convert'>Convert</button>
     </div>
     <div id="agenda">
         <table class="footable" id="sortable">
@@ -106,5 +116,20 @@
                 </tr>
             </thead></table>
     </div>
+    <div id="dialog" title="Basic dialog">
+    <div class="inputarea">
+	<h3>Agenda en français</h3>
+
+<textarea id="inputFR" rows="30" cols="70"></textarea>
+</div>
+<div  class="inputarea">
+<h3>Nederlandse agenda</h3>
+
+<textarea id="inputNL" rows="30" cols="70"></textarea>
+</div>
+<button class="button parse" id="parse">OK</p>
+
+</div>
+
 </body>	
 </html>

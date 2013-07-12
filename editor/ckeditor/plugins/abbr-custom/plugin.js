@@ -171,7 +171,7 @@ CKEDITOR.plugins.add( 'abbr-custom',
 										type: 'select',
 										label: 'Orateur',
 										id : 'speaker',
-										items : speakers,
+										items : speakers.concat(government),
 										'default' : '----',
 										onChange : function (api) {
 											//alert('Current value: ' + this.getValue() );

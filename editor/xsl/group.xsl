@@ -7,8 +7,7 @@
   <xsl:output indent="yes" method="xml"/>
   <!--xsl:include href="http://localhost:8080/exist/tullio/editor/xsl/formattingRules.xsl"/-->
   <xsl:include href="/exist/tullio/editor/xsl/formattingRules.xsl"/>
-  
-  <xsl:key name="eventNames" match="//event" use="@id"/>
+  <xsl:key match="//event" name="eventNames" use="@id"/>
   <xsl:key match="//e" name="clip" use="@clip"/>
   <xsl:key match="//l" name="snippets" use="@id"/>
   <xsl:key match="//doc/p[not(@class='init')]" name="text" use="@c"/>
@@ -18,8 +17,8 @@
   <xsl:key match="/all/events/e" name="all" use="@n"/>
   <xsl:key match="//s" name="statusCodes" use="concat(@n,@v)"/>
   <xsl:key match="//person" name="people" use="@id"/>
-  <xsl:param name="mode"></xsl:param>
-  <xsl:param name="channel"></xsl:param>
+  <xsl:param name="mode"/>
+  <xsl:param name="channel"/>
   <xsl:param name="server" select="'no'"/>
   <!-- Chrome heeft een issue waardoor de document() functie niet werkt, dus alles moet worden toegevoegd aan het input-document
     Google Chrome currently has limited support for XSL. If your XSL refers to any external resources (document() function, xsl:import, xsl:include or external entities), the XSL will run but the result will either be empty or invalid.
@@ -35,22 +34,19 @@
   <!--  http://localhost:8080/exist/sound/canal3/201203211040.mp3
 -->
   <xsl:variable name="soundExt" select="'.mp3'"/>
-<xsl:variable name="audioLength" select="'20'" />
+  <xsl:variable name="audioLength" select="'20'"/>
   <xsl:variable name="conf" select="//reference"/>
- 
-  <xsl:variable name="meeting-type" >
+  <xsl:variable name="global-meeting-type">
     <xsl:choose>
-      <xsl:when test="/all/variables/type = 'VVGGC' or /all/variables/type = 'BHP' or /all/variables/type='PFB'">
+      <xsl:when
+        test="/all/variables/type = 'VVGGC' or /all/variables/type = 'BHP' or /all/variables/type='PFB'">
         <xsl:value-of select="/all/variables/type"/>
       </xsl:when>
       <xsl:when test="contains(/all/variables/type, 'ARVV')">VVGGC</xsl:when>
       <xsl:when test="contains(/all/variables/type, 'BXL')">BHP</xsl:when>
     </xsl:choose>
   </xsl:variable>
-  
   <xsl:variable name="datestringCurrent" select="//events/meeting"/>
-  
-
   <xsl:template name="addTranslation">
     <xsl:variable name="language">
       <xsl:choose>
@@ -59,8 +55,7 @@
         <xsl:when test="@lang='M'">M</xsl:when>
       </xsl:choose>
     </xsl:variable>
-    
-<!--    <td class="status status-{key('statusCodes', @n)/@val}"
+    <!--    <td class="status status-{key('statusCodes', @n)/@val}"
       id="{concat('status-', @n, '-orig')}">
       
       <p class="status-wrapper" >      
@@ -76,7 +71,7 @@
         <p></p>
       </div>
     </td>
--->    
+-->
     <td class="status status-{key('statusCodes', @n)/@val}" id="{concat('status-', @n, '-trans')}">
       <p class="status-wrapper">
         <span class="status-code" id="{concat('status-', @n, '-trans-code')}">
@@ -86,9 +81,8 @@
           <xsl:value-of select="$language"/>
         </span>&#160;</p>
       <div class="lockid">
-        <p></p>
+        <p/>
       </div>
-      
     </td>
     <td class="trans content" id="{concat('R', @n, '-t')}">
       <div class="editable">
@@ -96,24 +90,52 @@
         <xsl:choose>
           <!-- er is wel vertaalde tekst beschikbaar -->
           <xsl:when test="key('trans', @n)[not(@class='init')]">
-            <xsl:copy-of select="key('trans', @n)"/>
+            
+            <xsl:apply-templates mode="write" select="key('trans', @n)">
+              <xsl:with-param name="language" select="$language"></xsl:with-param>
+              
+            </xsl:apply-templates>
+           
           </xsl:when>
           <!-- er is nog geen vertaalde tekst beschikbaar -->
           <xsl:when test="key('clip', @n)">
-            
             <xsl:for-each select="key('clip', @n)">
-             
-              <xsl:apply-templates select="." mode="initialize-text">
+              <xsl:apply-templates mode="initialize-text" select=".">
                 <xsl:with-param name="lang" select="$language"></xsl:with-param>
+                <xsl:with-param name="meeting-type">
+                  <xsl:choose>
+                    <xsl:when test="/all/variables/status='VAR'">
+                      <xsl:variable name="prevMT" select="preceding-sibling::e[@type='HERV-ARVV' or @type='HERV-BXL' or @type='O-ARVV' or @type='O-BXL'][1]"></xsl:variable>
+                      <xsl:choose>
+                        <xsl:when
+                          test="$prevMT">
+                          
+                          
+                          <xsl:choose>
+                            <xsl:when test="contains($prevMT/@type, 'ARVV')">VVGGC</xsl:when>
+                            <xsl:when test="contains($prevMT/@type, 'BXL')">BHP</xsl:when>
+                            
+                          </xsl:choose>
+                          
+                        </xsl:when>
+                        <xsl:otherwise>
+                          <xsl:value-of select="$global-meeting-type"/>
+                        </xsl:otherwise>
+                      </xsl:choose>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:value-of select="$global-meeting-type"/>
+                    </xsl:otherwise>
+                  </xsl:choose>
+                </xsl:with-param>
               </xsl:apply-templates>
-              
             </xsl:for-each>
-
           </xsl:when>
+         
           <xsl:otherwise>
             <!-- er zijn helemaal geen events bekend voor deze clip -->
             <!-- deze optie is in principe niet mogelijk, de clipmarker heeft ook @clip -->
-            <p class="init" title="{@n}" c="{@n}">
+            <p c="{@n}" class="init" title="{@n}">
               <xsl:text>...</xsl:text>
             </p>
           </xsl:otherwise>
@@ -121,7 +143,6 @@
       </div>
     </td>
   </xsl:template>
-  
   <xsl:template name="sound">
     <td class="sound">
       <!-- create a list of events for the sound markers -->
@@ -133,10 +154,8 @@
         - AM / PM
         as separate fields
       -->
-      <xsl:comment>
-        next tc :  <xsl:value-of select="/all/variables/nextTimeCode"/>
+      <xsl:comment> next tc : <xsl:value-of select="/all/variables/nextTimeCode"/>
       </xsl:comment>
-      
       <xsl:variable name="hours" select="substring-before(@time,':')"/>
       <xsl:variable name="minutes" select="substring-before(substring-after(@time, ':'), ':')"/>
       <xsl:variable name="seconds" select="substring-after(substring-after(@time, ':'), ':')"/>
@@ -186,7 +205,7 @@
               <!-- total track time (for positioning while loading, until determined -->
               <ul>
                 <li>
-                  <p></p>
+                  <p/>
                   <span>0:00</span>
                 </li>
                 <xsl:for-each select="key('clip', @n)">
@@ -211,19 +230,16 @@
           </li>
         </ul>
       </div>
-      
     </td>
   </xsl:template>
-  
   <xsl:template match="/">
     <!-- this is the template that processes updated clip info from the server -->
     <xsl:for-each select="//e[@c='true']">
       <tr id="{concat('R', @n)}">
         <!-- Add audio metadata for player -->
-        <xsl:call-template name="sound"></xsl:call-template>
+        <xsl:call-template name="sound"/>
         <!-- Add events as raw xml and as structured table -->
         <td class="events">
-         
           <xsl:variable name="top" select="@n"/>
           <div class="structured-events">
             <events>
@@ -243,15 +259,13 @@
           <table class="events-table">
             <xsl:for-each select="key('clip', @n)">
               <xsl:apply-templates mode="events-table" select="."/>
-         
             </xsl:for-each>
           </table>
         </td>
         <!-- add cell for status code and locking state -->
         <td class="status status-{key('statusCodes', @n)/@val}"
           id="{concat('status-', @n, '-orig')}">
-         
-          <p class="status-wrapper" >      
+          <p class="status-wrapper">
             <span class="status-code" id="{concat('status-', @n, '-orig-code')}">
               <xsl:value-of select="key('statusCodes', concat(@n,'orig'))/@val"/>
             </span>
@@ -261,7 +275,7 @@
             <xsl:text>&#160;</xsl:text>
           </p>
           <div class="lockid">
-            <p></p>
+            <p/>
           </div>
         </td>
         <!-- add cell with the original text -->
@@ -271,16 +285,42 @@
             <xsl:choose>
               <!-- text has been edited, use stored paragraphs -->
               <xsl:when test="key('text', @n)">
-                <xsl:apply-templates mode="write" select="key('text', @n)"></xsl:apply-templates>
-                <xsl:for-each select="key('text', @n)">
-                
-                  
-                </xsl:for-each>
+                <xsl:apply-templates mode="write" select="key('text', @n)"/>
+                <xsl:for-each select="key('text', @n)"> </xsl:for-each>
               </xsl:when>
               <!-- no edited text, use events to generate text -->
               <xsl:when test="key('clip', @n)">
-                
-                <xsl:apply-templates mode="initialize-text" select="key('clip', @n)"/>
+                <xsl:for-each select="key('clip', @n)">
+                  <xsl:apply-templates mode="initialize-text" select=".">
+                    
+                    <xsl:with-param name="meeting-type">
+                      <xsl:choose>
+                        <xsl:when test="/all/variables/status='VAR'">
+                          <xsl:variable name="prevMT" select="preceding-sibling::e[@type='HERV-ARVV' or @type='HERV-BXL' or @type='O-ARVV' or @type='O-BXL'][1]"></xsl:variable>
+                          <xsl:choose>
+                            <xsl:when
+                              test="$prevMT">
+                              
+                              
+                              <xsl:choose>
+                                <xsl:when test="contains($prevMT/@type, 'ARVV')">VVGGC</xsl:when>
+                                <xsl:when test="contains($prevMT/@type, 'BXL')">BHP</xsl:when>
+                                
+                              </xsl:choose>
+                              
+                            </xsl:when>
+                            <xsl:otherwise>
+                              <xsl:value-of select="$global-meeting-type"/>
+                            </xsl:otherwise>
+                          </xsl:choose>
+                        </xsl:when>
+                        <xsl:otherwise>
+                          <xsl:value-of select="$global-meeting-type"/>
+                        </xsl:otherwise>
+                      </xsl:choose>
+                    </xsl:with-param>
+                  </xsl:apply-templates>
+                </xsl:for-each>
               </xsl:when>
               <!-- somehow there are not even events -->
               <xsl:otherwise>
@@ -300,25 +340,40 @@
       </tr>
     </xsl:for-each>
   </xsl:template>
-  <xsl:template mode="write" match="span[contains(@class, 'pres reformat')] | a[@class='pres reformat']">
+  <xsl:template match="span[contains(@class, 'pres reformat')] | a[@class='pres reformat']"
+    mode="write">
+    <xsl:param name="language" select="key('all', @title)/@lang"></xsl:param>
+    <xsl:variable name="defLang">
+      <xsl:choose>
+        <xsl:when test="not(normalize-space($language))">
+          <xsl:value-of select="key('all', ancestor::p[1]/@c)/@lang"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="$language"/>
+        </xsl:otherwise>
+      </xsl:choose>
+      
+    </xsl:variable>
+    
+    
     <!--<xsl:copy-of select="key('all', @title)"/>-->
     <xsl:call-template name="president">
       <xsl:with-param name="event" select="key('all', @title)"/>
-      <xsl:with-param name="lang" select="key('all', @title)/@lang"/>
+      <xsl:with-param name="clipId" select="ancestor::p[1]/@c"></xsl:with-param>
+      <xsl:with-param name="lang" select="$defLang"/>
       <xsl:with-param name="reformat" select="'true'"/>
     </xsl:call-template>
   </xsl:template>
   <xsl:template match="*" mode="write">
+    <xsl:param name="language" select="key('all', @title)/@lang"></xsl:param>
     <xsl:copy>
       <xsl:copy-of select="@*"/>
-      <xsl:apply-templates mode="write"></xsl:apply-templates>
+      <xsl:apply-templates mode="write">
+        <xsl:with-param name="language" select="$language"></xsl:with-param>
+      </xsl:apply-templates>
     </xsl:copy>
   </xsl:template>
   <xsl:template match="text()" mode="write">
     <xsl:copy-of select="."/>
   </xsl:template>
-  
-
-  
-
 </xsl:stylesheet>

@@ -17,10 +17,10 @@
     <description lang="nl">Nieuwe clip, zelfde spreker.</description>
   </event>
   
-  <event id="POINT"  order="GEN-001" active="y" use-for-editor="y" use-for-agenda="y"  cell="y">
-    <name lang="nl">Opmerking VZ (procedure)</name>
-    <name lang="fr">Remarque du prés. (procédure)</name>
-    <description lang="nl">Voor officiële opmerkingen van de voorzitter, bijvoorbeeld over de spreektijd.</description>
+  <event id="POINT"  order="00speakers011" active="y" use-for-editor="y" use-for-agenda="y"  cell="y">
+    <name lang="nl">Voorzitter (procedure)</name>
+    <name lang="fr">Prés. (procédure)</name>
+    <description lang="nl">Voor opmerkingen van de voorzitter, bijvoorbeeld over de spreektijd.</description>
   </event>
 
   <event id="INC"  order="GEN-002" active="y" use-for-editor="y" use-for-agenda="y">
@@ -182,13 +182,13 @@
     <name lang="fr">Nouvel orateur (simple)</name>
     <description lang="nl"></description>
 	</event>
-  
+  <!--
   <event id="PRES-SP"  order="00speakers011" active="y" use-for-editor="y" use-for-agenda="y"  cell="y">
     <name lang="nl">Voorzitter als spreker</name>
     <name lang="fr">Président comme orateur</name>
     <description lang="nl"></description>
   </event>
-  
+  -->
 
 	<event id="ORA-SPR"  order="00speakers01" active="y" use-for-editor="y" use-for-agenda="y"  cell="y">
     <name lang="nl">Nieuwe spreker (vz. geeft het woord)</name>

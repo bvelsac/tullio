@@ -67,6 +67,7 @@
           <xsl:apply-templates mode="events-table"
             select="container/div[@id='integratedEvents']/events//e"/>
         </table>
+      
       </div>
       <!-- this one is our text content -->
       <xsl:apply-templates mode="write" select="container/div[@id='text']"/>
@@ -134,6 +135,8 @@
     <xsl:copy-of select="."/>
   </xsl:template>
   <xsl:template match="event" mode="write">
-    <xsl:apply-templates mode="initialize-text" select="key('new', @id)"/>
+    <xsl:apply-templates mode="initialize-text" select="key('new', @id)">
+      <xsl:with-param name="meeting-type" select="$meeting-type"></xsl:with-param>
+    </xsl:apply-templates>
   </xsl:template>
 </xsl:stylesheet>

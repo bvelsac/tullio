@@ -7,6 +7,7 @@
 	<xsl:key match="/response/resultSet/events//e" name="events" use="@n"/>
 	<xsl:key match="/response/resultSet/doc/p" name="text" use="@c"/>
 	<xsl:key match="/response/resultSet/trans/p" name="trans" use="@c"/>
+	<xsl:variable name="fontSize" select="'14.5'"></xsl:variable>
 
 	<xsl:template match="/">
 		<xsl:choose>
@@ -18,7 +19,7 @@
 						</title>
 					</head>
 					<body>
-						<div>
+						<div style="font-size: {$fontSize};">
 
 							<xsl:apply-templates select="response/resultSet/events//e[@c='true']" mode="continu"></xsl:apply-templates>
 
@@ -38,7 +39,7 @@
 						</title>
 					</head>
 					<body>
-						<div>
+						<div style="font-size: {$fontSize};">
 							<table>
 							<xsl:apply-templates select="/response/resultSet/events/group" />
 							</table>
@@ -249,10 +250,33 @@
 	</xsl:template>
 
 	<xsl:template match="p[@class='title4']">
-		<xsl:copy>
-			<xsl:attribute name="style">font-weight: bold; font-style:normal;</xsl:attribute>
-			<xsl:apply-templates />
-		</xsl:copy>
+		
+		<xsl:choose>
+			<xsl:when test="preceding-sibling::p[string()][1][not(@class='title4')] or preceding-sibling::p[string()][1][@class='title4'][starts-with(.,'betreffende') or starts-with(.,'concernant')]">
+				<h4 style="font-style: normal; font-weight: bold; margin-left:25px;  text-indent:-25px;  text-transform:uppercase;   font-size: {$fontSize};">
+					<xsl:apply-templates />
+					
+					
+				</h4>
+				
+			</xsl:when>
+			<xsl:when test="not(starts-with(., 'concernant') or starts-with(., 'betreffende'))">
+				<p style="font-style: normal; font-weight: bold; margin-left:25px; text-transform:uppercase;      font-size: {$fontSize}" >
+					<xsl:apply-templates />
+					
+				</p>
+				
+			</xsl:when>
+			<xsl:otherwise>
+				<p style="font-style: normal; font-weight: bold; margin-left:25px;     font-size: {$fontSize}" >
+					<xsl:apply-templates />
+					
+				</p>
+				
+			</xsl:otherwise>
+		</xsl:choose>
+		
+		
 	</xsl:template>
 
 	<xsl:template match="span[@class='speaker']">
@@ -280,6 +304,10 @@
 
 				</xsl:choose>
 			</xsl:if>
+<xsl:if test="ancestor::trans and contains(., 'ministre-président') and key('events', ancestor::p/@c)/@lang='N'">
+ <xsl:text> (en néerlandais)</xsl:text>
+
+</xsl:if>
 <xsl:text>.-</xsl:text>
 <xsl:if test="contains(substring-after(., '.-'), ' ')">
 	<xsl:text> </xsl:text>
@@ -308,6 +336,36 @@
 	<xsl:template match="p[normalize-space()='']"></xsl:template>
 
 	<xsl:template match="p[@class='comment']"></xsl:template>
+
+	<xsl:template match="p[@class='front']">
+		<h1>
+			<xsl:attribute name="style">font-style: normal; font-weight: bold; text-align:center; font-size: <xsl:value-of select="$fontSize"/>;</xsl:attribute>
+			<xsl:apply-templates />
+			
+		</h1>
+		
+		
+	</xsl:template>
+	
+	<xsl:template match="p[@class='title1']">
+		<h1>
+			<xsl:attribute name="style">font-style: normal; font-weight: bold; text-align:center; text-transform:uppercase;  font-size: <xsl:value-of select="$fontSize"/>;</xsl:attribute>
+			<xsl:apply-templates />
+			
+		</h1>
+		
+	</xsl:template>
+	
+	<xsl:template match="p[@class='title2']">
+		<h2>
+			<xsl:attribute name="style">font-weight: normal; font-style: italic; text-align:center;  font-size: <xsl:value-of select="$fontSize"/>; </xsl:attribute>
+			<xsl:apply-templates />
+			
+		</h2>
+		
+		
+	</xsl:template>
+
 
 	<xsl:template match="p[@class='realia']">
 		<xsl:copy>

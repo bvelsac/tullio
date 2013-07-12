@@ -6,6 +6,9 @@ var propsRegister = {
 c:'true'
 },
 	
+"clipVide" : {c:'true',
+notes: 'CLIP VIDE / LEGE CLIP'},
+
 	"new clip":
 {
 c:'true',

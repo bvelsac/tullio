@@ -41,7 +41,7 @@ for $meet in xmldb:get-child-collections("/db/tullio/")
 		  else concat($agenda, '?m=', $meet)
 		}">agenda</a>
 		{
-			if (xs:integer(translate(substring($meet, 1, 10), '-', '')) > 20130424) then <a class="editAgenda" href="{concat('/exist/tullio/newagenda/agenda.html', '?m=', $meet, '&amp;lang=', $lang)}" >&#x1F527;</a> else ()
+			if (xs:integer(translate(substring($meet, 1, 10), '-', '')) > 20130424) then <a class="editAgenda" href="{concat('/exist/tullio/newagenda2/agenda.html', '?m=', $meet, '&amp;lang=', $lang)}" >&#x1F527;</a> else ()
 		}
 		
 		</td>

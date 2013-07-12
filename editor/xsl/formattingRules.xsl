@@ -82,6 +82,19 @@
           <xsl:text> </xsl:text>
           <xsl:value-of select="$person/last"/>, <span class="incomplete">TITRE / TITEL</span>
         </p>
+        <p c="{@clip}" class="proc" title="{@n}">
+          <xsl:text>La séance plénière est ouverte à </xsl:text>
+          <span class="incomplete">XXhXX.</span>
+        </p>
+        <p c="{@clip}" class="proc" title="{@n}">
+          <xsl:call-template name="president">
+            <xsl:with-param name="meeting-type" select="$meeting-type"/>
+            <xsl:with-param name="event" select="."/>
+            <xsl:with-param name="lang" select="$lang"/>
+          </xsl:call-template>
+          <xsl:text> Mesdames et Messieurs, la séance plénière est ouverte.</xsl:text>
+        </p>
+        
       </xsl:when>
       <xsl:otherwise>
         <p c="{@clip}" class="proc" title="{@n}">
@@ -108,20 +121,21 @@
               <xsl:with-param name="lang" select="$lang"/>
             </xsl:call-template>
             <xsl:choose>
-              <xsl:when test="$lang='N' and $precType='O-BXL'"> Ik verklaar de plenaire vergadering van het Brussels
-                Hoofdstedelijk Parlement van vrijdag XX maand 2013 geopend.</xsl:when>
-              <xsl:when test="$lang='F' and $precType='O-BXL'"> Je déclare ouverte la séance plénière du parlement de la Région de Bruxelles-Capitale du vendredi XX mois 2011.</xsl:when>
-              <xsl:when test="$lang='N' and $precType='O-ARVV'"> Ik verklaar de plenaire vergadering van de Verenigde Vergadering van de Gemeenschappelijke Gemeenschapscommissie van vrijdag XX maand 2011 geopend.</xsl:when>
-              <xsl:when test="$lang='F' and $precType='O-ARVV'"> Je déclare ouverte la séance plénière de l'Assemblée réunie de la Commission communautaire commune du vendredi XX mois 2011.</xsl:when>
-              
+              <xsl:when test="$lang='N' and $precType='O-BXL'"> Ik verklaar de plenaire vergadering
+                van het Brussels Hoofdstedelijk Parlement van vrijdag XX maand 2013
+                geopend.</xsl:when>
+              <xsl:when test="$lang='F' and $precType='O-BXL'"> Je déclare ouverte la séance
+                plénière du parlement de la Région de Bruxelles-Capitale du vendredi XX mois
+                2011.</xsl:when>
+              <xsl:when test="$lang='N' and $precType='O-ARVV'"> Ik verklaar de plenaire vergadering
+                van de Verenigde Vergadering van de Gemeenschappelijke Gemeenschapscommissie van
+                vrijdag XX maand 2011 geopend.</xsl:when>
+              <xsl:when test="$lang='F' and $precType='O-ARVV'"> Je déclare ouverte la séance
+                plénière de l'Assemblée réunie de la Commission communautaire commune du vendredi XX
+                mois 2011.</xsl:when>
             </xsl:choose>
           </p>
         </xsl:if>
-        
-        
-        
-        
-        
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
@@ -151,7 +165,7 @@
     </xsl:if>
     -->
     <p c="{@clip}" class="title1" title="{@n}">
-      <xsl:variable name="subject" select="string(@*[name()=concat('text', $lang)])"/>
+      <xsl:variable name="subject" select="string(@*[name()=concat('text', translate($lang, 'FN', 'fn')) or name()=concat('text', $lang)])"/>
       <xsl:choose>
         <xsl:when test="string($subject)">
           <xsl:value-of select="$subject"/>
@@ -173,7 +187,6 @@
   <xsl:template match="e[@type='POINT']" mode="initialize-text">
     <xsl:param name="meeting-type"/>
     <xsl:param name="lang" select="@lang"/>
-    
     <p c="{@clip}" class="proc" title="{@n}">
       <xsl:call-template name="president">
         <xsl:with-param name="event" select="."/>
@@ -247,25 +260,13 @@
     <xsl:param name="lang" select="@lang"/>
     <xsl:choose>
       <xsl:when test="$meeting-type='PFB'">
-        <p c="{@clip}" class="proc" title="{@n}">
-          <xsl:text>La séance est ouverte à </xsl:text>
-          <span class="incomplete">XXhXX.</span>
-        </p>
-        <p c="{@clip}" class="proc" title="{@n}">
-          <xsl:call-template name="president">
-            <xsl:with-param name="meeting-type" select="$meeting-type"/>
-            <xsl:with-param name="event" select="."/>
-            <xsl:with-param name="lang" select="$lang"/>
-          </xsl:call-template>
-          <xsl:text> Mesdames et Messieurs, la séance plénière est ouverte.</xsl:text>
-        </p>
-        <!-- 
-       <p class="proc" c='{@clip}' title='{@n}'>
-         <xsl:call-template name="president"></xsl:call-template>
-         <xsl:text>Mesdames et Messieurs, la séance plénière est ouverte.</xsl:text>
-         
-       </p>
-       -->
+        <p c="{@clip}" class="front" title="{@n}">PARLEMENT FRANCOPHONE BRUXELLOIS</p>
+        <p c="{@clip}" class="front" title="{@n}">(Assemblée de la Commission communautaire française)</p>
+        <p c="{@clip}" class="front" title="{@n}">Session 2012-2013</p>
+        <p c="{@clip}" class="front" title="{@n}">Séance plénière du vendredi XX XX 2013</p>
+        <p c="{@clip}" class="front" title="{@n}">Compte rendu</p>
+        
+        
       </xsl:when>
       <xsl:otherwise>
         <xsl:choose>
@@ -329,8 +330,7 @@
             <xsl:when test="@type='O-BXL'">PARLEMENT DE LA RÉGION DE BRUXELLES-CAPITALE</xsl:when>
             <xsl:otherwise>ASSEMBLÉE RÉUNIE DE LA COMMISSION COMMUNAUTAIRE COMMUNE</xsl:otherwise>
           </xsl:choose>
-          
-           </p>
+        </p>
         <p c="{@clip}" class="front" title="{@n}"> Compte rendu intégral </p>
         <p c="{@clip}" class="front" title="{@n}"> Séance plénière du </p>
         <p c="{@clip}" class="front" title="{@n}">
@@ -344,9 +344,9 @@
         <p c="{@clip}" class="front" title="{@n}">
           <xsl:choose>
             <xsl:when test="@type='O-BXL'">BRUSSELS HOOFDSTEDELIJK PARLEMENT</xsl:when>
-            <xsl:otherwise>VERENIGDE VERGADERING VAN DE GEMEENSCHAPPELIJKE GEMEENSCHAPSCOMMISSIE</xsl:otherwise>
+            <xsl:otherwise>VERENIGDE VERGADERING VAN DE GEMEENSCHAPPELIJKE
+              GEMEENSCHAPSCOMMISSIE</xsl:otherwise>
           </xsl:choose>
-          
         </p>
         <p c="{@clip}" class="front" title="{@n}"> Integraal verslag </p>
         <p c="{@clip}" class="front" title="{@n}"> Plenaire vergadering van </p>
@@ -359,10 +359,6 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
-  
-  
-  
-  
   <xsl:template name="insertGov">
     <xsl:param name="meeting-type"/>
     <xsl:param name="nameString"/>
@@ -458,6 +454,7 @@
       <xsl:value-of select="$person/first"/>
       <xsl:text> </xsl:text>
       <xsl:value-of select="$person/last"/>
+      <xsl:if test="contains(@type, 'JOINTE')">,</xsl:if>
     </p>
     <!-- more than one member of governement might be addressed -->
     <xsl:if test="not(contains(@type, 'JOINTE'))">
@@ -491,6 +488,7 @@
     <xsl:param name="event"/>
     <xsl:param name="reformat"/>
     <xsl:param name="lang" select="$event/@lang"/>
+    <xsl:param name="clipId"></xsl:param>
     <!--<xsl:text>debug</xsl:text><xsl:value-of select="$lang"/>-->
     <!--<xsl:comment>
       <xsl:value-of
@@ -506,12 +504,19 @@
           <xsl:value-of select="key('people', $event/self::e[@type='PRES' or
             @type='PRES-CH']/@speaker)/@gender"/>
         </xsl:when>
-        
-        
         <xsl:when test="$event/preceding-sibling::e[@type='PRES' or @type='PRES-CH']">
           <xsl:value-of select="key('people', $event/preceding-sibling::e[@type='PRES' or
             @type='PRES-CH'][1]/@speaker)/@gender"/>
         </xsl:when>
+        <xsl:when test="key('all', $clipId)/self::e[@type='PRES' or @type='PRES-CH']">
+          <xsl:value-of select="key('people', key('all', $clipId)/self::e[@type='PRES' or
+            @type='PRES-CH']/@speaker)/@gender"/>
+        </xsl:when>
+        <xsl:when test="key('all', $clipId)/preceding-sibling::e[@type='PRES' or @type='PRES-CH']">
+          <xsl:value-of select="key('people', key('all', $clipId)/preceding-sibling::e[@type='PRES' or
+            @type='PRES-CH'][1]/@speaker)/@gender"/>
+        </xsl:when>
+        
         <!--
           <xsl:when test="/all/pres">
           <xsl:value-of select="key('people', /all/info/pres/@id)/@gender"/>
@@ -528,6 +533,9 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
+    <!--<xsl:text>debug</xsl:text>
+    <xsl:value-of select="$clipId"/>
+    <xsl:value-of select="$pres-gender"/>-->
     <xsl:choose>
       <xsl:when test="$meeting-type='PFB'">
         <span class="{$class} reformat pres" href="#" title="{$event/@n}">
@@ -537,8 +545,8 @@
             </xsl:attribute>
           </xsl:if>
           <xsl:choose>
-            <xsl:when test="$pres-gender='m'">M. le Président</xsl:when>
-            <xsl:otherwise>Mme la Présidente</xsl:otherwise>
+            <xsl:when test="$pres-gender='m'">M. le président</xsl:when>
+            <xsl:otherwise>Mme la présidente</xsl:otherwise>
           </xsl:choose>
         </span>
         <xsl:text>.- </xsl:text>
@@ -554,8 +562,10 @@
             <xsl:when test="key('snippets', concat('pres-', $pres-gender, '-', $lang))">
               <xsl:value-of select="key('snippets', concat('pres-', $pres-gender, '-', $lang))"/>
             </xsl:when>
+            
             <xsl:otherwise>
-              <xsl:text>PRES</xsl:text>
+              <xsl:text>PRES </xsl:text>
+              <xsl:value-of select="concat('pres-', $pres-gender, '-', $lang, '-', $event/@n, '-', $clipId)"/>
             </xsl:otherwise>
           </xsl:choose>
         </span>
@@ -564,6 +574,106 @@
         </xsl:if>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+  <!-- ZAAL-APP	
+Applaudissements
+	
+Applaus
+ZAAL-GLIM	
+Sourires
+	
+Vrolijkheid
+ZAAL-OPM	
+Opmerkingen
+	
+Opmerkingen
+ZAAL-RUM	
+Rumeurs
+	
+Rumoer
+ZAAL-SS	
+Colloques
+	
+Samenspraak -->
+  <xsl:template match="e[@type='ZAAL-APP']" mode="initialize-text">
+    <xsl:param name="lang" select="@lang"/>
+    <xsl:choose>
+      <xsl:when test="$lang='N'">
+        <p c="{@clip}" class="realia" title="{@n}">(Applaus)</p>
+      </xsl:when>
+      <xsl:when test="$lang='F'">
+        <p c="{@clip}" class="realia" title="{@n}">(Applaudissements)</p>
+      </xsl:when>
+    </xsl:choose>
+    <xsl:if test="string(@notes)">
+      <p c="{@clip}" class="comment">
+        <xsl:value-of select="@notes"/>
+      </p>
+    </xsl:if>
+  </xsl:template>
+  <xsl:template match="e[@type='ZAAL-GLIM']" mode="initialize-text">
+    <xsl:param name="lang" select="@lang"/>
+    <xsl:choose>
+      <xsl:when test="$lang='N'">
+        <p c="{@clip}" class="realia" title="{@n}">(Vrolijkheid)</p>
+      </xsl:when>
+      <xsl:when test="$lang='F'">
+        <p c="{@clip}" class="realia" title="{@n}">(Sourires)</p>
+      </xsl:when>
+    </xsl:choose>
+    <xsl:if test="string(@notes)">
+      <p c="{@clip}" class="comment">
+        <xsl:value-of select="@notes"/>
+      </p>
+    </xsl:if>
+  </xsl:template>
+  <xsl:template match="e[@type='ZAAL-OPM']" mode="initialize-text">
+    <xsl:param name="lang" select="@lang"/>
+    <xsl:choose>
+      <xsl:when test="$lang='N'">
+        <p c="{@clip}" class="realia" title="{@n}">(Opmerkingen)</p>
+      </xsl:when>
+      <xsl:when test="$lang='F'">
+        <p c="{@clip}" class="realia" title="{@n}">(Remarques)</p>
+      </xsl:when>
+    </xsl:choose>
+    <xsl:if test="string(@notes)">
+      <p c="{@clip}" class="comment">
+        <xsl:value-of select="@notes"/>
+      </p>
+    </xsl:if>
+  </xsl:template>
+  <xsl:template match="e[@type='ZAAL-RUM']" mode="initialize-text">
+    <xsl:param name="lang" select="@lang"/>
+    <xsl:choose>
+      <xsl:when test="$lang='N'">
+        <p c="{@clip}" class="realia" title="{@n}">(Rumoer)</p>
+      </xsl:when>
+      <xsl:when test="$lang='F'">
+        <p c="{@clip}" class="realia" title="{@n}">(Rumeurs)</p>
+      </xsl:when>
+    </xsl:choose>
+    <xsl:if test="string(@notes)">
+      <p c="{@clip}" class="comment">
+        <xsl:value-of select="@notes"/>
+      </p>
+    </xsl:if>
+  </xsl:template>
+  <xsl:template match="e[@type='ZAAL-SS']" mode="initialize-text">
+    <xsl:param name="lang" select="@lang"/>
+    <xsl:choose>
+      <xsl:when test="$lang='N'">
+        <p c="{@clip}" class="realia" title="{@n}">(Samenspraak)</p>
+      </xsl:when>
+      <xsl:when test="$lang='F'">
+        <p c="{@clip}" class="realia" title="{@n}">(Colloques)</p>
+      </xsl:when>
+    </xsl:choose>
+    <xsl:if test="string(@notes)">
+      <p c="{@clip}" class="comment">
+        <xsl:value-of select="@notes"/>
+      </p>
+    </xsl:if>
   </xsl:template>
   <xsl:template match="e[@type='NEW']" mode="initialize-text">
     <xsl:param name="meeting-type"/>
@@ -578,15 +688,7 @@
         <xsl:choose>
           <xsl:when test="$person/@gov='yes'">
             <xsl:text>, </xsl:text>
-            <xsl:choose>
-              <xsl:when test="$meeting-type='PFB'">
-                <xsl:value-of select="$person/ti[@l=$lang][@meeting-type=$meeting-type]"/>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:value-of select="$person/short[@l=$lang][@meeting-type=$meeting-type]"/>
-              </xsl:otherwise>
-            </xsl:choose>
-            <xsl:text/>
+            <xsl:value-of select="$person/short[@l=$lang][@meeting-type=$meeting-type]"/>
           </xsl:when>
           <xsl:otherwise>
             <xsl:if test="$meeting-type='PFB'">
@@ -633,7 +735,8 @@
        </p>
     -->
     <xsl:choose>
-      <xsl:when test="$meeting-type='PFB'">
+      <!-- <xsl:when test="$meeting-type='PFB'"> -->
+      <xsl:when test="false()">
         <p c="{@clip}" class="proc" title="{@n}">
           <xsl:call-template name="president">
             <xsl:with-param name="meeting-type" select="$meeting-type"/>
@@ -734,10 +837,22 @@
             <xsl:value-of select="$person/first"/>
             <xsl:text> </xsl:text>
             <xsl:value-of select="$person/last"/>
-            <xsl:if test="$person/@gov='yes'">
-              <xsl:text>, </xsl:text>
-              <xsl:value-of select="$person/short[@l=$lang][@meeting-type=$meeting-type]"/>
-            </xsl:if>
+            
+            <xsl:choose>
+              <xsl:when test="$person/@gov='yes'">
+                <xsl:text>, </xsl:text>
+                <span class="incomplete">
+                  <xsl:value-of select="$person/short[@l=$lang][@meeting-type=$meeting-type]"/>
+                </span>
+                <xsl:text></xsl:text>
+              </xsl:when>
+              <xsl:when test="$meeting-type='PFB'"> 
+                
+                <xsl:value-of select="concat(' (', $person/@group, ')')"/>
+              </xsl:when>
+            </xsl:choose>
+            
+           
           </span>
           <xsl:text>.- </xsl:text>
         </p>
@@ -824,14 +939,9 @@
         </xsl:choose>
       </td>
       <td class="e-speaker">
-        <xsl:choose>
-          <xsl:when test="string(@speaker)">
-            <xsl:value-of select="key('people', @speaker)/last"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="@notes"/>
-          </xsl:otherwise>
-        </xsl:choose>
+        <xsl:value-of select="key('people', @speaker)/last"/>
+        <xsl:if test="string(@notes) and string(@speaker)">, </xsl:if>
+        <xsl:value-of select="@notes"/>
       </td>
       <td>
         <xsl:attribute name="class">
