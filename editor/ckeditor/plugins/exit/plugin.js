@@ -41,16 +41,37 @@ function asfinish(xml2, xsl, object, e) {
     },
     async: false,
     success: function (response) {
-      continueSaveHandler = true;
-      console.log(response);
-      console.log(jq(edited));
+    	// check if text has been stored in the db
+    	var serverSize = $(response).find("inputLength").text();
+    	var clientSize = asString.length;
+    	var update  = $(response).find("update").text();
+    	var insert = $(response).find("insert").text();
+    	var message = "";
+    	
+    	if ( serverSize != clientSize )  {
+    		message = "Text has not been saved (size mismatch)" ;
+    		alert(message);
+    		console.debug(asString.length + ":" + serverSize);
+    		return;
+    	}
+    	else if ( update != 'update completed' && insert != 'insert completed' ) {
+    		message = "Text has not been saved (write error)";
+    		alert(message);
+    		return;
+    	}
+    	else {
+    		console.debug(serverSize + clientSize + update + insert);
+    		$(jq(edited)).animate({
+    				'opacity': 0.25
+        	}, 600);
+        $(jq(edited)).animate({
+        		'opacity': 1.00
+        	}, 600);
+    		}
+// 				console.log(response);
+//				console.log(jq(edited));
       
-      $(jq(edited)).animate({
-        'opacity': 0.25
-      }, 600);
-      $(jq(edited)).animate({
-        'opacity': 1.00
-      }, 600);
+      
     },
     error: function (jqXHR, textStatus, errorThrown) {
       alert("Save action failed." + textStatus);

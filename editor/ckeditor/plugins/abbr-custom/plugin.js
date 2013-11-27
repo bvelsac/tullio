@@ -19,65 +19,65 @@
  
 function finish(xml2, xsl, object, e) {
 	var asString = (new XMLSerializer()).serializeToString(xml2);
-	console.log('enter finish ' + rowId);
+	console.debug('enter finish ' + rowId);
 	
-	console.log(xml2);
+	console.debug(xml2);
 	// replace existing content and event list
 	
 	// store the new event list in the database
 	//$("#newEvents")
-	console.log('old table');
-	console.log($(jq(rowId) + " table.events-table"));
-	console.log('added event -- new table');
-	console.log($("#hidden table.events-table"));
+	// console.debug('old table');
+	// console.debug($(jq(rowId) + " table.events-table"));
+	console.debug('added event -- new table');
+	// console.debug($("#hidden table.events-table"));
 	
 	$(jq(rowId) + " table.events-table").replaceWith($("#hidden table.events-table"));
 	// $('div.second').replaceWith('<h2>New heading</h2>');
-	console.log("replaced events table");
+	console.debug("replaced events table");
 	
 	$(jq(rowId) + " table.events-table").addClass('edited');
 	
 	$(jq(rowId) + " events").replaceWith($("#hidden events"));
-	console.log("replaced events list");
+	console.debug("replaced events list");
 	
 	
 	var newContent = $("#hidden div#text").html();
 	editor.setData(newContent);
-	console.log("replaced editor content");
+	console.debug("replaced editor content");
 	
-	console.log('exit finish');
+	console.debug('exit finish');
 	
  } 
  
  
  
 function finalize(xml, xsl, object, e) {
-		console.log('enter finalize');
-		console.log(xml);
+		console.debug('enter finalize');
+		console.debug(xml);
 		var asString = (new XMLSerializer()).serializeToString(xml);
 		
-		console.log('finalize----' + asString);
+		console.debug('finalize----' + asString);
 	$.transform({
 			el: "#hidden",
 			async:false, 
 			xmlobj:xml, 
 			xsl: pathToXSL +  "processEditorContent.xsl",
-			error: function(html,xsl,xml,object,e) {console.log('transformation failed, ' + e);},
+			error: function(html,xsl,xml,object,e) {console.error('transformation failed, ' + e);},
 			success:finish
 	});
-	console.log('exit finalize');
+	console.debug('exit finalize');
  }
  
 function reconcile(xml, xsl, xmlorig) {
 	var asString = (new XMLSerializer()).serializeToString(xml);
-	console.log("reconcile -- xml:");
-	console.log(asString);
+	console.debug("reconcile -- xml:");
+	console.debug(asString);
 	// this step implements the actual event comparison logic
 	$.transform({
 			async:false, 
 			xmlobj:xml, 
 			xsl: pathToXSL +  "reconcile.xsl",
-			error: function(html,xsl,xml,object,e) {console.log('transformation failed, ' + e);},
+			error: function(html,xsl,xml,object,e) {console.error('transformation failed, ' + e);},
 			success:finalize
 	});
 } 
@@ -95,10 +95,10 @@ CKEDITOR.plugins.add( 'abbr-custom',
 	init: function( editor )
 	{
 		
-							console.log(".................using macro");
-					console.log(eventTypes);
+							console.debug(".................using macro");
+					// console.debug(eventTypes);
 
-					console.log(languages);
+					// console.debug(languages);
 		
 		// Define an editor command that inserts an abbreviation. 
 		// http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.editor.html#addCommand
@@ -199,12 +199,12 @@ CKEDITOR.plugins.add( 'abbr-custom',
 											var timepattern =  /^([0-1][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$/;
 											var time = this.getValue();
 											if ( time != '' && !timepattern.test(this.getValue()) ) {
-												console.log('time validation failed');
+												console.debug('time validation failed');
 												alert("L'heure n'est pas correct (hh:mm:ss).");												
 											  return false;
 											}
 											else if ( CKEDITOR.dialog.getCurrent().getValueOf('eventInfo', 'clip') && time=='' ) {
-												console.log('no time indiciation for clip');
+												console.debug('no time indiciation for clip');
 												alert("Svp spécifier une indication de temps quand vous crééz un nouveau clip.");												
 											  return false;
 											}
@@ -310,16 +310,16 @@ CKEDITOR.plugins.add( 'abbr-custom',
 					
 					
 					
-					// console.log('titles; ' + titles); .replace(/[&][#]160[;]/gi," ")    .replace(/[&][#]160[;]/gi," ")
+					// console.debug('titles; ' + titles); .replace(/[&][#]160[;]/gi," ")    .replace(/[&][#]160[;]/gi," ")
 					
 					var doctype = "<?xml version='1.0'?>\n<!DOCTYPE container [\n<!ENTITY nbsp '&#160;'>\n]>";
 					
 					var content = doctype + '<container><div id="text">' + editor.getData().replace(/[&][#]160[;]/gi," ") + '</div><div id="events">' + $(jq(rowId) + ' div.structured-events').html() + '</div>'  + '</container>';
-					console.log(content);
+					console.debug(content);
 					var contentDoc = $.parseXML(content);
-					console.log(contentDoc);
+					console.debug(contentDoc);
 					var asString = (new XMLSerializer()).serializeToString(contentDoc);
-					console.log("sring" + asString);
+					console.debug("sring" + asString);
 					contentDoc.getElementsByTagName("container")[0].appendChild(titles);	
 					
 						// get latest macro variables
@@ -339,7 +339,7 @@ CKEDITOR.plugins.add( 'abbr-custom',
 
 					request.done(function(result) {
 							testeee = (new XMLSerializer()).serializeToString(result); 
-							console.log(testeee);
+							console.debug(testeee);
 							contentDoc.getElementsByTagName("container")[0].appendChild(result.documentElement);
 					});
 
@@ -366,11 +366,11 @@ CKEDITOR.plugins.add( 'abbr-custom',
 							success:reconcile
 					});
 //					newContent = $("#resultpane").html();
-//					console.log("result: " + newContent);
+//					console.debug("result: " + newContent);
 					
 //					editor.setData(newContent);
 					
-					console.log('exit main ');
+					console.debug('exit main ');
 					
 					
 					

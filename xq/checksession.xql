@@ -3,6 +3,10 @@ xquery version "1.0";
 
 declare namespace request="http://exist-db.org/xquery/request";
 declare namespace session="http://exist-db.org/xquery/session";
+declare namespace output="http://www.w3.org/2010/xslt-xquery-serialization";
+
+declare option output:method "xml";
+declare option output:media-type "application/xml";
 
 declare function local:show-attribute($name as xs:string, $pos as xs:integer) as element()
 {

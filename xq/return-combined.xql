@@ -1,6 +1,9 @@
 xquery version "1.0";
-
+declare namespace output="http://www.w3.org/2010/xslt-xquery-serialization";
 declare namespace request="http://exist-db.org/xquery/request";
+
+declare option output:method "xml";
+declare option output:media-type "application/xml";
 
 import module namespace xdb="http://exist-db.org/xquery/xmldb";
 import module namespace util="http://exist-db.org/xquery/util";
@@ -71,7 +74,13 @@ let $s := if ($startAsDec and $stopAsDec) then <locks>{doc($locks-doc)//s[@a='y'
 
 return
 
-<all>{$info, <variables><type>{$final-meeting-type}</type><pres>{string($presEvent/@speaker)}</pres><next>{string($nextAlways)}</next><nextTimeCode>{$next/@time}</nextTimeCode></variables>, <meta>{$startAsDec, $stop}</meta>,
+<all>{$info, <variables>
+<status>{$meeting-type}</status>
+<type>{if ( string($final-meeting-type) ) then $final-meeting-type else 'BXL'}</type>
+<pres>{string($presEvent/@speaker)}</pres>
+<next>{string($nextAlways)}</next>
+<nextTimeCode>{$next/@time}</nextTimeCode>
+</variables>, <meta>{$startAsDec, $stop}</meta>,
 $events,$texts, $trans1,$s}
 </all>
 

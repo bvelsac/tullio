@@ -27,7 +27,7 @@ let $id := util:document-id($eventfile)
 
 let $collection := concat("/db/tullio/", string($meeting))
 
-let $check := if ( not( xmldb:collection-exists($collection) ) )
+let $check := if ( not( xmldb:collection-available($collection) ) )
    then xmldb:create-collection("/", $collection)
    else ()
 

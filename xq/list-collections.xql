@@ -1,6 +1,11 @@
-xquery version "1.0";
+xquery version "3.0";
+declare namespace output="http://www.w3.org/2010/xslt-xquery-serialization";
 declare namespace request="http://exist-db.org/xquery/request";
 declare namespace session="http://exist-db.org/xquery/session";
+
+declare option output:method "xml";
+declare option output:media-type "application/xml";
+
 import module namespace xdb="http://exist-db.org/xquery/xmldb";
 import module namespace util="http://exist-db.org/xquery/util";
 

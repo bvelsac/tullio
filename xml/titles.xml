@@ -285,6 +285,12 @@
       <first>Annemie</first>
       <last>Maes</last>
    </person>
+   <person id="MAGÉRUS_Christian" gov="no" group="PS" lang="fr" gender="m">
+      <first>Christian</first>
+      <last>Magérus</last>
+   </person>
+   
+   
    <person id="MAMPAKA_MANKAMBA Bertin" gov="no" group="cdH" lang="fr" gender="m">
       <first>Bertin</first>
       <last>Mampaka Mankamba</last>
@@ -321,10 +327,10 @@
       <first>Catherine</first>
       <last>Moureaux</last>
    </person>
-   <person id="MOUZON_Anne Sylvie" gov="no" group="PS" lang="fr" gender="f">
+   <!--<person id="MOUZON_Anne Sylvie" gov="no" group="PS" lang="fr" gender="f">
       <first>Anne-Sylvie</first>
       <last>Mouzon</last>
-   </person>
+   </person>-->
    <person id="NAGY_Marie" gov="no" group="Ecolo" lang="fr" gender="f">
       <first>Marie</first>
       <last>Nagy</last>

@@ -52,6 +52,9 @@ function asfinish(xml2, xsl, object, e) {
 			},
 			async: false,
 			success: function(response) {
+				console.debug("in success handler");
+				console.debug($(response).find("inputLength").text());
+				
 				continueSaveHandler = true; 
 				console.log(response);
 				console.log(jq(edited));

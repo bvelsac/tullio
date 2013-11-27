@@ -40,6 +40,19 @@
       </xsl:when>
     </xsl:choose>
   </xsl:template>
+  <xsl:template match="e[@type='FIN-EINDE']" mode="initialize-text">
+    <xsl:param name="meeting-type"/>
+    <xsl:param name="lang" select="@lang"/>
+    
+    <xsl:choose>
+      <xsl:when test="$lang='N'">
+        <p c="{@clip}" class="realia" title="{@n}">- De vergadering wordt gesloten om xx.xx uur.</p>
+      </xsl:when>
+      <xsl:when test="$lang='F'">
+        <p c="{@clip}" class="realia" title="{@n}">- La séance est levée à xxhxx.</p>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
   <xsl:template match="e[@type='INC2']" mode="initialize-text">
     <xsl:param name="meeting-type"/>
     <xsl:param name="lang" select="@lang"/>

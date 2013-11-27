@@ -62,10 +62,10 @@ var msgStore = {
     "F": "Voulez-vous vérouiller un clip additionnel ?"
   }
 };
-console.log(msgStore);
+// console.log(msgStore);
 
 function setMeetingType(meeting) {
-  var fullQuery = '/exist/rest/db/tullio/' + meeting + '?_query=' + 'document("agenda.xml")//info';
+  var fullQuery = '/exist/rest/db/tullio/' + meeting + '/agenda.xml?_query=' + '//info';
   $.ajax({
     url: fullQuery,
     dataType: 'xml',
@@ -92,12 +92,12 @@ function setMeetingType(meeting) {
           'PFB': 'PFB'
         };
         mt = mTypes[mt];
-        console.log(mt);
+        // console.log(mt);
       }
       if ($(data).find('channel')[0] != null) {
         channel = $(data).find("channel").text();
       }
-      console.log('channel,' + channel);
+      // console.log('channel,' + channel);
       return true;
     }
   });
@@ -282,7 +282,7 @@ function handleStatusUpdate(statusData, xsinit) {
       statusTD = ".clipstatus-" + items[i].getAttribute('v') + " .n" + sanitize(items[i].getAttribute('n'));
 
 				 if ($(statusTD).length > 0) {
-					 console.log("cell found");
+					 // console.log("cell found");
 					 cell = $(statusTD);
 					 cell.addClass('locked');
 					 cell.find("span.lockid").text(items[i].getAttribute('id'));
@@ -478,7 +478,7 @@ function docupdate() {
     newPosition = $(jq(edited)).offset().top;
   }
   if (newe && edited) {
-    console.log('********scrollback');
+    // console.log('********scrollback');
     // for FF use html root element to adjust scrollbar 
     $("html").scrollTop($("html").scrollTop() + newPosition - newe);
     // $("body").scrollTop($("body").scrollTop() + newPosition - newe);
@@ -665,7 +665,7 @@ function updateVisibleTexts() {
       var currBottom = $(this).offset().top + $(this).height();
       // // console.log (this.id + ': ' + cutoffTop + " " + cutoffBottom + " " + currTop + currBottom);
       if (currTop > cutoffTop || currBottom > cutoffTop || (currTop < cutoffTop && currBottom > cutoffBottom)) {
-        console.log('row ' + this.id + ' is visible');
+        // console.log('row ' + this.id + ' is visible');
         visibleRows.push(this.id);
         visibles += "#" + this.id + ",";
         if (switchFirst == 0) {
@@ -717,12 +717,12 @@ function loopRowUpdate() {
 }
 
 function initialize(xml, xsl, xmlorig) {
-  console.log('************ init');
-  console.log(xml);
+  // console.log('************ init');
+  // console.log(xml);
   jQuery.get("/exist/tullio/xml/titles.xml",
 
   function (data, textStatus, jqXHR) {
-    console.log(data);
+    // console.log(data);
     x = data.documentElement;
     xml.getElementsByTagName("all")[0].appendChild(titles);
     xml.getElementsByTagName("all")[0].appendChild(events);
@@ -740,7 +740,7 @@ function initialize(xml, xsl, xmlorig) {
     });
     loopDisplayStatus();
     loopRowUpdate();
-    console.log('initializion end');
+    // console.log('initializion end');
 
   }, "xml");
   noUpdate = false;
@@ -841,7 +841,7 @@ $().ready(function () {
   $("#text-table td.content").live("dblclick",
 
   function () {
-    console.log('clicked');
+    // console.log('clicked');
     // console.log (this);
     $(this).removeClass('content');
     // console.log (this);
