@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>SoundManager 2 Demo: Play MP3 links on a page, "page as playlist" style</title>
+<style type="text/css">
+
+/* 
+
+ -------------------------------------------------------------
+
+ In-page demo CSS - see external CSS for actual relevant stuff.
+
+ --------------------------------------------------------------
+
+ */
+
+#soundmanager-debug {
+ /* SM2 debug container (optional, makes debug more useable) */
+ position:absolute;position:fixed;*position:absolute;bottom:10px;right:10px;width:50em;height:18em;overflow:auto;background:#fff;margin:1em;padding:1em;border:1px solid #999;font-family:"lucida console",verdana,tahoma,"sans serif";font-size:x-small;line-height:1.5em;opacity:0.9;filter:alpha(opacity=90);z-index:99;
+}
+
+body {
+ font:75% normal verdana,arial,tahoma,"sans serif";
+}
+
+.hidden {display: none;}
+.check {color:red;}
+.alert {color: red;}
+
+
+</style>
+<link rel="stylesheet" type="text/css" href="css/page-player.css" />
+<!-- soundManager.useFlashBlock: related CSS -->
+<link rel="stylesheet" type="text/css" href="../flashblock/flashblock.css" />
+<link href="css/optional-annotations.css" type="text/css" rel="stylesheet">
+
+<script type="text/javascript" src="/exist/tullio/js-lib/jquerytransform/js/jquery-1.6.4.js"></script>
+<!--script type="text/javascript" src="/exist/tullio/js-lib/jquery.jkey-1.2.js"></script-->
+<script type="text/javascript" src="/exist/tullio/js-lib/jquery-hotkeys.js"></script>
+
+<script type="text/javascript" src="../../script/soundmanager2.js"></script>
+<script type="text/javascript" src="script/page-player.js"></script>
+<script type="text/javascript" src="script/optional-page-player-metadata.js"></script>
+<script type="text/javascript">
+
+var noReload = true;
+
+soundManager.url = '../../swf/';
+
+// demo only..
+function setTheme(sTheme) {
+  var o = document.getElementsByTagName('ul')[0];
+  o.className = 'playlist'+(sTheme?' '+sTheme:'');
+  return false;
+}
+</script>
+<script>
+
+
+function playFromOffset(id, position) {
+					console.log(id + position);
+					var offset = 2 * 60000 + 44000; 
+					var s = soundManager.getSoundById(id);
+					console.log(s.readyState);
+					if (s.readyState == 3) {
+						console.log("ready");
+						$('#alerts').addClass('hidden');
+						
+						
+						s.resume();
+						s.setPosition(offset);
+					}
+					else {
+						$('#alerts').addClass('alert');
+						setTimeout("playFromOffset('" + id + "'," + offset + ")", 500);
+					}
+				}
+
+
+$().ready(function(){
+		console.log("start logging");
+		
+		$("#reload").bind("click", function(){
+				var thelink = document.getElementById('mpl');
+				pagePlayer.handleClick({target: thelink});
+		});
+		
+	
+		
+		
+		$(".load").bind("click", function(){
+/*				
+				function playFromOffset(id, position) {
+					var offset = 2 * 60000 + 44000; 
+					console.log(id + position);
+					var s = soundManager.getSoundById(id);
+					console.log(s.readyState);
+					if (s.readyState == 3) {
+						console.log("ready");
+						s.setPosition(offset);
+
+
+						//lastSound = pagePlayer.lastSound.sID;
+						console.log('resumed');
+						//soundManager.play(lastSound);
+						
+					}
+					else {console.log('try again'); setTimeout("playFromOffset('mpl'," + offset + ")", 100);}
+				}
+				
+	*/			
+		 	noReload = false;
+			var playlist = $(this).next().html();
+			console.log(playlist);
+			
+			$("#recording").empty();
+			
+			$("#recording").html(playlist);
+			pagePlayer.init();
+			$("#recording ul").removeClass('hidden');
+	//		$("#recording a").addClass('check');
+	
+	
+			var playId = $(this).next().find("a").attr('id');
+			var thelink = document.getElementById(playId);
+			$("#alerts").addClass('alert');
+			
+			pagePlayer.handleClick({target: thelink});
+			soundManager.togglePause(playId);
+			playFromOffset(playId, 5000);
+			
+			
+		//	lastSound = pagePlayer.lastSound.sID;
+		//	console.log(lastSound);
+		//	var s = soundManager.getSoundById(lastSound);
+		//	console.log(s.readyState);
+		//	s.pause();
+    //  s.setPosition(s.position + 1000);
+	//		setTimeout("startAtOffset('" + lastSound +"')", 1000);			
+
+// pagePlayer.handleClick({target: thelink});
+			
+//			soundManager.togglePause('mpl');
+			//soundManager.togglePause(lastSound);
+			//console.log('playing again?');
+			
+//			$("#recording a").trigger('click');
+			/*var mySoundObject = soundManager.createSound({
+					id: 'pagePlayerMP3Sound0',
+					url: '../../recordings/201112250915.mp3'
+			});
+
+			soundManager.play('pagePlayerMP3Sound0');
+			*/
+			
+			$(".note:contains('Start')").css({	display : 'inline-block',
+																					background : '#ff9999'});
+			
+			noReload = true;
+		});
+		
+		
+		$("#play").live("click", function(){
+			lastSound = pagePlayer.lastSound.sID;
+			console.log(lastSound);
+			soundManager.play(lastSound);
+			//$('<li><a href="../_mp3/office_lcobby.mp3">Nog eentjen</a></li>').insertBefore('.last');
+		
+		
+		
+		});
+		$("#forward").live("click", function(){
+			lastSound = pagePlayer.lastSound.sID;
+			console.log(lastSound);
+			soundManager.pause(lastSound);
+			$("#recording").html(playlist);
+			$('<li><a href="../../recordings/201112250915.mp3">Nog eentjen</a></li>').insertBefore('.last');
+		});
+		/*
+		$(document).jkey('alt+=',function(){
+				lastSound = pagePlayer.lastSound.sID;
+				var s = soundManager.getSoundById(lastSound);
+				if (!s || !s.playState || !s.duration) {
+					console.log("something wrong");
+					return false;
+				}
+				console.log(s.position);
+				s.setPosition(s.position + 5000);
+				
+				console.log('You pressed a key.');
+		});
+		*/
+		$(document).bind('keyup', 'alt+=', function(){
+				lastSound = pagePlayer.lastSound.sID;
+				if (!lastSound) {
+					console.log('no sound');
+					return false;
+				}
+				
+				var s = soundManager.getSoundById(lastSound);
+				if (!s || !s.playState || !s.duration) {
+					console.log("something wrong");
+					return false;
+				}
+				console.log(s.position);
+				s.setPosition(s.position + 5000);
+				console.log('You pressed a key.');
+		});
+		
+		
+		
+})
+</script>
+
+</head>
+
+<body>
+
+<div id="player">
+	<div id="recording">
+	</div>
+	<div id='controls'>
+		<ul>
+			<li id='toStart'>TO START OF CLIP</li>
+			<li id='toEnd'>TO END OF CLIP</li>
+			<li id='play'>PLAY</li>
+			<li id='pause'>PAUSE</li>
+			<li id='forward'>FORWARD</li>
+			<li id="rewind">REWIND</li>
+			<li id="reload">RELOAD</li>
+		</ul>
+	</div>
+	<div id="alerts">
+	<p>LOADING</p>
+	</div>
+</div>
+
+
+
+<div id="clip1">
+<p class='load'>LOAD AUDIO 1</p>
+<div id="playlistWrapper">
+<ul class="playlist hidden">
+
+  <li class="last"><a id='mpl' href="../../recordings/201112250915.mp3">09:15</a><span class="offset">00:07</span>
+	<div class="metadata">
+    <div class="duration">4:43</div> <!-- total track time (for positioning while loading, until determined -->
+    <ul>
+     <li><p>Electric razor</p><span>0:00</span></li> <!-- first scene -->
+     <li><p>Water, scissors</p><span>2:41</span></li> <!-- start time of second scene -->
+     <li><p>More razor work</p><span>4:00</span></li>
+    </ul>
+  </div>
+	</li>
+</ul>
+
+
+
+</div>
+
+<div id="clip2">
+<p class='load'>LOAD AUDIO 2</p>
+<div class="playlistWrapper">
+<ul class="playlist hidden">
+
+  <li class="last"><a id='someId' href="../../recordings/201112250915.mp3">09:30</a><span class="offset">00:07</span>
+	<div class="metadata">
+    <div class="duration">3:20</div> <!-- total track time (for positioning while loading, until determined -->
+    <ul>
+     <li><p>Start</p><span>0:30</span></li> <!-- first scene -->
+     <li><p>Needle</p><span>0:45</span></li> <!-- start time of second scene -->
+     <li><p>Haystack</p><span>2:00</span></li>
+    </ul>
+  </div>
+	</li>
+</ul>
+
+
+
+</div>
+
+
+
+</div>
+ 
+
+</body>
+</html>
