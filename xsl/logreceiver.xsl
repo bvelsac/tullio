@@ -10,7 +10,7 @@
           <xsl:with-param name="counter" select="$lower"/>
         </xsl:apply-templates>
       </events>
-      <debug><xsl:copy-of select="."/></debug>
+     <!-- <debug><xsl:copy-of select="."/></debug>-->
     </xmlData>
     <!--
   <events>
@@ -48,14 +48,20 @@
   </xsl:if>
   
     <e>
+      
+      <xsl:for-each select="*">
+        <xsl:attribute name="{name()}">
+          <xsl:value-of select="."/>
+        </xsl:attribute>
+      </xsl:for-each>
+      <xsl:attribute name="c">false</xsl:attribute>
+      <!--<xsl:apply-templates select="*"></xsl:apply-templates>-->
       <xsl:attribute name="n">
         <xsl:value-of select="$counter * 2"/>
       </xsl:attribute>
       <xsl:attribute name="lang">
         <xsl:value-of select="$langSelection"/>
       </xsl:attribute>
-      <xsl:apply-templates select="*"></xsl:apply-templates>
-      
     </e>
     <xsl:apply-templates select="preceding-sibling::e[1]">
       <xsl:with-param name="counter" select="$counter + 1"/>
@@ -67,17 +73,18 @@
 
   <xsl:template match="lang"></xsl:template>
   
-  <xsl:template match="c">
+  <!--<xsl:template match="c">
     <xsl:attribute name="c">false</xsl:attribute>
-   </xsl:template>
+   </xsl:template>-->
   
-  <xsl:template match="*">
+  <xsl:template match="text()"></xsl:template>
+  <!--<xsl:template match="*">
   
   <xsl:attribute name="{name()}">
   <xsl:value-of select="."/>
   </xsl:attribute>
   
-  </xsl:template>
+  </xsl:template>-->
   <!-- 
   <xsl:template match="@nr">
     <xsl:attribute name="n">
