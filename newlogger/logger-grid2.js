@@ -71,7 +71,7 @@ function setOffset() {
 									var localMillisUTC = Date.parse(new Date().toUTCString());
 									newOffset = serverTimeMillisGMT -  localMillisUTC;
 									console.log(newOffset);
-			
+			offset = newOffset ; 
 					},
 					error: function (XMLHttpRequest, textStatus, errorThrown) {
 						
@@ -80,7 +80,7 @@ function setOffset() {
 					async: true
 			});
 			
-			if (newOffset != 'none') { offset = newOffset ; }
+		
 			
 			return newOffset;
 		
