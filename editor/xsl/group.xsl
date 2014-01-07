@@ -34,7 +34,7 @@
   <!--  http://localhost:8080/exist/sound/canal3/201203211040.mp3
 -->
   <xsl:variable name="soundExt" select="'.mp3'"/>
-  <xsl:variable name="audioLength" select="'20'"/>
+  <xsl:variable name="audioLength" select="'10'"/>
   <xsl:variable name="conf" select="//reference"/>
   <xsl:variable name="global-meeting-type">
     <xsl:choose>
@@ -164,12 +164,18 @@
           select="$seconds"/>, </xsl:comment>
       <xsl:variable name="recordingStart">
         <xsl:choose>
-          <xsl:when test="$minutes &gt;= 50">50</xsl:when>
-          <xsl:when test="$minutes &lt; 10">00</xsl:when>
-          <xsl:when test="$minutes &lt; 20">10</xsl:when>
-          <xsl:when test="$minutes &lt; 30">20</xsl:when>
-          <xsl:when test="$minutes &lt; 40">30</xsl:when>
-          <xsl:when test="$minutes &lt; 50">40</xsl:when>
+        <xsl:when test="$minutes &gt;= 55">55</xsl:when>
+		  <xsl:when test="$minutes &lt; 05">00</xsl:when>
+		  <xsl:when test="$minutes &lt; 10">05</xsl:when>
+          <xsl:when test="$minutes &lt; 15">10</xsl:when>
+          <xsl:when test="$minutes &lt; 20">15</xsl:when>
+          <xsl:when test="$minutes &lt; 25">20</xsl:when>
+          <xsl:when test="$minutes &lt; 30">25</xsl:when>
+          <xsl:when test="$minutes &lt; 35">30</xsl:when>
+          <xsl:when test="$minutes &lt; 40">35</xsl:when>
+          <xsl:when test="$minutes &lt; 45">40</xsl:when>
+          <xsl:when test="$minutes &lt; 50">45</xsl:when>
+          <xsl:when test="$minutes &lt; 55">50</xsl:when>
         </xsl:choose>
       </xsl:variable>
       <xsl:variable name="audioRef"
