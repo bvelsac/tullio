@@ -41,7 +41,7 @@ checkSession();
 })(jQuery);
 
 var meetingName = $.QueryString["m"];
-var typesForDropdown = ['---', 'OUV-OPE', 'O-BXL', 'O-ARVV',  'PRES', 'EXC-AFW', 'COMM-MED', 'GEN-ALG', 'ORA-SPR', 'P.E.CONS-INOVERW','START-MV', 'START-INT', 'START-DV', 'QO-MV', 'QO-MV JOINTE',  'QA-DV', 'QA-DV JOINTE', 'INT', 'INT JOINTE', 'VOTE','FIN-EINDE'];		
+var typesForDropdown = ['---', 'OUV-OPE', 'O-BXL', 'O-ARVV',  'PRES', 'EXC-AFW', 'COMM-MED', 'GEN-ALG', 'ORA-SPR', 'P.E.CONS-INOVERW', 'ONTWERP', 'PROP ORD', 'PROP RES', 'START-MV', 'START-INT', 'START-DV', 'QO-MV', 'QO-MV JOINTE',  'QA-DV', 'QA-DV JOINTE', 'INT', 'INT JOINTE', 'VOTE','FIN-EINDE'];		
 
 
 var meeting = "";

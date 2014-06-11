@@ -3,6 +3,10 @@
 <?xml-stylesheet type="text/xsl" href="../help/events2help.xsl"?>
 
 <reference name="eventTypes">
+
+ 
+
+
   <event id="" order="0000" active="y" use-for-editor="y" use-for-agenda="y">
     <name lang="nl">---</name>
     <name lang="fr">---</name>
@@ -286,4 +290,30 @@
     <name lang="nl">Inoverwegingnemingen</name>
     <name lang="fr">Prises en considération</name>
   </event>
+
+<event id="ALG-BESPR" order="gen-08"  active="y" use-for-editor="n" use-for-agenda="y"  cell="y">
+    <name lang="nl">Algemene bespreking</name>
+    <name lang="fr">Discussion générale</name>
+  </event>
+  <event id="ART-BESPR" order="gen-10"  active="y" use-for-editor="n" use-for-agenda="y"  cell="y">
+    <name lang="nl">Artikelsgewijze bespreking</name>
+    <name lang="fr">Discussion des articles</name>
+  </event>
+  <event id="RAPPORT" order="gen-09"  active="y" use-for-editor="n" use-for-agenda="y"  cell="y">
+    <name lang="nl">Rapporteur</name>
+    <name lang="fr">Rapporteur</name>
+  </event>
+  <event id="PROP ORD" order="gen-05"  active="y" use-for-editor="n" use-for-agenda="y"  cell="y">
+    <name lang="nl">Voorstel van ordonnantie</name>
+    <name lang="fr">Proposition d'ordonnance</name>
+  </event>
+  <event id="PROP RES" order="gen-06"  active="y" use-for-editor="n" use-for-agenda="y"  cell="y">
+    <name lang="nl">Voorstel van resolutie</name>
+    <name lang="fr">Proposition de résolution</name>
+  </event>
+  <event id="ONTWERP" order="gen-07"  active="y" use-for-editor="n" use-for-agenda="y"  cell="y">
+    <name lang="nl">Ontwerp van ordonnantie</name>
+    <name lang="fr">Projet d'ordonnance</name>
+  </event>
+
 </reference>

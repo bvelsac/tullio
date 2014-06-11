@@ -1,6 +1,23 @@
 // set up buttons etc.
 var propsRegister = {
 
+"alg-bespr" : {
+		c: 'true',
+		type:'ALG-BESPR'
+		
+	},
+	"art-bespr" : {
+		c: 'true',
+		type: 'ART-BESPR'
+		
+	},
+	"rapporteur" : {
+		c: 'true',
+		type: 'RAPPORT'
+	},
+
+
+
 	"clip":
 {
 c:'true'

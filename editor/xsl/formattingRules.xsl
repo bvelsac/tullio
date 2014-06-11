@@ -27,6 +27,165 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
+
+
+ <!-- PROP ORD -->
+  <xsl:template match="e[@type='PROP ORD']" mode="initialize-text">
+    <xsl:param name="meeting-type"/>
+    <xsl:param name="lang" select="@lang"/>
+    <p c="{@clip}" class="title3" title="{@n}">
+      <xsl:choose>
+        <xsl:when test="$lang='F'">
+          <xsl:text>Proposition d'ordonnance </xsl:text>
+          <xsl:value-of select="concat(@textF, @textf)"/>
+        </xsl:when>
+        <xsl:when test="$lang='N'">
+          <xsl:text>Voorstel van ordonnantie </xsl:text>
+          <xsl:value-of select="concat(@textN, @textn)"/>
+        </xsl:when>
+      </xsl:choose>
+    </p>
+  </xsl:template>
+  <!-- PROP RES -->
+  <xsl:template match="e[@type='PROP RES']" mode="initialize-text">
+    <xsl:param name="meeting-type"/>
+    <xsl:param name="lang" select="@lang"/>
+    <p c="{@clip}" class="title3" title="{@n}">
+      <xsl:choose>
+        <xsl:when test="$lang='F'">
+          <xsl:text>Proposition de résolution </xsl:text>
+          <xsl:value-of select="concat(@textF, @textf)"/>
+        </xsl:when>
+        <xsl:when test="$lang='N'">
+          <xsl:text>Voorstel van resolutie </xsl:text>
+          <xsl:value-of select="concat(@textN, @textn)"/>
+        </xsl:when>
+      </xsl:choose>
+    </p>
+  </xsl:template>
+  <!-- ONTWERP -->
+  
+  <xsl:template match="e[@type='ONTWERP']" mode="initialize-text">
+    <xsl:param name="meeting-type"/>
+    <xsl:param name="lang" select="@lang"/>
+    <p c="{@clip}" class="title3" title="{@n}">
+      <xsl:choose>
+        <xsl:when test="$lang='F'">
+          <xsl:text>Projet d'ordonnance </xsl:text>
+          <xsl:value-of select="concat(@textF, @textf)"/>
+        </xsl:when>
+        <xsl:when test="$lang='N'">
+          <xsl:text>Ontwerp van ordonnantie </xsl:text>
+          <xsl:value-of select="concat(@textN, @textn)"/>
+        </xsl:when>
+      </xsl:choose>
+    </p>
+  </xsl:template>
+  
+  <!-- RAPPORT -->
+  
+  <xsl:template match="e[@type='RAPPORT']" mode="initialize-text">
+    <xsl:param name="meeting-type"/>
+    <xsl:param name="lang" select="@lang"/>
+    <xsl:variable name="person" select="key('people', @speaker)"/>
+    <p c="{@clip}" class="proc" title="{@n}">
+      
+      <xsl:choose>
+        <xsl:when test="$lang='F'">
+          <xsl:value-of select="key('snippets', concat('parole-', $lang))"/>
+          <xsl:value-of select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/>
+          <xsl:value-of select="$person/last"/>
+          <xsl:value-of select="concat(', ', key('snippets', concat('rapport-', $person/@gender, '-',  $lang)), '.')"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/>
+          
+          <xsl:value-of select="concat($person/last, ', rapporteur.')"/>
+          <xsl:value-of select="key('snippets', concat('parole-', $lang))"/>
+          
+          <xsl:text>.</xsl:text>
+        </xsl:otherwise>
+      </xsl:choose>
+    </p>
+    <p c="{@clip}">
+      <span class="speaker" title="{@n}">
+        <xsl:value-of select="key('snippets', concat('title-', $person/@gender, '-',  $lang))"/>
+        <xsl:value-of select="$person/first"/>
+        <xsl:text> </xsl:text>
+        <xsl:value-of select="$person/last"/>
+        
+        <xsl:choose>
+          <xsl:when test="$person/@gov='yes'">
+            <xsl:text>, </xsl:text>
+            
+            <xsl:value-of select="$person/short[@l=$lang][@meeting-type=$meeting-type]"/>
+            
+            <xsl:text></xsl:text>
+          </xsl:when>
+          <xsl:when test="$meeting-type='PFB'"> 
+            
+            <xsl:value-of select="concat(' (', $person/@group, ')')"/>
+          </xsl:when>
+        </xsl:choose>
+        <xsl:value-of select="concat(', ', key('snippets', concat('rapport-', $person/@gender, '-',  $lang)))"/>
+        
+      </span>
+      <xsl:text>.- </xsl:text>
+    </p>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </xsl:template>
+  
+  <!-- ALG-BESPR -->
+  <xsl:template match="e[@type='ALG-BESPR']" mode="initialize-text">
+    <xsl:param name="meeting-type"/>
+    <xsl:param name="lang" select="@lang"/>
+    <p c="{@clip}" class="title2" title="{@n}">
+      
+      <xsl:copy-of select="key('snippets', concat('algBespr-', $lang))/node()"/>
+      
+      
+      
+    </p>
+    <p c="{@clip}" class="proc" title="{@n}">
+      <xsl:call-template name="president">
+        <xsl:with-param name="event" select="."/>
+        <xsl:with-param name="lang" select="$lang"/>
+        <xsl:with-param name="meeting-type" select="$meeting-type"/>
+      </xsl:call-template>
+      <xsl:copy-of select="key('snippets', concat('startAlgBespr-', $lang))/node()"/>
+    </p>
+  </xsl:template>
+  
+  <!-- ART-BESPR -->
+  <xsl:template match="e[@type='ART-BESPR']" mode="initialize-text">
+    <xsl:param name="meeting-type"/>
+    <xsl:param name="lang" select="@lang"/>
+    <p c="{@clip}" class="title2" title="{@n}">
+    
+        <xsl:copy-of select="key('snippets', concat('artBespr-', $lang))/node()"/>
+      
+      
+      
+    </p>
+    <p c="{@clip}" class="proc" title="{@n}">
+      <xsl:call-template name="president">
+        <xsl:with-param name="event" select="."/>
+        <xsl:with-param name="lang" select="$lang"/>
+        <xsl:with-param name="meeting-type" select="$meeting-type"/>
+      </xsl:call-template>
+      <xsl:copy-of select="key('snippets', concat('startArtBespr-', $lang))/node()"/>
+    </p>
+  </xsl:template>
+
+
   <xsl:template match="e[@type='INC']" mode="initialize-text">
     <xsl:param name="meeting-type"/>
     <xsl:param name="lang" select="@lang"/>
@@ -138,7 +297,7 @@
                 van het Brussels Hoofdstedelijk Parlement van vrijdag XX maand 2013
                 geopend.</xsl:when>
               <xsl:when test="$lang='F' and $precType='O-BXL'"> Je déclare ouverte la séance
-                plénière du parlement de la Région de Bruxelles-Capitale du vendredi XX mois
+                plénière du Parlement de la Région de Bruxelles-Capitale du vendredi XX mois
                 2011.</xsl:when>
               <xsl:when test="$lang='N' and $precType='O-ARVV'"> Ik verklaar de plenaire vergadering
                 van de Verenigde Vergadering van de Gemeenschappelijke Gemeenschapscommissie van
