@@ -93,10 +93,21 @@
       <first>Jacques</first>
       <last>Brotchi</last>
    </person>
+
+   <person id="Carthé_Michèle" lang="fr" gender="f" group="PS" gov="no">
+      <first>Michèle</first>
+      <last>Carthé</last>
+   </person>
    <person id="Cerexhe_Benoît" lang="fr" gender="m" group="cdH" gov="no">
       <first>Benoît</first>
       <last>Cerexhe</last>
    </person>
+
+ <person id="Chahid_Ridouane" lang="fr" gender="m" group="PS" gov="no">
+      <first>Ridouane</first>
+      <last>Chahid</last>
+   </person>
+
    <person id="Clerfayt_Bernard" lang="fr" gender="m" group="FDF" gov="no">
       <first>Bernard</first>
       <last>Clerfayt</last>
@@ -165,7 +176,7 @@
       <first>Carla</first>
       <last>Dejonghe</last>
    </person>
-   <person id="Delforge_Céline" lang="fr" gender="f" group="ECOLO" gov="no">
+   <person id="Delforge_Céline" lang="fr" gender="f" group="Ecolo" gov="no">
       <first>Céline</first>
       <last>Delforge</last>
    </person>
@@ -193,9 +204,13 @@
       <first>Boris</first>
       <last>Dilliès</last>
    </person>
-   <person id="Doulkeri_Christos" lang="fr" gender="m" group="ECOLO" gov="no">
+   <person id="Doulkeri_Christos" lang="fr" gender="m" group="Ecolo" gov="no">
       <first>Christos</first>
       <last>Doulkeridis</last>
+   </person>
+	    <person id="Doyen_Hervé" gov="no" group="cdH" lang="fr" gender="m">
+      <first>Hervé</first>
+      <last>Doyen</last>
    </person>
    <person id="Draps_Willem" lang="fr" gender="m" group="MR" gov="no">
       <first>Willem</first>
@@ -209,7 +224,7 @@
       <first>Dominique</first>
       <last>Dufourny</last>
    </person>
-   <person id="Durant_Isabelle" lang="fr" gender="f" group="ECOLO" gov="no">
+   <person id="Durant_Isabelle" lang="fr" gender="f" group="Ecolo" gov="no">
       <first>Isabelle</first>
       <last>Durant</last>
    </person>
@@ -237,7 +252,7 @@
       <first>Hamza</first>
       <last>Fassi-Fihri</last>
    </person>
-   <person id="Genot_Zoé" lang="fr" gender="f" group="ECOLO" gov="no">
+   <person id="Genot_Zoé" lang="fr" gender="f" group="Ecolo" gov="no">
       <first>Zoé</first>
       <last>Genot</last>
    </person>
@@ -253,10 +268,12 @@
       <first>Amet</first>
       <last>Gjanaj</last>
    </person>
+   <!--
    <person id="Gosuin_Didier" lang="fr" gender="m" group="FDF" gov="no">
       <first>Didier</first>
       <last>Gosuin</last>
    </person>
+   -->
    <person id="Grouwels_Brigitte" lang="nl" gender="f" group="CD&amp;V" gov="no">
       <first>Brigitte</first>
       <last>Grouwels</last>
@@ -265,7 +282,7 @@
       <first>Youssef</first>
       <last>Handichi</last>
    </person>
-   <person id="Huytebro_Evelyne" lang="fr" gender="f" group="ECOLO" gov="no">
+   <person id="Huytebro_Evelyne" lang="fr" gender="f" group="Ecolo" gov="no">
       <first>Evelyne</first>
       <last>Huytebroeck</last>
    </person>
@@ -277,10 +294,7 @@
       <first>Véronique</first>
       <last>Jamoulle</last>
    </person>
-   <person id="Jodogne_Cécile" lang="fr" gender="f" group="FDF" gov="no">
-      <first>Cécile</first>
-      <last>Jodogne</last>
-   </person>
+  
    <person id="Kanfaoui_Abdallah" lang="fr" gender="m" group="MR" gov="no">
       <first>Abdallah</first>
       <last>Kanfaoui</last>
@@ -293,10 +307,7 @@
       <first>Hasan</first>
       <last>Koyuncu</last>
    </person>
-   <person id="Laanan_Fadila" lang="fr" gender="f" group="PS" gov="no">
-      <first>Fadila</first>
-      <last>Laanan</last>
-   </person>
+   
    <person id="Lemesre_Marion" lang="fr" gender="f" group="MR" gov="no">
       <first>Marion</first>
       <last>Lemesre</last>
@@ -305,10 +316,16 @@
       <first>Dominiek</first>
       <last>Lootens-Stael</last>
    </person>
+   <person id="Loewenstein_Marc" gov="no" group="FDF" lang="fr" gender="m">
+      <first>Marc</first>
+      <last>Loewenstein</last>
+   </person>
+   <!--
    <person id="Madrane_Rachid" lang="fr" gender="m" group="PS" gov="no">
       <first>Rachid</first>
       <last>Madrane</last>
    </person>
+   -->
    <person id="Maes_Annemie" lang="nl" gender="f" group="Groen" gov="no">
       <first>Annemie</first>
       <last>Maes</last>
@@ -325,18 +342,20 @@
       <first>Bertin</first>
       <last>Mampaka Mankamba</last>
    </person>
-   <person id="Manzoor_ZahoorEllahi" lang="fr" gender="m" group="MR" gov="no">
+   <person id="Manzoor_ZahoorEllahi" lang="fr" gender="m" group="PS" gov="no">
       <first>Zahoor Ellahi</first>
       <last>Manzoor</last>
    </person>
-   <person id="Maron_Alain" lang="fr" gender="m" group="ECOLO" gov="no">
+   <person id="Maron_Alain" lang="fr" gender="m" group="Ecolo" gov="no">
       <first>Alain</first>
       <last>Maron</last>
    </person>
+   <!--
    <person id="Milquet_Joëlle" lang="fr" gender="f" group="cdH" gov="no">
       <first>Joëlle</first>
       <last>Milquet</last>
    </person>
+   -->
    <person id="Moureaux_Catherine" lang="fr" gender="f" group="PS" gov="no">
       <first>Catherine</first>
       <last>Moureaux</last>
@@ -345,9 +364,9 @@
       <first>Mohamed</first>
       <last>Ouriaghli</last>
    </person>
-   <person id="Özdemir_Mahinur" lang="fr" gender="f" group="cdH" gov="no">
+   <person id="Ozdemir_Mahinur" lang="fr" gender="f" group="cdH" gov="no">
       <first>Mahinur</first>
-      <last>Özdemir</last>
+      <last>Ozdemir</last>
    </person>
    <person id="Özkara_Emin" lang="fr" gender="m" group="PS" gov="no">
       <first>Emin</first>
@@ -365,10 +384,16 @@
       <first>Charles</first>
       <last>Picqué</last>
    </person>
-   <person id="Pinxtere_Arnaud" lang="fr" gender="m" group="ECOLO" gov="no">
+   <person id="Pinxtere_Arnaud" lang="fr" gender="m" group="Ecolo" gov="no">
       <first>Arnaud</first>
       <last>Pinxteren</last>
    </person>
+   <!--
+<person id="Plovie_Magali" lang="fr" gender="f" group="Ecolo" gov="no">
+      <first>Magali</first>
+      <last>Plovie</last>
+   </person>
+-->
    <person id="Roex_Elke" lang="nl" gender="f" group="sp.a" gov="no">
       <first>Elke</first>
       <last>Roex</last>
@@ -377,10 +402,12 @@
       <first>Jacqueline</first>
       <last>Rousseaux</last>
    </person>
-   <person id="Smet_Pascal" lang="nl" gender="m" group="sp.a" gov="no">
-      <first>Pascal</first>
-      <last>Smet</last>
+ <person id="Sidibe_Fatoumata" lang="fr" gender="f" group="FDF" gov="no">
+      <first>Fatoumata</first>
+      <last>Sidibe</last>
    </person>
+
+  
    <person id="Susskind_Simone" lang="fr" gender="f" group="PS" gov="no">
       <first>Simone</first>
       <last>Susskind</last>
@@ -393,13 +420,22 @@
       <first>Sevket</first>
       <last>Temiz</last>
    </person>
-   <person id="Trachte_Barbara" lang="fr" gender="f" group="ECOLO" gov="no">
+   <person id="Trachte_Barbara" lang="fr" gender="f" group="Ecolo" gov="no">
       <first>Barbara</first>
       <last>Trachte</last>
    </person>
+  <person id="Uyttenda_Julien" lang="fr" gender="m" group="PS" gov="no">
+      <first>Julien</first>
+      <last>Uyttendaele</last>
+   </person>
+
    <person id="VanAchte_Cieltje" lang="nl" gender="f" group="N-VA" gov="no">
       <first>Cieltje</first>
       <last>Van Achter</last>
+   </person>
+   <person id="VanDamme_Jef" lang="nl" gender="m" group="sp.a" gov="no">
+      <first>Jef</first>
+      <last>Van Damme</last>
    </person>
    <person id="VandenDr_Johan" lang="nl" gender="m" group="N-VA" gov="no">
       <first>Johan</first>
@@ -408,11 +444,11 @@
    <person id="VanGoids_Gaëtan" lang="fr" gender="m" group="MR" gov="no">
       <first>Gaëtan</first>
       <last>Van Goidsenhoven</last>
-   </person>
+   </person><!--
    <person id="Vanhenge_Guy" lang="nl" gender="m" group="Open Vld" gov="no">
       <first>Guy</first>
       <last>Vanhengel</last>
-   </person>
+   </person>-->
    <person id="Verbauwh_Michaël" lang="fr" gender="m" group="PTB*PVDA-GO!" gov="no">
       <first>Michaël</first>
       <last>Verbauwhede</last>
@@ -421,54 +457,84 @@
       <first>Arnaud</first>
       <last>Verstraete</last>
    </person>
+   <!--
    <person id="Vervoort_Rudi" lang="fr" gender="m" group="PS" gov="no">
       <first>Rudi</first>
       <last>Vervoort</last>
    </person>
+-->
+ <person id="Zamouri_Khadija" lang="nl" gender="f" group="Open Vld" gov="no">
+      <first>Khadija</first>
+      <last>Zamouri</last>
+   </person>
+   
+<!--
+Mme Fadila Laanan, ministre-­présidente en charge du Budget, de l'Enseignement, du Transport scolaire, de l'Accueil de l'enfance, du Sport et de la Culture
+
+M. Rudi Vervoort, ministre en charge de la Cohésion sociale et du Tourisme
+
+Mme Cécile Jodogne, ministre en charge de la Fonction publique et de la Santé
+
+M. Didier Gosuin, ministre en charge de la Formation professionnelle
+
+Mme Céline Fremault, ministre en charge de la Politique d'aide aux personnes handicapées, de l'Action sociale, de la Famille et des Relations internationales
 
 
+-->
 
 
-  
-  <person id="GROUWELS_Brigitte" gov="yes" gender="f" lang="nl" group="CD&amp;V">
-    <first>Brigitte</first>
-    <last>Grouwels</last>
+   
+   <!-- REGERINGSLEDEN -->
+   <person id="Vervoort_Rudi" lang="fr" gender="m" group="PS" gov="yes">
+      <first>Rudi</first>
+      <last>Vervoort</last>
     
-		 <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Openbare Werken en Vervoer</ti>
-      <ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée des Travaux publics et des Transports</ti>
-      <ti l="N" meeting-type="VVGGC">lid van het Verenigd College, bevoegd voor het Beleid inzake Bijstand aan Personen en Openbaar Ambt</ti>
-      <ti l="F" meeting-type="VVGGC">membre du Collège réuni, compétente pour la Politique d'Aide aux Personnes et la Fonction publique</ti>
+		 <ti l="N" meeting-type="BHP">minister-president van de Brusselse Hoofdstedelijke Regering, belast met Plaatselijke Besturen, Territoriale Ontwikkeling, Stedelijk Beleid, Monumenten en Landschappen, Studentenaangelegenheden, Toerisme, Openbaar Ambt, Wetenschappelijk Onderzoek en Openbare Netheid</ti>
+      <ti l="F" meeting-type="BHP">ministre-président du Gouvernement de la Région de Bruxelles-Capitale, chargé des Pouvoirs locaux, du Développement territorial, de la Politique de la ville, des Monuments et Sites, des Affaires étudiantes, du Tourisme, de la Fonction publique, de la Recherche scientifique et de la Propreté publique</ti>
+      <ti l="N" meeting-type="VVGGC">voorzitter van het Verenigd College, bevoegd voor de Coördinatie
+van het Beleid van het Verenigd College</ti>
+      <ti l="F" meeting-type="VVGGC">président du Collège réuni, compétent pour la Coordination de la politique du Collège réuni</ti>
+ <ti l="F" meeting-type="PFB">ministre en charge de la Cohésion sociale et du Tourisme</ti>
+
+
+
       
+   	 <short l="N" meeting-type="BHP">minister-president</short>
+      <short l="F" meeting-type="BHP">ministre-président</short>
+      <short l="N" meeting-type="VVGGC">voorzitter van het Verenigd College</short>
+      <short l="F" meeting-type="VVGGC">président du Collège réuni</short>
+      
+  </person>
+  
+  <person id="Gosuin_Didier" lang="fr" gender="m" group="FDF" gov="yes">
+      <first>Didier</first>
+      <last>Gosuin</last>
+       <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Tewerkstelling, Economie en Brandbestrijding en Dringende Medische Hulp</ti>
+      <ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargé de l'Emploi, de l'Économie et de la Lutte contre l'incendie et l'Aide médicale urgente</ti>
+      <ti l="N" meeting-type="VVGGC">lid van het Verenigd College, bevoegd voor het Gezondheidsbeleid, het Openbaar Ambt, de Financiën, de Begroting en de Externe Betrekkingen</ti>
+      <ti l="F" meeting-type="VVGGC">membre du Collège réuni, compétent pour la Politique de la santé, la Fonction publique, les Finances, le Budget et les Relations extérieures</ti>
+      <ti l="F" meeting-type="PFB">ministre en charge de la Formation professionnelle</ti>
    	 <short l="N" meeting-type="BHP">minister</short>
       <short l="F" meeting-type="BHP">ministre</short>
-      <short l="N" meeting-type="VVGGC">lid van het Verenigd College</short>
+      <short l="N" meeting-type="VVGGC">membre van het Verenigd College</short>
       <short l="F" meeting-type="VVGGC">membre du Collège réuni</short>
-      
+       <short l="F" meeting-type="PFB">ministre</short>
+
   </person>
+   
   
-  <person id="DOULKERIDIS_Christos" gov="yes" gender="m" lang="fr" group="Ecolo">
-  <!-- GEEN LID VAN HET VERENIGD COLLEGE -->
-    <first>Christos</first>
-    <last>Doulkeridis</last>
-    <ti l="N" meeting-type="BHP">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Huisvesting en Brandbestrijding en Dringende Medische Hulp</ti>
-    <ti l="F" meeting-type="BHP">secrétaire d'État à la Région de Bruxelles-Capitale, chargé du Logement et de la Lutte contre l'Incendie et l'Aide médicale urgente</ti>
   
-    <ti l="F" meeting-type="PFB">président du Gouvernement, ministre en charge du Budget, de l'Enseignement, du Tourisme et des Relations internationales</ti>
-    
-    <short l="N" meeting-type="BHP">staatssecretaris</short>
-      <short l="F" meeting-type="BHP">secrétaire d'État</short>
-        <short l="F" meeting-type="PFB">ministre-président</short>
-      
-    
-  </person>
+ 
   
-  <person id="VANHENGEL_Guy" gov="yes" gender="m" lang="nl" group="Open Vld">
+  
+  
+  <person id="Vanhenge_Guy" gov="yes" gender="m" lang="nl" group="Open Vld">
     <first>Guy</first>
     <last>Vanhengel</last>
-    <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Financiën, Begroting, Openbaar Ambt en Externe Betrekkingen</ti>
-    <ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargé des Finances, du Budget, de la Fonction publique et des Relations extérieures</ti>
-    <ti l="N" meeting-type="VVGGC">lid van het Verenigd College, bevoegd voor het Gezondheidsbeleid, Financiën, Begroting en Externe Betrekkingen</ti>
-    <ti l="F" meeting-type="VVGGC">membre du Collège réuni, compétent pour la Politique de la Santé, les Finances, le Budget et les Relations extérieures</ti>
+    <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Financiën, Begroting, Externe Betrekkingen en Ontwikkelingssamenwerking</ti>
+    <ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargé des Finances, du Budget, des Relations extérieures et de la Coopération au développement</ti>
+    <ti l="N" meeting-type="VVGGC">lid van het Verenigd College, bevoegd voor het Gezondheidsbeleid, het Openbaar Ambt, de Financiën, de Begroting en de Externe Betrekkingen</ti>
+    <ti l="F" meeting-type="VVGGC">membre du Collège réuni, compétent pour la Politique de la santé, la Fonction publique, les Finances, le Budget et les Relations extérieures</ti>
     
     	 <short l="N" meeting-type="BHP">minister</short>
       <short l="F" meeting-type="BHP">ministre</short>
@@ -478,8 +544,25 @@
       
   </person>
     
+  <person id="Smet_Pascal" lang="nl" gender="m" group="sp.a" gov="yes">
+      <first>Pascal</first>
+      <last>Smet</last>
+   
+    <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Mobiliteit en Openbare Werken</ti>
+    <ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargé de la Mobilité et des Travaux publics</ti>
+    <ti l="N" meeting-type="VVGGC">lid van het Verenigd College, bevoegd voor het Beleid inzake Bijstand aan Personen, het Gezinsbeleid en de Filmkeuring</ti>
+    <ti l="F" meeting-type="VVGGC">membre du Collège réuni, compétent pour la Politique d'aide aux personnes, les Prestations familiales et le Contrôle des films</ti>
+    
+    	 <short l="N" meeting-type="BHP">minister</short>
+      <short l="F" meeting-type="BHP">ministre</short>
+      <short l="N" meeting-type="VVGGC">lid van het Verenigd College</short>
+      <short l="F" meeting-type="VVGGC">membre du Collège réuni</short>
+   
+      
+  </person>
+  
  
- 
+ <!--
   <person id="VERVOORT_Rudi" gov="yes" gender="m" lang="fr" group="PS">
     <first>Rudi</first>
     <last>Vervoort</last>
@@ -497,7 +580,7 @@
         <short l="F" meeting-type="PFB">ministre</short>
    
          
-  </person>
+  </person>-->
 <!--  
   <person id="KIR_Emir" gov="yes" gender="m" lang="fr" group="PS">
     <first>Emir</first>
@@ -513,6 +596,7 @@
     
   </person>
   -->
+  <!--
   <person id="MADRANE_Rachid" gov="yes" gender="m" lang="fr" group="PS">
     <first>Rachid</first>
     <last>Madrane</last>
@@ -525,36 +609,82 @@
      <short l="F" meeting-type="PFB">ministre</short>
    
     
-  </person>
-  
-  <person id="DE_LILLE_Bruno" gov="yes" gender="m" lang="nl" group="Groen">
+  </person>-->
+
+<person id="Debaets_Bianca" gov="yes" gender="f" lang="nl" group="CD&amp;V">
    <!-- GEEN LID VAN HET VERENIGD COLLEGE -->
+    <first>Bianca</first>
+    <last>Debaets</last>
+     <ti l="N" meeting-type="BHP">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Ontwikkelingssamenwerking, Verkeersveiligheidsbeleid, Gewestelijke en Gemeentelijke Informatica en Digitalisering, Gelijkekansenbeleid en Dierenwelzijn</ti>
+      <ti l="F" meeting-type="BHP">secrétaire d'État à la Région de Bruxelles-Capitale, chargée de la Coopération au développement, de la Sécurité routière, de l'Informatique régionale et communale et de la Transition numérique, de l'Égalité des chances et du Bien-être animal</ti>
+       
+    	 <short l="N" meeting-type="BHP">staatssecretaris</short>
+
+      <short l="F" meeting-type="BHP">secrétaire d'État</short>
+      
+   
+   
+  </person>
+
+  <!--
+  <person id="DE_LILLE_Bruno" gov="yes" gender="m" lang="nl" group="Groen">
+  
     <first>Bruno</first>
     <last>De Lille</last>
      <ti l="N" meeting-type="BHP">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Mobiliteit, Openbaar Ambt, Gelijke Kansen en Administratieve Vereenvoudiging</ti>
       <ti l="F" meeting-type="BHP">secrétaire d'État à la Région de Bruxelles-Capitale, chargé de la Mobilité, de la Fonction publique, de l'Égalité des Chances et  de la Simplification administrative</ti>
        
     	 <short l="N" meeting-type="BHP">staatssecretaris</short>
+<xsl:include href=''/>
       <short l="F" meeting-type="BHP">secrétaire d'État</short>
       
    
    
-  </person>
+  </person>-->
   
   <person id="FREMAULT_Céline" gov="yes" group="cdH" lang="fr" gender="f">
       <first>Céline</first>
       <last>Fremault</last>
-      <ti l="F" meeting-type="PFB">ministre en charge de la Fonction publique, de la Politique de la Santé et de la Formation professionnelle des Classes moyennes</ti>
-    <ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée de l'Emploi, de l'Économie, du Commerce extérieur et de la Recherche scientifique</ti>
-      <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Tewerkstelling, Economie, Buitenlandse Handel en Wetenschappelijk Onderzoek</ti>
-      <ti l="N" meeting-type="VVGGC">lid van het Verenigd College, bevoegd voor het Gezondheidsbeleid en het Openbaar Ambt</ti>
-    <ti l="F" meeting-type="VVGGC">membre du Collège réuni, compétente pour la Politique de la Santé et la Fonction publique</ti>
-     
+          <ti l="F" meeting-type="BHP">ministre du Gouvernement de la Région de Bruxelles-Capitale, chargée du Logement, de la Qualité de vie, de l’Environnement et de l'Énergie</ti>
+      <ti l="N" meeting-type="BHP">minister van de Brusselse Hoofdstedelijke Regering, belast met Huisvesting, Levenskwaliteit, Leefmilieu en Energie</ti>
+      <ti l="N" meeting-type="VVGGC">lid van het Verenigd College, bevoegd voor het Beleid inzake Bijstand aan Personen, het Gezinsbeleid en de Filmkeuring</ti>
+    <ti l="F" meeting-type="VVGGC">membre du Collège réuni, compétente pour la Politique d'aide aux personnes, les Prestations familiales et le Contrôle des films</ti>
+     <ti l="F" meeting-type="PFB">ministre en charge de la Politique d'aide aux personnes handicapées, de l'Action sociale, de la Famille et des Relations internationales</ti>
     	 <short l="N" meeting-type="BHP">minister</short>
       <short l="F" meeting-type="BHP">ministre</short>
       <short l="N" meeting-type="VVGGC">lid van het Verenigd College</short>
       <short l="F" meeting-type="VVGGC">membre du Collège réuni</short>
         <short l="F" meeting-type="PFB">ministre</short>
+   </person>
+   
+   
+   
+   <person id="Laanan_Fadila" lang="fr" gender="f" group="PS" gov="yes">
+      <first>Fadila</first>
+      <last>Laanan</last>
+      
+    <ti l="F" meeting-type="BHP">secrétaire d'État à la Région de Bruxelles-Capitale, chargée de la Propreté publique et de la Collecte et du Traitement des déchets, de la Recherche scientifique, des Infrastructures sportives communales et de la Fonction publique</ti>
+      <ti l="N" meeting-type="BHP">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Openbare Netheid, Vuilnisophaling en -verwerking, Wetenschappelijk Onderzoek, Gemeentelijke Sportinfrastructuur en Openbaar Ambt</ti>
+         <ti l="F" meeting-type="PFB">ministre-­présidente en charge du Budget, de l'Enseignement, du Transport scolaire, de l'Accueil de l'enfance, du Sport et de la Culture</ti>
+     
+    	 <short l="N" meeting-type="BHP">staatssecretaris</short>
+      <short l="F" meeting-type="BHP">secrétaire d'État</short>
+      <short l="F" meeting-type="PFB">ministre-présidente</short>
+     
+   </person>
+   
+    <person id="Jodogne_Cécile" lang="fr" gender="f" group="FDF" gov="yes">
+      <first>Cécile</first>
+      <last>Jodogne</last>
+       <ti l="F" meeting-type="BHP">secrétaire d'État à la Région de Bruxelles-Capitale, chargée du Commerce extérieur et de la Lutte contre l'incendie et l'Aide médicale urgente</ti>
+      <ti l="N" meeting-type="BHP">staatssecretaris van het Brussels Hoofdstedelijk Gewest, belast met Buitenlandse Handel en Brandbestrijding en Dringende Medische Hulp</ti>
+     <ti l="F" meeting-type="PFB">ministre en charge de la Fonction publique et de la Santé</ti>
+
+     
+ <short l="F" meeting-type="PFB">ministre</short>
+
+    	 <short l="N" meeting-type="BHP">staatssecretaris</short>
+      <short l="F" meeting-type="BHP">secrétaire d'État</short>
    </person>
   
   <!--
@@ -576,6 +706,7 @@
    
   </person>
   -->
+  <!--
   <person id="HUYTEBROECK_Evelyne" gov="yes" gender="f" lang="fr" group="Ecolo">
     <first>Evelyne</first>
     <last>Huytebroeck</last>
@@ -592,4 +723,5 @@
      <short l="F" meeting-type="PFB">ministre</short>
    
   </person>
+  -->
   </reference>

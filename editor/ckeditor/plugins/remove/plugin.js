@@ -1,4 +1,4 @@
-﻿CKEDITOR.plugins.add( 'remove',
+CKEDITOR.plugins.add( 'remove',
 {
 	init: function( editor )
 	{
@@ -8,12 +8,16 @@
 	{
 		exec : function( editor )
 		{    
-			
+			 
 			
 			var selection = editor.getSelection().getStartElement();
 			selection.removeAttribute( 'title' );
 			selection.removeAttribute( 'class' );
+			ascendant = selection.getAscendant( 'p', true ); 
 			
+			ascendant.removeClass( 'fragmentNL' );
+			ascendant.removeClass('fragmentFR');
+			ascendant.removeClass('fragment');			
 		}
 	});
 		

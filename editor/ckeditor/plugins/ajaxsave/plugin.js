@@ -114,6 +114,14 @@ function asfinalize(xml, xsl, object, e) {
 	//	console.log(xml);
 	//	var asString = (new XMLSerializer()).serializeToString(xml);
 	//	console.log('finalize----' + asString);
+	   		
+					
+					// console.log('base doc ');
+					// console.log(content);
+					
+			xml.getElementsByTagName("container")[0].appendChild(titles);
+	
+	
 	
 	$.transform({
 			el: "#hidden",

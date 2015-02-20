@@ -115,11 +115,8 @@ let $output :=
 	</resultSet>
 </response>
 
-let $intermediate := transform:transform($output, "../xsl/assemblage-ns.xsl", <parameters><param name="numbering" value="{$numbering}"/><param name="type" value="{$type}"/><param name="firstLang" value="{$firstLang}"/></parameters>)
- 
-let $final := transform:transform($intermediate, "../xsl/fragment.xsl", <parameters><param name="firstLang" value="{$firstLang}"/></parameters>)
- 
-return $final
+
+return   $output 
 
 
 

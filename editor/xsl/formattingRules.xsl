@@ -440,7 +440,7 @@
         
         
       </xsl:when>
-      <xsl:otherwise>
+     <xsl:otherwise>
         <xsl:choose>
           <xsl:when test="$lang='N'">
             <p c="{@clip}" class="front" title="{@n}">BRUSSELS HOOFDSTEDELIJK PARLEMENT</p>
@@ -449,16 +449,7 @@
             <p c="{@clip}" class="front" title="{@n}">Integraal verslag van de interpellaties en
               mondelinge vragen</p>
             <p c="{@clip}" class="front" title="{@n}">
-              <span class="incomplete">Commissie voor de Financiën, Begroting, Openbaar Ambt,
-                Externe Betrekkingen en Algemene Zaken / Commissie voor de Infrastructuur, belast
-                met Openbare Werken en Verkeerswezen / Commissie voor de Ruimtelijke Ordening, de
-                Stedenbouw en het Grondbeleid / Commissie voor de Huisvesting en Stadsvernieuwing /
-                Commissie voor Leefmilieu, Natuurbehoud, Waterbeleid en Energie / Commissie voor
-                Binnenlandse Zaken, belast met de Lokale Besturen en de Agglomeratiebevoegdheden /
-                Commissie voor de Economische Zaken, belast met het Economisch Beleid, het
-                Werkgelegenheidsbeleid en het Wetenschappelijk Onderzoek / Commissie voor de
-                Gezondheid of Commissie voor de Sociale Zaken / Verenigde commissies voor de
-                Gezondheid en Sociale Zaken</span>
+              <span class="incomplete">Commissie voor de Financiën en de Algemene Zaken, belast met de Begroting, de Externe Betrekkingen, de Ontwikkelingssamenwerking, het Openbaar Ambt en het Wetenschappelijk Onderzoek / Commissie voor de Huisvesting / Commissie voor de Infrastructuur, belast met de Openbare Werken en de Mobiliteit / Commissie voor de Economische Zaken en de Tewerkstelling, belast met het Economisch Beleid, het Werkgelegenheidsbeleid en de Beroepsopleiding / Commissie voor de Territoriale Ontwikkeling, belast met de Ruimtelijke Ordening, de Stedenbouw, het Stedelijk Beleid, het Grondbeleid, de Haven van Brussel, de Monumenten en Landschappen, de Studentenaangelegenheden, de Biculturele Aangelegenheden van Gewestelijk Belang, het Toerisme en de Bevordering van het Imago van Brussel / Commissie voor de Binnenlandse Zaken, belast met de Plaatselijke Besturen, het Gewestelijk Veiligheids- en Preventiebeleid en de Brandbestrijding en Dringende Medische Hulp / Commissie voor het Leefmilieu en de Energie, belast met het Natuurbehoud, het Waterbeleid en de Openbare Netheid /  Commissie voor de Gezondheid / Commissie voor de Sociale Zaken, belast met de Kinderbijslag / Verenigde commissies voor de Gezondheid en de Sociale Zaken </span>
             </p>
             <p c="{@clip}" class="front" title="{@n}">
               <span class="incomplete">VERGADERING VAN DAG XX MAAND 2013</span>
@@ -475,22 +466,11 @@
             <p c="{@clip}" title="{@n}">ASSEMBLÉE RÉUNIE DE LA COMMISSION COMMUNAUTAIRE COMMUNE</p>
             <p c="{@clip}" title="{@n}">Compte rendu intégral des interpellations et des questions
               orales</p>
-            <p c="{@clip}" class="incomplete" title="{@n}">Commission des Finances, du Budget, de la
-              Fonction publique, des Relations extérieures et des Affaires générales / Commission de
-              l'Infrastructure, chargée des Travaux publics et des Communications / Commission de
-              l'Aménagement du territoire, de l'Urbanisme et de la Politique foncière / Commission
-              du Logement et de la Rénovation urbaine / Commission de l'Environnement, de la
-              Conservation de la Nature, de la Politique de l'Eau et de l'Énergie / Commission des
-              Affaires intérieures, chargée des Pouvoirs locaux et des Compétences d'Agglomération /
-              Commission des Affaires économiques, chargée de la Politique économique, de la
-              Politique de l'Emploi et de la Recherche scientifique / Commission de la Santé /
-              Commission des Affaires sociales / Commissions réunies de la Santé et des Affaires
-              sociales </p>
+            <p c="{@clip}" class="incomplete" title="{@n}">Commission des Affaires économiques et de l'Emploi, chargée de la Politique économique, de la Politique de l'emploi et de la Formation professionnelle / Commission des Affaires intérieures, chargée des Pouvoirs locaux, de la Politique régionale de sécurité et de prévention et de la Lutte contre l'incendie et l'Aide médicale urgente / Commission du Développement territorial, chargée de l'Aménagement du territoire, de l'Urbanisme, de la Politique de la ville, de la Politique foncière, du Port de Bruxelles, des Monuments et sites, des Affaires étudiantes, des Matières biculturelles d'intérêt régional, du Tourisme et de la Promotion de l'image de Bruxelles / Commission de l'Environnement et de l'Énergie, chargée de la Conservation de la nature, de la Politique de l'eau et de la Propreté publique / Commission des Finances et des Affaires générales, chargée du Budget, des Relations extérieures, de la Coopération au développement, de la Fonction publique et de la Recherche scientifique / Commission de l’Infrastructure, chargée des Travaux publics et de la Mobilité / Commission du Logement / Commission de la Santé / Commission des Affaires sociales, chargée des Allocations familiales / Commissions réunies de la Santé et des Affaires sociales</p>
             <p c="{@clip}" class="incomplete" title="{@n}">RÉUNION DU JOUR XX MOIS 2013</p>
           </xsl:otherwise>
         </xsl:choose>
-      </xsl:otherwise>
-    </xsl:choose>
+      </xsl:otherwise>    </xsl:choose>
   </xsl:template>
   <xsl:template match="e[@type='O-BXL' or @type='O-ARVV']" mode="initialize-text" priority="5">
     <xsl:param name="meeting-type"/>
@@ -863,10 +843,10 @@ Samenspraak -->
             <xsl:value-of select="$person/short[@l=$lang][@meeting-type=$meeting-type]"/>
           </xsl:when>
           <xsl:otherwise>
-            <xsl:if test="$meeting-type='PFB'">
+            <xsl:if test="true()">
               <xsl:value-of select="concat(' (', $person/@group, ')')"/>
             </xsl:if>
-            <!--  -->
+            <!-- $meeting-type='PFB' -->
           </xsl:otherwise>
         </xsl:choose>
       </span>
@@ -1018,8 +998,8 @@ Samenspraak -->
                 
                 <xsl:text></xsl:text>
               </xsl:when>
-              <xsl:when test="$meeting-type='PFB'"> 
-                
+              <xsl:when test="true()"> 
+                <!--$meeting-type='PFB'-->
                 <xsl:value-of select="concat(' (', $person/@group, ')')"/>
               </xsl:when>
             </xsl:choose>

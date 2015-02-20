@@ -93,5 +93,8 @@
   <xsl:template match="text()" mode="text">
     <xsl:copy-of select="."/>
   </xsl:template>
-  <xsl:template match="event" mode="text"> </xsl:template>
+  <xsl:template match="event" mode="text"> 
+    
+  <!-- if this template does not generate a paragraph, the event (clipmarker) will disappear when processed by the next template -->
+  </xsl:template>
 </xsl:stylesheet>

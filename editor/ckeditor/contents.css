@@ -117,6 +117,9 @@ span.speaker {    border: thin dotted grey;
     padding-left: 3px;
     padding-right: 3px;}
 
+.fragmentNL {background-color : pink ; }
+.fragmentFR {background-color : lightblue ; }
+
 
 
 

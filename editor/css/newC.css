@@ -477,6 +477,10 @@ body.orig td.orig {
 	font-size: 16px;
 	width: 600px;
 }
+.fragment {
+    font-style : italic ;
+}
+
 
 @media screen and (min-width: 0px) and (max-width: 1586px) {
 	#clipstatus {

@@ -62,7 +62,13 @@ var msgStore = {
     "F": "Voulez-vous vérouiller un clip additionnel ?"
   }
 };
+ var addClipRefSS, createClipListingSS, groupSS; 
+
 // console.log(msgStore);
+
+// Load stylesheets for re-use
+
+
 
 function setMeetingType(meeting) {
   var fullQuery = '/exist/rest/db/tullio/' + meeting + '/agenda.xml?_query=' + '//info';
@@ -417,7 +423,7 @@ function displayStatus() {
       async: true,
       success: clipFramesHandler,
       xml: clipRequest,
-      xsl: "xsl/createClipListing.xsl"
+      xslobj: createClipListingSS
     });
   } else {
     // otherwise just run the status update directly
@@ -487,7 +493,7 @@ function docupdate() {
   $("#" + edited.replace(/\./g, "\\.")).addClass('edited');
   var ckToolBarConfig = [{
     name: 'tullio',
-    items: ['Print', '-', 'Find', 'Replace', '-', 'Styles', 'Undo', 'PasteText', 'Ajaxsave', 'internalSync', 'Remove', 'Abbr', 'Status', 'Source', 'Exit']
+    items: ['Print',  'Find', 'Replace',  'Styles', 'Undo', 'PasteText', 'Ajaxsave', 'Remove', 'Abbr', 'Status', 'Source', 'Fragmentsnl' , 'Fragmentsfr' , 'Exit']
   }];
   if (startEditor) {
     startEditor = false;
@@ -507,7 +513,7 @@ function docupdate() {
     snap = "";
     editor = CKEDITOR.replace('cke', {
       toolbar: ckToolBarConfig,
-      extraPlugins: 'remove,internalSync,ajaxsave,transform,abbr-custom,status,exit',
+      extraPlugins: 'remove,internalSync,ajaxsave,transform,abbr-custom,status,fragmentsnl,fragmentsfr,exit',
       disableNativeSpellChecker: false,
       removePlugins: 'scayt,contextmenu',
       startupFocus: false,
@@ -624,7 +630,7 @@ function secondstep(xml, xsl, xmlorig) {
     success: docupdate,
     async: true,
     xmlobj: xml,
-    xsl: "xsl/group.xsl",
+    xslobj: groupSS,
     xslParams: {
       mode: runTrans,
       channel: channel
@@ -706,7 +712,7 @@ function updateVisibleTexts() {
       dataType: "xml",
       success: secondstep,
       xml: request,
-      xsl: "xsl/addclipref.xsl"
+      xslobj: addClipRefSS
     });
   }
 }
@@ -732,7 +738,7 @@ function initialize(xml, xsl, xmlorig) {
       async: false,
       dataType: "xml",
       xmlobj: xml,
-      xsl: "xsl/group.xsl",
+      xslobj: groupSS,
       xslParams: {
         mode: runTrans,
         channel: channel
@@ -772,6 +778,31 @@ $().ready(function () {
   $("#representation").text("Het scherm is te klein geworden om alles te kunnen tonen. Maakt u aub het venster groter, of verminder het zoomniveau (CTRL + -).");
   noUpdate = true;
   setUpPlayer();
+  
+ 
+   
+  var promise1 = $.ajax({
+  		url: "xsl/addclipref.xsl",
+  		dataType: "xml"
+  });
+  var promise2 = $.ajax({
+  		url: "xsl/createClipListing.xsl",
+  		dataType: "xml"
+  });
+  var promise3 = $.ajax({
+  		url: "xsl/group.xsl",
+  		dataType: "xml"
+  });
+  $.when(promise1, promise2, promise3).done(function(promise1, promise2, promise3) {
+    
+  	addClipRefSS = promise1[0];
+    createClipListingSS = promise2[0];
+    groupSS = promise3[0]
+    
+  });
+
+  
+  
   jQuery.ajax({
     url: "/exist/tullio/xml/titles.xml",
     success: function (result) {
@@ -785,7 +816,7 @@ $().ready(function () {
             async: false,
             success: initialize,
             xml: "../xq/return-combined.xql?mt=" + mt + "&m=" + mmm + "&include=" + runTrans,
-            xsl: "xsl/addclipref.xsl",
+            xslobj: addClipRefSS,
             xslParams: {
               translation: "1"
             }
